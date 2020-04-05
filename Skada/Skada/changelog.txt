@@ -1,0 +1,268 @@
+1.2-28:
+* Added a damage taken by spell mode.
+
+1.2-27:
+* Fixed raw threat option.
+* Fixed Mirror Image threat display when using raw threat.
+* Added option to disable spark effect.
+* Background window is now named.
+
+1.2-26:
+* Threat mode now respects the class color option.
+* Added a global option to show rank numbers.
+* Threat mode now shows target of target if target is friendly, and optionally focus target (or focus target's target).
+* Partial fix for guardian spammage.
+
+1.2-25:
+* Added X-Part-Of headers for the ACP crowd.
+* Added tooltip to DPS mode showing the very simple calculation used.
+* Fixed the glitch with random selections during combat (or so it appeared during a test; I never click around during combat).
+* Added an "Absorbs and healing". Have fun spamming reports, Disc priests.
+* Improved absorbs detection.
+
+1.2-24:
+* Fixed forgotten module .tocs, yay.
+
+1.2-23:
+* 3.3 .toc update.
+
+1.2-22:
+* Added subview summary tooltips.
+* Made CC breaks not announce in PvP instances.
+
+1.2-21:
+* Fixed a major bug in Absorbs mode - swing damage was not considered.
+* Adapted healing and death log modes to new heal event format.
+* Added a Hide in combat option. Note that the various Hide options do not play along nicely amongst themselves at this time.
+* Fixed classcolor text option causing mischief.
+
+1.2-20:
+* .toc bump.
+
+1.2-19:
+* Increased maximum line count in report popup menu to 25.
+* Death log improved.
+* Documented a few hidden /skada commands.
+* Fix: damage spell breakdown now shows separate entries for pets using same spell as owner (such as Attack).
+
+1.2-18:
+* Fixed a Damage spell details bug.
+* Hide in PvP now shows Skada windows after exiting a PvP instance.
+
+1.2-17:
+* Added options for enabling/disabling columns in a more standardized way.
+* Added a command for starting a new segment manually, /skada newsegment.
+
+1.2-16:
+* Interrupts and Dispels modes now show the owner for pets.
+* Added a crowd control (CC) breaks mode, with optional announce.
+* Added a function for manually starting a new segment, saving the current one. Useful for multi-part boss fights.
+* Added key bindings for toggling windows, resetting data, and starting a new segment.
+* Fixed a bug in Damage Taken mode.
+* Fixed a few embeds.xml errors.
+
+1.2-15:
+* Now using combat log event flags to determine if we are interested in actors. Should result in a slight performance increase.
+
+1.2-14:
+* Fixed title bar font changes affecting game fonts.
+* Added an optional button opening the menu in the title bar.
+* Added a subview to Damage - damaged mobs, showing who the player damaged.
+
+1.2-13:
+* Fixed missing translation for reports.
+* New push to get an updated LibFail-1.0 that doesn't fail quite so bad.
+
+1.2-12:
+* Fixed "Only keep bosses" option, broken since a few releases.
+
+1.2-11:
+* Added tooltip positioning option.
+
+1.2-10:
+* Fixed empty segments (that are discarded) still being pointed to by Current after fight. 
+* Fixed pets not being merged with owner for Enemy Damage Taken mode.
+
+1.2-9:
+* Added Healing recipient mode (shift-click from healing mode).
+* Multiple subviews can now be reached from one view. Only healing mode has multiple subviews as of now.
+* Fixed tooltip option; the on/off switch was inverted.
+
+1.2-8
+* Damage modes: now ignoring friendly fire.
+* Absorbs mode: fix for not counting swing damage.
+* Added a Hide in PVP option.
+* Added healing spell details tooltip.
+* Manually hiding windows (by clicking minimap button/LDB) should now hide the windows until clicked again.
+
+1.2-7
+* Added TPS to Threat mode. Optional, by default on.
+* Added an option to not warn on threat when tanking.
+* Threat mode now shows target as title.
+* Fixed misses being reported as minimum hit in tooltip.
+
+1.2-6
+* Added an Absorbs mode. Note that this mode is not and can not be made to be accurate at this time.
+* Fixed report function not giving enough lines.
+* Fixed Failbot mode not showing enough lines.
+* Moved LibFail-1.0 dependency to main addon (affects nolib and svn users).
+
+1.2-5
+* The report command, when used on a window, will now always use that window's current view.
+* Bar display: shift-clicking on background or bars will now open the menu.
+
+1.2-4
+* Added Russian translation (incomplete, someone finish it please).
+* Fixed HPS not showing.
+* Fixed segment list skipping segments.
+
+1.2-3
+* Added a reset command to the menu.
+* Added a mana regen mode, part of a new SkadaPower module.
+* Added optional tooltips showing min/max/average hit for Damage mode.
+* Failbot and boss libraries are now kept up to date.
+
+1.2-2
+* 3.1 compatible.
+
+1.2-1
+* Moved window configuration to the main configuration.
+* Added window header font setting.
+* Made spell icons a little prettier (thanks Aezay)
+* Added displaying of miss types in Damage mode spell details.
+* Fixed "Only keep bosses" options so that last fight is still displayed even if it is not a boss fight.
+* Made LibDBIcon-1.0 optional for the disembedding crowd.
+* Fixed background frame not displayed properly on first bar (thanks whynona2)
+* Major changes in backend. Modes no longer have anything to do with the display of data. Currently there is only the traditional bar display system used by most damage meters, but implementing a new system should be fairly trivial.
+* Added options to hiude DPS/HPS in damage and healing modes. Temporary solution which should be replaced with a generic field selection at some point.
+* Bar display: Added options to use or not use class colors for bars and text.
+* Bar display: Fixed background frame to use background instead of statusbars (thanks ethancentaurai).
+* Bar display: Added options to enable or disable class colors for bars and for bar text.
+* Bar display: Fixed issue with SharedMedia media not being available right away.
+* Bar display: Changed reverse growth to keep highest value at top.
+
+1.1-4
+* Fixed whisper reports. Hopefully the last of the "fix what I broke last weekend" versions.
+
+1.1-3
+* Fixed reporting (oops).
+
+1.1-2
+* Fixed some leftover bugs from the transition to multiple windows.
+* Now tracking DAMAGE_SHIELD events.
+* Report settings are remembered across sessions.
+
+1.1-1
+* Multiple windows.
+* New combat log event handling. Should be more scalable.
+* Report menu can now use whispers.
+* Enemy damage done/taken modes; shows a list of all enemies in a segment. Drilling down shows who did damage to or took damage from the enemy.
+
+1.0-16
+* Added Enemy damage done and Enemy damage taken modes. Shows a breakdown of damage per mob.
+
+1.0-15
+* Update for translations.
+
+1.0-14
+* Added an Interrupts mode.
+* Fixed DK pets and similar minions not being counted.
+* Fixed active set not being restored on logging in.
+* Fixed Total Healing mode not being actually present...
+* Fixed personal DPS feed again.
+* Fixed spell misses again.
+
+1.0-13
+* Fixed spell misses not being recorded.
+* Added a Total healing mode.
+* Added more mode summary values.
+* Fixed scrolling issue where you could not scroll down to the last bar.
+* Fixed bar lengths often being off by some pixels.
+* Fixed title bar being hidden sometimes after toggling window.
+* Now discarding fight segments of 5 seconds or lower.
+
+1.0-12
+* Added threat warnings.
+* Added an option to enable/disable title bar.
+* Mode list now shows summary values for each mode (280k for Damage, etc).
+* Damage and healing spell lists are now scaled relative to the highest hit/heal instead of the total damage/healing.
+* Fixed a bug where enabling a module with old data could produce errors.
+* Improved combat start and end detection. Should bring it more in line with other damage meters.
+* "Delete segment" now shows a list of all segments.
+
+1.0-11
+* LDB data feed now doesn't reset value after combat.
+
+1.0-10
+* Added a "Delete segment" option to the menu.
+* Added an option to keep specific fight segments (from menu).
+* Added an alternating default color, by default a lighter shade of blue.
+* Fixed mousewheel scrolling not working on background frame.
+* Made the number of segments kept configurable.
+
+1.0-9:
+* Added a death log to deaths mode; shows the last heals and damage on the player.
+* Added a "/skada toggle" command for toggling showing the window other than through clicking.
+* Added data feeds for showing in an LDB display addon such as Titan Panel. Currently there are personal DPS, raid DPS, and Threat feeds available. These feeds are only available if you are running the corresponding module.
+* Added a menu on right-clicking the minimap/LDB icon or shift-clicking the window header; currently has options for setting mode and for reporting. The reporting bit is a little limited at the moment.
+* Added an optional background frame. It can either change size dynamically according to the number of shown bars, or have a fixed size, which will then determine the number of shown bars.
+* Added a Hide when solo option.
+* Fixed Total segment not being saved - note that you have to reset once for this to start working.
+* Fixed profile changing/resetting/copying not taking immediate effect and not saving some settings properly.
+* Fixed resetting not removing saved data on relog.
+* Removed resisted/absorbed from damage mode spell details.
+
+1.0-8:
+* Fixed self and party pets not appearing in Threat mode when in a party.
+* Improved memory usage.
+
+1.0-7:
+* The window is now scrollable.
+* Threat mode now shows threat value in addition to percentage relative to tank.
+* /skada report now accepts channel and player names. Also officer's channel and "self".
+* Fixed a serious issue with the .toc, which caused Skada not to be loaded if the user did not have LibDataBroker from another addon loaded.
+* The header is now customizable. The default appearance is a bit prettier as well.
+
+1.0-6:
+* Fixed Debuff uptimes for Total segment.
+* Fixed reporting (the order was off).
+
+1.0-5:
+* Now translated (mostly) to German, French, Korean, Traditional and Simplified Chinese.
+* Added reverse bars as an option.
+* Fixed Fails not showing up in the Total segment (and twice in the current one).
+* Fix for Threat bars now being removed.
+* HPS added to Healing mode.
+* Added support for Class Colors.
+* Added automatic/asked data reset options.
+* Added option for choosing condensed or detailed number format.
+* Fight segments are now stored persistently and will not disappear after a relog/reloadui.
+* Reporting improved; can now do /skada report [say|guild|party|raid] [number].
+
+r37:
+* Added a window lock option.
+* Added a DPS mode.
+* DPS measurement improved; should now be accurate for the "Total" segment.
+
+r29:
+* Fixed a nasty memory leak.
+
+r23:
+* Added zhCN translation, courtesy of wowui.cn.
+
+r22:
+* Added a simple /skada report function.
+* Fixed damage spell details; don't show resists, absorbs etc for now. Maybe split view at some point.
+* Translations fixed; got error from the ones not loaded previously.
+
+r17:
+
+* Fully translateable.
+* Added /skada reset command.
+* Fixed a bug where bars would not be cleaned up in-between fights, causing leftover bars to remain.
+
+r6:
+
+* Added option to show/hide minimap button.
+* Fixed pet cache bug leaking memory.
+* Fixed Failbot detailed views.

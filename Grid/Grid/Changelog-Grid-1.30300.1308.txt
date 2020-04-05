@@ -1,0 +1,13 @@
+tag 1.30300.1308
+9e4641e315ed97d14030440f1551dab3b2a8907d
+Phanx <addons@phanx.net>
+2010-08-06 05:31:41 +0000
+
+Tagging as 1.30300.1308
+
+
+--------------------
+
+Phanx:
+	- - Update TOC for release
+	- - Fixed a bug with the Unit Health status when range checking was enabled on it

@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r301 | talryn1 | 2010-10-12 06:47:19 +0000 (Tue, 12 Oct 2010) | 1 line
+Changed paths:
+   M /trunk/modules/SkadaAbsorbs/Absorbs.lua
+
+Added DK Blood Shield to absorbs to trak
+------------------------------------------------------------------------
+r300 | zarnivoop | 2010-06-16 20:38:00 +0000 (Wed, 16 Jun 2010) | 2 lines
+Changed paths:
+   M /trunk/Skada.lua
+
+Slight fix.
+
+------------------------------------------------------------------------

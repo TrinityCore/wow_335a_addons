@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Crap Away!
+## Notes: Automaticaly sells all gray items when a merchant window is opened
+## Author: Markyxl (Viruss@Drak'thul EU)
+## Dependencies:
+CrapAway.lua
+CrapAway.xml

@@ -1,0 +1,12 @@
+tag v1.3
+a831af1ab32ca8c69ce843610df5e28f387ef367
+kollektiv <kollektiv@pc>
+2011-04-26 16:42:27 -0400
+
+Tagging as v1.3
+
+
+--------------------
+
+kollektiv:
+	- Add Skull Bash and Rebuke. Fix for 4.1

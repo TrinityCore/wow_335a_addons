@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: AutoRepair
+## Notes: Automaticaly repairs all items when a merchant window is opened
+## Author: Markyxl (Viruss@Drak'thul EU)
+## Dependencies:
+AutoRepair.lua
+AutoRepair.xml
