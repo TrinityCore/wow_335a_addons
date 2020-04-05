@@ -7,5 +7,5 @@ Put each addon on a dedicated directory.
 
 IE:
 
-Damage addon directory -> all directories of the addon inside.
+Damage addon directory -> all directories of the addon inside.  
 Deadly boss mod directory -> all directories of the addon inside.
