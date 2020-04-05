@@ -1,0 +1,81 @@
+﻿## Interface: 30300
+## Title: BossEncounter2
+## Authors: MrCool
+## Notes: An AddOn designed to help you during boss fights.
+## Notes-frFR: Un Addon créé pour vous aider durant les combats contre les boss.
+## SavedVariables: BossEncounter2_SavedVariables
+## Dependencies:
+## OptionalDeps:
+
+BossEncounter2.xml
+
+data\MD5Lib.lua
+data\ChatThrottleLib.lua
+
+data\save.lua
+data\localisation.lua
+data\sound.lua
+data\music.lua
+data\combat.lua
+data\misc.lua
+data\graphic.lua
+data\environment.lua
+data\string.lua
+data\unit.lua
+data\distance.lua
+data\encounter.lua
+
+data\module.lua
+data\table.lua
+data\blacklist.lua
+data\font.lua
+data\network.lua
+data\sort.lua
+data\api.lua
+
+data\databases\npc.lua
+data\databases\item.lua
+data\databases\mobName.lua
+
+modules\modules.xml
+
+gui\addWindow\addWindow.xml
+gui\addWindow\addWindowDriver.xml
+gui\addWindow\addWindowRow.xml
+gui\addWindow\addWindowRowFont.xml
+gui\bossBar\bossBar.xml
+gui\bossBar\bossBarLayer.xml
+gui\bossBar\bossBarThreshold.xml
+gui\bossBar\bossBarDriver.xml
+gui\eventWatcher\eventWatcher.xml
+gui\eventWatcher\eventWatcherIcon.xml
+gui\eventWatcher\eventWatcherArrow.xml
+gui\eventWatcher\eventWatcherDriver.xml
+gui\eventWatcher\eventWarning.xml
+gui\eventWatcher\eventWarningPieTimer.xml
+gui\resultSequence\resultSequence.xml
+gui\resultSequence\performanceFrame.xml
+gui\resultSequence\dpsGraph.xml
+gui\resultSequence\dpsGraphColumn.xml
+gui\text\majorText.xml
+gui\text\minorText.xml
+gui\secureFrame.xml
+gui\statusFrame.xml
+gui\statusFrameDriver.xml
+gui\timerReminder.xml
+gui\timerReminderDriver.xml
+gui\superAlert.xml
+gui\unitList.xml
+gui\unitListDriver.xml
+gui\specialBar.xml
+gui\specialBarDriver.xml
+gui\clearedAnimation.xml
+gui\settingFrame.xml
+gui\difficultyMeter.xml
+gui\anchorControlFrame.xml
+gui\anchorGhost.xml
+gui\healAssist.xml
+gui\lootAssigner.xml
+gui\manager.lua
+
+bgm\plugin\musicPlugin.lua

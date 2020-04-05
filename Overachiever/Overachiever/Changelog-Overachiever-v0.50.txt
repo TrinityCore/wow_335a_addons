@@ -1,0 +1,61 @@
+------------------------------------------------------------------------
+r48 | tuhljin | 2009-11-26 03:02:24 +0000 (Thu, 26 Nov 2009) | 1 line
+Changed paths:
+   A /tags/v0.50 (from /trunk:47)
+
+Tagging as v0.50.
+------------------------------------------------------------------------
+r47 | tuhljin | 2009-11-23 18:38:27 +0000 (Mon, 23 Nov 2009) | 4 lines
+Changed paths:
+   M /trunk/Options.lua
+   M /trunk/localization.lua
+   M /trunk/readme.txt
+
+- Reminder tooltips now have their own interface options panel.
+- When /oa would open to an options panel, the new Reminder Tooltips panel is used.
+- Reminder tooltip options have had their checkbox text simplified.
+- Updated readme.txt change log.
+------------------------------------------------------------------------
+r46 | tuhljin | 2009-11-23 05:25:44 +0000 (Mon, 23 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/AchieveID.lua
+   M /trunk/GameTip.lua
+   M /trunk/Options.lua
+   M /trunk/localization.lua
+   M /trunk/readme.txt
+
++ Reminder tooltip option for "Turkey Lurkey" achievement.
+------------------------------------------------------------------------
+r45 | tuhljin | 2009-11-09 22:40:27 +0000 (Mon, 09 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/GameTip.lua
+   A /trunk/Options.lua
+   M /trunk/Overachiever.lua
+   M /trunk/Overachiever.toc
+   M /trunk/localization.lua
+
+- Options panel creation moved into a new file.
+- Custom TjOptions item type implemented, used to display icons next to labels containing achievement names.
+- "Happy Hour", "Tastes Like Chicken": In order to make consumed item tracking more reliable, the lookup table is now always built regardless of whether the related option is enabled.
+------------------------------------------------------------------------
+r44 | tuhljin | 2009-11-02 18:10:18 +0000 (Mon, 02 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/Overachiever_Tabs/localization.lua
+
+- Tabs module: esMX localization should now properly fall back to esES values for the SUBZONES subnamespace.
+------------------------------------------------------------------------
+r43 | tuhljin | 2009-11-02 17:46:01 +0000 (Mon, 02 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/Overachiever.toc
+   M /trunk/Overachiever_Tabs/Overachiever_Tabs.toc
+   M /trunk/Overachiever_Tabs/Suggestions.lua
+   M /trunk/Overachiever_Tabs/localization.lua
+   M /trunk/Overachiever_Trade/Overachiever_Trade.toc
+   M /trunk/libs/TjOptions.lua
+   M /trunk/libs/TjOptions.txt
+   M /trunk/readme.txt
+
+- TjOptions library updated to v0.41.
+- Suggestions Tab: Now properly tabs through locations when an invalid location is entered provided that the cursor is at the leftmost position or a valid location can be found that matches the text to the left of the cursor.
+- Testing esMX concat for Tabs\SUBZONES subnamespace.
+------------------------------------------------------------------------

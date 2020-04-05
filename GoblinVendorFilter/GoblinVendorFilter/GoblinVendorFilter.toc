@@ -1,0 +1,45 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: 0.7.2b
+## X-Curse-Project-Name: GoblinVendorFilter
+## X-Curse-Project-ID: goblinvendorfilter
+## X-Curse-Repository-ID: wow/goblinvendorfilter/mainline
+
+## Title: GoblinVendorFilter
+## Notes: Enables filtering of Merchant Items
+## Author: Yssaril
+## Version: 0.7.2b
+## OptionalDeps: Ace3
+
+## SavedVariables: GoblinVendorFilterDB
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: Delayed
+
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+#@end-no-lib-strip@
+
+Localization\enUS.lua
+Localization\deDE.lua
+Localization\esES.lua
+Localization\esMX.lua
+Localization\frFR.lua
+Localization\koKR.lua
+Localization\ruRU.lua
+Localization\zhCN.lua
+Localization\zhTW.lua
+
+GoblinVendorFilter.lua
+Filters\TypeFilter.lua
+Filters\EquipLocFilter.lua
+Filters\QualityFilter.lua
+Filters\UsableFilter.lua
+Filters\AlreadyKnownFilter.lua
+Filters\ItemStatFilter.lua
+Filters\AffordableFilter.lua

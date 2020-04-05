@@ -1,0 +1,340 @@
+2014-10-11  tercio  <tercio>
+
+[05333304637f] [tip]
+* boot.lua:
+
+packpager fix
+
+
+[9018eb3f8532]
+* boot.lua, classes/classe_instance.lua, functions/profiles.lua, functions/skins.lua, gumps/janela_welcome.lua:
+
+- Fixed details crash when clicking directly on the sword button.
+- Added new skin: Serenity.
+- Removed skin: Flat Skin.
+
+
+2014-10-10  tercio  <tercio>
+
+[fa15932402b8]
+* boot.lua, core/control.lua, core/parser.lua, functions/skins.lua, images/bar_serenity.tga, images/skins/flat_skin.tga, startup.lua:
+
+- Internal Changes and Upgrades.
+
+
+2014-10-08  tercio  <tercio>
+
+[85667175ed84]
+* boot.lua, classes/classe_damage.lua, classes/classe_energy.lua, classes/classe_heal.lua, classes/classe_instance_include.lua, classes/classe_others.lua, core/parser.lua, core/windows.lua, framework/button.lua, functions/profiles.lua, gumps/janela_options.lua, gumps/janela_principal.lua, images/icons.tga:
+
+- Fixed many issues with bar animations.
+- Fixed combat encounter start if the player already is in combat when the boss is pulled.
+- Fixed wheel scroll when sometimes it get doesn't scroll or scroll very slow.
+- Added option 'Always Show Me' which when enabled always show your bar at the bottom of the window.
+- Added option 'First Hit' which when enabled show who did the first struck in the combat.
+- Added a panel to change class colors.
+
+
+2014-10-04  tercio  <tercio>
+
+[7b6c90d9785f]
+* boot.lua, classes/classe_damage.lua, core/plugins.lua, gumps/janela_options.lua, plugins/Details_DmgRank/Details_DmgRank.lua, plugins/Details_DpsTuning/Details_DpsTuning.lua, plugins/Details_EncounterDetails/Details_EncounterDetails.lua, plugins/Details_TimeAttack/Details_TimeAttack.lua, plugins/Details_TinyThreat/Details_TinyThreat.lua, plugins/Details_Vanguard/Details_Vanguard.lua, plugins/Details_YouAreNotPrepared/Details_YouAreNotPrepared.lua:
+
+- Added plugin descriptions.
+
+
+2014-10-03  tercio  <tercio>
+
+[2b2040f9a111]
+* boot.lua, classes/classe_instance.lua, classes/classe_instance_include.lua, core/util.lua, core/windows.lua, functions/profiles.lua, gumps/janela_options.lua, gumps/janela_principal.lua, gumps/switch.lua, startup.lua:
+
+- Added scale options.
+
+- New API: instance:GetRealSize() return the width and height scaled.
+- New API: instance:GetPositionOnScreen() return the window x, y position on screen.
+- New API: instance:SetWindowScale (scale) set the window scale.
+- New API: instance:IsGroupedWith (instance) return if self is groupped with instance.
+- New API: instance:GetInstanceGroup([,instance id]) return a table with instance in the group.
+
+
+2014-10-01  tercio  <tercio>
+
+[25803ae7c159]
+* boot.lua:
+
+re commit
+
+
+[b2566d6433b2]
+* boot.lua, core/network.lua, functions/profiles.lua, functions/slash.lua:
+
+- few fixes
+
+
+2014-09-29  tercio  <tercio>
+
+[891f410e81ce]
+* boot.lua, core/control.lua, core/parser.lua, core/windows.lua, framework/panel.lua, functions/loaddata.lua, functions/profiles.lua, gumps/janela_copy.lua, gumps/janela_info.lua, gumps/janela_news.lua, gumps/janela_options.lua, gumps/janela_principal.lua, gumps/janela_welcome.lua:
+
+- Added a Change Log button on Options Panel.
+- Added option to use the same profile on all characters without asking.
+- Added a shortcut color button on main panel on Options Panel.
+- Added auto erase/ask to erase options.
+- Bars now highlight when hover over.
+- Fixed problem with drag the window when the toolbar is on the bottom side.
+
+
+2014-09-27  tercio  <tercio>
+
+[2ba315953d5b]
+* Libs/LibGraph-2.0/LibGraph-2.0.lua, Libs/NickTag-1.0/NickTag-1.0.lua, boot.lua, functions/profiles.lua, functions/skins.lua, functions/slash.lua, gumps/janela_options.lua, gumps/janela_principal.lua, gumps/switch.lua, images/icons.tga, images/skins/classic_skin.tga, images/skins/classic_skin_v1.tga:
+
+- Minimalistic skin is now the ols minimalistic v2.
+- Minimalistic v2 got a new texture, little more darker.
+- Few tweaks to make more easy making groups of windows.
+- Bookmark now accepts more than two columns.
+
+
+2014-09-18  tercio  <tercio>
+
+[a6d9e79937b5]
+* Libs/LibGraph-2.0/LibGraph-2.0.lua, boot.lua, classes/classe_custom.lua, classes/classe_instance.lua, core/windows.lua, framework/dropdown.xml, functions/profiles.lua, functions/timedata.lua, gumps/janela_options.lua, startup.lua:
+
+- Changed thw way to set the broker text.
+- Fixed a problem while reporting a custom display.
+
+- New API: _details:GetOpenedWindowsAmount()
+
+
+2014-09-12  tercio  <tercio>
+
+[33368533faf2]
+* boot.lua:
+
+changelog
+
+
+[260f36e873f2]
+* classes/classe_custom.lua, classes/classe_instance.lua, core/network.lua, core/plugins_toolbar.lua, core/windows.lua, framework/panel.lua, functions/profiles.lua, functions/savedata.lua, functions/skins.lua, functions/timedata.lua, gumps/janela_options.lua, gumps/janela_principal.lua, gumps/janela_welcome.lua, gumps/switch.lua, images/icons.tga:
+
+- Added tutorial for bookmarks.
+- Added option for choose the format type of data broker's text.
+
+- New API: framework:CreateSimplePanel (parent, w, h, title, name)
+
+
+2014-09-10  tercio  <tercio>
+
+[7b8209d7c438]
+* boot.lua, classes/classe_damage.lua, classes/classe_heal.lua, core/control.lua, core/plugins_raid.lua, framework/cooltip.lua, framework/framework.lua, functions/profiles.lua, functions/skins.lua, gumps/janela_options.lua, gumps/janela_principal.lua, gumps/janela_welcome.lua:
+
+- Changed few icons on damage done tooltip.
+- Fixed the class color on texts for healing attribute.
+- Added options for change the tooltip border's size, color and texture.
+- Added buttons for test interrupt and cooldown announcers under raid tools section.
+
+- New API: _details:SetTooltipBackdrop (border_texture, border_size, border_color) set tooltip border configs.
+
+
+2014-09-09  tercio  <tercio>
+
+[41873b7b88be]
+* .pkgmeta, boot.lua, classes/classe_custom.lua, classes/classe_instance.lua, gumps/janela_custom.lua:
+
+- Added buttons to edit the total and percentage code for custom displays.
+- Fixed a problem while report custom displays.
+
+
+2014-09-08  tercio  <tercio>
+
+[5bb885ae4e6e]
+* boot.lua, classes/classe_combate.lua, classes/classe_custom.lua, classes/classe_others.lua, core/control.lua, core/parser.lua, core/plugins.lua, framework/button.lua, framework/cooltip.lua, framework/dropdown.lua, framework/framework.lua, framework/label.lua, framework/normal_bar.lua, framework/panel.lua, functions/boss.lua, functions/classes.lua, functions/profiles.lua, functions/timedata.lua, gumps/janela_custom.lua, gumps/janela_info.lua, gumps/janela_principal.lua, plugins/Details_DpsTuning/Details_DpsTuning.lua, plugins/Details_DpsTuning/Details_DpsTuning.toc, plugins/Details_EncounterDetails/Details_EncounterDetails.lua, plugins/Details_EncounterDetails/frames.lua, plugins/Details_RaidInfo-SiegeOfOrgrimmar/SiegeOfOrgrimmar.lua, plugins/Details_RaidInfo-SiegeOfOrgrimmar/images/wallpaper.tga, plugins/Details_RaidInfo-ThroneOfThunder/ThroneOfThunder.lua, plugins/Details_RaidInfo-ThroneOfThunder/images/raid_tot.tga, plugins/Details_SpellDetails/Details_SpellDetails.lua, plugins/Details_SpellDetails/Details_SpellDetails.toc, plugins/Details_SpellDetails/Libs/AceLocale-3.0/AceLocale-3.0.lua, plugins/Details_SpellDetails/Libs/AceLocale-3.0/AceLocale-3.0.xml, plugins/Details_SpellDetails/Libs/LibStub/LibStub.lua, plugins/Details_SpellDetails/Libs/LibStub/LibStub.toc, plugins/Details_SpellDetails/Libs/LibStub/tests/test.lua, plugins/Details_SpellDetails/Libs/LibStub/tests/test2.lua, plugins/Details_SpellDetails/Libs/LibStub/tests/test3.lua, plugins/Details_SpellDetails/Libs/LibStub/tests/test4.lua, plugins/Details_SpellDetails/embeds.xml, plugins/Details_SpellDetails/enUS.lua, plugins/Details_SpellDetails/images/solo_bg.tga, plugins/Details_SpellDetails/ptBR.lua:
+
+- Added Acitivity Time for Damage + Healing, tooltip show the activity separately.
+- Major changes on Encounter Details Plugin making more easy to use.
+- Removed Spell Details Plugin.
+- Added new plugin: Dps Tuning.
+
+- New API: actor:GetActorSpells() return table with spellid, spelltable.
+- New API: actor:GetSpell (spellid) return the table for the spellid.
+- New API: combat:GetCombatNumber() return a unique ID number identifying the combat.
+- New API: framework:CreateButton (parent, func, w, h, text, param1, param2, texture, member, name, short_method)
+- New API: framework:CreateDropDown (parent, func, default, w, h, member, name)
+- New API: framework:CreateLabel (parent, text, size, color, font, member, name, layer)
+- New API: framework:CreateBar (parent, texture, w, h, value, member, name)
+- New API: framework:CreateChartPanel (parent, w, h, name)
+
+
+2014-08-31  tercio  <tercio>
+
+[24b38f2855dc]
+* boot.lua, core/control.lua, gumps/janela_options.lua:
+
+- Added pre potion recognition.
+
+
+2014-08-30  tercio  <tercio>
+
+[813139cc14e8]
+* boot.lua, core/parser.lua, core/plugins_raid.lua, framework/picture.lua, framework/slider.lua, functions/events.lua, functions/hooks.lua, functions/profiles.lua, functions/spells.lua, gumps/janela_options.lua, startup.lua:
+
+- Added Raid Tools bracket on Options Panel.
+- Added Interrupt, cooldown usage and death announcers for raid tools.
+
+- New API: _details:SendMsgToChannel (msg, channel, towho) seng a message to a chat channel.
+- New API: _details:CreateEventListener() creates a table which accept Details Event Registration with RegisterEvent and receive events through OnDetailsEvent().
+- New API: _details:GetCooldownList (class) return a table with spellids of defensive cooldowns of the requested class.
+- New Hook: DETAILS_HOOK_INTERRUPT call when a interrupt happens during a combat.
+- Framework: Added CreateImage (parent, texture, w, h, layer, coords, member, name)
+- Framework: Added CreateSwitch (parent, on_switch, default_value, w, h, ltext, rtext, member, name, color_inverted, switch_func, return_func)
+
+
+2014-08-28  tercio  <tercio>
+
+[8ffe969b05fc]
+* boot.lua, framework/dropdown.lua, plugins/Details_EncounterDetails/Details_EncounterDetails.lua, plugins/Details_EncounterDetails/Details_EncounterDetails.toc, plugins/Details_EncounterDetails/frames.lua, plugins/Details_EncounterDetails/images/boss_frame_buttons.tga:
+
+- Added Boss Emotes tab for Encounter Details plugin.
+
+
+2014-08-27  tercio  <tercio>
+
+[408ae7b2cde8]
+* boot.lua, plugins/Details_TimeAttack/Details_TimeAttack.lua:
+
+- Rework on Activity Time, now it will be more accurate with warcraftlogs.com
+- Added two new customs: Damage Activity Time and Healing Activity Time.
+- TimeAttack plugin now have only have six time amount options.
+- TimeAttack plugin can now share damage results with other players with the same class in the realm.
+
+- New API: instance:EnableInstance() active and open a closed instance.
+- New API: _details:RegisterBackgroundTask (name, func, priority, ...) background task runs slowly when player isn't in group nor inside instances.
+- New API: _details:UnregisterBackgroundTask (name) cancel a backgroup task.
+- New API: plugin:RegisterPluginComm (prefix, func) register for receive comm msg.
+- New API: plugin:UnregisterPluginComm (prefix) unregister a previous registred comm.
+- New API: plugin:SendPluginCommMessage (prefix, channel, ...) send a msg through channel.
+- New API: _details:IsConnected() return true is Details! is connected to realm comm channel.
+- New API: plugin:IsPluginEnabled() return is the plugin is enabled.
+
+
+[86e57023b8d8]
+* boot.lua, classes/classe_combate.lua, classes/classe_custom.lua, classes/classe_heal.lua, classes/classe_instance.lua, core/gears.lua, core/network.lua, core/parser.lua, core/plugins.lua, core/timemachine.lua, framework/button.lua, functions/attributes.lua, functions/loaddata.lua, gumps/janela_principal.lua, plugins/Details_TimeAttack/Details_TimeAttack.lua, startup.lua:
+
+- Rework on Activity Time, now it will be more accurate with warcraftlogs.com
+- Added two new customs: Damage Activity Time and Healing Activity Time.
+- TimeAttack plugin now have only have six time amount options.
+- TimeAttack plugin can now share damage results with other players with the same class in the realm.
+
+- New API: instance:EnableInstance() active and open a closed instance.
+- New API: _details:RegisterBackgroundTask (name, func, priority, ...) background task runs slowly when player isn't in group nor inside instances.
+- New API: _details:UnregisterBackgroundTask (name) cancel a backgroup task.
+- New API: plugin:RegisterPluginComm (prefix, func) register for receive comm msg.
+- New API: plugin:UnregisterPluginComm (prefix) unregister a previous registred comm.
+- New API: plugin:SendPluginCommMessage (prefix, channel, ...) send a msg through channel.
+- New API: _details:IsConnected() return true is Details! is connected to realm comm channel.
+- New API: plugin:IsPluginEnabled() return is the plugin is enabled.
+
+
+2014-08-24  tercio  <tercio>
+
+[dd226a688b71]
+* Details.toc, boot.lua, core/network.lua, locales/Details-esES.lua, locales/Details-esMX.lua:
+
+- Few adjustements for this week release.
+
+
+2014-08-23  tercio  <tercio>
+
+[7a4e73770a98]
+* boot.lua, core/util.lua, fonts/Accidental Presidency.ttf, fonts/FORCED SQUARE.ttf, fonts/HARRYP__.TTF, fonts/NuevaStd-Cond.otf, fonts/Oswald-Regular.otf, fonts/SIL Open Font License.txt, fonts/TrashHand.TTF, framework/dropdown.lua, functions/skins.lua, gumps/janela_principal.lua, gumps/janela_welcome.lua, images/BantoBar.tga, images/bar_skyline.tga:
+
+- Added 2 new textures: BantoBar and Skyline.
+- Added 6 new fonts: Oswald, Nueva Std Cond, Accidental Presidency, TrashHand, Harry P, Forced Square.
+- Many improvements done on Welcome Screen.
+
+- New API: _details.table.deploy (t1, t2) copy values from t2 to t1.
+
+
+2014-08-20  tercio  <tercio>
+
+[a344809e0cca]
+* boot.lua, classes/classe_damage.lua, classes/classe_instance.lua, classes/classe_instance_include.lua, classes/container_combatentes.lua, core/windows.lua, functions/events.lua, functions/profiles.lua, functions/skins.lua, functions/slash.lua, functions/spellcache.lua, gumps/janela_options.lua, gumps/janela_principal.lua, gumps/janela_welcome.lua, images/classes_small_alpha.tga, images/classes_small_alpha_bw.tga, images/icons.tga, startup.lua:
+
+- Left button on a enemy bar now show enemy damage taken, middle button open player detail window for that enemy.
+- Added new profile: Minimalistic v2.
+- Minimalistic v2 is now the default skin.
+- Graphical changes on icon packs with transparency.
+- Removed slash command '/d', added '/de' instead.
+- Added custom spells for Atonement Critical, Power Word: Solace Critical, Lifebloom (the blood effect).
+- Revision done on Welcome Screen, many things removed, other added.
+
+- New API: instance:GetNumRows() return how many bars fit within the instance height.
+- New API: instance:GetRow (number) return the bar object.
+- New API: actorcontainer:ListActors() return a ipairs list of characters objects inside the container.
+- New API: _details:CreateTestBars() create 10 bars of random characters for damage and heal.
+- New API: _details:StartTestBarUpdate() begin to add and subtract value from created test actors.
+- New API: _details:StopTestBarUpdate() stop the bar update test.
+
+- New Event: DETAILS_INSTANCE_NEWROW triggers when a new row is created. Signature: [1] instance [2] bar object.
+
+
+2014-08-15  tercio  <tercio>
+
+[ae04a4a18fe8]
+* boot.lua, classes/classe_instance.lua, functions/skins.lua, gumps/janela_options.lua, images/classes_small_alpha_bw.tga, startup.lua:
+
+- Added new skin: ElvUI Frame Style (Black White).
+- Align With Right Chat Window option now check if the window have statusbar enabled.
+
+- New API: instance:UngroupInstance() remove the instance from any group.
+
+
+2014-08-14  tercio  <tercio>
+
+[e00eb43dcd49]
+* startup.lua:
+
+fix
+
+
+[3b168990e2df]
+* boot.lua, functions/profiles.lua, gumps/janela_options.lua, gumps/janela_principal.lua:
+
+- Added option for disable reset button.
+
+
+[451fe9ea0842]
+* boot.lua, classes/classe_instance.lua, classes/classe_instance_include.lua, classes/classe_others.lua, core/plugins.lua, core/plugins_solo.lua, core/timemachine.lua, framework/button.lua, framework/framework.lua, framework/label.lua, functions/profiles.lua, functions/savedata.lua, gumps/janela_info.lua, gumps/janela_options.lua, gumps/janela_principal.lua, images/classes_small_bw.tga, images/icons.tga, plugins/Details_TimeAttack/Details_TimeAttack.lua, plugins/Details_TinyThreat/Details_TinyThreat.lua, startup.lua:
+
+- Improvements done on Report Death and Spell List from Player Detail Window.
+- Added option for disable window group (snap).
+- Added option for select the icon pack instead of type the file name.
+- Fixed several bugs on profile and skins support.
+- Few fixes on Time Attack plugin.
+
+- New API: instance:SetMode (DETAILS_MODE_* SOLO RAID GROUP ALL) change the instance mode.
+- New API: instance:SetDisplay (segment, attribute, subattribute) change instance's display.
+- New API: framework:ShowTutorialAlertFrame (maintext, desctext, clickfunc) show an alert on the left side of screen.
+- New API: _details:GetMaxInstancesAmount() return how many windows can be opened.
+- New API: _details:GetFreeInstancesAmount() return how many windows can still be created.
+- New API: _details:GetTutorialCVar (key, default) return a value from tutorial table.
+- New API: _details:SetTutorialCVar (key, value) set a value on tutorial table.
+
+
+2014-08-10  tercio  <tercio>
+
+[4da0827ecd76]
+* boot.lua, core/windows.lua, functions/profiles.lua, gumps/janela_options.lua, gumps/janela_principal.lua, startup.lua:
+
+- Added hotcorner support.
+
+
+2014-08-09  tercio  <tercio>
+
+[b5d21c4c6cdf]
+* boot.lua, classes/classe_combate.lua, classes/classe_damage.lua, functions/profiles.lua, gumps/janela_welcome.lua, startup.lua:
+
+- Few improvements on damage -> frags display.
+- Welcome window strings passed to curseforge localization tool.
+
+

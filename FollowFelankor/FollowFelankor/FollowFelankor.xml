@@ -1,0 +1,28 @@
+<!--
+    ################ FollowFelankor.xml ###############
+    # Follow Felankor
+    # A World of Warcraft UI AddOn
+    # By Felankor
+    #
+    # IMPORTANT: I do not mind people looking at my code
+    # to learn from it. If you use any parts of my code
+    # please give me credit in your comments. I will
+    # do the same if I ever use any code from another
+    # AddOn. Thanks.
+    ###################################################
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+   <Script file="FFEvents.lua"/>
+   <Script file="FollowFelankor.lua"/> 
+    <Frame name="FFFrame">
+        <Scripts>
+            <OnLoad>
+               FF_OnLoad();
+            </OnLoad>
+            <OnEvent>
+               FF_OnEvent(event);
+            </OnEvent>
+        </Scripts>
+    </Frame>
+</Ui>

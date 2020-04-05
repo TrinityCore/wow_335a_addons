@@ -1,0 +1,41 @@
+-------------------------------------------------------------------
+-- To do and/or ideas
+--
+-- From Rabbit:
+-- * Automatically output our damage done and position to chat when a boss has
+-- been killed; this is easy with Babble-Boss, CHAT_MSG_HOSTILE_DEATH and
+-- UnitClassification.
+-- * Maybe add an auto-reset for boss kill as well.
+--
+-- * Problem: Data for users without Violation will be different from Violation
+-- user to Violation user because of combat log range.
+--   Solution: At all times there is one person in the group with Violation
+--   leader status - this status is first determined by who is the group leader
+--   or officer, and then randomly. When a leader is selected, he checks what
+--   other people in the group have Violation and assign them parsing targets -
+--   for example if group 3 has 1 Violation user, that user will report for the
+--   rest of the members in group 3. If noone in a group has Violation, a random
+--   reporter of first the same class, then the same role, and then completely
+--   random will be assigned to parse his data.
+--
+-- From Nymbia:
+-- * Pick up the slack of users without the addon by splitting up the members
+-- without the addon among those with it.  ie, in a 25 man raid where 10 users
+-- have Violation, each of them is assigned to parse the damage of either 1 or
+-- 2 other raid members.
+--    Mikk: What's the gain of this? You still have to process everyone's events. 
+--          And you keep stats for them in RAM anyway via sync.
+--          Plus you get the problem of range.  Just process events of everyone not running vio/DM imo.
+-- * Possibly keep two running totals:  'this fight' and 'overall', to allow
+-- for statistics to be displayed for a single encounter without requiring
+-- constant resets.
+--
+-- From Ammo:
+-- * Store data on reset. So you can skip back reset to reset to reset.
+-- * Store data on bosskill? you can keep a running total then but still have data per boss kill
+--
+-- From <person>:
+-- * Brew my coffee when I win the damage meter contest after a boss fight.
+--
+-----------------------------------------------------------------------
+

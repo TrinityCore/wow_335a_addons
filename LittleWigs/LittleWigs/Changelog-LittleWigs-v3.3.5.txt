@@ -1,0 +1,46 @@
+------------------------------------------------------------------------
+r734 | ulic | 2010-06-18 15:59:25 +0000 (Fri, 18 Jun 2010) | 2 lines
+Changed paths:
+   A /tags/v3.3.5 (from /trunk:733)
+
+Tagging as v3.3.5
+- Make Anub'arak load in Azjol-Nerub
+------------------------------------------------------------------------
+r733 | ulic | 2010-06-18 00:05:14 +0000 (Fri, 18 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/Dragonblight/Anub'arak.lua
+
+Fix @do-not-package
+------------------------------------------------------------------------
+r732 | ulic | 2010-06-17 23:34:57 +0000 (Thu, 17 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/Dragonblight/Anub'arak.lua
+   M /trunk/Dragonblight/Locales/deDE.lua
+   M /trunk/Dragonblight/Locales/esES.lua
+   M /trunk/Dragonblight/Locales/esMX.lua
+   M /trunk/Dragonblight/Locales/frFR.lua
+   M /trunk/Dragonblight/Locales/koKR.lua
+   M /trunk/Dragonblight/Locales/ruRU.lua
+   M /trunk/Dragonblight/Locales/zhCN.lua
+   M /trunk/Dragonblight/Locales/zhTW.lua
+
+Fix Anub'arak module to play nice with the ToC module
+------------------------------------------------------------------------
+r731 | ulic | 2010-06-15 14:28:56 +0000 (Tue, 15 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/Dragonblight/modules.xml
+
+Add missing Anub'arak to modules (Ticket 31)
+------------------------------------------------------------------------
+r729 | ulic | 2010-05-30 03:20:20 +0000 (Sun, 30 May 2010) | 1 line
+Changed paths:
+   M /trunk/Dalaran/The_Violet_Hold.lua
+
+Fix issue with icons
+------------------------------------------------------------------------
+r728 | ammo | 2010-03-21 16:22:32 +0000 (Sun, 21 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/Dalaran/The_Violet_Hold.lua
+
+bugfix l -> L
+------------------------------------------------------------------------

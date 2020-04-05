@@ -1,0 +1,256 @@
+Decursive 2.5.1 by Archarodim (2010-07-31)
+==========================================
+
+
+Changes from Decursive 2.5.0 to Decursive 2.5.1
+-----------------------------------------------
+
+- *Raid Target Icons are now supported* (MUFs and Live-List display)
+
+- *NEW option*: "Do not use 'Abolish' spells" (in the cure options). If enabled
+  will prefer 'Cure Disease' and 'Cure Poison' over their 'Abolish' equivalent.
+  (Defaults to off)
+
+- "Check for 'Abolish' before curing" option now defaults to off. (May not be
+  wanted when a disease or poison needs to be removed at all costs ; it was
+  also confusing for some users)
+
+- *NEW option*: "Allow macro edition" preventing Decursive from updating its
+  macro and letting the user change it and still use Decursive macro key-binding
+  management. (Defaults to off)
+
+- *NEW command line option* to hide and disable the MUFs handle: 
+  (/dcr HideMUFsHandle)
+
+- German translation is now complete (thanks to Freydis88).
+
+- Remove the ERR_GENERIC_NO_TARGET debug report happening when the player
+  tries to use Polymorph or Purge on himself or another friendly player.
+
+- Fix to "LiveList:Update_Display(): couldn't get range" error occurring when
+  not using the MUFs.
+
+- Removed the French version of 'readme' and 'changelog' since 3 persons only
+  were reading those.
+
+
+
+Changes from Decursive 2.4.5.1 to Decursive 2.5.0
+-------------------------------------------------
+
+
+*IMPORTANT CHANGES:*
+
+- *NEW OPTION*: "Time left" for MUF chronometers. (Defaults to off) Displays time
+  left instead of time elapsed on afflicted MUFs.
+
+- *NEW OPTION PANEL*: (under the MUF options) to let the user choose the
+  MUF's mouse button assignments. The middle-mouse button can be used to cast
+  curing spells too.
+
+- *NEW OPTION*: Testing MUF display layout is now possible. Look in the MUF
+  display options.
+
+- It's now possible to *check Decursive versions* used in your current group or
+  Guild (From the 'About' option panel).
+
+
+
+*MINOR CHANGES AND IMPROVEMENTS:*
+
+- The 'Unstable Affliction' warning will also work when tool-tip display is
+  disabled.
+
+- Added a new option (under the general tab) to disable the three welcome
+  messages Decursive prints at each login.
+
+- Enhancement: The MUF tool-tip is always displayed above the MUFs or beneath
+  them if it's not possible. (it can't overlap the MUFS anymore).
+
+- The 'target' and 'mouseover' units will no longer be displayed in the
+  Live-list if the player is part of the group.
+
+- Non-release versions (alphas, betas and release candidates) of Decursive will
+  expire after 30 days instead of 10. The expiration alert of these versions
+  will be displayed only once every 48 hours (and no longer at every login).
+
+- Updated minimum library versions requirements.
+
+
+
+
+Changes from Decursive 2.4.5 to Decursive 2.4.5.1
+---------------------------------------------------
+
+- Fix a problem where Decursive would not correctly detect priest talent 'Body
+  and Soul' at login.
+
+- Re-enabled debuglocals() hotfix for 3.3 when Lua error reporting is enabled.
+
+- Localization update.
+
+- TOC update for WoW 3.3.
+
+
+Changes from Decursive 2.4.3.2 to Decursive 2.4.5
+-------------------------------------------------
+
+- **Major changes:**
+
+    - Decursive has been fully converted to Ace3.
+
+    - Decursive is no longer licensed under the GNU GPL, License has changed
+      to 'All Rights Reserved' (see LICENSE.txt).
+
+    - Due to the conversion to Ace3, there is no longer a drop down menu to
+      access the option.
+
+    - New option panel available through Blizzard add-ons option UI, you can also
+      access the options by alt-right clicking on Decursive Icon.
+
+    - Decursive options will be reset to default upon installation of this version.
+
+- **Minor changes:**
+
+    - Fix for Shamans: 'Cleans Spirit' was not replacing 'Cure Toxins', the two
+      spells were both active and confusing for the user.
+
+    - Removed the 'Ignore stealthed units' option that is useless since several
+      years.
+
+    - The Macro key binding is now a global setting (no longer bind to the
+      profile).
+
+    - Replaced TabbletLib by LibQtip-1.0.
+
+    - Removed DewDrop-2.0 which has no replacement in Ace3 framework.
+
+    - Added an about panel.
+
+    - Various little enhancements and code cleanup.
+
+
+Changes from Decursive 2.4.3 to Decursive 2.4.3.2
+-------------------------------------------------
+
+- A Lua error could occur in rare race conditions (when clicking on a MUF at the
+  exact moment its debuff disappears).
+
+- 'Shadoweld' was no longer detected as stealth because its spell ID changed.
+  (future spell ID changes will generate debug reports).
+
+Changes from Decursive 2.4.2 to Decursive 2.4.3
+-----------------------------------------------
+
+- Implemented a permanent solution for debuffs not detected by direct debuff events.
+
+- Made the macro options more reliable and logical:
+    - When the macro creation is disabled, the currently assigned key is removed.
+    - The assigned key is also removed when the profile options are reset.
+    - Key assignment feature is disabled if the macro creation is disabled.
+
+- The 'no macro key warning' is now turned off by default since this whole
+  mouseover macro thing is not really interesting after all...
+
+- Removed LibBabble-Class-3.0 (replaced by _G.LOCALIZED_CLASS_NAMES_MALE)
+
+- Added an exception for the 'Dark Matter' debuff for which no SPELL_AURA_APPLIED
+  event is generated by the game.
+
+- Re-enabled Lua error handler but added security checks and also dynamic
+  hotfixes to Blizzard_DebugTools errors that resulted in C Stack Overflows.
+    - **IMPORTANT**: Because of (or rather thanks to) those hotfixes, Decursive installation may reveal some Lua errors
+      that you couldn't see before.
+
+- Always use the "player" unitID in raid (was using raid# when the player was included in the priority list)
+        This prevents the player MUF from disappearing temporarily while a group update is in progress.
+
+
+Changes from Decursive 2.4.1 to Decursive 2.4.2
+-----------------------------------------------
+
+- IMPORTANT STABILITY AND RELIABILITY FIXES: Problems fixed in this release
+  could prevent Decursive from reporting afflictions in race conditions (all
+  previous versions are affected).
+
+- Added Shaman's "Hex" spell to crowd control charmed players.
+
+- Added new Shaman spell "Cure Toxins".
+
+- Documentation completely rewritten and reorganised using .docmeta and markdown
+  formatting. Users don't have any excuse left to not read it now ;) The
+  documentation is accessible there: <http://www.wowace.com/addons/decursive/>
+
+- Decursive is now able to report LUA errors related to itself using the
+  wonderful "non-annoying after combat auto report feature" introduced in 2.4.1 :)
+
+- Added support for AddonLoader http://www.wowwiki.com/AddonLoader (auto-load
+  if your class is any of Mage, Priest, Paladin, Druid, Hunter, Warlock,
+  Shaman).
+
+- Added an option to disable the macro creation.
+
+- Miscellaneous enhancements and minor bug fixes.
+
+
+Changes from Decursive 2.4 to Decursive 2.4.1
+-----------------------------------------------
+
+- Added support for the new priest talent 'Body and soul' to be able to cleanse
+  a poison effect on self when using 'Abolish Disease'.
+
+- Added the 'Tranquilizing Shot' Hunter spell to remove magic debuff on mind
+  controlled units.
+
+- Important enhancements and fixes to the MUF positioning/scaling system:
+    - Changing their scale will no longer affect their position in an illogical
+      way.
+    - MUFs are maintained on screen whatever happens ; their position will
+      no longer be reset to default.
+
+- Multiple fixes and enhancements to charm (mind control state) detection.
+
+- Fixes to Decursive icon: now it does what the tool-tip says and it doesn't
+  throw a LUA error if tool-tips are disabled in the LDB client.
+
+- The MUFs no longer depend on the 'mouseover' unit (internal simplification,
+  more reliability).
+
+- Added a new advanced debug report system.
+
+
+
+Changes from Decursive 2.3.1 to Decursive 2.4
+---------------------------------------------
+
+- New feature: The cool down of the curing spell to be used is displayed
+  (clock) on afflicted MUFs.
+
+- Decursive uses AceLocal-3.0 ; localization is now made using this interface:
+  http://wow.curseforge.com/projects/decursive/localization/
+
+- Miscellaneous localization updates in various languages.
+
+- Re-implemented the max unit to show option.
+
+- Added a warning when the user disables Decusive and an explanation on how to
+  re-enable it (/dcr standby)
+
+- Translations for key bindings descriptions (WoW key binding interface)
+
+- It's no longer possible to map the button 1 and 2 of the mouse to Decursive's
+  macro by accident.
+
+- Fixes a problem if the game is loaded without any "saved variables" where the
+  API GetCurrentBindingSet() would return incorrect values unusable with the
+  API SaveBindings() preventing Decursive from initializing correctly.
+
+- Bug fix: Charmed unit detection wasn't working if the player himself was charmed.
+
+- Bug fix: The focus MUF was not added at the end but just before pets.
+
+- Bug fix: The stick to right option (concerning the MUFs positions) was broken.
+
+- Some other minor bug fixes.
+
+

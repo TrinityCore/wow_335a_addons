@@ -1,0 +1,18 @@
+tag v3.0.8
+e777f9bf4030e48a045a07802375b67daf573e2b
+Xinhuan <xinhuan@pacific.net.sg>
+2009-08-08 19:36:27 +0800
+
+Tag release v3.0.8
+
+
+--------------------
+
+Xinhuan:
+	- Minor ConfigMode behavior change.
+	- Omen will now update its bars immediately on showing from a hidden state instead of updating on the next threat event.
+	- Update version to 3.0.8, Interface number to 30200, and repackage all the new translations contributed by users. Add libdatabroker-1-1 to tools-used in pkgmeta file.
+	- GC away some one-use initialization functions after they are run.
+	- Add ConfigMode support (see addon OneButtonConfig).
+	- Remove the LoadAddOn workaround for loading disembedded libraries which was broken before patch 3.1.
+	- Fix GetShapeShiftFormInfo() error that occurs for DKs when they aren't in any presence. This occurs when they respec between their primary/secondary specs and the game drops them out of all presences and subsequently enter combat presence-less.

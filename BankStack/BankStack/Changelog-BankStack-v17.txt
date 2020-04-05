@@ -1,0 +1,41 @@
+------------------------------------------------------------------------
+r152 | kemayo | 2010-01-25 01:33:27 +0000 (Mon, 25 Jan 2010) | 1 line
+Changed paths:
+   A /tags/v17 (from /trunk:151)
+
+Tagging as v17
+------------------------------------------------------------------------
+r151 | kemayo | 2010-01-24 23:37:12 +0000 (Sun, 24 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/core.lua
+   M /trunk/stack.lua
+
+Apparently long-existing bug with compressing which caused "confused!" aborts if a single stack could be moved into more than one partial stack.
+------------------------------------------------------------------------
+r150 | kemayo | 2010-01-22 17:01:45 +0000 (Fri, 22 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/core.lua
+   M /trunk/ldb.lua
+
+Use the broker object to show how many moves are remaining. (Mostly useful for guild bank sorts, since everything else is over quickly.)
+------------------------------------------------------------------------
+r149 | kemayo | 2010-01-22 16:35:18 +0000 (Fri, 22 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/core.lua
+
+Just hardcode the constant instead of loading guildbankui.
+------------------------------------------------------------------------
+r148 | kemayo | 2010-01-22 16:24:36 +0000 (Fri, 22 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/BankStack.toc
+   M /trunk/core.lua
+   M /trunk/sort.lua
+
+Problem with guild bank sorting is that guild-bank-replacement addons which suppress loading of Blizzard_GuildBankUI (like Bagnon) stop MAX_GUILDBANK_SLOTS_PER_TAB from existing. Add a LoadAddOn to get around this.
+------------------------------------------------------------------------
+r146 | kemayo | 2010-01-22 14:52:19 +0000 (Fri, 22 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/ldb.lua
+
+Fix right-click on ldb
+------------------------------------------------------------------------

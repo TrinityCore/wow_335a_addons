@@ -1,0 +1,98 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+
+	<Frame name="FRTemplate_ClassTrainer_MidTextures" virtual="true">
+		<Size>
+			<AbsDimension x="384" y="128"/>
+		</Size>
+		<Layers>
+			<Layer level="BORDER">
+				<Texture file="Interface\AddOns\FramesResized\UI-ClassTrainer-MidLeft">
+					<Size>
+						<AbsDimension x="256" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\AddOns\FramesResized\UI-ClassTrainer-MidRight">
+					<Size>
+						<AbsDimension x="128" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<Frame name="FRTemplate_ClassTrainerScrollFrame_MidTextures" virtual="true">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="CraftListScrollFrame" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="-3" y="-117"/>
+				</Offset>
+			</Anchor>
+			<Anchor point="TOPRIGHT" relativeTo="CraftListScrollFrame" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="27" y="-117"/>
+				</Offset>
+			</Anchor>
+			<Anchor point="BOTTOMLEFT" relativeTo="CraftListScrollFrame" relativePoint="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="-3" y="120"/>
+				</Offset>
+			</Anchor>
+			<Anchor point="BOTTOMRIGHT" relativeTo="CraftListScrollFrame" relativePoint="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="27" y="120"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\ClassTrainerFrame\UI-ClassTrainer-ScrollBar">
+					<TexCoords left="0" right="0.46875" top="0.390625" bottom="0.9609375"/>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+
+	<Frame name="FRTemplate_LootFrame_MidTextures" virtual="true">
+		<Size>
+			<AbsDimension x="256" y="420"/>
+		</Size>
+		<Layers>
+			<Layer level="BORDER">
+				<Texture file="Interface\AddOns\FramesResized\UI-LootPanel-Mid">
+					<Size>
+						<AbsDimension x="256" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-160"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="96"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture file="Interface\LootFrame\UI-LootPanel">
+					<Size>
+						<AbsDimension x="256" y="96"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="1" top="0.625" bottom="1"/>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+
+</Ui>

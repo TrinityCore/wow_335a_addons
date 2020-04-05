@@ -1,0 +1,17 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="unitList.lua" /> 
+
+	<Frame name="BossEncounter2_UnitListTemplate" frameStrata="MEDIUM" virtual="true">
+		<Size>
+			<AbsDimension x="192" y="160"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.UnitList.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.UnitList.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</UI>

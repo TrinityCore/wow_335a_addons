@@ -1,0 +1,19 @@
+﻿## Interface: 30300
+## Title: Raid|cff7fff7fAchievement|r - Icecrown
+## Title-ruRU: Raid|cff7fff7fAchievement|r - Цитадель
+## Author: Shurshik
+## Notes: RaidAchievement Wotlk Icecrown Module
+## Notes-ruRU: Модуль RaidAchievement - Цитадель
+## Dependencies: RaidAchievement
+## LoadOnDemand: 1
+## SavedVariablesPerCharacter: icraspisokon
+Localization\localization-enEN.lua
+Localization\localization-ruRU.lua
+Localization\localization-deDE.lua
+Localization\localization-frFR.lua
+Localization\localization-esES.lua
+Localization\localization-zhTW.lua
+Localization\localization-koKR.lua
+RaidAchievement_Icecrown.lua
+RaidAchievement_Icecrown.xml
+RaidAchievement_Icecrownbosses.lua

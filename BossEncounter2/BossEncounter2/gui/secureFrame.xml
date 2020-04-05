@@ -1,0 +1,24 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="secureFrame.lua" /> 
+
+	<Frame name="BossEncounter2_SecureFrameTemplate" virtual="true" hidden="false">
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.SecureFrame.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.SecureFrame.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+
+	<Button name="BossEncounter2_SecureButtonTemplate" inherits="SecureActionButtonTemplate" protected="true" virtual="true" hidden="true">
+		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
+
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("AnyDown");
+			</OnLoad>
+		</Scripts>
+	</Button>
+</UI>

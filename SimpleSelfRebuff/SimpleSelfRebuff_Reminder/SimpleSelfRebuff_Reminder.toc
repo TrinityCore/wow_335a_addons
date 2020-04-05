@@ -1,0 +1,23 @@
+﻿## Interface: 30300
+## X-Curse-Packaged-Version: v2.0.4-beta-5
+## X-Curse-Project-Name: SimpleSelfRebuff
+## X-Curse-Project-ID: simple-self-rebuff
+## X-Curse-Repository-ID: wow/simple-self-rebuff/mainline
+
+## Title: SimpleSelfRebuff |r[|cffeda55fReminder|r]
+## Notes: Rebuff yourself on mousewheel.
+## Author: Adirelle
+## Version: v2.0.4-beta-5 
+## X-Date: 2009-10-31T09:44:33Z
+## X-Category: Buffs
+## X-License: GPL v2 or later
+
+## LoadOnDemand: 1
+## Dependencies: SimpleSelfRebuff
+## DefaultState: enabled
+
+#@no-lib-strip@
+libs\LibSink-2.0\lib.xml
+#@end-no-lib-strip@
+
+Reminder.lua

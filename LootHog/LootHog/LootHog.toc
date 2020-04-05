@@ -1,0 +1,14 @@
+## Interface: 30300
+## Title: LootHog 
+## Version: 3.3.3
+## Author: Chompers/Suan/dinesh/Erytheia/IronEagleNZ
+## Notes: Help track /random 100 rolls.
+## SavedVariables: loothog_settings, loothog_rollStats
+## OptionalDeps: TitanPanel
+## Dependencies:
+## X-Date:
+## X-Email: info@gpihome.de
+## X-Category: MYADDONS_CATEGORY_CHAT 
+## X-Website: http://wow.curse.com/downloads/wow-addons/details/loothog.aspx
+## X-OptionsFrame: loothog_config
+LootHog.xml

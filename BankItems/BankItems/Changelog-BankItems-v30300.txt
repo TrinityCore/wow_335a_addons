@@ -1,0 +1,21 @@
+------------------------------------------------------------------------
+r151 | xinhuan | 2009-12-24 04:09:23 +0000 (Thu, 24 Dec 2009) | 1 line
+Changed paths:
+   A /tags/v30300 (from /trunk:150)
+
+Tag release v30300.
+------------------------------------------------------------------------
+r150 | xinhuan | 2009-12-24 02:19:18 +0000 (Thu, 24 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/BankItems.lua
+   M /trunk/BankItems.toc
+
+Add support for oGlow (github version - http://github.com/haste/oGlow, not the wowinterface one)
+------------------------------------------------------------------------
+r149 | xinhuan | 2009-12-24 01:04:24 +0000 (Thu, 24 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/BankItems.lua
+   M /trunk/BankItems.toc
+
+Ammo will no longer count double when equipped.
+------------------------------------------------------------------------

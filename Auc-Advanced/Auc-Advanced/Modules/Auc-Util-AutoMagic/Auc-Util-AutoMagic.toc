@@ -1,0 +1,10 @@
+## Title: Auc:Util:AutoMagic
+## Interface: 30300
+## Dependancies: Auc-Advanced
+## OptionalDependencies: Auc-Util-Appraiser Enchantrix Auc-Util-ItemSuggest
+##
+## Version: 5.7.4568 (KillerKoala)
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+Embed.xml

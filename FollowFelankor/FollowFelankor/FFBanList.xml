@@ -1,0 +1,370 @@
+<!--
+    ################## FFBanList.xml ##################
+    # Follow Felankor
+    # A World of Warcraft UI AddOn
+    # By Felankor
+    #
+    # IMPORTANT: I do not mind people looking at my code
+    # to learn from it. If you use any parts of my code
+    # please give me credit in your comments. I will
+    # do the same if I ever use any code from another
+    # AddOn. Thanks.
+    ###################################################
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+   <Script file="localization.en.lua"/>
+   <Script file="FFBanList.lua"/> 
+   
+<!-- Start FFBanList Frame -->
+    <Frame name="FFBanList" movable="true" enableMouse="true" hidden="true">
+        <Size>
+            <AbsDimension x="442" y="323" />
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" relativeTo="UIParent">
+                <Offset>
+                    <AbsDimension x="0" y="0" />
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <TitleRegion setAllPoints="true" />
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11" />
+            </BackgroundInsets>
+            <TileSize>
+                <AbsValue val="32" />
+            </TileSize>
+            <EdgeSize>
+                <AbsValue val="32" />
+            </EdgeSize>
+        </Backdrop>
+        <Layers>
+            <Layer>
+                <Texture name="$parentTitleBorder" file="Interface\DialogFrame\UI-DialogBox-Header">
+                    <Size>
+                        <AbsDimension x="260" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="5" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords left="0.2" right="0.8" top="0" bottom="0.6" />
+                </Texture>
+                <FontString inherits="GameFontNormal" text="FFBANLIST_TITLE">
+                    <Size>
+                        <AbsDimension x="260" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="-4" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <FontHeight>
+                        <AbsValue val="12" />
+                    </FontHeight>
+                    <Color r="1" g="0.8196079" b="0" />
+                    <Shadow>
+                        <Color r="0" g="0" b="0" />
+                        <Offset>
+                            <AbsDimension x="1" y="-1" />
+                        </Offset>
+                    </Shadow>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+<!-- Start of FFBanList_lblBan Label -->
+            <Frame name="$parent_lblBan">
+                <Size>
+                    <AbsDimension x="266" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="23" y="-34" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parentLabel" inherits="GameFontNormal" text="FFBAN_LABEL" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" />
+                                <Anchor point="BOTTOMRIGHT" />
+                            </Anchors>
+                            <FontHeight>
+                                <AbsValue val="12" />
+                            </FontHeight>
+                            <Color r="1" g="0.8196079" b="0" />
+                            <Shadow>
+                                <Color r="0" g="0" b="0" />
+                                <Offset>
+                                    <AbsDimension x="1" y="-1" />
+                                </Offset>
+                            </Shadow>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+<!-- End of FFBanList_lblBan Label -->
+<!-- Start FFBanList_EditBox EditBox -->
+            <EditBox name="$parent_EditBox" inherits="FFEditBox">
+                <Size>
+                    <AbsDimension x="285" y="26"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="23" y="-58" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnTextChanged>
+                        FFBanList_UpdateBanButtons();
+                    </OnTextChanged>
+                </Scripts>
+            </EditBox>
+<!-- End FFBanList_EditBox EditBox -->
+<!-- Start FFEntryHighlight Frame -->
+            <Frame name="$parent_Highlight" inherits="FFEntryHighlight">
+                <Size>
+                    <AbsDimension x="266" y="16"/>
+                </Size>
+                <Color r="1" g="0" b="0" />
+            </Frame>
+<!-- End FFEntryHighlight Frame -->
+<!-- Start FFBanList_BanButton Button -->
+            <Button name="$parent_BanButton" inherits="FFButtonTemplate" text="FFBANLIST_BAN">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="FFBanList_EditBox" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="5" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FFBanList_BanPlayer();
+                    </OnClick>
+                </Scripts>
+            </Button>
+<!-- End FFBanList_BanButton Button -->
+<!-- Start of FFBanList_lblBanList Label -->
+            <Frame name="$parent_lblBanList">
+                <Size>
+                    <AbsDimension x="266" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="23" y="-84" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parentLabel" inherits="GameFontNormal" text="FFBANLIST_LABEL" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" />
+                                <Anchor point="BOTTOMRIGHT" />
+                            </Anchors>
+                            <FontHeight>
+                                <AbsValue val="12" />
+                            </FontHeight>
+                            <Color r="1" g="0.8196079" b="0" />
+                            <Shadow>
+                                <Color r="0" g="0" b="0" />
+                                <Offset>
+                                    <AbsDimension x="1" y="-1" />
+                                </Offset>
+                            </Shadow>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+<!-- End of FF_lblBanList Label -->
+<!-- Start of FFBanListScrollBar ScrollFrame -->
+            <ScrollFrame name="$parentScrollBar" inherits="FauxScrollFrameTemplate" hidden="false">
+                <Size>
+                    <AbsDimension x="266" y="162" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFBanList_lblBanList" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnVerticalScroll>
+                        FauxScrollFrame_OnVerticalScroll(self, offset, 16, FFBanListScrollBar_Update);
+                    </OnVerticalScroll>
+                    <OnShow>
+                        FFBanListScrollBar_Update();
+                    </OnShow>
+                </Scripts>
+            </ScrollFrame>
+<!-- End of FFBanListScrollBar ScrollFrame -->
+<!-- Start of FFBan Buttons -->
+            <Button name="FFBan1" inherits="FFBanTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="FFBanListScrollBar">
+                        <Offset>
+                            <AbsDimension x="5" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFBan2" inherits="FFBanTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFBan1" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFBan3" inherits="FFBanTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFBan2" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFBan4" inherits="FFBanTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFBan3" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFBan5" inherits="FFBanTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFBan4" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFBan6" inherits="FFBanTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFBan5" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFBan7" inherits="FFBanTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFBan6" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFBan8" inherits="FFBanTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFBan7" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+<!-- End of FFBan Buttons -->
+<!-- Start FFBanList_UnbanButton Button -->
+            <Button name="$parent_UnbanButton" inherits="FFButtonTemplate" text="FFBANLIST_UNBAN">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="FFBanList_lblBanList" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="160" y="-25" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FFBanList_UnBanPlayer();
+                    </OnClick>
+                    <OnShow>
+                        FFBanList_UpdateBanButtons();
+                    </OnShow>
+                </Scripts>
+            </Button>
+<!-- End FFBanList_UnbanButton Button -->
+<!-- Start FFBanList_UnbanAllButton Button -->
+            <Button name="$parent_UnbanAllButton" inherits="FFButtonTemplate" text="FFBANLIST_UNBAN_ALL">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFBanList_UnbanButton" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FFBanList_UnBanAll();
+                    </OnClick>
+                </Scripts>
+            </Button>
+<!-- End FFBanList_UnbanAllButton Button -->
+<!-- Start FFBanList_SortButton Button -->
+            <Button name="$parent_SortButton" inherits="FFButtonTemplate" text="FFBANLIST_SORT_DESC">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFBanList_UnbanAllButton" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FFBanList_Sort();
+                    </OnClick>
+                </Scripts>
+            </Button>
+<!-- End FFBanList_SortButton Button -->
+<!-- Start FFBanList_OKButton Button -->
+            <Button name="$parent_OKButton" inherits="FFButtonTemplate" text="FFBANLIST_OK">
+                <Anchors>
+                    <Anchor point="BOTTOM" relativeTo="FFBanList" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="15" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FFBanList_OK_OnClick();
+                    </OnClick>
+                </Scripts>
+            </Button>
+<!-- End FFBanList_OK Button -->
+            <Scripts>
+                <OnShow>
+                    FFBanListScrollBar_Update();
+                </OnShow>
+            </Scripts>
+        </Frames>
+        <Scripts>
+            <OnShow>
+                FFBanList_OnShow();
+            </OnShow>
+        </Scripts>
+    </Frame>
+<!-- End FFBanList Frame -->
+</Ui>

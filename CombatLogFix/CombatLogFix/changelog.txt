@@ -1,0 +1,23 @@
+commit 56a4b14edcb9632c4b7902ad07736f485f702a81
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Feb 17 16:34:43 2010 -0800
+
+    Changed logic, now based off of when the spell with a cost (mana/health/rage/etc) is cast and checks if any combat log messages fired within the last 1 second
+
+commit a1d6f75df9f5db3df3e0783445a03b62ae5e1a7a
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Feb 17 09:43:13 2010 -0800
+
+    Fixed events not being unregistered
+
+commit 8bc8d34d6286bbd295f9774a9d1d7ab276753596
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Feb 17 09:40:51 2010 -0800
+
+    Reduced timeout to 2 seconds
+
+commit 126e294df843bd89d6d6cc8ee333003ab41f6dd3
+Author: Shadowed <shadowed.wow@gmail.com>
+Date:   Wed Feb 17 09:38:45 2010 -0800
+
+    Initial commit (/logfix), auto fixes the combat log by clearing it

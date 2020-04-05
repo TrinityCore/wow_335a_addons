@@ -1,0 +1,22 @@
+## Interface: 30300
+## Title: GuildBank|cffccccccSearch|r
+## Notes: Adds a search filter to the guild bank.
+## Notes-koKR: 길드 금고에 검색 필터를 추가합니다.
+## Author: Saiket
+## X-Credits: Harros (Original author), Nodd (frFR), freshworks (koKR), jyuny1 (zhTW)
+## Version: 3.3.0.1
+## X-Date: 2009-12-04
+## X-Category: Inventory, Guild
+## X-License: GPLv3
+## X-Email: saiket.wow@gmail.com
+## X-Website: http://sites.google.com/site/wowsaiket/Add-Ons/GuildBankSearch
+## X-Feedback: http://code.google.com/p/wow-saiket/issues/list?can=1&q=AddOn:GuildBankSearch
+## X-WoWI-ID: 9448
+## X-Curse-Project-ID: guild-bank-search
+## X-Localizations: enUS, frFR, koKR, zhTW
+## LoadOnDemand: 1
+## LoadWith: Blizzard_GuildBankUI
+## RequiredDeps: Blizzard_GuildBankUI
+Locales.xml
+
+GuildBankSearch.lua

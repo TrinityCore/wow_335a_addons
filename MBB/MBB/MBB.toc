@@ -1,0 +1,21 @@
+﻿## Interface: 30300
+## Title: MinimapButtonBag
+## Author: Tunhadil, Fixed by Pericles for WotLK
+## X-Category: Map
+## Notes: Cleans up minimap buttons and makes them accessible through a pop out menu!
+## Notes-deDE: Reduziert die Minimap Knöpfe und erlaubt den Zugriff auf diese über ein Menü!
+## Notes-zhTW: 小地圖按鈕整合。
+## Notes-zhCN: 清除迷你地图周围按钮，整合它们至一个弹出菜单中！
+## Notes-ruRU: Очищает миникарту от кнопок аддонов и держит их в одном меню!
+## SavedVariablesPerCharacter: MBB_Exclude, MBB_Options
+## X-Curse-Packaged-Version: v3.3
+## X-Curse-Project-Name: MBB
+## X-Curse-Project-ID: mbb
+## X-Curse-Repository-ID: wow/mbb/mainline
+localization-enGB.lua
+localization-deDE.lua
+localization-zhCN.lua
+localization-zhTW.lua
+localization-koKR.lua
+localization-ruRU.lua
+MBB.xml

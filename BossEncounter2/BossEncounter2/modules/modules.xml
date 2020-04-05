@@ -1,0 +1,26 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Include file="shared.xml" /> 
+
+	<Script file="system\anchor.lua" /> 
+	<Script file="system\engine.lua" /> 
+	<Script file="system\console.lua" /> 
+	<Script file="system\version.lua" />
+	<Script file="system\versionEmulator.lua" />
+	<Script file="system\settingPriority.lua" /> 
+	<Script file="system\autoReply.lua" /> 
+	<Script file="system\raidFrameSearcher.lua" /> 
+	<Script file="system\lootHelper.lua" /> 
+	<Script file="system\encounterStats.lua" /> 
+	<Script file="system\preload.lua" /> 
+	<Script file="system\distance.lua" />
+
+	<Script file="anchorMode.lua" /> 
+	<Script file="globalOptions.lua" />
+	<Script file="advancedOptions.lua" />
+
+	<Script file="basicEncounter.lua" /> 
+	<Script file="development.lua" /> 
+	<Script file="training.lua" /> 
+
+	<Include file="wotlk\wotlk.xml" /> 
+</UI>

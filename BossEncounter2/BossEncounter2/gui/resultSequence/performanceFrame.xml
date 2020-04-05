@@ -1,0 +1,18 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="performanceFrame.lua" /> 
+
+	<Frame name="BossEncounter2_PerformanceFrameTemplate" frameStrata="DIALOG" virtual="true">
+		<Size>
+			<AbsDimension x="256" y="160"/>
+		</Size>
+
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.PerformanceFrame.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.PerformanceFrame.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</UI>

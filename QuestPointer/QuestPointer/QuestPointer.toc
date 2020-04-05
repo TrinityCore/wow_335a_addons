@@ -1,0 +1,44 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: v5
+## X-Curse-Project-Name: QuestPointer
+## X-Curse-Project-ID: questpointer
+## X-Curse-Repository-ID: wow/questpointer/mainline
+
+## Title: QuestPointer
+## Author: Kemayo
+## Notes: Point to quest POIs on your minimap
+## Version: v5
+## X-Category: Quest, Map
+## X-Email: kemayo@gmail.com
+## X-Website: http://davidlynch.org/wow/
+
+## SavedVariables: QuestPointerDB
+## SavedVariablesPerCharacter: QuestPointerDBPC
+
+## OptionalDeps: tekDebug, tekErr, TomTom
+
+## LoadOnDemand: 0
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+## X-LoadOn-Slash: /questpointer
+
+lib\LibStub.lua
+lib\CallbackHandler-1.0\CallbackHandler-1.0.xml
+
+lib\LibDataBroker-1.1\LibDataBroker-1.1.lua
+
+lib\Astrolabe\Load.xml
+
+lib\tekKonfigAboutPanel.lua
+lib\tekKonfigHeading.lua
+lib\tekKonfigSlider.lua
+lib\tekKonfigCheckbox.lua
+
+#template\Locale.lua
+template\Database.lua
+template\UtilityFunctions.lua
+template\EventDispatcher.lua
+
+QuestPointer.lua
+TomTom.lua
+Config.lua

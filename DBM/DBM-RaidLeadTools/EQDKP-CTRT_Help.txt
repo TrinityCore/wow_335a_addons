@@ -1,0 +1,193 @@
+Hello Deadly Boss Mods User,
+
+first of all we want to thank you for using Deadly Boss Mods and we hope you enjoy playing World of 
+
+Warcraft with our mod. You can always find the lteat versions, informations and help on our website 
+
+www.deadlybossmods.com.
+
+Please feel free to support us by joining our community forum and leave us feedback and suggestions.
+
+We built our DKP system to work with the CT RaidTracker import of EQDKP. It might not be perfect but it 
+
+worked with our DKP systems ;)
+
+To automatically create raid event and notes you have to import the CTRT settings in the EQDKP Plus 
+
+administration panel.
+To do that, you simply have to login as an administrator and use the "CTRT Import" -> "Settings" menu.
+
+Event Import:
+-------------
+
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<EventTriggers>
+	<EventTrigger>
+		<trigger>Ulduar</trigger>
+		<result>Ulduar</result>
+	</EventTrigger>
+	<EventTrigger>
+		<trigger>Malygos</trigger>
+		<result>Malygos</result>
+	</EventTrigger>
+	<EventTrigger>
+		<trigger>Naxxramas</trigger>
+		<result>Naxxramas</result>
+	</EventTrigger>
+	<EventTrigger>
+		<trigger>Raid Start</trigger>
+		<result>Raid Start</result>
+	</EventTrigger>
+	<EventTrigger>
+		<trigger>Sartharion</trigger>
+		<result>Sartharion</result>
+	</EventTrigger>
+</EventTriggers>
+
+
+Note Import:
+------------
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<RaidNoteTriggers>
+	<RaidNoteTrigger>
+		<trigger>Flame Leviathan</trigger>
+		<result>Flame Leviathan</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Razorscale</trigger>
+		<result>Razorscale</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Ignis</trigger>
+		<result>Ignis</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>XT002</trigger>
+		<result>XT002</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>XT-002</trigger>
+		<result>XT002</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Iron Council</trigger>
+		<result>Iron Council</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Kologarn</trigger>
+		<result>Kologarn</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Auriaya</trigger>
+		<result>Auriaya</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Hodir</trigger>
+		<result>Hodir</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Thorim</trigger>
+		<result>Thorim</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Freya</trigger>
+		<result>Freya</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>General Vezax</trigger>
+		<result>General Vezax</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Algalon</trigger>
+		<result>Algalon</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Mimiron</trigger>
+		<result>Mimiron</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Yogg Saron</trigger>
+		<result>Yogg Saron</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Anub'Rekhan</trigger>
+		<result>Anub'Rekhan</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Flickwerk</trigger>
+		<result>Patchwerk</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Four Horsemen</trigger>
+		<result>Four Horsemen</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Gluth</trigger>
+		<result>Gluth</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Gothik</trigger>
+		<result>Gothik</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Grand Widow Faerlina</trigger>
+		<result>Grand Widow Faerlina</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Grobbulus</trigger>
+		<result>Grobbulus</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Großwitwe Faerlina</trigger>
+		<result>Grand Widow Faerlina</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Heigan der Unreine</trigger>
+		<result>Heigan the Unclean</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Heigan the Unclean</trigger>
+		<result>Heigan the Unclean</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Kel'Thuzad</trigger>
+		<result>Kel'Thuzad</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Loatheb</trigger>
+		<result>Loatheb</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Maexxna</trigger>
+		<result>Maexxna</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Noth der Seuchenbringer</trigger>
+		<result>Noth the Plaguebringer</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Noth the Plaguebringer</trigger>
+		<result>Noth the Plaguebringer</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Patchwerk</trigger>
+		<result>Patchwerk</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Razuvious</trigger>
+		<result>Razuvious</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Sapphiron</trigger>
+		<result>Sapphiron</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Sartharion</trigger>
+		<result>Sartharion</result>
+	</RaidNoteTrigger>
+	<RaidNoteTrigger>
+		<trigger>Thaddius</trigger>
+		<result>Thaddius</result>
+	</RaidNoteTrigger>
+</RaidNoteTriggers>
+

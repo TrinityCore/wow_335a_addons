@@ -1,0 +1,52 @@
+﻿## Interface: 30300
+## X-Curse-Packaged-Version: v2.0.4-beta-5
+## X-Curse-Project-Name: SimpleSelfRebuff
+## X-Curse-Project-ID: simple-self-rebuff
+## X-Curse-Repository-ID: wow/simple-self-rebuff/mainline
+
+## Title: SimpleSelfRebuff
+## Notes: Rebuff yourself on mousewheel.
+## Author: Adirelle
+## Version: v2.0.4-beta-5 
+## X-Date: 2009-10-31T09:44:33Z
+## X-Category: Buffs
+## X-License: GPL v2 or later
+## X-Credits: Sayclub (korean translation), Stan (spell ids)
+
+## OptionalDeps: Ace3, LibSink-2.0, LibPeriodicTable-3.1, LibPeriodicTable-3.1-Consumable, LibDebugLog-1.0
+## SavedVariables: SimpleSelfRebuffDB
+
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceEvent-3.0\AceEvent-3.0.xml
+Libs\AceTimer-3.0\AceTimer-3.0.xml
+Libs\AceBucket-3.0\AceBucket-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\LibDebugLog-1.0\lib.xml
+#@end-no-lib-strip@
+
+Locales\locale-enUS.lua
+Locales\locale-frFR.lua
+Locales\locale-koKR.lua
+
+SimpleSelfRebuff.lua
+
+Buffs\druid.lua
+Buffs\hunter.lua
+Buffs\mage.lua
+Buffs\paladin.lua
+Buffs\priest.lua
+Buffs\shaman.lua
+Buffs\warlock.lua
+Buffs\warrior.lua
+Buffs\deathknight.lua
+
+Buffs\tracking.lua
+
+modules.xml

@@ -1,0 +1,32 @@
+------------------------------------------------------------------------
+r289 | rabbit | 2009-12-11 00:48:18 +0000 (Fri, 11 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/modules/ReadyCheck.lua
+
+Prevent the ready check messages spamming chat.
+------------------------------------------------------------------------
+r288 | rabbit | 2009-12-09 20:52:17 +0000 (Wed, 09 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/modules/ReadyCheck.lua
+
+Fixfix.
+------------------------------------------------------------------------
+r287 | rabbit | 2009-12-09 20:49:57 +0000 (Wed, 09 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/modules/ReadyCheck.lua
+
+Fix ready check.
+------------------------------------------------------------------------
+r286 | mojosdojo | 2009-12-09 19:54:37 +0000 (Wed, 09 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Update cooldowns to match 3.3.
+------------------------------------------------------------------------
+r285 | ammo | 2009-11-03 13:03:02 +0000 (Tue, 03 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/modules/Invite.lua
+   M /trunk/oRA3.lua
+
+fix problem with guild invite button staying on screen
+------------------------------------------------------------------------

@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r276 | Whitetooth | 2010-03-26 14:08:49 +0000 (Fri, 26 Mar 2010) | 6 lines
+Changed paths:
+   M /trunk/About RatingBuster.txt
+   M /trunk/RatingBuster.lua
+
+1.4.9
+- Update for 3.3.3
+- Use /rabu for commands, since /rb is now used by the blizzard interface to launch the new raid browser window.
+- 3.3.3: Death Knight: Endless Winter: Grants 2/4% strength.
+- 3.3.3: Death Knight: Unbreakable Armor: The amount of strength granted is now 20%, up from 10%.
+- 3.3.3: Warrior: Vitality: Now boosts Stamina by 3/6/9%
+------------------------------------------------------------------------

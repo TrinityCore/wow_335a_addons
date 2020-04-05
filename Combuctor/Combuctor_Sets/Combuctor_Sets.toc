@@ -1,0 +1,6 @@
+## Interface: 30300
+## Title: Combuctor: Basic Sets
+## Author: Tuller
+## Notes: Basic sets for Combuctor
+## Dependencies: Combuctor
+sets.lua

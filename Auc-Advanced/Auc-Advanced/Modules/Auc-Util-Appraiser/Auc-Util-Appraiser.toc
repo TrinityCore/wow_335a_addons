@@ -1,0 +1,11 @@
+## Title: Auc:Util:Appraiser
+## Interface: 30300
+## Dependencies: Stubby, Auc-Advanced
+##
+## Version: 5.7.4568 (KillerKoala)
+## Revision: $Id: Auc-Util-Appraiser.toc 4567 2009-12-08 14:50:04Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+Embed.xml

@@ -1,0 +1,45 @@
+## Title: Collectinator
+## X-Curse-Packaged-Version: v1.0.4
+## X-Curse-Project-Name: Collectinator
+## X-Curse-Project-ID: collectinator
+## X-Curse-Repository-ID: wow/collectinator/mainline
+
+## Notes: Will scan your mini-pets and mounts and provide a check list for what you're missing.  In addition, a tabard check list, a title check list and "fun items" check list will be offered.
+
+## Author: Ackis, Torhal, Pompachomp
+## eMail: ackis AT shaw DOT ca
+## X-Donate: http://www.wowace.com/addons/collectinator/#w-donations
+
+## Interface: 30300
+## Version: 1.0.4
+## X-Revision: v1.0.4
+## X-Date: 2010-07-27T22:27:14Z
+
+## X-Category: Interface
+## X-Localizations: enUS, deDE, esES, esMX, frFR, koKR, ruRU, zhCN, zhTW
+## X-Website: http://www.wowace.com/addons/collectinator/
+## X-Feedback: http://www.curse.com/downloads/details/
+
+## Dependencies:
+## OptionalDeps: Ace3, LibAboutPanel, LibBabble-Zone-3.0, LibBabble-Faction-3.0, LibBabble-Boss-3.0, LibBabble-Class-3.0, LibSharedMedia-3.0, LibQTip-1.0, TipTac, PetListPlus
+## DefaultState: Enabled
+
+## SavedVariables: CollectinatorDB
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: Delayed
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+
+# Localization files
+locale.xml
+
+Collectinator.lua
+Config.lua
+Frame.lua
+Colour.lua
+
+# Database files
+database.xml

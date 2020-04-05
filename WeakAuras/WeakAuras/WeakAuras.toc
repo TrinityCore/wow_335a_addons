@@ -1,0 +1,52 @@
+﻿## Interface: 30300
+## Title: WeakAuras 2
+## Author: Mirrored, 3.3.5-downport & button glow by  Shinizu @ Dalaran-WoW / Warmane
+## Version: 2.0.8
+## Subversion: 116
+## Notes: A powerful, comprehensive utilty for displaying graphics and information based on buffs, debuffs, and other triggers.
+## Notes-esES: Potente y completa aplicación que te permitirá mostrar por pantalla múltiples diseños, basados en beneficios, perjuicios y otros activadores.
+## Notes-deDE: Eine leistungsfähiges, umfassendes Addon zur grafischen Darstellung von Informationen über Auren, Cooldowns, Timern und vielem mehr.
+## Notes-ruRU: Мощный, многосторонний инструмент для отображения графики и информации, основанной на баффах, дебаффах и других триггерах.
+## Notes-zhTW: 一個強大且全面實用的顯示圖形和訊息基於增益，減益和其它觸發。
+## X-Author-Server: Dragonmaw US
+## X-Author-Faction: Horde
+## X-Email: mirror@uga.edu
+## X-Category: Interface Enhancements
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: WeakAurasSaved
+## OptionalDeps: Ace3, LibCompress, LibSharedMedia-3.0, AceGUI-3.0-SharedMediaWidgets, Masque, GTFO, LibChatAnims
+## X-Curse-Packaged-Version: 2.0.8
+## X-Curse-Project-Name: WeakAuras 2
+## X-Curse-Project-ID: weakauras-2
+## X-Curse-Repository-ID: wow/weakauras-2/mainline
+
+embeds.xml
+
+Init.lua
+
+Localization-enUS.lua
+Localization-deDE.lua
+Localization-esES.lua
+Localization-esMX.lua
+Localization-frFR.lua
+Localization-koKR.lua
+Localization-ptBR.lua
+Localization-ruRU.lua
+Localization-zhCN.lua
+Localization-zhTW.lua
+
+Prototypes.lua
+Types.lua
+WeakAuras.lua
+Transmission.lua
+
+RegionTypes\progresstexture.lua
+RegionTypes\texture.lua
+RegionTypes\aurabar.lua
+RegionTypes\icon.lua
+RegionTypes\text.lua
+
+RegionTypes\group.lua
+RegionTypes\dynamicgroup.lua
+RegionTypes\model.lua

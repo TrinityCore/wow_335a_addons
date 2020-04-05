@@ -1,0 +1,69 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+<Frame name="RaidAchievement_whra">
+	<Scripts>
+	<OnLoad>whraonload()</OnLoad>
+	<OnEvent>if(thisaddonworkea) then whraonevent() end</OnEvent>
+	</Scripts>
+</Frame>
+
+
+<Frame name="whramain6" hidden="true" parent="PSFeamain1">
+
+<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="whratitle">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pseareports">
+	<Anchors><Anchor point="LEFT" relativePoint="BOTTOMLEFT"><Offset x="131" y="25"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button7" inherits="UIPanelButtonTemplate" text="pseaenableall">
+	<Size x="140" y="21"/>
+	<Anchors>
+	<Anchor point="TOPLEFT">
+	<Offset x="20" y="-15"/>
+	</Anchor>
+	</Anchors>
+	<Scripts><OnClick>whra_buttonchangeyn("yes")</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button7" inherits="UIPanelButtonTemplate" text="pseadisableall">
+	<Size x="140" y="21"/>
+	<Anchors>
+	<Anchor point="TOPLEFT">
+	<Offset x="160" y="-15"/>
+	</Anchor>
+	</Anchors>
+	<Scripts><OnClick>whra_buttonchangeyn("no")</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button7" inherits="UIPanelButtonTemplate" text="pseachangeall">
+	<Size x="140" y="21"/>
+	<Anchors>
+	<Anchor point="TOPLEFT">
+	<Offset x="300" y="-15"/>
+	</Anchor>
+	</Anchors>
+	<Scripts><OnClick>whra_button1()</OnClick></Scripts>
+	</Button>
+</frames>
+</Frame>
+
+
+</Ui>

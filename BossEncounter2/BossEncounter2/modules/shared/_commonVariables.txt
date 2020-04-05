@@ -1,0 +1,162 @@
+INTRO
+@@@@@
+
+The common variables are variables stored in data table of the boss module.
+They are used by the Shared library.
+Some of them can be accessed directly and modified by your boss module
+to change the behavior of the Shared library methods.
+
+LET'S GO!
+@@@@@@@@@
+
+*** Strings ***
+
+1. title = [string]
+2. name = [string]
+3. guid = [string]
+4. classification = ["normal", "worldboss", "elite", "rare", "rareelite"]
+5. raidMode = ["NORMAL", "HEROIC"]
+
+--- EXPLANATION ---
+By default, a boss module is named after the name of the main boss unit.
+But in some cases, the boss name is long and does not fit in the frame or is inadequate.
+As such, you can set the "title" field to the title you want. Do not forget to localize it if necessary.
+"name" and "guid" fields are the name and GUID of the main boss.
+The boss module will be named after the boss name if "title" field is not set.
+"guid" field is essential as it allows the system to update the boss status.
+There is also the field "classification" of the boss unit. Generally "worldboss", unless you provide boss modules
+for dungeon bosses or world elites. "classification" is used to determinate the "Cleared !"
+sequence and music, unless it is explicitly set through "clearSequence" field.
+
+*** Flags ***
+
+A. Ignore flags
+
+1. ignoreCombatDelay = [false, true]
+2. ignoreLeaveCombat = [false, true]
+3. ignoreWipe = [false, true]
+4. ignoreAdds = [false, true]
+5. ignoreAddsEngage = [false, true]
+6. ignoreResults = [false, true]
+7. ignoreStandardClear = [false, true]
+
+--- EXPLANATION ---
+Ignore flags are used to disable certain checks / services of the Shared library.
+See BasicEncounter.lua in the module folder for their respective explanations.
+They should ideally be set in the OnTrigger handler, though you can still change them
+during the encounter.
+
+B. Boss flags
+
+1. bossDead = [false, true]
+2. bossMaxHealth = [number]
+3. bossAlreadyFighting = [false, true]
+4. bossSelectable = [false, true]
+5. safeEngage = [false, true]
+
+--- EXPLANATION ---
+"bossDead" is set to true by the Shared OnDeath combat handler when the boss dies (duh !).
+It is used by the check victory method to determinate if the encounter has been cleared or not.
+"bossMaxHealth" should be provided in case you cannot obtain the max HP value of the boss or you
+want to provide a custom one. It is used by the score calculator, when the encounter is cleared.
+"bossAlreadyFighting" is to be set to true if the boss was already in combat when the boss module
+was triggered. This means that the player has enabled the boss module too late. This is used
+by the score calculator and you shouldn't schedule events in OnEngaged if this is set to true.
+"bossSelectable" determinates if it's possible to select the boss by clicking on the status frame.
+Provide false if there are multiple bosses involved or you can't select it from the start of the encounter.
+"safeEngage" will cause the boss module to be engaged only if the boss is in combat and targetting a party/raid member.
+
+C. Misc flags
+
+1. nullScore = [false, true]
+2. isWrathRaid = [false, true]
+
+--- EXPLANATION ---
+"nullScore", when set to true, will not display the performance frame when encounter is cleared.
+
+*** Timing ***
+
+1. timeOut = [number]
+2. timeOutTimer = [number]
+3. lastMinuteTimer = [number]
+4. globalTimer = [number]
+5. nextWipeCheck = [number]
+6. outOfCombatTimer = [number]
+7. triggerTime = [number]
+8. clearTime = [number]
+9. wipeLockdown = [number]
+10. clearLockdown = [number]
+
+--- EXPLANATION ---
+"timeOut" field specifies for how long the module may run before calling OnFailed handler when it doesn't find the boss unit if is defined.
+"timeOutTimer" keeps track of the current time out timer. If timeOutTimer >= timeOut then OnFailed is called. It is reset each time the boss or an add can be accessed.
+Your module may manually reset it as well (it is a good practice to do it in phase changes). It can also increase/decrease "timeOut" value. Both are read/write-able.
+"lastMinuteTimer" sets the amount of time there is before playing the Last minute music theme. It won't play if another special theme is already playing.
+This field is read/write-able. Setting it to nil or 0 will prevent the theme from playing at all.
+"globalTimer" is the time elapsed since the boss module was engaged. It is automatically incremented in the Shared OnUpdate handler. It is thus read-only.
+"nextWipeCheck" specifies when the next wipe check will be performed on the raid. If everyone is dead / out of combat then the OnFailed handler will be called.
+"outOfCombatTimer" specifies for how long the boss has been out of combat. If this value reaches a given threshold then the OnFailed handler will be called.
+Note that nextWipeCheck and outOfCombatTimer have no effect if their respective ignore flag is set. They are also ignored if "test" field is set.
+"triggerTime" / "clearTime" was the time when the module was triggered / cleared.
+"wipeLockdown" and "clearLockdown" sets the amount of time a boss module may not be retriggered after a wipe / it has been cleared.
+
+*** Combat ***
+
+1. phase = [number]
+2. searchUnitID = [number]
+3. searchUnitCallback = [method of the module]
+
+--- EXPLANATION ---
+"phase": The current phase in the combat. You should read-only this field: do not write directly to it, use ChangePhase method to do so.
+"searchUnitID", "searchUnitCallback": internal variables of the SearchUnit service. See general.lua, do not access them directly in both read/write !
+
+*** Score ***
+
+1. strictRelevance = [false, true]
+2. relevanceNoPending = [false, true]
+3. relevantTargets = {...}
+4. ignoreHealing = [false, true]
+5. voidDamage = [false, true]
+
+--- EXPLANATION ---
+"strictRelevance", when set to true, specifies that all damage is wasted unless it is landed on one of the standard units or units specifically set as relevant.
+"relevanceNoPending", when set to true, specifies that damage done to the targets set as relevant will be validated as soon as it is dealt.
+"relevantTargets" lists the non-standard units (that is, units different from main boss and adds) that should count toward the damage counter.
+"ignoreHealing", when set to true, will not deduct from damage done the healing received by the mobs during the encounter.
+"voidDamage", when set to true, will void all damage from the Damage-O-Meter.
+
+*** Adds ***
+
+1. adds = {...}
+2. addsLookup = {...}
+3. silentAddKills = [false, true]
+4. addReviveTimer = [number]
+5. addReviveList = {...}
+6. addReviveDeath = {...}
+
+--- EXPLANATION ---
+"adds" is the table holding adds/allies data. You should not access it directly, even for reading its content.
+Use adds methods to both read and write add data.
+"addsLookup" references the GUID of the currently registered adds.
+"silentAddKills", when set to true, will prevent the system from playing a sound and displaying text when a add is killed.
+"addRevive" fields are used by the revive timer system. See adds.lua for methods on this system.
+
+*** Miscellaneous ***
+
+1. clearSequence = ["NORMAL", "MINI", "RAID", "FINAL"]
+2. yells = {...}
+3. nearVictory = {...}
+4. difficulty = {...}
+5. healAssist = {...}
+6. test = [false, true]
+7. checkWipe = [false, true]
+8. clearAnimation = ["NORMAL", "ALTERNATE"]
+9. baseID = [string]
+
+--- EXPLANATION ---
+"clearSequence" field forces a given clear sequence to be used.
+All fields with a table value ( {...} ) are internal and should not be accessed, be it for reading or writing. Use methods to manipulate them instead.
+"test" specifies if we are in test mode or not. Should be read-only. Use Test method to enter in test mode.
+"checkWipe" sets whether the module is allowed to check wipes or not. It starts at "false". It is automatically set to true once local player enters combat mode.
+"clearAnimation" changes the "Cleared !" animation used. Use "ALTERNATE" for bosses you do not directly kill.
+"baseID" is the ID that will be used to store history data for this encounter. This does not need to be set, and SetBossUnit methods will do it automatically nonetheless.

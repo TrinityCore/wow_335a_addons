@@ -1,0 +1,30 @@
+## Interface: 30300
+## Title: BreadCrumbs (|cffff9900Zasurus|r) |cffff9900BETA Version [0.3.0]|r
+## Version: 0.3.0
+## X-VersionType: BETA
+## Author: Zasurus
+## Notes: BreadCrumbs is a simple addon that leaves a trail of "BreadCrumbs" behind you on the HUD (and SexyMap's HUD) as you go so you know which way you came from if you get turned around!
+## SavedVariables: BreadCrumbs_Options
+## SavedVariablesPerCharacter: BreadCrumbs_DebugLog, BreadCrumbs_StoreDebugMsgs
+## Dependencies: 
+## OptionalDeps: SexyMap
+
+## X-Embeds: Astrolabe, LibStub, LibZasMsgCtr, LibSimpleOptions-1.0, AceHook-3.0, AceLocale-3.0, AceConfig-3.0, CallbackHandler-1.0
+
+# Library files
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\Astrolabe\Load.xml
+Libs\LibZasMsgCtr\LibZasMsgCtr.lua
+Libs\AceHook-3.0\AceHook-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+
+Libs\LibSimpleOptions-1.0\lib.xml
+
+# Locale files
+Locales\Locale-enUS.lua
+
+# Core files
+BreadCrumbs.lua

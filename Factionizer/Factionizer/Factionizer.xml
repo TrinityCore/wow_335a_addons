@@ -1,0 +1,1568 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<Script file="localization.en.lua"/>
+	<Script file="localization.de.lua"/>
+	<Script file="localization.ru.lua"/>
+	
+	<Script file="content.en.lua"/>
+	<Script file="content.de.lua"/>
+	<Script file="content.ru.lua"/>
+	
+	<Script file="mapping.en.lua"/>
+	<Script file="mapping.de.lua"/>
+	<Script file="mapping.fr.lua"/>
+	<Script file="mapping.es.lua"/>
+	<Script file="mapping.ru.lua"/>
+	
+	<Script file="Factionizer.lua"/>
+
+<!--> ============================================================================================================== <-->
+	<Frame name="Factionizer">
+		<Scripts>
+			<OnLoad>FIZ_OnLoad(self)</OnLoad>
+			<OnEvent>FIZ_OnEvent(self, event, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, arg10, arg11)</OnEvent>
+			<OnUpdate>FIZ_OnUpdate(self)</OnUpdate>
+		</Scripts>
+	</Frame>
+
+<!--> ============================================================================================================== <-->
+	<Font name="DetailFontWhite" inherits="GameFontNormalSmall" virtual="true">
+		<Color r="1.0" g="1.0" b="1.0"/>
+	</Font>
+	<Font name="DetailFontGrey" inherits="GameFontNormalSmall" virtual="true">
+		<Color r="0.5" g="0.5" b="0.5"/>
+	</Font>
+	<Button name="FIZ_UpdateEntryTemplate" hidden="true" virtual="true">
+		<Size><AbsDimension x="360" y="16"/></Size>
+		<Layers>
+			<Layer level="OVERLAY">
+				<!-->Expand/Collaps button<-->
+				<Texture name="$parentTexture" file="Interface\Addons\Factionizer\UI-MinusButton-UP-Green.blp">
+					<Size><AbsDimension x="16" y="16"/></Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset><AbsDimension x="3" y="0"/></Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<!-->Label text [X]<-->
+				<FontString name="$parentLabel" inherits="DetailFontWhite" justifyH="LEFT">
+					<Size><AbsDimension x="20" y="16"/></Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+							<Offset><AbsDimension x="20" y="0"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<!-->Common parts for entries<-->
+				<FontString name="$parentTimes" inherits="DetailFontWhite" justifyH="RIGHT">
+					<Size><AbsDimension x="40" y="16"/></Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+							<Offset><AbsDimension x="40" y="0"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentName" inherits="DetailFontWhite" justifyH="LEFT">
+					<Size><AbsDimension x="250" y="16"/></Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+							<Offset><AbsDimension x="80" y="0"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentRep" inherits="DetailFontWhite" justifyH="RIGHT">
+					<Size><AbsDimension x="30" y="16"/></Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+							<Offset><AbsDimension x="330" y="0"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<!-->Common parts for item entries<-->
+				<FontString name="$parentItemTimes" inherits="DetailFontGrey" justifyH="RIGHT">
+					<Size><AbsDimension x="40" y="16"/></Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+							<Offset><AbsDimension x="40" y="0"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentItemName" inherits="DetailFontGrey" justifyH="LEFT">
+					<Size><AbsDimension x="280" y="16"/></Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+							<Offset><AbsDimension x="80" y="0"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTotalTimes" inherits="DetailFontGrey" justifyH="RIGHT">
+					<Size><AbsDimension x="80" y="16"/></Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+							<Offset><AbsDimension x="280" y="0"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>this:RegisterForClicks("LeftButtonUp", "RightButtonUp")</OnLoad>
+			<OnEnter>FIZ_ShowLineToolTip(this)</OnEnter>
+			<OnLeave>GameTooltip:Hide()</OnLeave>
+			<!--<OnClick>FIZ_UpdateEntryClick()</OnClick>-->
+			<OnMouseUp>FIZ_MouseButtonUp(arg1)</OnMouseUp>
+		</Scripts>
+	</Button>
+
+<!--> ============================================================================================================== <-->
+	<Button name="SmallFontButton" inherits="UIPanelButtonTemplate" virtual="true">
+		<NormalFont inherits="GameFontNormalSmall"/>
+		<HighlightFont inherits="GameFontHighlightSmall"/>
+		<DisabledFont inherits="GameFontDisableSmall"/>
+	</Button>
+
+
+	<Frame name="FIZ_ReputationDetailFrame" parent="ReputationFrame" enableMouse="true" hidden="true">
+		<Size>
+			<!--<AbsDimension x="412" y="453"/>-->
+			<AbsDimension x="412" y="498"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="ReputationFrame" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="-33" y="-28"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11"/>
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="FIZ_ReputationDetailFactionName" inherits="GameFontNormal" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="20" y="-21"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailFactionDescription" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="170" y="0"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailFactionName" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<Texture name="FIZ_DetailBg" file="Interface\PaperDollInfoFrame\UI-Character-Reputation-DetailBackground">
+					<Size>
+						<AbsDimension x="256" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="11" y="-12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="FIZ_DetailBg2" file="Interface\PaperDollInfoFrame\UI-Character-Reputation-DetailBackground">
+					<Size>
+						<AbsDimension x="278" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_DetailBg" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-70" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="FIZ_ReputationDetailStandingName" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_DetailBg2" relativePoint="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingNeeded" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailStandingName" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingCurrent" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailStandingNeeded" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingMissing" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailStandingCurrent" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-7"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingBag" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailStandingMissing" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingBagBank" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailStandingBag" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingQuests" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailStandingBagBank" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingGained" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailStandingQuests" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingToExaltedHeader" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailStandingGained" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+
+				<FontString name="FIZ_ReputationDetailStandingNextValue" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="FIZ_ReputationDetailStandingName" relativePoint="TOP">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativeTo="FIZ_ReputationDetailFrame" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="-40" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingNeededValue" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativeTo="FIZ_ReputationDetailStandingNeeded" relativePoint="TOP">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="RIGHT" relativeTo="FIZ_ReputationDetailFrame" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="-15" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingCurrentValue" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="FIZ_ReputationDetailStandingNeededValue" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingMissingValue" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="FIZ_ReputationDetailStandingCurrentValue" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-7"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingBagValue" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="FIZ_ReputationDetailStandingMissingValue" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingBagBankValue" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="FIZ_ReputationDetailStandingBagValue" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingQuestsValue" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="FIZ_ReputationDetailStandingBagBankValue" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingGainedValue" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="FIZ_ReputationDetailStandingQuestsValue" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="FIZ_ReputationDetailStandingToExaltedValue" inherits="GameFontHighlightSmall" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="0" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="FIZ_ReputationDetailStandingGainedValue" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+
+				<FontString name="FIZ_ReputationDetailFactionName" inherits="GameFontNormal" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="0" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="20" y="-21"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture name="FIZ_ReputationDetailCorner" file="Interface\DialogFrame\UI-DialogBox-Corner">
+					<Size>
+						<AbsDimension x="32" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-6" y="-7"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="FIZ_ReputationDetailDivider" file="Interface\DialogFrame\UI-DialogBox-Divider">
+					<Size>
+						<AbsDimension x="522" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="9" y="-131"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="FIZ_ReputationDetailDivider2" file="Interface\DialogFrame\UI-DialogBox-Divider">
+					<Size>
+						<AbsDimension x="522" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<Texture name="FIZ_ReputationDetailDivider3" file="Interface\DialogFrame\UI-DialogBox-Divider">
+					<Size>
+						<AbsDimension x="522" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider2" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-193"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+
+				<FontString name="FIZ_NoInformationText" inherits="GameFontHighlight" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="360" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider2" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="15" y="15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+
+				<!--
+				<Texture name="FIZ_ReputationDetailVDivider" file="Interface\DialogFrame\UI-DialogBox-Divider">
+					<Size>
+						<AbsDimension x="16" y="128"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="FIZ_ReputationDetailDivider" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-75" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				-->
+				<FontString name="FIZ_ReputationDetailSuppressHint" inherits="GameFontHighlightSmall" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="210" y="0"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider3" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="FIZ_ReputationDetailCloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-3" y="-3"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<CheckButton name="FIZ_ReputationDetailAtWarCheckBox">
+				<Size>
+					<AbsDimension x="26" y="26"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName().."Text"):SetText(AT_WAR);
+						getglobal(self:GetName().."Text"):SetVertexColor(RED_FONT_COLOR.r, RED_FONT_COLOR.g, RED_FONT_COLOR.b);
+					</OnLoad>
+					<OnClick>
+						FactionToggleAtWar(GetSelectedFaction());
+						if ( self:GetChecked() ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+						ReputationFrame_Update();
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+						GameTooltip:SetText(REPUTATION_AT_WAR_DESCRIPTION, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+				<NormalTexture file="Interface\Buttons\UI-CheckBox-Up"/>
+				<PushedTexture file="Interface\Buttons\UI-CheckBox-Down"/>
+				<HighlightTexture file="Interface\Buttons\UI-CheckBox-Highlight" alphaMode="ADD"/>
+				<CheckedTexture file="Interface\Buttons\UI-CheckBox-SwordCheck">
+					<Size>
+						<AbsDimension x="32" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="3" y="-5"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</CheckedTexture>
+				<DisabledCheckedTexture file="Interface\Buttons\UI-CheckBox-Check-Disabled"/>
+			</CheckButton>
+			<CheckButton name="FIZ_ReputationDetailInactiveCheckBox" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="26" y="26"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="FIZ_ReputationDetailAtWarCheckBoxText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName().."Text"):SetText(MOVE_TO_INACTIVE);
+					</OnLoad>
+					<OnClick>
+						if ( self:GetChecked() ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+							SetFactionInactive(GetSelectedFaction());
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+							SetFactionActive(GetSelectedFaction());
+						end
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+						GameTooltip:SetText(REPUTATION_MOVE_TO_INACTIVE, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="FIZ_ReputationDetailMainScreenCheckBox" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="26" y="26"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="FIZ_ReputationDetailInactiveCheckBoxText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName().."Text"):SetText(SHOW_FACTION_ON_MAINSCREEN);
+					</OnLoad>
+					<OnClick>
+						if ( self:GetChecked() ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+							SetWatchedFactionIndex(GetSelectedFaction());
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+							SetWatchedFactionIndex(0);
+						end
+						ReputationWatchBar_Update();
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+						GameTooltip:SetText(REPUTATION_SHOW_AS_XP, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+
+
+			<ScrollFrame name="FIZ_UpdateListScrollFrame" inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="360" y="208"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider2" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="5" y="15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(self, offset, 16, FIZ_UpdateList_Update);
+					</OnVerticalScroll>
+				</Scripts>
+			</ScrollFrame>
+			<Button name="FIZ_UpdateEntry1" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateListScrollFrame" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry2" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry1" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry3" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry2" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry4" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry3" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry5" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry4" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry6" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry5" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry7" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry6" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry8" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry7" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry9" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry8" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry10" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry9" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry11" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry10" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry12" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry11" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+			<Button name="FIZ_UpdateEntry13" inherits="FIZ_UpdateEntryTemplate">
+				<Anchors>
+				<Anchor point="TOPLEFT" relativeTo="FIZ_UpdateEntry12" relativePoint="BOTTOMLEFT"/>
+				</Anchors>
+			</Button>
+
+			<CheckButton name="FIZ_ShowQuestButton" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="-80" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.ShowQuests = this:GetChecked()
+						if ( FIZ_Data.ShowQuests ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+						FIZ_BuildUpdateList()
+						FIZ_UpdateList_Update()
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="FIZ_ShowInstancesButton" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="110" y="20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="-80" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.ShowInstances = this:GetChecked()
+						if ( FIZ_Data.ShowInstances ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+						FIZ_BuildUpdateList()
+						FIZ_UpdateList_Update()
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="FIZ_ShowMobsButton" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="-80" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.ShowMobs = this:GetChecked()
+						if ( FIZ_Data.ShowMobs ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+						FIZ_BuildUpdateList()
+						FIZ_UpdateList_Update()
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="FIZ_ShowItemsButton" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="110" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="-80" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.ShowItems = this:GetChecked()
+						if ( FIZ_Data.ShowItems ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+						FIZ_BuildUpdateList()
+						FIZ_UpdateList_Update()
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+
+			<Button name="FIZ_ShowAllButton" inherits="SmallFontButton">
+				<Size><AbsDimension x="80" y="20" /></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="230" y="20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.ShowQuests = true
+						FIZ_Data.ShowMobs = true
+						FIZ_Data.ShowInstances = true
+						FIZ_Data.ShowItems = true
+						PlaySound("igMainMenuOptionCheckBoxOn");
+						FIZ_BuildUpdateList()
+						FIZ_UpdateList_Update()
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="FIZ_ShowNoneButton" inherits="SmallFontButton">
+				<Size><AbsDimension x="80" y="20" /></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ReputationDetailDivider3" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="230" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.ShowQuests = nil
+						FIZ_Data.ShowMobs = nil
+						FIZ_Data.ShowInstances = nil
+						FIZ_Data.ShowItems = nil
+						PlaySound("igMainMenuOptionCheckBoxOff");
+						FIZ_BuildUpdateList()
+						FIZ_UpdateList_Update()
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="FIZ_ExpandButton" inherits="SmallFontButton">
+				<Size><AbsDimension x="80" y="20" /></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ShowAllButton" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound("igMainMenuOptionCheckBoxOn");
+						FIZ_ShowUpdateEntries(true)
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="FIZ_CollapseButton" inherits="SmallFontButton">
+				<Size><AbsDimension x="80" y="20" /></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ShowNoneButton" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound("igMainMenuOptionCheckBoxOff");
+						FIZ_ShowUpdateEntries(false)
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+
+			<Button name="FIZ_SupressNoneFactionButton" inherits="SmallFontButton">
+				<Size><AbsDimension x="165" y="20" /></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ShowNoneButton" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound("igMainMenuOptionCheckBoxOff");
+						FIZ_SupressNone(false)
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+			<Button name="FIZ_SupressNoneGlobalButton" inherits="SmallFontButton">
+				<Size><AbsDimension x="165" y="20" /></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_SupressNoneFactionButton" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						PlaySound("igMainMenuOptionCheckBoxOff");
+						FIZ_SupressNone(true)
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+
+		</Frames>
+	</Frame>
+
+
+<!--> ============================================================================================================== <-->
+	<Button name="FIZ_OptionsButton" parent="ReputationFrame" inherits="UIPanelButtonTemplate">
+		<Size><AbsDimension x="80" y="20" /></Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" >
+				<Offset>
+					<AbsDimension x="-35" y="-35" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BORDER">
+				<FontString name="$parentText" inherits="GameFontNormal" justifyH="CENTER"/>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnClick>
+				if(FIZ_OptionsFrame:IsVisible()) then
+					PlaySound("igMainMenuOptionCheckBoxOff");
+					FIZ_OptionsFrame:Hide();
+				else
+					PlaySound("igMainMenuOptionCheckBoxOn");
+					ReputationDetailFrame:Hide();
+					FIZ_ReputationDetailFrame:Hide();
+					FIZ_OptionsFrame:Show();
+				end
+			</OnClick>
+			<OnEnter>
+				FIZ_ShowHelpToolTip(this:GetName())
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+<!--> ============================================================================================================== <-->
+	<CheckButton name="FIZ_OrderByStandingCheckBox" parent="ReputationFrame" inherits="OptionsCheckButtonTemplate">
+		<Size>
+			<AbsDimension x="26" y="26"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="70" y="-32"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<HitRectInsets>
+			<AbsInset left="0" right="-240" top="0" bottom="0"/>
+		</HitRectInsets>
+		<Scripts>
+			<OnClick>
+				FIZ_Data.SortByStanding = this:GetChecked()
+				if ( FIZ_Data.SortByStanding ) then
+					PlaySound("igMainMenuOptionCheckBoxOn");
+				else
+					PlaySound("igMainMenuOptionCheckBoxOff");
+				end
+				ReputationFrame_Update()
+			</OnClick>
+			<OnEnter>
+				FIZ_ShowHelpToolTip(this:GetName())
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+		</Scripts>
+	</CheckButton>
+
+<!--> ============================================================================================================== <-->
+	<FontString name="FIZ_OptionText" inherits="GameFontNormal" justifyH="RIGHT" virtual="true">
+		<Color r="0.68" g="0.80" b="1"/>
+		<Size><AbsDimension x="250" y="25"/></Size>
+		<Scripts>
+			<OnEnter>FIZ_ShowHelpToolTip(this:GetName())</OnEnter>
+			<OnLeave>GameTooltip:Hide()</OnLeave>
+		</Scripts>
+	</FontString>
+
+	<Frame name="FIZ_OptionsFrame" hidden="true" parent="ReputationFrame">
+		<Size>
+			<AbsDimension x="450" y="250" />
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="-30" y="-30" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<!-->Title box<-->
+				<Texture file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size><AbsDimension x="300" y="64"/></Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset><AbsDimension x="0" y="12"/></Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<!-->Close box<-->
+				<Texture file="Interface\DialogFrame\UI-DialogBox-Corner">
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset><AbsDimension x="-5" y="-5"/></Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<!-->Title text<-->
+				<FontString name="$parentTitle" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset><AbsDimension x="0" y="-2"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<!-->Close button<-->
+			<Button name="$parentClose" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="CENTER" relativePoint="TOPRIGHT">
+						<Offset><AbsDimension x="-17" y="-17"/></Offset>
+					</Anchor>
+				</Anchors>
+			</Button>
+
+
+			<CheckButton name="FIZ_EnableMissingBox" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="20" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="-240" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.ShowMissing = this:GetChecked()
+						if ( FIZ_Data.ShowMissing ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+						ReputationFrame_Update()
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="FIZ_ExtendDetailsBox" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_EnableMissingBox" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="-240" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.ExtendDetails = this:GetChecked()
+						if ( FIZ_Data.ExtendDetails ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="FIZ_GainToChatBox" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ExtendDetailsBox" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="-240" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.WriteChatMessage = this:GetChecked()
+						if ( FIZ_Data.WriteChatMessage ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="FIZ_SupressOriginalGainBox" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_GainToChatBox" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="-240" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.SuppressOriginalChat = this:GetChecked()
+						if ( FIZ_Data.SuppressOriginalChat ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="FIZ_ShowPreviewRepBox" inherits="OptionsCheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_SupressOriginalGainBox" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="-240" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="-2" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnClick>
+						FIZ_Data.ShowPreviewRep = this:GetChecked()
+						if ( FIZ_Data.ShowPreviewRep ) then
+							PlaySound("igMainMenuOptionCheckBoxOn");
+						else
+							PlaySound("igMainMenuOptionCheckBoxOff");
+						end
+						ReputationFrame_Update()
+					</OnClick>
+					<OnEnter>
+						FIZ_ShowHelpToolTip(this:GetName())
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</CheckButton>
+
+			<Slider name="FIZ_ChatFrameSlider" inherits="OptionsSliderTemplate">
+				<Size><AbsDimension x="150" y="20"/></Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="FIZ_ShowPreviewRepBox" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="FIZ_ChatFrameText" inherits="GameFontNormalSmall">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						getglobal(this:GetName().."Low"):SetText("0")
+						getglobal(this:GetName().."High"):SetText(string.format("%d", NUM_CHAT_WINDOWS))
+						this:SetMinMaxValues(0,NUM_CHAT_WINDOWS)
+						this:SetValueStep(1)
+					</OnLoad>
+					<OnValueChanged>FIZ_UpdateChatFrame()</OnValueChanged>
+					<OnEnter>FIZ_ShowHelpToolTip(this:GetName())</OnEnter>
+					<OnLeave>GameTooltip:Hide()</OnLeave>
+				</Scripts>
+			</Slider>
+
+		</Frames>
+	</Frame>
+
+<!--> ============================================================================================================== <-->
+	<StatusBar name="FIZ_PreviewBarTemplate" virtual="true" drawLayer="BACKGROUND" minValue="0" maxValue="1" defaultValue="0">
+		<Size>
+			<AbsDimension x="101" y="5"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="-2" right="-2" top="-2" bottom="-2"/>
+		</HitRectInsets>
+		<BarTexture file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
+	</StatusBar>
+
+	<StatusBar name="FIZ_StatusBar1" parent="ReputationBar1" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar1ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar2" parent="ReputationBar2" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar2ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar3" parent="ReputationBar3" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar3ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar4" parent="ReputationBar4" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar4ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar5" parent="ReputationBar5" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar5ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+
+	<StatusBar name="FIZ_StatusBar6" parent="ReputationBar6" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar6ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar7" parent="ReputationBar7" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar7ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar8" parent="ReputationBar8" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar8ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar9" parent="ReputationBar9" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar9ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar10" parent="ReputationBar10" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar10ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+
+	<StatusBar name="FIZ_StatusBar11" parent="ReputationBar11" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar11ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar12" parent="ReputationBar12" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar12ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar13" parent="ReputationBar13" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar13ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar14" parent="ReputationBar14" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar14ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+	<StatusBar name="FIZ_StatusBar15" parent="ReputationBar15" inherits="FIZ_PreviewBarTemplate">
+		<Anchors><Anchor point="TOPLEFT" relativeTo="ReputationBar15ReputationBar" relativePoint="TOPLEFT"><Offset><AbsDimension x="0" y="0"/></Offset></Anchor></Anchors>
+	</StatusBar>
+
+</Ui>

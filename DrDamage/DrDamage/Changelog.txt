@@ -1,0 +1,220 @@
+1.7.7_beta-1:
+
+- General:
+- 3.3.3 changes
+- Hermorrhage damage bonus is now correctly mitigated by armor
+- Added Strength of Wrynn and Hellscream's Warsong
+- Simplified options for target level selection; it's now either current target level, +1, +2 or +3. There's no real need to have options for -4 to +10.
+- Clarified target armor options as well; choices are automatic/manual (uses known armor values for bosses and training dummies, plus manual value for the rest), boss (always asumes boss armor), manual (uses manually set armor) and none (no armor is taken into account).
+- Fixed an issue in the Russian client where the priest skill Vampiric Embrace was mistaken for Embrace of the Vampyr (-100% healing) due to identical translations
+- Melee hit calculation now properly increases hit chance for targets of lower level than you (if current target level option is selected)
+- Improved compare stats options by enabling them in the melee module and improved the tooltip implementation to be slightly cleaner. Also added expertise and armor penetration ratings into the comparison.
+- Armor penetration rating is now also displayed in the tooltip +1% damage increase comparison and optionally as a +1% ArP increase value
+- Disabled the +10 SP/AP, +1% crit/hit/arp etc. display by default since it has grown rather large
+- Added icons instead of names into the tooltips of certain abilities with extra effects to make the tooltip more compact
+- Added new actionbar display types for spells: Min crit, max crit, average crit
+- Added new actionbar display type for melee/ranged: Average, Average Hit + Extra, Max Total and to the secondary display DPS and DPSCD for abilities that have such in the tooltip.
+- Improved extra effect display: Now uses the format Avg (Min-Max)
+- Allow damage absorption spells to benefit from Strength of Wrynn/Hellscream's warsong
+- Enabled a limited buff calculation for certain special abilities. The aura calculation was disabled earlier due to not actually benefitting from that many buffs (Life tap, dark pact, all elemental wards, mana shield, ice barrier)
+- Allow the user to disable the first actionbar text, but display the second
+- Add cast time to the first spell display type selection due to request
+- Melee crit cap calculation now takes into account that crit depression can be overcome with more crit
+
+- Death Knight:
+- 3.3.3: Added Frost Fever to Chains of Ice. 
+- 3.3.3: Added Glyph of Chains of Ice. 
+- 3.3.3: Scourge Strike weapon damage increased to 70%, base damage increased, disease bonus decreased to 12% per disease. 
+- 3.3.3: Nerves of Cold Steel increased to 8/16/25%. 
+- 3.3.3: Rune of Razorice now increases damage 2% per application
+- Fixed Sigils to apply correctly to off-hand strikes with Threat of Thassarian (no off-hand penalty for the Sigil bonus and it's increased by Nerves of Cold Steel)
+- Fixed error when unequipping main-hand before off-hand with the talent Blood-Caked Blade
+- Black Ice now correctly applies to Blood Plague
+- Runes of Razorice and Lichbane are now calculated into all strikes
+- Rune of Razorice doesn't seem to benefit from its own debuff, but benefits from Cinderglacier and Black Ice
+
+- Druid: 
+- 3.3.3: Starfall base damage and coefficients increased
+- 3.3.3: Starfall glyph damage bonus reduced from 20% to 10%
+- 3.3.3: Added Glyph of Mangle (+10% damage)
+- Check for dire bear and bear buffs instead of shapeshift form index for Faerie Fire (Feral)
+
+- Hunter:
+- 3.3.3: Ferocious Inspiration now also increases Steady Shot Damage
+
+- Mage:
+- 3.3.3: Glyph of Fireball changed to -0.15s cast time. Frostbolt snare penalty removed
+- 3.3.3: Torment of the Weak and Empowered Fire applies to Pyroblast
+
+- Paladin:
+- Fixed Sacred Shield incorrectly getting mortal strike penalty and bonus from Divinity. Also slightly adjusted Sacred Shield coefficient.
+
+- Priest:
+- 3.3.3: Added new 4T10 healing priest bonus
+- Focused Power now seems to increase Glyph of PW:S heals on targets other than yourself as well
+- Corrected error with PW:S average Divine Aegis calculation
+- Slightly adjusted lightwell coefficient. Lightwell benefits now from Focused Power and Blessed Resilience, but they're additive unlike on other abilities.
+
+- Rogue:
+- 3.3.3: Ghostly Strike Weapon Damage is now 180% with dagger and Hemorrhage 160% with dagger. 
+- 3.3.3: Rupture can crit. 2T8 is now 20% damage to Rupture.
+- 3.3.3: Serrated Blades is now 3/6/9% armor penetration
+- Added Focused Attacks, Surprise Attacks (dodge part) and Relentless Strikes talents
+- Fixed Lethality to apply to Riposte
+- Fixed Master of Subtlety double stacking
+- Fixed Mutilate to correctly benefit from poison damage increase
+- Fixed Glyph of Garrote calculation
+- Fixed Eviscerate AP Bonus (Blizzard tooltip is wrong for the minimum damage)
+- Fixed Deadly Throw to correctly use ranged weapon base damage
+- Fixed Opportunity to give correct bonus
+- Fixed Rupture crit modifier in conjunction with poisons
+- Ambush, Garrote and Shiv apparently cannot be dodged or parried
+- Shadowstep doesn't benefit Gouge, Shiv, Deadly Throw and Fan of Knives
+- Fan of Knives it not normalized
+- Sinister Calling is in fact multiplicative and applies to base damage as well unlike the tooltip suggests
+
+- Shaman: 
+- 3.3.3: Flame Shock dot can now crit and is affected by haste. Glyph of Flame Shock changed to 60% increased crits from Flame Shock.
+- 3.3.3: Shaman 2T8 Elemental is now 20% to flame shock dot
+- Added metagem crit bonus to Frostbrand and Flametongue
+- Removed earthliving weapon from HST tooltip
+
+- Warlock: 
+- 3.3.3: Immolate dot can now crit. Life Tap no longer gains from Spirit.
+- Added tooltip for Dark Pact
+- Added Glyph of Shadowburn
+- Added Glyph of Imp
+- Added Firebolt, Lash of Pain and Shadowbite calculation and their talents.
+- Demonic Pact is now multiplicative.
+- Added Immolation Aura and Shadow Cleave
+
+- Warrior: 
+- 3.3.3: Revenge buffed by 50%
+- 3.3.3: Improved Revenge is now 30/60% increased damage and adds an extra hit to an additional target for 50/100% damage.
+- 3.3.3: Thunder Clap now crits for 200%
+- Improved Deep Wounds/Sword Specialization calculation
+- Improved Shield Slam diminishing returns calculation
+- Devastate is now calculated automatically with one stack more Sunder Armor than is on the target since it's applied before the hit lands
+- Fixed Sudden Death
+- Fixed Mace Specialization incorrectly applying to one-handed axes
+- Fixed how Impale and Poleaxe Specialization applies to Thunder Clap
+- Fixed Poleaxe specialization to correctly stack with Impale
+- Fixed Execute rage bonus calculation
+- Added Glyph of Blocking
+- Added ticks display to Rend
+- Added Weapon Mastery talent
+
+
+1.7.6_release:
+
+- General:
+- Now supports having two actionbar texts; the second one is disabled by default
+- CPU usage optimizations
+- Polished the actionbar options and clarified a few of the actionbar text display type options
+- Actionbar texts are now removed (as opposed to being just hidden) when button placements change for a slightly cleaner implementation
+- Now displays information in the tooltips of abilities in the class trainer menu
+- Improved Power Cost display to apply to all abilities with a powercost (rage or energy)
+- Improved Mana Cost and Casts Left display to apply to all abilities with a manacost
+- Power Cost display now uses default UI colors for rage and energy for the text, but this can be configured in the options screen
+- Casts Left display now uses a three stage color coding, green for >= 10 casts, yellow for >= 5 casts and <5 is red. The colors are configurable in the options screen. 
+- All tooltips now use abbrevations (DPE, DPR, DPRP, DPM etc.) of Damage Per [Powertype] instead of displaying the full title 
+- Enabled CoE/Ebon Plague/Earth and Moon calculation for Rogues and Hunters (for poisons, envenom etc.)
+- Thorns and Retribution aura now display +1% Damage in the tooltip instead of the possibly misleading +1% DPS
+- Fixed and re-enabled the elemental damage calculation for half-physical, half-magic attacks I had to disable in the last version due to an unexpected error
+- Fixed a few physical/spell hybrid abilities so that they should no longer be classified as the wrong type (affects the bonuses of a few buffs)
+- Added Blessing of Wisdom, Sanctified Retribution and Ferocious inspiration to manual buffs list
+- Added text to Holy Nova, Holy Shock and Death Coil tooltips to specify which action is being shown (damage or healing)
+- Added options to hide macro name text (enabled by default) and hotkey text (disabled by default) from actionbar buttons
+- Added season 8 relics and pvp sets
+
+- Death Knight:
+- Fixed Black Ice applying incorrectly to Scourge Strike
+- Wandering Plague now correctly uses melee crit chance
+- Now takes into account a few bugs: Rage of Rivendare double stacks with Black Ice. Tundra Stalker double stacks on Frost Fever from Howling Blast. Rage of Rivendare double stacks on Blood Plague.
+- The initial damage from which Necrosis damage is calculated is now correctly mitigated by armor
+- Disease damage is additive on Obliterate. The Glyph is also additive.
+- Glyph of Icy Touch now correctly applies to Frost Fever applied by Howling Blast
+- Glyph of Plague Strike doesn't apply to Blood Plague
+- Glyph of Dark Death also applies to Death Coil heal and is additive
+- Improved Summon Gargoyle calculation: Set coefficient to 0.35 instead of 0.4, and adjusted base damage. Rage of Rivendare doesn't apply to Gargoyle.
+- Sigil of Awareness adds 292 base damage to Scourge Strike, not 189
+
+- Druid:
+- Maul and Shred should now properly receive bonus from Trauma/Mangle
+- Moonkin T8 bonus was apparently reduced from 15% to 7% at some point
+- Fixed Tree of Life Aura
+- Added Glyph of Frenzied Regeneration
+- Lifebloom pvp idol benefits from Tree of Life aura and Master Shapeshifter
+- Fixed Glyph of Moonfire'd Moonfire dot not getting benefits from Genesis
+- Fixed 2p T10 moonkin proc to use "Omen of Doom" buff instead of Clearcasting
+- Fixed Glyph of Regrowth
+- Fixed Eclipse
+
+- Hunter:
+- 2p T9 Hunter: Mortal Shots only apply 15% bonus to serpent sting crits and the meta gem crit bonus is counted spell type (apparently serpent sting crits are classified as spellcrits, but boosted by 50%)
+- Black Arrow Coefficient corrected to 0.115. 
+- Sniper Training bonus is additive.
+- All ranks of Improved Steady Shot now correctly give a 15% bonus, instead of 5/10/15%
+- Rapid Killing is additive. Fixed Improved Tracking
+- Added spell type downranking to Explosive Trap, Immolation Trap, Serpent Sting and Arcane Shot
+- Careful Aim is bugged on Explosive Trap and Black Arrow too, reducing base damage
+- Corrected a few calculation issues with traps
+- Corrected Glyph of Immolation Trap calculation
+- Corrected Glyph of Explosive Trap crits to receive meta gem bonus like a spell does (it's a spell that has a inherent +50% increase)
+- Corrected Steady Shot to receive correct bonus from ammo
+- Ranged ability damage is no longer incorrectly set to zero when no mainhand weapon is equipped
+
+- Mage:
+- Glyphs of Frostfire, Frostbolt and Scorch are all additive
+- Aracane Power and Arcane Blast are additive
+- Slightly adjusted Arcane Missiles coefficient (from 1.426 to 1.4305)
+- Spell Impact, Fire Power and Chilled to the Bone are additive, Playing with Fire is multiplicative
+
+- Shaman:
+- Fixed Healing Wave incorrectly getting some Chain Heal set bonuses
+- Lava Lash now properly deals fire damage
+- T9 enhancement bonus is additive, not multiplicative
+- Call of Flame and Booming Echoes are additive
+- Tidal Waves does not apply to LHW totem
+- Slightly adjusted Earth Shield coefficient
+- Added a few missing downranking coefficients
+- Glyph of Lightning Shield is additive
+- Slightly adjusted Lightning Shield and Thunderstorm coefficients to more accurate values
+- Fixed Frozen Power
+- Fixed Improved Earth Shield to stack additively with Improved Shields
+- Now correctly retrieves offhand weapon buff
+
+- Paladin:
+- Glyph of Exorcism, Glyph of Seal of Righteousness and Glyph of Seal of Light are additive. 4p arena set Holydin Holy Shock bonus is also additive.
+- Fixed Flash of Light libram bonus calculation
+- Fixed Sacred Shield calculation
+- Seals of the Pure is multiplicative on SoR
+- Seal of Righteousness now correctly displays spell damage modifier in the tooltip
+- The 5% Crusader Strike damage bonus of PvP retridin gloves is additive.
+- Avenger's Shield AP and SP coefficients are 9.1% instead of 7% like the Blizzard tooltip claims
+- Shield of Righteousness tooltip now shows the block value used for calculation on the Coeffs line instead of AP
+
+- Priest:
+- Set Glyph of Power Word: Shield to benefit from Blessed Resilience and Test of Faith. 
+- Fixed some buffs/debuffs (eg. Grace) that incorrectly applied also to the absorption portion of PW: S.
+- Blessed Resilience no longer double stacks on empowered heal direct heal
+- Glyph of Power Word: Shield or PW:S does not benefit from Test of Faith
+- Glyph of Power Word: Shield does not benefit from Spiritual Healing
+- Added Dispel Magic heal actionbar text when glyphed for it
+- Fixed Glyph of Prayer of Healing
+- Glyph of Mind Flay stacks additively with Twisted Faith but multiplicatively with Darkness, which is the opposite of how talents stack on Mind Flay
+- Glyph of Renew is bugged and reduces talent effects by 20% (Spiritual Healing, Twin Disciplines, Improved Renew but not Focused Power or Blessed Resilience)
+- Fixed Glyph of Holy Nova, adjusted Holy Nova coefficient slightly
+- Mind Sear can crit
+- Twin Disciplines applies to Mind Flay
+
+- Rogue:
+- Rogue Poisons now properly inherit all the spellhit and spellcrit they should from buffs/talents
+- Gouge doesn't cause poison procs
+
+- Warrior:
+- I disabled Precision hit chance increase from a few warrior abilities (Thunderclap, Intercept, Shockwave, Shield Slam, Victory Rush). Please correct me if I'm wrong!
+- Added Glyph of Heroic Strike
+
+- Warlock:
+- Fixed Shadow Ward coefficient

@@ -1,0 +1,22 @@
+------------------------------------------------------------------------
+r151 | elkano | 2010-07-13 06:29:49 +0000 (Tue, 13 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/EBB_Bar.lua
+   M /trunk/EBB_BarGroup.lua
+   M /trunk/ElkBuffBars.lua
+   M /trunk/ElkBuffBars.toc
+
+- fixed posting to chat
+- added support for vehicle unit
+------------------------------------------------------------------------
+r150 | elkano | 2009-08-14 07:09:38 +0000 (Fri, 14 Aug 2009) | 2 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/EBB_Bar.lua
+   M /trunk/EBB_BarGroup.lua
+   M /trunk/ElkBuffBars.lua
+   M /trunk/ElkBuffBars.toc
+
+- updated TOC for 3.2
+- reduced garbage generation (thx Antiarc)
+------------------------------------------------------------------------

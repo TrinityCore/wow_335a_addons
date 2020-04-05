@@ -1,0 +1,9 @@
+## Interface: 30300
+## Title: MyBuffz
+## Notes: Displays your missing buffz.
+## Author: MrLulz
+## Version: 2.0
+## SavedVariables: MBZ
+MyBuffzVar.lua
+MyBuffz.lua
+MyBuffz.xml

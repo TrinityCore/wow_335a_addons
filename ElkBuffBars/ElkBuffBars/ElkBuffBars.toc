@@ -1,0 +1,57 @@
+﻿## Interface: 30300
+## X-Curse-Packaged-Version: r151
+## X-Curse-Project-Name: Elkano's BuffBars
+## X-Curse-Project-ID: elkbuffbars
+## X-Curse-Repository-ID: wow/elkbuffbars/mainline
+
+## Title: Elkano's BuffBars
+## Notes: EBB adds groups of bars to your screen showing you which (de)buffs currently affect your toon or some other units.
+## Notes-deDE: EBB fügt dem Interface Balkengruppen hinzu, welche die (De)Buffs anzeigen, die derzeit deine Spielfigur oder bestimmte andere Einheiten betreffen.
+## Notes-ruRU: EBB добавляет группы полос на экран, отображающие ваши текущие (де)баффы действующие на вас.
+## Notes-zhCN: EBB 以计时条群组在荧屏上显示你或其他单位的(减)增益状态
+## Notes-zhTW: EBB 以計時條群組在螢幕上顯示你或其他單位的(減)增益狀態
+
+## Author: Elkano
+## Version: 2.2.6-151
+## X-Website: http://www.wowace.com/projects/elkbuffbars/
+## X-Category: Buffs
+
+## X-Revision: 151
+## X-Date: 2010-07-13T06:29:49Z
+
+## OptionalDeps: Ace2, DewdropLib, FuBarPlugin-2.0, LibAbacus-3.0, LibGratuity-3.0, LibSharedMedia-3.0, TabletLib, UTF8
+
+## SavedVariables: ElkBuffBarsDB
+
+
+#libs\UTF8\utf8data.lua
+libs\UTF8\utf8.lua
+
+#@no-lib-strip@
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+libs\AceLibrary\AceLibrary.lua
+libs\AceOO-2.0\AceOO-2.0.lua
+libs\AceConsole-2.0\AceConsole-2.0.lua
+libs\AceAddon-2.0\AceAddon-2.0.lua
+libs\AceEvent-2.0\AceEvent-2.0.lua
+libs\AceDB-2.0\AceDB-2.0.lua
+libs\AceLocale-2.2\AceLocale-2.2.lua
+libs\Dewdrop-2.0\Dewdrop-2.0.lua
+libs\Tablet-2.0\Tablet-2.0.lua
+libs\FuBarPlugin-2.0\FuBarPlugin-2.0.lua
+libs\LibAbacus-3.0\lib.xml
+libs\LibGratuity-3.0\lib.xml
+libs\LibSharedMedia-3.0\lib.xml
+#@end-no-lib-strip@
+
+ElkBuffBars.lua
+EBB_Bar.lua
+EBB_BarGroup.lua
+
+locales\ElkBuffBars.enUS.lua
+locales\ElkBuffBars.deDE.lua
+locales\ElkBuffBars.koKR.lua
+locales\ElkBuffBars.ruRU.lua
+locales\ElkBuffBars.zhCN.lua
+locales\ElkBuffBars.zhTW.lua

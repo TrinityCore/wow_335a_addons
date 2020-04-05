@@ -1,0 +1,180 @@
+------------------------------------------------------------------------
+r47 | pericles | 2009-01-30 18:52:43 +0000 (Fri, 30 Jan 2009) | 2 lines
+Changed paths:
+   A /tags/v0.63 (from /trunk:46)
+
+MBB:-
+Release v0.63 to curse.com
+------------------------------------------------------------------------
+r46 | pericles | 2009-01-30 18:51:59 +0000 (Fri, 30 Jan 2009) | 2 lines
+Changed paths:
+   M /trunk/MBB.lua
+
+MBB:-
+Change Strata from High to Medium
+------------------------------------------------------------------------
+r45 | pericles | 2009-01-30 18:50:01 +0000 (Fri, 30 Jan 2009) | 2 lines
+Changed paths:
+   M /trunk/MBB.xml
+
+MBB:-
+Change Strata from High to Medium
+------------------------------------------------------------------------
+r43 | pericles | 2009-01-27 20:44:15 +0000 (Tue, 27 Jan 2009) | 2 lines
+Changed paths:
+   M /trunk/MBB.lua
+
+MBB:-
+Fixed stack overflow at line 438 caused by recursion
+------------------------------------------------------------------------
+r41 | pericles | 2008-12-02 15:36:27 +0000 (Tue, 02 Dec 2008) | 2 lines
+Changed paths:
+   M /trunk/MBB.lua
+
+MBB:-
+added support for DagAssist ignore
+------------------------------------------------------------------------
+r39 | pericles | 2008-10-06 22:57:18 +0000 (Mon, 06 Oct 2008) | 4 lines
+Changed paths:
+   M /trunk
+   M /trunk/MBB.lua
+   M /trunk/MBB.toc
+
+MBB:-
+updated to v0.600 - Fixed SecureStateAnchor bug for WotLK
+
+
+------------------------------------------------------------------------
+r38 | root | 2008-09-29 22:17:17 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r36 | root | 2008-09-29 20:58:21 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/MBB
+   A /trunk (from /tmp/trunk/MBB:35)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------
+r33 | isler | 2008-07-30 10:59:34 +0000 (Wed, 30 Jul 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.lua
+
+MBB:
+- ignore new icons in 2.4.3
+------------------------------------------------------------------------
+r32 | ananhaid | 2008-05-07 10:38:29 +0000 (Wed, 07 May 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.toc
+
+MBB:
+- category fix.
+------------------------------------------------------------------------
+r30 | xinhuan | 2008-04-19 22:40:31 +0000 (Sat, 19 Apr 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.lua
+
+MBB:
+- Add HandyNotesPin to the Ignore List.
+------------------------------------------------------------------------
+r29 | pericles | 2008-04-04 17:45:12 +0000 (Fri, 04 Apr 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.lua
+
+MBB:
+- added extra nil check
+------------------------------------------------------------------------
+r28 | pericles | 2008-03-27 18:10:24 +0000 (Thu, 27 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.toc
+
+MBB:
+- toc bump to 2.4 
+------------------------------------------------------------------------
+r26 | ananhaid | 2008-03-08 13:59:52 +0000 (Sat, 08 Mar 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.toc
+   M /tmp/trunk/MBB/localization-zhCN.lua
+
+MBB:
+- zhCN checked.
+------------------------------------------------------------------------
+r25 | kagaro | 2008-01-30 00:18:46 +0000 (Wed, 30 Jan 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/MBB/MBB.lua
+
+MBB: added GatherMate to the ignore list for minimap icons
+------------------------------------------------------------------------
+r24 | pericles | 2007-12-25 16:20:52 +0000 (Tue, 25 Dec 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.toc
+
+MBB:
+-Set Category to Map
+
+------------------------------------------------------------------------
+r23 | pericles | 2007-11-20 18:59:30 +0000 (Tue, 20 Nov 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.lua
+   M /tmp/trunk/MBB/MBB.toc
+
+MBB:
+-Updated TOC for patch 2.3 and fixed version number to 0.52
+------------------------------------------------------------------------
+r22 | next96 | 2007-11-07 02:43:58 +0000 (Wed, 07 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.toc
+   A /tmp/trunk/MBB/localization-koKR.lua
+
+MBB:
+- Added locale koKR (by Pmang)
+
+------------------------------------------------------------------------
+r21 | yhwh | 2007-11-06 23:39:14 +0000 (Tue, 06 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.toc
+   A /tmp/trunk/MBB/localization-zhCN.lua
+
+MBB:
+- add zhCN localization
+
+------------------------------------------------------------------------
+r20 | auditjj | 2007-11-06 20:06:36 +0000 (Tue, 06 Nov 2007) | 2 lines
+Changed paths:
+   M /tmp/trunk/MBB/localization-zhTW.lua
+
+MBB:
+- updated zhTW localization
+------------------------------------------------------------------------
+r19 | auditjj | 2007-11-06 19:56:38 +0000 (Tue, 06 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/MBB/MBB.toc
+   A /tmp/trunk/MBB/localization-zhTW.lua
+
+MBB:
+- TOC 20200
+- Added zhTW localization
+------------------------------------------------------------------------
+r18 | pericles | 2007-11-01 22:06:06 +0000 (Thu, 01 Nov 2007) | 3 lines
+Changed paths:
+   M /tmp/trunk/MBB
+
+MBB:
+-
+First commit after setting auto properties files.
+------------------------------------------------------------------------
+r17 | pericles | 2007-11-01 22:02:25 +0000 (Thu, 01 Nov 2007) | 2 lines
+Changed paths:
+   A /tmp/trunk/MBB
+   A /tmp/trunk/MBB/MBB.lua
+   A /tmp/trunk/MBB/MBB.toc
+   A /tmp/trunk/MBB/MBB.xml
+   A /tmp/trunk/MBB/icon.tga
+   A /tmp/trunk/MBB/localization-deDE.lua
+   A /tmp/trunk/MBB/localization-enGB.lua
+
+MBB: inital commit
+- Cleans up your minimap icons by putting them in a popup menu. Never lose a button under another one again.
+------------------------------------------------------------------------

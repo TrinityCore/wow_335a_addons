@@ -1,0 +1,349 @@
+------------------------------------------------------------------------
+r667 | ulic | 2009-10-19 21:23:47 +0000 (Mon, 19 Oct 2009) | 2 lines
+Changed paths:
+   A /tags/v3.2.6 (from /trunk:666)
+
+Tagging as v3.2.6
+- Several bug fixes
+------------------------------------------------------------------------
+r666 | ulic | 2009-10-19 21:20:04 +0000 (Mon, 19 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Coldarra/Grand_Magus_Telestra.lua
+
+Fix for Ticket #14
+------------------------------------------------------------------------
+r665 | ulic | 2009-10-19 21:17:25 +0000 (Mon, 19 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Zul'Drak/Drakkari_Colossus.lua
+   M /trunk/Zul'Drak/Eck_the_Ferocious.lua
+
+Fixes for Ticket #18
+------------------------------------------------------------------------
+r664 | pettigrow | 2009-10-18 16:22:23 +0000 (Sun, 18 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Icecrown/LittleWigs_Icecrown.toc
+
+Icecrown toc: frFR Update
+------------------------------------------------------------------------
+r663 | ulic | 2009-10-16 19:46:25 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Dalaran/Zuramat_the_Obliterator.lua
+   M /trunk/Storm_Peaks/Ionar.lua
+   M /trunk/Zul'Drak/King_Dred.lua
+
+Minor changes
+------------------------------------------------------------------------
+r662 | ulic | 2009-10-16 17:13:00 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Coldarra/Ormorok_the_Tree-Shaper.lua
+   M /trunk/Dragonblight/Krik'thir_the_Gatewatcher.lua
+   M /trunk/common.lua
+
+Use common frenzied locale
+------------------------------------------------------------------------
+r661 | ulic | 2009-10-16 17:04:32 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Coldarra/Mage-Lord_Urom.lua
+
+Minor tweaks
+------------------------------------------------------------------------
+r658 | ulic | 2009-10-15 18:03:11 +0000 (Thu, 15 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/Storm_Peaks/Maiden_of_Grief.lua
+
+- Fix for ticket 17
+- Added also who gets incapacitated
+------------------------------------------------------------------------
+r657 | ulic | 2009-10-15 17:08:57 +0000 (Thu, 15 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Dalaran/Erekem.lua
+
+Fix ticket 16
+------------------------------------------------------------------------
+r655 | ulic | 2009-10-14 22:40:58 +0000 (Wed, 14 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Zul'Drak/Gal'darah.lua
+
+Try to fix ticket 15
+------------------------------------------------------------------------
+r653 | ulic | 2009-10-13 15:11:25 +0000 (Tue, 13 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/Coldarra/Grand_Magus_Telestra.lua
+   M /trunk/Dragonblight/Prince_Taldaram.lua
+
+- Magus: nil out announces on engage
+- Taldaram: fix messages
+------------------------------------------------------------------------
+r648 | ulic | 2009-10-12 15:58:47 +0000 (Mon, 12 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/Coldarra/Grand_Magus_Telestra.lua
+   M /trunk/Dragonblight/Krik'thir_the_Gatewatcher.lua
+   M /trunk/Howling_Fjord/Gortok_Palehoof.lua
+   M /trunk/Zul'Drak/Gal'darah.lua
+
+- Gortok: Fix web localization
+- Others: Fix dGuid errors
+------------------------------------------------------------------------
+r647 | ulic | 2009-10-12 15:39:55 +0000 (Mon, 12 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Howling_Fjord/Svala_Sorrowgrave.lua
+   M /trunk/Storm_Peaks/Sjonnir_the_Ironshaper.lua
+
+Fixes for Tickets 12 & 13
+------------------------------------------------------------------------
+r646 | ulic | 2009-10-11 02:39:17 +0000 (Sun, 11 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Howling_Fjord/Controller_and_Constructor.lua
+   M /trunk/Storm_Peaks/General_Bjarngrim.lua
+   M /trunk/Storm_Peaks/Ionar.lua
+   M /trunk/Storm_Peaks/Sjonnir_the_Ironshaper.lua
+
+Bug fixes
+------------------------------------------------------------------------
+r642 | ulic | 2009-10-08 16:01:11 +0000 (Thu, 08 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Dalaran/Zuramat_the_Obliterator.lua
+
+Fix localization
+------------------------------------------------------------------------
+r640 | ulic | 2009-10-07 20:28:10 +0000 (Wed, 07 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Dalaran/The_Violet_Hold.lua
+   M /trunk/Dragonblight/Amanitar.lua
+   M /trunk/Dragonblight/Locales/deDE.lua
+   M /trunk/Dragonblight/Locales/esES.lua
+   M /trunk/Dragonblight/Locales/esMX.lua
+   M /trunk/Dragonblight/Locales/frFR.lua
+   M /trunk/Dragonblight/Locales/koKR.lua
+   M /trunk/Dragonblight/Locales/ruRU.lua
+   M /trunk/Dragonblight/Locales/zhCN.lua
+   M /trunk/Dragonblight/Locales/zhTW.lua
+   M /trunk/Storm_Peaks/Tribunal_of_Ages.lua
+   M /trunk/Stratholme/Mal'Ganis.lua
+
+Tweaks to localizations
+------------------------------------------------------------------------
+r639 | ulic | 2009-10-07 17:27:05 +0000 (Wed, 07 Oct 2009) | 7 lines
+Changed paths:
+   M /trunk/Coldarra/Anomalus.lua
+   M /trunk/Coldarra/Grand_Magus_Telestra.lua
+   M /trunk/Coldarra/Keristrasza.lua
+   M /trunk/Coldarra/LittleWigs_Coldarra.toc
+   M /trunk/Coldarra/Ormorok_the_Tree-Shaper.lua
+   M /trunk/Dalaran/Erekem.lua
+   M /trunk/Dalaran/Ichoron.lua
+   M /trunk/Dalaran/LittleWigs_Dalaran.toc
+   M /trunk/Dalaran/Xevozz.lua
+   M /trunk/Dalaran/Zuramat_the_Obliterator.lua
+   M /trunk/Dragonblight/Amanitar.lua
+   M /trunk/Dragonblight/Elder_Nadox.lua
+   M /trunk/Dragonblight/LittleWigs_Dragonblight.toc
+   M /trunk/Howling_Fjord/Gortok_Palehoof.lua
+   M /trunk/Howling_Fjord/Ingvar_the_Plunderer.lua
+   M /trunk/Howling_Fjord/LittleWigs_Howling_Fjord.toc
+   M /trunk/Howling_Fjord/Skadi_the_Ruthless.lua
+   M /trunk/Howling_Fjord/Svala_Sorrowgrave.lua
+   M /trunk/Icecrown/Argent_Confessor_Paletress.lua
+   M /trunk/Icecrown/Black_Knight.lua
+   M /trunk/Icecrown/Grand_Champions.lua
+   M /trunk/Icecrown/LittleWigs_Icecrown.toc
+   M /trunk/Storm_Peaks/General_Bjarngrim.lua
+   M /trunk/Storm_Peaks/Ionar.lua
+   M /trunk/Storm_Peaks/LittleWigs_Storm_Peaks.toc
+   M /trunk/Storm_Peaks/Tribunal_of_Ages.lua
+   M /trunk/Stratholme/LittleWigs_Stratholme.toc
+   M /trunk/Zul'Drak/Drakkari_Colossus.lua
+   M /trunk/Zul'Drak/Eck_the_Ferocious.lua
+   M /trunk/Zul'Drak/Gal'darah.lua
+   M /trunk/Zul'Drak/King_Dred.lua
+   M /trunk/Zul'Drak/LittleWigs_Zul'Drak.toc
+   M /trunk/Zul'Drak/Slad'ran.lua
+
+- Tribunal: Remove copy/paste code
+- Black Knight: remove extra bit flag check on death
+- Skadi: Fix Death guid
+- Slad'ran: fix bit flags
+- Fix all .toc files for X-BigWigs-PartyContent: true
+- Removed defaultToggles which aren't supported anymore
+- Thanks for the audit [Ammo]
+------------------------------------------------------------------------
+r638 | ulic | 2009-10-07 15:26:54 +0000 (Wed, 07 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Dalaran/The_Violet_Hold.lua
+
+set displayName
+------------------------------------------------------------------------
+r636 | ulic | 2009-10-07 14:38:30 +0000 (Wed, 07 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/Coldarra/Anomalus.lua
+   M /trunk/Coldarra/Drakos_the_Interrogator.lua
+   M /trunk/Coldarra/Grand_Magus_Telestra.lua
+   M /trunk/Coldarra/Keristrasza.lua
+   M /trunk/Coldarra/Ley-Guardian_Eregos.lua
+   M /trunk/Coldarra/LittleWigs_Coldarra.toc
+   A /trunk/Coldarra/Locales
+   A /trunk/Coldarra/Locales/deDE.lua
+   A /trunk/Coldarra/Locales/esES.lua
+   A /trunk/Coldarra/Locales/esMX.lua
+   A /trunk/Coldarra/Locales/frFR.lua
+   A /trunk/Coldarra/Locales/koKR.lua
+   A /trunk/Coldarra/Locales/ruRU.lua
+   A /trunk/Coldarra/Locales/zhCN.lua
+   A /trunk/Coldarra/Locales/zhTW.lua
+   M /trunk/Coldarra/Mage-Lord_Urom.lua
+   M /trunk/Coldarra/Ormorok_the_Tree-Shaper.lua
+   M /trunk/Coldarra/Varos_Cloudstrider.lua
+   A /trunk/Coldarra/locales.xml
+   A /trunk/Coldarra/modules.xml
+   M /trunk/Dalaran/Cyanigosa.lua
+   M /trunk/Dalaran/Erekem.lua
+   M /trunk/Dalaran/Ichoron.lua
+   M /trunk/Dalaran/Lavanthor.lua
+   M /trunk/Dalaran/LittleWigs_Dalaran.toc
+   A /trunk/Dalaran/Locales
+   A /trunk/Dalaran/Locales/deDE.lua
+   A /trunk/Dalaran/Locales/esES.lua
+   A /trunk/Dalaran/Locales/esMX.lua
+   A /trunk/Dalaran/Locales/frFR.lua
+   A /trunk/Dalaran/Locales/koKR.lua
+   A /trunk/Dalaran/Locales/ruRU.lua
+   A /trunk/Dalaran/Locales/zhCN.lua
+   A /trunk/Dalaran/Locales/zhTW.lua
+   M /trunk/Dalaran/Moragg.lua
+   M /trunk/Dalaran/The_Violet_Hold.lua
+   M /trunk/Dalaran/Xevozz.lua
+   M /trunk/Dalaran/Zuramat_the_Obliterator.lua
+   A /trunk/Dalaran/locales.xml
+   A /trunk/Dalaran/modules.xml
+   M /trunk/Dragonblight/Amanitar.lua
+   M /trunk/Dragonblight/Anub'arak.lua
+   M /trunk/Dragonblight/Elder_Nadox.lua
+   M /trunk/Dragonblight/Hadronox.lua
+   M /trunk/Dragonblight/Herald_Volazj.lua
+   M /trunk/Dragonblight/Jedoga_Shadowseeker.lua
+   M /trunk/Dragonblight/Krik'thir_the_Gatewatcher.lua
+   M /trunk/Dragonblight/LittleWigs_Dragonblight.toc
+   A /trunk/Dragonblight/Locales
+   A /trunk/Dragonblight/Locales/deDE.lua
+   A /trunk/Dragonblight/Locales/esES.lua
+   A /trunk/Dragonblight/Locales/esMX.lua
+   A /trunk/Dragonblight/Locales/frFR.lua
+   A /trunk/Dragonblight/Locales/koKR.lua
+   A /trunk/Dragonblight/Locales/ruRU.lua
+   A /trunk/Dragonblight/Locales/zhCN.lua
+   A /trunk/Dragonblight/Locales/zhTW.lua
+   M /trunk/Dragonblight/Prince_Taldaram.lua
+   A /trunk/Dragonblight/locales.xml
+   A /trunk/Dragonblight/modules.xml
+   M /trunk/Howling_Fjord/Controller_and_Constructor.lua
+   M /trunk/Howling_Fjord/Gortok_Palehoof.lua
+   M /trunk/Howling_Fjord/Ingvar_the_Plunderer.lua
+   M /trunk/Howling_Fjord/King_Ymiron.lua
+   M /trunk/Howling_Fjord/LittleWigs_Howling_Fjord.toc
+   A /trunk/Howling_Fjord/Locales
+   A /trunk/Howling_Fjord/Locales/deDE.lua
+   A /trunk/Howling_Fjord/Locales/esES.lua
+   A /trunk/Howling_Fjord/Locales/esMX.lua
+   A /trunk/Howling_Fjord/Locales/frFR.lua
+   A /trunk/Howling_Fjord/Locales/koKR.lua
+   A /trunk/Howling_Fjord/Locales/ruRU.lua
+   A /trunk/Howling_Fjord/Locales/zhCN.lua
+   A /trunk/Howling_Fjord/Locales/zhTW.lua
+   M /trunk/Howling_Fjord/Prince_Keleseth.lua
+   M /trunk/Howling_Fjord/Skadi_the_Ruthless.lua
+   M /trunk/Howling_Fjord/Svala_Sorrowgrave.lua
+   A /trunk/Howling_Fjord/locales.xml
+   A /trunk/Howling_Fjord/modules.xml
+   M /trunk/Icecrown/Argent_Confessor_Paletress.lua
+   M /trunk/Icecrown/Black_Knight.lua
+   M /trunk/Icecrown/Eadric_the_Pure.lua
+   M /trunk/Icecrown/Grand_Champions.lua
+   M /trunk/Icecrown/LittleWigs_Icecrown.toc
+   A /trunk/Icecrown/Locales
+   A /trunk/Icecrown/Locales/deDE.lua
+   A /trunk/Icecrown/Locales/esES.lua
+   A /trunk/Icecrown/Locales/esMX.lua
+   A /trunk/Icecrown/Locales/frFR.lua
+   A /trunk/Icecrown/Locales/koKR.lua
+   A /trunk/Icecrown/Locales/ruRU.lua
+   A /trunk/Icecrown/Locales/zhCN.lua
+   A /trunk/Icecrown/Locales/zhTW.lua
+   A /trunk/Icecrown/locales.xml
+   A /trunk/Icecrown/modules.xml
+   M /trunk/LittleWigs.toc
+   M /trunk/Storm_Peaks/General_Bjarngrim.lua
+   M /trunk/Storm_Peaks/Ionar.lua
+   M /trunk/Storm_Peaks/Krystallus.lua
+   M /trunk/Storm_Peaks/LittleWigs_Storm_Peaks.toc
+   A /trunk/Storm_Peaks/Locales
+   A /trunk/Storm_Peaks/Locales/deDE.lua
+   A /trunk/Storm_Peaks/Locales/esES.lua
+   A /trunk/Storm_Peaks/Locales/esMX.lua
+   A /trunk/Storm_Peaks/Locales/frFR.lua
+   A /trunk/Storm_Peaks/Locales/koKR.lua
+   A /trunk/Storm_Peaks/Locales/ruRU.lua
+   A /trunk/Storm_Peaks/Locales/zhCN.lua
+   A /trunk/Storm_Peaks/Locales/zhTW.lua
+   M /trunk/Storm_Peaks/Loken.lua
+   M /trunk/Storm_Peaks/Maiden_of_Grief.lua
+   M /trunk/Storm_Peaks/Sjonnir_the_Ironshaper.lua
+   A /trunk/Storm_Peaks/Tribunal_of_Ages.lua
+   M /trunk/Storm_Peaks/Volkhan.lua
+   A /trunk/Storm_Peaks/locales.xml
+   A /trunk/Storm_Peaks/modules.xml
+   M /trunk/Stratholme/Chrono-Lord_Epoch.lua
+   M /trunk/Stratholme/Infinite_Corruptor.lua
+   M /trunk/Stratholme/LittleWigs_Stratholme.toc
+   A /trunk/Stratholme/Locales
+   A /trunk/Stratholme/Locales/deDE.lua
+   A /trunk/Stratholme/Locales/esES.lua
+   A /trunk/Stratholme/Locales/esMX.lua
+   A /trunk/Stratholme/Locales/frFR.lua
+   A /trunk/Stratholme/Locales/koKR.lua
+   A /trunk/Stratholme/Locales/ruRU.lua
+   A /trunk/Stratholme/Locales/zhCN.lua
+   A /trunk/Stratholme/Locales/zhTW.lua
+   M /trunk/Stratholme/Mal'Ganis.lua
+   M /trunk/Stratholme/Meathook.lua
+   M /trunk/Stratholme/Salramm_the_Fleshcrafter.lua
+   A /trunk/Stratholme/locales.xml
+   A /trunk/Stratholme/modules.xml
+   M /trunk/Zul'Drak/Drakkari_Colossus.lua
+   M /trunk/Zul'Drak/Eck_the_Ferocious.lua
+   M /trunk/Zul'Drak/Gal'darah.lua
+   M /trunk/Zul'Drak/King_Dred.lua
+   M /trunk/Zul'Drak/LittleWigs_Zul'Drak.toc
+   A /trunk/Zul'Drak/Locales
+   A /trunk/Zul'Drak/Locales/deDE.lua
+   A /trunk/Zul'Drak/Locales/esES.lua
+   A /trunk/Zul'Drak/Locales/esMX.lua
+   A /trunk/Zul'Drak/Locales/frFR.lua
+   A /trunk/Zul'Drak/Locales/koKR.lua
+   A /trunk/Zul'Drak/Locales/ruRU.lua
+   A /trunk/Zul'Drak/Locales/zhCN.lua
+   A /trunk/Zul'Drak/Locales/zhTW.lua
+   M /trunk/Zul'Drak/Moorabi.lua
+   M /trunk/Zul'Drak/Novos_the_Summoner.lua
+   M /trunk/Zul'Drak/Slad'ran.lua
+   M /trunk/Zul'Drak/The_Prophet_Tharon'ja.lua
+   M /trunk/Zul'Drak/Trollgore.lua
+   A /trunk/Zul'Drak/locales.xml
+   A /trunk/Zul'Drak/modules.xml
+   A /trunk/common.lua
+   M /trunk/modules.xml
+
+Merge from BW3 branch
+------------------------------------------------------------------------
+r609 | ulic | 2009-09-28 14:58:19 +0000 (Mon, 28 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/Icecrown/Grand_Champions.lua
+
+Switched to web translations
+------------------------------------------------------------------------
+r608 | ulic | 2009-09-15 03:52:22 +0000 (Tue, 15 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/Stratholme/Mal'Ganis.lua
+
+death_trigger not defeat_trigger
+------------------------------------------------------------------------

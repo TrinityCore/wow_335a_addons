@@ -1,0 +1,12 @@
+tag v1.2.8a
+57e5a10834fddea76bb1aedb6c5d7de11e01c2d6
+Erik Broes <ebroes@ds013.(none)>
+2009-12-23 12:17:09 +0100
+
+30300
+
+
+--------------------
+
+Erik Broes:
+	- 33000 != 30300

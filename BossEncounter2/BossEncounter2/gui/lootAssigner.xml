@@ -1,0 +1,96 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="lootAssigner.lua" /> 
+
+	<Frame name="BossEncounter2_LootAssignerTemplate" frameStrata="DIALOG" virtual="true">
+		<Size>
+			<AbsDimension x="272" y="104"/>
+		</Size>
+
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.LootAssigner.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.LootAssigner.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+
+	<Button name="BossEncounter2_LootAssignerIconTemplate" enableMouse="true" hidden="false" virtual="true">
+		<Size>
+			<AbsDimension x="34" y="34"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				self.icon = self:CreateTexture(nil, "OVERLAY");
+				self.icon:SetAllPoints(true);
+			</OnLoad>
+			<OnEnter>
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+				GameTooltip:SetHyperlink(self:GetParent():GetLink());
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnClick>
+				HandleModifiedItemClick(self:GetParent():GetLink());
+			</OnClick>
+		</Scripts>
+	</Button>
+
+	<EditBox name="BossEncounter2_LootAssignerEditBoxTemplate" letters="16" hidden="false" autoFocus="false" virtual="true">
+		<Size>
+			<AbsDimension x="130" y="32"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+					<Size>
+						<AbsDimension x="75" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="-10" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.29296875" top="0" bottom="1.0"/>
+				</Texture>
+				<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+					<Size>
+						<AbsDimension x="75" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="10" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.70703125" right="1.0" top="0" bottom="1.0"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEscapePressed>
+				self:ClearFocus();
+			</OnEscapePressed>
+			<OnEnterPressed>
+				BossEncounter2.Widgets.LootAssigner.OnEditBoxEnter(self);
+			</OnEnterPressed>
+			<OnTextChanged>
+				BossEncounter2.Widgets.LootAssigner.OnEditBoxChanged(self);
+			</OnTextChanged>
+			<OnCharComposition>
+				BossEncounter2.Widgets.LootAssigner.PlayerNameAutocomplete(self);
+			</OnCharComposition>
+			<OnChar>
+				if ( not self:IsInIMECompositionMode() ) then
+				    BossEncounter2.Widgets.LootAssigner.PlayerNameAutocomplete(self, text);
+				end
+			</OnChar>
+		</Scripts>
+		<FontString inherits="ChatFontNormal"/>
+	</EditBox>
+</UI>

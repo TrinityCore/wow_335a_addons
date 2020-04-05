@@ -1,0 +1,17 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="bossBar.lua" /> 
+
+	<Frame name="BossEncounter2_BossBarTemplate" frameStrata="MEDIUM" virtual="true">
+		<Size>
+			<AbsDimension y="16"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.BossBar.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.BossBar.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</UI>

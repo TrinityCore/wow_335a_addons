@@ -1,0 +1,14 @@
+## Interface: 30300
+## Title: Factionizer |cFFFFA0A0by Urbin|r
+## Version: 30300.3
+## Author: Urbin, Dun Morogh-EU
+## X-Date: 2010-01-17
+## X-Category: Reputation
+## X-Website: http://wow.curse-gaming.com/downloads/details/9106/
+## URL: http://wow.curse-gaming.com/downloads/details/9106/
+## Description: Tells you what you can do to improve your faction
+## Notes: Tells you what you can do to improve your faction
+## SavedVariables: FIZ_Data
+## SavedVariablesPerCharacter: FIZ_Suppressed
+## OptionalDeps: myAddOns
+Factionizer.xml

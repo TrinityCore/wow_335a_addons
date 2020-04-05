@@ -1,0 +1,569 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Script file="frames.lua"/>
+	<ScrollFrame name="ListScrollFrameTemplate" inherits="FauxScrollFrameTemplate" virtual="true">
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\ClassTrainerFrame\UI-ClassTrainer-ScrollBar">
+					<Size>
+						<AbsDimension x="30" y="120"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-3" y="2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.46875" top="0.0234375" bottom="0.9609375"/>
+				</Texture>
+				<Texture file="Interface\ClassTrainerFrame\UI-ClassTrainer-ScrollBar">
+					<Size>
+						<AbsDimension x="30" y="123"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-3" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.53125" right="1.0" top="0.03125" bottom="1.0"/>
+				</Texture>
+			</Layer>
+		</Layers>
+	</ScrollFrame>
+	<Frame name="ActionBarButtonSpellActivationAlert" virtual="true">
+		<Animations>
+			<AnimationGroup parentKey="animIn">
+				<Scale target="$parentSpark" duration="0.2" scaleX="1.5" scaleY="1.5" order="1"/>
+				<Alpha target="$parentSpark" duration="0.2" change="1" order="1"/>
+				<Scale target="$parentInnerGlow" 			duration="0.3" scaleX="2" scaleY="2" order="1"/>
+				<Scale target="$parentInnerGlowOver" 	duration="0.3" scaleX="2" scaleY="2" order="1"/>
+				<Alpha target="$parentInnerGlowOver"	duration="0.3" change="-1" order="1"/>
+				<Scale target="$parentOuterGlow" 			duration="0.3" scaleX="0.5" scaleY="0.5" order="1"/>
+				<Scale target="$parentOuterGlowOver" 	duration="0.3" scaleX="0.5" scaleY="0.5" order="1"/>
+				<Alpha target="$parentOuterGlowOver"	duration="0.3" change="-1" order="1"/>
+				<Scale target="$parentSpark" startDelay="0.2" duration="0.2" scaleX="0.666666" scaleY="0.666666" order="1"/>
+				<Alpha target="$parentSpark" startDelay="0.2" duration="0.2" change="-1" order="1"/>
+				<Alpha target="$parentInnerGlow" startDelay="0.3" duration="0.2" change="-1" order="1"/>
+				<Alpha target="$parentAnts"	startDelay="0.3" duration="0.2" change="1" order="1"/>
+				<Scripts>
+					<OnPlay>
+						local frame = self:GetParent();
+						local frameWidth, frameHeight = frame:GetSize();
+						frame.spark:SetSize(frameWidth, frameHeight);
+						frame.spark:SetAlpha(0.3)
+						frame.innerGlow:SetSize(frameWidth / 2, frameHeight / 2);
+						frame.innerGlow:SetAlpha(1.0);
+						frame.innerGlowOver:SetAlpha(1.0);
+						frame.outerGlow:SetSize(frameWidth * 2, frameHeight * 2);
+						frame.outerGlow:SetAlpha(1.0);
+						frame.outerGlowOver:SetAlpha(1.0);
+						frame.ants:SetSize(frameWidth * 0.85, frameHeight * 0.85)
+						frame.ants:SetAlpha(0);
+						frame:Show();
+					</OnPlay>
+					<OnFinished>
+						local frame = self:GetParent();
+						local frameWidth, frameHeight = frame:GetSize();
+						frame.spark:SetAlpha(0);
+						frame.innerGlow:SetAlpha(0);
+						frame.innerGlow:SetSize(frameWidth, frameHeight);
+						frame.innerGlowOver:SetAlpha(0.0);
+						frame.outerGlow:SetSize(frameWidth, frameHeight);
+						frame.outerGlowOver:SetAlpha(0.0);
+						frame.outerGlowOver:SetSize(frameWidth, frameHeight);
+						frame.ants:SetAlpha(1.0);
+					</OnFinished>
+				</Scripts>
+			</AnimationGroup>
+			<AnimationGroup parentKey="animOut">
+				<Alpha target="$parentOuterGlowOver" duration="0.2" change="1" order="1"/>
+				<Alpha target="$parentAnts"	duration="0.2" change="-1" order="1"/>
+				<Alpha target="$parentOuterGlowOver" duration="0.2" change="-1" order="2"/>
+				<Alpha target="$parentOuterGlow" duration="0.2" change="-1" order="2"/>
+				<Scripts>
+					<OnFinished>
+						ActionButton_OverlayGlowAnimOutFinished(self);
+					</OnFinished>
+				</Scripts>
+			</AnimationGroup>
+		</Animations>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentSpark" parentKey="spark" file="Interface\SpellActivationOverlay\IconAlert" alpha="0" setAllPoints="true">
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+					<TexCoords left="0.00781250" right="0.61718750" top="0.00390625" bottom="0.26953125"/>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="$parentInnerGlow" parentKey="innerGlow" file="Interface\SpellActivationOverlay\IconAlert" alpha="0" setAllPoints="true">
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+					<TexCoords left="0.00781250" right="0.50781250" top="0.27734375" bottom="0.52734375"/>
+				</Texture>
+				<Texture name="$parentInnerGlowOver" parentKey="innerGlowOver" file="Interface\SpellActivationOverlay\IconAlert" alpha="0">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentInnerGlow" relativePoint="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentInnerGlow" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.00781250" right="0.50781250" top="0.53515625" bottom="0.78515625"/>
+				</Texture>
+				<Texture name="$parentOuterGlow" parentKey="outerGlow" file="Interface\SpellActivationOverlay\IconAlert" alpha="0" setAllPoints="true">
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+					<TexCoords left="0.00781250" right="0.50781250" top="0.27734375" bottom="0.52734375"/>
+				</Texture>
+				<Texture name="$parentOuterGlowOver" parentKey="outerGlowOver" file="Interface\SpellActivationOverlay\IconAlert" alpha="0">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentOuterGlow" relativePoint="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentOuterGlow" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.00781250" right="0.50781250" top="0.53515625" bottom="0.78515625"/>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture name="$parentAnts" parentKey="ants" file="Interface\SpellActivationOverlay\IconAlertAnts" alpha="0" setAllPoints="true">
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnUpdate function="ActionButton_OverlayGlowOnUpdate"/>
+			<OnHide>
+				if ( self.animOut:IsPlaying() ) then
+					self.animOut:Stop();
+					ActionButton_OverlayGlowAnimOutFinished(self.animOut);
+				end
+			</OnHide>
+		</Scripts>
+	</Frame>
+	<Button name="MainHelpPlateButton" virtual="true">
+		<Size x="64" y="64"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture parentKey="I" file="Interface\common\help-i">
+					<Size x="46" y="46"/>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture parentKey="Ring" file="Interface\Minimap\MiniMap-TrackingBorder">
+					<Size x="64" y="64"/>
+					<Anchors>
+						<Anchor point="CENTER" x="12" y="-13"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<Texture name="$parentBigIPulse" file="Interface\common\help-i" alphaMode="ADD" hidden="true">
+					<Size x="46" y="46"/>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentRingPulse" file="Interface\TutorialFrame\minimap-glow" alphaMode="ADD" hidden="true">
+					<Size x="52" y="52"/>
+					<Anchors>
+						<Anchor point="CENTER" x="0" y="0"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEnter function="Main_HelpPlate_Button_OnEnter"/>
+			<OnLeave function="Main_HelpPlate_Button_OnLeave"/>
+			<OnMouseDown>
+				self.I:SetPoint("CENTER", 1, -1);
+			</OnMouseDown>
+			<OnMouseUp>
+				PlaySound("igMainMenuOptionCheckBoxOn");
+				self.I:SetPoint("CENTER", 0, 0);
+			</OnMouseUp>
+			<OnHide function="Main_HelpPlate_Button_OnLeave"/>
+		</Scripts>
+		<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight">
+			<Size x="46" y="46"/>
+			<Anchors>
+				<Anchor point="CENTER" x="-1" y="1"/>
+			</Anchors>
+		</HighlightTexture>
+		<Animations>
+			<AnimationGroup parentKey="Pulse" looping="BOUNCE">
+				<Alpha target="$parentBigIPulse" change="-0.75" duration="1.0" smoothing="IN_OUT" order="1"/>
+				<Alpha target="$parentRingPulse" change="-0.5" duration="1.0" smoothing="IN_OUT" order="1"/>
+			</AnimationGroup>
+		</Animations>
+	</Button>
+	<Texture name="Talent-RingGlow" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="184" y="184"/>	
+		<TexCoords left="0.00390625" right="0.72265625" top="0.00195313" bottom="0.36132813"/>	
+	</Texture>
+	<Texture name="Talent-Ring" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="67" y="67"/>	
+		<TexCoords left="0.73046875" right="0.99218750" top="0.00195313" bottom="0.13281250"/>	
+	</Texture>
+	<Texture name="PetTalent-TalentIconBorder" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="59" y="59"/>	
+		<TexCoords left="0.73046875" right="0.96093750" top="0.13671875" bottom="0.25195313"/>	
+	</Texture>
+	<Texture name="Talent-GoldMedal-Glow" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="54" y="54"/>	
+		<TexCoords left="0.73046875" right="0.94140625" top="0.25585938" bottom="0.36132813"/>	
+	</Texture>
+	<Texture name="Talent-TreeLockoutGradient" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="8" y="32"/>	
+		<TexCoords left="0.94921875" right="0.98046875" top="0.25585938" bottom="0.31835938"/>	
+	</Texture>
+	<Texture name="HelpPlateBox-Glow-BottomRight" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="11" y="11"/>	
+		<TexCoords left="0.94921875" right="0.99218750" top="0.32226563" bottom="0.34375000"/>	
+	</Texture>
+	<Texture name="PetTalent-TreeBorder" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="225" y="45"/>	
+		<TexCoords left="0.00390625" right="0.88281250" top="0.36523438" bottom="0.45312500"/>	
+	</Texture>
+	<Texture name="HelpPlateBox-Shadow-BottomRight" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="25" y="25"/>	
+		<TexCoords left="0.89062500" right="0.98828125" top="0.36523438" bottom="0.41406250"/>	
+	</Texture>
+	<Texture name="Talent-TitleGlow-Right" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="18" y="18"/>	
+		<TexCoords left="0.89062500" right="0.96093750" top="0.41796875" bottom="0.45312500"/>	
+	</Texture>
+	<Texture name="PetTalent-TreeTitle-BG" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="225" y="44"/>	
+		<TexCoords left="0.00390625" right="0.88281250" top="0.45703125" bottom="0.54296875"/>	
+	</Texture>
+	<Texture name="HelpPlateBox-Shadow-TopLeft" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="25" y="25"/>	
+		<TexCoords left="0.89062500" right="0.98828125" top="0.45703125" bottom="0.50585938"/>	
+	</Texture>
+	<Texture name="TalentCover-SmallIconBorder" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="16" y="16"/>	
+		<TexCoords left="0.89062500" right="0.95312500" top="0.50976563" bottom="0.54101563"/>	
+	</Texture>
+	<Texture name="Talent-PrimaryHighlight-BottomRight" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="9" y="9"/>	
+		<TexCoords left="0.96093750" right="0.99609375" top="0.50976563" bottom="0.52734375"/>	
+	</Texture>
+	<Texture name="TalentHeader-ParchmentBG" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="198" y="33"/>	
+		<TexCoords left="0.00390625" right="0.77734375" top="0.54687500" bottom="0.61132813"/>	
+	</Texture>
+	<Texture name="HelpPlateArrowDOWN" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="53" y="21"/>	
+		<TexCoords left="0.78515625" right="0.99218750" top="0.54687500" bottom="0.58789063"/>	
+	</Texture>
+	<Texture name="HelpPlateArrowUP" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="53" y="21"/>	
+		<TexCoords left="0.78515625" right="0.99218750" bottom="0.54687500" top="0.58789063"/>	
+	</Texture>
+	<Texture name="Talent-PrimaryHighlight-TopLeft" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="9" y="9"/>	
+		<TexCoords left="0.78515625" right="0.82031250" top="0.59179688" bottom="0.60937500"/>	
+	</Texture>
+	<Texture name="Talent-PrimaryHighlight-TopRight" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="9" y="9"/>	
+		<TexCoords left="0.82812500" right="0.86328125" top="0.59179688" bottom="0.60937500"/>	
+	</Texture>
+	<Texture name="Talent-PrimaryHighlight-BottomLeft" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="9" y="9"/>	
+		<TexCoords left="0.87109375" right="0.90625000" top="0.59179688" bottom="0.60937500"/>	
+	</Texture>
+	<Texture name="TalentCover-Overlay-BottomLeft" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="8" y="8"/>	
+		<TexCoords left="0.91406250" right="0.94531250" top="0.59179688" bottom="0.60742188"/>	
+	</Texture>
+	<Texture name="TalentCover-Overlay-BottomRight" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="8" y="8"/>	
+		<TexCoords left="0.95312500" right="0.98437500" top="0.59179688" bottom="0.60742188"/>	
+	</Texture>
+	<Texture name="TalentHeader-GoldBorder" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="198" y="33"/>	
+		<TexCoords left="0.00390625" right="0.77734375" top="0.61523438" bottom="0.67968750"/>	
+	</Texture>
+	<Texture name="PetTalent-SingleBorder" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="32" y="32"/>	
+		<TexCoords left="0.78515625" right="0.91015625" top="0.61523438" bottom="0.67773438"/>	
+	</Texture>
+	<Texture name="Talent-PointBg-Green" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="20" y="19"/>	
+		<TexCoords left="0.91796875" right="0.99609375" top="0.61523438" bottom="0.65234375"/>	
+	</Texture>
+	<Texture name="HelpPlateBox-Glow-TopLeft" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="11" y="11"/>	
+		<TexCoords left="0.91796875" right="0.96093750" top="0.65625000" bottom="0.67773438"/>	
+	</Texture>
+	<Texture name="HelpPlateArrow-Shadow" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="101" y="41"/>	
+		<TexCoords left="0.00390625" right="0.39843750" top="0.68359375" bottom="0.76367188"/>	
+	</Texture>
+	<Texture name="PetTalent-PetIconBorder" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="54" y="54"/>	
+		<TexCoords left="0.00390625" right="0.21484375" top="0.76757813" bottom="0.87304688"/>	
+	</Texture>
+	<Texture name="TalentHeader-PrimaryIconBorder" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="44" y="44"/>	
+		<TexCoords left="0.22265625" right="0.39453125" top="0.76757813" bottom="0.85351563"/>	
+	</Texture>
+	<Texture name="TalentCover-Overlay-TopRight" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="8" y="8"/>	
+		<TexCoords left="0.22265625" right="0.25390625" top="0.85742188" bottom="0.87304688"/>	
+	</Texture>
+	<Texture name="TalentCover-Overlay-TopLeft" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="8" y="8"/>	
+		<TexCoords left="0.26171875" right="0.29296875" top="0.85742188" bottom="0.87304688"/>	
+	</Texture>
+	<Texture name="TalentHeader-SecondaryIconBorder" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="44" y="44"/>	
+		<TexCoords left="0.00390625" right="0.17578125" top="0.87695313" bottom="0.96289063"/>	
+	</Texture>
+	<Texture name="Talent-Inner-BotRight" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="14" y="14"/>	
+		<TexCoords left="0.00390625" right="0.05859375" top="0.96679688" bottom="0.99414063"/>	
+	</Texture>
+	<Texture name="Talent-Inner-TopRight" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="14" y="14"/>	
+		<TexCoords left="0.06640625" right="0.12109375" top="0.96679688" bottom="0.99414063"/>	
+	</Texture>
+	<Texture name="HelpPlateBox-Glow-TopRight" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="11" y="11"/>	
+		<TexCoords left="0.12890625" right="0.17187500" top="0.96679688" bottom="0.98828125"/>	
+	</Texture>
+	<Texture name="PetTalent-SingleBorder-Glow" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="44" y="44"/>	
+		<TexCoords left="0.18359375" right="0.35546875" top="0.87695313" bottom="0.96289063"/>	
+	</Texture>
+	<Texture name="Talent-Inner-BotLeft" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="14" y="14"/>	
+		<TexCoords left="0.18359375" right="0.23828125" top="0.96679688" bottom="0.99414063"/>	
+	</Texture>
+	<Texture name="Talent-Inner-TopLeft" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="14" y="14"/>	
+		<TexCoords left="0.24609375" right="0.30078125" top="0.96679688" bottom="0.99414063"/>	
+	</Texture>
+	<Texture name="HelpPlateBox-Glow-BottomLeft" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="11" y="11"/>	
+		<TexCoords left="0.30859375" right="0.35156250" top="0.96679688" bottom="0.98828125"/>	
+	</Texture>
+	<Texture name="Talent-GoldMedal-Border" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="44" y="44"/>	
+		<TexCoords left="0.40625000" right="0.57812500" top="0.68359375" bottom="0.76953125"/>	
+	</Texture>
+	<Texture name="Talent-SingleBorder-Glow" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="44" y="44"/>	
+		<TexCoords left="0.58593750" right="0.75781250" top="0.68359375" bottom="0.76953125"/>	
+	</Texture>
+	<Texture name="PetTalent-SingleBorder-Shadow" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="40" y="38"/>	
+		<TexCoords left="0.76562500" right="0.92187500" top="0.68359375" bottom="0.75781250"/>	
+	</Texture>
+	<Texture name="GoldLockIcon" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="17" y="21"/>	
+		<TexCoords left="0.92968750" right="0.99609375" top="0.68359375" bottom="0.72460938"/>	
+	</Texture>
+	<Texture name="HelpPlateArrow-GlowDOWN" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="65" y="28"/>	
+		<TexCoords left="0.40625000" right="0.66015625" top="0.77343750" bottom="0.82812500"/>	
+	</Texture>
+	<Texture name="HelpPlateArrow-GlowUP" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="65" y="28"/>	
+		<TexCoords left="0.40625000" right="0.66015625" bottom="0.77343750" top="0.82812500"/>	
+	</Texture>
+	<Texture name="HelpPlateBox-Shadow-TopRight" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="25" y="25"/>	
+		<TexCoords left="0.66796875" right="0.76562500" top="0.77343750" bottom="0.82226563"/>	
+	</Texture>
+	<Texture name="HelpPlateBox-Shadow-BottomLeft" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="25" y="25"/>	
+		<TexCoords left="0.77343750" right="0.87109375" top="0.77343750" bottom="0.82226563"/>	
+	</Texture>
+	<Texture name="TalentHeader-PointCircle-Gold" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="23" y="23"/>	
+		<TexCoords left="0.87890625" right="0.96875000" top="0.77343750" bottom="0.81835938"/>	
+	</Texture>
+	<Texture name="Talent-SingleBorder-Shadow" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="37" y="36"/>	
+		<TexCoords left="0.40625000" right="0.55078125" top="0.83203125" bottom="0.90234375"/>	
+	</Texture>
+	<Texture name="Talent-SingleBorder" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="31" y="30"/>	
+		<TexCoords left="0.40625000" right="0.52734375" top="0.90625000" bottom="0.96484375"/>	
+	</Texture>
+	<Texture name="TalentHeader-PointCircle-Silver" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="23" y="23"/>	
+		<TexCoords left="0.55859375" right="0.64843750" top="0.83203125" bottom="0.87695313"/>	
+	</Texture>
+	<Texture name="Talent-PointBg" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+		<Size x="20" y="19"/>	
+		<TexCoords left="0.55859375" right="0.63671875" top="0.88085938" bottom="0.91796875"/>	
+	</Texture>
+	<Texture name="Talent-TitleGlow-Left" file="Interface\AddOns\BlizzardInterfaceArt\Interface\TalentFrame\TalentFrame-Parts" virtual="true" >
+	<Frame name="GlowBoxTemplate" virtual="true">
+		<Layers>
+			<!--
+			<Layer level="BACKGROUND" textureSubLevel="-1">
+				<Texture name="$parentColorBorder" setAllPoints="true">
+					<Color r="1" g="0.82353" b="0"/>
+				</Texture>
+			</Layer>
+			-->
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBg" parentKey="BG">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="1" y="-1"/>
+						<Anchor point="BOTTOMRIGHT" x="-1" y="1"/>
+					</Anchors>
+					<Color r="1" g="1" b="1"/>
+					<Gradient orientation="VERTICAL">
+						<MinColor r="0.23" g="0.19" b="0"/>
+						<MaxColor r="0" g="0" b="0"/>
+					</Gradient>
+				</Texture>
+			</Layer>
+			<Layer level="BACKGROUND" textureSubLevel="-1">
+				<Texture name="$parentGlowTopLeft" inherits="HelpPlateBox-Glow-TopLeft" parentKey="GlowTopLeft" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" x="-6" y="6"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentGlowTopRight" inherits="HelpPlateBox-Glow-TopRight" parentKey="GlowTopRight" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPRIGHT" x="6" y="6"/>
+					</Anchors>
+				</Texture>
+				
+				<Texture name="$parentGlowBottomLeft" inherits="HelpPlateBox-Glow-BottomLeft" parentKey="GlowBottomLeft" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" x="-6" y="-6"/>
+					</Anchors>
+				</Texture>
+				
+				<Texture name="$parentGlowBottomRight" inherits="HelpPlateBox-Glow-BottomRight" parentKey="GlowBottomRight" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" x="6" y="-6"/>
+					</Anchors>
+				</Texture>
+
+				<Texture name="$parentGlowTop" inherits="_HelpPlateBox-Glow-Top" parentKey="GlowTop" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentGlowTopLeft" relativePoint="TOPRIGHT"/>
+						<Anchor point="TOPRIGHT" relativeTo="$parentGlowTopRight" relativePoint="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentGlowBottom" inherits="_HelpPlateBox-Glow-Bottom" parentKey="GlowBottom" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentGlowBottomLeft" relativePoint="BOTTOMRIGHT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentGlowBottomRight" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentGlowLeft" inherits="!HelpPlateBox-Glow-Left" parentKey="GlowLeft" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentGlowTopLeft" relativePoint="BOTTOMLEFT"/>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentGlowBottomLeft" relativePoint="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentGlowRight" inherits="!HelpPlateBox-Glow-Right" parentKey="GlowRight" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parentGlowTopRight" relativePoint="BOTTOMRIGHT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentGlowBottomRight" relativePoint="TOPRIGHT"/>
+					</Anchors>
+				</Texture>	
+			</Layer>
+			<Layer level="BACKGROUND" textureSubLevel="-2">
+				<Texture name="$parentShadowTopLeft" inherits="HelpPlateBox-Shadow-TopLeft" parentKey="ShadowTopLeft" >
+					<Anchors>
+						<Anchor point="TOPLEFT" x="-16" y="16"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentShadowTopRight" inherits="HelpPlateBox-Shadow-TopRight" parentKey="ShadowTopRight" >
+					<Anchors>
+						<Anchor point="TOPRIGHT" x="16" y="16"/>
+					</Anchors>
+				</Texture>
+				
+				<Texture name="$parentShadowBottomLeft" inherits="HelpPlateBox-Shadow-BottomLeft" parentKey="ShadowBottomLeft" >
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" x="-16" y="-16"/>
+					</Anchors>
+				</Texture>
+				
+				<Texture name="$parentShadowBottomRight" inherits="HelpPlateBox-Shadow-BottomRight" parentKey="ShadowBottomRight" >
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT" x="16" y="-16"/>
+					</Anchors>
+				</Texture>
+
+				<Texture name="$parentShadowTop" inherits="_HelpPlateBox-Shadow-Top" parentKey="ShadowTop" >
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentShadowTopLeft" relativePoint="TOPRIGHT"/>
+						<Anchor point="TOPRIGHT" relativeTo="$parentShadowTopRight" relativePoint="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentShadowBottom" inherits="_HelpPlateBox-Shadow-Bottom" parentKey="ShadowBottom" >
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentShadowBottomLeft" relativePoint="BOTTOMRIGHT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentShadowBottomRight" relativePoint="BOTTOMLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentShadowLeft" inherits="!HelpPlateBox-Shadow-Left" parentKey="ShadowLeft" >
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentShadowTopLeft" relativePoint="BOTTOMLEFT"/>
+						<Anchor point="BOTTOMLEFT" relativeTo="$parentShadowBottomLeft" relativePoint="TOPLEFT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentShadowRight" inherits="!HelpPlateBox-Shadow-Right" parentKey="ShadowRight" >
+					<Anchors>
+						<Anchor point="TOPRIGHT" relativeTo="$parentShadowTopRight" relativePoint="BOTTOMRIGHT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentShadowBottomRight" relativePoint="TOPRIGHT"/>
+					</Anchors>
+				</Texture>	
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="MicroButtonAlertTemplate" inherits="GlowBoxTemplate" parent="UIParent" enableMouse="true" hidden="true" frameStrata="DIALOG" frameLevel="2" topLevel="true" virtual="true">
+		<Size x="220" y="100"/>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString parentKey="Text" inherits="GameFontHighlightLeft" justifyV="TOP">
+					<Size x="188" y="0"/>
+					<Anchors>
+						<Anchor point="TOPLEFT" x="16" y="-24"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button parentKey="CloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" x="6" y="6"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent():Hide();
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Frame parentKey="Arrow" inherits="GlowBoxArrowTemplate">
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" y="4"/>
+				</Anchors>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad function="MicroButtonAlert_OnLoad"/>
+			<OnShow>
+				self:SetHeight(self.Text:GetHeight()+42);
+			</OnShow>
+		</Scripts>
+	</Frame>
+</Ui>

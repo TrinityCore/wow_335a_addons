@@ -1,0 +1,26 @@
+------------------------------------------------------------------------
+r148 | xinhuan | 2009-08-16 16:58:05 +0000 (Sun, 16 Aug 2009) | 1 line
+Changed paths:
+   A /tags/v30200 (from /trunk:147)
+
+Tag release v30200.
+------------------------------------------------------------------------
+r147 | xinhuan | 2009-08-16 13:48:32 +0000 (Sun, 16 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/BankItems.lua
+   M /trunk/BankItems.toc
+
+Update Interface and Version to 30200.
+------------------------------------------------------------------------
+r146 | xinhuan | 2009-08-16 13:42:21 +0000 (Sun, 16 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/BankItems.lua
+
+Items on the Auction House are now shown in the tooltip information. Note that this information can be inaccurate if these items are sold or expired.
+------------------------------------------------------------------------
+r145 | xinhuan | 2009-08-16 13:10:00 +0000 (Sun, 16 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/BankItems.lua
+
+Added a checkbox to toggle displaying data from the opposite faction (affects both dropdowns and tooltips).
+------------------------------------------------------------------------

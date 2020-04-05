@@ -1,0 +1,16 @@
+------------------------------------------------------------------------
+r291 | mitch0 | 2009-11-13 00:43:55 +0000 (Fri, 13 Nov 2009) | 2 lines
+Changed paths:
+   A /tags/v3.7.6 (from /trunk:290)
+
+Tagging as v3.7.6
+- Get new LibRangeCheck-2.0 packaged, hopefully fix the issue when untalented spell ranges are picked up on first init
+------------------------------------------------------------------------
+r290 | mitch0 | 2009-11-13 00:35:42 +0000 (Fri, 13 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+   M /trunk/RangeDisplay.toc
+   M /trunk/RangeDisplay_Options/Options.lua
+
+Removed some braces, bump version
+------------------------------------------------------------------------

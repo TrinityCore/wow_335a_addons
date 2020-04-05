@@ -1,0 +1,170 @@
+------------------------------------------------------------------------
+r7543 | funkydude | 2010-08-06 14:39:56 +0000 (Fri, 06 Aug 2010) | 1 line
+Changed paths:
+   A /tags/r7543-release (from /trunk:7542)
+
+Tagging as r7543-release
+------------------------------------------------------------------------
+r7542 | funkydude | 2010-08-06 14:37:44 +0000 (Fri, 06 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/BigWigs.toc
+
+bump version
+------------------------------------------------------------------------
+r7541 | jongt23 | 2010-08-03 23:17:13 +0000 (Tue, 03 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/Coliseum/Locales/esES.lua
+
+added twins and Anub'arak for esES
+------------------------------------------------------------------------
+r7540 | jongt23 | 2010-08-03 13:58:56 +0000 (Tue, 03 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/Coliseum/locales.xml
+
+update
+------------------------------------------------------------------------
+r7539 | jongt23 | 2010-08-03 13:38:44 +0000 (Tue, 03 Aug 2010) | 1 line
+Changed paths:
+   A /trunk/Coliseum/Locales/esES.lua
+
+added esES for ToC
+------------------------------------------------------------------------
+r7538 | rabbit | 2010-07-31 18:38:09 +0000 (Sat, 31 Jul 2010) | 2 lines
+Changed paths:
+   A /trunk/Citadel/Locales/esES.lua
+   M /trunk/Citadel/locales.xml
+   M /trunk/Locales/common.esES.lua
+   A /trunk/Northrend/Locales/esES.lua
+   M /trunk/Northrend/locales.xml
+
+Added esES for WotLK by jongt23.
+
+------------------------------------------------------------------------
+r7537 | pettigrow | 2010-07-25 12:09:23 +0000 (Sun, 25 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7536 | rabbit | 2010-07-22 16:00:15 +0000 (Thu, 22 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Colors.lua
+
+Nil out a remnant of some old DB structure that we no longer use and that causes problems with the new color reset mechanisms if users had the old version at some point.
+------------------------------------------------------------------------
+r7535 | mojosdojo | 2010-07-22 12:58:49 +0000 (Thu, 22 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Halion.lua
+   M /trunk/Northrend/Locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------
+r7534 | funkydude | 2010-07-21 22:04:00 +0000 (Wed, 21 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Halion.lua
+
+Northrend/Halion: bugfix
+------------------------------------------------------------------------
+r7533 | 7destiny | 2010-07-21 16:02:33 +0000 (Wed, 21 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Halion.lua
+   M /trunk/Northrend/Locales/koKR.lua
+
+Northrend/Halion: Add BombCD and say
+------------------------------------------------------------------------
+r7532 | 7destiny | 2010-07-21 14:50:55 +0000 (Wed, 21 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7531 | funkydude | 2010-07-16 02:19:01 +0000 (Fri, 16 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Core/BossPrototype.lua
+
+Core/BossPrototype: Bugfix
+------------------------------------------------------------------------
+r7530 | rabbit | 2010-07-15 23:16:00 +0000 (Thu, 15 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Lanathel.lua
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Marrowgar.lua
+   M /trunk/Citadel/Putricide.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Stop caching the difficulty in :OnEngage in case it doesn't fire for whatever reason, and just look it up with :GetInstanceDifficulty() whenever needed.
+------------------------------------------------------------------------
+r7529 | rabbit | 2010-07-15 23:08:13 +0000 (Thu, 15 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Core/BossPrototype.lua
+
+Provide a :GetInstanceDifficulty() API since Blizz' one doesn't really work.
+------------------------------------------------------------------------
+r7528 | cremor | 2010-07-15 21:54:14 +0000 (Thu, 15 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Locales/deDE.lua
+
+deDE update
+------------------------------------------------------------------------
+r7527 | rabbit | 2010-07-14 00:43:01 +0000 (Wed, 14 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Halion.lua
+
+Spam spam spam.
+------------------------------------------------------------------------
+r7526 | rabbit | 2010-07-13 23:19:38 +0000 (Tue, 13 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Tips.lua
+
+Make the output to chat option work. Drycoded.
+------------------------------------------------------------------------
+r7525 | starinnia | 2010-07-12 22:02:28 +0000 (Mon, 12 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Halion.lua
+
+Northrend/Halion: use Halion's IDs instead of Sartharion's in the death check
+------------------------------------------------------------------------
+r7524 | 7destiny | 2010-07-11 03:09:11 +0000 (Sun, 11 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Locales/koKR.lua
+   M /trunk/Plugins/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7523 | cremor | 2010-07-10 09:07:04 +0000 (Sat, 10 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Halion.lua
+
+Halion berserk is 8 min
+------------------------------------------------------------------------
+r7522 | 7destiny | 2010-07-10 07:54:00 +0000 (Sat, 10 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7521 | pettigrow | 2010-07-09 20:49:19 +0000 (Fri, 09 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Northrend/Locales/frFR.lua
+   M /trunk/Plugins/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7520 | rabbit | 2010-07-08 07:50:24 +0000 (Thu, 08 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Halion.lua
+
+Add a 5sec warning for the meteor and some sounds on shadow/fire debuff.
+------------------------------------------------------------------------
+r7519 | ananhaid | 2010-07-05 04:19:55 +0000 (Mon, 05 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+   M /trunk/Plugins/Locales/zhCN.lua
+   M /trunk/Plugins/Locales/zhTW.lua
+
+BigWigs:
+- zhCN/zhTW update.
+------------------------------------------------------------------------

@@ -1,0 +1,18 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="dpsGraph.lua" /> 
+
+	<Frame name="BossEncounter2_DPSGraphTemplate" frameStrata="DIALOG" virtual="true">
+		<Size>
+			<AbsDimension x="512" y="256"/>
+		</Size>
+
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.DPSGraph.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.DPSGraph.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</UI>

@@ -1,0 +1,8 @@
+## Interface: 30300
+## Title: MonkeySpeed
+## Notes: Adds a simple movable speedometer displaying speed as a percentage of run speed.
+## Notes-deDE: Zeigt eine bewegliche Geschwindigkeitsanzeige in Prozent an.
+## Author: Trentin, Jim-Bim
+## Version: v3.0.1
+## SavedVariables: MonkeySpeedVars
+MonkeySpeed.xml

@@ -1,0 +1,16 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="shared\basicHandlers.lua" /> 
+	<Script file="shared\combatHandlers.lua" /> 
+	<Script file="shared\IO.lua" /> 
+	<Script file="shared\general.lua" /> 
+	<Script file="shared\localization.lua" /> 
+	<Script file="shared\settings.lua" />
+	<Script file="shared\communication.lua" /> 
+	<Script file="shared\music.lua" />
+	<Script file="shared\boss.lua" /> 
+	<Script file="shared\adds.lua" /> 
+	<Script file="shared\healAssist.lua" /> 
+	<Script file="shared\difficultyMeter.lua" /> 
+	<Script file="shared\stats.lua" /> 
+	<Script file="shared\yells.lua" /> 
+</UI>

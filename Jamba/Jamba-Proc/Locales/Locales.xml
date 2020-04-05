@@ -1,0 +1,18 @@
+<!--
+Jamba - Jafula's Awesome Multi-Boxer Assistant
+Copyright 2008 - 2010 Michael "Jafula" Miller
+All Rights Reserved
+http://wow.jafula.com/addons/jamba/
+jamba at jafula dot com
+-->
+
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="JambaProc-Locale-enUS.lua" />
+	<Script file="JambaProc-Locale-deDE.lua" />
+	<Script file="JambaProc-Locale-esES.lua" />
+	<Script file="JambaProc-Locale-frFR.lua" />
+	<Script file="JambaProc-Locale-koKR.lua" />
+	<Script file="JambaProc-Locale-ruRU.lua" />
+	<Script file="JambaProc-Locale-zhCN.lua" />
+	<Script file="JambaProc-Locale-zhTW.lua" />
+</Ui>

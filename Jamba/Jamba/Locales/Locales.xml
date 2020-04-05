@@ -1,0 +1,42 @@
+<!--
+Jamba - Jafula's Awesome Multi-Boxer Assistant
+Copyright 2008 - 2010 Michael "Jafula" Miller
+All Rights Reserved
+http://wow.jafula.com/addons/jamba/
+jamba at jafula dot com
+-->
+
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="JambaCore-Locale-enUS.lua" />
+	<Script file="JambaCore-Locale-deDE.lua" />
+	<Script file="JambaCore-Locale-esES.lua" />
+	<Script file="JambaCore-Locale-frFR.lua" />
+	<Script file="JambaCore-Locale-koKR.lua" />
+	<Script file="JambaCore-Locale-ruRU.lua" />
+	<Script file="JambaCore-Locale-zhCN.lua" />
+	<Script file="JambaCore-Locale-zhTW.lua" />
+	<Script file="JambaTeam-Locale-enUS.lua" />
+	<Script file="JambaTeam-Locale-deDE.lua" />
+	<Script file="JambaTeam-Locale-esES.lua" />
+	<Script file="JambaTeam-Locale-frFR.lua" />
+	<Script file="JambaTeam-Locale-koKR.lua" />
+	<Script file="JambaTeam-Locale-ruRU.lua" />
+	<Script file="JambaTeam-Locale-zhCN.lua" />
+	<Script file="JambaTeam-Locale-zhTW.lua" />
+	<Script file="JambaTag-Locale-enUS.lua" />
+	<Script file="JambaTag-Locale-deDE.lua" />
+	<Script file="JambaTag-Locale-esES.lua" />
+	<Script file="JambaTag-Locale-frFR.lua" />
+	<Script file="JambaTag-Locale-koKR.lua" />
+	<Script file="JambaTag-Locale-ruRU.lua" />
+	<Script file="JambaTag-Locale-zhCN.lua" />
+	<Script file="JambaTag-Locale-zhTW.lua" />
+	<Script file="JambaMessage-Locale-enUS.lua" />
+	<Script file="JambaMessage-Locale-deDE.lua" />
+	<Script file="JambaMessage-Locale-esES.lua" />
+	<Script file="JambaMessage-Locale-frFR.lua" />
+	<Script file="JambaMessage-Locale-koKR.lua" />
+	<Script file="JambaMessage-Locale-ruRU.lua" />
+	<Script file="JambaMessage-Locale-zhCN.lua" />
+	<Script file="JambaMessage-Locale-zhTW.lua" />
+</Ui>

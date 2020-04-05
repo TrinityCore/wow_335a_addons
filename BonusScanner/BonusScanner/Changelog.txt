@@ -1,0 +1,288 @@
+5.3 Mirrikat45 2010.01.23
+- Added Rune of the Narubian Carapace
+- Corrected amount of Defense from Run of the Stoneskin Gargoyle.
+
+5.2 Tristanian 2009.08.09
+- Updated libraries.
+- Updated base ratings for 3.2, in accordance with the following changes:
+Dodge Rating: The amount of dodge rating required per percentage of dodge has been increased by 15%.
+Parry Rating: The amount of parry rating required per percentage of parry has been reduced by 8%.
+Resilience: The amount of resilience needed to reduce critical strike chance, critical strike damage and overall damage has been increased by 15%.
+------------------------------------------------
+5.1 Tristanian 2009.08.04
+- Major update.
+- Updated toc for 30200 (WoW 3.2).
+- Implemented changes to facilitate a more object oriented design.
+- Localized unnecessary and forgotten globals.
+- Removed some redundant code.
+- Properly merged the global bonus table with the frame object.
+- Reduced overall memory usage.
+- Totally revamped the GetGemSum method, which now properly relies on tooltip scanning, instead of static table ID matching (localization needed!).
+- Updated locale independent enchants.
+- Implemented itemlink caching for equipped items, to throttle down unnecessary updates fired because of UNIT_INVENTORY_CHANGED.
+- Changed the LDB plugin's profile to a per character basis. Previous settings will all be reverted to defaults.
+------------------------------------------------
+5.0 (hotfix) Tristanian 2009.06.02
+- Fixed an issue with the LDB feed not properly reporting special rating bonuses details, on the button (eg. defense, expertise).
+------------------------------------------------
+5.0 Tristanian 2009.05.24
+- Major update.
+- Added support for CUSTOM_CLASS_COLORS.
+- Added Titanium Plating bonus.
+- Added new pattern for Vitality.
+- Added some missings gem ID's (stormjewels etc).
+- Added ItemHasEnchant(itemlink) method.
+- Added GetEmptySockets(itemlink) method.
+- Modified the GetGemSum method to detect up to 4 gemmed sockets.
+- Added detection method for engineering enchants.
+- Added support for Prismatic Gems. Modified ScanEquipment method. It now returns bonuses, bonuses_details, RedGems, YellowGems, BlueGems, PrismaticGems, AverageiLevel.
+- Updated LDB feed to support the latest changes.
+------------------------------------------------
+4.9 Tristanian 2009.04.24
+- Implemented a 1 second delay when scanning a target via the /bscan target slash command to ensure gear is properly parsed and 
+bonuses are properly counted.
+- Updated Korean and Chinese localization.
+- Removed ranged slot calculation from average item level.
+------------------------------------------------
+4.8 Tristanian 2009.04.14
+- Updated TOC to 30100 (WoW 3.1)
+- Added an obscure spell power pattern found on certain items, on the new emblem rewards.
+- Added Spanish localization.
+- Removed Resistance to Snare and Root effects as it doesn't seem to be used anymore.
+- Added a new option to the button configuration of the LDB feed, enabling the user to hide watched bonuses.
+- Added some sanity checks for empty slots, to avoid calculation errors.
+- Parry, Defense, Block, Dodge and Resilience Rating: Low-level players will now convert these ratings into their corresponding
+defensive stats at the same rate as level 34 players.
+- WoW 3.1 Armor Penetration Rating: All classes now receive 25% more benefit from Armor Penetration Rating. Corrected base rating value.
+- WoW 3.1 Haste Rating: Shamans, Paladins, Druids and Death knights now receive 30% more melee haste from Haste Rating.
+Implemented changes to core addon plus the LDB feed to return different melee and ranged/spell values.
+------------------------------------------------
+4.7 Tristanian 2009.03.15
+- Fixed a bug that would sometimes prevent the bonuses of certain prismatic gems from being properly counted.
+- Updated Chinese localization.
+- Changed default behavior of the LDB feed to enabled.
+------------------------------------------------
+4.6b Tristanian 2009.02.23
+- Fixed a bug with the library loading order that would prevent the configuration option for the minimap icon from being enabled
+- Updated French localization
+------------------------------------------------
+4.6 Tristanian 2009.02.20
+- Configuration initialization moved to ADDON_LOADED instead of VARIABLES_LOADED
+- Implemented a load on demand LDB plugin, that provides an overview of the gear bonuses for the current player
+- Added /bscan broker slash command to toggle the state of the LDB feed (enabled/disabled)
+- Added LibDBIcon support for the LDB feed, for users lacking a proper display addon
+------------------------------------------------
+4.5 Tristanian 2009.02.09
+- Added average item level to bonuses table
+- Modified /bscan show and /bscan target commands to display the average item level of the relevant target
+------------------------------------------------
+4.4 Tristanian 2009.01.20
+- Replaced instances of getglobal() with _G for efficiency.
+- Added DPS values and categories for weapons
+- Re-enabled German localization with a few needed updates for Wotlk (work in progress)
+- Added Chinese localizations (zhCN and zhTW)
+- Added support for feral AP on weapons (patch 3.0.8)
+------------------------------------------------
+4.3 Tristanian 2009.01.12
+- Fixed "Void Star Talisman" pattern detection
+- Scrapped AceLibrary and TipHooker-1.0 in favor of the Libstubbed LibTipHooker-1.1 library
+- Merged gem table, implemented proper folder structure for localization
+- Minor code improvements (event handling via the main module, level & class specification for scanned targets)
+------------------------------------------------
+4.2 Tristanian 2009.01.04
+- Re-enabled "Ranged critical Rating"
+- Added a significant amount of missing patterns (Hodir healing enchants, mp5 metagem effect, vitality, wisdom etc)
+------------------------------------------------
+4.1 Tristanian 2008.10.14
+- Removed "/bs" slash command handler to avoid conflicts with other addons
+- Added new rating conversion formula for levels 71-80
+- Consolidated Crit/Hit/Haste Ratings and adjusted info for "Hit Rating" according to melee/spells
+- Fixed proper detection for Shattered Sun crit metagem
+- Fixed slash command for itemlink scanning
+- Minor improvements
+- Re-enabled "Ranged Hit Rating"
+- Disabled auto-hooking of itemlinks. Itembasic and Itemextend commands now depend on tooltips enabled.
+- Added French locale
+- Added Armor Penetration Rating
+- Removed OnUpdate, replaced with AceTimer-3.0 to slightly throttle spammy events
+- Added initial batch of Gem Item ID's for coloring purposes
+- Added patterns for new metagem bonuses
+- Added Icewalker enchant
+- Revamped localization, eliminated global strings, AceLocale-3.0 is used instead.
+- Redundant code cleanup
+------------------------------------------------
+3.5 Tristanian 2008.07.25
+- Fixed a bug with socket bonuses improperly detecting damage and healing values
+- Replaced instances of "this" with "self" to ensure compatibility with future expansion(s)
+- Fixed missing gem colors added with patch 2.4.2
+- Slight improvements to the line parser for easier detection of patterns
+- Tagged code for revision in preparation of "Wrath of the Lich King" expansion
+------------------------------------------------
+3.4a Tristanian 2008.04.07
+- Commited a couple of missing de/DE enchant patterns
+- Added gem color support for the new WoW 2.4 gems
+------------------------------------------------
+3.4 Tristanian 2008.03.31
+- Updated TOC to 20400
+- Implemented a few more safeguards to avoid errors on invalid itemlinks
+- Updated German localization
+- Fixed a bug that would make you unable to scan a "custom" target along with a proper range check
+- Added a custom pattern for a shoulder enchant for EU/US locale
+- Added some more gem ID's to identify coloring for some gem quest rewards due to Blizzard using different ID's
+------------------------------------------------
+3.3 Tristanian 2008.02.11
+- Added support for some countable, secondary effects, derived from meta gems
+- BonusScanner will now properly warn you when trying to manually scan an item that hasn't been validated on the server
+- Added a missing critical strike rating pattern
+- Minor efficiency fixes
+- Fixed a bug that was preventing tooltips from being hooked properly while zoning
+or switching to different frames
+------------------------------------------------
+3.2 Tristanian 2007.12.08
+- Added Gem color count support
+- Updated all relevant slash commands to support the new functionality (show, target, itemlink, slotname, etc)
+- Added /bs tooltip gems command to optionally attach gem color count on tooltips
+- Holding Ctrl and hovering over an itemlink will also reveal gem color count information
+- Added a new option to TitanItemBonuses to display character Gem color count on the ItemBonuses tooltip
+- Refined TitanItemBonuses category menu on right-click to display ratings as percentages if selected
+------------------------------------------------
+3.1a Tristanian 2007.11.27
+- Fixed a serious bug that was preventing tooltip attachment for users with no previous savedvariables
+------------------------------------------------
+3.1 Tristanian 2007.11.25
+- Fixed parsing for some color-coded metagems, adjusted text and translations here and there
+- Defense, Resilience and Expertise ratings will now also display percentages of decreased crit chance
+- You may (optionally) enable additional statistics (ItemID, GemsIDs, EnchantID, Itemlevel etc) on item tooltips
+- Implemented code to display hidden spell damage bonuses for healers (work in progress)
+------------------------------------------------
+3.0a Tristanian 2007.11.16
+- Fixed an issue with TitanItemBonuses category submenu disappearing on mouseover
+------------------------------------------------
+3.0 Tristanian 2007.11.15
+- Major update
+- Updated TOC to 20300
+- Improved addon message output
+- Added /bs slash command and revamped slash command help
+- Improved /bs <itemlink> and /bs target to take into consideration the validity of checks
+- Added Expertise rating, removed weapon ratings
+- Added a pattern for healing items that also provide spell damage bonuses
+- Revamped line parser to support the new separators for multi bonus enchants/gems
+- Revamped passive bonus parser to support custom values for specific patterns
+- Adjusted the healing bonus granted from spell damage enchants accordingly (work in progress)
+- Implemented tooltip hooking support for item bonus summary (requires AceLibrary, TipHooker)
+- Renamed GetRatingBonus function to BonusScanner:GetRatingBonus
+- Removed dependency from TitanItemBonuses for bonus category display. BonusScanner is now completely independent.
+- Implemented local item (session) cache to reduce rapid memory increase when tooltip summary is enabled
+- Forced a cache reset and garbage collection every every hour to improve performance
+- Removed temporary item buff detection (BonusScanner will be limited to persistent bonuses now)
+- Added a few missing patterns for critical hits and spell damage
+------------------------------------------------
+2.11a Tristanian 2007.9.30
+- Fixed Haste Rating conversions to percentages to reflect the latest change in the patch
+------------------------------------------------
+2.11 Tristanian 2007.9.24
+- Updated TOC to 20200
+- Implemented conversion of Combat Ratings to percentages/points
+- Updated /bscan commands to support the rating conversion where applicable
+- Updated TitanItemBonuses to support rating conversions
+------------------------------------------------
+2.10 Tristanian 2007.9.7
+- Implemented German Localization (BonusScanner will now work with German clients again)
+- Corrected a bug that was preventing certain passive effects, on multi-bonus patterns from being parsed
+- Removed some redundant patterns
+- Efficiency improvements here and there
+------------------------------------------------
+2.9a BETA Tristanian 2007.8.31
+- Added German Localization (work in progress)
+------------------------------------------------
+2.9 Tristanian 2007.8.28
+- Added a missing bonus pattern derived from Void Star Talisman
+- Added a missing unarmed (fist) bonus pattern
+- Removed some redundant patterns and variables
+- Improved /bscan and /bscan details commands if TitanItemBonuses is loaded
+- Implemented a range check for the /bscan target command
+------------------------------------------------
+2.8 Tristanian 2007.8.9
+- Merged multi pattern separators into a single table (long overdue)
+- Modifications made to generic pattern parser for future efficiency (needs testing)
+- Added a missing block rating pattern
+- The block value of a shield will now properly add to the total amount of block value
+------------------------------------------------
+2.7a Tristanian 2007.8.1
+- Corrected the Demon's Blood pattern
+- Added scope crit rating pattern
+- Added scope ranged weapon damage pattern
+- Scrapped reinforced armor detection (limited to weapons, rings, trinkets and kits) for total armor detection
+from gear
+------------------------------------------------
+2.7 Tristanian 2007.7.25
+- Corrected an issue with two-handed swords skill rating
+- Corrected typos with Bow, Crossbow and Gun skill ratings that prevented the bonuses from being counted
+- Added feral combat rating and two-handed axes skill rating bonus detection
+- Added Surefooted pattern
+- Added two generic haste enchant patterns (just in case)
+------------------------------------------------
+2.6b Tristanian 2007.7.14
+- Added a new melee bonus called "Armor Penetration" found in T6 (warrior/rogue) item sets and weapons
+------------------------------------------------
+2.6a Tristanian 2007.7.8
+- Added a missing mana regeneration socket bonus
+------------------------------------------------
+2.6 Tristanian 2007.7.1
+- Added Enchant separators to localization.lua for easier reference
+- Added missing fist skill rating and pattern
+- Added Soulfrost, Sunfire and Savagery patterns
+- Added a missing health regeneration pattern
+------------------------------------------------
+2.5 Tristanian 2007.6.16
+- Added missing shield block rating pattern, values are added to regular block rating
+- Added "Minor Speed increase and +9 Stamina" pattern, correcting overall stamina values
+- Added pattern for Vitality on boots
+- Refined the generic parser to support metagems with the "&" separator
+- Added a couple of haste rating patterns to support Black Temple item equip bonuses (possibly more out there)
+------------------------------------------------
+2.4a Tristanian 2007.6.4
+- Updated TOC to 20100
+- Added missing weapon ratings (eg. daggers)
+- Added support for Armor detection on weapons, rings and trinkets
+- Added/Fixed several patterns to support BC tooltip equip bonuses
+- Added Atiesh patterns
+- Fixed the way several special enchants are detected (especially mana regen)
+- Fixed detection of bonuses on several green and blue items "of the <type>" (basically reinstated enchantment fix)
+- Modified /bscan <itemlink> to show the item link instead of the plain item name in default chat frame
+- Added a new command /bscan <itemlink> <player> which will whisper bonuses to the said player
+------------------------------------------------
+2.3 jmlsteele 2007.02.20
+-Added support for multiple bonus lines seperated by " and "
+-Added support for "Socket Bonus:" (checks if you have socketed correctly)
+-Fixed /bscan <itemlink> command to reflect changes to the itemlink format
+-Updated English Localization file
+------------------------------------------------
+2.2 jmlsteele 2007.01.11
+-Updated TOC to 20003
+-Removed redundant code
+-Re-enabled unused bonus types to fix error with ItemBonuses
+-Fixed scanning of multiple, different, values/line
+-Fixed scanning for Atiesh staffs
+-Added weapon ratings (Axe,Mace,Sword,Bow,XBow,Gun)
+-Added Resilience
+-Added Weapon Damage
+-Added Spell Penetration
+-Added ability to scan other people
+-New slash command /bscan target
+-Removed enchantment fix (fixed properly by patch 2.0.3)
+------------------------------------------------
+2.1 jmlsteele 2006.12.21
+-Fixed +healing enchants not displaying properly
+-Re-enabled Feral Attack Power
+-Re-enabled Undead Attack power
+-Thanks to Tristanian for the above fixes
+------------------------------------------------
+2.0 jmlsteele 2006.12.17
+-Updated codebase for TOC 20000
+-Added fix to compensate for enchant colours
+-Added fix for itemlink scanning
+-Changed %s to ratings (hit, crit, dodge, etc...)
+------------------------------------------------
+1.2 Crowley 2006.11.02
+- Link: http://wow.curse-gaming.com/en/files/details/1732/bonusscanner/

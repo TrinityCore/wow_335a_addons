@@ -1,0 +1,16 @@
+## Interface: 30300
+## X-Compatible-With: 40000
+## Title: NeedToKnow
+## Author: Kitjan, lieandswell
+## Version: 3.1.7
+## Notes: Timer bars for buffs, debuffs, cooldowns, etc. 
+## X-Credits: Bilt, Fxfighter EU-Echsenkessel, metalchoir, sp00n, Vlakarados, wowui.cn
+## X-Category: Buffs, Combat
+## OptionalDeps: LibStub,LibSharedMedia-3.0
+## DefaultState: enabled
+## SavedVariablesPerCharacter: NeedToKnow_Settings
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+libs\LibSharedMedia-3.0\lib.xml
+NeedToKnow.xml
+NeedToKnow_Options.xml

@@ -1,0 +1,23 @@
+﻿## Interface: 30300
+## Title:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff0055FFRaid Lead Tools|r
+## Title-zhCN:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff0055FF团长工具箱|r
+## Title-zhTW:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff0055FF團長工具箱|r
+## Title-koKR:|cffffe00a<|r|cffff7d0aDBM|r|cffffe00a>|r |cff0055FFRaid 관리 툴|r
+## Notes: Raidlead tools for Deadly Boss Mods (BidBot, StandByBot, ...)
+## Notes-zhCN: DBM团长工具箱 (竞拍助手, DKP助手, 待命助手, 邀请助手)
+## Notes-zhTW: DBM團長工具箱 (競拍助手, DKP助手, 候補助手, 邀請助手)
+## Notes-koKR: Deadly Boss Mods를 이용한 레이드 관리 툴 (BidBot, StandByBot, ...)
+## LoadOnDemand: 0
+## RequiredDeps: DBM-Core
+## DefaultState: enabled
+## Author: Nitram and Tandanu
+## URL: http://www.deadlybossmods.com
+## SavedVariables: DBM_BidBot_ItemHistory, DBM_BidBot_Settings, DBM_AutoInvite_Settings, DBM_DKP_System_Settings, DBM_Standby_Settings, DBM_RaidLead_Settings
+localization.en.lua
+localization.de.lua
+localization.fr.lua
+localization.cn.lua
+localization.kr.lua
+localization.tw.lua
+DBM-RaidLeadTools.lua
+load_files.xml

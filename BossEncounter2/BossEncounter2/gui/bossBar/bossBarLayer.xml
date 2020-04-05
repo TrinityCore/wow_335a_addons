@@ -1,0 +1,11 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="bossBarLayer.lua" /> 
+
+	<Frame name="BossEncounter2_BossBarLayerTemplate" virtual="true">
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.BossBarLayer.OnLoad(self);
+			</OnLoad>
+		</Scripts>
+	</Frame>
+</UI>

@@ -1,0 +1,67 @@
+------------------------------------------------------------------------
+r352 | dys | 2009-11-13 15:55:41 +0000 (Fri, 13 Nov 2009) | 10 lines
+Changed paths:
+   A /tags/v1.6.1 (from /trunk:351)
+
+Tagging as v1.6.1:
+
+- zhTW update (thanks a9012456)
+- TICKET#23: Modify ATSW skill level string as per the ticket.
+- TICKET#23: Modify Blizzard TradeSkill window skill level string as per the ticket.
+- Ticket #23: Better layout for ATSW
+- Fix the clipping of names in the UI so that names no longer extend beyond the scroll box when window is too narrow.
+- Make the Skill labels and texts disappear when skill levels are not enabled for both ATSW and Blizzard frames.
+- Fix the quick search modifers to be exclusive. For example, when shift is selected, alt-shift will no longer work.
+- Tidy up the UI tab of the configuration options.
+------------------------------------------------------------------------
+r351 | dys | 2009-11-06 23:41:03 +0000 (Fri, 06 Nov 2009) | 4 lines
+Changed paths:
+   M /trunk/TradeskillInfo.lua
+   M /trunk/TradeskillInfoUI/TradeskillInfoOptions.lua
+   M /trunk/TradeskillInfoUI/TradeskillInfoUI.lua
+
+- Fix the quick search modifers to be exclusive. For example, when shift is
+  selected, alt-shift will no longer work.
+- Tidy up the UI tab of the configuration options.
+
+------------------------------------------------------------------------
+r350 | dys | 2009-11-06 23:11:21 +0000 (Fri, 06 Nov 2009) | 4 lines
+Changed paths:
+   M /trunk/TradeskillInfo.lua
+
+- Ticket #25: Better layout for ATSW
+- Make the Skill labels and texts disappear when skill levels are not enabled
+  for both ATSW and Blizzard frames.
+
+------------------------------------------------------------------------
+r349 | dys | 2009-11-06 22:53:54 +0000 (Fri, 06 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/TradeskillInfo.toc
+   M /trunk/TradeskillInfoUI/TradeskillInfoUI.toc
+
+- Bump versio number to v1.6.1
+
+------------------------------------------------------------------------
+r348 | dys | 2009-11-06 22:53:16 +0000 (Fri, 06 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/TradeskillInfoUI/TradeskillInfoUI.lua
+
+- Fix the clipping of names in the UI so that names no longer
+  extend beyond the scroll box when window is too narrow.
+
+------------------------------------------------------------------------
+r347 | dys | 2009-11-06 22:50:58 +0000 (Fri, 06 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/TradeskillInfo.lua
+
+- TICKET#23: Modify Blizzard TradeSkill window skill level string as per the ticket.
+
+------------------------------------------------------------------------
+r346 | a9012456 | 2009-10-04 09:48:04 +0000 (Sun, 04 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/TradeskillInfoUI/locale-zhTW.lua
+   M /trunk/locale-zhTW.lua
+
+TradeskillInfo:
+- zhTW update
+------------------------------------------------------------------------

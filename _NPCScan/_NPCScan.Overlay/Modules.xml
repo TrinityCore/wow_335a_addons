@@ -1,0 +1,14 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<Script file="Modules\WorldMapTemplate.lua"/> <!-- Required for WorldMap-like canvases -->
+
+	<Script file="Modules\WorldMap.lua"/>
+	<Script file="Modules\BattlefieldMinimap.lua"/>
+	<Script file="Modules\Minimap.lua"/>
+
+	<Script file="Modules\AlphaMap3.lua"/>
+
+
+	<!-- Pseudo-modules that only adjust other modules -->
+	<Script file="Modules\Carbonite.lua"/>
+	<Script file="Modules\Mapster.lua"/>
+</Ui>

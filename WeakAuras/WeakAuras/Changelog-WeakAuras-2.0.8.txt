@@ -1,0 +1,7 @@
+------------------------------------------------------------------------
+r119 | stanzilla | 2014-10-09 19:08:47 +0000 (Thu, 09 Oct 2014) | 1 line
+Changed paths:
+   A /tags/2.0.8 (from /trunk:118)
+
+Tagging as 2.0.8, ports back transmission changes from 6.0. Final tag before git.
+------------------------------------------------------------------------

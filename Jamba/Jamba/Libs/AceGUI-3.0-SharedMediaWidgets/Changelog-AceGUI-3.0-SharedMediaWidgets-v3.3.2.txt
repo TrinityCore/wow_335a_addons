@@ -1,0 +1,17 @@
+------------------------------------------------------------------------
+r19 | yssaril | 2009-12-05 07:44:46 +0000 (Sat, 05 Dec 2009) | 1 line
+Changed paths:
+   A /tags/v3.3.2 (from /trunk:18)
+
+Tagging as v3.3.2
+------------------------------------------------------------------------
+r18 | yssaril | 2009-12-05 07:43:22 +0000 (Sat, 05 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/AceGUI-3.0-SharedMediaWidgets/BackgroundWidget.lua
+   M /trunk/AceGUI-3.0-SharedMediaWidgets/BorderWidget.lua
+   M /trunk/AceGUI-3.0-SharedMediaWidgets/FontWidget.lua
+   M /trunk/AceGUI-3.0-SharedMediaWidgets/SoundWidget.lua
+   M /trunk/AceGUI-3.0-SharedMediaWidgets/StatusbarWidget.lua
+
+fix dropdowns not clearing properly
+------------------------------------------------------------------------

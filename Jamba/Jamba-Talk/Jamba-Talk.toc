@@ -1,0 +1,16 @@
+## Interface: 30300
+## Title: Jamba-Talk
+## Notes: Jamba-Talk
+## Author: Jafula
+## Version: 0.6
+## X-Category: Interface Enhancements
+## Dependencies: Jamba
+## SavedVariables: JambaTalkProfileDB
+## X-Curse-Packaged-Version: release-0.6-2
+## X-Curse-Project-Name: Jamba
+## X-Curse-Project-ID: jamba
+## X-Curse-Repository-ID: wow/jamba/mainline
+Locales\Locales.xml
+JambaTalk.lua
+
+

@@ -1,0 +1,233 @@
+<!--
+    ################## .xml ##################
+    # Follow Felankor
+    # A World of Warcraft UI AddOn
+    # By Felankor
+    #
+    # IMPORTANT: I do not mind people looking at my code
+    # to learn from it. If you use any parts of my code
+    # please give me credit in your comments. I will
+    # do the same if I ever use any code from another
+    # AddOn. Thanks.
+    ###################################################
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+    <Script file="FFEvents.lua"/>
+<!-- Start FF_PartyMember1 Frame -->
+<Frame name="FF_PartyMember1" parent="PartyMemberFrame1" hidden="true" toplevel="true">
+   <Size>
+      <AbsDimension x="28" y="28"/>
+   </Size>
+   <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="PartyMemberFrame1" relativePoint="TOPLEFT">
+         <Offset>
+            <AbsDimension x="15" y="0" />
+         </Offset>
+      </Anchor>
+   </Anchors>
+   <Frames>
+        <Button name="$parentStatus">
+            <Size>
+                <AbsDimension x="28" y="28"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="0" y="0"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Layers>
+                <Layer level="BORDER">
+                    <Texture name="$parentIcon" file="Interface\AddOns\FollowFelankor\Images\FF_MinimapEnabled">
+                        <Size>
+                            <AbsDimension x="9" y="9"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="4" y="-4"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Texture>
+                </Layer>
+                <Layer level="OVERLAY">
+                    <Texture name="$parentBorder" file="Interface\Minimap\MiniMap-TrackingBorder">
+                        <Size>
+                            <AbsDimension x="28" y="28"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT"/>
+                        </Anchors>
+                    </Texture>
+                </Layer>
+            </Layers>
+        </Button>
+    </Frames>
+</Frame>
+<!-- End FF_PartyMember1 Frame -->
+<!-- Start FF_PartyMember2 Frame -->
+<Frame name="FF_PartyMember2" parent="PartyMemberFrame2" hidden="true" toplevel="true">
+   <Size>
+      <AbsDimension x="28" y="28"/>
+   </Size>
+   <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="PartyMemberFrame2" relativePoint="TOPLEFT">
+         <Offset>
+            <AbsDimension x="15" y="0" />
+         </Offset>
+      </Anchor>
+   </Anchors>
+   <Frames>
+        <Button name="$parentStatus">
+            <Size>
+                <AbsDimension x="28" y="28"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="0" y="0"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Layers>
+                <Layer level="BORDER">
+                    <Texture name="$parentIcon" file="Interface\AddOns\FollowFelankor\Images\FF_MinimapEnabled">
+                        <Size>
+                            <AbsDimension x="9" y="9"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="4" y="-4"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Texture>
+                </Layer>
+                <Layer level="OVERLAY">
+                    <Texture name="$parentBorder" file="Interface\Minimap\MiniMap-TrackingBorder">
+                        <Size>
+                            <AbsDimension x="28" y="28"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT"/>
+                        </Anchors>
+                    </Texture>
+                </Layer>
+            </Layers>
+        </Button>
+    </Frames>
+</Frame>
+<!-- End FF_PartyMember2 Frame -->
+<!-- Start FF_PartyMember3 Frame -->
+<Frame name="FF_PartyMember3" parent="PartyMemberFrame3" hidden="true" toplevel="true">
+   <Size>
+      <AbsDimension x="28" y="28"/>
+   </Size>
+   <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="PartyMemberFrame3" relativePoint="TOPLEFT">
+         <Offset>
+            <AbsDimension x="15" y="0" />
+         </Offset>
+      </Anchor>
+   </Anchors>
+   <Frames>
+        <Button name="$parentStatus">
+            <Size>
+                <AbsDimension x="28" y="28"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="0" y="0"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Layers>
+                <Layer level="BORDER">
+                    <Texture name="$parentIcon" file="Interface\AddOns\FollowFelankor\Images\FF_MinimapEnabled">
+                        <Size>
+                            <AbsDimension x="9" y="9"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="4" y="-4"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Texture>
+                </Layer>
+                <Layer level="OVERLAY">
+                    <Texture name="$parentBorder" file="Interface\Minimap\MiniMap-TrackingBorder">
+                        <Size>
+                            <AbsDimension x="28" y="28"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT"/>
+                        </Anchors>
+                    </Texture>
+                </Layer>
+            </Layers>
+        </Button>
+    </Frames>
+</Frame>
+<!-- End FF_PartyMember3 Frame -->
+<!-- Start FF_PartyMember4 Frame -->
+<Frame name="FF_PartyMember4" parent="PartyMemberFrame4" hidden="true" toplevel="true">
+   <Size>
+      <AbsDimension x="28" y="28"/>
+   </Size>
+   <Anchors>
+      <Anchor point="TOPLEFT" relativeTo="PartyMemberFrame4" relativePoint="TOPLEFT">
+         <Offset>
+            <AbsDimension x="15" y="0" />
+         </Offset>
+      </Anchor>
+   </Anchors>
+   <Frames>
+        <Button name="$parentStatus">
+            <Size>
+                <AbsDimension x="28" y="28"/>
+            </Size>
+            <Anchors>
+                <Anchor point="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="0" y="0"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Layers>
+                <Layer level="BORDER">
+                    <Texture name="$parentIcon" file="Interface\AddOns\FollowFelankor\Images\FF_MinimapEnabled">
+                        <Size>
+                            <AbsDimension x="9" y="9"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="4" y="-4"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Texture>
+                </Layer>
+                <Layer level="OVERLAY">
+                    <Texture name="$parentBorder" file="Interface\Minimap\MiniMap-TrackingBorder">
+                        <Size>
+                            <AbsDimension x="28" y="28"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT"/>
+                        </Anchors>
+                    </Texture>
+                </Layer>
+            </Layers>
+        </Button>
+    </Frames>
+</Frame>
+<!-- End FF_PartyMember4 Frame -->
+</Ui>

@@ -1,0 +1,30 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+<!--@debug@
+<Include file="Core\modules.xml"/>
+<Include file="Options\modules.xml"/>
+
+<Include file="Plugins\locales.xml"/>
+<Include file="Plugins\modules.xml"/>
+
+<Include file="Northrend\locales.xml"/>
+<Include file="Northrend\modules.xml"/>
+
+<Include file="Coliseum\locales.xml"/>
+<Include file="Coliseum\modules.xml"/>
+
+<Include file="Ulduar\locales.xml"/>
+<Include file="Ulduar\modules.xml"/>
+
+<Include file="Naxxramas\locales.xml"/>
+<Include file="Naxxramas\modules.xml"/>
+
+<Include file="OnyxiasLair\locales.xml"/>
+<Include file="OnyxiasLair\modules.xml"/>
+
+<Include file="Citadel\locales.xml"/>
+<Include file="Citadel\modules.xml"/>
+
+@end-debug@-->
+</Ui>
+

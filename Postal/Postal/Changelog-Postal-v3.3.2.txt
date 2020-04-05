@@ -1,0 +1,19 @@
+------------------------------------------------------------------------
+r287 | xinhuan | 2010-06-30 17:13:53 +0000 (Wed, 30 Jun 2010) | 1 line
+Changed paths:
+   A /tags/v3.3.2 (from /trunk:286)
+
+Tag release v3.3.2.
+------------------------------------------------------------------------
+r286 | xinhuan | 2010-06-30 17:13:14 +0000 (Wed, 30 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/Postal.toc
+
+Update Postal's version to 3.3.2.
+------------------------------------------------------------------------
+r285 | xinhuan | 2010-06-28 13:59:51 +0000 (Mon, 28 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/Modules/BlackBook.lua
+
+Fix friends list in the BlackBook module. The friends menu dropdown will now show all eligible friends on the same faction and realm that Postal can determine (from friends and RealID)
+------------------------------------------------------------------------

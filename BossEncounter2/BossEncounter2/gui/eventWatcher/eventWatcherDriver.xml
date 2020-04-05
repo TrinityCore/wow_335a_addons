@@ -1,0 +1,14 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="eventWatcherDriver.lua" /> 
+
+	<Frame name="BossEncounter2_EventWatcherDriverTemplate" virtual="true" hidden="false">
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.EventWatcherDriver.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.EventWatcherDriver.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</UI>

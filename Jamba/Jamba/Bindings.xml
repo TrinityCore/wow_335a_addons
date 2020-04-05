@@ -1,0 +1,16 @@
+<!--
+Jamba - Jafula's Awesome Multi-Boxer Assistant
+Copyright 2008 - 2010 Michael "Jafula" Miller
+All Rights Reserved
+http://wow.jafula.com/addons/jamba/
+jamba at jafula dot com
+-->
+
+<Bindings>
+	<Binding name="JAMBATEAMINVITE" header="JAMBATEAM">
+		--[[dummy]]
+	</Binding>
+	<Binding name="JAMBATEAMDISBAND">
+		--[[dummy]]
+	</Binding>
+</Bindings>

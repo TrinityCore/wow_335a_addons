@@ -1,0 +1,28 @@
+## Interface: 30300
+## Title: XLoot |cFF77BBFFMonitor|r
+## Notes: A live monitor of loot picked up by yourself and your group
+## Notes-esES: Monitoriza el botín que recoges tanto tú como tu grupo
+## Notes-zhCN: 即时监视你和队伍的拾取
+## Version: 0.71
+## Author: Xuerian
+## X-Category: Inventory
+## X-eMail: sky.shell@gmail.com
+## X-Website: http://wowace.com/index.php/XLoot
+## Dependencies: XLoot
+## X-Curse-Packaged-Version: r107
+## X-Curse-Project-Name: XLootMonitor
+## X-Curse-Project-ID: xloot-monitor
+## X-Curse-Repository-ID: wow/xloot-monitor/mainline
+
+## OptionalDeps: Ace2, DewdropLib, AnchorsAway
+
+locales\enUS.lua
+locales\deDE.lua
+locales\frFR.lua
+locales\koKR.lua
+locales\esES.lua
+locales\zhTW.lua
+locales\zhCN.lua
+
+XLootMonitor.lua
+XLootMonitorOptions.lua

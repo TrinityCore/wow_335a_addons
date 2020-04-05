@@ -1,0 +1,863 @@
+------------------------------------------------------------------------
+r2696 | ackis | 2009-11-26 22:41:31 +0000 (Thu, 26 Nov 2009) | 2 lines
+Changed paths:
+   A /tags/r2696 (from /trunk:2695)
+
+Tagging as r2696
+Tagging for Pompy.
+------------------------------------------------------------------------
+r2695 | torhal | 2009-11-26 15:54:17 +0000 (Thu, 26 Nov 2009) | 6 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Changed addon.Flyaway to MainPanel.filter_menu
+Changed addon.Fly_Rep_WHATEVER to MainPanel.filter_menu.Rep.WHATEVER
+Changed FLYAWAY_WHATEVER to FILTERMENU_WHATEVER
+DoFlyaway() is now ToggleFilterMenu()
+Moved the setting of the scroll frame's attributes to just after its creation - was in addon:InitializeFrame()
+Various other syntax and name changes for clarity.
+------------------------------------------------------------------------
+r2694 | pompachomp | 2009-11-24 20:36:28 +0000 (Tue, 24 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Some minor comment cleanup
+------------------------------------------------------------------------
+r2693 | torhal | 2009-11-24 06:08:06 +0000 (Tue, 24 Nov 2009) | 31 lines
+Changed paths:
+   M /trunk/ARLConfig.lua
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+   M /trunk/Locals/testenUS.lua
+
+Doubled the width of the Obtain panel, and replaced the following localization strings with their counterparts in GlobalStrings.lua:
+Replaced L["Display"] with _G.DISPLAY
+Replaced L["Ok"] with _G.OKAY
+Replaced L["Filter"] with _G.FILTER
+Replaced L["Filters"] with _G.FILTERS
+Replaced L["Version"] with _G.GAME_VERSION_LABEL
+Replaced L["Name"] with _G.NAME
+Replaced L["World Map"] with _G.WORLD_MAP
+Replaced L["Font Size"] with _G.FONT_SIZE
+Replaced L["Off"] with _G.OFF
+Replaced L["Mouse"] with _G.MOUSE_LABEL
+Replaced L["Reputation"] with _G.REPUTATION
+Replaced L["General"] with _G.GENERAL
+Replaced L["Player Type"] with _G.ROLE
+Replaced L["Misc"] and L["Miscellaneous"] with _G.MISCELLANEOUS
+Replaced L["Search"] with _G.SEARCH
+Replaced L["Reset"] with _G.RESET
+Replaced L["Skill"] with _G.SKILL
+Replaced L["Faction"] with _G.FACTION
+Replaced L["Instance"] with _G.INSTANCE
+Replaced L["Raid"] with _G.RAID
+Replaced L["PVP"] with _G.PVP
+Replaced L["Old World"] with _G.EXPANSION_NAME0
+Replaced L["Burning Crusade"] with _G.EXPANSION_NAME1
+Replaced L["Lich King"] with _G.EXPANSION_NAME2
+Replaced L["Armor"] with _G.ARMOR and _G.ARMOR_COLON
+Replaced L["Tanks"] with _G.TANK
+Replaced L["Melee DPS"] with _G.MELEE
+Replaced L["Caster DPS"] with _G.DAMAGER
+Replaced L["Healers"] with _G.HEALER
+Removed the unused localizations L["Apply"] and L["APPLY_DESC"], and L["Wrath of the Lich King"].
+------------------------------------------------------------------------
+r2692 | torhal | 2009-11-23 23:53:19 +0000 (Mon, 23 Nov 2009) | 10 lines
+Changed paths:
+   M /trunk/ARLConfig.lua
+   M /trunk/ARLFrame.lua
+   M /trunk/Locals/testenUS.lua
+
+Moved creation of arlSpellTooltip from addon:InitializeFrame() into the main file body, and changed its parent from MainPanel to UIParent.
+In SetSpellTooltip(): Copy GameTooltip's main settings over to arlSpellTooltip so AddOns which modify GameTooltip will work on it.
+Moved the setting of arlSpellTooltip's scale from addon:DisplayFrame() to SetSpellTooltip(), where the config option will actually work.
+Moved the setting of arlTooltip's scale to after its anchor points have been cleared then set so the config option will actually work.
+Moved TipTac skinning of arlSpellTooltip from addon:InitializeFrame() to SetSpellTooltip().
+In giveDisplay(): Change L["UI Scale"] to _G.UI_SCALE, removed check for addon.Frame's existence, and removed the attempt to set the scale of arlTooltip and arlSpellTooltip.
+Removed "UI Scale" from the localization table.
+Removed some comments for which their code was obvious in function.
+Removed global references to arlTooltip and arlSpellTooltip.
+Added file-local arlTooltip, as there is no reason for it to be global.
+------------------------------------------------------------------------
+r2691 | pompachomp | 2009-11-23 15:10:29 +0000 (Mon, 23 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/RecipeDB/ARL-Cook.lua
+
+Since Blizzard made specific spellid's for a specific faction for the Thanksgiving food, fixed that.  You'll see the correct Thanksgiving food depending on your faction.  Previously only the Alliance ones were in the database.
+------------------------------------------------------------------------
+r2690 | torhal | 2009-11-23 00:03:26 +0000 (Mon, 23 Nov 2009) | 7 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Removed all of the localized Blizzard API from ARLFrame.lua - none of it was needed.
+Added constants for the Flyaway frame's height and widths.
+Renamed addon.DoFlyaway() to DoFlyaway(), moved it into the do block with CreateExpandedPanelCheckButton(), and removed the calls to addon.Flyaway:SetHeight() as unnecessary.
+Moved recursiveReset() to just before addon:InitializeFrame().
+Moved ExpButtonTT into a do block with CreateExpandedPanelCheckButton().
+Moved ExpButtonText to just before HideARL_ExpOptCB().
+Moved the font code to just above the tooltip code, where it is used.
+------------------------------------------------------------------------
+r2689 | pompachomp | 2009-11-22 21:54:14 +0000 (Sun, 22 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/Docs/CHANGES.txt
+
+changelog update.
+------------------------------------------------------------------------
+r2688 | torhal | 2009-11-22 09:56:15 +0000 (Sun, 22 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Moved some code out of the OnClick script for ARL_FilterButton, cleaned it up a bit, and turned it into MainPanel:ToggleState().
+Moved some of the frame creation/initialization out of addon:InitializeFrame() and into the main file body.
+------------------------------------------------------------------------
+r2687 | torhal | 2009-11-22 06:16:09 +0000 (Sun, 22 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Meh. Actually commit the ScrollFrame fix this time.
+------------------------------------------------------------------------
+r2686 | torhal | 2009-11-22 06:16:08 +0000 (Sun, 22 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+In addon:Scan(): Change the existence/visibility check for TradeSkillFrame to be a a check on the scan button's parent instead - TradeSkillFrame will not be visible when using a replacement AddOn.
+The ScrollFrame will no longer refresh its contents when scrolling.
+------------------------------------------------------------------------
+r2685 | torhal | 2009-11-21 21:14:47 +0000 (Sat, 21 Nov 2009) | 5 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+
+Removed addon:ToggleFrame() - its code is now the OnClick handler for the scan button, since that was its primary function - toggling the visibility of the frame was only a side-effect. Also, no longer set the player's profession here, since that is done in addon:Scan().
+Changed the OnClick handler for ARL_ArmorButton to toggle armor filters iteratively rather than individually.
+Changed the OnClick handler for ARL_WeaponButton to toggle weapon filters iteratively rather than individually.
+Renamed addon:GenericMakeCB() to Generic_MakeCheckButton().
+Renamed addon:CreateExpCB() to CreateExpandedPanelCheckButton().
+------------------------------------------------------------------------
+r2684 | pompachomp | 2009-11-21 19:10:10 +0000 (Sat, 21 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/Docs/Wowwiki.txt
+
+doc updates
+------------------------------------------------------------------------
+r2683 | torhal | 2009-11-21 11:42:01 +0000 (Sat, 21 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Removed some localized globals that didn't really need to be.
+In the OnClick script for ARL_ResetButton: Replaced individual class toggles with iterative toggles, and a call to UnitClass("player") with Player["Class"]. Also removed the setting of a non-existent filter.
+------------------------------------------------------------------------
+r2682 | torhal | 2009-11-21 10:00:51 +0000 (Sat, 21 Nov 2009) | 6 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Fixed the First Aid display by altering the number of lines to display in the FauxScrollFrame if the number of entries is less then NUM_RECIPE_LINES.
+ARL_ProgressBar is now MainPanel.progress_bar - yay for not polluting the global namespace!
+SetProgressBar() is now MainPanel:UpdateProgressBar()
+Renamed MainPanel:ResetTitle() to MainPanel:UpdateTitle()
+Re-worked ARL_ClassButton's OnClick script to iteratively toggle class filters rather than doing them individually, and replaced a call to UnitClass("player") with Player["Class"].
+Moved assignment of MainPanel to addon.Frame from addon:InitializeFrame() to the file body.
+------------------------------------------------------------------------
+r2681 | torhal | 2009-11-21 07:06:31 +0000 (Sat, 21 Nov 2009) | 5 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+   M /trunk/Player.lua
+
+In MainPanel:ResetTitle() - Changed to use SetFormattedText() to help curb garbage-generation.
+In Player:SetProfessions() - Explicitly check for false, since a nil table entry will set spell names we don't care about.
+When generating a new entry for the ScrollFrame list, set its is_header member to true if it actually is a header, otherwise ignore it - nil > false
+Changed DEBUG() to addon:DEBUG().
+Made miscellaneous syntax changes and variable/member renames for clarity.
+------------------------------------------------------------------------
+r2680 | torhal | 2009-11-21 04:20:38 +0000 (Sat, 21 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Added a debug function while I continue this overhaul - incidentally, last commit fixed the issue where clicking a list entry did not expand it.
+------------------------------------------------------------------------
+r2679 | torhal | 2009-11-21 04:20:37 +0000 (Sat, 21 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Replaced all occurrences of recipeDB, and made GenerateTooltipContent() more clear in the process.
+------------------------------------------------------------------------
+r2678 | torhal | 2009-11-21 04:20:35 +0000 (Sat, 21 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Moved DisplayStrings to MainPanel.scroll_frame.entries, and changed expandEntry() to MainPanel.scroll_frame:ExpandEntry()
+------------------------------------------------------------------------
+r2677 | pompachomp | 2009-11-20 23:32:26 +0000 (Fri, 20 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Fixed bug where if you had a search filter set when you close ARL and open it up again the search box text wouldn't show the search filter still in progress.  Fixes ticket 833
+------------------------------------------------------------------------
+r2676 | pompachomp | 2009-11-20 15:07:03 +0000 (Fri, 20 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/Docs/CHANGES.txt
+
+changelog update
+------------------------------------------------------------------------
+r2675 | torhal | 2009-11-20 14:48:03 +0000 (Fri, 20 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+
+Check to see if TradeSkillFrame exists before checking to see if it's visible.
+
+------------------------------------------------------------------------
+r2674 | torhal | 2009-11-20 13:22:39 +0000 (Fri, 20 Nov 2009) | 10 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+ARL_RecipeScrollFrame is now MainPanel.scroll_frame, and is created at the top of the file instead of in addon:InitializeFrame()
+RecipeList_Update() is now MainPanel.scroll_frame:Update() - it and all associated code has been re-factored for clarity/efficiency.
+Removed WipeDisplayStrings() and initDisplayStrings() - their code now resides in MainPanel.scroll_frame:Update().
+addon.RecipeItem_OnClick() is now RecipeItem_OnClick(), is defined within a do block in addon:InitializeFrame(), and now utilizes a "self" parameter so it no longer needs to be set as a script from a closure.
+RepFilterSwitch() is now a local function within a do block in addon:InitializeFrame().
+ARL_ProgressBarText now uses :SetFormattedText() rather than :SetText() to help reduce garbage generation.
+Removed the check for the old "Skill" sort type - certainly, nobody is still running a version of ARL that has it.
+Renamed most of the DisplayString members.
+Removed a plethora of whitespace.
+
+------------------------------------------------------------------------
+r2673 | torhal | 2009-11-20 01:24:30 +0000 (Fri, 20 Nov 2009) | 9 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+
+Yanked some code from addon:DisplayFrame() and turned it into MainPanel:SetProfession().
+Removed a large portion of code from MainPanel.mode_button's OnClick script - everything it was doing is handled by the cascade of events initiated by addon:Scan().
+Removed SaveFramePosition() - its code now resides in MainPanel's OnMouseUp script.
+Moved faction_strings and CheckDisplayFaction() into a do block with expandEntry(), since they are both only used there.
+CheckDisplayFactions() now has one parameter, down from two.
+Removed file-local variable currentProfIndex - we now use MainPanel.profession
+Moved SortedProfessions and NUM_PROFESSIONS to the Constants section in the file.
+Removed MainPanel:Close() - calling MainPanel:Hide() does the same thing.
+
+------------------------------------------------------------------------
+r2672 | torhal | 2009-11-19 22:41:14 +0000 (Thu, 19 Nov 2009) | 10 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+
+addon:DisplayFrame() no longer uses function parameters.
+Removed allSpecTable - it was never used.
+Removed sortedRecipeIndex - addon.sorted_recipes is used now.
+Renamed dungeonlocationlist to INSTANCE_LOCATIONS.
+Renamed SortMissingRecipes() to SortRecipeList() - it now has no return value nor parameter.
+Removed the function definitions from sortFuncs, making them their own do-block-local entities.
+Pulled the definition of sortFuncs out of SortRecipeList().
+Changed some comments, removing those for which their code was obvious.
+Altered some syntax throughout.
+
+------------------------------------------------------------------------
+r2671 | torhal | 2009-11-19 09:32:25 +0000 (Thu, 19 Nov 2009) | 4 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Removed the file-local variables customDB, mobDB, questDB, seasonDB, trainerDB, and vendorDB.
+Improved code clarity in various functions.
+Moved narrowFontObj and normalFontObj to just before their first use.
+
+------------------------------------------------------------------------
+r2670 | torhal | 2009-11-19 08:50:50 +0000 (Thu, 19 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/Player.lua
+
+Fixed some accidental globals.
+In GenericCreateButton(): Removed some SetScript() calls which appear to have once been tied to LibRock (SubControl_OnEnter/Leave) but are now unused.
+
+------------------------------------------------------------------------
+r2669 | torhal | 2009-11-19 06:36:22 +0000 (Thu, 19 Nov 2009) | 4 lines
+Changed paths:
+   M /trunk/ARLConfig.lua
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+   M /trunk/Player.lua
+
+Moved addon:ResetGUI() fron ARLFrame.lua to ARLConfig.lua as a file-local function, since it is only used there from the config options.
+Moved the player profession-setting code from addon:OnEnable() to Player.lua as Player:SetProfessions() with a slight re-write - at some point this should be used when a player learns/unlearns professions.
+Added some TODO comments throughout the code for variables set on the Player table which have no current use, and for functions which should be used for more than their current context.
+
+------------------------------------------------------------------------
+r2668 | torhal | 2009-11-19 03:31:00 +0000 (Thu, 19 Nov 2009) | 11 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+   M /trunk/AckisRecipeList.toc
+   A /trunk/Player.lua
+
+The "addon" table now has seven new sub-tables: custom_list, mob_list, quest_list, reputation_list, trainer_list, seasonal_list, and vendor_list - this was done in an effort to be rid of the practice of passing tables to other files via function parameters.
+New file: Player.lua - contains functions which were ripped from other files and re-worked or re-written to support the notion that the player is its own entity.
+addon:DisplayFrame() now only has one parameter, down from nine, due to no longer passing tables between files in that manner.
+Replaced all occurrences of "playerData" with "Player", and all of its subtables named "playerWhatever" are now simply "Whatever".
+Removed addon:SetRepDB() - it was never used anywhere and was only a wrapper function anyway.
+Tidied up CheckDisplayFaction() a bit.
+Removed some "local globals" and replaced them with per-use definitions where applicable.
+SetProgressBar() no longer has a parameter.
+In addon:DisplayFrame(): Removed a call to WipeDisplayStrings(), since initDisplayStrings() calls it itself.
+In AckisRecipeList.lua: Renamed NUM_FLAGS to NUM_FILTER_FLAGS.
+
+------------------------------------------------------------------------
+r2667 | torhal | 2009-11-19 00:42:22 +0000 (Thu, 19 Nov 2009) | 5 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+In ColourSkillLevel(): Re-worked to have three parameters rather than eight - the rest are derived from the new first parameter, which also allowed the removal of needless variables from initDisplayStrings().
+checkFactions() has been re-named to HasProperRepLevel() and was re-written for clarity/efficiency and to have one parameter rather than four.
+SetSortString() has been removed - its re-written code now resides in initDisplayStrings().
+Modified some comments throughout the file.
+
+------------------------------------------------------------------------
+r2666 | torhal | 2009-11-18 06:15:22 +0000 (Wed, 18 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+
+Changed addon:CloseWindow() to MainPanel:Close().
+Removed expandallDisplayStrings() - this function was a carbon-copy of initDisplayStrings(), except that it automatically expanded recipes which had an acquire type. The functionality is now in initDisplayStrings() itself, and is turned on if that function's "expand_acquires" parameter is true.
+
+------------------------------------------------------------------------
+r2665 | torhal | 2009-11-18 03:52:08 +0000 (Wed, 18 Nov 2009) | 5 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+
+Re-worked addon:GetTextDump() to re-use the "text_table" and "acquire_list" tables between calls, and also to assign flag states using the ACQUIRE_NAMES table instead of an ifelse chain.
+In addon:OnInitialize(): Added some separators between the options tables.
+Removed addon:ResetSearch(): It was only ever used in the OnClick handler of ARL_ClearButton, so its code now resides there.
+Changed a plethora of syntax in ARLFrame.lua.
+
+------------------------------------------------------------------------
+r2664 | pompachomp | 2009-11-17 22:11:48 +0000 (Tue, 17 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+Don't print out a comma after the last item displayed.
+------------------------------------------------------------------------
+r2663 | Ackis | 2009-11-17 21:01:39 +0000 (Tue, 17 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/Docs/Main.txt
+
+Add a holiday message to the main page.
+------------------------------------------------------------------------
+r2662 | torhal | 2009-11-17 09:44:09 +0000 (Tue, 17 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Changed all ACQUIRE_WHATEVER to A_WHATEVER.
+Re-wrote the sort functions for clarity/efficiency. Sorting by location now works as intended, falling back to acquisition sort if no criteria are met.
+
+------------------------------------------------------------------------
+r2661 | torhal | 2009-11-17 08:36:05 +0000 (Tue, 17 Nov 2009) | 4 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+
+In addon:TRADE_SKILL_SHOW(): Re-wrote alt-tradeskill code.
+Re-wrote addon:SearchRecipeDB() and moved it into addon:InitializeFrame() as the local function SearchRecipes() to be set as scripts for the search button and search entry box.
+Changed addon.RepFilterSwitch() to RepFilterSwitch()
+
+------------------------------------------------------------------------
+r2660 | pompachomp | 2009-11-16 22:56:38 +0000 (Mon, 16 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/RecipeDB/ARL-Leatherwork.lua
+
+Removed an unused variable.
+------------------------------------------------------------------------
+r2659 | torhal | 2009-11-16 10:27:47 +0000 (Mon, 16 Nov 2009) | 7 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+Re-wrote addon:ToggleExcludeRecipe().
+Moved all of the "this API provided for external AddOns" functions to the end of the file.
+Removed GetIDFromLink() - its code is used directly in the only place it was ever called.
+Added NUM_FLAGS constant, and put it to use in the functions which were using a hard-coded number.
+Modified some syntax.
+Modified some comments.
+
+------------------------------------------------------------------------
+r2658 | torhal | 2009-11-15 05:34:05 +0000 (Sun, 15 Nov 2009) | 7 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+
+Removed RepFilters - they were defined but never used.
+Moved profession_table out of the do block that contained it and InitializeRecipes(), and moved its initialization from that function to addon:OnInitialize() since there was no need to re-define its keys/values, and renamed it to PROFESSION_INITS.
+Renamed InitializeRecipes() to InitializeRecipe() since that is exactly what it does, and re-worked its code. It also no longer resides within a do block.
+Changed addon:AddRecipeData() to no longer check for the existence of RecipeList (it will always exist) and simply return InitializeRecipe() - so now it is merely a wrapper function (wondering if there is actually a reason it should exist)
+In addon:GetExclusions(): Re-worked to minimize table lookups and removed the RecipeDB parameter since it always uses RecipeList.
+
+
+------------------------------------------------------------------------
+r2657 | torhal | 2009-11-15 01:34:58 +0000 (Sun, 15 Nov 2009) | 5 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+   M /trunk/AckisRecipeList.lua
+
+Changed addon:CheckDisplayRecipe() to CanDisplayRecipe() - it's only ever used as a helper function for addon:UpdateFilters().
+In CanDisplayRecipe(): removed function parameters - they were not needed since the information is all file-scope. Removed profession check since it is already performed in addon:UpdateFilters(). Renamed variables "generaldb" and "flags" to "general_filters" and "recipe_flags" for clarity. Added some local variables to reduce some table lookups. Fixed named flag numbering (fixes ticket 864).
+Moved addon:UpdateFilters() into the do block with CanDisplayRecipe() since it only needs to be accessible from that function.
+In addon:UpdateFilters(): Re-write for improved efficiency/readability, removed all parameters as unnecessary.
+ 
+------------------------------------------------------------------------
+r2656 | pompachomp | 2009-11-14 17:19:20 +0000 (Sat, 14 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/RecipeDB/ARL-Engineer.lua
+
+Added a missing vendorid to some engineering recipes.
+------------------------------------------------------------------------
+r2655 | torhal | 2009-11-14 11:54:58 +0000 (Sat, 14 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+CreateRepTable() and CheckReputationDisplay() are now merged into addon:CheckDisplayRecipe().
+addon:ClearRepTable() has been completely removed - I have no idea why it even existed...nuking the reputation filter table and rebuilding it after every scan is...*eyebrow*
+
+------------------------------------------------------------------------
+r2654 | torhal | 2009-11-14 11:10:36 +0000 (Sat, 14 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+Removed the TRADE_WINDOW_OPENED state flag, and it's associated toggling functions - we're using TradeSkillFrame:IsVisible() instead.
+Removed PopulateRepFilters() - its contents now reside within addon:Scan().
+
+------------------------------------------------------------------------
+r2653 | torhal | 2009-11-14 05:36:02 +0000 (Sat, 14 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+Hooray for incorrect table usage! Class filters work again.
+
+------------------------------------------------------------------------
+r2652 | torhal | 2009-11-14 05:19:01 +0000 (Sat, 14 Nov 2009) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+Re-wrote addon:addTradeAcquire() based on code backported from Collectinator.
+Removed addon:GetRecipeLocations() - its functionality is now in addon:addTradeAcquire().
+Added tooltip display for unknown recipes on mobs who drop them, vendors who sell them, and trainers who train them.
+
+------------------------------------------------------------------------
+r2651 | torhal | 2009-11-14 05:00:30 +0000 (Sat, 14 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Jewelcraft.lua
+
+Fixed the recipe ID for Heavy Golden Necklace of Battle. Something else is wrong with it, though, because it still isn't showing up in scans. Also fixed comma-delimiters.
+
+------------------------------------------------------------------------
+r2650 | torhal | 2009-11-14 03:08:27 +0000 (Sat, 14 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+In addon:CheckDisplayRecipe(): Moved the class filter and soft filter checks over to table iterations instead of a bajillion if statements.
+
+------------------------------------------------------------------------
+r2649 | BWMerlin | 2009-11-14 02:38:48 +0000 (Sat, 14 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/RecipeDB/ARL-Inscription.lua
+
+Updated trainer glyph of claw
+------------------------------------------------------------------------
+r2648 | pompachomp | 2009-11-13 17:04:24 +0000 (Fri, 13 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+   M /trunk/Docs/CHANGES.txt
+
+The Text Dump now uses the correct csv syntax and will now look much cleaner in a spreadsheet.
+Update changelog.
+------------------------------------------------------------------------
+r2647 | torhal | 2009-11-12 20:44:12 +0000 (Thu, 12 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+In addon:CheckDisplayRecipe(): Moved the profession check to the top of the function so we can bail out immediately, and replaced 34 "if" checks for filter flags with an iteratitive check over the new HardFilterMap table. Also, did some cleaning of the syntax.
+In CheckReputationDisplay(): Minor cleanup.
+
+------------------------------------------------------------------------
+r2646 | torhal | 2009-11-12 12:53:04 +0000 (Thu, 12 Nov 2009) | 4 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+The following functions no longer exist, since they were only used in addon:Scan() and their code now resides there: addon:ScanForKnownRecipes(), ResetKnown(), and GetTradeSpecialty().
+Assigned spellIDs as the values in the specialty tables instead of "true". This allows the removal of GetSpellLink() and other sortid code when assigning the specialty during a scan.
+Removed various checks for the existence of addon.Frame, since it will always exist now.
+
+------------------------------------------------------------------------
+r2645 | torhal | 2009-11-12 07:51:52 +0000 (Thu, 12 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Changed OnClick script for the mode_button to automatically switch to and then scan the appropriate tradeskill. If the window was not visible before switching, hide it. No more annoying "You have not yet scanned this tradeskill" message.
+
+
+------------------------------------------------------------------------
+r2644 | torhal | 2009-11-12 07:37:26 +0000 (Thu, 12 Nov 2009) | 7 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+SetFramePosition() is now MainPanel:SetPosition()
+Moved MainPanel methods out of InitializeFrame() and into the main file body.
+Moved creation of MainPanel out of InitializeFrame() and into the main file body.
+Removed "playerFaction" and "exclude" parameters from GenerateTooltipContent(), since that information is available from the file scope. Updated both places where it is used.
+ARL_SwitcherButton is now MainPanel.mode_button.
+SetSwitcherTexture() has been re-written and is now mode_button:ChangeTexture().
+
+------------------------------------------------------------------------
+r2643 | torhal | 2009-11-11 07:13:17 +0000 (Wed, 11 Nov 2009) | 5 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+Moved all of the database-related tables into file scope.
+Moved creation of the scan button from addon:OnEnable() to addon:OnInitialize().
+All player initialization is done from within addon:OnEnable() instead of addon:Scan(), and no longer has its own function.
+GetKnownProfessions() no longer exists - its code is done directly within the player initialization.
+
+------------------------------------------------------------------------
+r2642 | pompachomp | 2009-11-09 15:56:43 +0000 (Mon, 09 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Blacksmith.lua
+
+Changed some flags around:
+Hard Khorium Battlefists to Recipe BoE->Recipe BoP
+Sunblessed Breastplate to Recipe BoP->Recipe BoE
+------------------------------------------------------------------------
+r2641 | pompachomp | 2009-11-09 15:12:52 +0000 (Mon, 09 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Alchemy.lua
+   M /trunk/RecipeDB/ARL-Inscription.lua
+
+Fixed a flag for Shrouding Potion in the Alchemy database, F_QUEST->F_VENDOR
+Fixed skill levels for: Glyph of Turn Evil, Glyph of Scourge Imprisonment, Glyph of Stormstrike, Glyph of Focus, Glyph of Claw.
+------------------------------------------------------------------------
+r2640 | pompachomp | 2009-11-09 03:31:37 +0000 (Mon, 09 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Enchant.lua
+   M /trunk/RecipeDB/ARL-Inscription.lua
+
+Corrected skill level for Enchant Cloak - Minor Protection
+Added missing acquire data to Glyph of Claw
+------------------------------------------------------------------------
+r2639 | pompachomp | 2009-11-09 03:19:23 +0000 (Mon, 09 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/RecipeDB/ARL-Alchemy.lua
+
+Fixed a flag for Sneaking Potion in the Alchemy database, F_QUEST->F_VENDOR
+------------------------------------------------------------------------
+r2638 | pompachomp | 2009-11-09 01:32:04 +0000 (Mon, 09 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/Locals/testenUS.lua
+   M /trunk/RecipeDB/ARL-Blacksmith.lua
+   M /trunk/RecipeDB/ARL-Vendor.lua
+
+Added a missing vendor to the vendor database, 
+Vharr <Superior Weaponsmith>
+Added missing acquire data to the Massive Iron Axe recipe in the Blacksmithing database.
+------------------------------------------------------------------------
+r2637 | pompachomp | 2009-11-09 00:43:11 +0000 (Mon, 09 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/Docs/Wowwiki.txt
+
+some changes to wowwiki's arl page.
+------------------------------------------------------------------------
+r2636 | pompachomp | 2009-11-08 15:53:18 +0000 (Sun, 08 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+   M /trunk/AckisRecipeList.toc
+
+Removed some left behind references to LibBetterBlizzOptions
+------------------------------------------------------------------------
+r2635 | Ackis | 2009-11-06 19:23:19 +0000 (Fri, 06 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+Manual changelog off.
+------------------------------------------------------------------------
+r2633 | Ackis | 2009-11-06 19:19:35 +0000 (Fri, 06 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/Docs/CHANGES.txt
+   M /trunk/embeds.xml
+
+Few minor doc update, removal of LBBO which I thought I took out a while ago, and change log update.
+------------------------------------------------------------------------
+r2632 | Ackis | 2009-11-06 19:07:45 +0000 (Fri, 06 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLConfig.lua
+
+Fix a really old bug no one complained about.  You can now customize what types of entries get shown on the map dumps.
+------------------------------------------------------------------------
+r2631 | pompachomp | 2009-11-05 20:56:42 +0000 (Thu, 05 Nov 2009) | 4 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Blacksmith.lua
+   M /trunk/RecipeDB/ARL-Jewelcraft.lua
+
+
+Ticket 826, refining the blacksmithing database.
+Ticket 846, refining the jewelcrafting database.
+
+------------------------------------------------------------------------
+r2630 | pompachomp | 2009-11-05 08:52:33 +0000 (Thu, 05 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Enchant.lua
+   M /trunk/RecipeDB/ARL-Jewelcraft.lua
+
+
+Ticket 825, refining the enchanting database.
+Ticket 846, refining the jewelcrafting database.
+------------------------------------------------------------------------
+r2629 | pompachomp | 2009-11-05 01:28:51 +0000 (Thu, 05 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+actually fix the mana restoration check.
+------------------------------------------------------------------------
+r2628 | pompachomp | 2009-11-04 20:20:47 +0000 (Wed, 04 Nov 2009) | 4 lines
+Changed paths:
+   M /trunk/ARLDatamine.lua
+   M /trunk/RecipeDB/ARL-Blacksmith.lua
+   M /trunk/RecipeDB/ARL-Enchant.lua
+   M /trunk/RecipeDB/ARL-Jewelcraft.lua
+
+Added 'scan_data.tank = true' to the 'expertise' check
+Ticket 825, refining the enchanting database.
+Ticket 826, refining the blacksmithing database.
+Ticket 846, refining the jewelcrafting database.
+------------------------------------------------------------------------
+r2627 | pompachomp | 2009-11-04 18:59:32 +0000 (Wed, 04 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+Changed check from "mana every 5 seconds" to "mana per 5 sec."
+------------------------------------------------------------------------
+r2626 | pompachomp | 2009-11-04 18:52:08 +0000 (Wed, 04 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/RecipeDB/ARL-Engineer.lua
+
+Added missing acquire data for some engineering recipes from Timofey Oshenko, Ticket 575
+------------------------------------------------------------------------
+r2625 | pompachomp | 2009-11-03 22:17:38 +0000 (Tue, 03 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/Docs/Main.txt
+   M /trunk/Docs/Wowwiki.txt
+
+Reword the description.
+------------------------------------------------------------------------
+r2624 | pompachomp | 2009-11-03 21:38:36 +0000 (Tue, 03 Nov 2009) | 3 lines
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+Fixed an item id in the SPELL_ITEM table.
+Added some more leatherworking item id's to the DO_NOT_SCAN table.
+Added Leatherworking, Alchemy, and Engineering to the NO_PLAYER_FLAG table.
+------------------------------------------------------------------------
+r2623 | pompachomp | 2009-11-03 15:05:25 +0000 (Tue, 03 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+added blacksmithing, inscription, enchanting, and tailoring ids to the NO_PLAYER_FLAG table.
+------------------------------------------------------------------------
+r2622 | pompachomp | 2009-11-03 05:34:15 +0000 (Tue, 03 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+Check for "Fist Weapon" not just "Fist"
+------------------------------------------------------------------------
+r2621 | pompachomp | 2009-11-03 02:23:20 +0000 (Tue, 03 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+Added jewelcrafting and cooking stuff to the NO_PLAYER_FLAG table.
+------------------------------------------------------------------------
+r2620 | pompachomp | 2009-11-02 18:24:51 +0000 (Mon, 02 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/Docs/CHANGES.txt
+
+changelog update.
+------------------------------------------------------------------------
+r2619 | pompachomp | 2009-11-02 11:34:20 +0000 (Mon, 02 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/ARLDatamine.lua
+   M /trunk/RecipeDB/ARL-Jewelcraft.lua
+
+Added all the wotlk epic gems to the SPELL_ITEM table in the dataminer.
+Fixed the item bind flag for the epic gems from BoP Item->BoE Item.
+------------------------------------------------------------------------
+r2618 | pompachomp | 2009-11-02 07:02:42 +0000 (Mon, 02 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Enchant.lua
+
+Ticket 825, refining the enchanting database.
+
+------------------------------------------------------------------------
+r2617 | pompachomp | 2009-11-02 03:34:17 +0000 (Mon, 02 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+Instead of checking for "Off-hand", check for "Held In Off-hand"
+------------------------------------------------------------------------
+r2616 | pompachomp | 2009-11-02 00:28:44 +0000 (Mon, 02 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Inscription.lua
+
+Ticket 810, refining the inscription database.
+
+------------------------------------------------------------------------
+r2615 | pompachomp | 2009-11-01 08:08:28 +0000 (Sun, 01 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/ARLDatamine.lua
+   M /trunk/RecipeDB/ARL-Engineer.lua
+
+Really fix the "Off Hand" special case check
+------------------------------------------------------------------------
+r2614 | torhal | 2009-11-01 06:37:56 +0000 (Sun, 01 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+In addon:ScanToolTip(): If the left-side text is "Projectile", flag as "Ammo".
+
+------------------------------------------------------------------------
+r2613 | pompachomp | 2009-11-01 04:11:35 +0000 (Sun, 01 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/Docs/CHANGES.txt
+   M /trunk/RecipeDB/ARL-Enchant.lua
+
+Removed some unused local variables.
+Changelog update.
+------------------------------------------------------------------------
+r2612 | pompachomp | 2009-11-01 03:09:06 +0000 (Sun, 01 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/RecipeDB/ARL-Alchemy.lua
+   M /trunk/RecipeDB/ARL-Enchant.lua
+   M /trunk/RecipeDB/ARL-Inscription.lua
+   M /trunk/RecipeDB/ARL-Leatherwork.lua
+
+Removed some version checks.
+------------------------------------------------------------------------
+r2611 | pompachomp | 2009-11-01 02:54:28 +0000 (Sun, 01 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Engineer.lua
+
+much, much more of-Ticket 807, refining the engineering database.
+
+------------------------------------------------------------------------
+r2610 | pompachomp | 2009-11-01 00:55:53 +0000 (Sun, 01 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Engineer.lua
+
+more of-Ticket 807, refining the engineering database.
+
+------------------------------------------------------------------------
+r2609 | Ackis | 2009-10-29 21:22:58 +0000 (Thu, 29 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/AckisRecipeList.toc
+   M /trunk/Docs/Main.txt
+   M /trunk/Docs/Wowwiki.txt
+   M /trunk/RecipeDB/ARL-Leatherwork.lua
+
+Update main page to link to forums and upate the wowwiki entry.
+------------------------------------------------------------------------
+r2608 | pompachomp | 2009-10-29 20:49:30 +0000 (Thu, 29 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Engineer.lua
+
+more of-Ticket 807, refining the engineering database.
+
+------------------------------------------------------------------------
+r2607 | pompachomp | 2009-10-29 20:24:42 +0000 (Thu, 29 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+added some more items that won't cache to the DO_NOT_SCAN table.
+------------------------------------------------------------------------
+r2606 | pompachomp | 2009-10-29 19:24:46 +0000 (Thu, 29 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+added more blacksmithing items to the DO_NOT_SCAN table
+------------------------------------------------------------------------
+r2605 | pompachomp | 2009-10-28 20:59:13 +0000 (Wed, 28 Oct 2009) | 3 lines
+Changed paths:
+   M /trunk/ARLDatamine.lua
+   M /trunk/RecipeDB/ARL-Alchemy.lua
+   M /trunk/RecipeDB/ARL-Blacksmith.lua
+   M /trunk/RecipeDB/ARL-Engineer.lua
+
+Ticket 807, refining the engineering database.
+Ticket 847, refining the alchemy database.
+Ticket 826, refining the blacksmithing database
+------------------------------------------------------------------------
+r2604 | torhal | 2009-10-28 03:45:19 +0000 (Wed, 28 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/Docs/Main.txt
+
+Some re-wording of the main description (we/us/Ackis instead of I...etc).
+
+------------------------------------------------------------------------
+r2603 | pompachomp | 2009-10-27 23:24:19 +0000 (Tue, 27 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/ARLDatamine.lua
+   M /trunk/RecipeDB/ARL-FirstAid.lua
+
+Fixed incorrect skill levels for Netherweave Bandage and Heavy Netherweave Bandage, changed the orange skill level for both, Fix ticket 853
+Added some more alchemy items to the DO_NOT_SCAN table that I apparently missed.
+------------------------------------------------------------------------
+r2602 | pompachomp | 2009-10-27 17:25:49 +0000 (Tue, 27 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/RecipeDB/ARL-Tailor.lua
+
+add/remove missing/incorrect trainer data for Meilosh, in the tailoring database.
+------------------------------------------------------------------------
+r2601 | pompachomp | 2009-10-27 16:53:43 +0000 (Tue, 27 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+Fixed the special case Off-hand check.
+------------------------------------------------------------------------
+r2600 | pompachomp | 2009-10-27 16:51:05 +0000 (Tue, 27 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/RecipeDB/ARL-Cook.lua
+
+added some more missing flags in the cooking db
+------------------------------------------------------------------------
+r2599 | pompachomp | 2009-10-27 05:33:28 +0000 (Tue, 27 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Cook.lua
+   M /trunk/RecipeDB/ARL-Engineer.lua
+
+Fixed some incorrect data n the engineering database.
+Fixed a variable name in the cooking database.
+------------------------------------------------------------------------
+r2598 | torhal | 2009-10-26 05:59:05 +0000 (Mon, 26 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/AckisRecipeList.lua
+
+Changed the recipe tooltip's default anchor to be the right side of the list panel instead of the mouse cursor.
+
+------------------------------------------------------------------------
+r2597 | pompachomp | 2009-10-26 04:19:19 +0000 (Mon, 26 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/RecipeDB/ARL-Alchemy.lua
+
+Added some missing flags to the Alchemy database.
+
+------------------------------------------------------------------------
+r2596 | torhal | 2009-10-26 02:24:31 +0000 (Mon, 26 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/ARLFrame.lua
+
+Added "The Ashen Verdict" to the filter GUI.
+
+------------------------------------------------------------------------
+r2595 | pompachomp | 2009-10-25 17:25:04 +0000 (Sun, 25 Oct 2009) | 3 lines
+Changed paths:
+   M /trunk/ARLDatamine.lua
+
+Added some engineering items to the DO_NOT_SCAN table.
+Fixed some entries in the SPELL_ITEM table.
+Looks like blizzard changed some "Requires *" line in the tt's, so.. "requires gnomish engineering"->"requires gnomish engineer" and "requires goblin engineering"->"requires goblin engineer"
+------------------------------------------------------------------------

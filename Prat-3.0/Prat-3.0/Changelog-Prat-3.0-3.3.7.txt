@@ -1,0 +1,145 @@
+------------------------------------------------------------------------
+r425 | sylvanaar | 2010-03-11 03:12:44 +0000 (Thu, 11 Mar 2010) | 1 line
+Changed paths:
+   A /tags/3.3.7 (from /trunk:424)
+
+Tagging as 3.3.7
+------------------------------------------------------------------------
+r424 | sylvanaar | 2010-03-06 05:15:08 +0000 (Sat, 06 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+
+removed some debug
+------------------------------------------------------------------------
+r423 | sylvanaar | 2010-03-06 05:15:06 +0000 (Sat, 06 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+   M /trunk/modules/Sounds.lua
+   M /trunk/services/chatsections.lua
+
+replace all strsplit calls which separated playername and servername, replaced with match expression
+------------------------------------------------------------------------
+r422 | sylvanaar | 2010-03-06 04:02:28 +0000 (Sat, 06 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+
+restore the playername rechecking feature since its still needed, and restore the double entry (with and without server) in bgs
+------------------------------------------------------------------------
+r421 | sylvanaar | 2010-03-06 03:47:20 +0000 (Sat, 06 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+
+make tab completions show server name in the list of possible completions, but not include the server name in the completion result placed into the editbox
+------------------------------------------------------------------------
+r420 | sylvanaar | 2010-03-06 03:47:18 +0000 (Sat, 06 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+   M /trunk/modules/ServerNames.lua
+
+fix the formatting of the server name
+------------------------------------------------------------------------
+r419 | sylvanaar | 2010-03-06 03:47:16 +0000 (Sat, 06 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+   M /trunk/modules/ServerNames.lua
+
+changes to allow formatting of the servername in the tab completion
+------------------------------------------------------------------------
+r418 | sylvanaar | 2010-03-06 03:47:15 +0000 (Sat, 06 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+
+partial changes to fix up the tab complete support for server names
+------------------------------------------------------------------------
+r416 | sylvanaar | 2010-02-25 20:41:43 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Sounds.lua
+
+fix an error which was preventing the changing of the group_leader sound option
+------------------------------------------------------------------------
+r414 | sylvanaar | 2010-02-25 11:13:09 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+
+fix an incorrect --@debug@ token
+------------------------------------------------------------------------
+r413 | sylvanaar | 2010-02-24 22:22:48 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Sounds.lua
+
+added PARTY_GUIDE and made RAID_LEADER and PARTY_LEADER all use the GROUP_LEAD type.
+------------------------------------------------------------------------
+r412 | sylvanaar | 2010-02-24 22:12:35 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Sounds.lua
+
+add a group_leader sound
+------------------------------------------------------------------------
+r409 | sylvanaar | 2010-02-24 02:47:28 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Prat-3.0.toc
+   A /trunk/fonts
+   A /trunk/fonts/Bazooka.ttf
+   A /trunk/fonts/CRYSRG__.TTF
+   A /trunk/fonts/DORISPP.TTF
+   A /trunk/fonts/Enigma__2.TTF
+   A /trunk/fonts/JAi_____.TTF
+   A /trunk/fonts/LiberationSans-Regular.ttf
+   A /trunk/fonts/LiberationSerif-Regular.ttf
+   A /trunk/fonts/MONOFONT.TTF
+   A /trunk/fonts/WHITRABT.TTF
+   A /trunk/fonts/font info and licenses
+   A /trunk/fonts/font info and licenses/Chica Mono Read Me
+   A /trunk/fonts/font info and licenses/Enigmatic - legal_en.txt
+   A /trunk/fonts/font info and licenses/Liberation - COPYING.txt
+   A /trunk/fonts/font info and licenses/Liberation - License.txt
+   A /trunk/fonts/font info and licenses/Monofonto-READ_ME.TXT
+   A /trunk/fonts/font info and licenses/ShyFoundry Freeware EULA (for SF... fonts).pdf
+   A /trunk/fonts/font info and licenses/WHITRABT.TXT
+   A /trunk/fonts/font info and licenses/crystal-readme.txt
+   A /trunk/fonts/fonts.lua
+   A /trunk/fonts/includes.xml
+
+now includes added a standard, chat-friendly font collection. this includes 3 from SharedMedia, 2 from SharedMediaAdditionalFonts, and 4 additional free-use mono-spaced fonts. I am still tuning the collection, so some may be added or removed before this change is released.
+------------------------------------------------------------------------
+r407 | sylvanaar | 2010-02-09 02:14:04 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ChatFrames.lua
+
+add localizations for the chatframes module 
+------------------------------------------------------------------------
+r406 | sylvanaar | 2010-02-09 01:54:35 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/services/chatsections.lua
+
+restored the DEV change, and fixed the debug tags
+------------------------------------------------------------------------
+r405 | sylvanaar | 2010-02-09 00:15:00 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/modules/ChannelNames.lua
+   M /trunk/services/chatsections.lua
+
+restore the preprocessing tags that i messed up by checking in an output file
+------------------------------------------------------------------------
+r404 | sylvanaar | 2010-02-09 00:06:53 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CopyChat.lua
+
+make x-realm chat copy work
+------------------------------------------------------------------------
+r403 | sylvanaar | 2010-02-08 12:15:29 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/services/chatsections.lua
+
+support the DEV chat flag
+------------------------------------------------------------------------
+r402 | sylvanaar | 2010-02-08 11:01:32 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/modules/ChannelNames.lua
+   M /trunk/services/chatsections.lua
+   M /trunk/services/events.lua
+
+created a new global chat type and event: CHAT_MSG_PARTY_GUIDE which is identical to CHAT_MSG_PARTY_LEADER. The corresponding chat type PARTY_GUIDE has its translation extracted from CHAT_PARTY_GUIDE_GET. Updated the channelnames module to support PARTY_GUIDE, other modules may need to be updated as well.
+------------------------------------------------------------------------

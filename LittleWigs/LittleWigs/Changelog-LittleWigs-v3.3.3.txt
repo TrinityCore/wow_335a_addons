@@ -1,0 +1,186 @@
+------------------------------------------------------------------------
+r720 | ulic | 2010-01-15 20:53:31 +0000 (Fri, 15 Jan 2010) | 2 lines
+Changed paths:
+   A /tags/v3.3.3 (from /trunk:719)
+
+Tagging as v3.3.3
+- Fixes for the dGuid error
+------------------------------------------------------------------------
+r719 | ulic | 2010-01-14 19:14:05 +0000 (Thu, 14 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/Howling_Fjord/King_Ymiron.lua
+   M /trunk/Storm_Peaks/General_Bjarngrim.lua
+   M /trunk/Stratholme/Mal'Ganis.lua
+
+Adjust parameter positioning
+------------------------------------------------------------------------
+r717 | ulic | 2010-01-06 23:03:00 +0000 (Wed, 06 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/Dalaran/The_Violet_Hold.lua
+
+Corrected error reported by cardo1410
+------------------------------------------------------------------------
+r716 | ulic | 2010-01-05 21:50:00 +0000 (Tue, 05 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/Coldarra/Grand_Magus_Telestra.lua
+
+Drycode fix for split warnings on the splits themselves :)
+------------------------------------------------------------------------
+r715 | ulic | 2010-01-05 15:49:13 +0000 (Tue, 05 Jan 2010) | 2 lines
+Changed paths:
+   M /trunk/Dalaran/The_Violet_Hold.lua
+
+- Added the new translations for the stuff [Ammo] created
+- Will now enable on any bosses and Sinclari
+------------------------------------------------------------------------
+r714 | ammo | 2010-01-04 07:00:11 +0000 (Mon, 04 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/Dalaran/The_Violet_Hold.lua
+
+improve portal handling for violet hold, ulic/yoshimo please fix this in the trsnslator thing as well.
+------------------------------------------------------------------------
+r713 | ulic | 2009-12-23 15:15:32 +0000 (Wed, 23 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Howling_Fjord/Gortok_Palehoof.lua
+
+Fix NPC ID in Death()
+------------------------------------------------------------------------
+r712 | 7destiny | 2009-12-22 16:36:05 +0000 (Tue, 22 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Storm_Peaks/Loken.lua
+
+Fix Loken ID
+------------------------------------------------------------------------
+r711 | ulic | 2009-12-22 15:00:16 +0000 (Tue, 22 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Frozen_Halls/Scourgelord_Tyrannus.lua
+
+Arguments were made, add the icon for Overlord's Brand
+------------------------------------------------------------------------
+r709 | ulic | 2009-12-17 02:29:12 +0000 (Thu, 17 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Icecrown/Grand_Champions.lua
+
+Trial not Trail of the Champion
+------------------------------------------------------------------------
+r708 | ulic | 2009-12-16 23:51:24 +0000 (Wed, 16 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Coldarra/Anomalus.lua
+   M /trunk/Coldarra/Grand_Magus_Telestra.lua
+   M /trunk/Coldarra/Keristrasza.lua
+   M /trunk/Coldarra/Ley-Guardian_Eregos.lua
+   M /trunk/Coldarra/Locales/deDE.lua
+   M /trunk/Coldarra/Locales/esES.lua
+   M /trunk/Coldarra/Locales/esMX.lua
+   M /trunk/Coldarra/Locales/frFR.lua
+   M /trunk/Coldarra/Locales/koKR.lua
+   M /trunk/Coldarra/Locales/ruRU.lua
+   M /trunk/Coldarra/Locales/zhCN.lua
+   M /trunk/Coldarra/Locales/zhTW.lua
+   M /trunk/Dalaran/Ichoron.lua
+   M /trunk/Dalaran/Locales/deDE.lua
+   M /trunk/Dalaran/Locales/esES.lua
+   M /trunk/Dalaran/Locales/esMX.lua
+   M /trunk/Dalaran/Locales/frFR.lua
+   M /trunk/Dalaran/Locales/koKR.lua
+   M /trunk/Dalaran/Locales/ruRU.lua
+   M /trunk/Dalaran/Locales/zhCN.lua
+   M /trunk/Dalaran/Locales/zhTW.lua
+   M /trunk/Dalaran/The_Violet_Hold.lua
+   M /trunk/Dalaran/Xevozz.lua
+   M /trunk/Dragonblight/Elder_Nadox.lua
+   M /trunk/Dragonblight/Krik'thir_the_Gatewatcher.lua
+   M /trunk/Dragonblight/Locales/deDE.lua
+   M /trunk/Dragonblight/Locales/esES.lua
+   M /trunk/Dragonblight/Locales/esMX.lua
+   M /trunk/Dragonblight/Locales/frFR.lua
+   M /trunk/Dragonblight/Locales/koKR.lua
+   M /trunk/Dragonblight/Locales/ruRU.lua
+   M /trunk/Dragonblight/Locales/zhCN.lua
+   M /trunk/Dragonblight/Locales/zhTW.lua
+   M /trunk/Dragonblight/Prince_Taldaram.lua
+   M /trunk/Frozen_Halls/Bronjahm.lua
+   M /trunk/Frozen_Halls/Devourer_of_Souls.lua
+   M /trunk/Frozen_Halls/Falric_and_Marwyn.lua
+   M /trunk/Frozen_Halls/Forgemaster_Garfrost.lua
+   M /trunk/Frozen_Halls/Krick_and_Ick.lua
+   M /trunk/Frozen_Halls/Locales/deDE.lua
+   M /trunk/Frozen_Halls/Locales/esES.lua
+   M /trunk/Frozen_Halls/Locales/esMX.lua
+   M /trunk/Frozen_Halls/Locales/frFR.lua
+   M /trunk/Frozen_Halls/Locales/koKR.lua
+   M /trunk/Frozen_Halls/Locales/ruRU.lua
+   M /trunk/Frozen_Halls/Locales/zhCN.lua
+   M /trunk/Frozen_Halls/Locales/zhTW.lua
+   M /trunk/Frozen_Halls/Scourgelord_Tyrannus.lua
+   M /trunk/Howling_Fjord/Controller_and_Constructor.lua
+   M /trunk/Howling_Fjord/Gortok_Palehoof.lua
+   M /trunk/Howling_Fjord/King_Ymiron.lua
+   M /trunk/Howling_Fjord/Locales/deDE.lua
+   M /trunk/Howling_Fjord/Locales/esES.lua
+   M /trunk/Howling_Fjord/Locales/esMX.lua
+   M /trunk/Howling_Fjord/Locales/frFR.lua
+   M /trunk/Howling_Fjord/Locales/koKR.lua
+   M /trunk/Howling_Fjord/Locales/ruRU.lua
+   M /trunk/Howling_Fjord/Locales/zhCN.lua
+   M /trunk/Howling_Fjord/Locales/zhTW.lua
+   M /trunk/Howling_Fjord/Skadi_the_Ruthless.lua
+   M /trunk/Howling_Fjord/Svala_Sorrowgrave.lua
+   M /trunk/Icecrown/Argent_Confessor_Paletress.lua
+   M /trunk/Icecrown/Eadric_the_Pure.lua
+   M /trunk/Icecrown/Grand_Champions.lua
+   M /trunk/Icecrown/Locales/deDE.lua
+   M /trunk/Icecrown/Locales/esES.lua
+   M /trunk/Icecrown/Locales/esMX.lua
+   M /trunk/Icecrown/Locales/frFR.lua
+   M /trunk/Icecrown/Locales/koKR.lua
+   M /trunk/Icecrown/Locales/ruRU.lua
+   M /trunk/Icecrown/Locales/zhCN.lua
+   M /trunk/Icecrown/Locales/zhTW.lua
+   M /trunk/Storm_Peaks/General_Bjarngrim.lua
+   M /trunk/Storm_Peaks/Krystallus.lua
+   M /trunk/Storm_Peaks/Locales/deDE.lua
+   M /trunk/Storm_Peaks/Locales/esES.lua
+   M /trunk/Storm_Peaks/Locales/esMX.lua
+   M /trunk/Storm_Peaks/Locales/frFR.lua
+   M /trunk/Storm_Peaks/Locales/koKR.lua
+   M /trunk/Storm_Peaks/Locales/ruRU.lua
+   M /trunk/Storm_Peaks/Locales/zhCN.lua
+   M /trunk/Storm_Peaks/Locales/zhTW.lua
+   M /trunk/Storm_Peaks/Tribunal_of_Ages.lua
+   M /trunk/Stratholme/Locales/deDE.lua
+   M /trunk/Stratholme/Locales/esES.lua
+   M /trunk/Stratholme/Locales/esMX.lua
+   M /trunk/Stratholme/Locales/frFR.lua
+   M /trunk/Stratholme/Locales/koKR.lua
+   M /trunk/Stratholme/Locales/ruRU.lua
+   M /trunk/Stratholme/Locales/zhCN.lua
+   M /trunk/Stratholme/Locales/zhTW.lua
+   M /trunk/Stratholme/Mal'Ganis.lua
+   M /trunk/Zul'Drak/Drakkari_Colossus.lua
+   M /trunk/Zul'Drak/Gal'darah.lua
+   M /trunk/Zul'Drak/Locales/deDE.lua
+   M /trunk/Zul'Drak/Locales/esES.lua
+   M /trunk/Zul'Drak/Locales/esMX.lua
+   M /trunk/Zul'Drak/Locales/frFR.lua
+   M /trunk/Zul'Drak/Locales/koKR.lua
+   M /trunk/Zul'Drak/Locales/ruRU.lua
+   M /trunk/Zul'Drak/Locales/zhCN.lua
+   M /trunk/Zul'Drak/Locales/zhTW.lua
+   M /trunk/common.lua
+
+Switch to handle locales the same way BW modules do
+------------------------------------------------------------------------
+r707 | ulic | 2009-12-15 00:45:43 +0000 (Tue, 15 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/Frozen_Halls/Scourgelord_Tyrannus.lua
+
+- Overlords Brand message & bar is back
+- Mark of Rimefang now gives player flash/shake
+------------------------------------------------------------------------
+r706 | ulic | 2009-12-14 22:24:45 +0000 (Mon, 14 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Frozen_Halls/Scourgelord_Tyrannus.lua
+
+Really make brand only for the player
+------------------------------------------------------------------------

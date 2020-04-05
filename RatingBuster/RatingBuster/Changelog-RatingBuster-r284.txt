@@ -1,0 +1,71 @@
+------------------------------------------------------------------------
+r284 | Whitetooth | 2010-04-28 03:39:19 +0000 (Wed, 28 Apr 2010) | 6 lines
+Changed paths:
+   M /trunk/About RatingBuster.txt
+   M /trunk/RatingBuster.lua
+
+1.5.0
+- NEW: Support for RatingBuster_AlwaysBuffed: http://wow.curse.com/downloads/wow-addons/details/ratingbuster-alwaysbuffed.aspx
+- Rating options: "Show Spell Hit" changed to "Show Spell Hit/Haste", and "Show Physical Hit" changed to "Show Physical Hit/Haste"
+- Stat Breakdown: Show MP5 from Int will now show effects from Replenishment
+- Stat Summary: Added Expertise Rating Summary
+- Localization updates
+------------------------------------------------------------------------
+r283 | StingerSoft | 2010-04-10 07:49:55 +0000 (Sat, 10 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/RatingBuster-Locale-ruRU.lua
+
+- ruRU update
+------------------------------------------------------------------------
+r282 | Whitetooth | 2010-04-10 06:44:00 +0000 (Sat, 10 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/RatingBuster-Locale-deDE.lua
+   M /trunk/RatingBuster-Locale-enUS.lua
+   M /trunk/RatingBuster-Locale-esES.lua
+   M /trunk/RatingBuster-Locale-frFR.lua
+   M /trunk/RatingBuster-Locale-koKR.lua
+   M /trunk/RatingBuster-Locale-ruRU.lua
+   M /trunk/RatingBuster-Locale-zhCN.lua
+   M /trunk/RatingBuster-Locale-zhTW.lua
+   M /trunk/RatingBuster.lua
+
+- Stat Summary: Added Expertise Rating Summary
+------------------------------------------------------------------------
+r281 | Whitetooth | 2010-04-10 06:29:35 +0000 (Sat, 10 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/RatingBuster.toc
+
+- #@no-lib-strip@ added to TOC
+------------------------------------------------------------------------
+r280 | Whitetooth | 2010-04-10 05:51:56 +0000 (Sat, 10 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/RatingBuster.lua
+
+- Stat Breakdown: Show MP5 from Int will now show effects from Replenishment
+------------------------------------------------------------------------
+r279 | Whitetooth | 2010-04-09 20:36:57 +0000 (Fri, 09 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/RatingBuster.lua
+
+- Support for RatingBuster_AlwaysBuffed
+------------------------------------------------------------------------
+r278 | Whitetooth | 2010-04-08 20:07:56 +0000 (Thu, 08 Apr 2010) | 1 line
+Changed paths:
+   M /trunk/RatingBuster-Locale-deDE.lua
+   M /trunk/RatingBuster-Locale-enUS.lua
+   M /trunk/RatingBuster-Locale-esES.lua
+   M /trunk/RatingBuster-Locale-frFR.lua
+   M /trunk/RatingBuster-Locale-koKR.lua
+   M /trunk/RatingBuster-Locale-ruRU.lua
+   M /trunk/RatingBuster-Locale-zhCN.lua
+   M /trunk/RatingBuster-Locale-zhTW.lua
+   M /trunk/RatingBuster.lua
+
+- Rating options: "Show Spell Hit" changed to "Show Spell Hit/Haste", and "Show Physical Hit" changed to "Show Physical Hit/Haste"
+------------------------------------------------------------------------
+r277 | Whitetooth | 2010-03-26 15:32:35 +0000 (Fri, 26 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/About RatingBuster.txt
+
+- doc update
+------------------------------------------------------------------------

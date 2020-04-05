@@ -1,0 +1,178 @@
+3.3.0.28-Beta
+    Add wrath enchants panel
+    Seems we were missing some enchants
+
+3.3.0.27-Beta
+    Add shatters to DE panel
+    Fucking scroll/enchant names don't always match up
+    Make transmutes panels a bit betterer
+    Seems you can transmute the epic red gem
+
+3.3.0.26-Beta
+    Fix shitty change in AH panel textures
+    No more two-ink glyphs
+    New glyphs
+    add Fire Leaf to millable Northrend herbs
+
+3.2.0.25-Beta
+    Don't scan tradeskill recipes if it's not the player's
+
+3.2.0.24-Beta
+    Transmutants
+
+3.2.0.23-Beta
+    Embed update
+    Add wrath epic gems and titanium prospecting
+    Seems that glyph was removed
+
+3.1.0.22-Beta
+    Rejigger 3.1 glyphs, now sorted by ink
+
+3.1.0.21-Beta
+    Seems we were missing some chest def chants
+    Rejigger bracer enchant layout a smidge
+    New chants!
+    New glyphs!
+    Pot update for 3.1
+
+3.0.9.20-Beta
+    Missed a chant
+    Remove calls to GetItemInfo that may involve uncached items, remove the force-caching buttons
+    Remove dependency on item names to avoid cache issues, always use itemID instead
+    Use 3rd-level vellums when enchanting
+
+3.0.9.19-Beta
+    Add some missing enchants
+    Add nasty retarded checking to ENSURE that Auc's API is available when Auc is loaded... cache Auc prices since they don't
+    - Sorry Auc users, bitch at Norgs to implement GetAuctionBuyout if you want proper support
+
+3.0.9.18-Beta
+    Tweak chat linking to maybe avoid odd errors
+
+3.0.9.17-Beta
+    Add cooking panels
+
+3.0.9.16-Beta
+    Fix up the pot panels a bit
+    Add support for GetReagentCost API, if present
+    Add a missing weapon chant
+    Add wrath uncommon gems by stat panels
+    Rename gem panels
+    New glyphs in 3.0.8
+    Embed update
+    Add transmute panel
+    Add "tabs" for each craft, reorganize panels
+    Remove some old, unused code
+    Forgot to delete the OptionHouse file
+    Update DE possibilities
+    New 3.0.8 recipes
+    New panels, ench boots. chest, gloves
+    Add custom icons for enchanting panels
+    Are you..... Local?
+    deDE locale
+
+3.0.3.15-Beta
+    Add wrath meta panel
+
+3.0.3.14-Beta
+    Hide mass-mill button from players that can't mill
+    Why was dongle still here?
+    Embed update
+    Add scrollbars to panels that need them
+    Remove some debuggery, oops
+
+3.0.3.13-Beta
+    Add Mass Milling button
+
+3.0.3.12-Beta
+    Embed update
+    What, nil? NEVAR!
+    Missed Anchient Lickin' for milling
+
+3.0.3.11-Beta
+    Buggerfuck, got the flask panel backwards
+    Last of the missing NR major glyphs
+    Add minor glyph by class panel
+    Rearrange minor glyph panel
+    DK northrend glyphs
+    Add wrath flasks and elixirs
+    Add various ore and gems to "not craftable" list
+    Fix two tin ores on prospecting panel
+    Add Northrend Inscription Research
+    Rejigger the northrend glyphs a bit
+    Add wrath scrolls and vellum
+    Northrend herbs!
+    Don't test every bag item for soulboundedness, just ones we can DE
+    Add some enchant-to-vellum panels
+
+3.0.3.10-Beta
+    Big 3.0 update!  No more dongle or OptionHouse
+    Redesign DE panel to use space better and display results more clearly
+    Redesign prospecting panel to be, like, actually useful
+    Add Wrath gems and ores
+    Add glyph and scroll panels
+    Add milling
+    Add flask and elixir panels
+    Add shift-click item linking
+    Add alt-click to craft all of an item
+    Add flasks and elixirs panels
+    Add Nightmare Vine to milling
+    Tweak up the UIErrorsFrame strata so we can see combine errors
+    Save char's known combines across sessions
+    Add * to glyphs that require two inks
+    Use itemIDs when crafting instead of names
+    Use Auc's Beancounter, I guess
+    Move DE panel tooltip anchor so it doesn't cover up the current button
+    Make DE panel tooltip update on BAG_UPDATE
+    Add placeholder wrath DE probabilities... no idea if the usual pattern is maintained
+    Make panels scrollable if they overflow
+    Add force-cache button to panels
+    Make refresh button use localized craft name
+
+2.4.3.9-Beta
+    Add AddonLoader LDB launcher field
+    Tweak launcher declaration to match the updated spec
+
+2.4.2.8-Beta
+    God damn OnTooltipSetItem calls with nil items...
+    Add LDB launcher, kickass panda icon
+    Fix ore tip formatting
+    Make price panel refresh prices OnShow
+    Add crush values to FI and Adaman Ore tooltips
+    Make gemtooltip cache clear also
+
+2.4.2.7-Beta
+    Clear the DE tip cache whenever the AH refreshes, so that we get updated prices
+    Add mu symbol so I can remember which number is the mean
+    Make gem cutting panel prices refresh, instead of only writing on first show
+    Add support for GetAuctionBuyout global for price lookups
+    Add pearls to gem cutting panel
+
+2.4.2.6-Beta
+    Don't nil out our constants, we don't really need to and it's causing issues
+
+2.4.1.5-Beta
+    Fix epic panel deleting green/blue panel generator if opened before green/blue panel
+    Add meta cutting panel
+
+2.4.1.4-Beta
+    Fix gem tooltip error when raw gem has no Auc price
+
+2.4.1.3-Beta
+    Add epic cutting panel, Brilliant Glass, new Rare cuts
+    Fix issue with unknown prices and tooltips
+    Add gem cut price info to raw gem toolips
+    Updating TOC to 20400
+
+2.3.3.2-Beta
+    Fix GemCutting panel not registering events on first show
+
+2.3.3.1-Beta
+    Add bag item counts to GemCutting frame
+    Open backback when panels are shown, nil out frame factories when they aren't needed anymore
+    Common constants across the addon (save a smidge of memory)
+    Fix tip anchor in DE frame
+    Add Gem cutting (green and blue) panel
+    Move common util functions into the addon's table
+    Added click-prospecting and prospect counts to the prospecting panel
+    Add server query to ensure our items are cached if possible, fixes issue #208

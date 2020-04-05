@@ -1,0 +1,117 @@
+------------------------------------------------------------------------
+r1116 | elsia | 2009-12-25 12:05:49 +0000 (Fri, 25 Dec 2009) | 1 line
+Changed paths:
+   A /tags/v3.3g release (from /trunk:1115)
+
+Tagging as v3.3g release
+------------------------------------------------------------------------
+r1115 | elsia | 2009-12-25 12:02:09 +0000 (Fri, 25 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Recount.lua
+   M /trunk/deletion.lua
+
+- GetInstanceInfo() is robust at PLAYER_ENTERING_WORLD hence deletion code should now be hack-free.
+------------------------------------------------------------------------
+r1114 | elsia | 2009-12-24 21:02:05 +0000 (Thu, 24 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/Recount.lua
+   M /trunk/deletion.lua
+
+- Fix for problem that PEW does have an updated IsInInstance() but GetRealZoneText() can be not updated. This broke the new instance only check. The fix is a fairly ugly hack because it bypasses a problem that really is on Blizz's side.
+
+------------------------------------------------------------------------
+r1113 | 7destiny | 2009-12-22 15:21:56 +0000 (Tue, 22 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Tracker.lua
+
+- Fix locale error
+------------------------------------------------------------------------
+r1111 | elsia | 2009-12-21 04:50:04 +0000 (Mon, 21 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/GUI_Main.lua
+
+- Removing debug message
+------------------------------------------------------------------------
+r1109 | elsia | 2009-12-18 02:31:55 +0000 (Fri, 18 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/Tracker.lua
+
+- Enable localization for scourge strike annotation
+
+------------------------------------------------------------------------
+r1108 | elsia | 2009-12-18 02:29:24 +0000 (Fri, 18 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Tracker.lua
+
+- Band aid if blizz combat log fails to properly attach shadow as spell school to the shadow portion of scourge strike.
+------------------------------------------------------------------------
+r1106 | elsia | 2009-12-17 04:24:58 +0000 (Thu, 17 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Recount.lua
+   M /trunk/Tracker.lua
+
+- Second pass on cross-realm pet handling. Worked when tested and should no longer have pathological fail cases. Cross-realm pets will now show as PetName <OwnerName-OwnerRealm>.
+------------------------------------------------------------------------
+r1105 | elsia | 2009-12-16 16:08:38 +0000 (Wed, 16 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/roster.lua
+
+- More cleanup to cross-realm pet handling. This should remove pathological cases from happening.
+
+------------------------------------------------------------------------
+r1103 | elsia | 2009-12-16 13:40:53 +0000 (Wed, 16 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/GUI_Main.lua
+   M /trunk/roster.lua
+
+- First pass on fixing cross-realm pets. This should hopefully work for most cases. Second pass needed to cover pathological cases.
+------------------------------------------------------------------------
+r1102 | elsia | 2009-12-15 20:40:04 +0000 (Tue, 15 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/deletion.lua
+
+- Removed debug statement.
+------------------------------------------------------------------------
+r1101 | elsia | 2009-12-15 13:26:41 +0000 (Tue, 15 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/Tracker.lua
+   M /trunk/deletion.lua
+
+- Fixed that misses didn't get their spell school passed along.
+
+------------------------------------------------------------------------
+r1100 | elsia | 2009-12-15 04:43:36 +0000 (Tue, 15 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/Recount.lua
+
+- Zone filtering/deletion fix to work for cases where zone doesn't change around portaling into an instance (such as Onyxia's Lair where the surrounding area has the same zone name).
+
+------------------------------------------------------------------------
+r1098 | elsia | 2009-12-15 00:54:55 +0000 (Tue, 15 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/LazySync.lua
+
+- Disabling lazysync in all cross-realm content.
+
+------------------------------------------------------------------------
+r1096 | elsia | 2009-12-14 23:52:55 +0000 (Mon, 14 Dec 2009) | 3 lines
+Changed paths:
+   M /trunk/Tracker.lua
+
+- Added disambiguation of the two Scourge Strike components. The shadow part will now be reported as Scourge Strike (Shadow). I would prefer a more generic solution but always adding the spell school is too spammy for my taste, so this will have to do for now.
+
+
+------------------------------------------------------------------------
+r1094 | elsia | 2009-12-10 05:36:39 +0000 (Thu, 10 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/Recount.toc
+
+- Toc bump
+------------------------------------------------------------------------
+r1093 | elsia | 2009-11-13 01:11:20 +0000 (Fri, 13 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/Tracker.lua
+
+- Fix for absorbs and blocks not showing in summary view if the absorb or block were complete.
+
+------------------------------------------------------------------------

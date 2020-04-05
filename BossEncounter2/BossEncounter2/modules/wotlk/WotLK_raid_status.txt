@@ -1,0 +1,92 @@
+@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ Wrath of the Lich King @
+@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+*********************************************************************
+* Vault of Archavon * 10 or 25 players    *    4/4 boss implemented *
+*********************************************************************
+1. Archavon         | STABLE              | Checked
+2. Emalon           | STABLE              | Checked
+3. Koralon          | STABLE              | Checked
+4. Toravon          | STABLE              | Checked
+
+*********************************************************************
+* Naxxramas         * T7 - 10 or 25 man   *  15/15 boss implemented *
+*********************************************************************
+ 1. Anub'Rekhan     | STABLE              | Checked
+ 2. Faerlina        | STABLE              | Checked
+ 3. Maexxna         | STABLE              | Checked
+ 4. Patchwerk       | STABLE              | Checked
+ 5. Grobbulus       | STABLE              | Checked
+ 6. Gluth           | STABLE              | Checked
+ 7. Thaddius        | STABLE              | Checked
+ 8. Razuvious       | STABLE              | Checked
+ 9. Gothik          | STABLE              | Checked
+10. Four Horsemen   | STABLE              | Checked
+11. Noth            | STABLE              | Checked
+12. Heigen          | STABLE              | Checked
+13. Loatheb         | STABLE              | Checked
+14. Saphiron        | STABLE              | Checked
+15. Kel'Thuzad      | STABLE              | Checked
+
+*********************************************************************
+* Chamb. of Aspects * T7 - 10 or 25 man   *    2/2 boss implemented *
+*********************************************************************
+1. Obsidian Sanctum | STABLE              | Checked
+2. Ruby Sanctum     | STABLE              | Checked
+
+*********************************************************************
+* Eye of Eternity   * T7 - 10 or 25 man   *    1/1 boss implemented *
+*********************************************************************
+1. Malygos          | STABLE              | Checked
+
+*********************************************************************
+* Ulduar            * T8 - 10 or 25 man   *  14/14 boss implemented *
+*********************************************************************
+ 1. Flame Leviathan | STABLE              | Checked
+ 2. Ignis           | STABLE              | Checked
+ 3. Razorscale      | STABLE              | Checked
+ 4. XT-002          | STABLE              | Checked
+ 5. Iron Council    | STABLE              | Checked
+ 6. Kologarn        | STABLE              | Checked
+ 7. Auriaya         | STABLE              | Checked
+ 8. Hodir           | STABLE              | Checked
+ 9. Thorim          | STABLE              | Checked
+10. Freya           | STABLE              | Checked
+11. Mimiron         | STABLE              | Checked
+12. Vezax           | STABLE              | Checked
+13. Yogg-Saron      | STABLE              | Checked
+14. Algalon         | STABLE              | OK
+
+*********************************************************************
+* Coliseum          * T9 - 10 or 25 man   *    5/5 boss implemented *
+*********************************************************************
+1. Northrend Beasts | STABLE              | Checked
+2. Lord Jaraxxus    | STABLE              | Checked
+3. Faction Champ.   | STABLE              | Checked
+4. Twin Valkyrs     | STABLE              | Checked
+5. Anub'arak        | STABLE              | Checked
+
+*********************************************************************
+* Onyxia's Lair     * T9 - 10 or 25 man   *    1/1 boss implemented *
+*********************************************************************
+1. Onyxia           | STABLE              | Checked
+
+*********************************************************************
+* Icecrown Citadel  * T10 - 10 or 25 man  *  12/12 boss implemented *
+*********************************************************************
+ 1. Marrowgar       | STABLE              | Checked
+ 2. Deathwhisper    | STABLE              | Checked
+ 3. Gunship         | STABLE              | Checked
+ 4. Saurfang        | STABLE              | Checked
+---------------------------------------------------------------------
+ 5. Rotface         | STABLE              | Checked
+ 6. Festergut       | STABLE              | Checked
+ 7. Putricide       | STABLE              | Checked
+---------------------------------------------------------------------
+ 8. Blood P. Counc. | STABLE              | Checked
+ 9. Lana'thel       | STABLE              | Checked
+---------------------------------------------------------------------
+10. Valithria       | STABLE              | Checked
+11. Sindragosa      | STABLE              | Checked
+12. The Lich King   | STABLE              | Checked

@@ -1,0 +1,14 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="addWindowDriver.lua" /> 
+
+	<Frame name="BossEncounter2_AddWindowDriverTemplate" virtual="true" hidden="false">
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.AddWindowDriver.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.AddWindowDriver.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</UI>

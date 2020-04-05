@@ -1,0 +1,11 @@
+﻿## Interface: 30300
+## Title: BonusScanner Continued |cff00aa005.2|r
+## Version: 5.3
+## Notes: Scans your Equipment for cumulative item bonuses and sums them up. Currently maintained and updated by Tristanian. Updated by Mirrikat45 / Arxkanite
+## Notes-deDE: Durchsucht die Ausrüstung nach Gegenstandboni und zählt diese zusammen.
+## Author: Tristanian (tristanian@live.com)
+## SavedVariables: BonusScannerConfig
+## OptionalDeps: Ace3, LibTipHooker-1.1
+## Dependencies: 
+## X-WoWI-ID: 7919
+BonusScanner.xml

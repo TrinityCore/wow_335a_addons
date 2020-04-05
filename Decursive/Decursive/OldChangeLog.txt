@@ -1,0 +1,836 @@
+
+Changes from Decursive 2.3.0 to Decursive 2.3.1
+-----------------------------------------------
+
+- Fixes a very old rare issue where Decursive would miss debuff events.
+
+- Fixes focus unit management.
+
+- Fixes minimap icon and main bar management when Decursive is "Ace-disabled".
+
+
+Changes from Decursive 2.3.0 RC7 to Decursive 2.3.0
+---------------------------------------------------
+
+- Added mixed file version check to the self-diagnostic.
+- Fix LUA error introduced in RC7.
+
+Changes from Decursive 2.3.0 RC4 to Decursive 2.3.0 RC7
+-------------------------------------------------------
+
+- Fix a LUA error when PrioList members where excluded from blacklisting and a
+  blacklisting event fired (target not in line of sight etc...)
+- Cleanse Spirit Shaman spell seems to be cast two times instead of once in
+  certain conditions (Blizzard issue), Decursive was displaying spell failure
+  error because of that. This is fixed.
+- Fixes pet spells detection when pet scanning was disabled (this issue was
+  introduced in 2.3 beta 2)
+- The MUF auto-hide option was not setting itself correctly at initialisation
+  (init order issue)
+- Showing the MUFs didn't trigger an update of its display this could result in
+  missing units when using the auto-hide option or if the MUF frame was hidden...
+- Removed "support" for Earth Panel because I don't know what it is and nor
+  does Google...
+- Added and fixed a few comments
+
+
+Changes from Decursive 2.3.0 RC2 to Decursive 2.3.0 RC4
+-------------------------------------------------------
+
+- Removed FubarPlugin-2.0 library (use "Broker2FuBar" to have Decursive in Fubar)
+- Added LibDataBroker-1.1 and LibDBIcon-1.0 libraries.
+- Removed compatibility code for WoW 2.4.
+- Moved and renamed localization files to a proper directory.
+- New option: "MiniMap Icon" to toggle the display of Decursive Icon around the MiniMap.
+- Fixes a NIL error when an outsider friendly target got stealth.
+- Fixes the LUA error related to the "test affliction" in the live-list options. 
+
+
+Changes from Decursive 2.3 beta 3 to Decursive 2.3.0 RC2
+--------------------------------------------------------
+
+Fixes faulty initialisation due to CreateMacro() API changes in WoW 3.0 (when
+the users per-character macro were full)
+
+- Bugfix: CreateMacro() was changed in WoW 2.3 as a result Decursive was
+  creating its macro "per character" instead of "per account" and was not
+  checking the right limit...
+
+- Updated minimum required revision of libraries to the latest at this date.
+
+
+Changes from Decursive 2.2.0 to Decursive 2.3 beta 3
+----------------------------------------------------
+
+- Decursive now uses GUID internally instead of unit names (CPU and memory usage optimisation).
+- A change of pet in the group was still triggering a group rescan even if pet
+  scanning was disabled.
+- CPU optimization when using the priority list.
+- WARNING: after installing this version, the priority and skip list will be cleared.
+
+
+Changes from Decursive 2.1.0 Final to Decursive 2.2.0
+-----------------------------------------------------
+
+**Important changes:**
+
+- Decursive no longer uses SpecialEvent-Aura-2.0 to detect afflictions, it uses
+  the new combat log system introduced in WoW 2.4. This simplifies the code a
+  lot and prevent far away units to be scanned uselessly.
+
+- As a result Decursive is now able to detect missed dispels and missed or
+  failed spells with complete accuracy.
+
+- A new sound alerts you if one of your spell launched using the MUFs fails or is resisted.
+
+- The success spell message has been removed and replaced by a failure message when appropriate.
+
+- New affliction alert sound more audible for people without a good bass system.
+
+- The 'focus' unit will only be shown if not hostile and if not already part of the displayed MUF.
+
+- When the live-list tool tips are disabled, the Live-List won't catch mouse
+  events, you can click right through it.
+
+- Affliction history is populated only when you click on a MUF to dispel something.
+
+- Complete Russian translation by StingerSoft
+
+- Compatible with WotLK beta
+
+**Fixed bugs:**
+
+- Fix a nil error when players with pets were excluded using the skip list.
+
+- fix a lot of insidious bugs related to 'gendered' class names.
+
+- fix problems in battlefields with players from other realms (group ordering failures)
+
+- Units not in line of sight are now always properly blacklisted (except when
+  using pets, no failure events are sent).
+
+- When adding or removing a player/group/class to the exclusion list, the MUFs
+  display was not updated immediately.
+
+- Fix for Chinese priests (two different spells named the same in this localisation...)
+
+- Better sound alert management, alert loops are no longer possible.
+
+- The lock and buttons display/hide status of the "Decursive" bar (the
+  live-list anchor) were not applied correctly on startup.
+
+
+Changes from Decursive 2.0.4 to Decursive 2.1.0 Final
+-----------------------------------------------------
+
+**Important changes:**
+
+- When a player is afflicted, a new chronometer appears on its MUF giving the
+  time elapsed (enabled by default)
+
+- Added an automatic self-diagnostic feature also available through the
+  /DCRDIAG command. This diagnostic is run when the add-on is loaded and check
+  if all required libraries are available and are up to date.
+  It also checks if all Decursive internal files are loaded correctly.
+  When the command /DCRDIAG is used it also tests if the library AceEvent is
+  functioning properly.
+
+- New option: "Align MUF window to the right" (defaults to off)
+  If enabled, the MUFs will grow from right to left and the handle will be
+  moved automatically.
+    
+- New option: "Auto-Hide" (defaults to "Never")
+  Lets you choose if you want to auto-hide/show the MUF window when in party or raid.
+
+- New option: "Colors" in the "Micro Unit Frame Settings" sub-menu
+  It is now possible to change all the MUFs colors.
+
+- It is now possible to add afflictions to the filters from a list of recently
+  seen afflictions instead of typing their names.
+
+- The cure order priorities are now saved per class
+  (This change resets your cure order priorities to default values)
+
+- Decursive no longer uses the Babble-Spell library that is deprecated since
+  WoW 2.4, all spells are now dynamically translated at load time ensuring
+  compatibility with current and futur localized versions of World of Warcraft.
+
+**Minor changes:**
+
+- When moving the cursor quickly over friendly and hostile units, sometimes a
+  phantom affliction could appear in the live-list for 0.2 seconds this has
+  been fixed.
+
+- When a new MUF is created outside the screen, the MUF window is always
+  automatically moved so that all MUFs are visible.
+
+- Spells handled by pets will no longer interrupt the player spells (when using
+  the MUFs)
+
+- Performance optimizations.
+
+- Workaround for polymorph spells name change in WoW 2.3 (Decursive was no
+  longer casting rank 1 of this spell...)
+
+- Clarification in the different localization files.
+
+- Fix an initialization issue some users were experiencing.
+
+- Added a new FAQ entry about a rumour according to which Decursive would be
+  banned by Blizzard. (take a look at the end of the Readme.txt file) 
+
+
+Changes from Decursive 2.0.3 to Decursive 2.0.4
+-----------------------------------------------
+
+- From now on, Decursive is dedicated to the memory of Bertrand Sense who died
+  a month ago and was known as Glorfindal on "Les Sentinelles" (EU server).
+  A special menu entry has been added.
+
+- Moved FuBarPlugin relative options to a sub-menu.
+- Fix problems with Spanish localization since WoW 2.2.3
+- Probably fixed a rare LUA error that could occur in race conditions.
+  (IsSpellInRange(): Invalid spell slot)
+
+
+Changes from Decursive 2.0 Final to Decursive 2.0.3
+---------------------------------------------------
+
+**New features**
+
+- Added a message and a sound when the Unstable Affliction is detected on a MUF
+  you're about to click (works only if the MUFs' tool-tips are active.
+
+- Added support for Druid's Cyclone Spell on friendly mind-controlled players.
+  Because of this change affliction cure priorities may have changed, go into
+  Options -> 'Curing Options' and change the priorities as you like.
+
+- New PayPal donation button.
+
+**Fixed bugs**
+
+- If some afflictions were filtered out while in combat, the MUFs of the afflicted
+  units were not updated once the battle was over.
+
+- If you changed the cure priorities while some afflictions were already
+  displayed in the MUFs, their color was not updated.
+
+- Fix a Lua error that occurred wen the user had the live-list AND the MUFs
+  disabled at UI initialization and was changing its 'Focus' (/focus
+  /clearfocus)
+
+- Pet appearance/disappearance events were not triggering an update of the
+  number of MUFs displayed.
+
+- Fix a Lua error when mouse-overing the MUFs with the class borders disabled.
+
+**Small changes**
+
+- Pet management enhancement:
+    - Pet class and name detection should be much more accurate.
+    - Pet names in MUFs tool-tips are preceded by "Pet" (depends on the
+      localization)
+    - Fix a possible issue with pet management (when several pets are 'unknown
+      entities')
+
+- Small optimization when using cleansing spells (blacklist handling).
+
+- Added 'lesser invisibility' to stealth detection.
+
+- The sound played when a debuff is found is now in a profile setting
+  (profile.SoundFile).
+
+- Decurive's icon will become gray if no curing spell is available or if all
+  types of afflictions are unchecked in "curing options".
+
+- zhCN and koKR translation update.
+
+
+
+Changes from Decursive 2.0 RC1 to Decursive 2.0 Final
+-----------------------------------------------------
+
+- Mages will now cast polymorph rank 1 instead of the highest rank (uses less
+  mana and last less time).
+- "Cast success" messages now include the spell rank.
+- Lua error fixed when using the decurse key when no spell are registered.
+- Default position of the MUFs and live-list have been optimized.
+- A note has been added on how to move the live-list (in readme.txt and in
+  game).
+
+
+Changes from Decursive 2.0 BETA 7-Pub to Decursive 2.0 RC1
+----------------------------------------------------------
+
+- An error message is displayed if Decursive cannot load its main libraries
+  properly.
+- It's now possible to disable the warning displayed when no key is mapped to
+  the macro.
+- There should be no more "succeeded on NONAME" messages.
+- Descriptions in French and Traditional Chinese have been added.
+- .TOC updated for WoW 2.1.
+
+
+Changes from Decursive 2.0 BETA 6-Pub-fixed to Decursive 2.0 BETA 7-Pub
+-----------------------------------------------------------------------
+
+**New features:**
+
+- It's now possible to add dynamic groups and classes in the priority and skip
+  list: Instead of adding each unit separately, class and/or group entities
+(ex: [ group 1 ] , [ Mage ]) will appear in the lists. The old behavior can
+still be used by maintaining [SHIFT] when clicking on a group or class-name in
+the populate list tool (names will be added).
+
+- The last change also allow to sort units per group AND classes at the same
+  time.
+
+- An informative help message is displayed when the user doesn't click a MUF
+  with the correct mouse button.
+
+- Major code optimization: reduced CPU usage from ~0.04 seconds per seconds to
+  ~0.001 seconds per second (results obtained with up to date external Ace2
+libraries, if Decursive's embedded shared libraries are the most up to date,
+Decursive CPU usage will also count the usage of the shared libraries by other
+add-ons).
+
+- Added revised Traditional Chinese translation by Peter Sun.
+
+**Changes:**
+- When a MUF is clicked, any spell targeting in progress is canceled.
+- The MUFs react upon mouse button release instead of mouse button press.
+- When adding an affliction to the filter, the entered name is trimmed.
+- It is now possible to move the "Decursive" bar maintaining the Alt key pushed
+  with the buttons hidden.
+
+- Live-list system entirely rewritten.
+- The scale and transparency of the live-list can be changed in the options.
+- A message is displayed if the user clicks on the live-list...
+- It is possible to hear Decursive's debuff alert sound when the live-list is
+  disabled.
+
+- Decursive uses SpecialEvent-Aura events to monitor debuffs.
+- You can create a virtual debuff to test the display (see in live-list
+  options)
+- The MiniMap and FuBar Decursive Icon is now clickable and an information
+  tool-tip is displayed when mouse-overing it.
+- Decursive Icon gets grey when both the live-list and MUFs are disabled.
+- Added Major Dreamless Sleep to the debuff skip list (Translation is needed
+  for other localizations)
+
+
+**Fixed bug:**
+- The status tool-tip was not displayed if the live-list was hidden.
+- Warlock pet detection could fail in some conditions.
+- Default Warrior ignored debuffs were not used because of a spelling mistake.
+- If you were already in combat when logging-in or if you reloaded your UI in
+  combat, Decursive was unable to operate correctly.
+- Other little bugs were fixed.
+
+
+Changes from Decursive 2.0 BETA 6-Pub to Decursive 2.0 BETA 6-Pub-fixed
+-----------------------------------------------------------------------
+
+- Fixed several problems with the curing order priority system.
+
+
+Changes from Decursive 2.0 BETA 5 to 2.0 BETA 6-Pub
+---------------------------------------------------
+
+    # Important changes:
+
+- Now you need to press Alt to move the MUFs clicking the handle.
+- Now a border is displayed around the MUFs, its color depends on the unit's
+  class.
+- When a unit is charmed, a small green square is displayed inside its MUF.
+- A new static option panel is available by ALT-RIGHT-CLICKING on the handle or
+  typing /dcroptions (Ace2 Waterfall library).
+- Added two new sets of options:
+    - Class border and center transparency can be set separately.
+    - Spacing between MUFs can be changed.
+- Paladin always uses Cleanse instead of Purify (if they learned Cleanse).
+- There is no longer a default key bound to the macro, this caused too many
+  problems with people not knowing how to change it.
+- You can bind a key to show/hide the micro-unit frames.
+- In the debuff filtering system, you can now ignore a debuff permanently and
+  not only when in combat.
+
+    # Minor changes:
+
+- MUFs display can be reversed (they will display from bottom to top instead of
+  top to bottom).
+- The Readme.txt file has been reworked to be more clear, "FEATURES" and "FAQ"
+  sections have been added.
+- Warlock's spell priorities are saved when they change of pet.
+- The focus MUF now disappear when the player clear the focus with
+  "/clearfocus".
+- Fix a bug that caused unit unable to cure magic on magic-charmed unit to see
+  a curable magic debuff on these units.
+- You can fill your priority/skip list with Paladins and Shamans correctly.
+- Added spacers in MUFs option menu for better readability.
+- The missing macro binding error message will not be shown if a global binding
+  is available.
+- Minor code optimizations and bug fixes.
+
+
+Changes from Decursive 2.0 BETA 4 to 2.0 BETA 5
+
+- Fix a bug that caused the loss of per-character bindings.
+- Added a new debuff type: 'Charm' that applies to charmed units so mages can
+  see all charmed units ; previously they could only see charmed units with a
+magical debuff (as priests). (This need testing, the situation is difficult to
+reproduce)
+- Added an option to change the transparency (Alpha) of the MUFs when a unit is
+  not afflicted, it can be set to 0 to be completely transparent.
+- The micro unit frames (MUFs) are set to a lower strata.
+- "Arcane Blast" will no longer be shown as a Debuff.
+- Added full French localization by Sylvin
+- Added full Korean localization by Fenlis
+- Fixed typos in localization.lua and added a missing option description.
+
+
+Changes from Decursive 2.0 BETA 3 to 2.0 BETA 4
+
+- Changed the minimum number of MUF per row to 1
+- The 'Show Help' option also disable the handle tool-tip
+- The focused unit won't be scanned if it's unfriendly (you won't see it in the
+  MUFs nor in the live-list).
+- The macro binding function has been enhanced, it correctly unbinds previously
+  mapped key and restores previously mapped action and displays messages when a
+mapping succeed/fails or replace a currently mapped action.
+- Added an option to not show out of range units in the live-list (enabled by
+  default).
+- On non-English client, the key is set to "NONE" in the localization files so
+  Decursive will display a warning to the user.
+- Babble-Spell library has been updated, Spanish spells should be supported.
+- Decursive is now available on wowace.com SVN
+
+
+Changes from Decursive 2.0 BETA 2 to 2.0 BETA 3
+
+- Fix the huge memory consumption of the scanning functions.
+- Fix a problem with the macro that was not updated if the macro frame was
+  opened.
+- Fix some options in the menus that were not propagated correctly.
+- Code optimization.
+- Added a note in the readme.txt file about how to change the default key bound
+  to the macro.
+
+Changes from Decursive 2.0 BETA 1 to 2.0 BETA 2
+
+- Fix Micro-Unit-Frames (MUFs) display: the first time you log on, the MUFs are
+  displayed to a reachable place instead of the top left corner of your screen.
+- Fix the LUA error message that occurred when you had all your macro spot
+  used.
+- The handle to move the MUFs (above the first MUF) now highlights when
+  mouse-overred, a tooltip has been added.
+- Fix a huge bug in the priority and skip list management causing a variable
+  number of unit to not be displayed in the MUFs if your lists were not empty.
+- MUFs scaling functions have been improved.
+- The readme.txt file has been updated.
+
+
+Changes from Decursive 1.9.8.4 to 2.0 BETA 1
+
+User significant changes:
+
+- Debuff removal capability restored in several ways:
+        - By clicking on-micro unit frames created by Decursive for a
+          user-defined number of players.
+        - By mouse-overring units or unit frames and pushing a user-defined
+          keyboard key.
+        - Read the readme file to know more about these changes
+- Priority list management:
+        - Now fully operational, you can very easily change player positions in
+          the list
+        - List display has been very improved (scrollbars, colors...)
+        - Priority list order defines the order of the micro-unit frames
+          displayed
+- The option window has been removed:
+        - All options are accessed through a drop down menu appearing when
+          right-clicking on "Decursive" bar. (DewDrop Ace2Lib)
+        - Every menu entries has a small explanation tooltip.
+        - All options can be accessed through command line (AceConsole Ace2Lib)
+- Debuff skipping management
+        - Users can easily add/delete debuffs to ignore on specific classes
+          while in combat
+- Mage can sheep mind-controlled units (if other classes are interested, their
+  spell can be added on request)
+- The readme.txt file has been rewritten and should be read of course.
+
+Internal changes:
+
+- Decursive was almost entirely rewritten and reorganized (the live list system
+  has not been redisigned yet)
+- New code architecture, more ressource efficient and more scalable.
+- Decursive is now an Ace2 add-on using Ace2 embeded libraries.
+
+
+Changes from Decursive 1.9.8.3 to 1.9.8.4
+
+- Fix syntax for compatibility with BC and LUA 5.1.1
+- Huge memory usage improvement, Decursive re-uses tables and uses the Compost
+  Ace2 library so Decursive uses 0.0 Kib/s when idle or in action.
+- Improved CPU usage, it should be minimum.
+
+
+After BC Decursive may no longer be used while in combat, it will just tell you
+who you SHOULD de-curse but won't be able to target or cast for you...  It may
+still work out of combat but it's not certain at this stage.  Blizzard has made
+big changes in the game play so de-cursing without Decursive may not be as
+boring as it used to be...
+
+
+
+Changes from Decursive 1.9.8.2 to 1.9.8.3
+
+- The "nothing Cleaned" bug some people were experiencing should be fixed.
+- There is no more "dead zone" beneath the "Decursive" bar when the live-list
+  is displayed (thanks to Chewster for accurately reporting this bug)
+- The Shaman 'Purge' spell should work again.
+- New option: when Decursive is asked to clean, it cancels any spell in
+  progress.  (except for warlocks and channeled spells).
+- A new PDF doc is available in the Archive (thanks to Whitney for writing it).
+
+Changes from Decursive 1.9.8.1 to 1.9.8.2
+
+- Now Decursive disables and re-enables the "self auto cast" option
+  automatically, it's no longer a problem.
+- Last version I hope!!!
+
+Changes from Decursive 1.9.8 RC2 to 1.9.8.1
+
+- Fix the LUA error happening on BG when a player from another server has a
+  debuff to ignore (such as Mind Vision), other related issues should be fixed.
+- The WoW UI option "Auto Self Cast" is causing problems: Decursive is enable
+  to cast on anyone but yourself while this option is active.  Now Decursive
+will pop-up a warning if this option is enabled and will propose to disable it.
+- Chinese localization has been updated (thanks to Peter Sun).
+- French localization revised by The Grinch.
+
+Changes from Decursive 1.9.8 RC1 to 1.9.8
+
+- Fixed the LUA error happening for people who had the 'Print messages in
+  default chat' option checked before upgrading to 1.9.8.
+- Fixed the custom message frame display, now it has a font to print
+  something...
+
+Changes from Decursive 1.9.7 to 1.9.8 RC1
+
+************************ ====> IMPORTANT CHANGES: ************************
+
+- TREMENDOUS PERFORMANCE IMPROVEMENTS (no more lag) (thanks to Lex for his
+  cache idea)
+- You can choose in the options the type of debuff you want to cure (Magic,
+  Poison, Curse, Disease)
+- Added cure priority based on debuff type (select the types in the order you
+  want to de-curse).  NOTE: For now this only works on a per unit basis,
+Decursive will de-curse a unit in the order you set debuff types.  For example
+if you set (Poison, Curse), Decursive will first remove Poison on a unit then
+or if no poison, it will remove curses on that same unit...
+- TOC updated for 1.12
+
+************************** ====> INTERESTING CHANGES:
+**************************
+
+- When you have a target selected, whether it's in your raid or not it will
+  appear in Decursive live-list if you can cure it.
+- Now you can see how many times a debuff is applied on a player in the live
+  list.
+- Affliction type is displayed in the live list.
+
+    ****************** ====> NEW OPTIONS: ******************
+
+- New Option: Now you can decide how the text is displayed in the custom frame
+  (From top or from bottom)
+- New Option: "Reverse live-list display"
+- New Option: "Show Tooltips in afflicted list"
+- New Option: "Hide the live-list"
+- New Option: "Tie live-list visibility to DCR window" (if the main DCR window
+  is closed then the live-list is hidden...)
+- New command line and key binding: /dcrhide will hide Decursive window leaving
+  the live-list visible /dcrshow shows Decursive window
+- New command line and key binding: /dcroption will open and close the option
+  window
+- Added the global variable Dcr_Saved.Dcr_OutputWindow to change the default
+  output window (use /script Dcr_Saved.Dcr_OutputWindow = ChatFrame2 for
+example).
+- Added /dcrdebug command to enable/disable debug info. (thanks to @derey)
+
+******************** ====> MINOR CHANGES: ********************
+
+- Enhanced message display with colors (you can also click character names in
+  default chat window).
+- Raid curing order is now truly per group: your group, the groups after yours
+  and the groups before yours.  Before 1.9.8 BETA 2 it was: your group, the
+players from groups after yours and the players from groups before yours.
+- Fix the delay problem with text message (it was related to a change in 1.11)
+- If Decursive fails because the target is invalid, the target is blacklisted.
+- Internal code reorganization and sorting.
+- Updated .toc for 1.12
+- Other minor fixes.
+
+
+
+
+Changes from Decursive 1.9.6 FINAL to 1.9.7
+
+******************* ====> New features: *******************
+
+- Now when a cast fails, only "out of sight" persons are blacklisted.
+
+- You can hide the buttons by right clicking on "Decursive", when the buttons
+  are hidden, the Decursive frame is locked so you can't move it by accident.
+
+- Added the Option "Don't blacklist priority list names" (defaults to off)
+
+- Added Chinese localization (zhTW)
+
+******************* ====> Enhancements: *******************
+
+- Performance improve.
+
+- Debuffs to not cure (Dreamless Sleep and Mind Vision), will not be displayed
+  nor cured unless the unit is debuffed by other debuffs of the same kind.  In
+previous versions, those debuffs were skipped only if the player was in combat.
+
+- Decursive's frame is smaller: the version is displayed in a tooltip.
+
+- No more risk to lose the current target when the "Check for range" option is
+  used.
+
+- Decursive no longer checks for mana or for the state of your curing spell, it
+  is no longer necessary (and may avoid some freezes).
+
+- The display of Decursive message is now more logical, the text begins to be
+  displayed just at the bottom of the "Text Anchor" frame (you can move it by
+clicking on the 'A' in the top-right corner of the option window)
+
+- It is now more clear to see on who Decursive is casting the curring spell.
+
+***************** ====> Bugs fixed: *****************
+
+- The forgotten debug message Shamans were seeing has been removed.
+
+- The problem priests in shadow form were experiencing has been fixed.
+
+- No more freeze issue when a lot of players are out of range, thanks to Alason
+  who gave me a new way to test for range.
+
+- When you left-click on someone in the Decursive live-list Decursive won't try
+  to cure your current target.
+
+- No more 'awaiting for target state' when the cast fails.
+
+******************** ====> Small Changes: ********************
+
+- Scanning code has been slightly optimized.
+
+- Out of range players are no longer added to the blacklist (this was useless
+  since Decursive is able to bypass them).
+
+- Removed the option "check for range", Decursive will always check for range.
+
+- The sliders in the option window have been moved to the top to avoid clicking
+  on the last one by accident when closing the window.
+
+- Localization files have been updated.
+
+- French and Chinese localization files are encoded in UTF-8.
+
+
+Changes from Decursive 1.9.6.5 to Decursive 1.9.7
+- Decursive no longer check for mana or for the status of a spell, those were
+  here to avoid to blacklist people for false reason. (LoS is detected since
+1.9.6.5)
+
+Changes from Decursive 1.9.6.4 to Decursive 1.9.6.5
+
+- Added the Option "Don't blacklist priority list names" (defaults to off)
+- Removed the option "check for range", Decursive will always check for range.
+- Now when a cast fails, only "out of sight" persons are blacklisted.
+- Out of range players are no longer added to the blacklist (this was useless).
+- Probably fix the freeze issue some people were experiencing.
+- Updated Chinese localization.
+
+Changes from Decursive 1.9.6.3 to Decursive 1.9.6.4
+
+- Debuffs to not cure (Dreamless Sleep and Mind Vision), will not be displayed
+  nor cured unless the unit is debuffed by other debuffs of the same kind.  In
+previous versions, those debuffs were skipped only if the player was in combat.
+- Added Chinese localization (zhTW)
+- Scanning code has been slightly optimized.
+- Now, French and Chinese localization files are in UTF-8
+
+Changes from Decursive 1.9.6.2 to Decursive 1.9.6.3
+
+- When you hide the buttons, the "Decursive" frame is locked so you can't move
+  it by accident.
+- When Decursive dispels someone, the text displayed is shorter.
+- Small changes in the German localization.
+
+
+Changes from Decursive 1.9.6.1 to Decursive 1.9.6.2
+
+- Really fixed the bug with priests in shadow form.
+- When you left-click on someone in the Decursive live-list Decursive won't try
+  to decurse your current target.
+- The display of Decursive message is now more logical, the text begins to be
+  displayed just at the bottom of the "Text Anchor" frame (you can move it by
+clicking on the 'A' in the top-right corner of the option window)
+- The sliders in the option window have been moved to the top to avoid clicking
+  on the last one by accident when closing the window.
+- It is now more clear to see on who Decursive is casting the curring spell.
+
+
+Changes from Decursive 1.9.6 FINAL to Decursive 1.9.6.1
+
+This is mainly a bug-fix release:
+- The forgotten debug message Shamans were seeing has been removed.
+- The problem priests in shadow form were experiencing has been fixed.
+- No more freeze issue when a lot of players are out of range, thanks to Alason
+  who gave me a new way to test for range.
+- No more risk to lose the current target when the "Check for range" option is
+  used.
+- No more 'awaiting for target state' when the cast fails.
+- Decursive's frame is smaller: the version is displayed in a tooltip.
+- You can hide the buttons by right clicking on "Decursive".
+- Small changes in the German localization.
+
+
+Changes from Decursive 1.9.4 to Decursive 1.9.6 Final
+
+Important changes:
+
+- Massive global performance improvement (important code optimization
+  everywhere).
+- Re-Added support for warlock pets (Felhunter and Doomguard spells)
+- Added an option (on by default) to play a sound when you have someone to cure
+  (Breenild idea).
+- Now when you click on a cursed person in Decursive's frame you will keep your
+  current target unless you use the right-button of your mouse.
+- Now Decursive is able to check if you have enough mana before casting.
+- Complete French and German localization (Thanks to Archiv and WalleniuM for
+  the German translations) So Decursive is able to ignore and skip correctly
+certain classes and debuffs in those localizations.  This also corrects
+multiple dispels problem for those localizations.
+- Changed the licence to GNU GPL (Decursive 1.9.4 is in public domain)
+
+Minor changes:
+
+- Added a reminder at startup about the available options.
+- If you don't have one of your curring spell in your action bar, Decursive
+  will display an error message when initializing.
+- Out of ranges units are added to the blacklist.
+- Options and lists are saved for each characters.
+- Options are reset to defaults with this version.
+- Improved re-targeting.
+
+
+Bugs fixed:
+
+- Fixed initialization, 1.9.4 was sometime unable to find a spell to use.
+- Mind Control dispel was impossible.
+- The "check for range" option couldn't be set/unset and was causing Decursive
+  to get stuck on out of range persons.
+- Improved Event handling (faster when zoning)
+- When you are in the priority list, your name is no longer displayed twice.
+- the "Ignore Stealthed Units" should work as intended (it never worked before)
+- Tooltip are displayed correctly.
+- Other minor bug fixes.
+
+
+
+See below for a detailed change log between my versions of Decursive.
+
+Changes on 1.9.6 FINAL (Release)
+
+- the "Ignore Stealthed Units" should work as intended (it never worked before)
+- Performance improve when the option "Check for Abolish before curing" is used
+- Decursive can't put the current player to the blacklist anymore.
+
+Changes in 1.9.6 RC4 (Release Candidate)
+
+- Added a mana check, Decursive won't try to cast if there is not enough mana.
+  (not available for warlocks)
+- Performance improve when the live list is displayed and contains afflicted
+  people.
+- Performance improve when checking for range.
+- Added unlocalized strings to loc. (French and German loc. updated, thanks to
+  Archiv for the German translations).
+- Options and lists are now saved per character (options reset to default with
+  this version).
+
+
+Changes in 1.9.6 RC3 (Release Candidate)
+
+- The correction about the MC bug in RC2 introduced a problem with units
+  controlled by priests, changed the fix to a better one :)
+- Fixed tooltip display (tooltips were not displayed)
+
+
+Changes in 1.9.6 RC2 (Release Candidate)
+
+- Probably fixed the MC issue.
+- Fixed: When left-clicking on Decursive's frame, the cured unit may not be the
+  one you cliked on.
+- Fixed a bug (nil method) if the option "Check for range" was used.
+- Fixed the "Check for range" option, depending on the cases checking or
+  unchecking it had no effect on the actual result.
+- When the option "Check for range" is enabled, and a unit is out of range,
+  it's added to the blacklist.
+- Updated French localisation so Decursive can correctly ignored stealthed unit
+  (if the option is set).
+- Updated German localization (problem with accents and a forgotten string,
+  thanks to Archiv).
+
+Changes in 1.9.6 RC1 (Release Candidate):
+
+- Added new translations to French loc to prevent Decursive from dispelling:
+  "Sommeil sans rêve" and "Vision télépathique"
+- Updated German localization (thanks to WalleniuM)
+- Overall performance improve (no more multiple calls to SetOwner()) This
+  change may also fix the "Nothing cleaned" bug some people were still
+experiencing.
+- When you are in the priority list, your name is no longer displayed twice.
+- Warlocks can correctly switch to the target if they right click on it in
+  Decursive's frame.
+
+Changes in 1.9.6c (Was released in Dev Zone):
+
+- Changed the alert sound to a better one.
+- Added a reminder at startup about the available options.
+- Fixed a possible issue with cool downs detection.
+- Added a possible fix for the reported warlock problem (it's still working
+  with my Warlock and another warlock level 60).
+- When you right click on a cursed person in Dcr's window, it's selected even
+  if nothing is done (spell not ready).
+
+Changes in 1.9.6b (Was released in Dev Zone):
+
+- Changed the licence to GNU GPL
+- Now when you click on a cursed person in Decursive's frame you will keep your
+  current target unless you use the right-button of your mouse.
+- Small fixes in French localization.
+- Will never check for range if this is a warlock pet spell.
+- Added some debug information for people who have problems with the
+  Fellhunter's spell.
+
+Changes in 1.9.5c (Release):
+
+- Added an option (on by default) to play a sound when you have someone to cure
+  (Breenild idea).
+- Fixed a bug that could cause the cast of a wrong spell if you learn a new
+  spell.
+
+
+Changes in 1.9.5b (changes from last Quu's version 1.9.4):
+
+- Added support for warlock pet Felhunter spell 'Devour Magic' (tested on a
+  French version but should work for English and German as well unless the
+localisation is not correct in Decursive 1.9.4)
+- Fixed French localization for Priests and Druids.
+- Improved Event handling (faster when zoning)
+- Fixed initialization, 1.9.4 was sometime unable to find a spell to use
+
+

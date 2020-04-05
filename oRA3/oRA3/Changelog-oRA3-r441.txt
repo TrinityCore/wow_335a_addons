@@ -1,0 +1,19 @@
+------------------------------------------------------------------------
+r441 | rabbit | 2010-08-09 11:45:21 +0000 (Mon, 09 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Invite.lua
+
+Fix BN invites.
+------------------------------------------------------------------------
+r440 | rabbit | 2010-08-07 21:20:59 +0000 (Sat, 07 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Invite.lua
+
+Add support for invite whispers from realId friends, based on patch from hugimborey.
+------------------------------------------------------------------------
+r439 | a9012456 | 2010-06-28 05:55:03 +0000 (Mon, 28 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------

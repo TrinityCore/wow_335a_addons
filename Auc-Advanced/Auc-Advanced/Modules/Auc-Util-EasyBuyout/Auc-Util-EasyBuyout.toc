@@ -1,0 +1,13 @@
+## Title: Auc:Util:EasyBuyout
+## Interface: 30300
+## Notes: Shift+right-click to easily buyout an auction with no confirmation box!
+## Dependancies: Auc-Advanced
+##
+## Version: 5.7.4568 (KillerKoala)
+## Revision: $Id: Auc-Util-EasyBuyout.toc 4567 2009-12-08 14:50:04Z Nechckn $
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+Embed.xml
+EasyBuyout.lua

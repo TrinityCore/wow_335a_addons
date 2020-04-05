@@ -1,0 +1,18 @@
+## Title: GcdHackTracker
+## Version: 1.0
+## Author: zwacky
+## Interface: 30300
+## Notes: tracks if someone is using the GCD hack.
+## SavedVariables: GcdHackTrackerData
+
+lib\LibStub-1.0\LibStub-1.0.xml
+lib\CallbackHandler-1.0\CallbackHandler-1.0.xml
+lib\AceAddon-3.0\AceAddon-3.0.xml
+lib\AceEvent-3.0\AceEvent-3.0.xml
+lib\AceLocale-3.0\AceLocale-3.0.xml
+
+lang\lang.en.lua
+
+ght.lua
+conf.lua
+gui.lua

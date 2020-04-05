@@ -1,0 +1,7 @@
+## Interface: 30300
+## Title: Combat log fixer
+## Notes: Keeps the combat log from breaking without munging it completely
+## Author: Shadowed
+## SavedVariables: CombatLogFixDB
+
+CombatLogFix.lua

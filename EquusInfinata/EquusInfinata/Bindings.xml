@@ -1,0 +1,17 @@
+<Bindings>
+    <Binding name="EQUUSBIND1"  description="Defined in Equus Options" header="EQUUSHDR">
+        Equus_Binding(1);
+    </Binding>
+    <Binding name="EQUUSBIND2"  description="Defined in Equus Options">
+        Equus_Binding(2);
+    </Binding>
+    <Binding name="EQUUSBIND3"  description="Defined in Equus Options">
+        Equus_Binding(3);
+    </Binding>
+    <Binding name="EQUUSBIND4"  description="Defined in Equus Options">
+        Equus_Binding(4);
+    </Binding>
+    <Binding name="EQUUSBIND5"  description="Defined in Equus Options">
+        Equus_Binding(5);
+    </Binding>
+</Bindings>

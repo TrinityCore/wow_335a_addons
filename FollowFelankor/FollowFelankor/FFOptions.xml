@@ -1,0 +1,545 @@
+<!--
+    ################## FFOptions.xml ##################
+    # Follow Felankor
+    # A World of Warcraft UI AddOn
+    # By Felankor
+    #
+    # IMPORTANT: I do not mind people looking at my code
+    # to learn from it. If you use any parts of my code
+    # please give me credit in your comments. I will
+    # do the same if I ever use any code from another
+    # AddOn. Thanks.
+    ###################################################
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+   <Script file="localization.en.lua"/>
+   <Script file="FollowFelankor.lua"/>
+   <Script file="FFOptions.lua"/>
+    
+   <Frame name="FFOptions">
+      <Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentTitle" inherits="GameFontNormalLarge" text="FFMSG_ADDON_NAME">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="15" y="-15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+<!-- Start of FFOptionsTip Label -->
+            <Layer level="ARTWORK">
+				<FontString name="$parentTip1" inherits="GameFontNormalSmall" text="FFOPTIONS_TIP1" justifyH="LEFT">
+					<Anchors>
+						<Anchor relativeTo="$parentTitle" point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-25"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+<!-- End of FFOptionsTip Label -->
+<!-- Start of FFOptionsTip Label -->
+            <Layer level="ARTWORK">
+				<FontString name="$parentTip2" inherits="GameFontNormalSmall" text="FFOPTIONS_TIP2" justifyH="LEFT">
+					<Anchors>
+						<Anchor relativeTo="$parentTip1" point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-25"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+<!-- End of FFOptionsTip Label -->
+		</Layers>
+        <Frames>
+<!-- Start FFOptions_Check_Enable CheckButton -->
+            <CheckButton name="$parent_Check_Enable" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor relativeTo="$parentTip2" point="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="-35" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptions_Check_Enable_Text:SetText(FFOPTIONS_ENABLE_ADDON);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptions_Check_Enable, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_ADDON_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptions_Check_Enable CheckButton -->
+<!-- Start FFOptions_Check_AIR CheckButton -->
+            <CheckButton name="$parent_Check_AIR" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_Enable" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptions_Check_AIR_Text:SetText(FFOPTIONS_ALLOW_INVITE_REQUESTS);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptions_Check_AIR, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ALLOW_INVITE_REQUESTS_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptions_Check_AIR CheckButton -->
+<!-- Start FFOptions_Check_AAP CheckButton -->
+            <CheckButton name="$parent_Check_AAP" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AIR" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptions_Check_AAP_Text:SetText(FFOPTIONS_AUTO_ACCEPT_PARTY);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptions_Check_AAP, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_AUTO_ACCEPT_PARTY_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptions_Check_AAP CheckButton -->
+<!-- Start FFOptions_Check_AAR CheckButton -->
+            <CheckButton name="$parent_Check_AAR" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AAP" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptions_Check_AAR_Text:SetText(FFOPTIONS_AUTO_ACCEPT_RESURRECT);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptions_Check_AAR, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_AUTO_ACCEPT_RESURRECT_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptions_Check_AAR CheckButton -->
+<!-- Start FFOptions_Check_PFWB CheckButton -->
+            <CheckButton name="$parent_Check_PFWB" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AAR" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptions_Check_PFWB_Text:SetText(FFOPTIONS_PREVENT_FOLLOW_WHEN_BUSY);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptions_Check_PFWB, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_PREVENT_FOLLOW_WHEN_BUSY_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptions_Check_PFWB CheckButton -->
+<!-- Start FFOptions_Check_PSI CheckButton -->
+            <CheckButton name="$parent_Check_PSI" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_PFWB" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptions_Check_PSI_Text:SetText(FFOPTIONS_PARTY_STATUS_ICONS);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptions_Check_PSI, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_PARTY_STATUS_ICONS_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptions_Check_PSI CheckButton -->
+<!-- Start FFOptions_Check_AEC CheckButton -->
+            <CheckButton name="$parent_Check_AEC" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_PSI" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+
+                <Scripts>
+                    <OnLoad>
+                        FFOptions_Check_AEC_Text:SetText(FFOPTIONS_ALLOW_EMOTE_COMMAND);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptions_Check_AEC, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ALLOW_EMOTE_COMMAND_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptions_Check_AEC CheckButton -->
+<!-- Start FFOptions_EnableLogging CheckButton -->
+            <CheckButton name="$parent_EnableLogging" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AEC" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptions_EnableLogging_Text:SetText(FFOPTIONS_ENABLE_LOGGING);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptions_EnableLogging, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_LOGGING_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptions_EnableLogging CheckButton -->
+<!-- Start FFOptions_Check_EMMB CheckButton -->
+            <CheckButton name="$parent_Check_EMMB" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_EnableLogging" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptions_Check_EMMB_Text:SetText(FFOPTIONS_ENABLE_MINIMAP_BUTTON);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptions_Check_EMMB, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_MINIMAP_BUTTON_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptions_Check_EMMB CheckButton -->
+      </Frames>
+      <Scripts>
+         <OnLoad>
+            FFOptions_OnLoad(self);
+         </OnLoad>
+      </Scripts>
+   </Frame>
+   
+   <!-- ############################################ Start of new options panel/frame ############################################ -->
+
+<!-- Start FFOptionsAnnouncements Frame -->
+    <Frame name="FFOptionsAnnouncements">
+        <Frames>
+<!-- Start FFOptionsAnnouncements_Check_AA CheckButton -->
+            <CheckButton name="$parent_Check_AA" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="32" y="32" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="5" y="-5" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptionsAnnouncements_Check_AA_Text:SetText(FFOPTIONS_ENABLE_ALL_ANNOUNCEMENTS);
+                    </OnLoad>
+                    <OnClick>
+                        FF_ToggleAnnounceSubMenus();
+                    </OnClick>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptionsAnnouncements_Check_AA, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_ALL_ANNOUNCEMENTS_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptionsAnnouncements_Check_AA CheckButton -->
+<!-- Start FFOptionsAnnouncements_Check_AFStart CheckButton -->
+            <CheckButton name="$parent_Check_AFStart" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AA" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="20" y="-2" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptionsAnnouncements_Check_AFStart_Text:SetText(FFOPTIONS_ENABLE_ANNOUNCE_FSTART);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptionsAnnouncements_Check_AFStart, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_ANNOUNCE_FSTART_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptionsAnnouncements_Check_AFStart CheckButton -->
+<!-- Start FFOptionsAnnouncements_Check_AFStop CheckButton -->
+            <CheckButton name="$parent_Check_AFStop" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AFStart" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-2" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptionsAnnouncements_Check_AFStop_Text:SetText(FFOPTIONS_ENABLE_ANNOUNCE_FSTOP);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptionsAnnouncements_Check_AFStop, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_ANNOUNCE_FSTOP_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptionsAnnouncements_Check_AFStop CheckButton -->
+<!-- Start FFOptionsAnnouncements_Check_AAFK CheckButton -->
+            <CheckButton name="$parent_Check_AAFK" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AFStop" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-2" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptionsAnnouncements_Check_AAFK_Text:SetText(FFOPTIONS_ENABLE_ANNOUNCE_AFK);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptionsAnnouncements_Check_AAFK, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_ANNOUNCE_AFK_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptionsAnnouncements_Check_AAFK CheckButton -->
+<!-- Start FFOptionsAnnouncements_Check_AR CheckButton -->
+            <CheckButton name="$parent_Check_AR" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AAFK" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-2" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptionsAnnouncements_Check_AR_Text:SetText(FFOPTIONS_ENABLE_ANNOUNCE_RES);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptionsAnnouncements_Check_AR, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_ANNOUNCE_RES_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptionsAnnouncements_Check_AR CheckButton -->
+<!-- Start FFOptionsAnnouncements_Check_AAI CheckButton -->
+            <CheckButton name="$parent_Check_AAI" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AR" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-2" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptionsAnnouncements_Check_AAI_Text:SetText(FFOPTIONS_ENABLE_ANNOUNCE_AUTO_INVITE);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptionsAnnouncements_Check_AAI, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_ANNOUNCE_AUTO_INVITE_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptionsAnnouncements_Check_AAI CheckButton -->
+<!-- Start FFOptionsAnnouncements_Check_AAIR CheckButton -->
+            <CheckButton name="$parent_Check_AAIR" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AAI" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-2" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptionsAnnouncements_Check_AAIR_Text:SetText(FFOPTIONS_ENABLE_ANNOUNCE_INVITE_REQUESTED);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptionsAnnouncements_Check_AAIR, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_ANNOUNCE_INVITE_REQUESTED_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptionsAnnouncements_Check_AAIR CheckButton -->
+<!-- Start FFOptionsAnnouncements_Check_SCN CheckButton -->
+            <CheckButton name="$parent_Check_SCN" inherits="FFCheckTemplate">
+                <Size>
+                    <AbsDimension x="24" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="$parent_Check_AAIR" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-2" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        FFOptionsAnnouncements_Check_SCN_Text:SetText(FFOPTIONS_ENABLE_STATUS_CHECK_NOTIFICATION);
+                    </OnLoad>
+                    <OnEnter>
+                        GameTooltip:SetOwner(FFOptionsAnnouncements_Check_SCN, "ANCHOR_BOTTOMRIGHT");
+                        GameTooltip:SetText(FFOPTIONS_ENABLE_STATUS_CHECK_NOTIFICATION_TOOLTIP);
+                        GameTooltip:Show();
+                    </OnEnter>
+                    <OnLeave>
+                        GameTooltip:Hide();
+                    </OnLeave>
+                </Scripts>
+            </CheckButton>
+<!-- End FFOptionsAnnouncements_Check_SCN CheckButton -->
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                FFOptionsAnnouncements_OnLoad(self);
+            </OnLoad>
+        </Scripts>
+    </Frame>
+<!-- End FFOptionsAnnouncements Frame -->
+</Ui>

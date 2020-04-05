@@ -1,0 +1,12 @@
+tag v1.2
+ee863cb95077ddbe77a62b6341613387034120c2
+Christoph Gritschenberger <cedwani [at] quantentunnel [dot] de>
+2009-12-15 00:18:54 +0100
+
+tag as v1.2 (for wow 3.3)
+
+
+--------------------
+
+Christoph Gritschenberger:
+	- bump toc to 30300

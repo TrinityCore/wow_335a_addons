@@ -1,0 +1,6 @@
+## Interface: 30300
+## Title: QuestRepeat
+## Notes: Enables quicker repeating of quests.
+## Author: MSeverns
+## DefaultState: Enabled
+QuestRepeat.xml

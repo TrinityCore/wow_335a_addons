@@ -1,0 +1,140 @@
+------------------------------------------------------------------------
+r44 | ckknight | 2009-02-06 23:33:03 +0000 (Fri, 06 Feb 2009) | 1 line
+Changed paths:
+   A /tags/WoW-3.0-release-3 (from /trunk:43)
+
+Tagging as WoW-3.0-release-3
+------------------------------------------------------------------------
+r43 | ckknight | 2009-02-06 23:25:31 +0000 (Fri, 06 Feb 2009) | 1 line
+Changed paths:
+   M /trunk/LibSimpleOptions-1.0.lua
+
+Make makePanel return the panel, thus making LibSimpleOptions.AddOptionsPanel properly return the panel
+------------------------------------------------------------------------
+r42 | ckknight | 2008-12-18 03:44:51 +0000 (Thu, 18 Dec 2008) | 1 line
+Changed paths:
+   A /trunk/.docmeta
+
+Add .docmeta
+------------------------------------------------------------------------
+r40 | ckknight | 2008-10-15 23:09:47 +0000 (Wed, 15 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibSimpleOptions-1.0.toc
+
+bump TOC
+------------------------------------------------------------------------
+r39 | ckknight | 2008-10-15 14:48:07 +0000 (Wed, 15 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibSimpleOptions-1.0.lua
+
+Fix http://www.wowace.com/projects/libsimpleoptions-1-0/tickets/1-two-errors-on-ptr-wotlk/
+------------------------------------------------------------------------
+r37 | nevcairiel | 2008-10-12 11:40:09 +0000 (Sun, 12 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibSimpleOptions-1.0.toc
+
+Patch 3.0 prep: Remove LoD from Libraries that have no load manager (LoD+OptDep Bug)
+------------------------------------------------------------------------
+r36 | nevcairiel | 2008-10-09 21:53:58 +0000 (Thu, 09 Oct 2008) | 1 line
+Changed paths:
+   M /trunk/LibSimpleOptions-1.0.lua
+
+WoWAce Post-Processing: Virtually inflate Library Revision numbers for proper upgrade path
+------------------------------------------------------------------------
+r35 | root | 2008-09-29 22:18:01 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   A /trunk/.pkgmeta
+
+Facilitate WowAce-on-CurseForge transition
+------------------------------------------------------------------------
+r33 | root | 2008-09-29 20:58:19 +0000 (Mon, 29 Sep 2008) | 1 line
+Changed paths:
+   D /tmp/trunk/LibSimpleOptions-1.0
+   A /trunk (from /tmp/trunk/LibSimpleOptions-1.0:32)
+
+Importing old repo data under /trunk
+------------------------------------------------------------------------
+r32 | ckknight | 2008-09-06 17:09:05 +0000 (Sat, 06 Sep 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - some bugfixes, WotLK fixes.
+------------------------------------------------------------------------
+r29 | ckknight | 2008-07-31 04:36:14 +0000 (Thu, 31 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - add a proper panelMeta table, which stores the functions that are added to panel frames.
+------------------------------------------------------------------------
+r28 | ckknight | 2008-07-31 04:22:30 +0000 (Thu, 31 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - Use luadoc to document everything.
+------------------------------------------------------------------------
+r27 | ckknight | 2008-07-31 02:31:23 +0000 (Thu, 31 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - add #FORCE_DOC
+------------------------------------------------------------------------
+r26 | ckknight | 2008-07-31 00:14:03 +0000 (Thu, 31 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - Add Autodoc Namespace
+------------------------------------------------------------------------
+r25 | ckknight | 2008-07-31 00:06:19 +0000 (Thu, 31 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - Autodoc test
+------------------------------------------------------------------------
+r24 | ckknight | 2008-07-27 20:37:36 +0000 (Sun, 27 Jul 2008) | 3 lines
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - rename MakeOptionsPanel to AddOptionsPanel.
+- rename MakeSuboptionsPanel to AddSuboptionsPanel
+- rename MakeSlashCommand to AddSlashCommand
+------------------------------------------------------------------------
+r23 | ckknight | 2008-07-27 20:22:56 +0000 (Sun, 27 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - add methods to panels to create controls, instead of requiring LibSimpleOptions.MakeWhatever(self, ...), it can be self:MakeWhatever(...)
+------------------------------------------------------------------------
+r22 | ckknight | 2008-07-27 20:13:10 +0000 (Sun, 27 Jul 2008) | 2 lines
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - add panel:Refresh(), which may be needed in some cases, since changing options on one pane doesn't recheck everything else.
+- panel:Refresh() is called on OnShow
+------------------------------------------------------------------------
+r21 | ckknight | 2008-07-27 19:49:51 +0000 (Sun, 27 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - Make it so you can specify okayFunc, cancelFunc, and defaultFunc for controls. These fire when those buttons are pressed.
+------------------------------------------------------------------------
+r20 | ckknight | 2008-07-27 19:31:19 +0000 (Sun, 27 Jul 2008) | 1 line
+Changed paths:
+   M /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+
+LibSimpleOptions-1.0 - Make the hit rect insets for toggles and color pickers stretch out to cover their whole label.
+------------------------------------------------------------------------
+r19 | ckknight | 2008-07-27 18:47:30 +0000 (Sun, 27 Jul 2008) | 5 lines
+Changed paths:
+   A /tmp/trunk/LibSimpleOptions-1.0
+   A /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.lua
+   A /tmp/trunk/LibSimpleOptions-1.0/LibSimpleOptions-1.0.toc
+   A /tmp/trunk/LibSimpleOptions-1.0/LibStub
+   A /tmp/trunk/LibSimpleOptions-1.0/LibStub/LibStub.lua
+   A /tmp/trunk/LibSimpleOptions-1.0/lib.xml
+
+.LibSimpleOptions-1.0 - initial commit
+This is basically a library that you can use to create config panels with for the Blizzard interface addon options dealy.
+This doesn't handle layout or have an "options table" format, but it handles a lot of the tedium of creating the controls themselves.
+Note: don't take the API to be final yet, there's a possibility something could change (but pretty sure it won't).
+
+------------------------------------------------------------------------

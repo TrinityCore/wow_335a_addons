@@ -1,0 +1,520 @@
+Jamba Version: 0.6
+WoW Game Version: 3.3.5
+Release Date: 29th June 2010
+Modules: Core, Display-Team, Follow, FTL, ItemUse, Macro, Proc, Purchase, Quest, Sell, Talk, Taxi, Toon
+	
+Jamba-Quest
+
+    * New Quest Watcher frame, watch quests from slaves on master.
+    
+Jamba-Toon
+
+	* New AFK warning.
+	
+Jamba-Display-Team
+
+	* Can now change background and border colours on team display.
+	
+Jamba-Item-use
+
+	* Can now change background and border colours on the item bar display.
+	
+Jamba Version: 0.5i
+WoW Game Version: 3.3.3
+Release Date: 13th June 2010
+Modules: Core, Display-Team, Follow, FTL, ItemUse, Macro, Proc, Purchase, Quest, Sell, Talk, Taxi, Toon
+
+General
+
+	* Text boxes associated with sliders will now cause the slider to update its value when enter is pressed.
+	
+Jamba-Proc
+
+    * Disabling the proc module from the Proc options will now work!
+    * Procs that you add using the GUI will now work!
+	* Procs no longer reappear after being deleted!
+
+Jamba-Team
+
+    * Slaves opting out of loot will now stop telling you everytime a party member joins/leaves, party leader changes, etc.
+    
+Jamba-Display-Team
+
+	* Clicking on a toons portrait or bar in the display will target that toon.
+	* Team display location information is now pushed with other settings to all toons.
+	* Can now set the transparency of the team window.
+	
+Jamba-Item-use
+
+	* Item bar location information is now pushed with other settings to all toons.
+	* Can now set the transparency of the team window.
+	
+Jamba Version: 0.5h 
+WoW Game Version: 3.3.3
+Release Date: 2nd May 2010
+Modules: Core, Display-Team, Follow, FTL, ItemUse, Macro, Proc, Purchase, Quest, Sell, Talk, Taxi, Toon
+
+Jamba-Proc
+
+    * The proc anchor bar will no longer consume mouse clicks (unless showing test bars)
+    * Updated French translations from Daeri.
+
+Jamba-Team
+
+    * Can now see the last checkbox in the team configuration screen (it was hidden by a bug in 0.5g).
+    * Updated French translations from Daeri.
+
+Jamba Version: 0.5g 
+WoW Game Version: 3.3.3
+Release Date: 30th April 2010
+Modules: Core, Display-Team, Follow, FTL, ItemUse, Macro, Proc, Purchase, Quest, Sell, Talk, Taxi, Toon
+
+Jamba-Proc
+
+    * Overhauled - can now move location of bars, set bar texture, font, size.
+    * Procs are now based on spell ID rather than name.
+    * Can specify proc colour / sound on a per tag basis.
+    * Way better, check it out!
+
+Jamba General Bug Fix
+
+    * Fixed an issue with textures no longer stretching due to a change in the wow api for 3.3.3.
+
+Jamba-Team
+
+    * "Set group loot if stranger in group" option now has sub option which if checked will consider that friends (in friends lists) are not strangers.
+
+Jamba Version: 0.5f 
+WoW Game Version: 3.3.3
+Release Date: 20th April 2010
+
+Modules: Core, Display-Team, Follow, FTL, ItemUse, Macro, Proc, Purchase, Quest, Sell, Talk, Taxi, Toon
+
+Jamba-Talk
+
+    * Chat snippets now need to be enabled, by checking the check box that says "Enable Chat Snippets".  Chat snippets can be whispered without need to reply to someone.  For example a chat snippet called "mb" with the text explaining about multiboxing can be whispered by typing: /w toon !mb
+
+Jamba-Quest
+
+    * Fixed a bug with auto quest accepting which happened due to a change in the wow api for 3.3.3.
+
+Jamba Version: 0.5e 
+WoW Game Version: 3.3.3
+Release Date: 8th April 2010
+Modules: Core, Display-Team, Follow, FTL, ItemUse, Macro, Proc, Purchase, Quest, Sell, Talk, Taxi, Toon
+
+Translations
+
+    * French translations by Daeri from dual-boxing.fr.
+
+Jamba-Quest
+
+    * Quest reward selection to automatically choose best reward for toon option will now halt when a reward item type is rare (blue colour) or of a higher type and allow the player to choose the reward.
+
+Jamba Version: 0.5d 
+WoW Game Version: 3.3.2
+Release Date: 12th February 2010
+Modules: Core, Display-Team, Follow, FTL, ItemUse, Macro, Proc, Purchase, Quest, Sell, Talk, Taxi, Toon
+
+Jamba-Follow
+
+    * Fixed toon incorrectly follow strobing on previous follow strobe master.
+    * New option to pause follow strobing when in a vehicle.
+
+Jamba-Quest
+
+    * Changed wording on Abandon All to be specific about what it does.
+    * New option for quest reward selection to automatically choose best reward for toon (provided by loop).
+    * New option to override quest auto select/auto complete with the shift key.
+
+Jamba Version: 0.5c 
+WoW Game Version: 3.3.0
+Release Date: 23rd December 2009
+Modules: Core, Display-Team, Follow, FTL, ItemUse, Macro, Proc, Purchase, Quest, Sell, Talk, Taxi, Toon
+
+Jamba-Team
+
+    * Can now set pass on loot for slaves regardless of loot settings.
+    * New option to switch to group loot if a stranger joins your group.
+    * New slash command to add all party members to your team: /jamba-team addparty
+
+Jamba-Toon
+
+    * Bag full warning no longer happens if your character is dead or a ghost.
+    * Bag full warning will only happen once and will not happen again until you free bag slot count changes.
+
+Jamba-Macro
+
+    * Can now use multiple macro sets at the same time.
+
+Jamba Version: 0.5b 
+WoW Game Version: 3.3.0
+Release Date: 8th December 2009
+Modules: Core, Display-Team, Follow, FTL, ItemUse, Macro, Proc, Purchase, Quest, Sell, Talk, Taxi, Toon
+
+Jamba-Quest
+
+    * Fixed LUA error when attempting to complete quest with reward.
+    * Fixed auto quest selection and auto quest completion so they know work again.
+
+Jamba-Proc
+
+    * Is a work in progress :-).
+
+Jamba Version: 0.5a (Buggy, don't want you to download it.)
+WoW Game Version: 3.3.0
+Release Date: 8th December 2009
+Modules: Core, Display-Team, Follow, FTL, ItemUse, Macro, Proc, Purchase, Quest, Sell, Talk, Taxi, Toon
+
+Way too many changes to list.  Jamba-Target is gone.  Forward UI Messages and UI Errors will be back soon. Guild relay chat will be back soon.
+
+Jamba Version: 0.4h 
+WoW Game Version: 3.2.2
+Release Date: 19th October 2009
+Modules: Core, Follow, Group, Me, Purchase, Quest, Sell, Talk, Target, Taxi
+
+Jamba-Taxi
+
+    * Added checks to make sure that a player is not on a taxi and the taxi window is open before attempting to take a taxi.
+
+Jamba Version: 0.4g 
+WoW Game Version: 3.2.0
+Release Date: 5th August 2009
+Modules: Core, Follow, Group, Me, Purchase, Quest, Sell, Talk, Target, Taxi
+
+Jamba-Quest
+
+    * Updated to use the WoW API functions that changed with the 3.2.0 patch.
+
+Jamba-Me
+
+    * Removed PVP tab - Can no longer auto accept battleground portals.
+
+Jamba Version: 0.4f 
+WoW Game Version: 3.1.3
+Release Date: 14th July 2009
+Modules: Core, Follow, Group, Me, Purchase, Quest, Sell, Talk, Target, Taxi
+
+Jamba-Core
+
+    * Added a new slash command: /jamba version.  This prints the version of Jamba installed to the default chat window.
+    * Bug Fix: When entering combat for the first time, the message "Interface action failed because of an AddOn" should no longer appear (caused by an API change to ClearOverrideBindings).
+
+Jamba-Talk
+
+    * Forward UI Information and Forward UI Errors are now off by default.
+
+Jamba-Me
+
+    * New PVP tab with single option - Auto Accept Battleground: if checked the character will automatically accept a portal to a battleground.
+
+Jamba Version: 0.4e 
+Special thanks to DigitalSorceress for updating to this version.
+WoW Game Version: 3.1.1
+Release Date: 1st May 2009
+Modules: Core, Follow, Group, Me, Purchase, Quest, Sell, Talk, Target, Taxi
+
+Jamba-Group
+
+    * 3.1 Patch Bug Fix:  Fixed a problem where characters would not auto-accept group invitiations.
+
+Jamba-Quest
+
+    * 3.1 Patch Bug Fix: Now uses Blizzards updated quest watch function.
+
+Jamba Version: 0.4d 
+WoW Game Version: 3.0.8
+Release Date: 27th January 2009
+Modules: Core, Follow, Group, Me, Purchase, Quest, Sell, Talk, Target, Taxi
+
+Jamba-Follow
+
+    * Bug Fix: When follow strobing and changing masters; the new master will no longer try to keep strobing on the old master.
+    * A character will not try to follow strobe while it is eating if the Jamba-Follow option: Pause Follow Strobing If Drinking is checked.
+    * Commands without the optional tag parameter should now work; e.g. /jamba-follow strobeoff will now stop the character from follow strobing.
+
+Jamba-Quest
+
+    * Pressing escape will now hide the Jamba-Quest window.
+
+Jamba Version: 0.4c 
+WoW Game Version: 3.0.8
+Release Date: 22nd January 2009
+Modules: Core, Follow, Group, Me, Purchase, Quest, Sell, Talk, Target, Taxi
+
+Jamba-Follow
+
+    * Fixed a bug introduced with patch 3.0.8 (new vehicle follow) where a character would try to follow itself.
+
+Jamba Version: 0.4b 
+WoW Game Version: 3.0.3
+Release Date: 30th November 2008
+Modules: Core, Follow, Group, Me, Purchase, Quest, Sell, Talk, Target, Taxi
+
+Jamba-Quest
+
+    * Added an option to JambaQuest to allow reward selection on slaves before clicking "Complete Quest" on master when using the Mirror Master Complete Quest (No Reward Choice) option.
+
+Jamba Version: 0.4a 
+WoW Game Version: 3.0.3
+Release Date: 21st November 2008
+Modules: Core, Follow, Group, Me, Purchase, Quest, Sell, Talk, Target, Taxi
+
+Jamba-Group
+
+    * Master looter now changes to be the master when the master changes.
+
+Jamba-Sell
+
+    * Selling other items now works correctly.
+
+Jamba Version: 0.4 
+WoW Game Version: 3.0.3
+Release Date: 9th November 2008
+Modules: Core, Follow, Group, Me, Purchase, Quest, Sell, Talk, Target, Taxi
+
+Jamba - New Features
+
+    * Team GUI can now display character health bars rather than experience bars.
+    * Solo mode - use /jamba solo or button on team interface to disable all other characters except the current one.
+    * New slash commands:
+          o /jamba enableallmembers (enables all members in the team tab)
+          o /jamba disableallmembers (disables all members in the team tab)
+          o /jamba pushteam (pushes all settings in the team tab to other enabled characters)
+          o /jamba solo (puts Jamba into solo mode)
+
+Jamba - Bug Fixes
+
+    * Experience bars now show percentage in range 0-99 rather than 1-100.
+    * Fixed a problem with playerStatusHealth being a nil value.
+    * Team GUI refresh time increased.
+    * Team GUI window will now appear behind other windows.
+    * Team GUI can now be made smaller (can shrink to show portrait and follow status only).
+
+Jamba-Follow - New Features
+
+    * Options added to not warn about follow breaking if character in combat, or any team member in combat.
+    * Follow strobing can be paused for characters with a special tag:
+          o In combat.
+          o When any team member is in combat.
+          o When the character is drinking.
+
+Jamba-Follow - Bug Fixes
+
+    * Characters no longer warn about follow breaking when taking a taxi.
+
+Jamba-Group
+
+    * Can now automatically set the 'master loot' loot method.
+    * Can now automatically accept party invites from guild members.
+    * Automatically opt out of loot now works (unlike previous versions).
+
+Jamba-Me - New Features
+
+    * New option to warn if master is not Focus when entering combat.
+    * Jamba-No features have be moved to Jamba-Me.
+    * Auto repair option moved from Jamba-Merchant to Jamba-Me.
+
+Jamba-Me - Bug Fixes
+
+    * All resurection dialog boxes should disappear when automatically accepting a resurrection.
+    * Druids should no longer complain about low mana when shape shifting.
+    * Changed default value for warn if master not target to off.
+
+Jamba-Purchase
+
+    * Purchase functionality of the old Jamba-Merchant moved to Jamba-Purchase.
+
+Jamba-Sell
+
+    * Auto sell poor quality (grey) items functionality of the old Jamba-Merchant moved to Jamba-Sell.
+    * Can now exclude poor quality items from being sold.
+    * Ability added to sell other specific items.
+
+Jamba-Talk - New Features
+
+    * Option to forward UI errors (messages like 'You have no target.') and UI information (messages like 'Mountain Lion slain: 1/10') to master / chat.
+    * Options to replay chat (guild, guild officer, party, raid, raid leader, whisper) to master / chat.
+
+Jamba-Talk - Bug Fixes
+
+    * Long whispers no longer cause errors when whisper forwarding.  They are split and sent as two messages.
+
+Jamba-Target - New Features
+
+    * Can now edit macros associated with targets.  Use #MOB# where the target name would normally be in the macro and Jamba-Target will replace it with the name of the actual target when marked.
+
+Jamba-Target - Bug Fixes
+
+    * Jamba-Target settings are now pushed to other characters correctly.
+
+Jamba Version: 0.3b 
+WoW Game Version: 3.0.2
+Release Date: 19th October 2008
+Modules: Core, Follow, Group, Me, Merchant, No, Quest, Talk, Target, Taxi
+
+    * Fixed issue with follow status update communication messages flooding characters and causing change master delays when using follow strobing.
+    * Fixed nil targetbutton problem caused by attempting to update follow status for a character when the team gui was not displayed.
+
+Jamba Version: 0.3a 
+WoW Game Version: 3.0.2
+Release Date: 16th October 2008
+Modules: Core, Follow, Group, Me, Merchant, No, Quest, Talk, Target, Taxi
+
+    * Fix: sending messages between characters now works.
+    * Fix: Not showing the Team GUI now no longer causes errors after killing a mob.
+
+Jamba Version: 0.3 
+WoW Game Version: 3.0.2
+Release Date: 15th October 2008
+Modules: Core, Follow, Group, Me, Merchant, No, Quest, Talk, Target, Taxi
+
+Jamba
+
+    * Party experience shown in GUI.
+    * GUI to constantly display of the /follow status of my slaves (green if on /follow, red if not).
+    * New target system - before combat select targets and label with raid icons and bake /target <mobname> into specific keybinds.
+    * GUI for jamba set target 1-8.
+
+Jamba-Follow
+
+    * Fixed auto follow after combat not adjusting to a new master.
+
+Jamba Version: 0.2b 
+WoW Game Version: 2.4.3
+Release Date: 3rd October 2008
+Modules: Core, Follow, Group, Me, Merchant, No, Quest, Talk, Taxi
+
+    * Make the capitalisation of names european friendly. (in 0.2b)
+    * When this character's focus changes, set the master to the character that is the focus. (in 0.2b)
+    * Added follow strobing slash commands.
+          o /jamba-follow strobeon <target> <tag> (in 0.2b)
+          o /jamba-follow strobeonme <tag> (in 0.2b)
+          o /jamba-follow strobeoff <tag> (in 0.2b)
+          o /jamba-follow strobeonlast <tag> (in 0.2b)
+          o Option to set follow strobe delay (seconds). (in 0.2b)
+    * Shortened default warning messages.
+
+Jamba Version: 0.2a 
+WoW Game Version: 2.4.3
+Release Date: 23rd September 2008
+Modules: Core, Follow, Group, Me, Merchant, No, Quest, Talk, Taxi
+
+    * Set target master and focus master macros up when character loading.
+    * Fix merchant disconnection bug. No longer disconnect when visiting a merchant.
+    * Option added: Show Jamba-Quest Log with WoW Quest Log.
+
+Jamba Version: 0.2 
+WoW Game Version: 2.4.3
+Release Date: 21st September 2008
+Modules: Core, Follow, Group, Me, Merchant, No, Quest, Talk, Taxi
+
+Jamba
+
+Team
+
+    * /jamba setmaster <target> <tag>
+    * /jamba setmeasmaster <tag>
+    * /jamba addmember <name>
+    * /jamba removemember <name>
+    * /jamba enablemember <name>
+    * /jamba disablemember <name>
+    * Make sure Jamba works without any alts logged in.
+    * Capitalise first letter of name when adding a character.
+    * Make sure self is still in team after being pushed settings - if not add and enable.
+    * Command performance fixes (stop delays in quest, taxi).
+    * After adding a member, enable that member by default.
+    * Make sure that self is always on the list (not necessarily enabled, but enabled upon initial adding to the list).
+    * If there is no master, then set self as the master.
+    * Fixed a bug where if the master goes offline and forward system messages is on; the slave gets spammed with player cannot be found messages.
+
+Tags
+
+    * A list of tags that this character responds to when receiving commands from Jamba.
+    * Centerally managed list of tags.
+    * /jamba addtag <character> <tag>
+    * /jamba removetag <character> <tag>
+
+Chat
+
+    * If no master is set, then use self for messages.
+    * Private channel - enter name, password.
+    * Send messages to private channel.
+    * Send messages to /party.
+    * Send messages to /guild.
+    * Send messages to /guildofficers.
+    * Send messages to master default chat.
+    * Send warnings to private channel.
+    * Send warnings to master raid warning.
+    * Send warnings to master default chat.
+    * Send warnings to /party.
+    * Send warnings to /guild.
+    * Send warnings to /guildofficers.
+
+Target & Focus
+
+    * An option to set the master as the focus on login.
+    * An option to set the master as the target on login.
+    * /jamba setfocusmaster <tag>
+    * /jamba setfocus <target> <tag>
+
+New: Jamba-Follow
+
+    * Move follow breaking warning from Jamba-Warning to Jamba-Follow.
+    * Add an option to specify the text when follow breaks - default to "Follow Broken".
+    * Automatic /follow from the slaves to the master when exiting combat.
+    * /jamba-follow master <tag>
+    * /jamba-follow target <target> <tag>
+    * /jamba-follow aftercombat <on|off> <tag>
+    * Don't complain about following breaking if not in combat (i.e falling damage).
+
+Jamba-Group
+
+    * Added an option to automatically set to group loot to free-for-all (/ffa).
+    * Added an option to set automatically opt out of loot.
+    * Added an option to automatically pass on loot rolls.
+    * /jamba-group invite (invite whoever is on the list of toons (enabled) to create the group.)
+    * /jamba-group disband  (each character will univite itself, leave the remaining group intact.)
+    * Auto accept from friends.
+    * Added an option to automatically promote master to leader on master change (if possible).
+
+New: Jamba-Me
+
+    * Moved health, mana, hit warnings configuration from Jamba-Warning.
+    * Add option to specific messages when hit,health, etc in text fields.
+    * Automatically accept resurrection requests (from members).
+
+Jamba-Merchant
+
+    * Buy items are now tagged.  Only characters with the same tag as the item will buy that item.
+
+Jamba-Quest
+
+    * Fix bug where lots of spam is sent when slaves do not have a quest that the master has.
+    * New GUI for quest log interaction. Pops up with quest log on master only. This solves delay/performance problems.
+
+Jamba-Talk
+
+    * Forward system messages now only forwards messages you specify. Default message contains "Level" for forwarding who information. This gives a clickable link to original whisperer.
+
+Jamba-Warning
+
+    * Jamba Warning has been removed and functionality moved to core, me, follow.
+
+Jamba Version: 0.1a 
+WoW Game Version: 2.4.3
+Release Date: 5th September 2008
+Modules: Core, Group, Merchant, No, Quest, Talk, Taxi, Warning
+
+    * Fix infinite loop friends bug reported by some people.
+    * Fix: Basically as i get to the reward page (before i select anything) the slave gets the error: "Invalid reward choice in GetQuestReward([choice])" and basically doesnt do anything from there.
+    * Fix: Slaves no longer auto select the same quest reward as the master when they should not have.
+    * Feature: Add the name of the original whisperer to whisper forwards from slaves.
+    * Change: In Jamba-Group the option to allow invite from friends has been changed to allow invites from members.
+
+Jamba Version: 0.1 
+WoW Game Version: 2.4.3
+Release Date: 4th September 2008
+Modules: Core, Group, Merchant, No, Quest, Talk, Taxi, Warning
+
+Initial release.

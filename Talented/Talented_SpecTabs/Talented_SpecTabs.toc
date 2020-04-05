@@ -1,0 +1,12 @@
+## Interface: 30300
+## Note: Add Spec Tabs to the Talented Frame.
+## Dependency: Talented
+## LoadOnDemand: 1
+## Version: r660
+## DefaultState: Enabled
+## X-Curse-Packaged-Version: r660
+## X-Curse-Project-Name: Talented
+## X-Curse-Project-ID: talented
+## X-Curse-Repository-ID: wow/talented/mainline
+
+core.lua

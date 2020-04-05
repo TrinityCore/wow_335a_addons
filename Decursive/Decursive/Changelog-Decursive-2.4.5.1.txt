@@ -1,0 +1,16 @@
+tag 2.4.5.1
+7da45cb4cd53a50da5c62761b36d56a5e20d59ab
+Archarodim <Archarodim@teaser.fr>
+2009-12-09 00:01:54 +0100
+
+Tagging as 2.4.5.1
+
+
+--------------------
+
+Archarodim:
+	- - TOC to 30300 for WoW 3.3 patch release.
+	- Whatsnew.txt update.
+	- - Re-enabled debuglocals() dirty hook for 3.3 since Blizzard  """""""Debug""""""" tools (notice the quotes) are still exploding and crashing when debuglocals() returns nothing... :-(
+	- - Fix a problem where Decursive would not correctly detect priest talent 'Body and Soul' when login.
+	- - Removed no longer used libraries from .pkgmeta 'optional-dependencies' section.

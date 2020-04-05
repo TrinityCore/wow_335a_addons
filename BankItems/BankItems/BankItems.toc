@@ -1,0 +1,35 @@
+## Interface: 30300
+## Title: BankItems v30300
+## Title-zhCN: ???行 BankItems
+## Title-zhTW: 離線銀行 BankItems
+## Version: 30300
+## Notes: View bank, inventory, mail, equipped and guild bank contents from any character anywhere!
+## Notes-koKR: 은행, 가방, 우편, 착용한 장비, 길드 금고의 내용물을 어디서나 어떤 캐릭터로도 볼 수 있습니다!
+## Notes-ruRU: Просмотр содержимого банка, банка гильдии, инвентаря, почты любого вашего персонажа везде и в любое время!
+## Notes-deDE: Den Bank-, Inventar, Briefkasten- und Gildenbankinhalt sowie angezogene Gegenstande von jedem Charakter uberall anschauen!
+## Notes-frFR: Permet de voir le contenu de l'inventaire, du courrier, l'equipement et la banque de guilde de n'importe quel personnage et de n'importe ou !
+## Notes-zhCN: ??可以????本ID所有服?器所有人物的??以及背包、?件、?行和公??行中的物品|N?件命令/bi|N本地化: Isler
+## Notes-zhTW: 讓?可以隨時流覽本ID所有伺服器所有人物的裝備以及背包、郵件、銀行和公會銀行中的物品|N?件命令/bi|N本地化: Isler
+## Notes-esES: View bank, inventory, mail, equipped and guild bank contents from any character anywhere!
+## Author: Xinhuan
+## X-Category: Inventory
+## X-RelSite-UI.WoW: 1699
+## X-Email: xinhuan AT gmail DOT com
+## X-Donate: xinhuan AT gmail DOT com
+## SavedVariables: BankItems_Save, BankItems_SaveGuild
+## OptionalDeps: oGlow
+## X-Curse-Packaged-Version: v30300
+## X-Curse-Project-Name: BankItems
+## X-Curse-Project-ID: bank-items
+## X-Curse-Repository-ID: wow/bank-items/mainline
+
+localization-enUS.lua
+localization-koKR.lua
+localization-ruRU.lua
+localization-deDE.lua
+localization-frFR.lua
+localization-zhCN.lua
+localization-zhTW.lua
+localization-esES.lua
+
+BankItems.lua

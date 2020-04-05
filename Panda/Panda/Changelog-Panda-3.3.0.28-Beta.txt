@@ -1,0 +1,19 @@
+tag 3.3.0.28-Beta
+e1f9be5a80376b862df8afa3002e3ef0c0585c7d
+tekkub <tekkub@gmail.com>
+2010-06-06 17:03:37 -0600
+
+Weekly build
+
+
+--------------------
+
+tekkub:
+	- Weekly build 3.3.0.28-Beta
+	- Update changelog for 3.3.0.28-Beta
+	- Stupid vellumz
+	- Add wrath enchants panel
+	- Seems we were missing some enchants
+Lowlee:
+	- Move DK glyph (43533) to bottom of DK column so its not the odd one out
+	Mages can't use Hunter glyphs (45735)

@@ -1,0 +1,102 @@
+------------------------------------------------------------------------
+r310 | mitch0 | 2010-08-15 23:50:23 +0000 (Sun, 15 Aug 2010) | 2 lines
+Changed paths:
+   A /tags/v3.8.2 (from /trunk:309)
+
+Tagging as v3.8.2
+- disable warn sound in default config
+------------------------------------------------------------------------
+r309 | mitch0 | 2010-08-15 23:48:18 +0000 (Sun, 15 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+   M /trunk/RangeDisplay.toc
+
+disable warn sound in default config.
+------------------------------------------------------------------------
+r307 | mitch0 | 2010-08-12 19:22:51 +0000 (Thu, 12 Aug 2010) | 4 lines
+Changed paths:
+   M /trunk/RangeDisplay.lua
+   M /trunk/RangeDisplay.toc
+   M /trunk/RangeDisplay_Options/Options.lua
+   M /trunk/RangeDisplay_Options/localizations/enUS.lua
+
+- disable warning sounds for "misc" units
+- add option to enable warning sounds only for enemy units (set as default)
+- make options dialog a bit nicer
+
+------------------------------------------------------------------------
+r306 | mitch0 | 2010-08-12 17:44:59 +0000 (Thu, 12 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+
+use shared default profile
+------------------------------------------------------------------------
+r304 | mitch0 | 2010-08-10 20:15:29 +0000 (Tue, 10 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+
+move the target/focus/pet display a bit down by default
+------------------------------------------------------------------------
+r303 | mitch0 | 2010-08-10 20:02:23 +0000 (Tue, 10 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+
+force locked state when entereing combat after initial loading
+------------------------------------------------------------------------
+r302 | mitch0 | 2010-08-10 18:49:36 +0000 (Tue, 10 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+
+woops, typo
+------------------------------------------------------------------------
+r301 | mitch0 | 2010-08-10 13:57:29 +0000 (Tue, 10 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+   A /trunk/sounds
+   A /trunk/sounds/19312.wav
+   A /trunk/sounds/30600.wav
+   A /trunk/sounds/74833.wav
+
+added some sounds, set up default sounds, enable sound for close range section on playertarget unit
+------------------------------------------------------------------------
+r300 | mitch0 | 2010-08-09 23:04:51 +0000 (Mon, 09 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+
+revert the default locked thing, there's a bloody tooltip... (rearranged tooltip lines now so that the one telling how to lock is first, hope this helps)
+------------------------------------------------------------------------
+r299 | mitch0 | 2010-08-09 20:18:46 +0000 (Mon, 09 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+
+change default state to locked, as every n00b seems to get stuck on it...
+------------------------------------------------------------------------
+r298 | mitch0 | 2010-08-09 19:58:19 +0000 (Mon, 09 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+
+fix sound alert on target change if targets are in the same range (hopefully) [drycode]
+------------------------------------------------------------------------
+r297 | mitch0 | 2010-08-09 19:40:28 +0000 (Mon, 09 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+   M /trunk/RangeDisplay.toc
+   M /trunk/RangeDisplay_Options/Options.lua
+   M /trunk/RangeDisplay_Options/localizations/enUS.lua
+
+added optional sound feedback when entering range sections [drycode]
+------------------------------------------------------------------------
+r296 | mitch0 | 2010-08-09 14:53:27 +0000 (Mon, 09 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+   M /trunk/RangeDisplay_Options/Options.lua
+   M /trunk/localizations/enUS.lua
+
+half-baked sound alerts [drycode]
+------------------------------------------------------------------------
+r295 | mitch0 | 2010-02-15 19:27:56 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.toc
+
+fix some framexml errors
+------------------------------------------------------------------------

@@ -1,0 +1,39 @@
+------------------------------------------------------------------------
+r660 | jerry | 2010-08-11 07:08:21 +0000 (Wed, 11 Aug 2010) | 3 lines
+Changed paths:
+   M /trunk/SpecTabs/core.lua
+
+_ Revert the hack to make SpecTabs update after mending a new pet. Better to have Blizzard fix it.
+_ Only Update the spec tabs when they are shown. This fixes Ticket-89.
+
+------------------------------------------------------------------------
+r658 | jerry | 2010-07-28 06:38:08 +0000 (Wed, 28 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/.pkgmeta
+
+Fix .pkgmeta to use tagged Ace3.
+
+------------------------------------------------------------------------
+r657 | jerry | 2010-07-26 06:50:24 +0000 (Mon, 26 Jul 2010) | 3 lines
+Changed paths:
+   M /trunk/pet.lua
+
+Make sure pet talents are available before trying to fix alternate talents.
+Let's hope the client correctly sends an event when they are available.
+
+------------------------------------------------------------------------
+r656 | jerry | 2010-07-21 13:27:16 +0000 (Wed, 21 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/core.lua
+   M /trunk/pet.lua
+   M /trunk/view.lua
+
+Try to fix Ticket-82: pet target template provoke a crash
+
+------------------------------------------------------------------------
+r655 | jerry | 2010-07-08 16:28:29 +0000 (Thu, 08 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/SpecTabs/core.lua
+
+Fix SpecTabs not updating after a new pet has been tamed.
+------------------------------------------------------------------------

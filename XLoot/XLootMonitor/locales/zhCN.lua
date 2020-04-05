@@ -1,0 +1,92 @@
+﻿local L = AceLibrary("AceLocale-2.2"):new("XLootMonitor")
+
+L:RegisterTranslations("zhCN", function()
+	return {
+		catGrowth = "行增长",
+		catLoot = "拾取",
+		catPosSelf = "锚点…",
+		catPosTarget = "到…",
+		catPosOffset = "框体偏移…",
+		catModules = "模块",
+		
+		moduleHistory = "拾取纪录",
+		moduleActive = "激活",
+		
+		historyTime = "按时间顺序查询",
+		historyPlayer = "按玩家顺序查询",
+		["View by item"] = "按物品顺序查询",
+		historyClear = "清除当前纪录",
+		historyEmpty = "不显示纪录",
+		historyTrunc = "物品最大宽度",
+		historyMoney = "金钱拾取",
+		["Export history"] = "导出记录",
+		["No export handlers found"] = "未导出记录查询",
+		["Simple XML copy-export"] = "简单的 XML 格式输出",
+		["Copy-Paste Pipe Separated List"] = "复制-粘贴为单独的清单",
+		["History custom export"] = "自定义记录导出",
+		["Item lines"] = "物品行数",
+		["The format of each item record"] = "每件物品记录格式",
+		["\n[time] - timestamp\n[ftime] - formatted time (24-hour)\n[name] - item name\n[id] - item id\n[count] - number of the item recieved\n[player] - name of the recipient\n[class] - class of the player"] = "\n[time] - 时间戳\n[ftime] - 时间格式（24小时）\n[name] - 物品名称\n[id] - 物品 ID\n[count] - 物品拾取次数\n[player] - 物品拾取人\n[class] - 玩家职业",
+		["Gold lines"] = "金钱行数",
+		["The format of each gold record"] = "每个金钱记录格式",
+		["\n[time] - timestamp\n[ftime] - formatted time\n[count] - the amount of copper recieved\n[fcount] - labeled gold/silver/copper amount"] = "\n[time] - 时间戳\n[ftime] - 时间格式\n[count] - 拾取金钱数量\n[fcount] - 标记金/银/铜数量",
+		["Custom export"] = "自定义导出",
+		["Press Control-C to copy the log"] = "按 Ctrl-C 复制记录",
+		
+		["Loot Monitor"] = "拾取监视", -- DEPRICATED
+		["Display Options"] = "显示选项",
+		
+		optStacks = "分堆/锚点",
+		optLockAll = "锁定所有窗体",
+		optPositioning = "位置",
+		optMonitor = "XLoot Monitor",
+		optAnchor = "显示锚点",
+		optPosVert = "垂直",
+		optPosHoriz = "水平",
+		optTimeout = "超时",
+		optDirection = "方向",
+		optThreshold = "分堆界限",
+		optQualThreshold = "品质界限",
+		optSelfQualThreshold = "自己的品质界限",
+		optUp = "上",
+		optDown = "下",
+		optMoney = "显示拾取的金钱",
+		["Show countdown text"] = "显示数量文字",
+		["Show totals of your items"] = "显示当前物品的总数",
+		["Show small text beside the item indicating how much time remains"] = "物品旁边显示可使用次数",
+		["Trim item names to..."] = "物品名称长度限制为…",
+		["Length in characters to trim item names to"] = "物品名称的最大长度",
+		["Show winning group loot"] = "显示队员赢得的物品",
+		["Show group roll choices"] = "显示小队 Roll 点时的选择",
+		
+		descStacks = "设置项目的显示方式，如显示位置、方向、一定时间自动清除等。",
+		descPositioning = "项目的显示位置及附着点",
+		descMonitor = "XLootMonitor 插件配置",
+		descAnchor = "显示锚点",
+		descPosVert = "项目相对你选择锚点的垂直偏移量",
+		descPosHoriz = "项目相对你选择锚点的水平偏移量",
+		descTimeout = "每行显示消退时间。|cFFFF5522设为0则保持显示不消退",
+		descDirection = "项目所显示的方向",
+		descThreshold = "可显示的最大项目数",
+		descQualThreshold = "监视器所显示物品的最低品质",
+		descSelfQualThreshold = "监视器所显示的你自己拾取物品的最低品质",
+		descMoney = "显示团队中打完怪所分得的金钱 |cFFFF0000并不包括你单独打怪时候的拾取金钱。|r",
+		
+		optPos = {
+			TOPLEFT = "左上角",
+			TOP = "上",
+			TOPRIGHT = "右上角",
+			RIGHT = "右",
+			BOTTOMRIGHT = "右下角",
+			BOTTOM = "下",
+			BOTTOMLEFT = "左下角",
+			LEFT = "左",
+			TOPLEFT = "左上角",
+		},
+		
+		linkErrorLength = "链接的信息太长将不能完全显示。继续发送或者清除当前信息再重试一下。",
+		
+		playerself = "你", 
+	}
+end)
+

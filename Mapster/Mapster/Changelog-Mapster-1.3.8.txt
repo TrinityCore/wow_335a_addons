@@ -1,0 +1,16 @@
+tag 1.3.8
+e6793e72ed96ab3a67e9d22a28d0ef8cdfabd72f
+Hendrik Leppkes <h.leppkes@gmail.com>
+2010-03-23 16:57:03 +0100
+
+Tagging as 1.3.8
+
+
+--------------------
+
+Hendrik Leppkes:
+	- Remove some checks that caused POIs to be misaligned.
+	- Moved the Options Button out of the way of the Track Checkbox.
+	- Fix alignment of the detail frame in minimized mode.
+	- Updated Quest POI integration for 3.3.3
+	- Use "true" instead of "Default" to be locale independent.

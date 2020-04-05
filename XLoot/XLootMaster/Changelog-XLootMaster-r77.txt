@@ -1,0 +1,14 @@
+------------------------------------------------------------------------
+r77 | dridzt | 2009-11-23 03:26:05 +0000 (Mon, 23 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/XLootMaster.lua
+   M /trunk/XLootMaster.toc
+
+- update for patch 3.3
+------------------------------------------------------------------------
+r76 | danielbarron | 2009-10-10 17:18:34 +0000 (Sat, 10 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/XLootMaster.toc
+
+XLootMaster: Fixed toc for wow 3.2.
+------------------------------------------------------------------------

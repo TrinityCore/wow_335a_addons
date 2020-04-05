@@ -1,0 +1,107 @@
+<!--
+    ################## FFMinimapButton.xml ##################
+    # Follow Felankor
+    # A World of Warcraft UI AddOn
+    # By Felankor
+    #
+    # IMPORTANT: I do not mind people looking at my code
+    # to learn from it. If you use any parts of my code
+    # please give me credit in your comments. I will
+    # do the same if I ever use any code from another
+    # AddOn. Thanks.
+    ###################################################
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+    <Script file="FollowFelankor.lua"/>
+    <Script file="FFMinimapButton.lua"/>
+<!-- Start FF_MinimapButtonFrame Frame -->
+	<Frame name="FF_MinimapButtonFrame" parent="Minimap" enableMouse="true" hidden="false" frameStrata="LOW">
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="Minimap" relativePoint="RIGHT">
+				<Offset>
+					<AbsDimension x="2" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+<!-- Start FF_MinimapButton Button -->
+			<Button name="FF_MinimapButton">
+				<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+				<Size>
+					<AbsDimension x="33" y="33"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BORDER">
+						<Texture name="FF_MinimapButtonIcon" file="Interface\AddOns\FollowFelankor\Images\FF_MinimapEnabled">
+							<Size>
+								<AbsDimension x="20" y="20"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="-1" y="1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="OVERLAY">
+						<Texture name="FF_MinimapButtonBorder" file="Interface\Minimap\MiniMap-TrackingBorder">
+							<Size>
+								<AbsDimension x="52" y="52"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+                    <OnLoad>
+                        this:RegisterForDrag("RightButton");
+                        this:GetParent().isMoving = false;
+                    </OnLoad>
+                    <OnDragStart>
+                        this:GetParent().isMoving = true;
+                    </OnDragStart>
+                    <OnDragStop>
+                        this:GetParent().isMoving = false;
+                    </OnDragStop>
+                    <OnMouseUp>
+                        if (arg1 == "LeftButton") then
+                            FFMenu:Show();
+                        end
+                    </OnMouseUp>
+                    <OnUpdate>
+                        if (this:GetParent().isMoving == true) then
+                            FF_MinimapButtonMoving();
+                        end
+                    </OnUpdate>
+					<OnEnter>
+                        GameTooltip:SetOwner(this, "LEFT");
+						GameTooltip:AddDoubleLine(FFMSG_ADDON_NAME, "v"..GetAddOnMetadata("FollowFelankor", "Version"), 1,1,1, 0,0,1);
+                        GameTooltip:AddDoubleLine(FFMINIMAP_TOOLTIP_LEFT1, FFMINIMAP_TOOLTIP_RIGHT1, 0,1,1, 0,1,1);
+                        GameTooltip:AddDoubleLine(FFMINIMAP_TOOLTIP_LEFT2, FFMINIMAP_TOOLTIP_RIGHT2, 0,1,0, 0,1,0);
+                        GameTooltip:Show();
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Button>
+<!-- End FF_MinimapButton Button -->
+		</Frames>
+	</Frame>
+<!-- End FF_MinimapButtonFrame Frame -->
+</Ui>

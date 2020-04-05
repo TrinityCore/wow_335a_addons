@@ -1,0 +1,12 @@
+<Bindings>
+	<Binding name="SHOWCONFIG" header="FACTIONIZER" runOnUp="true">
+		if ( keystate == "down" ) then
+			FIZ_ToggleConfigWindow()
+		end
+	</Binding>
+	<Binding name="SHOWDETAILS" header="FACTIONIZER" runOnUp="true">
+		if ( keystate == "down" ) then
+			FIZ_ToggleDetailWindow()
+		end
+	</Binding>
+</Bindings>

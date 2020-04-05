@@ -1,0 +1,13 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+<Script file="Damage\Damage.lua"/>
+<Script file="Damage\DamageTaken.lua"/>
+<Script file="Damage\DPS.lua"/>
+
+<Script file="Healing\Healing.lua"/>
+<Script file="Healing\HealingTaken.lua"/>
+<Script file="Healing\HPS.lua"/>
+<Script file="Healing\OverHealing.lua"/>
+
+</Ui>

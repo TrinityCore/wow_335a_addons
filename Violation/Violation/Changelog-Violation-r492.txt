@@ -1,0 +1,15 @@
+------------------------------------------------------------------------
+r492 | rabbit | 2009-04-14 11:28:45 +0000 (Tue, 14 Apr 2009) | 1 line
+Changed paths:
+   M /trunk/Violation.toc
+
+TOC bump.
+------------------------------------------------------------------------
+r491 | ananhaid | 2009-01-10 05:17:31 +0000 (Sat, 10 Jan 2009) | 2 lines
+Changed paths:
+   M /trunk/locales/zhCN.lua
+   M /trunk/locales/zhTW.lua
+
+Violation:
+- zhCN/zhTW update.
+------------------------------------------------------------------------

@@ -1,0 +1,17 @@
+tag 4.4.2
+d9790867440b00b954c768c5fbf383a01276d0c3
+Hendrik Leppkes <h.leppkes@gmail.com>
+2009-12-08 16:00:01 +0100
+
+Tagging as 4.4.2
+
+
+--------------------
+
+Hendrik Leppkes:
+	- Adjust size and alignment of the drag-overlay for the Totem Bar.
+	- Updated Blizzard Vehicle UI for 3.3
+	- Added a new Vehicle UI visibility condition.
+	- Added the new LFD Button to the MicroMenu
+	- Fix MicroMenu Hooks
+	- Update TOC for 3.3

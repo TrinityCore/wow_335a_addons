@@ -1,0 +1,17 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="addWindowRow.lua" /> 
+
+	<Frame name="BossEncounter2_AddWindowRowTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="256" y="16"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.AddWindowRow.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.AddWindowRow.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</UI>

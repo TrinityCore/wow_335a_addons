@@ -1,0 +1,32 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="statusFrame.lua" /> 
+
+	<Frame name="BossEncounter2_StatusFrameTemplate" frameStrata="HIGH" virtual="true">
+		<Size>
+			<AbsDimension x="128" y="80"/>
+		</Size>
+
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="16"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="4" right="4" top="4" bottom="4"/>
+			</BackgroundInsets>
+		</Backdrop>
+
+		<Scripts>
+			<OnLoad>
+				self:SetBackdropBorderColor(0.5, 0.5, 0.5);
+				self:SetBackdropColor(0.09, 0.09, 0.19);
+				BossEncounter2.Widgets.StatusFrame.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.StatusFrame.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</UI>

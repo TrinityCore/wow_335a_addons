@@ -1,0 +1,20 @@
+## Interface: 30300
+## Title: RangeDisplay Options
+## Author: mitch0
+## Version: v3.8.2
+## Notes: Configuration options for RangeDisplay
+## OptionalDeps: AceGUI-3.0-SharedMediaWidgets
+## Dependencies: RangeDisplay
+## LoadOnDemand: 1
+## X-License: Public Domain
+## X-RelSite-WoWI: 7297
+## X-Curse-Packaged-Version: v3.8.2
+## X-Curse-Project-Name: RangeDisplay
+## X-Curse-Project-ID: range-display
+## X-Curse-Repository-ID: wow/range-display/mainline
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+localizations\localizations.xml
+Options.lua

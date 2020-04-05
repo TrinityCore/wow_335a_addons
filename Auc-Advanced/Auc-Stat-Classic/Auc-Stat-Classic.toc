@@ -1,0 +1,12 @@
+## Title: Auc:Stat:Classic
+## Interface: 30300
+## Dependancies: Auc-Advanced
+## OptionalDeps: Auctioneer
+##
+## SavedVariables: AucAdvancedStatClassicData
+## Version: 5.7.4568 (KillerKoala)
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+## X-Part-Of: Auctioneer
+##
+StatClassic.lua

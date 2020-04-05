@@ -1,0 +1,19 @@
+------------------------------------------------------------------------
+r27 | sylvanaar | 2009-12-08 23:39:56 +0000 (Tue, 08 Dec 2009) | 1 line
+Changed paths:
+   A /tags/3.3.0 (from /trunk:26)
+
+Tagging as 3.3.0
+------------------------------------------------------------------------
+r26 | sylvanaar | 2009-12-08 23:03:59 +0000 (Tue, 08 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/ACP.toc
+
+TOC 30300
+------------------------------------------------------------------------
+r25 | sylvanaar | 2009-10-31 02:25:08 +0000 (Sat, 31 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/ACP.lua
+
+grouping enhancements for addons not using the Core_Module name convention. This includes support for X-Part-Of to group unrelated names together (e.g. Auctioneer). Fix for old bug which was causing certain addons not to appear due to the way blizz addons were handled. dont disable protected addons when disabling a set. actually stop updating memory usage values on every tooltip show.
+------------------------------------------------------------------------

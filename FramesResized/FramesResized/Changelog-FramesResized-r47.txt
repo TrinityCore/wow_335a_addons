@@ -1,0 +1,30 @@
+------------------------------------------------------------------------
+r47 | elkano | 2009-08-26 09:38:16 +0000 (Wed, 26 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/FramesResized.toc
+
+version bump to 2.3.2
+------------------------------------------------------------------------
+r46 | elkano | 2009-08-26 09:36:48 +0000 (Wed, 26 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/FramesResized.lua
+
+RaidInfo should now use all available space in the scrollframe
+------------------------------------------------------------------------
+r45 | elkano | 2009-08-06 09:33:37 +0000 (Thu, 06 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/FramesResized.lua
+   M /trunk/FramesResized.toc
+   M /trunk/FramesResized.xml
+   M /trunk/FramesResizedOptions.lua
+   D /trunk/UI-QuestLog-MidLeft.blp
+   D /trunk/UI-QuestLog-MidRight.blp
+
+fixes for 3.2 -> removed QuestLog code
+------------------------------------------------------------------------
+r44 | elkano | 2009-04-15 07:02:57 +0000 (Wed, 15 Apr 2009) | 1 line
+Changed paths:
+   M /trunk/FramesResized.toc
+
+fixed the TOC... it's 30100... well, still over nine thousand...
+------------------------------------------------------------------------

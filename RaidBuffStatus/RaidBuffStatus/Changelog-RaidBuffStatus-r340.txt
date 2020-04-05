@@ -1,0 +1,25 @@
+------------------------------------------------------------------------
+r340 | danielbarron | 2010-04-02 14:06:32 +0000 (Fri, 02 Apr 2010) | 15 lines
+Changed paths:
+   M /trunk/Buffs.lua
+   M /trunk/Config.lua
+   M /trunk/Core.lua
+   M /trunk/RaidBuffStatus.toc
+   M /trunk/ReadMe.txt
+
+RaidBuffStatus:
+- Taunt warnings are now sex agnostic.
+- Zone check is now correctly disabled when not in a raid.
+- Fixed some bugs with slacking flasks.
+- Buffers for Thorns are now listed as those with the most points spent in Brambles.
+- Health Stone list now shows who also has one as well as who is missing one.
+- Whispering people without a Health Stone now whispers the people missing when there is a Soul Well up and whispers the locks when there is none up.
+- Strength scroll is no longer checked for when Sanctuary is available.
+- Resurections are first cast on resurectors and in an alternating fasion so you won't repeatedly resurrect the same person when multiple people are in range.
+- Added support for cross-realm pugs and whispers and names.
+- As raid warning is no longer available in parties, RBS will announce to /party instead when not in a raid.
+- Fixed bugs with whispers for Drums of the Wild, Drums of Forgotten Kings and Runescroll of Fortitude.
+- Mage Armor is now renamed to Molten Armor.
+- When a buff such as Spirit or Fortitude or Mark of the Wild or drums are missing, RBS will now whisper someone at random who is in the same zone rather than just all who can buff it thus avoiding two Priests casting their raid-wide buff at the same time after both being whispered.
+
+------------------------------------------------------------------------

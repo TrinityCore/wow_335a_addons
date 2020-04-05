@@ -1,0 +1,17 @@
+Healers Have To Die (for World of Warcraft)
+===========================================
+
+
+*Now you can spot those nasty healers instantly and help them to accomplish their destiny!*
+
+
+This is a very simple and light add-on. It just rings when you hover or target
+a unit of the opposite faction who healed someone else during the last 60
+seconds (*can be configured*).
+
+This add-on uses the Ace3 framework.
+
+**type /hhtd to get a list of existing options**
+
+**Comments and suggestions are welcome** :-)
+

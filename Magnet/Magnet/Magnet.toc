@@ -1,0 +1,32 @@
+## Interface: 30300
+## Title: Magnet continued |cff7fff7f -Ace3-|r
+## Notes: Automatically attract or repel items while looting
+## Author: eddie2
+## Version: v1.02b5
+## SavedVariables: MagnetDB
+## SavedVariablesPerCharacter: MagnetDBPC
+## X-Category: Inventory
+## X-Embeds: Ace3, LibDataBroker-1.1, CallbackHandler-1.0,  LibTipHooker-1.1, LibStub, LibDataBroker-1.1, LibPeriodicTable-3.1
+## OptionalDeps: LibPeriodicTable-3.1
+## X-Curse-Packaged-Version: v1.02b5
+## X-Curse-Project-Name: Magnet continued
+## X-Curse-Project-ID: magnet-continued
+## X-Curse-Repository-ID: wow/magnet-continued/mainline
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+embeds.xml 
+
+Localization\enUS.lua
+Localization\deDE.lua
+Localization\esMX.lua
+Localization\frFR.lua
+Localization\koKR.lua
+Localization\esES.lua
+Localization\zhCN.lua
+Localization\zhTW.lua
+Localization\ruRU.lua
+Magnet.lua
+MagnetOptions.lua
+

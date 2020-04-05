@@ -1,0 +1,12 @@
+## Interface: 30300
+## Title: |cffff00ffNuuh|r|cffffffffMerchant|r
+## Notes: Improved Vendor-Interface
+## Notes-deDE: Verbessertes Haendlerfenster
+## Author: Nils Ruesch
+## X-Email: Nils.Ruesch@abwesend.de
+## X-Website: http://wow.shantalya.de
+## Version: 101005
+## OptionalDeps: DropTheCheapestThing, SellOMatic
+
+localization.lua
+core.lua

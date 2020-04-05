@@ -1,0 +1,40 @@
+<!--
+Jamba - Jafula's Awesome Multi-Boxer Assistant
+Copyright 2008 - 2010 Michael "Jafula" Miller
+All Rights Reserved
+http://wow.jafula.com/addons/jamba/
+jamba at jafula dot com
+-->
+
+<Bindings>
+	<Binding name="JAMBAITEMUSE1" header="JAMBAITEMUSE">
+		--[[dummy]]
+	</Binding>
+	<Binding name="JAMBAITEMUSE2">
+		--[[dummy]]
+	</Binding>
+	<Binding name="JAMBAITEMUSE3">
+		--[[dummy]]
+	</Binding>
+	<Binding name="JAMBAITEMUSE4">
+		--[[dummy]]
+	</Binding>
+	<Binding name="JAMBAITEMUSE5">
+		--[[dummy]]
+	</Binding>
+	<Binding name="JAMBAITEMUSE6">
+		--[[dummy]]
+	</Binding>
+	<Binding name="JAMBAITEMUSE7">
+		--[[dummy]]
+	</Binding>
+	<Binding name="JAMBAITEMUSE8">
+		--[[dummy]]
+	</Binding>
+	<Binding name="JAMBAITEMUSE9">
+		--[[dummy]]
+	</Binding>
+	<Binding name="JAMBAITEMUSE10">
+		--[[dummy]]
+	</Binding>	
+</Bindings>

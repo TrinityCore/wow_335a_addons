@@ -1,0 +1,11 @@
+------------------------------------------------------------------------
+r1123 | elsia | 2010-07-21 22:56:39 +0000 (Wed, 21 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/GUI_Detail.lua
+   M /trunk/GUI_Graph.lua
+   M /trunk/Recount.lua
+   M /trunk/roster.lua
+   M /trunk/zonefilters.lua
+
+- Fixed unintended globals (to avoid taint issues). Thanks to Dargen for spotting these.
+------------------------------------------------------------------------

@@ -1,0 +1,43 @@
+## Interface: 30300
+## Name: oRA3
+## Notes: Raid and Party Assist
+## Author: Ammo, Rabbit
+## X-Curse-Packaged-Version: r441
+## X-Curse-Project-Name: oRA3
+## X-Curse-Project-ID: ora3
+## X-Curse-Repository-ID: wow/ora3/mainline
+
+## X-Credits: Cladhaire for the sliding/detaching panel
+
+## SavedVariables: oRA3DB
+
+## OptionalDeps: Ace3, LibCandyBar-3.0, LibSharedMedia-3.0
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: true
+
+#@no-lib-strip@
+libs.xml
+#@end-no-lib-strip@
+
+locales\enUS.lua
+locales\ruRU.lua
+locales\koKR.lua
+locales\zhCN.lua
+locales\zhTW.lua
+locales\frFR.lua
+locales\deDE.lua
+
+oRA3.lua
+modulePrototype.lua
+
+modules\ReadyCheck.lua
+modules\Durability.lua
+modules\Resistance.lua
+modules\Zone.lua
+modules\Invite.lua
+modules\Promote.lua
+modules\Cooldowns.lua
+modules\Tanks.lua
+modules\Loot.lua
+

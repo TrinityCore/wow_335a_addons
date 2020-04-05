@@ -1,0 +1,21 @@
+## Interface: 30300
+## Title: Details Encounter (plugin)
+## Notes: Plugin for Details
+## RequiredDeps: Details
+## OptionalDeps: Ace3
+## SavedVariablesPerCharacter: EncounterDetailsDB
+## X-Curse-Packaged-Version: r236
+## X-Curse-Project-Name: Details!
+## X-Curse-Project-ID: details
+## X-Curse-Repository-ID: wow/details/mainline
+
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+
+enUS.lua
+ptBR.lua
+frames.lua
+
+Details_EncounterDetails.lua

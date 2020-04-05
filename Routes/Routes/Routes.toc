@@ -1,0 +1,57 @@
+﻿## Interface: 30300
+## Title: Routes
+## Notes: Routes on your worldmap and minimap!
+## Notes-frFR: Routes sur votre carte du monde et minicarte !
+## Notes-zhCN:Routes可以在已有采集相关数据的基础上形成采集路线，并可以优化路线，提高采集效率。
+## Author: Grum, Xinhuan
+## Version: v1.2.8a
+## DefaultState: enabled
+## X-Category: Map
+## X-eMail: routes @ grum DOT nl & xinhuan @ gmail DOT com
+## X-Name: Routes
+## OptionalDeps: Ace3, Cartographer, Cartographer_Notes, GatherMate, Gatherer, HandyNotes
+## SavedVariables: RoutesDB
+## X-Curse-Packaged-Version: v1.2.8a
+## X-Curse-Project-Name: Routes
+## X-Curse-Project-ID: routes
+## X-Curse-Repository-ID: wow/routes/mainline
+
+# Library files
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceEvent-3.0\AceEvent-3.0.xml
+Libs\AceHook-3.0\AceHook-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+#@end-no-lib-strip@
+
+# Locale files
+Locales\Locale-enUS.lua
+Locales\Locale-deDE.lua
+Locales\Locale-esES.lua
+Locales\Locale-frFR.lua
+Locales\Locale-koKR.lua
+Locales\Locale-ruRU.lua
+Locales\Locale-zhCN.lua
+Locales\Locale-zhTW.lua
+
+# Core Routes files
+Routes.lua
+TSP.lua
+Data.lua
+
+# Routes Module files
+Modules\AutoShow.lua
+Modules\Waypoints.lua
+Modules\TomTom.lua
+
+# Addons we can draw data from
+Plugins\Cartographer.lua
+Plugins\GatherMate.lua
+Plugins\Gatherer.lua
+Plugins\HandyNotes.lua

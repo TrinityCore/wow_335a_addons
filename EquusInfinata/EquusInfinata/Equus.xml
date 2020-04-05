@@ -1,0 +1,735 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+	<Script file="Equus.lua"/>
+	<!--********************** Templates **********************-->
+	<Frame name="EquusBorderFrame" virtual="true" hidden="false">
+		<Size>
+			<AbsDimension x="181" y="121" />
+		</Size>
+		<Backdrop edgeFile="Interface\Tooltips\UI-Tooltip-Border" bgFile="Interface\Tooltips\UI-Tooltip-Background" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+		</Backdrop>
+	</Frame>
+	<Button name="EquusIcon" virtual="true" hidden="false">
+		<Size>
+			<AbsDimension x="300" y="48"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT"/>
+		</Anchors>
+		<HighlightTexture file="Interface\Tooltips\UI-Tooltip-Background"/>
+		<Scripts>
+			<OnClick>Equus_OnClickRightButton(self)</OnClick>
+		</Scripts>
+		<Frames>
+			<CheckButton name="$parent_Checkbox" inherits="OptionsCheckButtonTemplate" checked="false">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="42" y="-20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="0" top="0" bottom="0"/>
+				</HitRectInsets>
+				<Scripts>
+					<OnClick>Equus_OnCheckBox(self)</OnClick>
+				</Scripts>
+			</CheckButton>
+			<Button name="$parent_MountIcon" inherits="SecureFrameTemplate">  
+				<Size>
+					<AbsDimension x="37" y="37"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="8" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						if ( IsModifiedClick() ) then
+							Equus_OnModifiedClick(self);
+						else
+							Equus_OnClick(self);
+						end
+					</OnClick>
+					<!--<OnDragStart>
+						print("Drag event fired")
+						Equus_OnDrag(self);
+					</OnDragStart>-->
+					<OnEnter>equusicon_OnEnter();</OnEnter>
+					<OnLeave>GameTooltip:Hide();</OnLeave>
+				</Scripts>
+				<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="-1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<!--PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/-->
+				<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+				
+				<Anchors>
+					<Anchor point="TOPLEFT"></Anchor>
+				</Anchors>
+				<PushedTexture file=""/>
+				<Layers>
+					<Layer level="BORDER">
+						<Texture name="$parentIconTexture"/>
+						<FontString name="$parentCount" inherits="NumberFontNormal" justifyH="RIGHT" hidden="true">
+							<Anchors>
+								<Anchor point="BOTTOMRIGHT">
+									<Offset>
+										<AbsDimension x="-5" y="2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentStock" inherits="NumberFontNormalYellow" justifyH="LEFT" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+					<Layer level="BACKGROUND">
+						<Texture name="$parent_IconTexture">
+							<Size>
+								<AbsDimension x="38" y="38"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="-1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<FontString name="$parent_Name" inherits="GameFontNormalLarge" text="Mount Name" justifyH="CENTER" justifyV="MIDDLE">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension y="-2" x="40"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Speed" inherits="GameFontNormal" text="Speed" justifyH="CENTER" justifyV = "MIDDLE">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension y="-22" x="57"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Button>
+		</Frames>
+	</Button>
+	<Button name="EquusInspIcon" virtual="true" hidden="false">
+		<Size>
+			<AbsDimension x="300" y="48"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT"/>
+		</Anchors>
+		<HighlightTexture file="Interface\Tooltips\UI-Tooltip-Background"/>
+		<Frames>
+			<Button name="$parent_MountIcon" inherits="SecureFrameTemplate">  
+				<Size>
+					<AbsDimension x="37" y="37"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="8" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						if ( IsModifiedClick() ) then
+							Equus_OnModifiedClick(self);
+						end
+					</OnClick>
+					<!--<OnDragStart>
+						print("Drag event fired")
+						Equus_OnDrag(self);
+					</OnDragStart>-->
+					<OnEnter>equusicon_OnEnter();</OnEnter>
+					<OnLeave>GameTooltip:Hide();</OnLeave>
+				</Scripts>
+				<NormalTexture name="$parentNormalTexture" file="Interface\Buttons\UI-Quickslot2">
+					<Size>
+						<AbsDimension x="64" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="-1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</NormalTexture>
+				<!--PushedTexture file="Interface\Buttons\UI-Quickslot-Depress"/-->
+				<HighlightTexture file="Interface\Buttons\ButtonHilight-Square" alphaMode="ADD"/>
+				
+				<Anchors>
+					<Anchor point="TOPLEFT"></Anchor>
+				</Anchors>
+				<PushedTexture file=""/>
+				<Layers>
+					<Layer level="BORDER">
+						<Texture name="$parentIconTexture"/>
+						<FontString name="$parentCount" inherits="NumberFontNormal" justifyH="RIGHT" hidden="true">
+							<Anchors>
+								<Anchor point="BOTTOMRIGHT">
+									<Offset>
+										<AbsDimension x="-5" y="2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentStock" inherits="NumberFontNormalYellow" justifyH="LEFT" hidden="true">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="0" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+					<Layer level="BACKGROUND">
+						<Texture name="$parent_IconTexture">
+							<Size>
+								<AbsDimension x="38" y="38"/>
+							</Size>
+							<Anchors>
+								<Anchor point="CENTER">
+									<Offset>
+										<AbsDimension x="0" y="-1"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<FontString name="$parent_Name" inherits="GameFontNormalLarge" text="Mount Name" justifyH="CENTER" justifyV="MIDDLE">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension y="-2" x="40"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parent_Speed" inherits="GameFontNormal" text="Speed" justifyH="CENTER" justifyV = "MIDDLE">
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension y="-22" x="40"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Button>
+		</Frames>
+	</Button>
+	<Frame name="EquusRightPane_Template" virtual="TRUE" hidden="false">
+		<Size>
+			<AbsDimension x="328" y="214"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="6" y="-127"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop edgeFile="Interface\Tooltips\UI-Tooltip-Border" bgFile="Interface\Tooltips\UI-Tooltip-Background" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+		</Backdrop>
+		<Frames>
+			<ScrollFrame name="$parentScrollPanel" inherits="HSFTemplate">
+				<Size x="308" y="204"/>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension y="5" x="-6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<ScrollChild>
+					<Frame name="$parentScrollChildFrame">
+						<Size x="303" y="180"/>
+						<Scripts>
+							<OnLoad>
+								HSFScrollChild_OnLoad(self);
+							</OnLoad>
+						</Scripts>
+					</Frame>
+				</ScrollChild>
+				<Frames>
+					<Slider name="$parentScrollBar" inherits="HSBTemplate">
+						<Anchors>
+							<Anchor point="TOPRIGHT" relativePoint="TOPRIGHT">
+								<Offset x="19" y="0"/>
+							</Anchor>
+							<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT">
+								<Offset x="19" y="0"/>
+							</Anchor>
+						</Anchors>
+					</Slider>
+				</Frames>
+			</ScrollFrame>
+		</Frames>
+	</Frame>
+	<EditBox name="EquusEditBoxTemplate" virtual="TRUE" hidden="false" autoFocus="false" id="1">
+		<Size>
+			<AbsDimension x="300" y="20"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\Common\Common-Input-Border">
+					<Size>
+						<AbsDimension x="8" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset x="-5" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.0625" top="0" bottom="0.625"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\Common\Common-Input-Border">
+					<Size>
+						<AbsDimension x="8" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.9375" right="1.0" top="0" bottom="0.625"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\Common\Common-Input-Border">
+					<Size>
+						<AbsDimension x="0" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+						<Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT"/>
+					</Anchors>
+					<TexCoords left="0.0625" right="0.9375" top="0" bottom="0.625"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<FontString inherits="ChatFontSmall"/>
+	</EditBox>
+	<!--********************** Options Panel **********************-->
+	<Frame name="EquusOptions">
+		<Scripts>
+			<OnLoad>EquusOptions_OnLoad(self);</OnLoad>
+			<OnShow>EquusOptions_OnShow(self);</OnShow>
+		</Scripts>
+		<Frames>
+			<CheckButton name="EquusOption_MergeFastFly" inherits="OptionsCheckButtonTemplate" checked="false">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-20"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="EquusOption_Inspect" inherits="OptionsCheckButtonTemplate" checked="false">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-126"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<Button name="$parent_ResetPetToZero" inherits="GameMenuButtonTemplate" text="None">
+				<Size>
+					<AbsDimension x="60" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="248" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Equus_ResetPetCustomsZero();</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_ResetPetToOne" inherits="GameMenuButtonTemplate" text="All">
+				<Size>
+					<AbsDimension x="60" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="313" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Equus_ResetPetCustomsAll();</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_ResetMountToZero" inherits="GameMenuButtonTemplate" text="None">
+				<Size>
+					<AbsDimension x="60" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="248" y="-90"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Equus_ResetMountCustomsZero();</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_ResetMountToOne" inherits="GameMenuButtonTemplate" text="All">
+				<Size>
+					<AbsDimension x="60" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="313" y="-90"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Equus_ResetMountCustomsAll();</OnClick>
+				</Scripts>
+			</Button>
+			<EditBox name="EquusKeybind1" inherits="EquusEditBoxTemplate" id="1">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension y="-280" x="80"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>EditBox_ClearFocus(self)</OnEnterPressed>
+					<OnEscapePressed>EditBox_ClearFocus(self)</OnEscapePressed>
+					<OnTextChanged>Equus_KeybindEditBox(self,1)</OnTextChanged>
+					<OnEditFocusLost>
+						self:HighlightText(0, 0);
+						if ( self:GetText() == "" ) then
+							self:SetText("mount");
+						end
+						if isUserInput == 1 then Equus_KeybindEditBox(self,1) end
+					</OnEditFocusLost>
+				</Scripts>
+			</EditBox>
+			<EditBox name="EquusKeybind2" inherits="EquusEditBoxTemplate" id="2">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension y="-303" x="80"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>EditBox_ClearFocus(self)</OnEnterPressed>
+					<OnEscapePressed>EditBox_ClearFocus(self)</OnEscapePressed>
+					<OnTextChanged>Equus_KeybindEditBox(self,2)</OnTextChanged>
+					<OnEditFocusLost>
+						self:HighlightText(0, 0);
+						if ( self:GetText() == "" ) then
+							self:SetText("mount fastground");
+						end
+						if isUserInput == 1 then Equus_KeybindEditBox(self,2) end
+					</OnEditFocusLost>
+				</Scripts>
+			</EditBox>
+			<EditBox name="EquusKeybind3" inherits="EquusEditBoxTemplate" id="3">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension y="-326" x="80"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>EditBox_ClearFocus(self)</OnEnterPressed>
+					<OnEscapePressed>EditBox_ClearFocus(self)</OnEscapePressed>
+					<OnTextChanged>Equus_KeybindEditBox(self,3)</OnTextChanged>
+					<OnEditFocusLost>
+						self:HighlightText(0, 0);
+						if ( self:GetText() == "" ) then
+							self:SetText("pet");
+						end
+						if isUserInput == 1 then Equus_KeybindEditBox(self,3) end
+					</OnEditFocusLost>
+				</Scripts>
+			</EditBox>
+			<EditBox name="EquusKeybind4" inherits="EquusEditBoxTemplate" id="4">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension y="-349" x="80"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>EditBox_ClearFocus(self)</OnEnterPressed>
+					<OnEscapePressed>EditBox_ClearFocus(self)</OnEscapePressed>
+					<OnTextChanged>Equus_KeybindEditBox(self,4)</OnTextChanged>
+					<OnEditFocusLost>
+						self:HighlightText(0, 0);
+						if ( self:GetText() == "" ) then
+							self:SetText("pet ground");
+						end
+						if isUserInput == 1 then Equus_KeybindEditBox(self,4) end
+					</OnEditFocusLost>
+				</Scripts>
+			</EditBox>
+			<EditBox name="EquusKeybind5" inherits="EquusEditBoxTemplate" id="5">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension y="-372" x="80"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnEnterPressed>EditBox_ClearFocus(self)</OnEnterPressed>
+					<OnEscapePressed>EditBox_ClearFocus(self)</OnEscapePressed>
+					<OnTextChanged>Equus_KeybindEditBox(self,5)</OnTextChanged>
+					<OnEditFocusLost>
+						self:HighlightText(0, 0);
+						if ( self:GetText() == "" ) then
+							self:SetText("pet flying");
+						end
+						if isUserInput == 1 then Equus_KeybindEditBox(self,5) end
+					</OnEditFocusLost>
+				</Scripts>
+			</EditBox>
+		</Frames>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="EquusOptFont1" inherits="GameFontNormalLarge" text="Treat 310% flying mounts as 280%" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension y="-24" x="38"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont2" inherits="GameFontNormalLarge" text="Reset Pet customs to:" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-21" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont3" inherits="GameFontNormalLarge" text="Reset Mount customs to:" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont2" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-12" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont4" inherits="GameFontNormalLarge" text="Inspect Functionality" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont3" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-23" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont5" inherits="GameFontNormal" text="Both players must have Equus Infinata installed for" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont4" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="0" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont6" inherits="GameFontNormal" text="this function to work." justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont5" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="0" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont7" inherits="GameFontNormalLarge" text="Summon reagent pets:" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont6" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-23" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont8" inherits="GameFontNormal" text="'Only If Available' will only summon reagent-using" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont7" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-3" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont9" inherits="GameFontNormal" text="companion pets if you have the reagent in your bags." justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont8" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="0" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont10" inherits="GameFontNormalLarge" text="Keybinding Commands" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont9" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-23" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont11" inherits="GameFontNormal" text="1: /ei" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont10" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-9" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont12" inherits="GameFontNormal" text="2: /ei" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont11" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-11" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont13" inherits="GameFontNormal" text="3: /ei" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont12" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-11" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont14" inherits="GameFontNormal" text="4: /ei" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont13" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-11" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="EquusOptFont15" inherits="GameFontNormal" text="5: /ei" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="EquusOptFont14" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="-11" x="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+	<!--********************** Main Frame **********************-->
+	<Frame name="EquusMainFrame" parent="PetPaperDollFrameCompanionFrame" movable="true" hidden="false">
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset x="13" y="-70"/>
+			</Anchor>
+		</Anchors>
+		<Size x="339" y="365"/>
+		<Scripts>
+			<OnLoad>Equus_OnLoad();</OnLoad>
+			<OnEvent>Equus_OnEvent(self, event, ...);</OnEvent>
+		</Scripts>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parent_Name" inherits="GameFontNormal" text="Equus Infinata vX.X" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension y="8" x="15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parent_Count" inherits="GameFontNormal" text="XXX pets found" justifyH="LEFT" justifyV="MIDDLE">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension y="-111" x="15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parent_OptionsButton" inherits="GameMenuButtonTemplate" text="Options">
+				<Size>
+					<AbsDimension x="81" y="21"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-7" y="3"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>EquusOpenOptions();</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+	
+</Ui>

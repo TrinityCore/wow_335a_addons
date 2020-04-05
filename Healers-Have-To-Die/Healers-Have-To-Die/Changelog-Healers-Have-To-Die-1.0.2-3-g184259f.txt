@@ -1,0 +1,4 @@
+Archarodim:
+	- - Added localization support through WoWAce.org interface ( http://www.wowace.com/addons/healers-have-to-die/localization/ )
+	- - Better handling of corrupt RAID_CLASS_COLORS global table
+	- - Added Cataclysm compatibility tags to Healers-Have-To-Die.toc

@@ -1,0 +1,26 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: r7543-release
+## X-Curse-Project-Name: BigWigs Bossmods
+## X-Curse-Project-ID: big-wigs
+## X-Curse-Repository-ID: wow/big-wigs/mainline
+
+## Title: Big Wigs [|cffeda55fOptions|r]
+## Title-deDE: Big Wigs [|cffeda55fOptionen|r]
+## Title-ruRU: Big Wigs [|cffeda55fНастройки|r]
+## Title-zhCN: Big Wigs [|cffeda55f选项|r]
+## Title-zhTW: Big Wigs [|cffeda55f選項|r]
+## Title-koKR: Big Wigs [|cffeda55f옵션|r]
+## Notes: Big Wigs Configuration Options
+## Notes-deDE: Big Wigs Einstellungsmöglichkeiten.
+## Notes-ruRU: Модуль настроек Big Wigs
+## Notes-zhCN: Big Wigs 配置选项
+## Notes-zhTW: Big Wigs 配置選項
+## Notes-frFR: Options de configuration de Big Wigs.
+## Notes-koKR: Big Wigs 구성 옵션
+
+## LoadOnDemand: 1
+## Dependencies: BigWigs
+
+libs.xml
+modules.xml
+

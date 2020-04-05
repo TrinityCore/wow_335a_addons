@@ -1,0 +1,449 @@
+<!--
+    ################## FFHelp.xml ##################
+    # Follow Felankor
+    # A World of Warcraft UI AddOn
+    # By Felankor
+    #
+    # IMPORTANT: I do not mind people looking at my code
+    # to learn from it. If you use any parts of my code
+    # please give me credit in your comments. I will
+    # do the same if I ever use any code from another
+    # AddOn. Thanks.
+    ###################################################
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+
+    <Script file="localization.en.lua"/>
+    <Script file="FFHelp.lua"/>
+
+<!-- Start of FFHelp Frame -->
+    <Frame name="FFHelp" movable="true" enableMouse="true" hidden="true">
+        <Size>
+            <AbsDimension x="600" y="446" />
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" relativeTo="UIParent">
+                <Offset>
+                    <AbsDimension x="0" y="0" />
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11" />
+            </BackgroundInsets>
+            <TileSize>
+                <AbsValue val="32" />
+            </TileSize>
+            <EdgeSize>
+                <AbsValue val="32" />
+            </EdgeSize>
+        </Backdrop>
+        <Layers>
+            <Layer>
+                <Texture name="$parentTitleBorder" file="Interface\DialogFrame\UI-DialogBox-Header">
+                    <Size>
+                        <AbsDimension x="260" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="5" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords left="0.2" right="0.8" top="0" bottom="0.6" />
+                </Texture>
+                <FontString name="$parentTitleString" inherits="GameFontNormal" text="FFHELPDIALOG_TITLE">
+                    <Size>
+                        <AbsDimension x="140" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="-4" />
+                        </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <FontHeight>
+                        <AbsValue val="12" />
+                    </FontHeight>
+                    <Color r="1" g="0.8196079" b="0" />
+                    <Shadow>
+                        <Color r="0" g="0" b="0" />
+                        <Offset>
+                            <AbsDimension x="1" y="-1" />
+                        </Offset>
+                    </Shadow>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+<!-- End of FFHelp Frame -->
+<!-- Start of FF_lblSlashHelp Label -->
+            <Frame name="FF_lblSlashHelp">
+                <Size>
+                    <AbsDimension x="354" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                    <Offset>
+                        <AbsDimension x="23" y="-34" />
+                    </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parentLabel" inherits="GameFontNormal" text="FFHELPDIALOG_SLASHHELP" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" />
+                                <Anchor point="BOTTOMRIGHT" />
+                            </Anchors>
+                            <FontHeight>
+                                <AbsValue val="12" />
+                            </FontHeight>
+                            <Color r="1" g="0.8196079" b="0" />
+                            <Shadow>
+                                <Color r="0" g="0" b="0" />
+                                <Offset>
+                                    <AbsDimension x="1" y="-1" />
+                                </Offset>
+                            </Shadow>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+<!-- End of FF_lblSlashHelp Label -->
+<!-- Start FFSlashHighlight Frame -->
+            <Frame name="FFSlashHighlight" inherits="FFHelpHighlight">
+                <Size>
+                    <AbsDimension x="163" y="16"/>
+                </Size>
+            </Frame>
+<!-- End FFSlashHighlight Frame -->
+<!-- Start of FFSlashScrollBar ScrollFrame -->
+            <ScrollFrame name="FFSlashScrollBar" inherits="FauxScrollFrameTemplate" hidden="false">
+                <Size>
+                    <AbsDimension x="163" y="138" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="23" y="-64" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnVerticalScroll>
+                        FauxScrollFrame_OnVerticalScroll(self, offset, 16, FFSlashScrollBar_Update);
+                    </OnVerticalScroll>
+                    <OnShow>
+                        FFSlashScrollBar_Update();
+                    </OnShow>
+                </Scripts>
+            </ScrollFrame>
+<!-- End of FFSlashScrollBar ScrollFrame -->
+<!-- Start of FFSlashEntry Buttons -->
+            <Button name="FFSlashEntry1" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="FFSlashScrollBar">
+                        <Offset>
+                            <AbsDimension x="5" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFSlashEntry2" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFSlashEntry1" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFSlashEntry3" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFSlashEntry2" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFSlashEntry4" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFSlashEntry3" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFSlashEntry5" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFSlashEntry4" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFSlashEntry6" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFSlashEntry5" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFSlashEntry7" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFSlashEntry6" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFSlashEntry8" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFSlashEntry7" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+<!-- End of FFSlashEntry Buttons -->
+<!-- Start of FF_lblSlashDescription Label -->
+            <Frame name="FF_lblSlashDescription">
+                <Size>
+                    <AbsDimension x="368" y="138" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="FFSlashScrollBar" relativePoint="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="23" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parentLabel" inherits="GameFontNormal" text="FFHELPDIALOG_SLASH_DESCRIPTION" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" />
+                                <Anchor point="BOTTOMRIGHT" />
+                            </Anchors>
+                            <FontHeight>
+                                <AbsValue val="12" />
+                            </FontHeight>
+                            <Color r="1" g="0.8196079" b="0" />
+                            <Shadow>
+                                <Color r="0" g="0" b="0" />
+                                <Offset>
+                                    <AbsDimension x="1" y="-1" />
+                                </Offset>
+                            </Shadow>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+<!-- End of FF_lblSlashDescription Label -->
+<!-- Start of FF_lblWhisperHelp Label -->
+            <Frame name="FF_lblWhisperHelp">
+                <Size>
+                    <AbsDimension x="500" y="24" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="23" y="-233" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parentLabel" inherits="GameFontNormal" text="FFHELPDIALOG_WHISPERHELP" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" />
+                                <Anchor point="BOTTOMRIGHT" />
+                            </Anchors>
+                            <FontHeight>
+                                <AbsValue val="12" />
+                            </FontHeight>
+                            <Color r="1" g="0.8196079" b="0" />
+                            <Shadow>
+                                <Color r="0" g="0" b="0" />
+                                <Offset>
+                                    <AbsDimension x="1" y="-1" />
+                                </Offset>
+                            </Shadow>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+<!-- End of FF_lblWhisperHelp Label -->
+<!-- Start FFWhisperHighlight Frame -->
+            <Frame name="FFWhisperHighlight" inherits="FFHelpHighlight">
+                <Size>
+                    <AbsDimension x="163" y="16"/>
+                </Size>
+            </Frame>
+<!-- End FFWhisperHighlight Frame -->
+<!-- Start of FFWhisperScrollBar ScrollFrame -->
+            <ScrollFrame name="FFWhisperScrollBar" inherits="FauxScrollFrameTemplate" hidden="false">
+                <Size>
+                    <AbsDimension x="163" y="138" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="23" y="-263" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnVerticalScroll>
+                        FauxScrollFrame_OnVerticalScroll(self, offset, 16, FFWhisperScrollBar_Update);
+                    </OnVerticalScroll>
+                    <OnShow>
+                        FFWhisperScrollBar_Update();
+                    </OnShow>
+                </Scripts>
+            </ScrollFrame>
+<!-- End of FFWhisperScrollBar ScrollFrame -->
+<!-- Start of FFWhispEntry Buttons -->
+            <Button name="FFWhispEntry1" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="FFWhisperScrollBar">
+                        <Offset>
+                            <AbsDimension x="5" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFWhispEntry2" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFWhispEntry1" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFWhispEntry3" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFWhispEntry2" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFWhispEntry4" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFWhispEntry3" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFWhispEntry5" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFWhispEntry4" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFWhispEntry6" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFWhispEntry5" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFWhispEntry7" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFWhispEntry6" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="FFWhispEntry8" inherits="FFEntryTemplate">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFWhispEntry7" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+<!-- End of FFWhispEntry Buttons -->
+<!-- Start of FF_lblWhisperDescription Label -->
+            <Frame name="FF_lblWhisperDescription">
+                <Size>
+                    <AbsDimension x="368" y="138" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="FFWhisperScrollBar" relativePoint="TOPRIGHT">
+                        <Offset>
+                            <AbsDimension x="23" y="0" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parentLabel" inherits="GameFontNormal" text="FFHELPDIALOG_WHISPER_DESCRIPTION" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="TOPLEFT" />
+                                <Anchor point="BOTTOMRIGHT" />
+                            </Anchors>
+                            <FontHeight>
+                                <AbsValue val="12" />
+                            </FontHeight>
+                            <Color r="1" g="0.8196079" b="0" />
+                            <Shadow>
+                                <Color r="0" g="0" b="0" />
+                                <Offset>
+                                    <AbsDimension x="1" y="-1" />
+                                </Offset>
+                            </Shadow>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+<!-- End of FF_lblWhisperDescription Label -->
+<!-- Start of FF_cmdHelpOK Button -->
+        <Button name="FF_cmdHelpOK" inherits="FFButtonTemplate" text="FFHELPDIALOG_OK">
+            <Anchors>
+                <Anchor point="BOTTOM" relativeTo="FFHelp" relativePoint="BOTTOM">
+                    <Offset>
+                        <AbsDimension x="0" y="15" />
+                    </Offset>
+                </Anchor>
+            </Anchors>
+            <Scripts>
+                <OnClick>
+                    FFHelp:Hide(); 
+                </OnClick>
+            </Scripts>
+        </Button>
+<!-- End of FF_cmdHelpOK Button -->
+        </Frames>
+        <Scripts>
+            <OnShow>
+                FF_HelpDialog_OnShow();
+            </OnShow>
+        </Scripts>
+    </Frame>
+</Ui>

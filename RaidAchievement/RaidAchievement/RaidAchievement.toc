@@ -1,0 +1,20 @@
+﻿## Interface: 30300
+## Title: Raid|cff7fff7fAchievement|r   Main
+## Title-ruRU: Raid|cff7fff7fAchievement|r   Основной
+## Author: Shurshik
+## Version: 1.036
+## Notes: /fena or /rach for more info
+## Notes-ruRU: /фена или /рейдач - для открытия настроек
+## URL: http://phoenix-wow.ru/
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariablesPerCharacter: thisaddonworkea, pseashowfailreas, pseashownewvervar, wherereportraidach, wherereportpartyach,raquantrepeatach,raquantrepeatachtm,raoldvern
+Localization\localization-enEN.lua
+Localization\localization-ruRU.lua
+Localization\localization-deDE.lua
+Localization\localization-frFR.lua
+Localization\localization-esES.lua
+Localization\localization-koKR.lua
+Localization\localization-zhTW.lua
+RaidAchievement.lua
+RaidAchievement.xml

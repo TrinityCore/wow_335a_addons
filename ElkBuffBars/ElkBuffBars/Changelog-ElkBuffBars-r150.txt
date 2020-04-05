@@ -1,0 +1,22 @@
+------------------------------------------------------------------------
+r150 | elkano | 2009-08-14 07:09:38 +0000 (Fri, 14 Aug 2009) | 2 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/EBB_Bar.lua
+   M /trunk/EBB_BarGroup.lua
+   M /trunk/ElkBuffBars.lua
+   M /trunk/ElkBuffBars.toc
+
+- updated TOC for 3.2
+- reduced garbage generation (thx Antiarc)
+------------------------------------------------------------------------
+r149 | elkano | 2009-04-16 07:53:17 +0000 (Thu, 16 Apr 2009) | 3 lines
+Changed paths:
+   M /trunk/EBB_Bar.lua
+   M /trunk/ElkBuffBars.lua
+   M /trunk/ElkBuffBars.toc
+
+- pushed TOC 30100
+- changes for detection of selfcast buffs (player, pet, vehicle)
+- some code to prevent "TexCoord out of range"; no idea why it happened at all :/
+------------------------------------------------------------------------

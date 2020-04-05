@@ -1,0 +1,132 @@
+------------------------------------------------------------------------
+r391 | sylvanaar | 2009-10-27 04:05:22 +0000 (Tue, 27 Oct 2009) | 1 line
+Changed paths:
+   A /tags/3.2.10 (from /trunk:390)
+
+Tagging as 3.2.10
+------------------------------------------------------------------------
+r390 | sylvanaar | 2009-10-23 00:55:52 +0000 (Fri, 23 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/Substitutions.lua
+
+make %thp work
+------------------------------------------------------------------------
+r389 | sylvanaar | 2009-10-22 22:44:53 +0000 (Thu, 22 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/OriginalEditbox.lua
+
+fix module name error
+------------------------------------------------------------------------
+r388 | sylvanaar | 2009-10-22 22:09:16 +0000 (Thu, 22 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/History.lua
+
+wow, command history has been broken for a year because of a typo saveHistory->savehistory
+------------------------------------------------------------------------
+r387 | sylvanaar | 2009-10-22 22:09:14 +0000 (Thu, 22 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/ScrollingMessageFrameHacks.lua
+
+make sure that we reflow text around the chat menu button if it is shown
+------------------------------------------------------------------------
+r386 | sylvanaar | 2009-10-22 22:09:13 +0000 (Thu, 22 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/addon/addon.lua
+   M /trunk/modules/OriginalEditbox.lua
+   M /trunk/modules/includes.xml
+
+provide the original editbox module as "OriginalEditbox" set to 'dont load' by default
+------------------------------------------------------------------------
+r385 | sylvanaar | 2009-10-22 22:09:11 +0000 (Thu, 22 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/Editbox.lua
+
+change default of useAltKey to true
+------------------------------------------------------------------------
+r384 | sylvanaar | 2009-10-22 00:48:10 +0000 (Thu, 22 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/AltNames.lua
+
+fix the guild import so that it only imports actual guild members from the guild note, not random crap
+------------------------------------------------------------------------
+r382 | sylvanaar | 2009-10-22 00:08:09 +0000 (Thu, 22 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/addon/modules.lua
+
+fix the module control options for disabled modules
+------------------------------------------------------------------------
+r381 | sylvanaar | 2009-10-21 17:48:02 +0000 (Wed, 21 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/Substitutions.lua
+
+lowered the priority of %th to prevent it matching before %thp, %thd
+------------------------------------------------------------------------
+r379 | sylvanaar | 2009-10-16 22:55:20 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/Editbox.lua
+
+upgrade the anchor setting if an old one is detected
+------------------------------------------------------------------------
+r377 | sylvanaar | 2009-10-16 21:23:05 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/Editbox.lua
+
+set colorByChannel default to on
+------------------------------------------------------------------------
+r376 | sylvanaar | 2009-10-16 21:13:29 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/addon/locales.lua
+   M /trunk/modules/Editbox.lua
+
+localizations for editbox added
+------------------------------------------------------------------------
+r375 | sylvanaar | 2009-10-16 20:50:14 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/addon/locales.lua
+   A /trunk/modules/Editbox.lua
+
+add the editbox module from chatter, and disable localization error messages while i set up localizations
+------------------------------------------------------------------------
+r374 | sylvanaar | 2009-10-16 20:45:55 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   D /trunk/modules/Editbox.lua
+   A /trunk/modules/OriginalEditbox.lua (from /trunk/modules/Editbox.lua:372)
+
+renaming the old editbox module
+------------------------------------------------------------------------
+r373 | sylvanaar | 2009-10-16 03:44:10 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/AltNames.lua
+
+fix issue #158 by making the list of alts on the tooltip use a single line so it will wrap easily. The colors may need a little tweaking though
+------------------------------------------------------------------------
+r370 | sylvanaar | 2009-10-11 23:37:33 +0000 (Sun, 11 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Prat-3.0.toc
+
+touch to refresh the localization
+------------------------------------------------------------------------
+r369 | sylvanaar | 2009-10-11 17:20:17 +0000 (Sun, 11 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/ServerNames.lua
+
+new options "auto-abbreviate" on by default. This shortens the server name to 3 letters - it doesn't try to handle cases where the first 3 letters of 2 servers are the same.
+------------------------------------------------------------------------
+r368 | sylvanaar | 2009-10-11 16:41:08 +0000 (Sun, 11 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerNames.lua
+
+fix the location of the group number so [L:Name-Server:G] instead of [L:Name:G-Server]
+------------------------------------------------------------------------
+r367 | sylvanaar | 2009-10-06 17:46:12 +0000 (Tue, 06 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Prat-3.0.toc
+
+test hgsubversion
+------------------------------------------------------------------------
+r366 | sylvanaar | 2009-08-28 15:30:49 +0000 (Fri, 28 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/modules/ChatLink.lua
+
+make the module information string localizable
+------------------------------------------------------------------------

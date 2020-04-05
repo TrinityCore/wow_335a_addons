@@ -1,0 +1,94 @@
+------------------------------------------------------------------------
+r159 | myrroddin | 2010-08-11 01:29:57 +0000 (Wed, 11 Aug 2010) | 1 line
+Changed paths:
+   A /tags/Beta 2.2 (from /trunk:158)
+
+Tagging as Beta 2.2
+------------------------------------------------------------------------
+r158 | myrroddin | 2010-08-06 09:18:40 +0000 (Fri, 06 Aug 2010) | 3 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+Turn guessed resses on by default (was off by default before)
+Fixed issue when duplicate res chat notification was printing to self and not to desired output
+Localized global SendChatMessage API
+------------------------------------------------------------------------
+r157 | myrroddin | 2010-08-04 00:50:28 +0000 (Wed, 04 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+Changed line 53: local ResComm, ResCommMinor = ... Should match if/then on line 54 (ticket #49)
+------------------------------------------------------------------------
+r156 | nebula169 | 2010-08-02 18:30:57 +0000 (Mon, 02 Aug 2010) | 1 line
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+Use the loaded LRC's minor version for version checking instead of trying to use the TOC version
+------------------------------------------------------------------------
+r155 | myrroddin | 2010-08-02 00:54:05 +0000 (Mon, 02 Aug 2010) | 3 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/SmartRes2.lua
+
+pkgmeta: removed tag: latest from LibResComm (should package alpha now)
+You can now adjust the height and width of the res bars
+Popup dialog warning of lower version for LibResComm
+------------------------------------------------------------------------
+r154 | myrroddin | 2010-07-29 06:48:58 +0000 (Thu, 29 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+Defibrillate (Goblin Jumper Cables, GJC XL, Gnomish Army Knife) ... These are not transferred over the addon channel and are only viewable by the user
+------------------------------------------------------------------------
+r153 | nebula169 | 2010-07-28 22:53:13 +0000 (Wed, 28 Jul 2010) | 4 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+* Fixes UNIT_SPELLCAST_* event tracking
+* Removes AceHook
+* waitingForAccept only set on ResComm_Ressed or UNIT_SPELLCAST_SUCCEEDED
+* Misc OCD related tweaks
+------------------------------------------------------------------------
+r152 | myrroddin | 2010-07-27 08:21:56 +0000 (Tue, 27 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+Dry-coded: support for non-CTRA/LibResComm-1.0 casts
+------------------------------------------------------------------------
+r151 | myrroddin | 2010-07-25 14:38:30 +0000 (Sun, 25 Jul 2010) | 3 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+Removed some antique debug code
+Commented out SetEnabledState() and related code to test /sr cast
+Moved stuff from ResComm_ResEnd to ResComm_Ressed for testing purposes
+------------------------------------------------------------------------
+r150 | myrroddin | 2010-07-24 11:51:44 +0000 (Sat, 24 Jul 2010) | 3 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+Removed the disabling of keybinds if you don't have a res spell. Wasn't working as intended
+Fixed some typos
+Added redundancy checks for SetPoint and Show/HideIcon on the bars that hopefully fixed related issues
+------------------------------------------------------------------------
+r149 | myrroddin | 2010-07-24 09:46:05 +0000 (Sat, 24 Jul 2010) | 5 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+Fixed typo (Self:Print vs self:Print)
+Changed checkbox for disable addon to enable addon (better handling of Ace3's Enable() and Disable() )
+Moved waitingForAccept[target] = {} assign to ResComm_Ressed (previously, if you cancelled a cast, it still thought target was ressed, and wouldn't try to res target)
+If you do not have a res spell, the keybindings will be visable but non-interactable in the options screen
+Changed/Added/Deleted some localization strings
+------------------------------------------------------------------------
+r146 | myrroddin | 2010-07-08 10:27:40 +0000 (Thu, 08 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+Push new version to use latest alpha of LibResComm-1.0, which has cross-realm awareness of targets and ressers. Needs LOTS of testing please and thank you!
+No changes other than that since previous build of SmartRes2
+------------------------------------------------------------------------

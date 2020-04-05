@@ -1,0 +1,57 @@
+## Interface: 30300
+## Title: Chinchilla Minimap v2.1.4
+## Version: v2.1.4
+## Notes: Minimap addon of awesomeness. *chewing sound*. It'll nibble your hay pellets.
+## Notes-frFR: Minicarte incroyablement incroyable. *bruit de mastication*. Il va grignoter votre foin.
+## Author: ckknight
+## X-eMail: ckknight AT gmail DOT com
+## X-Website: http://www.wowace.com/
+## X-Category: Map
+## SavedVariables: Chinchilla2DB
+## OptionalDeps: !Swatter, !BugGrabber, Ace3, Blizzard_TimeManager
+## X-WoWIPortal: ckknight
+## X-Curse-Packaged-Version: v2.1.4
+## X-Curse-Project-Name: Chinchilla Minimap
+## X-Curse-Project-ID: chinchilla
+## X-Curse-Repository-ID: wow/chinchilla/mainline
+
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+Libs\AceEvent-3.0\AceEvent-3.0.xml
+Libs\AceTimer-3.0\AceTimer-3.0.xml
+Libs\AceHook-3.0\AceHook-3.0.xml
+#@end-no-lib-strip@
+
+Locale\enUS.lua
+Locale\deDE.lua
+Locale\frFR.lua
+Locale\esES.lua
+Locale\esMX.lua
+Locale\koKR.lua
+Locale\ruRU.lua
+Locale\zhCN.lua
+Locale\zhTW.lua
+
+Chinchilla.lua
+
+Modules\Appearance.lua
+Modules\AutoZoom.lua
+Modules\Compass.lua
+Modules\Coordinates.lua
+Modules\Expander.lua
+Modules\Location.lua
+Modules\MoveButtons.lua
+Modules\Ping.lua
+Modules\Position.lua
+Modules\QuestTracker.lua
+Modules\RangeCircle.lua
+Modules\ShowHide.lua
+Modules\TrackingDots.lua
+Modules\WheelZoom.lua

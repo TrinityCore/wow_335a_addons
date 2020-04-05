@@ -1,0 +1,31 @@
+## Interface: 30300
+## Title: XLoot |cFF77BBFFMaster|r
+## Notes: Highly configurable master looter dropdown menu
+## Notes-esES: Botón de menú de Maestro despojador altamente configurable
+## Notes-zhCN: 高定制化队长分配菜单
+## Notes-zhTW: 高定制化隊長分配功能表
+## Notes-ruRU: Конфигурироваемое меню для Лут Мастера
+## Version: 0.81
+## Author: Xuerian
+## X-Category: Raid
+## X-eMail: sky.shell@gmail.com
+## X-Website: http://wowace.com/index.php/XLoot
+## Dependencies: XLoot
+## X-Curse-Packaged-Version: r77
+## X-Curse-Project-Name: XLootMaster
+## X-Curse-Project-ID: xloot-master
+## X-Curse-Repository-ID: wow/xloot-master/mainline
+
+## OptionalDeps: Ace2, DewdropLib
+
+XLootMaster.lua
+XLootMasterOptions.lua
+
+locales\enUS.lua
+locales\ruRU.lua
+locales\zhCN.lua
+locales\zhTW.lua
+locales\deDE.lua
+locales\frFR.lua
+locales\esES.lua
+locales\ruRU.lua

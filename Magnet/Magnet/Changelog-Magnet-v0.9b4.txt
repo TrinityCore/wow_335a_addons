@@ -1,0 +1,12 @@
+tag v0.9b4
+d4dd904baef59dee8a2e90db5708aecbba3653bf
+eddie2 <erik@erik-desktop.(none)>
+2009-08-17 22:34:10 +0200
+
+Tagging as v0.9b4
+
+
+--------------------
+
+eddie2:
+	- Fix Farm mode money looting error

@@ -1,0 +1,17 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="libs\LibStub\LibStub.lua"/>
+	<Include file="libs\AceAddon-3.0\AceAddon-3.0.xml"/>
+	<Include file="libs\CallbackHandler-1.0\CallbackHandler-1.0.xml"/>
+	<Include file="libs\AceEvent-3.0\AceEvent-3.0.xml"/>
+	<Include file="libs\AceComm-3.0\AceComm-3.0.xml"/>
+	<Include file="libs\AceSerializer-3.0\AceSerializer-3.0.xml"/>
+	<Include file="libs\AceConsole-3.0\AceConsole-3.0.xml"/>	
+	<Include file="libs\AceGUI-3.0\AceGUI-3.0.xml"/>	
+	<Include file="libs\AceHook-3.0\AceHook-3.0.xml"/>
+	<Include file="libs\AceLocale-3.0\AceLocale-3.0.xml"/>
+	<Include file="libs\AceConfig-3.0\AceConfig-3.0.xml"/>
+	<Include file="libs\AceDB-3.0\AceDB-3.0.xml"/>
+	<Script file="libs\LibCandyBar-3.0\bars.lua"/>
+	<Include file="libs\LibSharedMedia-3.0\lib.xml"/> 
+</Ui>
+

@@ -1,0 +1,27 @@
+------------------------------------------------------------------------
+r722 | ulic | 2010-02-10 00:00:03 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Storm_Peaks/Tribunal_of_Ages.lua
+
+Make the "warmup" look like those BigWigs has started using.
+------------------------------------------------------------------------
+r721 | ulic | 2010-02-03 15:28:14 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Zul'Drak/King_Dred.lua
+
+Correct a typo, probable fix for ticket #29
+------------------------------------------------------------------------
+r719 | ulic | 2010-01-14 19:14:05 +0000 (Thu, 14 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/Howling_Fjord/King_Ymiron.lua
+   M /trunk/Storm_Peaks/General_Bjarngrim.lua
+   M /trunk/Stratholme/Mal'Ganis.lua
+
+Adjust parameter positioning
+------------------------------------------------------------------------
+r717 | ulic | 2010-01-06 23:03:00 +0000 (Wed, 06 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/Dalaran/The_Violet_Hold.lua
+
+Corrected error reported by cardo1410
+------------------------------------------------------------------------

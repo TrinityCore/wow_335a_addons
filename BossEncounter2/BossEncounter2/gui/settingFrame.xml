@@ -1,0 +1,87 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="settingFrame.lua" /> 
+
+	<Frame name="BossEncounter2_SettingFrameTemplate" frameStrata="DIALOG" virtual="true">
+		<Size>
+			<AbsDimension x="32" y="32"/>
+		</Size>
+
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.SettingFrame.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.SettingFrame.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+
+	<Slider name="BossEncounter2_SettingFrameSliderTemplate" orientation="HORIZONTAL" virtual="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="144" y="17"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="-10" bottom="-10"/>
+		</HitRectInsets>
+		<Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="8"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="8"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="3" right="3" top="6" bottom="6"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnLoad>
+  				self.text = self:CreateFontString(nil, "ARTWORK", "GameFontHighlight");
+  				self.text:SetPoint("LEFT", self, "RIGHT", 8, 0);
+  				self.valueText = self:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall");
+  				self.valueText:SetPoint("TOP", self, "BOTTOM", 0, 3);
+  				self.lowText = self:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall");
+  				self.lowText:SetPoint("TOPLEFT", self, "BOTTOMLEFT", 0, 3);
+  				self.highText = self:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall");
+  				self.highText:SetPoint("TOPRIGHT", self, "BOTTOMRIGHT", 0, 3);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.SettingFrame.OnSliderUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+		<ThumbTexture file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			<Size>
+				<AbsDimension x="32" y="32"/>
+			</Size>
+		</ThumbTexture>
+	</Slider>
+
+	<CheckButton name="BossEncounter2_SettingFrameCheckButtonTemplate" inherits="UICheckButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="26" y="26"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+  				self.text = self:CreateFontString(nil, "ARTWORK", "GameFontHighlight");
+                        self.text:SetHeight(26);
+                        self.text:SetJustifyH("LEFT");
+                        self.text:SetJustifyV("MIDDLE");
+  				self.text:SetPoint("LEFT", self, "RIGHT", 4, 0);
+			</OnLoad>
+			<OnClick>
+				BossEncounter2.Widgets.SettingFrame.OnCheckButtonClick(self);
+			</OnClick>
+		</Scripts>	
+	</CheckButton>
+
+	<Frame name="BossEncounter2_SettingFrameBitTableTemplate" virtual="true">
+		<Size>
+			<AbsDimension y="48"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.SettingFrame.OnBitTableLoad(self);
+			</OnLoad>
+		</Scripts>	
+	</Frame>
+</UI>

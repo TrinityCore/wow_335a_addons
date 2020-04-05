@@ -1,0 +1,12 @@
+tag v1.02b5
+bd91001fc833352632f9f0adddd59e0166020f89
+eddie2 <erik@erik-desktop.(none)>
+2010-07-25 21:30:15 +0200
+
+Tagging as v1.02b5
+
+
+--------------------
+
+eddie2:
+	- Check the correct property for skillmode

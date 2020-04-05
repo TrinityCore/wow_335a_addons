@@ -1,0 +1,14 @@
+﻿<Bindings>
+	<Binding name="TOGGLEBANKITEMS" header="BANKITEMS">
+		BankItems_SlashHandler()
+	</Binding>
+	<Binding name="TOGGLEBANKITEMSALL">
+		BankItems_SlashHandler("all")
+	</Binding>
+	<Binding name="TOGGLEBANKITEMSBANK">
+		BankItems_SlashHandler("allbank")
+	</Binding>
+	<Binding name="TOGGLEBANKITEMSGUILDBANK">
+		BankItems_DisplayGuildBank()
+	</Binding>
+</Bindings>

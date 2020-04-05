@@ -1,0 +1,2 @@
+Official modules for Classic bosses are not planned.
+You can however put your own in this folder and reference them in the .toc file.

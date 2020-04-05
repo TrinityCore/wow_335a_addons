@@ -1,0 +1,13 @@
+tag v4.0.0-beta11
+92739c87e2939e1f02e3c05c07712f9d46b92cdd
+Shefki <shefki@shefki.org>
+2010-07-26 12:27:49 -0700
+
+Tagging as beta11 to pickup newer SharedMediaWidgets to avoid Prat's broken version.
+
+
+--------------------
+
+Shefki:
+	- Fix typo in previous commit.
+	- Fix our usage of the SharedMedia widgets so the previews actually show.

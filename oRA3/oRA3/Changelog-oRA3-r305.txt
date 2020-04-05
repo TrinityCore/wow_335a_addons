@@ -1,0 +1,58 @@
+------------------------------------------------------------------------
+r305 | rabbit | 2010-02-15 03:34:12 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/libs.xml
+   D /trunk/modules/Resurrection.lua
+   M /trunk/modules/Tanks.lua
+   M /trunk/oRA3.lua
+   M /trunk/oRA3.toc
+
+Nuke the resurrection module, I don't think it ever worked.
+------------------------------------------------------------------------
+r304 | kandarz | 2010-02-15 02:20:51 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Cooldowns: Add Talented Army of the Dead CD modifier
+------------------------------------------------------------------------
+r303 | rabbit | 2010-02-15 01:39:37 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+Lots of cleanup in the tanks module.
+------------------------------------------------------------------------
+r302 | rabbit | 2010-02-15 01:33:35 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Promote.lua
+
+Hooking is so confusing\!
+------------------------------------------------------------------------
+r301 | rabbit | 2010-02-15 01:25:59 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Promote.lua
+
+Doh, bugfix.
+------------------------------------------------------------------------
+r300 | rabbit | 2010-02-14 23:17:26 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Promote.lua
+   M /trunk/oRA3.lua
+
+Clean up the promotion code a tad. No longer repromotes manually demoted people for the remainder of the current session.
+------------------------------------------------------------------------
+r299 | rabbit | 2010-02-14 00:10:22 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/Invite.lua
+   M /trunk/modules/Promote.lua
+
+Request a guild roster update from the server when clicking the invite buttons in the UI.
+------------------------------------------------------------------------
+r298 | ammo | 2009-12-29 12:26:01 +0000 (Tue, 29 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+make tank handling easier
+tanks pushed to the top list are now only there for the current session. Tanks that make the top list by becoming a blizzard tank are there only while they are a blizzard tank or for the session if pushed there. Add a green checkmark to 'save' a tank. That tank will be in your saved variables and thus always on the top list
+------------------------------------------------------------------------

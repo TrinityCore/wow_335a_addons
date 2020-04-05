@@ -1,0 +1,1055 @@
+== v42 (Release) ==
+* This is it. The answer to everything. The 42th version! It might even be the last until Cataclysm...
+
+=== System changes ===
+* I had overlooked how the interface figures out the difficulty in Icecrown Citadel, which caused the mod not to realize it was in heroic mode. This has been fixed!
+
+=== Modules changes ===
+* Halion boss module has been added. The final boss module, woohooo!!
+
+==== Coliseum ====
+===== Jaraxxus =====
+* Corrected the incinerate "boom" timer for heroic difficulties.
+
+==== Icecrown Citadel ====
+===== Marrowgar =====
+* Corrected the whirlwind duration in heroic difficulties.
+
+===== Deathwhisper =====
+* Added Dominate Mind timer.
+* Corrected minions timer in heroic difficulties.
+
+===== Blood Prince Council =====
+* Shadow prison warning will be less spammy now (heroic only).
+
+===== Putricide =====
+* Added some Unbound Plague alerts.
+
+== v41 (Release) ==
+=== System changes ===
+* No change.
+
+=== Modules changes ===
+==== Icecrown Citadel ====
+===== Lana'thel =====
+* Timer for bloodthirst has been corrected.
+
+===== Sindragosa =====
+* You'll get an alert now when you're targetted by the beacon.
+
+===== The Lich King =====
+* Fixed a blank alert.
+* Defile will now be announced as soon as the Lich King starts casting it.
+
+== v40 (Release) ==
+=== System changes ===
+* No change.
+
+=== Modules changes ===
+* Final boss module is now available.
+
+==== Icecrown Citadel ====
+===== Rotface =====
+* A super alert will be fired whenever a big ooze explodes.
+
+===== Blood Prince Council =====
+* Proximity check will be active at all times. It will only flash red during the empowered shock vortex.
+* A vortex spawning on a player next to you will trigger an alert as it was originally intended.
+
+===== Lana'thel =====
+* The module didn't trigger correctly. This has been fixed.
+
+===== Valithria =====
+* Mana void warning added.
+
+===== Sindragosa =====
+* Several improvements.
+* Distance checker is now displayed. In phase 3, it can be replaced by the buffet counter.
+
+== v39 (Release) ==
+=== System changes ===
+* Previous /BE stop command has been renamed /BE clear.
+* BossEncounter2 can now be put in sleep mode with a new /BE stop command.
+* Once in sleep mode, BossEncounter2 can now be resumed with /BE start command.
+* Sleep mode can also be triggered in the options.
+
+=== Modules changes ===
+==== Icecrown Citadel ====
+===== Blood Prince Council =====
+* Normal vortexes can now be announced.
+
+===== Putricide =====
+* The module has been vastly improved.
+
+===== Valithria =====
+* This module now has main alerts.
+
+===== Sindragosa =====
+* This module should now trigger properly.
+
+== v38 (Release) ==
+=== System changes ===
+* Damage done prior the engagement of a boss shouldn't be counted toward the damage done for this boss. This behavior wasn't consistent for all bosses and has been corrected.
+
+=== Modules changes ===
+* Toravon boss module added.
+
+==== Icecrown Citadel ====
+* Remaining bosses excepted Lich King have been added. However Valithria is still incomplete.
+
+===== Saurfang =====
+* Removed the energy counter, that was an unintended feature.
+* Position check turned OFF by default.
+
+===== Blood Prince Council =====
+* Improved the boss module though it still remains untested.
+
+== v37 (Release) ==
+=== System changes ===
+* No change.
+
+=== Modules changes ===
+==== Icecrown Citadel ====
+* Blood Prince Council as well as Queen Lana'thel modules are now available.
+
+===== Rotface =====
+* BE2 should no longer touch your symbols, if they are not the skull or the cross.
+
+== v36 (Release) ==
+=== System changes ===
+* A new clear animation has been added in some, very rare special cases...
+* Bosses from 5-players dungeons which had raid warnings have been changed so the alert is displayed in the party chat instead (because raid alerts are no longer allowed in a party as of 3.3).
+
+=== Modules changes ===
+==== Icecrown Citadel ====
+===== Marrowgar =====
+* The range checker should no longer appear on this boss.
+
+===== Deathwhisper =====
+* Timer for adds has been added.
+* BossEncounter2 will now try to guess when a ghost is pursuing you.
+
+===== Saurfang =====
+* The positionning alert has been recalibrated and should be less annoying now on 25-man. It can also be turned off completely.
+
+===== Festergut =====
+* Improved slightly the boss module.
+
+===== Rotface =====
+* Slime Sprays can be announced now.
+
+==== Ulduar ====
+===== XT-002 =====
+* Heart damage was counted as superfluous yet again because of a bug introduced with the new DPS-O-Meter calculator from version 34, this has been fixed.
+
+==== Naxxramas ====
+===== Kel'Thuzad =====
+* Range checker should work now.
+
+== v35 (Release) ==
+=== System changes ===
+* DPS-O-Meter will now display the pet contribution, note this was already here in previous versions, but wasn't shown.
+
+=== Modules changes ===
+==== Icecrown Citadel ====
+* Plagueworks wing bosses have been implemented.
+
+==== Coliseum ====
+===== Twins =====
+* DPS-O-Meter should no longer be messed up when one of the twins receives healing, due to their shared HP pool. Healing done to the twins will no longer be deducted from damage done for this encounter.
+
+== v34 (Release) ==
+Merry Xmas!
+
+=== System changes ===
+* A "Default" button has been added in the settings frame, to reset default configuration.
+* The general options frame has been split in two parts: options and advanced options.
+* BossEncounter2 can now answer BigWigs and DeadlyBossMods version queries, useful if you are "forced" to install either of these mods to raid...
+* This version spoofing service will always reply the highest version of the mod found in the raid.
+* The end sequence can now be bypassed if you didn't get a new record and the boss was killed at least 3 times.
+* DPS-O-Meter relevance calculator has been reworked and it should be harsher now on fights such as Emalon.
+
+=== Modules changes ===
+==== Halls of Reflection ====
+* Fixed the final boss module.
+
+==== Icecrown Citadel ====
+===== Marrowgar =====
+* Corrected next whirlwind timer.
+* Added flames self alerts.
+
+===== Gunship =====
+* Displaying the ally commander in the add window was an error, your gunship health will be displayed instead.
+
+===== Saurfang =====
+* Fixed alerts for 10 man version.
+
+== v33 (Release) ==
+=== System changes ===
+* Fixed a bug which could occur with add window in some cases.
+* Fixed a bug in the DPS-O-Meter that caused huge amounts of damage to be considered superfluous in the XT-002 encounter.
+* When a add with a raid target symbol dies, the symbol will be removed on the Add Window.
+* There are now 9 color layers on the boss health bar, up from 7.
+
+=== Modules changes ===
+==== Forge of Souls ====
+* Fixed a double alert for Devourer of Souls.
+
+==== Icecrown Citadel ====
+===== Marrowgar =====
+* Boss module improved.
+* Berserk timer added.
+
+===== Deathwhisper =====
+* Boss module improved.
+
+===== Gunship =====
+* Boss module implemented.
+
+===== Saurfang =====
+* Boss module improved.
+
+== v32 (Release) ==
+=== System changes ===
+* You can now see how much DPS has been substracted from your total DPS (due to being irrelevant) in the DPS graph tooltips.
+* Full 'absorb' combat events will be treated as normal damage events, thus solving some obscure bugs, such as Val'kyr Twins shield counter.
+* BE2 handles now better damage done by pets in its DPS-O-Meter.
+* Damage done by vehicles should now be counted.
+* The DPS-O-Meter will no longer double penalize resisted/blocked damage amounts.
+* The DPS-O-Meter will now count absorbed damage in your damage total. Full absorbs will also be counted.
+* BossEncounter2 performances improved.
+
+=== Modules changes ===
+* From now on, BE2 no longer comes with TBC boss modules.
+
+==== Icecrown Citadel ====
+* First bosses are getting in place...
+
+==== Coliseum ====
+===== Beasts =====
+* Frigbold alert has been reworded.
+* Symbols will now move if a frigbold changes its target.
+* Personnal charge alert will now trigger if you are within 20.00 yds of the charged player, up from 13.76 yds.
+
+===== Twins =====
+* Shield counter should now work as intended.
+
+==== Ulduar ====
+===== Iron Council =====
+* Hard mode notification will appear when only Steelbreaker remains alive.
+
+===== Hodir =====
+* Damage done on iceblocks will now be counted properly.
+
+===== Yogg-saron =====
+* Added a personnal alert each time someone is grabbed (only when you are a damage dealer outside of the mind).
+* First portal timer was broken since v31, this has been corrected.
+* Brain alerts will no longer appear with '???' sometimes.
+
+===== Algalon =====
+* The boss module will now provide some general informations (berserk timer, health threshold, time left before the boss despawns). More to come on the following version(s).
+
+== v31 (Release) ==
+=== System changes ===
+* A new distance system has been put in place that will allow to measure much more accurately distance between friendly units (though it can't work for 100% of bosses).
+* Refresh rate of distance checker increased as well as the precision.
+* Fixed a slight visual issue with health threshold tags.
+* Intro popup slightly reworded.
+
+=== Modules changes ===
+* Distance checker of many bosses has been adjusted.
+
+==== Ulduar ====
+===== Hodir =====
+* Fixed a bug with "Frozen" column.
+
+===== Vezax =====
+* Fixed the vapor count which was still displayed as X/8.
+
+===== Yogg-saron =====
+* Fixed many bugs.
+* "Get out of brain" timer will no longer trigger if you didn't take the brain portal.
+* Added an option to display a raid alert when a player is grabbed by a tentacle.
+
+== v30 (Release) ==
+=== System changes ===
+* After a wipe, the concerned module will not be able to trigger again for 30 seconds by default. Some modules behave differently.
+* Once an encounter is cleared, this module will not be able to trigger again for 30 seconds by default. Some modules behave differently.
+
+=== Modules changes ===
+* A boss module for heroic training dummies has been added. You can use BE2 to time your training and measure your DPS.
+* Difficulty meter for many bosses have been reduced.
+
+==== Coliseum ====
+===== Beasts =====
+* The phase 2 timer for heroic mode should be more accurate.
+* Increased the range at which an alert is fired when someone next to you is charged.
+* This change announces an improvement in the distance measurement system which will allows in future versions to measure more accurately your distance to other players.
+
+===== Jaraxxus =====
+* Portal and volcano objects now appear in the add window in heroic mode.
+* Timers for volcano and portal spawns have been improved. The first volcano timer should be available as soon as the first portal is triggered.
+
+===== Twins =====
+* "Near victory" theme should now correctly trigger.
+
+===== Anub'arak =====
+* The number of frost spheres remaining will now be displayed in heroic mode.
+
+==== Ulduar ====
+===== XT-002 =====
+* Damage done to the heart wasn't being properly counted to pertinent DPS done unless it was killed completely. This has been fixed.
+* Tags will be displayed on the boss health bar to show the next heart exposure.
+* XT-002 heart will now be displayed as a targettable add.
+
+== v29 (Release) ==
+=== System changes ===
+* End sequences will now ignore the UI scale, thus fixing some odd positionning problems with a different UI scale.
+* "Power" criteria on the score card has been removed.
+* "Speed" has been changed to work like previous versions of the score system (so it is once again based on the time needed to kill the boss during the successful attempt).
+* "Attempts" criteria has been added, it works like the "Speed" criteria from versions 25 to 28 (its score is based on the number of attempts needed to kill the boss).
+* You can now replay the end sequence of the last boss done in the game session with a new slash command.
+* BossEncounter2 now features a DPS-O-Meter at the end of a successful boss fight.
+* This meter generally ignores the damage done on mobs that have not died by the end of the fight or mobs that cannot be killed through normal mechanics.
+* Difficulty meter will no longer show up briefly if you are in combat when the boss module triggers.
+
+=== Modules changes ===
+==== Trial of the Champion ====
+* Grand Champions boss module will no longer be able to count the mounted combat as a Failure; only the classic combat against the mobs will allow to trigger a Failure.
+
+==== Coliseum ====
+===== Beasts =====
+* Improved significantly the module, especially in heroic difficulty:
+* It now has timers for phase changes (heroic only), jormungar sprays and boss abilities CDs.
+* Snobolds can now be announced.
+* High impale stacks can now be announced.
+* Staying in slime pools will raise an alert.
+
+===== Twins =====
+* Berserk timer reduced to 8 minutes.
+
+== v28 (Release) ==
+=== System changes ===
+* A new health threshold feature has been added. It indicates on the health bar if something will occur if the boss health gets reduced below a given percentage.
+* People who are lazy enough not to set the role filter themselves will be able to rejoice, because BossEncounter2 will now determinate your role automatically !
+* Fixed a positionning issue with Add Window rows when you change the scale of the Add Window.
+
+=== Modules changes ===
+* Some WotLK boss modules have been revised to incorporate the new health threshold warnings feature.
+* Many 5-man bosses have been added -- contribution from Supernico.
+
+== v27 (Release) ==
+=== System changes ===
+* Interrupting an engaged boss module with /BE stop command will be considered as a failure instead of an expiration.
+* /BE anchor command will no longer work while in combat.
+* Version queries will be slightly faster, especially when querying a single player.
+* Message widgets will no longer take the whole width of the screen in the anchor edit mode.
+
+=== Modules changes ===
+==== Obsidian Sanctum ====
+===== Sartharion =====
+* Added the berserk timer.
+* The module will be flagged as Cleared when Sartharion dies even if there are adds remaining.
+
+==== Coliseum ====
+===== Beasts =====
+* Fire alerts will no longer go crazy in heroic mode.
+
+===== Jaraxxus =====
+* Buffs alerts were incorrectly triggered when a mage was stealing the buffs.
+
+===== Champions =====
+* The Horde Warrior was not displayed in the adds window. This has been fixed.
+
+== v26 (Release) ==
+=== System changes ===
+* A new, aggressive type of alert has been added. It will be used for things the player must not miss.
+* This alert type, because it is really intrusive on your screen, can be disabled in the options to use a more classic display mode.
+* The heal assist system now works with Grid2.
+* Big textures will now be preloaded before combat, to avoid a FPS drop if the game has to load these textures while in combat (experimental).
+
+=== Modules changes ===
+* Onyxia boss module available.
+
+==== Coliseum ====
+===== Beasts =====
+* The Burning Bile alert will now use more symbols.
+
+===== Jaraxxus =====
+* Alerts when the boss gains the damage increase buff should now work with both 10 and 25 man versions.
+
+===== Champions =====
+* A new feature that allows you to perform a quick crowd control action by just right-clicking on a row in the add window has been added. Check it out !
+
+===== Twins =====
+* Power and technique scores on this boss should no longer be zero.
+
+===== Anub'arak =====
+* The module should now restart at once as soon as you fall into the Icy Depths after a wipe.
+* The kick system will now only operate when out of combat.
+* Fixed a format error on the kick message.
+* Water-walking buff will be removed from your character if detected when the module starts.
+* All Deathknights will be kicked from the raid if a Path of Frost aura is detected on the raid when the module starts.
+* For those who really do not trust their DK players, an option to preventively kick them manu militari when the module starts has been added.
+
+== v25 (Release) ==
+=== System changes ===
+* Due to some system changes, ALL BossEncounter2 records will be lost: a new system has been put in place, it will provide better history data !
+* The attempt number will now be displayed when triggering the boss module.
+* Score system has been changed. The Speed criteria has now a completely different meaning: it is now based on the number of attempts used to defeat the boss.
+* Technique score criteria will now diminish exponentially with the number of deaths.
+* Now the score system will do the full distinction between 10, 10 heroic, 25, 25 heroic modes for bosses that have them.
+* HP digits on the add window will now blink when HP gets very low to draw your attention.
+
+=== Modules changes ===
+* Modules that did not interrupt themselves upon a wipe (currently Razorscale and Hodir) have been changed to behave like other modules.
+
+==== Coliseum ====
+===== Anub'arak =====
+* Fixed NPC ID, this prevented the boss module from triggering.
+* The module will now start in the fall.
+
+===== Twins =====
+* Updated berserk timer which was too short.
+* There's a bug preventing the Shield column from decreasing as the shielded mob takes damage. This is being investigated for the next version.
+
+==== Ulduar ====
+===== Vezax =====
+* Improved the alerts.
+
+== v24 (Release) ==
+=== System changes ===
+* Random command has been added in the loot assist system.
+* Up to 6 loot frames can be opened at a time now.
+* BE2 loot system should no longer be in conflict with some loot systems if it is disabled in the options.
+* The countdown timer in the status frame now has a different color animation when it is below 1 minute.
+
+=== Modules changes ===
+* Twin Val'kyr boss module has been implemented.
+
+==== Coliseum ====
+===== Anub'arak =====
+* Boss module revised.
+
+==== Ulduar ====
+===== Iron Council =====
+* No mob will be put as the main boss now. They will all be in the add window.
+
+===== Thorim =====
+* Berserk timer put back in phase 1.
+
+===== Hodir =====
+* MP column replaced by a Frozen column, telling if the NPC is still frozen or not.
+
+==== Obsidian Sanctum ====
+===== Sartharion =====
+* Fixed a bug with Sartharion+drakes.
+
+== v23 (Release) ==
+=== System changes ===
+* The add window and add system has undergone several important changes, to allow the players to click on the rows to target adds !
+* The add window may now display up to 10 rows at once, this change was done to prepare the ToC Champions encounter, make sure you have room for it...
+* The add window will now shrink and rows will move up when a hole appears in the window.
+* HP value on adds will now be estimated when the add is not accessable (this means no more '????').
+* Add window bars animation speed adjusted, the bars text will turn yellow below 25%, up from 20%.
+* Warn disconnect option removed.
+* Disenchant timer removed on green items.
+
+=== Modules changes ===
+* Champions boss module has been implemented.
+* Because of the changes in the add window system, some modules have been slightly changed to show the add window as soon as the module triggers.
+
+==== Coliseum ====
+===== Jaraxxus =====
+* Portal timer added, as well as the add bar for the NPC that is spawned by this portal.
+
+==== Ulduar ====
+===== Kologarn =====
+* The arms will no longer be removed from the add window when killed.
+
+===== Auriaya =====
+* The sentry will no longer be removed from the add window when killed.
+
+===== Freya =====
+* The various adds will no longer be removed from the add window when killed.
+* The kill-in-sync timer has been added.
+
+===== Hodir =====
+* The NPCs that help you will now appear on the add window.
+
+===== Mimiron =====
+* No part will be set as the main boss in phase 4. Instead, all three parts will be displayed in the add window.
+* The kill-in-sync timer has been added.
+
+==== Naxxramas ====
+===== Four horsemen =====
+* No horseman will be put as the main boss now. They will all be in the add window.
+
+== v22 (Release) ==
+=== System changes ===
+* The heal assist system now works with HealBot.
+
+=== Modules changes ===
+* Jaraxxus boss module has been implemented.
+
+==== Coliseum ====
+===== Northrend Beasts =====
+* A warning should be displayed now when a fire bomb is tossed by one of the Snobolds.
+* A warning should be displayed now when all of the snobolds have been killed in 10-man version.
+
+== v21 (Release) ==
+=== System changes ===
+* The heal assist system now works with Grid.
+* Fixed a vicious bug in the emote parser system that caused alerts to fail on Flame Leviathan.
+
+=== Modules changes ===
+* Trial of the Champion bosses have been implemented (5-man version).
+* Beasts of Northrend boss module has been implemented.
+* Anub'arak boss module has been implemented.
+
+==== Ulduar ====
+===== Razorscale =====
+* Devouring Flame's target can no longer be predicted, thus the appropriate option has been removed.
+* However, Fireball targets will now appear on the heal assist system.
+* Updated the phase 3 trigger for the French version as of 3.2.
+
+===== Vezax =====
+* Saronite vapors counter reduced to 6, down from 8.
+
+==== The Eye of Eternity ====
+===== Malygos =====
+* Arcane barrage targets might now appear on the heal assist system.
+
+== v20 (Release) ==
+=== System changes ===
+* Fixed a bug with the role selection frame which would no longer appear if you opened options of a boss module.
+* Disenchant bar will no longer reset when a loot assigner frame is closed.
+
+=== Modules changes ===
+==== Ulduar ====
+===== Mimiron =====
+* Fixed hard mode trigger for French client (once again).
+
+===== Yogg-Saron =====
+* The module should now trigger when you select friendly Sara NPC.
+
+== v19 (Release) ==
+=== System changes ===
+* The loot assigner will now be hidden if you close the loot window.
+* The loot assigner will no longer ask you to type CONFIRM in the edit box. Instead it will ask you to click several times in a row on the confirm button.
+* When typing names in the edit box of the loot assigner, the system will try to guess whose name you are typing.
+* Insert target name button in the loot assigner has been replaced by a list command.
+* Clarified the error message when a loot cannot be assigned to someone.
+* It's now possible to show HP value of adds in percentage on the Add Window by enabling this option in the option frame.
+* Dim intensity when a boss is cleared reduced.
+
+=== Modules changes ===
+* Fixed a bug with the Tribunal of Ages with French client.
+* Tribunal of Ages module may no longer trigger for 1 hour after being defeated.
+
+==== Vault of Archavon ====
+===== Emalon =====
+* Nova will now always be announced for melee regardless of your distance to the boss.
+
+==== Ulduar ====
+===== Flame Leviathan =====
+* Corrected a combat leave bug.
+
+===== Mimiron =====
+* Shock blast will now always be announced for melee regardless of your distance to the boss.
+* An option has been added to announce bombs when they spawn.
+* The slow debuff is no longer displayed in the heal assist system.
+* Napalm Shell is now displayed in the heal assist system.
+
+== v18b (v18 bugfix) ==
+=== System changes ===
+* Fixed a bug causing disenchant button of loot assigner to not work for green loots.
+
+=== Modules changes ===
+==== Ulduar ====
+===== Mimiron =====
+* Fixed the magnetic core debuff detection.
+* Fixed hard mode trigger for French client.
+
+== v18 (Release) ==
+=== System changes ===
+* A few bits of unused code have been removed.
+* Because after killing a boss there are loots to distribute, an optionnal loot assigner has been added to help the masterloot.
+* Filter option presentation has been improved.
+
+=== Modules changes ===
+==== Ulduar ====
+===== Flame Leviathan =====
+* Target switch timer added.
+
+===== XT-002 =====
+* Heartbreak will now be correctly detected in normal mode.
+
+== v17 (Release) ==
+=== System changes ===
+* The heal assist system now works with X-Perl. More to come !
+
+=== Modules changes ===
+* The Oculus bosses have been added.
+
+==== Ulduar ====
+===== Freya =====
+* Hard mode should be always detected now.
+* Star symbol will no longer be used for sunbeams: it is replaced by the square symbol now.
+
+===== Mimiron =====
+* The boss module has been significantly revised.
+* Incorrect timers have been corrected (plasma blast, hard mode time limit...)
+* Hard mode timers have all been added.
+
+== v16 (Release) ==
+=== System changes ===
+* You can now disable widgets in the anchor mode. Some widgets may not be disabled.
+* You can now copy the layout from one of your character to another one.
+
+=== Modules changes ===
+* Fixed a bug with the Tribunal of Ages in Halls of Stone preventing it from triggering.
+
+==== Ulduar ====
+===== Freya =====
+* Hard mode abilities have been added.
+
+===== Mimiron =====
+* The boss module should no longer go "Failed" during the fight, especially during phase transitions.
+
+== v15b (v15 bugfix) ==
+=== System changes ===
+* Fixed some issues with the add window.
+* Performance window can now be closed with a button.
+
+=== Modules changes ===
+==== Vault of Archavon ====
+===== Emalon =====
+* The boss module was broken since v15. This has been fixed.
+* The overcharged minion will now be shown in the Add window.
+
+==== Naxxramas ====
+===== Kel'Thuzad =====
+* The unit list will now flash when there is 1 person next to you (down from 2). It is meant for n00bs who can't check their vicinity.
+
+==== Ulduar ====
+===== Kologarn =====
+* The alert when the eyebeam pursues you was bugged for the french version. This has been fixed.
+
+== v15 (Release) ==
+=== System changes ===
+* The add bars have now their own graphics (Final Fantasy VII style !). They are now contained in a window.
+* The "add bars" in the anchor mode has been replaced by "add window".
+* The role setting is now saved per character.
+
+=== Modules changes ===
+==== Naxxramas ====
+===== Maexxna =====
+* Necrosis poison will now appear on the heal assist system, as well as the people got in the cocoons.
+* Timers have been fixed. The spiders timer has also been added.
+
+===== Gluth =====
+* The boss module will now start as soon as Gluth acquires a target. This should fix the first Decimate timer which was not synchronized if you were late to pull the boss.
+
+===== Razuvious =====
+* The unit list is no longer used for understudies. It is replaced by the new add window widget.
+
+==== Ulduar ====
+===== Iron Council =====
+* The music used on this fight has been changed.
+* The boss module has been significantly improved (also fixed "warn LightningTendrils option" which did nothing so far).
+
+===== Kologarn =====
+* There is now a special alert when the eyebeam pursues you.
+
+===== Vezax =====
+* The Surge of Darkness timer has been added.
+
+== v14 (Release) ==
+=== System changes ===
+* Improved slightly the swaying animation of health bars.
+* An explanation of "incomplete fight" tag has been added.
+
+=== Modules changes ===
+* Halls of Stone bosses have been added (including the Tribunal of Ages).
+
+==== Vault of Archavon ====
+===== Emalon =====
+* The "Boom !" timer will now disappear when the overcharged minion is killed.
+* It is possible now to display a raid warning when Emalon casts his nova.
+
+==== The Eye of Eternity ====
+===== Malygos =====
+* The instructions in phase 3 will no longer be displayed for healers.
+
+==== Ulduar ====
+===== Yogg-Saron =====
+* "Warn mind control" option removed: guardians should no longer cast this spell according to 06/11/09 hotfix.
+* Difficulty meter adjusted post-nerf.
+
+== v13b (v13 emergency bugfix) ==
+=== System changes ===
+* BE2 will now start to handle dungeon bosses. However, these bosses won't obviously be as detailed as raid bosses.
+* Fixed an urgent bug introduced in v13 causing the emote parser to break in some cases and cause further bugs.
+
+=== Modules changes ===
+==== Dungeons ====
+* Halls of Lightning bosses have been added (Loken was already there).
+
+==== Ulduar ====
+===== Flame Leviathan =====
+* BE2 should now detect when Flame Leviathan switches target for English version.
+
+===== Freya =====
+* A message will be enabled to notify you that hard mode has been enabled (or not).
+
+== v13 (Release) ==
+=== System changes ===
+* You can now disable the middle screen timer when it is used to remind berserk timer.
+* You can now replace the textual event warnings ("X in 5 sec") by graphical warnings. The position for those warnings can be set in /BE anchor mode.
+* You can now activate an option to make the addon automatically reply to whispers from people outside of your party.
+* You can now specify your current role in the options. By doing so, BossEncounter2 will be able to filter unwanted warnings.
+* The filter feature is only used by WotLK boss modules.
+
+=== Modules changes ===
+==== Obsidian Sanctum ====
+===== Sartharion =====
+* It's no longer necessary to select the drakes prior the pull.
+
+==== Ulduar ====
+===== Flame Leviathan =====
+* Fixed a bug causing player settings to not be applied on the event watcher widget.
+* Hard modes for Flame Leviathan will now be detected.
+
+===== XT-002 =====
+* Tympanic Tantrum will now be detected when XT-002 starts casting it, not when he finishes the cast.
+* An alert for healers will now be displayed when Tympanic Tantrum is about to start and someone in the raid has the gravity bomb.
+
+===== Kologarn =====
+* "Power" performance criteria should be more generous now if you choose to kill the arms.
+* The eyebeam alert has been rephrased.
+
+===== Thorim =====
+* Raid members close to the player that receives the runic detonation will have the bomb countdown timer now instead of the player that received the bomb.
+
+===== Yogg-Saron =====
+* The module should now trigger properly with Sara.
+
+== v12 (Release) ==
+=== System changes ===
+* Music plugin system extended !
+* New music plugin available !
+* New slash commands subset added: /BE music !
+* You can now load several music plugins, not just one ! The plugin you want to use can be changed through the new slash commands.
+
+=== Modules changes ===
+* Some modules will use different musics now (if you have installed music plugins).
+
+==== Naxxramas ====
+===== Grobbulus =====
+* The "Cleared !" should now disappear sooner.
+
+===== Four horsemen =====
+* Mark counter will now flash when you have 4 marks or more from one of the Horsemen.
+
+==== Ulduar ====
+===== Hodir =====
+* Changed berserk to 8 minutes in normal mode... Checked personally !
+
+===== Mimiron =====
+* Fixed a NPC number mismatch which caused the boss module to not trigger. :)
+
+== v11 (Release) ==
+=== System changes ===
+* The unit list will now have a flashing border in some cases, to draw your attention.
+* When you are in the unit list, your name will be displayed in white instead of yellow.
+* A new "Cleared !" animation has been added for bosses you do not actually kill (Hodir, Thorim, Freya).
+
+=== Modules changes ===
+==== Ulduar ====
+* The difficulty meter has been changed for many bosses to account for the latest adjustments.
+
+===== Kologarn =====
+* "0/2" and "1/2" should no longer appear in the status frame. "Engaged" should now be displayed throughout the whole fight.
+
+===== Thorim =====
+* Improved module stability.
+* Removed phase one berserk timer. It seems indeed that the berserk timer for phase one has been either delayed (by quite a bit) or plainly removed.
+* First miniboss: you will now get an alert when the boss gains its damageshield and you are in melee range.
+* Second miniboss: you will now get an alert when you or someone else close to you gets the bomb.
+* Sif health bar will no longer be displayed in hard mode.
+
+===== Hodir =====
+* The Biting Cold raid alerts should be less spammy, especially if many people get the 3+ debuff stacks at the same time.
+
+==== Naxxramas ====
+===== Four horsemen =====
+* Mark alerts have been added as an option. You'll also be warned personally if your own mark counter gets too high.
+
+== v10 (Release) ==
+=== System changes ===
+* Fixed a vicious bug which caused "one-enabled-only" options to still be enabled by more than one players.
+
+=== Modules changes ===
+* Fixed some name typos in modules (e.g: Heigen changed to Heigan, Saphiron to Sapphiron).
+
+==== Naxxramas ====
+===== Thaddius =====
+* +/- alert should now have the same color as the debuff icon and not the opposite.
+
+===== Sapphiron =====
+* The breath timer will now be visible in the middle screen timer. The middle screen timer will no longer display the berserk timer.
+
+==== Ulduar ====
+* General Vezax boss module available ! (beta, untested!)
+* Yogg-Saron boss module available ! (beta, untested!)
+
+===== Hodir =====
+* When defeating him, the mod should now correctly react.
+
+== v9 (Release) ==
+=== System changes ===
+* "modules" folder has been restructured.
+* Shared.lua file has grown so big that it has shattered into many smaller lua files and has renamed itself Shared.xml !
+* You can now disable the difficulty meter in the options.
+* You can now change the scale of widgets in /BE anchor.
+* The wipe detection system and the boss reset detection system should no longer interrupt a boss module unexpectedly, especially on bosses with adds.
+* Fixed several bugs with heal assist system.
+* When changing a setting of a boss module, you'll now see the true value of the setting even if you are not allowed to change it.
+* Options that do raid-wide things (such as Raid warnings, symbols placement...) have been changed so that only one person can have the setting enabled at a time.
+* This change will not work when cooperating with owners of older BE2 versions: tell them to update BE2.
+
+=== Modules changes ===
+* Alerts based on the distance between you and a mob will now be activated if the Addon cannot determinate that distance.
+
+==== Naxxramas ====
+===== Thaddius =====
+* Heal assist system will now highlight the guys who have their polarity changed (only after the first switch).
+* You will now be alerted when your own polarity changes.
+
+==== Obsidian Sanctum ====
+===== Sartharion =====
+* People getting Flame tsunami DoT should now appear on the heal assist system.
+
+==== Ulduar ====
+===== Razorscale =====
+* It seems the berserk is even more longer than I thought; increased at 15 min...
+===== XT-002 =====
+* Berserk timer increased to 10 minutes.
+===== Kologarn =====
+* Fixed arm respawn timer for 25-man version.
+* Timer between two successive grips available.
+* Shockwave timer should now appear correctly.
+===== Thorim =====
+* The Addon will no longer believe you are in hard mode if you didn't start the boss module at the right time (e.g: starting it when you're about to enter phase 2).
+
+== v8 (Release) ==
+=== System changes ===
+* An option to do a raid warning each time someone is disconnected while a boss module is enabled has been added.
+* Bosses who are (or became in the meantime) friendly to you will no longer have their respective module triggered.
+* You can now check versions of raid / guild members (or even a single player) through a new slash command. Older versions cannot be detected (7th and below).
+* Labels too long in the event watcher will now use a smaller font.
+
+=== Modules changes ===
+==== Ulduar ====
+* Mimiron boss module available ! (beta, untested!)
+===== Razorscale =====
+* Razorscale module will not stop at once when the whole raid wipes, because of the remaining NPCs that might finish off the boss.
+* This change is quite unconfirmed ! It seems the berserk has been increased, thus I try to put it at 11 min.
+===== Ignis =====
+* Brittled constructs can now be announced.
+===== Iron council =====
+* Berserk timer increased to 15 min.
+* The boss module should no longer go "Failed" when pulling the bosses or after killing one of the bosses.
+* Overloads will now be announced whenever you are close to Brundir when he does them.
+===== Kologarn =====
+* You will now be alerted when you are damaged by Eyebeam.
+===== Auriaya =====
+* The Feral Defender bar should appear on the 2nd, 3rd, etc. spawns.
+===== Hodir =====
+* Fixed Biting Cold alerts for 10-man version (and 25-man version too, though this has not been checked).
+* Update rate for Biting Cold scan system increased.
+* Hodir module will not stop at once when the whole raid wipes, because of the remaining NPCs that might finish off the boss.
+
+== v7b (v7 bugfix) ==
+=== System changes ===
+* Fixed an error that would occur in bosses with temporary Adds (Kologarn, Auriaya, Freya).
+
+=== Modules changes ===
+==== The Eye of Eternity ====
+===== Malygos =====
+* The debuff timer has been improved.
+
+==== Ulduar ====
+===== Razorscale =====
+* The 10-man version harpoon timers should now work correctly after the first landing.
+===== Kologarn =====
+* Stone grip absorb amount has been corrected for both 10-man and 25-man.
+* Fixed a bug preventing Armor debuff alerts from showing up.
+===== Auriaya =====
+* Fixed a bug preventing the Add bar of the Feral Defender from reappearing after its first death.
+===== Freya =====
+* Sunbeam star symbol should no longer be placed on the main tank, at least most of the time.
+
+== v7 (Release) ==
+=== System changes ===
+* The AddOn has now general options that can be accessed through /BE2 options. Check them out !
+* The status frame is now clickable in combat to target the boss. For some fights that feature is not possible.
+* You can now access boss module options by clicking anywhere in the status frame, not just a limited region inside the frame.
+* A heal assist system has been created to help healers deal with nasty boss abilities. It displays a border around the raid frames of the targets (not compatible with custom raid frames).
+
+=== Modules changes ===
+* Some modules have been improved to use the new heal assist system functionnality.
+* Difficulty meter of some bosses changed to reflect the recent adjustments applied to them.
+
+==== Ulduar ====
+* Auriaya boss module available ! (stable)
+* Hodir boss module available ! (beta)
+* Freya boss module available ! (beta)
+* Thorim boss module available ! (beta)
+===== XT-002 =====
+* Berserk timer once again increased.
+===== Kologarn =====
+* Boss module improved.
+
+==== Vault of Archavon ====
+===== Emalon =====
+* Fixed some bugs with Overcharge alerts.
+* Overcharge alerts will now occur 2 seconds sooner !
+* Added a pre-emptive raid warning for Overcharges.
+* Added an alert for Lightning novas when you are in melee range.
+* Distance checker now enabled on Emalon.
+* BossEncounter2 will now put the skull symbol on the overcharged minion instead of announcing its symbols.
+* Enrage timer added (6 min).
+
+---
+
+== v6 (Release) ==
+=== System changes ===
+* For all WotLK bosses, a difficulty meter has been added. It represents the fight difficulty based on 5 criterias. Check it out!
+* The message below the middle screen countdown (generally "Hurry Up !") now looks better.
+* Fixed an UI positionning issues that could occur if you didn't use the UI scaling option.
+
+=== Modules changes ===
+
+==== Naxxramas ====
+===== Kelthuzad =====
+* Kel'Thuzad module should restart correctly after a disconnect in the middle of the encounter.
+
+==== Ulduar ====
+* Emalon boss module available ! (beta)
+* XT-002 boss module available ! (stable)
+* Kologarn boss module available ! (beta)
+* Iron council boss module available ! (beta, untested!)
+===== Flame Leviathan =====
+* Fixed an issue in Flame Leviathan module where the system shutdown alert would be displayed twice.
+===== Razorscale =====
+* The Devouring Flame alert will now trigger whenever someone who is close to you gets targetted.
+
+---
+
+== v5 (Release) ==
+=== System changes ===
+* BossEncounter2 will now work properly with 3.1 patch and is now considered a release and stable version !
+* All saved data (including performances and options) will be reset, sorry !
+* WotLK heroic raid (25-man) performances will now be separated from normal raid (10-man) performances.
+* Boss modules will now automatically be triggered when enough raid members target a boss (occur when at least 20% of the raid select the boss).
+
+=== Modules changes ===
+==== Ulduar ====
+* Flame Leviathan boss module available ! (stable)
+* Razorscale boss module available ! (stable)
+* Ignis boss module available ! (beta)
+
+---
+
+== v4 (Beta) ==
+=== System changes ===
+* Raid target symbols will now appear on health bars.
+* The little watch icon will now properly animate clockwise in stopwatch mode. Previously it was always ticking counterclockwise, as if you were in countdown mode.
+* Clarified that the Performances window refer to the whole party, not just yourself.
+
+=== Modules changes ===
+==== Obsidian Sanctum ====
+===== Sartharion =====
+* Lava wave alerts are more agressive.
+
+---
+
+== v3 (Beta) ==
+=== System changes ===
+* Fixed an issue that could cause sometimes a dead add to be considered resurrected for no reason by the AddOn.
+* An additionnal victory theme has been added. It will be exclusively used for the final boss(es) of a dungeon tier (T7: Malygos, Sartharion + 3 drakes).
+* Health bars now have an additionnal color layer: white. The HP amount required to fill all color layers has been increased.
+* Improved the unit system:
+* One of the consequences of the unit system change is that you should no longer see the boss health bar go "?" for very brief periods of time here and there.
+* Another one is that on the 10-man version of Thaddius, symbols that are put on the "+" side should be less volatile.
+* Victory messages are now slightly bigger.
+* An additionnal victory message will tell you your best fight time on the boss, if applicable.
+
+=== Modules changes ===
+==== The Eye of Eternity ====
+===== Malygos =====
+* A new victory theme has been added if you defeat him.
+
+==== Obsidian Sanctum ====
+===== Sartharion =====
+* A new victory theme has been added if you defeat him in the 3 drakes version.
+
+==== Naxxramas ====
+===== Thaddius =====
+* The unit list, symbols on the "+" side and switch summary features will now be always completely disabled on 25-man version, regardless of the number of people alive.
+* The switch warning is still active on both 10 and 25-man versions.
+
+---
+
+== v2b (Beta, hotfix) ==
+=== System changes ===
+* A startup message has been added to make sure the AddOn is running.
+* When you are editing the position of widgets, the widget currently selected will now blink.
+* Fixed a bug preventing you from exiting correctly the anchor edit mode in some cases.
+* You should now be able to access the anchor edit mode whenever you want, even in the middle of a boss fight (but this will interrupt the current boss module ;)).
+* Overall, the AddOn should be more responsive to trigger boss modules.
+
+=== Modules changes ===
+==== The Eye of Eternity ====
+===== Malygos =====
+* Alerts telling that Malygos gained the powerup will no longer appear once the Phase 2 has begun.
+* Fixed a silly bug (once again) preventing personnal alerts from popping up in Phase 3 when Malygos uses his beam on you. It SHOULD work now. =)
+
+---
+
+== v2 (Beta) ==
+=== System changes ===
+* You can now customize the position of BossEncounter2 widgets by typing in-game /BE2 anchor.
+* A "special bar" widget has been added. It is currently only used by Malygos module.
+* /BE2 wipedata has been added, to reset BossEncounter2 saved data. Useful if you were to experience problems after updating the AddOn.
+* Fixed a bug preventing sometimes the "add death" sound effect from playing.
+
+=== Modules changes ===
+==== The Eye of Eternity ====
+===== Malygos =====
+* This module has undergone major improvements and fixes.
+* Phase 1: an option to display an alert whenever Malygos gains the powerup has been added.
+* Phase 2: the boss bar will now only disappear 30 sec after the beginning of phase 2.
+* Phase 2: fixed the add counter for the 10-man version.
+* Phase 3: fixed a bug causing the personnal alert not to appear when Malygos sets his gaze on you.
+* Phase 3: a new widget has been added showing you the amount of time before your flame breath DoT fades.
+
+==== Naxxramas ====
+===== Anub'rekhan =====
+* Removed a redundant locust swarm warning message.
+===== Noth =====
+* Removed a redundant curse warning message.
+===== Kel'Thuzad =====
+* You can now access Kel'Thuzad options during the Phase 1 since you cannot prior the fight.
+* There's now a music switch at the beginning of Phase 3.
+===== Sapphiron =====
+* You can now separately activate Countdown and Freeze alerts for Sapphiron (no longer linked together).
+* The unit list will now be displayed when he takes off, showing the people close to you.
+* When Sapphiron gets below 10% health, BossEncounter2 will now remove his "Take off" event.
+
+---
+
+== v1 (Beta) ==
+* Original BETA release.

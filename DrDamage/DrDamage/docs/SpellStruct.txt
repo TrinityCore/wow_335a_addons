@@ -1,0 +1,92 @@
+struct Spell
+{
+	key "Name" => String value "Name of Spell"
+	key 0 => Spell attributes (optional)
+			 Optional values:
+			 	string School -- "Shadow", "Holy", "Fire", "Frost", "Arcane", "Nature", "Healing", "Ranged", "Physical"
+			 					 "Nuke", "Shock", "OffensiveTotem", "Affliction", "Destruction"
+			 	list School -- table including two or more of the schools listed above (ie. School = {"Holy", "Healing})
+			 	boolean eDot -- true for damage-over-time spell, defaults to false
+			 	float eDuration -- time in seconds that spell lasts on target, defaults to 0
+			 	float bonusFactor -- damage coefficient for multiplying Spellpower into the spell damage. Use if spell has a special coefficient that doesn't follow standard formulas. 
+			 	float dotFactor -- damage coefficient for the dot portion of spells. Use if spell has a special coefficient that doesn't follow standard formulas.
+			 	float sFactor -- coefficient added to the spelldamage coefficient
+				float castTime -- time in seconds to cast the spell
+			 	float Cooldown -- time in seconds of spell cooldown period
+			 	float sTicks -- time in seconds between each application of the spell effect (ie. a DoT doing damage).
+			 	float chainFactor -- Reduction of effect as effect chains.  Ex: Chain Heal, Avenger's Shield
+			 	boolean NoDownRank -- ??? (downranking is no longer possible in WoW, so this might be unneeded now).
+			 	boolean canCrit -- true if this spell can crit, defaults to false
+			 	boolean BaseIncrease -- true if the base damage of this spell increases each level, defaults to false.
+			 	boolean Healing -- true for healing effects, defaults to false
+			 	boolean NoDPS -- no DPS/HPS calc are done for spells it is useless for
+			 	boolean NoDebuffs -- ??? (no idea what this is for)
+			 	boolean NoDoom -- mana calculations until OOM aren't done
+				boolean NoAura -- No buff/debuff effects
+				boolean NoDPM -- No Damage per Minute calcs
+				boolean NoTooltip -- Does not show a tooltip
+			 	boolean NoLowLevelPenalty -- true if the "Below Level 20" penalty does not apply.  Defaults to false.
+			 	boolean NoSchoolTalents -- abilities that don't get bonuses from a multiplier to the school
+				boolean Unresistable -- ??? (not sure...presumably for unresistable effects)
+			 	boolean Leech -- true if spell transfers health from target to caster
+			 	int Stacks -- number of charges on a stacking effect
+			 	int sHits -- Number of hits in a channeled spell
+				
+				-- Melee abilities
+				boolean Melee -- true if a melee attack
+				boolean OffhandAttack -- true if attack uses offhand weapon
+				boolean DualAttack -- true if spell does damage with main hand and off hand weapons
+				boolean NextMelee -- spell replaces next melee attack
+				boolean NoCrits -- true if spell can not crit (how does this work with canCrit?  canCrit is true by default for melee hits.  Melee and casts are calculated differently.)
+				boolean ComboPoints -- true if spell benefits from Combo Points
+				boolean Bleed -- spell gives a Bleed effect on target
+				boolean BleedExtra -- the extra damage is considered a bleed
+				float SpellAPBonus -- Attack power damage coefficient in caster module			
+				float APBonus -- percentage of attack power (0.0 - 1.0) that adds to attack damage
+				float ExtraDamage -- damage done after the initial damage of the attack
+				float E_eDuration -- duration of ExtraDamage DoT
+				float SpamDPS -- abilities that require offhand damage for the DPS calc.  Gagorian couldn't remember how it was used.  (seen in Warrior class)
+				float WeaponDamage -- percentage (0.0 - 1.0) of weapon damage that adds to attack damage
+				list APBonus -- list of attack power coefficients (is this for combo point attacks that scale with number of CPs?)
+				list ExtraPerCombo -- list of ints indicating extra damage for each Combo Point
+				int Ticks -- see sTicks, but in melee module
+				int Hits -- Amount of hits for a melee module ability
+				int DotStacks -- how many times the DoT/HoT can stack on a target
+				int RequiresForm -- used on Druid powers that require a specific form.  Bear = 1, Cat = 3, 
+				boolean E_canCrit -- ExtraDamage can crit
+				boolean DPSrg -- ??? (something to do with Hunter powers)
+				boolean NoWeapon --  Action that doesn't need a weapon to be performed
+				boolean NoNormalization -- for abilities that use weapondamage as the damage calculation but aren't normalized for weapon speeds
+				boolean SpellDmgBonus -- For melee types that gain a spell damage bonus (Paladin)
+				boolean WeaponDPS -- Uses weapon speed directly for DPS calc (in Paladin's Seal of Righteousness)
+				boolean SpellCrit -- Used when crit effect is spelllike (1.5 instead of 2) (seen in Warrior class)
+				int DurationPerCombo -- number of seconds of additional duration for each Combo Point
+				int Downrank -- probably deprecated.  Used for downrank spell penalties
+				string Weapon -- required weapons for spell ("Daggers", "Swords", "Axes", etc.)
+				string Offhand -- spell requires item equipped in off-hand ("Shields", "Daggers", etc.)
+				
+	key [1 - N] => SpellRank struct (Rank N has key "N")
+	
+	key "Secondary" => indicates a secondary spell effect.  Nest another Spell structure after the primary effect.  See example.
+}
+
+
+struct SpellRank
+{
+	// Non-keyed integer values should be first and in listed order.
+	int minDamage;					// REQUIRED
+	int maxDamage;					// REQUIRED (caster), OPTIONAL (melee) -- use if spell has a damage range (min to max).
+	int minDamageLevelBonus;			//OPTIONAL -- use if BaseIncrease is true
+	int maxDamageLevelBonus;			//OPTIONAL -- use if BaseIncrease is true
+	key hybridDotDmg = int dotDmg;			//OPTIONAL -- for spells with a dot portion
+	key castTime = int castInSecs;			//OPTIONAL -- use if cast time varies between different ranks
+	key eDuration = int effectDuration;		//OPTIONAL -- use if duration varies between different ranks
+	key perCombo = int dmgPerComboPoint;		// OPTIONAL -- use if power benefits from Combo points
+	key Extra = int amountExtra;			// OPTIONAL -- use if scales with AP
+	key ExtraPerCombo = int amountPerCombo		// OPTIONAL -- use if scales with Combo points
+	key sunderDmg = int damage;			// OPTIONAL -- Devastate bonus per sunder (seen in Warrior class)
+	key PowerBonus = int rageBonus;			// OPTIONAL -- use if power converts Rage into damage (number is damage per Rage point)
+	key diseaseBonus = int diseaseBonusDmg;		// OPTIONAL -- use if power gets bonus damage for diseases on target.
+	key spellLevel = int levelRequired;		// REQUIRED (caster)
+	
+}

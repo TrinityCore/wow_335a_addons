@@ -1,0 +1,36 @@
+## Interface: 30300
+## Title: Violation |cff7fff7f -Ace2-|r
+## Notes: Tracks damage and healing.
+## Notes-ruRU: Отслеживает урон и исцеление.
+## Notes-zhCN: 记录与报告伤害及治疗量。
+## Notes-zhTW: 記錄與報告傷害及治療量。
+## Author: Rabbit, Ammo
+## X-Email: rabbit.magtheridon@gmail.com
+## X-Credits: ravagernl, haste, ag, Mikk, Adirelle
+## X-Category: Combat
+## X-Website: http://wowace.com/wiki/Violation
+## X-AceForum: 4843
+## Version: 1.0
+## X-License: GPLv2 or later.
+## OptionalDeps: Ace2, SharedMedia, LibSharedMedia-3.0, DewdropLib, LibDBIcon-1.0
+## SavedVariables: ViolationDB
+## SavedVariablesPerCharacter: ViolationPerCharDB
+## X-Curse-Packaged-Version: r492
+## X-Curse-Project-Name: Violation
+## X-Curse-Project-ID: violation
+## X-Curse-Repository-ID: wow/violation/mainline
+
+embeds.xml
+
+locales\enUS.lua
+locales\ruRU.lua
+locales\koKR.lua
+locales\zhCN.lua
+locales\zhTW.lua
+locales\frFR.lua
+#locales\deDE.lua
+
+Violation.lua
+
+modules.xml
+

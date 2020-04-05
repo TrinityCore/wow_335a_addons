@@ -1,0 +1,949 @@
+Decursive 2.4.5.1 par Archarodim  (2009-12-08)
+==============================================
+
+
+Changements entre Decursive 2.4.5 et Decursive 2.4.5.1
+------------------------------------------------------
+
+- Correction d'un problème pour les prêtres où le talent 'Corps et âme' n'était
+  pas détecté correctement à la connexion.
+
+- Ré-activation de la correction concernant debuglocals() pour WoW 3.3 lorsque
+  les rapports d'erreur Lua sont activés.
+
+- Mise à jour de la localisation.
+
+
+Changements entre Decursive 2.4.3.2 et Decursive 2.4.5
+------------------------------------------------------
+
+- **Changements majeurs :**
+
+    - Decursive a été entièrement convertit à Ace3.
+
+    - Decursive n'est plus sous licence GNU GPL mais 'Tous droit réservés',
+      voir le fichier LICENSE.TXT.
+
+    - À cause de la conversion à Ace3 il n'y a plus de menu déroulant pour
+      accéder aux options.
+
+    - Un nouveau panneau d'options est disponible à travers les option
+      d'interface de Blizzard ; vous pouvez aussi y accéder en faisant un
+      Alt-clique-droit sur l'icône de Decursive.
+
+    - Les réglages de Decursive seront remis à zéro une fois cette version
+      installée.
+
+- **Changements mineurs :**
+
+    - Correction pour les chamans : 'Purifier l'esprit' ne remplaçait pas
+      'Guérisons des toxines', les deux sorts étaient tous les deux actifs.
+
+    - L'option "ignorer les unités camouflées" a été retirée puisqu'elle était
+      devenue inutile depuis plusieurs années.
+
+    - La touche associée à la macro n'est plus lié au profil.
+
+    - TabbletLib a été remplacé par LibQtip-1.0.
+
+    - DewDrop-2.0 qui n'a pas de remplaçant pour Ace3 a été retiré.
+
+    - Ajout d'un panneau 'À propos'.
+
+    - Divers améliorations internes.
+    
+
+Changements entre Decursive 2.4.3 et Decursive 2.4.3.2
+------------------------------------------------------
+
+- Correction d'une erreur Lua qui pouvait se produire dans de rares conditions
+  (lorsque l'on clique sur une MUF exactement au moment où son affliction disparaît).
+
+- 'Camouflage dans l'ombre' n'était plus détecté comme un camouflage (son SpellID a changé).
+
+
+Changements entre Decursive 2.4.2 et Decursive 2.4.3
+----------------------------------------------------
+
+- Implémentation d'une solution permanente pour les afflictions non détectées par
+  manque d'évènements directs.
+
+- Les options de la macro sont désormais plus fiable et logique :
+    - Quand la création de la macro est désactivée, la touche actuellement attribuée est retirée.
+    - La touche attribuée est également retirée quand le profil est remis à zéro.
+    - L'assignation de touche est désormais impossible quand la création de la macro est désactivée.
+
+- L'alerte 'pas de touche assignée à la macro' est désormais désactivée par
+  défaut puisque cette macro n'est pas vraiment utile après tout.
+
+- La librairie LibBabble-Class-3.0 a été retirée (remplacée par _G.LOCALIZED_CLASS_NAMES_MALE)
+
+- Ajout d'une exception pour l'affliction "Matière noire" pour laquelle aucun
+  évènement SPELL_AURA_APPLIED n'est généré par le jeu.
+
+- Le gestionnaire d'erreur Lua est de nouveau activé mais des précautions ont
+  été prises et des "hotfixes" au Blizzard_DebugTools sont appliqués dynamiquement par Decursive.
+    - **IMPORTANT**: À cause (ou plutôt grâce) à ces corrections, l'installation de Decursive
+      peut donc révéler certaines erreurs Lua que vous ne pouviez pas voir avant.
+
+- Decursive utilise toujours "player" comme UnitID pour le joueur (auparavant
+  "raid#" était utilisé lorsque le joueur était inclut dans la liste de
+  priorité).
+    - Cela empêche la MUF du joueur de disparaître temporairement lorsque le
+      groupe de raid est mis à jour.
+
+
+
+Changements entre Decursive 2.4.1 et Decursive 2.4.2
+----------------------------------------------------
+
+- CORRECTION IMPORTANTE: Des problèmes corrigés dans cette versions pouvaient
+  empêcher Decursive de détecter les afflictions dans certaines situations
+  critiques (toutes les versions précédentes sont affectées).
+
+- Ajout du sort 'Maléfice' des chamans pour rendre inoffensifs les joueurs sous
+  contrôle mental.
+
+- Ajout du sort 'Guérison des toxines' (Chamans)
+
+- Ajout d'une option pour désactiver la création de la macro.
+
+- Documentation entièrement refaite (en anglais) : <http://www.wowace.com/addons/decursive/>
+
+- Améliorations du système de rapport d'erreur intégré.
+
+- Divers petites améliorations et corrections.
+
+
+Changements entre Decursive 2.4 et Decursive 2.4.1
+----------------------------------------------------
+
+- Support du nouveau talent 'Corps et âme' des prêtres qui permet
+  d'enlever un effet de poison sur soi-même en utilisant 'Abolir le poison'.
+
+- Support du sort "Tir tranquillisant" des chasseurs qui permet
+  d'enlever un effet magique sur les joueurs sous contrôle mental.
+
+- Améliorations importantes du système de positionnement et de mise à l'échelle
+  des micro-portraits :
+    - Changer leur échelle ne change plus leur position de manière incohérente.
+    - Les Micro-portraits sont maintenus à l'écran quoi qu'il arrive. Leur
+      position ne peut plus être réinitialisée.
+
+- Améliorations et corrections multiples concernant la détection des contrôles mentaux.
+
+- L'icône de Decursive (Mini-carte ou ailleurs) fait enfin ce que son info-bulle
+  indique. Une erreur LUA lié à l'icône a également était corrigée.
+
+- Les micro-portrait n'utilisent plus l'unité 'mouseover' (simplification interne et plus de fiabilité)
+
+- Ajout d'un nouveau système avancé de rapport de debugging.
+
+
+Changements entre Decursive 2.3.1 et Decursive 2.4
+----------------------------------------------------
+
+- Nouveauté : Le temps de recharge du sort de guérison à utiliser est indiqué
+  (horloge) sur les micro-portraits des unités affligées.
+
+- Decursive utilise désormais AceLocal-3.0 et les traductions faîtes à partir de :
+  http://wow.curseforge.com/projects/decursive/localization/
+
+- L'option qui règle le nombre maximum d'unité à afficher a été réimplémenté.
+
+- Ajout d'un avertissement lorsque l'utilisateur désactive Decursive et d'une
+  explication sur comment le ré-activer (/dcr standby)
+
+- Les descriptions des raccourcis concernant Decursive dans la fenêtre des
+  raccourcis clavier de WoW sont désormais traduits.
+
+- Correction d'un problème lorsque WoW est lancé sans le dossier WTF où l'API
+  GetCurrentBindingSet() retourne une valeur incorrecte empêchant Decursive de
+  s'initialiser correctement.
+
+- L'unité focalisée n'était pas ajouté à la fin comme prévu mais juste avant
+  les familiers.
+
+- L'option "d'alignement à droite" des micro-portraits fonctionne de nouveau.
+
+- La détection des unités contrôlées par l'ennemi ne fonctionnait pas si le
+  joueur lui-même était contrôlé.
+
+- Il n'est plus possible d'attribuer par accident les boutons 1 et 2 de la souris
+  à la macro créée par Decursive.
+
+- Quelques autres correction de bug mineurs.
+
+Changements entre Decursive 2.3.0 et Decursive 2.3.1
+----------------------------------------------------
+
+- Correction d'un très vieux problème rare où Decursive manquait des afflictions.
+- Correction de la gestion des unités focalisées.
+- Correction de la gestion de l'icône de la minicarte et de la barre
+  "Decursive" lorsque ce dernier était désactivé par Ace.
+
+
+Changements entre Decursive 2.3.0 RC7 et Decursive 2.3.0
+----------------------------------------------------
+
+- Ajout d'un test de mélange de versions à l'auto-diagnostique.
+- Correction d'une erreur LUA introduit dans la RC7
+
+
+Changements entre Decursive 2.3.0 RC4 et Decursive 2.3.0 RC7
+----------------------------------------------------
+
+- Correction d'une erreur LUA quand les membres de la liste de priorité était
+  exclu du blacklistage et qu'un évènement de blaklistage se produisait.
+- Le nouveau sort des shaman "Purifier l'esprit" semble se lancer deux fois
+  dans certaines conditions (Prob`leme Blizzard). Decursive affichait des
+  messages d'echec à cause de ça. Cela a été corrigé.
+- Les sorts des familiers n'était pas correctement détectés si la estion de ces
+  derniers était désactivée. (bug introduit en 2.3b2)
+- La fonction 'masquer automatiquement' des micro-portraits ne se réglée pas
+  correctement à l'initialisation.
+- Lorsque les micro-portraits s'affichaient après avoir étaient masqués leur
+  nombres n'était pas mis à jour.
+
+
+Changements entre Decursive 2.3.0 RC2 et Decursive 2.3.0 RC3
+----------------------------------------------------
+
+- Suppression de la librairie FubarPlugin-2.0 (utiliser "Broker2FuBar" pour retrouver Decursive dans Fubar)
+- Ajout des librairies LibDataBroker-1.1 et LibDBIcon-1.0
+- Suppression du code de compatibilité avec WoW 2.4
+- Déplacement et re-nommage des fichiers de localisation vers un dossier plus approprié.
+- Nouvelle option : "Icône Minicarte" pour activer ou désactiver l'icône de Decursive autour de la MiniCarte.
+- Corrige une erreur "NIL" si une cible amicale extérieure se camoufle.
+- Corrige l'erreur LUA liée à l'affliction de test dans les options de la liste des affligées.
+
+
+Changements entre Decursive 2.3 beta 3 et Decursive 2.3.0 RC2
+----------------------------------------------------
+
+Corrige l'initialisation défectueuse due au changement de l'API CreateMacro()
+dans WoW 3.0 (lorsque l'utilisateur avait ses macros "par charactère" pleines)
+
+- Bugfix: CreateMacro() a changé dans WoW 2.3 par conséquent Decursive créait
+  sa macro "par personnage" au lieu de "par compte" et ne vérifiait pas la
+  bonne limite.
+
+- Mise à jour des versions minimum requises des librairies.
+
+Changements entre Decursive 2.2.0 et Decursive 2.3 beta 3
+----------------------------------------------------
+
+- Decursive utilise désormais les GUID en interne au lieu des noms des unités
+  (optimisations des ressources)
+- Un changement de famillier dans le groupe déclanchait une mise à jour du
+  groupe même si la gestion des familiers était désativée.
+- Optimisations des ressources lorsque les listes de priorités et d'exceptions
+  sont utilisées.
+- ATTENTION: Après avoir installé cette version, les listes de priorités et
+  d'exceptions seront effacées.
+
+
+Changements entre Decursive 2.1.0 Final et Decursive 2.2.0
+----------------------------------------------------
+
+* Changements importants :
+
+- Decursive n'utilise plus SpecialEvent-Aura-2.0 pour détécter les afflictions,
+  il utilise le nouveau système de journal de combat de WoW 2.4. Cela simplifie
+  beaucoup les choses et évite de scanner inutilement les unités éloignées.
+
+- Grâce à ce changement Decursive est capable de parfaitement détecter les
+  sorts et dissipations ratées lorsque les micro-portraits sont utilisés pour
+  les lancer.
+
+- Une nouvelle alerte sonore est déclenchée lorsqu'un des sorts lancés par les
+  micro-portrait est résisté.
+
+- Le message annonçant le succès des sorts a été retiré et remplacé par un
+  message d'erreur lorsque c'est approprié.
+
+- Nouveau son pour l'alerte sonore d'affliction, plus audible pour les gens
+  sans système de basse correcte.
+
+- L'unité 'focus' ne fera parti des micro-portraits que si elle n'est pas
+  hostile est n'est déjà pas comprise dans les micro-portraits affichés.
+
+- Lorsque les infos-bulle de la liste des affligés sont désactivés, cette
+  dernière n'intercepte plus les cliques de souris, on peut cliquer à travers.
+
+- L'historique des afflictions n'est rempli que lorsqu'un micro-portrait est
+  cliqué.
+
+- Traduction russe complète par StingerSoft.
+
+- Compatible avec WotLK beta
+
+* Bugs corrigés :
+
+- Correction d'une erreur LUA lorsque des joueurs ayant des familiers étaient
+  exclus par la liste des exceptions.
+
+- Correction de beaucoup de bugs insidieux lié à la féminisation des noms de classes.
+
+- Correction de problèmes dans les champs de batailles avec les gens venant de
+  royaumes extérieurs (la liste des priorités ne fonctionnait pas comme prévu)
+
+- Les unités hors du champs de vision n'étaient pas toujours ajouté à la liste
+  noire (ne fonctionne pas avec les sorts lancés par les familiers).
+
+- Lorsque la liste des exceptions était modifiée, les micro-portraits n'étaient pas mis à jour immédiatement.
+
+- Correction d'un problèmes pour les prêtres chinois (deux sorts différent on le même nom dans cette localisation).
+
+- Correction d'un problème avec le son d'alerte qui pouvait être joué en boucle dans certaines conditions.
+
+- Le verrou et la position de la barre "Decursive" (l'ancre de la liste des
+  affligés) n'étaient pas appliqués correctement au démarrage.
+
+
+Changements entre Decursive 2.0.4 et Decursive 2.1.0 Final
+----------------------------------------------------
+
+* Changements importants :
+
+- Quand un joueur est affligé, un nouveau chronomètre apparaît sur son
+  micro-portrait indiquant le temps écoulé (activé par défaut)
+
+- Ajout d'un système d'auto-diagnostique également disponible en utilisant la
+  commande /DCRDIAG. Ce diagnostique est exécuté lorsque l'add-on est chargé et
+  teste si toutes les librairies requises sont disponibles et à jour.
+  Lorsque la commande /DCRDIAG est utilisée, le bon fonctionnement de la
+  librairie AceEvent est également vérifié.
+
+- Nouvelle option : "Aligner la fenêtre à droite" dans les options des
+  micro-portraits (désactivée par défaut)
+  Quand activée, la fenêtre des micro-portrait se développera de la droite vers
+  la gauche, la poignée sera déplacée automatiquement.
+
+- Nouvelle option : "Masquer automatiquement" ("jamais" par défaut)
+  Permet de choisir de masquer automatiquement la fenêtre des micro-portraits si
+  le joueur n'est pas en groupe ou pas en raid.
+
+- Nouvelle option : "Couleurs" dans les options des micro-portraits.
+  Toutes les couleurs des micro-portraits peuvent être modifiées.
+
+- Il est désormais possible d'ajouter une affliction aux filtres en utilisant
+  un historique des afflictions récentes au lieu de taper leur noms.
+
+- Les priorités de guérison sont désormais sauvegardées par classe.
+  (Ce changement remet aux valeurs par défaut vos priorités de guérison)
+
+- Decursive n'utilise plus la librairie Babble-Spell, tous les sorts sont
+  désormais traduits dynamiquement à chaque chargement assurant la compatibilité
+  avec les versions localisées courantes et futures de World of Warcraft.
+
+* Changements mineurs :
+
+- Quand on déplaçait le curseur rapidement sur des unités amies et hostiles,
+  une affliction fantôme pouvait apparaître dans la liste des affligés pendant
+  0,2 secondes, cela a été corrigé.
+
+- Lorsqu'un nouveau micro-portrait est créé en dehors de l'écran, la fenêtre
+  des micro-portraits est automatiquement déplacée de sorte que tous les
+  micro-portraits soient visibles.
+
+- Les sorts gérées par les familiers n'interrompent plus les sorts des joueurs
+  (lorsque les micro-portraits sont utilisés).
+
+- Optimisations de performance.
+
+- Decursive utilise à nouveau le premier rang de Métamorphose.
+
+- Clarification dans les différents fichiers de localisation.
+
+- Correction d'un problème d'initialisation arrivant à certaines personnes.
+
+- Ajout d'une nouvelle entrée de FAQ à propos d'une rumeur selon laquelle
+  Decursive serait banni par Blizzard. (voir à la fin du fichier lisez-moi.txt)
+
+Changements entre Decursive 2.0.3 et Decursive 2.0.4
+----------------------------------------------------
+
+- Désormais, Decursive est dédié à la mémoire de Bertrand Sence qui nous a
+  quitté le mois dernier et était connu sous le nom de Glorfindal sur le
+  serveur européen "Les Sentinelles".  Un menu spécial a été ajouté.
+
+- Les options relatives à FuBar ont été déplacées dans un sous-menu.
+- Correction de problèmes avec la localisation espagnole depuis WoW 2.2.3
+- Correction probable d'une erreur LUA très rare qui pouvait se produire dans
+  des conditions de stress (IsSpellInRange(): Invalid spell slot)
+
+
+Changements entre Decursive 2.0 Final et Decursive 2.0.3
+----------------------------------------------------
+
+**Nouvelle fonctionnalités
+
+- Ajout d'un message et d'un son lorsque "affliction instable" est détecté sur
+  un micro-portrait sur lequel vous vous apprêté à cliquer. (Ne fonctionne que
+  si les info-bulles des micro-portraits sont activés)/
+
+- Decursive reconnaît désormais le sort "Cyclone" des druides afin de bloquer
+  les joueurs contrôlés par l'ennemi. À cause de cet ajout, la priorité de
+  guérison des affliction a changé pour les druides. Allez dans les options de
+  guérisons et changer les priorités à votre convenance.
+
+- Nouveau bouton de donation PayPal.
+
+**Bugs corrigés
+
+- Si certaines afflictions étaient filtrées pendant les combats, les
+  micro-portraits des unités affligées n'était pas mis à jour une fois le
+  combat terminé.
+
+- Si les priorités de guérisons étaient modifié pendant que des afflictions
+  étaient affichées dans les micro-portraits, ces derniers n'étaient pas mis à
+  jour.
+
+- Correction d'une erreur LUA qui se produisait lorsque l'utilisateur avait la
+  liste des affligées et les micro-portraits désactivés.
+
+- L'apparition et la disparition des familiers ne déclenchaient pas une mise à
+  jour du nombre de micro-portrait.
+
+- Correction d'une erreur LUA lorsque l'utilisateur passait la souris au dessus
+  des micro-portraits avec les bordures de classes désactivées.
+
+**Petits changements
+
+- Amélioration de la gestion des familiers.
+    - La détection du nom et de la classe devrait être beaucoup plus précise.
+    - Les noms des familiers sont précédés de "familiers".
+    - Correction d'un bug lorsque plusieurs familiers étaient vue en tant qu'entité inconnue.
+
+- Légère optimisation du système de liste noire.
+
+- Ajout d'invisibilité inférieur à la détection du camouflage.
+
+- Le sont joué lorsqu'une affliction est détectée est enregistré dans une
+  variable du profile de Decursive (profile.SoundFile).
+
+- L'icône de Decursive deviendra grise si aucun sort de guérison n'est utilisable ou s'ils sont tous désactivés.
+
+- Mise à jour de la localisation chinoise traditionnelle et coréenne.
+
+
+
+
+Changements entre Decursive 2.0 RC1 et Decursive 2.0 Final
+----------------------------------------------------
+
+- Les mages lancent désormais métamorphose rang 1 au lieu du rang le plus élevé
+  (utilise moins de mana et dure moins longtemps).
+- Les messages de réussite de sort incluent le rang du sort.
+- Une erreur LUA a été corrigée lorsque la macro était utilisée alors qu'aucun
+  sort n'était enregistré.
+- Les positions par défaut de la liste des affligé et des micro-portraits ont été optimisées.
+- Une note sur comment bouger la liste des affligé a été ajouté (dans lisez-moi.txt et en jeux).
+
+
+Changements entre Decursive 2.0 BETA 7-Pub et Decursive 2.0 RC1
+----------------------------------------------------
+
+- Un message d'erreur est affiché si Decursive ne parvient pas à charger ses librairies principales correctement
+- Il est désormais possible de désactiver l'avertissement affiché si aucune touche n'est associé à la macro.
+- Il ne devrait plus y avoir de message "réussi sur NOMAME".
+- Des descriptions en français et en chinois traditionnel ont été ajouté.
+- Fichier .TOC mis à jour pour WoW 2.1.
+
+Changements entre Decursive 2.0 BETA 6-Pub-fixed et 2.0 BETA 7-Pub
+----------------------------------------------------
+
+Nouveautés :
+
+- Il est désormais possible d'ajouter des groupes et des classes dynamiques dans
+  la liste de priorité et d'exception : Au lieu d'ajouter chaque unité
+  séparément, des noms de groupes et/ou de classes apparaîtront dans la liste
+  (exemple [ Groupe 1 ], [ Mage ]).
+  L'ancien comportement peut toujours être obtenue en maintenant la touche
+  [SHIFT] du clavier en cliquant sur un nom de groupe ou de classe dans la
+  fenêtre de remplissage des listes (des noms seront ajoutés)
+
+- Le changement des listes de priorité permet aussi de classer les unités par
+  groupe et par classe en même temps.
+
+- Un message d'aide est affiché si l'utilisateur ne clique pas avec le bon
+  bouton sur un micro-portrait.
+
+- Optimisation majeure du code : L'utilisation du processeur est passée de 0.04
+  secondes par seconde à ~0.001 secondes par seconde.
+  (Résultats obtenus avec les librairies Ace2 externes à jour).
+
+- Ajout de la localisation en chinois traditionnel de Peter Sun.
+
+Changements :
+
+- Si un sort est en cours d'incantation lorsqu'un micro-portrait est cliqué, le
+  sort en cours est annulé.
+- Les micro-portrait réagissent lorsqu'on relâche le bouton de la souris au lieu
+  de réagir lorsqu'on appuie.
+- On peut déplacer la barre "Decursive" en maintenant la touche [ALT] enfoncée
+  même si les boutons sont cachés.
+
+- Le système de la liste des affligés a été entièrement ré-écrit.
+- L'échelle et la transparence de la liste des affligés peuvent être changés
+  dans les options.
+- Un message est affiché si l'utilisateur clique sur la liste des affligés.
+- Il est maintenant possible d'entendre le son d'alerte même si la liste des
+  affligés n'est pas affichée.
+- Decursive utilise la librairie SpecialEvent-Aura pour surveiller les
+  afflictions.
+- On peut créer une affliction virtuelle pour tester l'affichage (voir dans les
+  options de la liste des affligés)
+- L'icône de Decursive de la Minimap et de FuBar répond désormais aux cliques
+  et une bulle d'information est affichée lorsque la souris passe dessus.
+- L'icône de Decursive devient grise si les micro-portraits et la liste des
+  affligés sont désactivés.
+- Ajout de "Sommeil sans rêve majeur" à la liste des exceptions.
+
+Bugs corrigés :
+
+- Le statut de l'unité n'était pas affiché si la liste des affligés était
+  cachée.
+- La détection des familiers du démoniste pouvez échouer dans certaines
+  conditions.
+- Les afflictions ignorées par défaut sur les guerriers ne fonctionnaient pas à
+  cause d'une faute de frappe.
+- Si vous étiez déjà en combat à la connexion ou si vous rechargiez votre
+  interface pendant un combat, Decursive ne fonctionnait pas correctement.]
+- D'autres petits bugs ont été corrigés.
+
+
+Changements entre Decursive 2.0 BETA 6-Pub et Decursive 2.0 BETA 6-Pub-fixed
+----------------------------------------------------
+
+- Correction de plusieurs problèmes avec le système de priorité des sorts.
+
+
+Changements entre Decursive 2.0 BETA 5 et 2.0 BETA 6-Pub
+----------------------------------------------------
+
+    # Changements importants
+
+- Il faut désormais presser la touche ALT en cliquant-gauche sur la poignée des micro-portrait pour les déplacer.
+- Désormais, une bordure s'affiche autour des micro-portraits dont la couleur dépend de la classe de l'unité.
+- Lorsqu'une unité est possédée, un petit carré vert s'affiche dans son micro-portrait.
+- Un nouveau panneau d'option statique est disponible en ALT cliquant-droit sur la poignée ou en tappant "/dcroptions" (librairie Waterfall d'Ace2)
+- Deux nouveaux groupes d'options ont été ajouté:
+    - La transparence de la bordure et du centre des MUFs peut être réglé indépendamment.
+    - L'espace entre les micro-portraits (MUFs) peut être modifié.
+- Les paladin utilises toujours "Epuration" au lieu de "Purification" (s'ils ont appris "Epuration").
+- On peut affecter une touche (dans la fenêtre des raccourcis de WoW) pour afficher/Cacher les micro-portraits.
+- Dans le système de filtrage des afflictions, on peut désormais ignorer une affliction de manière permanente et plus seulement pendant les combats.
+
+    # Changements mineurs
+
+- L'affichage des micro-portraits peut être inversé (ils s'afficheront de bas en haut au lieu de haut en bas).
+- Le fichier Readme.txt a été re-travaillé pour être plus clair, des sections "Features" et "FAQ" y ont été ajouté. (La version française n'a pas encore été retouchée).
+- Les priorités des sorts des démonistes sont sauvegardés lorsqu'ils changent de démon.
+- Le micro-portrait de l'unité en "focus" disparaît dés que l'on tappe "/clearfocus".
+- Correction d'un bug qui laissait voir une affliction de magie guérissable sur les unité possédées aux joueurs incapables d'enlever les afflictions magiques sur les unité ennemies.
+- La fonctions de remplissage des listes de priorité et d'exception fonctionne désormais correctement pour les chamans et les paladins.
+- Ajout d'espacements dans les options pour une meilleur lisibilité.
+- Le message d'erreur indiquant qu'aucune touche de macro n'est définie ne se montre plus si une touche globale est disponible.
+- Optimisation de code et correction de bug mineurs.
+
+
+Changements entre Decursive 2.0 BETA 4 et 2.0 BETA 5
+
+- Correction d'un bug qui provoquait la perte des raccourcis relatif à un personnage.
+- Un nouveau type d'affliction a été ajouté: 'Possession' qui s'applique aux unité possédés afin que les mages puissent les voir ; précédemment ils ne pouvaient voir que les unités possédées ayant une affliction magique (comme les prêtres). (Il faut tester cette nouvelle fonctionnalité car la situation est difficile à reproduire)
+- Une nouvelle option permet de changer la transparence (alpha) des micro-portrait lorsqu'une unité n'est pas affligée, elle peut être mise à 0 afin d'être totalement transparente.
+- Les micro-portrait se trouve à une strate plus basse.
+- "Déflagration des arcanes" ne sera plus indiqué comme étant une affliction.
+- Traduction complète en français par Sylvin.
+- Traduction complète en coréen par Fenlis.
+
+
+Changements entre Decursive 2.0 BETA 3 et 2.0 BETA 4
+
+- Le nombre minimum de micro-portraits par ligne a été changé à 1.
+- L'option 'Show Help' active/désactive également l'aide de la poignée.
+- L'unité en focus ne sera plus scannée si elle n'est pas amicale (vous ne la verrez pas parmi les micro-portrait ni dans la liste en temps réel).
+- La fonction qui lie une touche à la macro a été améliorée : elle désaffecte correctement les touches précédemment affecté et restaure
+  l'action original de la touche si vous la changée. Des messages sont également affichés quand une affectation
+  réussie/rate ou si elle en remplace une autre.
+- Ajout d'une nouvelle option pour ne pas montrer les unités hors de porté dans la liste en temps-réel (activée par défaut).
+- Sur les clients non-anglais, la touche affectée à la macro est réglée sur "NONE" dans les fichiers de localisations de façon
+  à ce qu'un avertissement soit affiché à l'utilisateur.
+- Un fichier lisez-moi.txt a été ajouté (traduction du readme.txt par Sylvin)
+- Decursive est maintenant disponible sur le serveur SVN de wowace.com
+
+
+Changements entre Decursive 2.0 BETA 2 et 2.0 BETA 3
+
+- Correction de la beaucoup trop grande consommation de mémoire des fonction d'analyses.
+- Correction d'un problème concernant la macro qui n'était pas mis à jour si la fenêtre des macro était ouverte.
+- Correction de l'application de quelques options dans les menus qui n'étaient pas propagées correctement.
+- Optimisation du code.
+- Ajout d'une note dans le readme.txt sur comment changer la touche assignée à la macro.
+
+Changements entre Decursive 2.0 BETA 1 et 2.0 BETA 2
+
+- Correction de l'affichage des micro-portrait (MPs) : la première fois que vous vous connectez, les MPs sont affichés à un endroit atteignable de votre écran
+  au lieu de se trouver tout en haut à gauche...
+- Correction de l'erreur LUA qui se produisait quand tous vos emplacements de macro étaient utilisés.
+- Désormais, la poignée pour bouger les MPs (au dessus du premier MP) s'éclaire si vous passez dessus avec la souris, une info-bulle a été ajouté.
+- Correction d'un gros bug concernant la gestion des listes de priorité et d'exception qui empêchait un nombre variable d'unité de s'afficher dans les MPs si vos listes n'étaient pas vide.
+- Les fonctions de changement d'échelle des MPs ont été amélioré.
+- Le fichier readme.txt a été mis à jour.
+
+
+Changements entre Decursive 1.9.8.4 et 2.0 BETA 1
+
+Changements importants pour l'utilisateur :
+
+- La guérison des affliction a été restauré de plusieurs façons:
+
+        - En cliquant sur des "micro-portrait" créés par Decursive pour un nombre d'unité défini par l'utilisateur.
+        - En plaçant la souris au dessus d'une unité ou d'un portrait d'unité et en appuyant sur une touche du clavier définie par l'utilisateur.
+        - Lisez le fichier readme.txt (en anglais) pour en savoir plus.
+
+- Gestion de la liste de priorité:
+
+        - La liste est maintenant pleinement opérationnelle, vous pouvez très facilement changer la position des joueurs dans la liste.
+        - L'affichage de la liste a été énormément amélioré, (scrollbars, couleures, ...).
+        - La liste de priorité définie l'ordre d'affichage des micro-portraits.
+
+- La fenêtre des options a été enlevée:
+
+        - Toutes les options sont accessibles par un menu déroulant (clique droit sur la barre "Decursive") (Ace2 DewDrop).
+        - Chaque entrée de menu a une petite explication en info-bulle.
+        - Toutes les options sont accessible par ligne de commande. (Ace2-console)
+
+- Gestion des afflictions à ignorer pendant les combats:
+        - On peut très facilement ajouter/enlever des afflictions à ignorer sur certaines classes pendant les combat.
+
+- Les mages peuvent moutonner les unités contrôler mentalement. (Si d'autres classes ont intéressées, d'autres sorts peuvent être ajouté sur demande)
+- Le fichier Readme.txt a été réécrit, vous êtes fortement invité à le lire (en anglais).
+
+Changements internes:
+
+- Decursive a été presque entièrement réorganisé et ré-écrit (la liste des affligés n'a pas encore été refaite).
+- Nouvelle architecture du code, plus efficace et plus maniable.
+- Decursive fait désormais parti de la famille Ace2 qui utilise les librairies Ace2 (elles sont incluses)
+
+
+Changements entre Decursive 1.9.8.3 et 1.9.8.4
+
+- Correction de syntaxe pour la compatibilité avec BC et lua 5.1.1
+- Amélioration énorme de l'utilisation de la mémoire, Decursive recycle les tables et utilise la librairie Compost de Ace2.0.
+- Amélioration de l'utilisation du CPU, elle devrait être minimale.
+
+
+Après The Burning Crusade (BC) ne pourra plus être utiliser pendant un combat, il pourra juste vous dire que untel doit être de-curse de telle ou telle chose mais ne pourra plus cibler et lancer de sort à votre place.
+Il continuera peut-être de fonctionner comme avant hors combat mais rien n'est sûr pour l'instant.
+Blizzard à fait de gros changements dans le game-play ; se passer de Decursive ne devrait plus être aussi ennuyeux que ça l'est actuellement...
+
+
+Changements entre Decursive 1.9.8.2 et Decursive 1.9.8.3
+
+- Normalement le bug "Rien n'a été nettoyé !" a été corrigé.
+- Il n'y a plus de "zone morte" en dessous de la barre "Decursive" lorsque la liste des unité est affichée.
+- Le sort de chaman 'Expiation' devrait fonctionner à nouveau.
+- Nouvelle option : lorsque l'on demande à Decursive de guérir quelqu'un, il annule tous sort en cours de lancement.
+  (sauf pour les démonistes et les sorts canalisés).
+- Une nouvelle doc en PDF (en englais) est disponible (merci à Whitney de l'avoir écrite).
+
+Changements entre Decursive 1.9.8.1 et Decursive 1.9.8.2
+
+- L'option "Auto-ciblage par défaut" n'est plus un problème, Decursive la désactive et la restaure automatiquement.
+- Dernière version j'espère !!!
+
+Changements entre Decursive 1.9.8 RC2 et Decursive 1.9.8.1
+
+- Correction de l'erreur LUA qui apparaissait dans les champs de bataille lorsqu'un joueur du groupe est d'un autre serveur et a un debuff à ignorer (comme Vision Mentale).
+- L'option de WoW "Auto-ciblage par défaut" cause des problèmes : quand elle est activée, Decursive est incapable de lancer un sort sauf sur vous-même.
+  Si cette option est active, Decursive affichera un message vous proposant de la désactiver.
+- La localisation Chinoise a été mise à jour (Merci à Peter Sun).
+- Localisation française révisée par The Grinch.
+
+Changements entre Decursive 1.9.8 RC1 et Decursive 1.9.8 RC2
+
+- L'erreur LUA que certaines personnes subissaient a été corrigée.
+- L'affichage des messages de Decursive fonctionne à nouveau.
+
+Changements entre Decursive 1.9.7 et Decursive 1.9.8
+
+***************************
+====> CHANGEMENT IMPORTANT:
+***************************
+
+- ÉNORME AMÉLIORATION DES PERFORMANCES (plus de lag) (merci à Lex pour son idée de cache)
+- Vous pouvez choisir dans les options le type d'effet que vous voulez dissiper (Magie, Poison, Maladie, Malédiction)
+- Ajout de la guérison prioritaire en fonction du type de debuff (sélectionnez les types dans l'ordre de priorité)
+    NOTE: Pour l'instant cela ne fonctionne que sur une unité et non de manière globale ; Decursive guérira l'unité en cours en fonction de l'ordre que vous avez choisis.
+    Par exemple, si vous avez choisi (Poison, Malédiction), Decursive enlèvera d'abord le poison sur une unité et ensuite/ou alors il enlèvera les malédictions sur cette même unité.
+- TOC mis à jour pour le patch 1.12
+
+*******************************
+====> CHANGEMENTS INTÉRESSANTS:
+*******************************
+
+- Quand vous avez une cible sélectionnée, qu'elle soit dans votre raid ou non, elle apparaîtra dans la listes de Decursive si vous pouvez la guérir.
+- Maintenant vous pouvez voir combien de fois un debuff est appliqués dans la liste des unités.
+- Le type de d'affliction est affiché dans la liste des unités.
+
+    ************************
+    ====> NOUVELLES OPTIONS:
+    ************************
+
+- Nouvelle option : Maintenant vous pouvez décider du sens d'affichage du texte dans la fenêtre de log de Decursive (vers le bas ou vers le haut).
+- Nouvelle option : "Inverser l'affichage des unités"
+- Nouvelle option : "Afficher les infos-bulles dans la liste"
+- Nouvelle option : "Cacher la liste des unités"
+- Nouvelle option : 'Lier la visibilité de la liste à "Decursive"' (Si la fenêtre principale de Decursive et cachée, la liste le sera aussi).
+
+- Nouvelle ligne de commande et raccourcis : /dcrhide cache la fenêtre de Decursive en laissant la listes des unités visibles.
+  /dcrshow fait le contraire
+- Nouvelle ligne de commande et raccourcis : /dcroption affiche ou ferme la fenêtre d'options de Decursive.
+- Ajout de la commande /dcrdebug pour activer ou désactiver l'affichage des infos de debug (merci à @derey).
+- Ajout de la variable globale Dcr_Saved.Dcr_OutputWindow pour changer la fenêtre d'affichage par défaut (utilisez /script Dcr_Saved.Dcr_OutputWindow = ChatFrame2 par exemple)
+
+**************************
+====> CHANGEMENTS MINEURS:
+**************************
+
+- Amélioration de l'affichage des messages avec des couleurs, vous pouvez aussi cliquer sur le nom des personnages
+  dans la fenêtre de chat principale.
+- L'ordre de guérison est maintenant vraiment par groupe : votre groupe, les groupes après le votre et les groupes avant le votre
+  Avant 1.9.8 BETA 2 c'était : Votre groupe, les joueurs des groupes après le votre et les joueurs des groupes avant le votre.
+
+- Correction du problème de temps d'affichage des textes (dû à un changement dans WoW 1.11).
+- Si Decursive échoue parce que la cible est invalide, cette dernière est blacklisté.
+- Réorganisation et classement interne du code source.
+- D'autres petites corrections.
+
+
+
+Changements entre Decursive 1.9.6 FINAL et Decursive 1.9.7
+
+*****************
+====> Nouveautés:
+*****************
+
+- Désormais lorsqu'un sort rate, seulement les gens hors vu sont blacklisté.
+
+- Vous pouvez cachez les boutons en cliquant-droit sur "Decursive".
+  De plus, lorsque les boutons sont cachés, la fenêtre est bloquée pour éviter de la déplacer par accident.
+
+- Ajout de l'option "Ne pas blaclister les gens prioritaires" (décochée par défaut)
+
+- Ajout de la localisation en chinois (zhTW)
+
+********************
+====> Améliorations:
+********************
+
+- Amélioration des performances.
+
+- Les effets à ne pas dissiper (Sommeil sans Rêve, Vision télépathique) ne sont plus affichés ni dissipés sauf si l'unité à d'autres effets du même type.
+  Dans les versions précédentes, ces effets étaient sauté seulement lorsque le joueur était en combat.
+
+- La fenêtre de Decursive est plus petite, la version est affichée dans une info-bulle.
+
+- Plus de risque de perdre la cible lorsque l'option pour tester la porté est activée.
+
+- Decursive ne teste plus la mana ou la disponibilité de vos sorts de guérisons, cela n'est plus nécessaire (et pouvez provoquer des freezes).
+
+- Les noms sur qui les sorts sont lancés sont maintenant plus visibles dans les messages de Decursive.
+
+- L'affichage des messages de Decursive est plus logique, le texte commence à s'afficher juste en dessous de "L'ancre du texte".
+  (vous pouvez bouger cette ancre en cliquant sur le 'A' en haut à droite de la fenêtre des options)
+
+********************
+====> Bugs corrigés:
+********************
+
+- le message de debuggage oublié que les Shamans voyaient a été enlevé.
+
+- Le problème que les prêtres en forme d'ombre subissait a été corrigé.
+
+- Plus de freeze lorsque beaucoup de joueurs sont hors de portés.
+  Merci à Alason qui m'a donné une nouvelle façon de tester la porté.
+
+- Quand vous cliquez-gauche sur quelqu'un dans la fenêtre de Decursive, Decursive n'essayera pas de guérir la cible en cours.
+
+- Amélioration de la gestion lorsque le sort rate (plus d'attente de sélection manuelle)
+
+*************************
+====> Petits changements:
+*************************
+
+- Le code qui scanne le raid a été légèrement optimisé.
+
+- Les gens hors de porté ne sont plus blacklistés (c'était inutile puisque Decursive les évite).
+
+- Suppression de l'option "Tester si la cible est à portée", Decursive le fera toujours.
+
+- Les glissières dans la fenêtre des options ont été délacées en haut pour éviter de cliquer sur la dernière par accident en fermant la fenêtre.
+
+- Les fichiers de localisation ont été mis à jour.
+
+- Les fichiers de localisation chinois et français sont désormais en UTF-8.
+
+
+Changements entre Decursive 1.9.6.4 et Decursive 1.9.6.5
+
+- Ajout de l'option "Ne pas blaclister les gens prioritaires" (décochée par défaut)
+- Suppression de l'option "Tester si la cible est à portée", Decursive le fera toujours.
+- Désormais lorsqu'un sort rate, seulement les gens hors vu seront blacklisté.
+- Les gens hors de porté ne sont plus blacklisté (c'était inutile);
+- Le problème de chute de FPS (freeze) que certaines personnes subissaient a probablement était corrigé.
+- Localisation chinoise mis à jour.
+
+Changements entre Decursive 1.9.6.3 et Decursive 1.9.6.4
+
+- Les effets à ne pas dissiper (Sommeil sans Rêve, Vision télépathique) ne sont plus affichés ni dissipés sauf si l'unité à d'autres effets du même type.
+  Dans les versions précédentes, ces effets étaient sauté seulement lorsque le joueur était en combat.
+- Ajout de la localisation en chinois (zhTW)
+- Le code qui scanne le raid a été légèrement optimisé.
+- Les fichiers de localisation chinois et français sont désormais en UTF-8
+
+Changements entre Decursive 1.9.6.2 et Decursive 1.9.6.3
+
+- Lorsque les boutons sont cachés, vous ne pouvez plus déplacer la fenêtre de Decursive, évite de perdre la fenêtre par accident.
+- Lorsque Decursive guérit quelqu'un, le texte affiché est plus court.
+- De petits changements dans la localisations allemande.
+
+Changements entre Decursive 1.9.6.1 et Decursive 1.9.6.2
+
+- Le problème avec les prêtres en forme d'ombre a VRAIMENT été corrigé.
+- Quand vous cliquez-gauche sur quelqu'un dans la fenêtre de Decursive, Decursive n'essayera pas de guérir la cible en cours.
+- L'affichage des messages de Decursive est plus logique, le texte commence à s'afficher juste en dessous de "L'ancre du texte".
+  (vous pouvez bouger cette ancre en cliquant sur le 'A' en haut à droite de la fenêtre des options)
+- Les glissières dans la fenêtre des options ont été délacées en haut pour éviter de cliquer sur la dernière par accident en fermant la fenêtre.
+- Le nom sur qui les sorts sont lancés est maintenant plus visible dans les messages de Decursive.
+
+
+Changements entre Decursive 1.9.6 FINAL et Decursive 1.9.6.1
+
+Cette version corrige surtout des bugs:
+- le message de debuggage oublié que les Shamans voyaient a été enlevé.
+- Les problème que les prêtres en forme d'ombre subissait a été corrigé.
+- Plus de freeze lorsque beaucoup de joueurs sont hors de portés.
+  Merci à Alason qui m'a donné une nouvelle façon de tester la porté.
+- Plus de risque de perdre la cible lorsque l'option pour tester la porté est activée.
+- Amélioration de la gestion lorsque le sort rate (plus d'attente de sélection manuelle)
+- La fenêtre de Decursive est plus petite, la version est affichée dans une info-bulle.
+- Vous pouvez cachez les boutons en cliquant-droit sur "Decursive".
+- De petits changements dans la localisation allemande.
+
+Changements entre Decursive 1.9.4 et Decursive 1.9.6 Final
+
+Changements importants :
+
+- Amélioration massive des performances globales de Decursive. (le code a été largement optimisé)
+- Decursive supporte à nouveau les sorts du Chasseur Corrompu et du Garde Funeste.
+- Ajout d'une option (activée par défaut) pour faire un son lorsqu'il y a quelqu'un a guérir.
+- Désormais, lorsque vous cliquez sur une personne affectée dans la fenêtre de Decursive,
+  vous garderez votre cible courante sauf si vous utilisez le bouton droit.
+- Maintenant, Decursive est capable de vérifier si vous avez assez de mana avant de lancer un sort de guérison.
+- Decursive est entièrement traduit en français et en allemand (merci à Archiv et WalleniuM pour les traductions allemandes)
+  Donc Decursive est capable d'ignorer comme prévu certaines choses suivant la classe de la personne à guérir ou certains de ses buffs et debuffs.
+  Cela corrige aussi certains problèmes comme pour les prêtres et les druides qui ne pouvaient plus guérir de la magie ou du poison.
+- Changement de la licence vers GNU GPL (Decursive 1.9.4 est dans le domaine public)
+
+Changements mineurs:
+
+- Ajout d'un rappel au démarrage à propos des options.
+- Si vous n'avez aucun sorts de guérison présent dans vos barre d'action, Decursive affichera un message d'erreur au démarrage.
+- Lorsqu'une unité est hors de porté est que l'option "Tester si la cible est à portée" est utilisée, l'unité est ajouté à la liste noire.
+- Les options et les listes sont désormais sauvegardées par personnage (les options sont réinitialisées avec cette version)
+- le re-ciblage a été amélioré.
+
+
+Bugs corrigés:
+
+- Initialisation corrigée, la version 1.9.4 était parfois incapable de trouver un sort à utiliser.
+- Il était devenu impossible de guérir du Contrôle Mentale (prêtre, chaman)
+- L'option "Check for range" ne pouvait pas être activée ou désactivée suivant les cas et Decursive pouvait rester coincer sur une unité hors de portée.
+- Gestion des évènement amélioré, zonage plus rapide.
+- Quand vous êtes dans la liste des priorités, votre nom n'est plus affiché en double.
+- L'option "Ignorer les Unités camouflées" devrait fonctionner comme prévu (elle n'a jamais fonctionné)
+- Les info-bulles sont affichés correctement.
+- D'autres petites corrections.
+
+
+
+Voir en dessous pour le détail des changements entre mes différentes versions:
+
+Changements dans la version 1.9.6 FINAL (Release)
+
+- L'option "Ignorer les Unités camouflées" devrait fonctionner comme prévu (elle n'a jamais fonctionné)
+- Amélioration des performances lorsque l'option "Voir si Abolir sur la cible avant de Guérir" est utilisée.
+- Le joueur courant ne peut plus être blaclister par Decursive.
+
+Changements dans la version 1.9.6 RC4 (Release Candidate)
+
+- Decursive ne tente de guérir que s'il y a assez de mana. (Sauf pour les démonistes)
+- Amélioration des performances lorsque la fenêtre de Decursive contient des gens à guérir.
+- Amélioration des performances lorsque l'option "Tester si la cible est à porté" est utilisée.
+- Decursive est désormais entièrement traduit en français et en allemand (merci à Archiv pour les traductions allemandes).
+- Les options et les listes sont désormées sauvegardées par personnage (les options sont réinitialisées avec cette version)
+
+Changements dans la version 1.9.6 RC3 (Release Candidate)
+
+- La correction du bug concernant les CM dans la version RC2 avait
+  introduit un problème avec les unités contrôlées par les prêtres.
+- Les infos-bulle s'affichent correctement désormais.
+
+Changements dans la version 1.9.6 RC2 (Release Candidate)
+
+- Le bug qui faisait que les Contrôles mentales n'étaient pas dispell a été probablement corrigé.
+  (Depuis un patch en janvier, la fonction UnitIsFriend() retourne True quand quelqu'un est MC :/)
+- Lorsque vous cliquiez sur quelqu'un d'affecté dans la fenêtre de Decursive, il se pouvait qu'une autre personne soit guérie.
+- Correction d'un bug si l'option "Check for range" était utilisée.
+- L'option "Check for range" ne pouvait pas être activée ou désactivée suivant les cas.
+- Désormais lorsqu'une unité est hors de porté est que l'option "Check for range" est utilisée, l'unité est ajouté à la liste noire.
+- Mise à jour de la localisation française, Decursive devrait correctement ignorer les unités camouflées si l'option correspondante est activée.
+- Mise à jour de la localisation allemande (quelques problèmes d'accents et une phrase oubliée).
+
+Changements dans la version 1.9.6 RC1 (Release Candidate):
+
+- Ajout de nouvelles traductions françaises pour empêcher Decursive de dispell les debuff "Sommeil sans rêve" et "Vision télépathique".
+- Localisation allemande mise à jour (merci à WalleniuM).
+- Amélioration générale des performances (plus d'appels multiples à SetOwner()).
+  Ce changement peut aussi corriger le bug "Rien à nettoyer ! :)" que certaines personnes continus de subir.
+- Quand vous êtes dans la liste des priorités, votre nom n'est plus affiché en double.
+- Les démonistes peuvent désormais correctement sélectionner la personne à dispell en utilisant
+  le bouton droit de la souris dans la fenêtre de Decursive.
+
+Changements dans la version 1.9.6c (Was released in DevZONE):
+
+- Meilleur son d'alerte.
+- Ajout d'un rappel au démarrage à propos des options.
+- Correction d'un problème possible avec la détection des cooldowns.
+- Ajout d'une possible correction pour le problème des démoniste qui a été rapporté.
+  (fonctionne toujours avec le mien et un autre démoniste 60)
+- Quand vous cliquez droit sur une personne affectée dans la fenêtre de Decursive, elle est sélectionnée
+  même si rien ne peut être fait (sort pas prêt).
+
+Changements dans la version 1.9.6b (Was released in DevZONE):
+
+- Changement de la licence vers GNU GPL.
+- Désormais, lorsque vous cliquez sur une personne affectée dans la fenêtre de Decursive,
+  vous garderez votre cible courante sauf si vous utilisez le bouton droit.
+- Quelques petites corrections dans la localisation française.
+- Decursive ne testera plus si la cible n'est pas trop loin si c'est le sort d'un du chasseur corrompu.
+- Ajout de quelques informations de debug pour les gens qui ont des problèmes avec le sort du chasseur corrompu.
+
+Changements dans la version 1.9.5c (Release):
+
+- Ajout d'une option (activée par défaut) pour faire un bruit lorsqu'il y a quelqu'un a dispell.
+- Correction d'un bug qui pouvait provoquer le lancement d'un mauvais sort si vous appreniez un nouveau sort.
+- Correction d'un bug qui pouvait empêcher d'enlever les buffs de magie sur les ennemis.
+
+Changements dans la version 1.9.5b (Changement depuis la dernière version 1.9.4 de Quu):
+
+- Decursive supporte désormais le sort "Festin magique" du chasseur corrompu.
+- Correction de la localisation pour les Prêtres et les druides,
+- Amélioration de la gestion des évènements, zonnage plus rapide.
+- Initialisation corrigée, la version 1.9.4 était parfois incapable de trouver un sort à utiliser.
+
+

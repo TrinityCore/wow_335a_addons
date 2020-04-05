@@ -1,0 +1,14 @@
+L["Control game options"] = true
+L["Floating Combat Text of awesomeness. Caw. It'll eat your crackers."] = true
+L["Game damage"] = true
+L["Game healing"] = true
+L["Game options"] = true
+L["General"] = true
+L["General settings"] = true
+L["Inherit"] = true
+L["Load config"] = true
+L["Load configuration options"] = true
+L["Parrot"] = true
+L["Whether Parrot should control the default interface's options below.\nThese settings always override manual changes to the default interface options."] = true
+L["Whether to show damage over the enemy's heads."] = true
+L["Whether to show healing over the enemy's heads."] = true

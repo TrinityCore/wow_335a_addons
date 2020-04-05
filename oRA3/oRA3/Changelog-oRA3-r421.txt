@@ -1,0 +1,845 @@
+------------------------------------------------------------------------
+r421 | pettigrow | 2010-03-17 14:55:13 +0000 (Wed, 17 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r420 | 7destiny | 2010-03-17 14:06:40 +0000 (Wed, 17 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r419 | mojosdojo | 2010-03-17 14:01:47 +0000 (Wed, 17 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/deDE.lua
+   M /trunk/locales/enUS.lua
+
+deDE update.
+------------------------------------------------------------------------
+r418 | rabbit | 2010-03-17 13:47:42 +0000 (Wed, 17 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/Invite.lua
+   M /trunk/modules/Loot.lua
+   M /trunk/oRA3.lua
+
+Localize the loot option.
+------------------------------------------------------------------------
+r417 | rabbit | 2010-03-17 01:36:14 +0000 (Wed, 17 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/ReadyCheck.lua
+   M /trunk/oRA3.lua
+
+Make strings localizable and fix up the cooldown options a bit.
+------------------------------------------------------------------------
+r416 | rabbit | 2010-03-16 12:22:07 +0000 (Tue, 16 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Use the List layout for the cooldown checkboxes.
+------------------------------------------------------------------------
+r415 | ammo | 2010-03-16 11:05:01 +0000 (Tue, 16 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+make sure the maintankbutton is not tainting etc
+------------------------------------------------------------------------
+r414 | rabbit | 2010-03-16 10:57:28 +0000 (Tue, 16 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Invite.lua
+   M /trunk/oRA3.lua
+
+Add some shorthand invite commands.
+------------------------------------------------------------------------
+r413 | rabbit | 2010-03-16 10:36:33 +0000 (Tue, 16 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Invite.lua
+   M /trunk/oRA3.lua
+
+Add some slash commands and a help section for them.
+------------------------------------------------------------------------
+r412 | ammo | 2010-03-16 10:06:24 +0000 (Tue, 16 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+fix the clickable highlights to nolonger taint 
+------------------------------------------------------------------------
+r411 | ammo | 2010-03-16 08:36:05 +0000 (Tue, 16 Mar 2010) | 2 lines
+Changed paths:
+   M /trunk/oRA3.lua
+
+gray gear is indeed best
+adjust checks scrollpane insets a tad
+------------------------------------------------------------------------
+r410 | rabbit | 2010-03-16 01:58:14 +0000 (Tue, 16 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Sort the icons according to my preference and increase the cycle time to 5 seconds.
+------------------------------------------------------------------------
+r409 | rabbit | 2010-03-16 01:38:48 +0000 (Tue, 16 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Add some more test images for the top left icon. Need to find/make one we like.
+------------------------------------------------------------------------
+r408 | rabbit | 2010-03-16 00:14:50 +0000 (Tue, 16 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ReadyCheck.lua
+
+Redo the readycheck options a bit and add a 'Hide ready players' option.
+------------------------------------------------------------------------
+r407 | rabbit | 2010-03-16 00:08:42 +0000 (Tue, 16 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Loot.lua
+
+Add an option to disable the loot method setting and disable it by default (policy not set yet).
+------------------------------------------------------------------------
+r406 | rabbit | 2010-03-15 23:45:15 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Invite.lua
+   M /trunk/modules/Promote.lua
+   M /trunk/modules/Tanks.lua
+
+Also hide all our tooltips then.
+------------------------------------------------------------------------
+r405 | rabbit | 2010-03-15 23:36:31 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/Invite.lua
+   M /trunk/modules/Promote.lua
+   M /trunk/modules/Tanks.lua
+   M /trunk/oRA3.lua
+
+Add an option to disable all the help texts we have in the UI.
+------------------------------------------------------------------------
+r404 | rabbit | 2010-03-15 23:19:28 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Different icon in the top left.
+------------------------------------------------------------------------
+r403 | rabbit | 2010-03-15 22:53:33 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Adjust insets for acegui panels a bit and start thinking about creating non-secure lists when the panel is first opened in combat.
+------------------------------------------------------------------------
+r402 | ammo | 2010-03-15 19:15:25 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+fix show and lock display
+------------------------------------------------------------------------
+r401 | ammo | 2010-03-15 18:55:29 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   D /trunk/images/UI-RaidFrame-GroupBg.tga
+
+remove unused image
+------------------------------------------------------------------------
+r400 | ammo | 2010-03-15 18:54:46 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+redo the base GUI to use the blizzard templates since we're not a flyout anymore.
+------------------------------------------------------------------------
+r399 | ammo | 2010-03-15 17:28:27 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+fix overlap for the bottom scrollframe
+------------------------------------------------------------------------
+r398 | ammo | 2010-03-15 17:22:05 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+delete some debug tanks woops
+------------------------------------------------------------------------
+r397 | ammo | 2010-03-15 17:20:59 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+fix overlap of the top scrollframe entries with the centerbar
+------------------------------------------------------------------------
+r396 | ammo | 2010-03-15 17:16:03 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+slightly more margin on the help button for tank help
+------------------------------------------------------------------------
+r395 | ammo | 2010-03-15 17:12:50 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+fix showing of cooldown options in the interfaec options
+------------------------------------------------------------------------
+r394 | rabbit | 2010-03-15 12:35:57 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Remove the sound we had for changing the class dropdown since Ace3 has widget sounds now.
+------------------------------------------------------------------------
+r393 | rabbit | 2010-03-15 11:02:49 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Rehook the OnHide handler when blizzard replaces it.
+------------------------------------------------------------------------
+r392 | rabbit | 2010-03-15 02:15:07 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Open the options when right clicking the monitor.
+------------------------------------------------------------------------
+r391 | rabbit | 2010-03-15 02:04:19 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Use a list layout for the Cooldown tab now since there's only one column.
+------------------------------------------------------------------------
+r390 | rabbit | 2010-03-15 01:59:33 +0000 (Mon, 15 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Implement the rest of the cooldown options.
+------------------------------------------------------------------------
+r389 | ammo | 2010-03-14 21:12:15 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+
+add acelocale to .pkgmeta
+------------------------------------------------------------------------
+r388 | ammo | 2010-03-14 13:49:15 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+make sure the toplist doesn't overlap the divider bar
+------------------------------------------------------------------------
+r387 | ammo | 2010-03-14 13:01:03 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+local instead of global
+------------------------------------------------------------------------
+r386 | ammo | 2010-03-14 12:43:41 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/libs.xml
+
+remove extra aceconfig call 
+------------------------------------------------------------------------
+r385 | ammo | 2010-03-14 12:26:29 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+move cooldowns moduleoptions to subpane
+------------------------------------------------------------------------
+r384 | ammo | 2010-03-14 11:42:29 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Loot.lua
+   M /trunk/modules/ReadyCheck.lua
+   M /trunk/oRA3.lua
+
+option panel tabs are now subpanes.
+------------------------------------------------------------------------
+r383 | rabbit | 2010-03-14 11:06:20 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Started moving the cooldown options to the interface options, things are broken at the moment.
+------------------------------------------------------------------------
+r382 | rabbit | 2010-03-14 10:19:29 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Add an option to toggle opening/closing oRA3 with the raid pane, and fix a misaligned texture.
+------------------------------------------------------------------------
+r381 | rabbit | 2010-03-14 09:35:53 +0000 (Sun, 14 Mar 2010) | 2 lines
+Changed paths:
+   M /trunk/oRA3.lua
+
+Make oRA3Frame the same height as the friendsframe.
+
+------------------------------------------------------------------------
+r380 | StingerSoft | 2010-03-14 09:31:49 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/ruRU.lua
+
+ruRU update
+------------------------------------------------------------------------
+r379 | ammo | 2010-03-14 08:49:47 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/Invite.lua
+   M /trunk/modules/Promote.lua
+   M /trunk/oRA3.lua
+
+inset the acegui panels slightly more than the rest to make the scrollbar come out better
+------------------------------------------------------------------------
+r378 | rabbit | 2010-03-14 02:05:43 +0000 (Sun, 14 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Store the last selected panel and list.
+------------------------------------------------------------------------
+r377 | rabbit | 2010-03-14 01:47:00 +0000 (Sun, 14 Mar 2010) | 5 lines
+Changed paths:
+   M /trunk/Bindings.xml
+   D /trunk/images/Mid.tga
+   D /trunk/images/MidLeft.tga
+   D /trunk/images/MidRight.tga
+   A /trunk/images/UI-RaidFrame-GroupBg.tga
+   D /trunk/images/close.tga
+   D /trunk/images/tabhandle.tga
+   D /trunk/images/tiled-noise-2.tga
+   M /trunk/modules/Tanks.lua
+   M /trunk/oRA3.lua
+
+* Fix the toggle binding
+* Nicer background image and remove unused images
+* Play some tick sounds when toggling headers and use proper templates for the top buttons
+* Open/close oRA3 with the RaidFrame by default
+
+------------------------------------------------------------------------
+r376 | rabbit | 2010-03-12 13:44:21 +0000 (Fri, 12 Mar 2010) | 1 line
+Changed paths:
+   A /trunk/Bindings.xml
+   M /trunk/modules/Tanks.lua
+   M /trunk/oRA3.lua
+
+Make the oRA3 frame a regular pane like the character and friend frames instead of the flyout. Keybinding added to toggle it, or use /radur, for example. A button will be added to the RaidFrame at a later point. Please note that this is for evaluation only, we are not decided on how it should work or perhaps we will revert to the flyout again.
+------------------------------------------------------------------------
+r375 | rabbit | 2010-03-11 18:01:09 +0000 (Thu, 11 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Add Hand of Freedom.
+------------------------------------------------------------------------
+r374 | yleaf | 2010-03-08 10:44:31 +0000 (Mon, 08 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/zhCN.lua
+   M /trunk/locales/zhTW.lua
+
+zhTW & zhCN updated
+------------------------------------------------------------------------
+r373 | pettigrow | 2010-03-07 12:53:04 +0000 (Sun, 07 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r372 | ammo | 2010-03-07 11:23:30 +0000 (Sun, 07 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+unhook the soulstone usage upon shutdown of module 
+------------------------------------------------------------------------
+r371 | 7destiny | 2010-03-06 05:48:04 +0000 (Sat, 06 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r370 | 7destiny | 2010-03-06 00:22:52 +0000 (Sat, 06 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r369 | rabbit | 2010-03-05 21:24:32 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+Typo.
+------------------------------------------------------------------------
+r368 | mojosdojo | 2010-03-05 16:51:16 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------
+r367 | rabbit | 2010-03-05 13:19:57 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+Sort the group in the tank tab according to tankability.
+------------------------------------------------------------------------
+r366 | ammo | 2010-03-05 13:18:19 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+disable the oRA3 ui in combat and show the message
+------------------------------------------------------------------------
+r365 | rabbit | 2010-03-05 12:59:47 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+
+Grammar nazis on every lawn.
+------------------------------------------------------------------------
+r364 | rabbit | 2010-03-05 12:53:15 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/oRA3.lua
+
+Add a message that shows up when you are in combat and the UI is hidden, explaining the situtation.
+------------------------------------------------------------------------
+r363 | rabbit | 2010-03-05 12:30:39 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Tanks.lua
+
+Make the question mark a bit bigger and change the top text to be more helpful.
+------------------------------------------------------------------------
+r362 | ammo | 2010-03-05 12:18:07 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+inverted sounds are inverted, remove update from the click, it's updated by the updatehandler :)
+------------------------------------------------------------------------
+r361 | rabbit | 2010-03-05 12:15:04 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Set the cooldown monitor to background.
+------------------------------------------------------------------------
+r360 | ammo | 2010-03-05 12:13:17 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+correctly set the now inverted checked state when clicking the checkbox
+------------------------------------------------------------------------
+r359 | rabbit | 2010-03-05 11:37:35 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Tanks.lua
+
+Reverse the logic of the checkbox and make it available on blizzard main tanks as well.
+------------------------------------------------------------------------
+r358 | ammo | 2010-03-05 11:24:35 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Tanks.lua
+
+add a checkbox in front of a tanks name to hide that tank from the tankframes for this session
+------------------------------------------------------------------------
+r357 | ammo | 2010-03-05 10:42:47 +0000 (Fri, 05 Mar 2010) | 2 lines
+Changed paths:
+   M /trunk/oRA3.lua
+
+allow clicking (OOC update only!) on the check rows to target the specified person
+muttergrumble anchoring secureactionbuttons to fontstrings is not allowed, thanks for figuring that one out nevcairiel
+------------------------------------------------------------------------
+r356 | ammo | 2010-03-05 09:37:22 +0000 (Fri, 05 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ReadyCheck.lua
+
+fix edge case where someone enables the gui midreadycheck
+------------------------------------------------------------------------
+r355 | rabbit | 2010-03-03 12:51:55 +0000 (Wed, 03 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Fix Vampiric Blood CD.
+------------------------------------------------------------------------
+r354 | ammo | 2010-03-03 09:27:23 +0000 (Wed, 03 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Loot.lua
+   M /trunk/oRA3.lua
+
+update lootstatus when converting to a raid
+------------------------------------------------------------------------
+r353 | ammo | 2010-03-02 21:34:16 +0000 (Tue, 02 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+fix oRA3 tainting the fook out of the raidframe. The contentFrame will nolonger be drawn and tabs disabled when in combat.
+------------------------------------------------------------------------
+r352 | a9012456 | 2010-02-26 13:28:45 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r351 | rabbit | 2010-02-26 10:36:53 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Add Aura Mastery, Divine Favor, Illumination and Hand of Salvation cooldowns.
+------------------------------------------------------------------------
+r350 | rabbit | 2010-02-26 10:30:43 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Use SPELL_UPDATE_COOLDOWN instead of a custom 1 second delay.
+------------------------------------------------------------------------
+r349 | rabbit | 2010-02-26 01:28:35 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Remove debug prints.
+------------------------------------------------------------------------
+r348 | rabbit | 2010-02-26 01:06:35 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Add a 1 second delay to the ankh check.
+------------------------------------------------------------------------
+r347 | rabbit | 2010-02-25 23:51:58 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Add debug prints.
+------------------------------------------------------------------------
+r346 | rabbit | 2010-02-25 23:39:36 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/ReadyCheck.lua
+
+New way to detect shamans ankhing. Drycoded and untested. Someone test it please.
+------------------------------------------------------------------------
+r345 | ammo | 2010-02-25 19:43:49 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ReadyCheck.lua
+
+bugfix gui update
+------------------------------------------------------------------------
+r344 | ammo | 2010-02-25 19:26:10 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+adjust buttons when adjusting the panel as well
+------------------------------------------------------------------------
+r343 | rabbit | 2010-02-25 18:45:12 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ReadyCheck.lua
+
+Fix readycheck options.
+------------------------------------------------------------------------
+r342 | mojosdojo | 2010-02-25 18:43:11 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------
+r341 | pettigrow | 2010-02-25 17:44:49 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r340 | rabbit | 2010-02-25 16:21:25 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Make the list buttons take up all the available space.
+------------------------------------------------------------------------
+r339 | ammo | 2010-02-25 16:13:22 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   A /trunk/images/maintank.tga
+   M /trunk/modules/Tanks.lua
+
+use a transparant tank icon
+------------------------------------------------------------------------
+r338 | ammo | 2010-02-25 14:16:30 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/deDE.lua
+   M /trunk/locales/enUS.lua
+   M /trunk/locales/frFR.lua
+   M /trunk/locales/koKR.lua
+   M /trunk/locales/ruRU.lua
+   M /trunk/locales/zhCN.lua
+   M /trunk/locales/zhTW.lua
+   D /trunk/modules/Version.lua
+   M /trunk/oRA3.toc
+
+nuke the version module, it's really not needed
+------------------------------------------------------------------------
+r337 | ammo | 2010-02-25 13:54:14 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Tanks.lua
+
+locale schmocale
+------------------------------------------------------------------------
+r336 | rabbit | 2010-02-25 13:48:16 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+Remove the up/down buttons and make clicking the tank name move him one spot up.
+------------------------------------------------------------------------
+r335 | rabbit | 2010-02-25 13:30:03 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Tanks.lua
+
+Tiny wording tweaks and properly disable/enable the buttons.
+------------------------------------------------------------------------
+r334 | rabbit | 2010-02-25 11:30:19 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Tanks.lua
+
+Some wording changes.
+------------------------------------------------------------------------
+r333 | ammo | 2010-02-25 11:13:47 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/deDE.lua
+   M /trunk/locales/enUS.lua
+   M /trunk/locales/frFR.lua
+   M /trunk/locales/koKR.lua
+   M /trunk/locales/ruRU.lua
+   M /trunk/locales/zhCN.lua
+   M /trunk/locales/zhTW.lua
+   M /trunk/modules/Tanks.lua
+
+add help and tooltips to maintank screen
+------------------------------------------------------------------------
+r332 | rabbit | 2010-02-25 10:20:38 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Don't try to adjust our contentFrame in combat.
+------------------------------------------------------------------------
+r331 | rabbit | 2010-02-25 01:29:10 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Make sure the disband button is enabled if we are promoted at the time of frame creation.
+------------------------------------------------------------------------
+r330 | rabbit | 2010-02-25 00:46:13 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Make sure the contentFrame is the right size.
+------------------------------------------------------------------------
+r329 | rabbit | 2010-02-25 00:18:18 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ReadyCheck.lua
+   M /trunk/oRA3.lua
+
+ReadyCheck module was reading a global 'db', so this might've caused some issues.
+------------------------------------------------------------------------
+r328 | rabbit | 2010-02-23 13:10:41 +0000 (Tue, 23 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Durability.lua
+   M /trunk/modules/Resistance.lua
+   M /trunk/modules/Tanks.lua
+   M /trunk/modules/Version.lua
+   M /trunk/modules/Zone.lua
+   M /trunk/oRA3.lua
+
+Fix list header sort toggling.
+------------------------------------------------------------------------
+r327 | rabbit | 2010-02-23 10:31:12 +0000 (Tue, 23 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Fix the scroll entries on the tank panel.
+------------------------------------------------------------------------
+r326 | rabbit | 2010-02-23 02:14:51 +0000 (Tue, 23 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/oRA3.lua
+
+* Some cleanup and split oRA3.lua into sections so it's easier to see what code belongs to what part of the addon.
+
+------------------------------------------------------------------------
+r325 | rabbit | 2010-02-22 11:34:31 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/oRA3.lua
+
+Minor cleanups.
+------------------------------------------------------------------------
+r324 | rabbit | 2010-02-22 10:41:49 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Track paladins Ardent Defender proc and use bitflags to check if people are in our group instead of scanning the roster.
+------------------------------------------------------------------------
+r323 | rabbit | 2010-02-22 03:22:18 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+More small cleanups.
+------------------------------------------------------------------------
+r322 | rabbit | 2010-02-22 02:31:44 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/oRA3.lua
+
+Fix selectedTab.
+------------------------------------------------------------------------
+r321 | rabbit | 2010-02-22 00:43:30 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Durability.lua
+   M /trunk/modules/ReadyCheck.lua
+   M /trunk/modules/Resistance.lua
+   M /trunk/modules/Version.lua
+   M /trunk/modules/Zone.lua
+   M /trunk/oRA3.lua
+
+Request a list update when we join a group, and experiment with not showing green backgrounds any more for people who are ready; just use red for not ready.
+------------------------------------------------------------------------
+r320 | rabbit | 2010-02-21 21:09:32 +0000 (Sun, 21 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Invite.lua
+   M /trunk/modules/Promote.lua
+   M /trunk/modules/ReadyCheck.lua
+   M /trunk/oRA3.lua
+
+Fix the ready check window size.
+------------------------------------------------------------------------
+r319 | rabbit | 2010-02-20 11:34:15 +0000 (Sat, 20 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/Tanks.lua
+   M /trunk/oRA3.lua
+
+Play some sounds when interacting with the UI elements to make it feel more like blizzard stuff.
+------------------------------------------------------------------------
+r318 | a9012456 | 2010-02-20 06:39:18 +0000 (Sat, 20 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r317 | rabbit | 2010-02-20 00:58:23 +0000 (Sat, 20 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/Zone.lua
+
+Added a fuckton of rogue cooldowns.
+------------------------------------------------------------------------
+r316 | 7destiny | 2010-02-20 00:43:10 +0000 (Sat, 20 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r315 | StingerSoft | 2010-02-19 22:02:49 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/ruRU.lua
+
+ruRU update
+------------------------------------------------------------------------
+r314 | mojosdojo | 2010-02-19 16:58:15 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------
+r313 | rabbit | 2010-02-19 13:28:12 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/locales/enUS.lua
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/Promote.lua
+
+Add a Demote everyone button.
+------------------------------------------------------------------------
+r312 | rabbit | 2010-02-19 12:39:07 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ReadyCheck.lua
+
+Doh, just use a color, not a texture, for the background.
+------------------------------------------------------------------------
+r311 | rabbit | 2010-02-19 11:47:26 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/ReadyCheck.lua
+
+Test to see how it looks with red textures behind the people who are not ready. Also have green ones behind the guys who are ready at the moment, but might be too much.
+------------------------------------------------------------------------
+r310 | rabbit | 2010-02-19 11:33:44 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/ReadyCheck.lua
+   M /trunk/modules/Tanks.lua
+
+Some cleanup in readycheck.
+------------------------------------------------------------------------
+r309 | rabbit | 2010-02-19 02:38:23 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Added Anti-Magic Shell to DK cooldowns.
+------------------------------------------------------------------------
+r308 | rabbit | 2010-02-18 16:34:09 +0000 (Thu, 18 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Make UpdateCooldownModifiers a bit more sane and try to rescan talent information when needed at login.
+------------------------------------------------------------------------
+r307 | rabbit | 2010-02-18 16:05:27 +0000 (Thu, 18 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Add Barkskin and line up spell names.
+------------------------------------------------------------------------
+r306 | rabbit | 2010-02-18 16:01:47 +0000 (Thu, 18 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/ReadyCheck.lua
+
+Track the highest rank LoH.
+------------------------------------------------------------------------
+r305 | rabbit | 2010-02-15 03:34:12 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/libs.xml
+   D /trunk/modules/Resurrection.lua
+   M /trunk/modules/Tanks.lua
+   M /trunk/oRA3.lua
+   M /trunk/oRA3.toc
+
+Nuke the resurrection module, I don't think it ever worked.
+------------------------------------------------------------------------
+r304 | kandarz | 2010-02-15 02:20:51 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+
+Cooldowns: Add Talented Army of the Dead CD modifier
+------------------------------------------------------------------------
+r303 | rabbit | 2010-02-15 01:39:37 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+Lots of cleanup in the tanks module.
+------------------------------------------------------------------------
+r302 | rabbit | 2010-02-15 01:33:35 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Promote.lua
+
+Hooking is so confusing\!
+------------------------------------------------------------------------
+r301 | rabbit | 2010-02-15 01:25:59 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Promote.lua
+
+Doh, bugfix.
+------------------------------------------------------------------------
+r300 | rabbit | 2010-02-14 23:17:26 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Promote.lua
+   M /trunk/oRA3.lua
+
+Clean up the promotion code a tad. No longer repromotes manually demoted people for the remainder of the current session.
+------------------------------------------------------------------------
+r299 | rabbit | 2010-02-14 00:10:22 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Cooldowns.lua
+   M /trunk/modules/Invite.lua
+   M /trunk/modules/Promote.lua
+
+Request a guild roster update from the server when clicking the invite buttons in the UI.
+------------------------------------------------------------------------
+r298 | ammo | 2009-12-29 12:26:01 +0000 (Tue, 29 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/modules/Tanks.lua
+
+make tank handling easier
+tanks pushed to the top list are now only there for the current session. Tanks that make the top list by becoming a blizzard tank are there only while they are a blizzard tank or for the session if pushed there. Add a green checkmark to 'save' a tank. That tank will be in your saved variables and thus always on the top list
+------------------------------------------------------------------------

@@ -1,0 +1,83 @@
+local L = AceLibrary("AceLocale-2.2"):new("XLootMonitor")
+
+L:RegisterTranslations("zhTW", function()
+	return {
+		catGrowth = "行增長",
+		catLoot = "拾取",
+		catPosSelf = "錨點...",
+		catPosTarget = "到...",
+		catPosOffset = "框體偏移...",
+		catModules = "模塊",
+		
+		moduleHistory = "拾取紀錄",
+		moduleActive = "激活",
+		
+		historyTime = "按時間順序查詢",
+		historyPlayer = "按玩家順序查詢",
+		["View by item"] = "按物品順序查詢",
+		historyClear = "清除當前紀錄",
+		historyEmpty = "沒有紀錄",
+		historyTrunc = "物品最大寬度",
+		historyMoney = "金錢拾取",
+		["Export history"] = "導出記錄",
+		["No export handlers found"] = "未導出記錄查詢",
+		["Simple XML copy-export"] = "XML複製匯出",
+		["Copy-Paste Pipe Separated List"] = "複製貼上分隔清單",
+		["Press Control-C to copy the log"] = "按下Ctrl+C複製記錄",
+		
+		["Loot Monitor"] = "Loot Monitor",
+		["Display Options"] = "顯示選項",
+				
+		optStacks = "分堆/錨點",
+		optLockAll = "鎖定",
+		optPositioning = "配置",
+		optMonitor = "XLoot Monitor",
+		optAnchor = "顯示錨點",
+		optPosVert = "垂直",
+		optPosHoriz = "水平",
+		optTimeout = "超時",
+		optDirection = "方向",
+		optThreshold = "分堆界限",
+		optQualThreshold = "品質界限",
+		optSelfQualThreshold = "自己的品質界限",
+		optUp = "上",
+		optDown = "下",
+		optMoney = "顯示錢錢的拾取",
+		["Show countdown text"] = "顯示冷卻時間",
+		["Show totals of your items"] = "顯示你的所有物品",
+		["Show small text beside the item indicating how much time remains"] = "在物品側邊顯示剰餘時間",
+		["Trim item names to..."] = "切齊物品名稱為...",
+		["Length in characters to trim item names to"] = "設定物品名稱切齊的長度",
+		["Show winning group loot"] = "顯示隊伍擲贏物品",
+		["Show group roll choices"] = "顯示隊伍擲骰選擇",
+		
+		descStacks = "個別設定疊塊參數, 如錨點或剩餘時間.",
+		descPositioning = "疊塊附加位置",
+		descMonitor = "XLootMonitor 插件設定",
+		descAnchor = "顯示疊塊錨點",
+		descPosVert = "垂直錨點的偏差值",
+		descPosHoriz = "水平錨點的偏差值",
+		descTimeout = "每個疊塊消失的時間. |cFFFF5522值0為停用|r",
+		descDirection = "疊塊延展方向",
+		descThreshold = "顯示最大列數",
+		descQualThreshold = "在監視器中顯示其它人捨取的低品質物品",
+		descSelfQualThreshold = "在監視器中顯示自己捨取的低品質物品",
+		descMoney = "在隊伍中顯示金錢分享. |cFFFF0000尚不包含單人金額.|r",
+		
+		optPos = {
+			TOPLEFT = "左上角",
+			TOP = "上",
+			TOPRIGHT = "右上角",
+			RIGHT = "右",
+			BOTTOMRIGHT = "右下角",
+			BOTTOM = "下",
+			BOTTOMLEFT = "左下角",
+			LEFT = "左",
+			TOPLEFT = "左上角",
+		},
+
+		linkErrorLength = "連結會使得訊息變得太長. 送出或清除目前的訊息後再試一次.",
+		
+		playerself = "你", 
+	}
+end)

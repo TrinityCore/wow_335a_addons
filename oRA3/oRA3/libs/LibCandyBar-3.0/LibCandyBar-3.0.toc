@@ -1,0 +1,15 @@
+﻿## Interface: 30200
+## X-Curse-Packaged-Version: r26
+## X-Curse-Project-Name: LibCandyBar-3.0
+## X-Curse-Project-ID: libcandybar-3-0
+## X-Curse-Repository-ID: wow/libcandybar-3-0/mainline
+
+## Title: Lib: LibCandyBar-3.0
+## Notes: Timer bars with that extra sweetness.
+## Author: Rabbit, Ammo
+## X-Category: Library
+
+embeds.xml
+
+lib.xml
+

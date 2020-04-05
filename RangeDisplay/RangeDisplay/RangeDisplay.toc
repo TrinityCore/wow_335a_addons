@@ -1,0 +1,30 @@
+## Interface: 30300
+## Title: RangeDisplay
+## Author: mitch0
+## Version: 3.8.2
+## Notes: Estimated range display. Type /rangedisplay for config
+## Notes-ruRU: Дисплей с указанием расстояния до цели. Введите /rangedisplay для справки
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: true
+## SavedVariables: RangeDisplayDB3
+## OptionalDeps: LibStub, CallbackHandler-1.0, LibRangeCheck-2.0, Ace3, LibSharedMedia-3.0, LibDualSpec-1.0
+
+## X-Category: Combat
+## X-License: Public Domain
+## X-RelSite-WoWI: 7297
+## X-Credits: sayclub (koKR), lcncg (zhCN, zhTW), Carylon (deDE), Pixel (frFR), Argonavt (ruRU), Swix (ruRU), StingerSoft (ruRU)
+## X-Curse-Packaged-Version: v3.8.2
+## X-Curse-Project-Name: RangeDisplay
+## X-Curse-Project-ID: range-display
+## X-Curse-Repository-ID: wow/range-display/mainline
+
+## X-Localizations: enUS, enGB, deDE, zhCN, zhTW, koKR, ruRU, frFR, esES
+## X-CompatibleLocales: enUS, enGB, deDE, frFR, esES, zhCN, zhTW, koKR, ruRU
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+localizations\localizations.xml
+RangeDisplay.lua
+

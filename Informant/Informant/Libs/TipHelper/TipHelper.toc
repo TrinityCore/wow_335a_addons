@@ -1,0 +1,13 @@
+## Title: TipHelper |cff224477(lib)
+## Notes: An embeddable library that assists AddOns wishing to use the LibExtraTip tooltip library.
+##
+## Interface: 30300
+## LoadOnDemand: 0
+## OptionalDependencies: !nLog, LibExtraTip
+##
+## Version: 5.7.4568 (KillerKoala)
+## Revision: $Id$
+## URL: http://auctioneeraddon.com/
+## Author: Norganna's AddOns
+##
+Load.xml

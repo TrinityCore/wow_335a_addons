@@ -1,0 +1,1 @@
+Official modules for TBC bosses have been removed to reduce memory and CPU usage.

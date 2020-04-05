@@ -1,0 +1,19 @@
+﻿## Interface: 30300
+## Title: Raid|cff7fff7fAchievement|r - Wotlk Dungeons
+## Title-ruRU: Raid|cff7fff7fAchievement|r - Wotlk Подземелья
+## Author: Shurshik
+## Notes: RaidAchievement Wotlk Dungeons Module
+## Notes-ruRU: Модуль RaidAchievement - Wotlk Подземелья
+## Dependencies: RaidAchievement
+## LoadOnDemand: 1
+## SavedVariablesPerCharacter: whraspisokon
+Localization\localization-enEN.lua
+Localization\localization-ruRU.lua
+Localization\localization-deDE.lua
+Localization\localization-frFR.lua
+Localization\localization-esES.lua
+Localization\localization-zhTW.lua
+Localization\localization-koKR.lua
+RaidAchievement_WotlkHeroics.lua
+RaidAchievement_WotlkHeroicsbosses.lua
+RaidAchievement_WotlkHeroics.xml

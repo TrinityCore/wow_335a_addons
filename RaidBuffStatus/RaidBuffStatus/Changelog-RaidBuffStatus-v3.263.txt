@@ -1,0 +1,39 @@
+------------------------------------------------------------------------
+r366 | danielbarron | 2010-07-21 21:43:02 +0000 (Wed, 21 Jul 2010) | 2 lines
+Changed paths:
+   A /tags/v3.263 (from /trunk:365)
+
+RaidBuffStatus:
+- Tagged as stable.
+------------------------------------------------------------------------
+r364 | danielbarron | 2010-07-18 21:30:44 +0000 (Sun, 18 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+   M /trunk/RaidBuffStatus.toc
+   M /trunk/ReadMe.txt
+
+RaidBuffStatus:
+- Fixed bug with clicking on Drums which always made it cast no matter what option was chosen.
+------------------------------------------------------------------------
+r362 | danielbarron | 2010-07-08 07:44:27 +0000 (Thu, 08 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/Core.lua
+   M /trunk/RaidBuffStatus.toc
+   M /trunk/ReadMe.txt
+
+RaidBuffStatus:
+- Added a check for Heroic presence in the talent specialisations window.
+------------------------------------------------------------------------
+r360 | danielbarron | 2010-06-29 21:56:42 +0000 (Tue, 29 Jun 2010) | 4 lines
+Changed paths:
+   M /trunk/Buffs.lua
+   M /trunk/Config.lua
+   M /trunk/Core.lua
+   M /trunk/RaidBuffStatus.toc
+   M /trunk/ReadMe.txt
+
+RaidBuffStatus:
+- Added an option so that rather than whispering just one Priest to buff fortitude, it will whisper them all.
+- Added a feature which lets you right click on Drums of the Forgotten Kings, Runescroll of Fortitude and Drums of the Wild when it is missing and it will cast for you instead of having to find them in your bags.
+
+------------------------------------------------------------------------

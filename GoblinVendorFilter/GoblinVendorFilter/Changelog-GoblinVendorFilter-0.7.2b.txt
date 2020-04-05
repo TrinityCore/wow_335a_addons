@@ -1,0 +1,12 @@
+tag 0.7.2b
+0b26f2ea8595b13a6492e6dc1176ca02a0a9cc78
+Yssaril <yss@aril.not>
+2010-01-10 14:40:20 -0600
+
+Tagging as 0.7.2b
+
+
+--------------------
+
+Yssaril:
+	- fix errors caused by addons querying for items that don;t exist (just return nil like the default ui)

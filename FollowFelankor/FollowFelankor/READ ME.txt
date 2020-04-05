@@ -1,0 +1,643 @@
+#################################################################
+# Follow Felankor
+#
+# A World of Warcraft UI AddOn
+#
+# By Felankor
+#
+# NOTE: Your friends, guild, group and raid members DO NOT need
+#       this AddOn installed to be able to command you.
+#################################################################
+
+#############################
+CONTENTS
+#############################
+
+1.0 Description
+2.0 Features
+3.0 Installation
+4.0 Known Issues
+5.0 Using Follow Felankor
+5.1 Using Slash Commands
+5.2 Using Whisper Commands
+5.3 Using the Options Dialog
+6.0 History & Changes
+7.0 Contact
+8.0 Where to get the latest version Follow Felankor
+
+#############################
+1.0 DESCRIPTION
+#############################
+
+Allows your friends, guild members, group and raid members to put you on Auto-Follow + more
+(See features for a more detailed list).
+
+Hate it when you're in a group and your phone rings or
+someone knocks your door, then you find that when you
+return your group has gone on without you and you have
+to try and catch up?
+
+Follow Felankor allows your friends, guild, group or raid members to
+make you follow them. So that they don't leave you behind
+if you go AFK.
+
+Do you  like to dual box? (I.e. play two characters at once). Follow Felankor allows you to make
+your second character follow you or use its mount.
+
+It also has some other useful features, and some fun ones.
+
+NOTE: Your friends, guild, group and raid members DO NOT need
+      this AddOn installed to be able to command you.
+
+#############################
+2.0 FEATURES
+#############################
+
+The whole AddOn can be disabled from the options dialog. (Type /ff_options to view the option dialog)
+Features 3 - 6 can be disabled through the options dialog. (Type /ff_options to view the option dialog)
+
+1) Allows friends and group/raid/guild members to make you follow them (With the option to prevent this if you are using the auction house, npc or looting etc).
+2) Allows your friends and group/raid/guild members to make you mount and dismount.
+3) Auto accepts resurrect from friends and group/raid/guild members.
+4) Auto accepts group invites from friends and guild members.
+5) Auto invites friends and guild members upon their request through a whisper command.
+6) Allows your friends and guild members to make your character do emotes (e.g. wave, point, fart etc)
+7) Allows you friends and group, raid and guild members to make you stand and sit.
+8) Allows you to ban certain players from sending you whisper commands.
+9) Option to automatically create a set of macros that send whisper commands to your targeted player.
+10) Automatically announces to your group/raid when you go AFK; Telling them that they can make you follow them using the follow whisper command.
+11) Tells you when another player starts following you of their own accord. (NOTE: Both players must have Follow Felankor v2.1.0 or higher for this feature to work)
+
+#############################
+3.0 Installation
+#############################
+
+-----------
+Windows XP
+-----------
+
+Copy the FollowFelankor folder to your ..\World of Warcraft\Interface\AddOns folder.
+
+Example for Windows users who have Windows installed on their C: drive.
+C:\Program Files\World of Warcraft\Interface\AddOns
+
+--------------
+Windows Vista
+--------------
+
+Copy the FollowFelankor folder to your ..\World of Warcraft\Interface\AddOns folder.
+
+Example for Windows users who have Windows installed on their C: drive.
+C:\Public\Games\World of Warcraft\Interface\AddOns
+
+#############################
+4.0 KNOWN ISSUES
+#############################
+
+There were no known issues with this version when it was released.
+
+#############################
+5.0 USING FOLLOW FELANKOR
+#############################
+
+=============================
+5.1 USING SLASH COMMANDS
+=============================
+
+-----------------------------
+/ff_Menu (Alias: /ff_m)
+-----------------------------
+
+Displays the Follow Felankor menu from which all interfaces can be accessed.
+
+-----------------------------
+/ff_help (Alias: /ff_h)
+-----------------------------
+
+Usage: /ff_help or /ff_h
+
+Lists available slash commands.
+
+Usage: /ff_help ff_command or /ff_h ff_command (e.g. /ff_help ff_enable)
+
+Provides help with ff_command.
+E.g. /ff_help ff_enable provides help with the /ff_enable command.
+
+IMPORTANT: Do not use /ff_help /ff_command (There should not be a / on the command you need help with)
+
+-----------------------------
+/ff_Announce (Alias: /ff_a)
+-----------------------------
+
+Announces to your group or raid that you have Follow Felankor, and tells them how to make you follow them or get a list of whisper commands.
+
+-----------------------------
+/ff_enable (Alias: /ff_e)
+-----------------------------
+
+Enables Follow Felankor.
+
+-----------------------------
+/ff_disable (Alias: /ff_d)
+-----------------------------
+
+Disables Follow Felankor.
+
+-----------------------------
+/ff_status (Alias: /ff_s)
+-----------------------------
+
+Tells you if Follow Felankor is currently enabled or disabled.
+
+-----------------------------
+/ff_options (Alias: /ff_o)
+-----------------------------
+
+Displays the Follow Felankor options dialog.
+
+-----------------------------
+/ff_AllowInviteRequests (Alias: /ff_air)
+-----------------------------
+
+NOTE: This option can also be set from the options dialog.
+
+Usage: /ff_AllowInviteRequests on
+
+Turns on allowing invite request.
+
+NOTE:
+Invite requests are requests to automatically invite your friend or guild member.
+Invite requests are sent with the !FF_InviteMe whisper command.
+
+Usage: /ff_AllowInviteRequests off
+
+Turns on allowing invite request.
+
+-----------------------------
+/ff_AutoAcceptGroup (Alias: /ff_aag)
+-----------------------------
+
+NOTE: This option can also be set from the options dialog.
+
+Usage: /ff_AutoAcceptGroup on
+
+Turns on automatically accepting group invites from friends and guild members.
+
+Usage: /ff_AutoAcceptGroup off
+
+Turns off automatically accepting group invites from friends and guild members.
+
+-----------------------------
+/ff_AutoAcceptResurrect (Alias: /ff_aar)
+-----------------------------
+
+NOTE: This option can also be set from the options dialog.
+
+Usage: /ff_AutoAcceptResurrect on
+
+Turns on automatically accepting resurrect from friends and guild members.
+
+Usage: /ff_AutoAcceptResurrect off
+
+Turns off automatically accepting resurrect from friends and guild members.
+
+-----------------------------
+/ff_AllowEmoteCommand (Alias: /ff_aec)
+-----------------------------
+
+NOTE: This option can also be set from the options dialog.
+
+Usage: /ff_AllowEmoteCommand on
+
+Turns on allowing the !ff_emote command from friends and guild members.
+
+Usage: /ff_AllowEmoteCommand off
+
+Turns off allowing the !ff_emote command from friends and guild members.
+
+-----------------------------
+/ff_CreateMacros (Alias: /ff_cm)
+-----------------------------
+
+Creates a set of macros that can be used to send the following whisper commands to your targeted player:
+
+!ff_InviteMe
+!ff_Follow
+!ff_sit
+!ff_stand
+!ff_dance
+
+Use the macros like skills. (I.e. select the player and press the macro or use its skill number)
+
+-----------------------------
+/ff_ban (Alias: /ff_b)
+-----------------------------
+
+Usage: /ff_ban PlayerName
+
+Bans PlayerName from using any whisper commands on you.
+
+-----------------------------
+/ff_UnBan (Alias: /ff_ub)
+-----------------------------
+
+Usage: /ff_UnBan PlayerName
+
+Unbans PlayerName from using any whisper commands on you.
+
+-----------------------------
+/ff_WhosBanned (Alias: /ff_wb)
+-----------------------------
+
+Lists all of the players that are banned from using whisper commands on you.
+
+-----------------------------
+/ff_UseGMount (Alias: /ff_ugm)
+-----------------------------
+
+Sets which ground mount should be used when someone whispers !ff_mount to you.
+
+Usage: /ff_UseGMount Mount Name
+Example: /ff_UseGMount Swift Green Hawkstrider
+
+-----------------------------
+/ff_UseFMount (Alias: /ff_ufm)
+-----------------------------
+
+Sets which flying mount should be used when someone whispers !ff_fly to you.
+
+Usage: /ff_UseFMount Mount Name
+Example: /ff_UseGMount Swift Green Windrider
+
+-----------------------------
+/ff_CheckStatus (Alias: /ff_cs)
+-----------------------------
+
+Checks if another player is using Follow Felankor.
+
+Usage: /ff_CheckStatus PlayerName
+Example: /ff_CheckStatus Felankor
+
+=============================
+5.2 USING WHISPER COMMANDS
+=============================
+
+NOTE: The following commands are what your friends, guild, group and raid members can use to command you.
+
+IMPORTANT: To use these commands your friends or guild/group/raid members must whisper (/w YourName !ff_command)
+or tell (/t YourName !ff_command) the commands to you.
+
+-----------------------------
+!ff_help (Alias: None)
+-----------------------------
+
+Restrictions: None.
+
+Usage: !ff_help
+
+Lists available whisper commands. (Sent to the sender in a whisper/tell)
+
+Usage: !ff_help ff_command (E.g. !ff_help ff_follow)
+
+Provides help with ff_command.
+
+IMPORTANT: Do not use !ff_help !ff_command (There should not be a ! on the command you need help with)
+
+-----------------------------
+!ff_follow (Alias: !ff_f)
+-----------------------------
+
+Restrictions: Group & Raid only.
+
+Makes you follow the person that sends this command.
+
+-----------------------------
+!ff_mount (Alias: None)
+-----------------------------
+
+Restrictions: Friends, Guild, Group & Raid.
+
+Makes you use a ground mount. (If you have set which ground mount should be used using /ff_UseGMount that mount will be used first.
+If not, a random level 40 mount will be used if available, otherwise a random level 20 mount will be used.)
+
+-----------------------------
+!ff_fly (Alias: None)
+-----------------------------
+
+Restrictions: Friends, Guild, Group & Raid.
+
+Makes you use a flying mount. (If you have set which flying mount should be used using /ff_UseFMount that mount will be used first.
+If not, a random level 40 mount will be used if available, otherwise a random level 20 mount will be used.)
+
+-----------------------------
+!ff_Rmount (Alias: !ff_rm)
+-----------------------------
+
+Restrictions: Friends, Guild, Group & Raid.
+
+Makes you use a  random ground mount even if you have set a prefered mount using /ff_UseGMount. (If a level 40 mount is available it will be used first,
+otherwise a random level 20 mount will be used.)
+
+-----------------------------
+!ff_Rfly (Alias: None)
+-----------------------------
+
+Restrictions: Friends, Guild, Group & Raid.
+
+Makes you use a  random flying mount even if you have set a prefered mount using /ff_UseFMount. (If a level 40 mount is available it will be used first,
+otherwise a random level 20 mount will be used.)
+
+-----------------------------
+!ff_InviteMe (Alias: !ff_im)
+-----------------------------
+
+Restrictions: Friends & Guild only.
+
+Makes you invite the sender to your group. (If you're the leader)
+
+-----------------------------
+!ff_sit (Alias: None)
+-----------------------------
+
+Restrictions: Friends, Guild, Group & Raid.
+
+Makes you sit.
+
+-----------------------------
+!ff_stand (Alias: None)
+-----------------------------
+
+Restrictions: Friends, Guild, Group & Raid.
+
+Makes you stand.
+
+-----------------------------
+!ff_dance (Alias: None)
+-----------------------------
+
+Restrictions: Friends, Guild, Group & Raid.
+
+Makes you dance.
+
+-----------------------------
+!ff_emote (Alias: None)
+-----------------------------
+
+Restrictions: Friends & Guild only.
+
+Usage: !ff_emote emote (E.g. !ff_emote wave)
+
+Makes you perform the emote. (E.g. wave, point, rasp, fart etc)
+
+-----------------------------
+!ff_check (Alias: None)
+-----------------------------
+
+Restrictions: None.
+
+Additional Notes: Works while Follow Felankor is disabled.
+
+Tells the sender what version of Follow Felankor you are using and if it is currently enabled or disabled.
+
+=============================
+5.3 USING THE OPTIONS DIALOG
+=============================
+
+-----------------------------
+Enable Follow Felankor
+-----------------------------
+
+Checked: Enables Follow Felankor.
+
+UnChecked: Disables Follow Felankor.
+
+-----------------------------
+Enable Invite Requests
+-----------------------------
+
+Checked: Enables Invite requests from friends and guild members using the !ff_InviteMe whisper command.
+
+UnChecked: Disables Invite requests from friends and guild members using the !ff_InviteMe whisper command.
+
+-----------------------------
+Enable Auto Accept Group Invites
+-----------------------------
+
+Checked: Enables automatically accepting group invites.
+
+UnChecked: Disables automatically accepting group invites.
+
+-----------------------------
+Enable Auto Accept Resurrect
+-----------------------------
+
+Checked: Enables automatically accepting resurrect.
+
+UnChecked: Disables automatically accepting resurrect.
+
+-----------------------------
+Enable Emote Command
+-----------------------------
+
+Checked: Enables the emote command (!ff_emote) from friends and guild members.
+
+UnChecked: Disables the emote command (!ff_emote) from friends and guild members.
+
+-----------------------------
+Enable Whisper Command Logging
+-----------------------------
+
+Checked: All whisper commands are logged.
+
+UnChecked: No whisper commands are logged.
+
+
+#############################
+6.0 HISTORY & CHANGES
+#############################
+
+=============================
+VERSION 1.0
+=============================
+
+Release Date: 24/05/2007
+Interface: 20100
+
+KNOWN ISSUES/BUGS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+There were no known issues with this version when it was released.
+
+NEW FEATURES AND CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~
+As this is the first version there are no changes to list.
+
+=============================
+VERSION 1.0.1
+=============================
+
+Release Date: 30/09/2007
+Interface: 20200
+
+KNOWN ISSUES/BUGS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+There were no known issues with this version when it was released.
+
+NEW FEATURES AND CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1) Added German translation thanks to Camulos.
+2) Updated Interface version for patch 2.2.
+
+=============================
+VERSION 2.0.1
+=============================
+
+Release Date: 09/08/2009
+Interface: 30200
+
+KNOWN ISSUES/BUGS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Some mounts may not be supported by the !ff_mount and !ff_fly whisper commands.
+
+NEW FEATURES AND CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1) Added option to disable individual or all announcements.
+2) Added mount support. (Using !ff_mount and !ff_fly whisper commands)
+3) Added macros for ground and flying mounts.
+4) Added mini map button.
+5) Added menu to make other interfaces easier to access. (Open it by clicking the mini map button)
+6) Added interfaces for ban list and help.
+7) Added a whisper log so you can see who has sent commands to you while you were AFK.
+8) Removed German translation due to it being incomplete.
+
+=============================
+VERSION 2.0.2
+=============================
+
+Release Date: 12/01/2010
+Interface: 30300
+
+KNOWN ISSUES/BUGS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Some mounts may not be supported by the !ff_mount, !ff_rmount, !ff_fly and !ff_rfly whisper commands.
+
+NEW FEATURES AND CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1) Fixed bug which allows !ff_mount to dismount you when you are flying.
+2) Added static mount feature using these commands: /FF_UseGMount, /FF_UseFMount, !ff_mount, !ff_rmount, !ff_fly, !ff_rfly (Type /ff_help in game for more information)
+3) Changed !ff_follow to allow people in your friend list or guild to make you follow them even if they are not in your group or raid.
+
+=============================
+VERSION 2.1.0
+=============================
+
+Release Date: 11/02/2010
+Interface: 30300
+
+KNOWN ISSUES/BUGS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Some mounts may not be supported by the !ff_mount, !ff_rmount, !ff_fly and !ff_rfly whisper commands.
+
+NEW FEATURES AND CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1) Corrected version number.
+2) Added update notifications.
+3) Follow Felankor will now tell you when another player starts to follow you of their own accord. (The other player must be using Follow Felankor 2.1.0 or higher for this to work)
+
+=============================
+VERSION 2.2.0
+=============================
+
+Release Date: 08/04/2010
+Interface: 30300
+
+KNOWN ISSUES/BUGS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Some mounts may not be supported by the !ff_mount, !ff_rmount, !ff_fly and !ff_rfly whisper commands.
+
+NEW FEATURES AND CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1) Replaced options interface with panels on WoW's interface options.
+2) Added a new feature which prevents somebody using the !ff_follow command when you are using the auction house, bank, guild bank, npc, taxi map (flight master) or loot box. This feature can be turned off in the options.
+3) (NOTE: Disabled by default) If somebody whispers !ff_InviteMe when you are in a group but not the group leader, you will automatically ask in chat if that person can be invited and the person will be notified.
+
+=============================
+VERSION 2.2.1
+=============================
+
+Release Date: 11/04/2010
+Interface: 30300
+
+KNOWN ISSUES/BUGS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Some mounts may not be supported by the !ff_mount, !ff_rmount, !ff_fly and !ff_rfly whisper commands.
+
+NEW FEATURES AND CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1) Fixed a bug which prevents use of the !ff_follow whisper command after you have looted a mob.
+
+=============================
+VERSION 2.3.0
+=============================
+
+Release Date: 12/05/2010
+Interface: 30300
+
+KNOWN ISSUES/BUGS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+There were no known issues with this version when it was released.
+
+NEW FEATURES AND CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1) Fixed a bug which was causing Follow Felankor to randomly disable feature and announcement options.
+2) Added a check box to the options interface for the "Prevent Auto Follow When Busy" option. (I forgot to add this in the last version)
+3) Added new feature: An icon will now be displayed on the group/party portraits of any group/party member who is using Follow Felankor 2.1.0 or higher.
+4) Improved mount detection. A list of mounts is no longer used. Follow Felankor will now automatically detect which type of mounts you have. Hopefully this will mean that ALL mounts are now supported.
+5) Added new slash command which checks if another player is using Follow Felankor. Unlike the !ff_check whisper command, the other player will not know that you have used this command on them. Usage: /FF_CheckStatus PlayerName
+6) Options and the whisper log now save per character instead of per account.
+7) Fixed a bug on the Options Interface.
+
+=============================
+VERSION 2.3.1
+=============================
+
+Release Date: 14/05/2010
+Interface: 30300
+
+KNOWN ISSUES/BUGS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+There were no known issues with this version when it was released.
+
+NEW FEATURES AND CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1) Added an announcement option which tells you when somebody uses the /FF_CheckStatus command on you.
+
+=============================
+VERSION 2.3.2
+=============================
+
+Release Date: 06/08/2010
+Interface: 30300
+
+KNOWN ISSUES/BUGS
+~~~~~~~~~~~~~~~~~~~~~~~~~
+There were no known issues with this version when it was released.
+
+NEW FEATURES AND CHANGES
+~~~~~~~~~~~~~~~~~~~~~~~~~
+1) Fixed a bug with the static mounts which caused the !ff_ground and !ff_fly commands to summon the wrong mount after learning a new mount.
+2) Fixed a bug which made it difficult to click on a player's group/party portrait.
+
+#############################
+7.0 CONTACT
+#############################
+
+To contact me please send a private message to Felankor on http://www.wowinterface.com/
+
+#############################
+8.0 WHERE TO GET THE LATEST
+ VERSION OF FOLLOW FELANKOR
+#############################
+
+http://www.wowinterface.com/
+http://wow.curse.com/
+http://wowui.incgamers.com/

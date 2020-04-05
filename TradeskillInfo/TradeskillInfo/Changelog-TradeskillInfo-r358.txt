@@ -1,0 +1,60 @@
+------------------------------------------------------------------------
+r358 | s8095324 | 2009-12-16 19:25:35 +0000 (Wed, 16 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/locale-zhTW.lua
+
+TradeskillInfo:
+- zhTW update
+------------------------------------------------------------------------
+r357 | dys | 2009-12-15 16:25:31 +0000 (Tue, 15 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/TradeskillIdData.lua
+
+- Ticket #27: Add Refined Deeprock Salt to components list
+
+------------------------------------------------------------------------
+r356 | dys | 2009-12-15 16:21:35 +0000 (Tue, 15 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/TradeskillData.lua
+
+- Fix wrong name: "Ashen Verdict" to "The Ashen Verdict"
+
+------------------------------------------------------------------------
+r355 | StingerSoft | 2009-12-15 14:34:14 +0000 (Tue, 15 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/TradeskillInfoUI/locale-ruRU.lua
+   M /trunk/locale-ruRU.lua
+
+TradeskillInfo:
+- ruRU update
+------------------------------------------------------------------------
+r354 | dys | 2009-12-15 12:25:23 +0000 (Tue, 15 Dec 2009) | 9 lines
+Changed paths:
+   M /trunk/TradeskillData.lua
+   M /trunk/TradeskillIdData.lua
+   M /trunk/locale-deDE.lua
+   M /trunk/locale-enUS.lua
+   M /trunk/locale-esES.lua
+   M /trunk/locale-frFR.lua
+   M /trunk/locale-koKR.lua
+   M /trunk/locale-ruRU.lua
+   M /trunk/locale-zhCN.lua
+   M /trunk/locale-zhTW.lua
+
+- Add data for the 3.3 patch:
+  - Locations for Alchemist Finklestein, Larana Drone
+  - ICC recipes: 6 blacksmithing, 8 leatherworking, and 4 tailoring
+  - Add faction Ashen Verdict
+  - Add location Icecrown Citadel
+  - Add "Enchant Gloves - Angler" data
+  - Fix Flying Carpet mats
+- Fix location of Timothy Jones
+
+------------------------------------------------------------------------
+r353 | dys | 2009-12-15 09:37:58 +0000 (Tue, 15 Dec 2009) | 2 lines
+Changed paths:
+   M /trunk/TradeskillIdData.lua
+
+- Fix ticket #29: Transmute epic gems require skill 450
+
+------------------------------------------------------------------------

@@ -1,0 +1,46 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: 3.3.0.28-Beta
+## X-Curse-Project-Name: Panda
+## X-Curse-Project-ID: panda
+## X-Curse-Repository-ID: wow/panda/mainline
+
+## Title: Panda
+## Notes: Prospecting and Disenchanting Aide
+## Author: Tekkub Stoutwrithe
+## Version: 3.3.0.28
+## X-Website: http://code.google.com/p/tekkub-wow/
+## X-Email: tekkub-wow@googlegroups.com
+## X-Category: Tradeskills
+
+## SavedVariablesPerCharacter: PandaDBPC
+
+## OptionalDeps: tekDebug
+
+## LoadManagers: AddonLoader
+## X-LoadOn-slash: /panda
+## X-LoadOn-LDB-Launcher: Interface\AddOns\Panda\icon
+
+LibStub.lua
+CallbackHandler-1.0.lua
+LibDataBroker-1.1\LibDataBroker-1.1.lua
+tekAucQuery.lua
+tekPanelAuction.lua
+tekKonfigButton.lua
+tekKonfigScroll.lua
+tinyGratuity.lua
+tekIDmemo.lua
+
+Panda.lua
+ButtonFactory.lua
+PanelFactory.lua
+
+Disenchanting.lua
+DisenchantingProb.lua
+Enchanting.lua
+Prospecting.lua
+GemCutting.lua
+Milling.lua
+Glyphs.lua
+Pot.lua
+Transmutes.lua
+Cooking.lua

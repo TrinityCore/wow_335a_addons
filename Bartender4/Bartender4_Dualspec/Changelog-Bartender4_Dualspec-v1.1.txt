@@ -1,0 +1,13 @@
+tag v1.1
+d9fcbbc395e570f83a57eb9357412abe64531035
+Christoph Gritschenberger <cedwani [at] quantentunnel [dot] de>
+2009-11-18 08:30:28 +0100
+
+tag as v1.1
+
+
+--------------------
+
+Christoph Gritschenberger:
+	- check if the correct profile is active on login
+	- set the current talent-specs' profile when enabling

@@ -1,0 +1,31 @@
+Decursive's Macro
+=================
+ 
+Decursive also creates and maintains (for all your characters) a macro that
+allows you to cure units (or other unit-frames) you mouse-over, *you choose the
+key in Decursive's options*.
+
+Hitting the key alone will try to cast the first spell, *Ctrl-hitting*, the
+second and *shift-hitting* will try to cast the third. Decursive will show you
+if the unit beneath your cursor is afflicted by something through its
+*live-list* and a sound.
+ 
+**NOTE:** To change the key, use the drop-down option menu, it is accessed
+by right-clicking the handle or the "Decursive" bar. You can also use the
+command line for example, "/dcr macro SetKey V" will set the new key to [V].
+ 
+
+*See also:*
+
+- [Decursive usage][user-actions]
+- [Micro Unit Frames documentation][MUFs]
+- [Frequently Asked Questions][FAQ] *try this before asking any question*
+- [commands][]
+
+
+[MUFs]: http://www.wowace.com/projects/decursive/pages/main/mufs/ "Micro Unit Frames"
+[MUF]: http://www.wowace.com/projects/decursive/pages/main/mufs/ "Micro Unit Frame"
+[FAQ]: http://www.wowace.com/projects/decursive/pages/main/faq/ "F.A.Q section"
+[mouse-over macro]: http://www.wowace.com/projects/decursive/pages/main/macro/ "Decursive's mouse-over macro documentation"
+[commands]: http://www.wowace.com/projects/decursive/pages/main/commands/ "Command lines"
+[user-actions]: http://www.wowace.com/projects/decursive/pages/main/user-actions/ "Decursive, user possible actions"

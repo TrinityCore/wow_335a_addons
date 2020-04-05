@@ -1,0 +1,187 @@
+<!--
+    ################## FFMenu.xml ##################
+    # Follow Felankor
+    # A World of Warcraft UI AddOn
+    # By Felankor
+    #
+    # IMPORTANT: I do not mind people looking at my code
+    # to learn from it. If you use any parts of my code
+    # please give me credit in your comments. I will
+    # do the same if I ever use any code from another
+    # AddOn. Thanks.
+    ###################################################
+-->
+
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
+   <Script file="localization.en.lua"/>
+   <Script file="FFBanList.lua"/> 
+   
+<!-- Start FFMenu Frame -->
+    <Frame name="FFMenu" movable="true" enableMouse="true" hidden="true">
+        <Size>
+            <AbsDimension x="160" y="227" />
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" relativeTo="UIParent">
+                <Offset>
+                    <AbsDimension x="0" y="0" />
+                </Offset>
+            </Anchor>
+        </Anchors>
+        <TitleRegion setAllPoints="true" />
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+            <BackgroundInsets>
+                <AbsInset left="11" right="12" top="12" bottom="11" />
+            </BackgroundInsets>
+            <TileSize>
+                <AbsValue val="32" />
+            </TileSize>
+            <EdgeSize>
+                <AbsValue val="32" />
+            </EdgeSize>
+        </Backdrop>
+        <Layers>
+            <Layer>
+                <Texture name="$parentTitleBorder" file="Interface\DialogFrame\UI-DialogBox-Header">
+                    <Size>
+                        <AbsDimension x="160" y="32" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="5" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <TexCoords left="0.2" right="0.8" top="0" bottom="0.6" />
+                </Texture>
+                <FontString inherits="GameFontNormal" text="FFMENU_TITLE">
+                    <Size>
+                        <AbsDimension x="260" y="0" />
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="-4" />
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <FontHeight>
+                        <AbsValue val="12" />
+                    </FontHeight>
+                    <Color r="1" g="0.8196079" b="0" />
+                    <Shadow>
+                        <Color r="0" g="0" b="0" />
+                        <Offset>
+                            <AbsDimension x="1" y="-1" />
+                        </Offset>
+                    </Shadow>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Frames>
+<!-- Start FFMenu_OptionsButton Button -->
+            <Button name="$parent_OptionsButton" inherits="FFButtonTemplate" text="FFMENU_OPTIONS_BUTTON">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFMenu" relativePoint="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="-30" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        InterfaceOptionsFrame_OpenToCategory(FFOptions);
+                        FFMenu:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+<!-- End FFMenu_OptionsButton Button -->
+<!-- Start FFMenu_BanListButton Button -->
+            <Button name="$parent_BanListButton" inherits="FFButtonTemplate" text="FFMENU_BAN_LIST_BUTTON">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFMenu_OptionsButton" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FFBanList:Show();
+                        FFMenu:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+<!-- End FFMenu_BanListButton Button -->
+<!-- Start FFMenu_LogButton Button -->
+            <Button name="$parent_LogButton" inherits="FFButtonTemplate" text="FFMENU_LOG_BUTTON">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFMenu_BanListButton" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FFWhisperLog:Show();
+                        FFMenu:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+<!-- End FFMenu_LogButton Button -->
+<!-- Start FFMenu_MacrosButton Button -->
+            <Button name="$parent_MacrosButton" inherits="FFButtonTemplate" text="FFMENU_MACROS_BUTTON">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFMenu_LogButton" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FF_CreateMacros();
+                        FFMenu:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+<!-- End FFMenu_MacrosButton Button -->
+<!-- Start FFMenu_HelpButton Button -->
+            <Button name="$parent_HelpButton" inherits="FFButtonTemplate" text="FFMENU_HELP_BUTTON">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="FFMenu_MacrosButton" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-3" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FFHelp:Show();
+                        FFMenu:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+<!-- End FFMenu_HelpButton Button -->
+<!-- Start FFMenu_CancelButton Button -->
+            <Button name="$parent_CancelButton" inherits="FFButtonTemplate" text="FFMENU_CANCEL_BUTTON">
+                <Anchors>
+                    <Anchor point="BOTTOM" relativeTo="FFMenu" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="15" />
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        FFMenu:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+<!-- End FFMenu_CancelButton Button -->
+        </Frames>
+    </Frame>
+<!-- End FFMenu Frame -->
+</Ui>

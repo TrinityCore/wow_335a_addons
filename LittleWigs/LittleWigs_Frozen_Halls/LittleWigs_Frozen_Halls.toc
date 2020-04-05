@@ -1,0 +1,26 @@
+﻿## Interface: 30300
+## X-Curse-Packaged-Version: v3.3.5
+## X-Curse-Project-Name: LittleWigs
+## X-Curse-Project-ID: little-wigs
+## X-Curse-Repository-ID: wow/little-wigs/mainline
+
+## Title: Little Wigs [|cffeda55fThe Frozen Halls|r]
+## Title-frFR: Little Wigs [|cffeda55fLes salles Gelées|r]
+## Notes: Little Wigs The Frozen Halls Modules
+## Notes-frFR: Modules Little Wigs concernant les salles Gelées.
+## Author: Ulic
+## X-Credits: Yoshimo
+## Version: 3.3
+## LoadOnDemand: 1
+
+## X-Website: http://wow.curse.com/downloads/wow-addons/details/little-wigs.aspx
+## X-Category: Party
+
+## X-BigWigs-Menu: The Frozen Halls
+## X-BigWigs-PartyContent: true
+## X-BigWigs-LoadOn-Zone: The Forge of Souls, Pit of Saron, Halls of Reflection
+
+## Dependencies: BigWigs, LittleWigs
+
+locales.xml
+modules.xml

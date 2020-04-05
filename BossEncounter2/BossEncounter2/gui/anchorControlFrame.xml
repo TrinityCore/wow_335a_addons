@@ -1,0 +1,55 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="anchorControlFrame.lua" /> 
+
+	<Frame name="BossEncounter2_AnchorControlFrameTemplate" frameStrata="DIALOG" virtual="true">
+		<Size>
+			<AbsDimension x="488" y="64"/>
+		</Size>
+
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.AnchorControlFrame.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.AnchorControlFrame.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+
+	<Slider name="BossEncounter2_AnchorControlFrameSliderTemplate" orientation="HORIZONTAL" virtual="true" enableMouse="true">
+		<Size>
+			<AbsDimension x="112" y="17"/>
+		</Size>
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="-10" bottom="-10"/>
+		</HitRectInsets>
+		<Backdrop bgFile="Interface\Buttons\UI-SliderBar-Background" edgeFile="Interface\Buttons\UI-SliderBar-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="8"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="8"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="3" right="3" top="6" bottom="6"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnLoad>
+  				self.text = self:CreateFontString(nil, "ARTWORK", "GameFontHighlight");
+  				self.text:SetPoint("RIGHT", self, "LEFT", -4, 0);
+  				self.valueText = self:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall");
+  				self.valueText:SetPoint("TOP", self, "BOTTOM", 0, 5);
+  				self.lowText = self:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall");
+  				self.lowText:SetPoint("TOPLEFT", self, "BOTTOMLEFT", 0, 5);
+  				self.highText = self:CreateFontString(nil, "ARTWORK", "GameFontNormalSmall");
+  				self.highText:SetPoint("TOPRIGHT", self, "BOTTOMRIGHT", 0, 5);
+			</OnLoad>
+		</Scripts>
+		<ThumbTexture file="Interface\Buttons\UI-SliderBar-Button-Horizontal">
+			<Size>
+				<AbsDimension x="32" y="32"/>
+			</Size>
+		</ThumbTexture>
+	</Slider>
+</UI>

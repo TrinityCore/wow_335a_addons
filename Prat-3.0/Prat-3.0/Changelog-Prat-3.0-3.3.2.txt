@@ -1,0 +1,27 @@
+------------------------------------------------------------------------
+r401 | sylvanaar | 2010-01-15 01:07:49 +0000 (Fri, 15 Jan 2010) | 1 line
+Changed paths:
+   A /tags/3.3.2 (from /trunk:400)
+
+Tagging as 3.3.2
+------------------------------------------------------------------------
+r400 | sylvanaar | 2010-01-15 00:52:57 +0000 (Fri, 15 Jan 2010) | 1 line
+Changed paths:
+   D /trunk/modules/ChatLink.lua
+   M /trunk/modules/includes.xml
+
+delete the chatlink module
+------------------------------------------------------------------------
+r398 | gnarfoz | 2009-12-15 16:41:16 +0000 (Tue, 15 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/modules/Clear.lua
+
+GetFrameType => GetObjectType (WoW 3.3)
+------------------------------------------------------------------------
+r397 | sylvanaar | 2009-12-09 01:40:00 +0000 (Wed, 09 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/modules/CustomFilters.lua
+   M /trunk/modules/Sounds.lua
+
+couple more PARTY_LEADER things
+------------------------------------------------------------------------

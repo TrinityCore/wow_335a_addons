@@ -1,0 +1,157 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Texture name="HSBButton" virtual="true">
+		<TexCoords left="0.25" right="0.75" top="0.25" bottom="0.75"/>
+	</Texture>
+	<Slider name="HSBTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="20" y="0"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="0" y="-18"/>
+				</Offset>
+			</Anchor>
+			<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="0" y="14"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBG" setAllPoints="true" hidden="true">
+					<Color r="0" g="0" b="0" a=".85"/>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="$parentTop" file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+					<Size>
+						<AbsDimension x="27" y="48"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="-4" y="17"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.484375" top="0" bottom=".20"/>
+				</Texture>
+				<Texture name="$parentBottom" file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+					<Size>
+						<AbsDimension x="27" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="-4" y="-15"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.515625" right="1.0" top="0.1440625" bottom="0.4140625"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentTop" relativePoint="BOTTOMLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentBottom" relativePoint="TOPRIGHT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.484375" top="0.1640625" bottom="1"/>
+				</Texture>
+			</Layer>	
+		</Layers>
+		<Frames>
+			<Button name="$parentScrollUpButton">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOM" relativePoint="TOP">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:GetParent():GetParent().scrollUp = self;
+						self:Disable();
+						self:RegisterForClicks("LeftButtonUp", "LeftButtonDown");
+						self.direction = 1;
+					</OnLoad>
+					<OnClick>
+						HSFScrollButton_OnClick(self, button, down);
+					</OnClick>
+				</Scripts>
+				<NormalTexture inherits="HSBButton" file="Interface\Buttons\UI-ScrollBar-ScrollUpButton-Up"/>
+				<PushedTexture inherits="HSBButton" file="Interface\Buttons\UI-ScrollBar-ScrollUpButton-Down"/>
+				<DisabledTexture inherits="HSBButton" file="Interface\Buttons\UI-ScrollBar-ScrollUpButton-Disabled"/>
+				<HighlightTexture inherits="HSBButton" file="Interface\Buttons\UI-ScrollBar-ScrollUpButton-Highlight" alphaMode="ADD"/>
+			</Button>
+			<Button name="$parentScrollDownButton" inherits="UIPanelScrollDownButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:GetParent():GetParent().scrollDown = self;
+						self:Disable();
+						self:RegisterForClicks("LeftButtonUp", "LeftButtonDown");
+						self.direction = -1;
+					</OnLoad>
+					<OnClick>
+						HSFScrollButton_OnClick(self, button, down);
+					</OnClick>
+				</Scripts>
+				<NormalTexture inherits="HSBButton" file="Interface\Buttons\UI-ScrollBar-ScrollDownButton-Up"/>
+				<PushedTexture inherits="HSBButton" file="Interface\Buttons\UI-ScrollBar-ScrollDownButton-Down"/>
+				<DisabledTexture inherits="HSBButton" file="Interface\Buttons\UI-ScrollBar-ScrollDownButton-Disabled"/>
+				<HighlightTexture inherits="HSBButton" file="Interface\Buttons\UI-ScrollBar-ScrollDownButton-Highlight" alphaMode="ADD"/>				
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self:GetParent().scrollBar = self;
+			</OnLoad>
+			<OnValueChanged> 
+				HSF_OnValueChanged(self:GetParent(), value);
+			</OnValueChanged>
+		</Scripts>
+		<ThumbTexture name="$parentThumbTexture" inherits="HSBButton" file="Interface\Buttons\UI-ScrollBar-Knob" parentKey="thumbTexture">
+			<Size>
+				<AbsDimension x="16" y="24"/>
+			</Size>
+			<TexCoords left="0.25" right="0.75" top="0.125" bottom="0.875"/>
+		</ThumbTexture>		
+	</Slider>
+
+	<ScrollFrame name="HSFTemplate" virtual="true">			
+		<Scripts>
+			<OnLoad>
+				HSF_OnLoad(self);
+			</OnLoad>
+			<OnMouseWheel>
+				HSF_OnMouseWheel(self, delta, 53);
+			</OnMouseWheel>
+		</Scripts>
+	</ScrollFrame>
+	
+	<ScrollFrame name="HSFTemplate2" virtual="true">			
+		<Scripts>
+			<OnLoad>
+				HSF_OnLoad(self);
+			</OnLoad>
+			<OnMouseWheel>
+				HSF_OnMouseWheel(self, delta, 20);
+			</OnMouseWheel>
+		</Scripts>
+	</ScrollFrame>
+</Ui>

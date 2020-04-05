@@ -1,0 +1,29 @@
+------------------------------------------------------------------------
+r294 | mitch0 | 2009-12-09 20:36:47 +0000 (Wed, 09 Dec 2009) | 1 line
+Changed paths:
+   A /tags/v3.7.7 (from /trunk:293)
+
+Tagging as v3.7.7
+------------------------------------------------------------------------
+r293 | mitch0 | 2009-12-08 14:37:50 +0000 (Tue, 08 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/RangeDisplay.toc
+   M /trunk/RangeDisplay_Options/RangeDisplay_Options.toc
+
+use tagged version of libs, minor version bump, toc bump for 3.3
+------------------------------------------------------------------------
+r292 | mitch0 | 2009-11-18 09:02:04 +0000 (Wed, 18 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/README.txt
+
+removed some obsolate info (also check if svn commit works...)
+------------------------------------------------------------------------
+r290 | mitch0 | 2009-11-13 00:35:42 +0000 (Fri, 13 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/RangeDisplay.lua
+   M /trunk/RangeDisplay.toc
+   M /trunk/RangeDisplay_Options/Options.lua
+
+Removed some braces, bump version
+------------------------------------------------------------------------

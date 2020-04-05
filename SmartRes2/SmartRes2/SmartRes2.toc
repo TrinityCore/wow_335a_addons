@@ -1,0 +1,56 @@
+## Interface: 30300
+## Title: SmartRes2
+## Notes: Co-ordinated targetless Party/Raid wipe recovery. Evolved
+## Notes-frFR: Coordonnée targetless Party / Raid essuyez récupération. Evolved
+## Notes-deDE: Koordiniertes Zielfreies Party/Raid Wipe Wiederherstellungs Tool. Eine Weiterentwicklung
+## Notes-koKR: 지정된 타겟없이 파티/공격대를 순식간에 복구시킵니다
+## Notes-ruRU: Аддон для координации воскрешений в группах/рейдах.Информативные заметки в поле
+## Notes-zhCN: 协助目标小队/团队灭团复活。
+## Notes-esES: Co-Parte targetless coordinado / Raid limpiar recuperación. Evolved
+## Version: Beta 2.2
+## Author: Myrroddin
+## X-Author-Server: Llane US
+## X-Author-Faction: Alliance
+## X-Email: psvander AT gmail DOT com
+## X-Donate: http://pledgie.com/campaigns/5989
+## X-Category: Raid, Party, Healer, Priest, Shaman, Paladin, Druid
+## SavedVariables: SmartRes2DB
+## X-Localizations: enUS, frFR, deDE, esES, esMX, ruRU, zhCN, koKR, zhTW
+## X-Website: http://wow.curse.com/downloads/wow-addons/details/smartres2.aspx
+## X-Credits: Jerry, Onaforeignshore, Morgalm, Torhal, and the original SmartRes team!
+## X-Curse-Packaged-Version: Beta 2.2
+## X-Curse-Project-Name: SmartRes2
+## X-Curse-Project-ID: smartres2
+## X-Curse-Repository-ID: wow/smartres2/mainline
+
+## OptionalDeps: Ace3, LibResComm-1.0, LibSharedMedia-3.0, LibBars-1.0, LibAboutPanel, AceGUI-3.0-SharedMediaWidgets
+
+#@no-lib-strip@
+Libs\LibStub\LibStub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+Libs\AceEvent-3.0\AceEvent-3.0.xml
+Libs\AceLocale-3.0\AceLocale-3.0.xml
+
+Libs\LibSharedMedia-3.0\lib.xml
+Libs\AceGUI-3.0-SharedMediaWidgets\widget.xml
+Libs\LibBars-1.0\lib.xml
+Libs\LibResComm-1.0\lib.xml
+Libs\LibAboutPanel\lib.xml
+#@end-no-lib-strip@
+Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua
+
+Locales\Localization.frFR.lua
+Locales\Localization.ruRU.lua
+Locales\Localization.deDE.lua
+Locales\Localization.esES.lua
+Locales\Localization.esMX.lua
+Locales\Localization.zhCN.lua
+Locales\Localization.zhTW.lua
+Locales\Localization.enUS.lua
+SmartRes2.lua

@@ -1,0 +1,19 @@
+<!--
+Author      : olipcs
+Create Date : 8/12/2009 
+Version : 0.1
+Credits: Many thanks goes to Jafula for the awsome JAMBA addon
+         Nearly all code where copy & pasted from Jafulas JAMBA 0.5 addon,
+         and only small additions where coded by me.
+         So again, many thanks Jafula, for making the Jamba 0.5 API so simple to use!
+-->
+<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd" xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="JambaFTL-Locale-enUS.lua" />
+	<Script file="JambaFTL-Locale-deDE.lua" />
+	<Script file="JambaFTL-Locale-esES.lua" />
+	<Script file="JambaFTL-Locale-frFR.lua" />
+	<Script file="JambaFTL-Locale-koKR.lua" />
+	<Script file="JambaFTL-Locale-ruRU.lua" />
+	<Script file="JambaFTL-Locale-zhCN.lua" />
+	<Script file="JambaFTL-Locale-zhTW.lua" />
+</Ui>

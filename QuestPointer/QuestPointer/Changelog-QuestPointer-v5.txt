@@ -1,0 +1,13 @@
+tag v5
+13efbbf34c967937a29bf63e9b86d302b550ff26
+David Lynch <kemayo@gmail.com>
+2010-02-20 04:13:03 -0600
+
+Tagging v5
+
+
+--------------------
+
+David Lynch:
+	- Options for icon alpha, and separate icon-size from arrow-size.
+	- Global leak

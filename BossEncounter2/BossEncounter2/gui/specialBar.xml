@@ -1,0 +1,31 @@
+<UI xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+	<Script file="specialBar.lua" /> 
+
+	<StatusBar name="BossEncounter2_SpecialBarTemplate" frameStrata="MEDIUM" drawLayer="BORDER" virtual="true">
+		<Size>
+			<AbsDimension x="160" y="16"/>
+		</Size>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture file="Interface\CastingBar\UI-CastingBar-Border">
+					<Size>
+						<AbsDimension x="208" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<BarTexture file="Interface\TargetingFrame\UI-StatusBar"/>
+		<BarColor r="1.0" g="1.0" b="1.0"/>
+		<Scripts>
+			<OnLoad>
+				BossEncounter2.Widgets.SpecialBar.OnLoad(self);
+			</OnLoad>
+			<OnUpdate>
+				BossEncounter2.Widgets.SpecialBar.OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</StatusBar>
+</UI>

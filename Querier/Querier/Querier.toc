@@ -1,0 +1,40 @@
+## Title: Querier v1.82
+## X-Curse-Packaged-Version: v1.82
+## X-Curse-Project-Name: Querier
+## X-Curse-Project-ID: querier
+## X-Curse-Repository-ID: wow/querier/mainline
+
+## Notes: A simple slash-command-based addon for querying item information from the Blizzard servers via ItemIDs and SpellIDs.
+
+## Author: Ackis
+## eMail: ackis AT shaw DOT ca
+## X-Author-Faction: Horde
+## X-Author-Server: Thunderlord US
+
+## X-Donate: http://www.curseforge.com/projects/querier/#w_donations
+
+## Interface: 30300
+## Version: 1.82
+## X-Revision: v1.82
+## X-Date: 2009-12-09T15:50:06Z
+
+## X-credits: nemes
+
+## X-Category: Development Tools
+## X-Localizations: enUS
+## X-Website: http://www.wowwiki.com/Querier/
+## X-Feedback: http://wow.curse.com/downloads/wow-addons/details/querier.aspx
+
+## Dependencies:
+## X-Embeds: Ace3, LibStub, CallbackHandler-1.0, LibAboutPanel
+## OptionalDeps: Ace3, LibStub, CallbackHandler-1.0, LibAboutPanel
+## DefaultState: Enabled
+## LoadOnDemand: 0
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+
+local.xml
+
+Querier.lua

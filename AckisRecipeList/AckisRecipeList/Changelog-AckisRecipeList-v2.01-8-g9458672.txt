@@ -1,0 +1,10 @@
+James D. Callahan III:
+	- Removed the Mob Drop filter flag from Warbear Harness - this is a World Drop item.
+	- Removed the Mob Drop filter flag from ten Alchemy recipes - the Instance filter flag should be the only relevant one, because the Mob Drop flag is intended for unique-mob drops in the world.
+	- Removed the Instance filter flag from "Enchant Shield - Lesser Block"; this is a World Drop recipe.
+mike:
+	- Fix incorrect recipe data noted in ticket 1051
+	- Fix for ticket 1045
+	- ## X-Compatible-With: 30300
+John Pasula:
+	- Update some comments.

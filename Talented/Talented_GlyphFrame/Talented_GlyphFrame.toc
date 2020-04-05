@@ -1,0 +1,14 @@
+## Interface: 30300
+## Note: Talented Glyph Frame
+## Dependency: Talented
+## LoadOnDemand: 1
+## Version: r660
+## DefaultState: Enabled
+## X-Curse-Packaged-Version: r660
+## X-Curse-Project-Name: Talented
+## X-Curse-Project-ID: talented
+## X-Curse-Repository-ID: wow/talented/mainline
+
+glyph.lua
+frame.lua
+hook.lua

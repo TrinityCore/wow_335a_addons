@@ -1,0 +1,17 @@
+tag v1.2.7
+011a59ad663d386441327934c03ade5f3dbc1b04
+Erik Broes <erikbroes@gmail.com>
+2009-08-13 22:12:51 +0200
+
+v1.2.7
+===============
+Added new zone (Hrothgar's Landing).
+Updated TOC.
+
+
+--------------------
+
+Erik Broes:
+	- Updated header for 1.2.7
+	- TOC 30200
+	- Temp numbers for HrothgarsLanding. Stop slacking Kagaro :p

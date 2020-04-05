@@ -1,0 +1,23 @@
+## Interface: 30300
+## Title: Jamba
+## Notes: Jamba
+## Author: Jafula
+## Version: 0.6
+## X-Category: Interface Enhancements
+## SavedVariables: JambaCoreProfileDB, JambaCommunicationsProfileDB, JambaTeamProfileDB, JambaTagProfileDB, JambaMessageProfileDB
+## X-Curse-Packaged-Version: release-0.6-2
+## X-Curse-Project-Name: Jamba
+## X-Curse-Project-ID: jamba
+## X-Curse-Repository-ID: wow/jamba/mainline
+JambaEmbeds.xml
+JambaUtilities.lua
+Locales\Locales.xml
+JambaHelperSettings.lua
+JambaCore.lua
+JambaCommunications.lua
+JambaModule.lua
+JambaTeam.lua
+JambaTag.lua
+JambaMessage.lua
+
+

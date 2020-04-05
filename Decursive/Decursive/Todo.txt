@@ -1,0 +1,27 @@
+TODO:
+
+- add a donators credit section in the About UI
+
+- change timers when mass debuff so that only the 5 or so first units of the array get updated in priority all the rest should be handled by the roaming MUF updater
+
+- Add a menu option to choose between available spells. (will also allow to choose other polymorph spells)
+
+- Add an option to disable spell stopping when clicking on a MUF
+
+- Add an option to automatically focus sheeped/cycloned units (if no other focus)
+
+- Add a user debuff warning mechanism where you could define debuff names you
+  want to be aware of, then Decursive would add a special status, such as a
+  little colored triangle in the middle of the MUFs and then you will have to
+  create a mouseover macro (using default Blizzard macro interface) and use it on
+  the MUF of your choice...
+
+-/ when a mind controlled unit is sheepped we should be able to know it without having to target it and look for the sheep debuff
+  (maybe just check for polymorph debuff/buff? on the target and remove the charmed bit if found) ----> or focus it...
+
+- Add an option to let the user choose the alert sound.
+
+
+A very nice review of Decursive :
+
+http://www.hotsdots.com/2009/07/improving-the-interface-using-addons-7-decursive-cleansing-and-dispelling/

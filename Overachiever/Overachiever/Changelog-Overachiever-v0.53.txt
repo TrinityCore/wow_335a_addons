@@ -1,0 +1,18 @@
+------------------------------------------------------------------------
+r55 | tuhljin | 2010-02-08 20:38:12 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   A /tags/v0.53 (from /trunk:54)
+
+Tagging as v0.53.
+------------------------------------------------------------------------
+r54 | tuhljin | 2010-02-08 20:32:20 +0000 (Mon, 08 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/GameTip.lua
+   M /trunk/Overachiever.toc
+   M /trunk/Overachiever_Tabs/Overachiever_Tabs.toc
+   M /trunk/Overachiever_Trade/Overachiever_Trade.toc
+   M /trunk/readme.txt
+
+- "Fistful of Love": Updated criteria, fixing an issue where the reminder tooltip was displayed improperly.
+- Updated readme.txt.
+------------------------------------------------------------------------

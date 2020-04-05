@@ -1,0 +1,20 @@
+------------------------------------------------------------------------
+r24 | sylvanaar | 2009-10-16 20:00:18 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   A /tags/3.2.1 (from /trunk:23)
+
+Tagging as 3.2.1
+------------------------------------------------------------------------
+r23 | cmtitan | 2009-10-16 15:34:58 +0000 (Fri, 16 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/ACP.lua
+
+Fixed issue with renaming sets. See ticket 5.
+
+------------------------------------------------------------------------
+r22 | sylvanaar | 2009-08-12 23:53:52 +0000 (Wed, 12 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/ACP.lua
+
+move the addon memory refresh to the onshow of the addon panel instead of the tooltip
+------------------------------------------------------------------------

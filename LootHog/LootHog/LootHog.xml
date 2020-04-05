@@ -1,0 +1,2082 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/FrameXML/UI.xsd">
+	<Script file="localization.lua"/>
+	<Script file="localization_frFR.lua"/>
+	<Script file="localization_deDE.lua"/>
+	<Script file="localization_koKR.lua"/>
+	<Script file="localization_zhCN.lua"/>
+	<Script file="localization_zhTW.lua"/>
+	<Script file="localization_ruRU.lua"/>
+	<Script file="localization_esESMX.lua"/>
+	<Script file="LootHog.lua"/>
+	
+	<!-- Frame to handle all core events -->
+	<Frame name="loothog_core">
+		<Scripts>
+			<OnLoad>
+			    loothog_OnLoad();
+			</OnLoad>
+			<OnEvent>
+				loothog_OnEvent();
+			</OnEvent>
+		</Scripts>
+	</Frame>
+	
+	<!-- Templates -->
+	<Button name="SmallTextButtonTemplate" inherits="UIPanelButtonTemplate" virtual="true">
+		<NormalText name="$parentText" inherits="GameFontNormalSmall"/>
+		<DisabledText inherits="GameFontDisableSmall"/>
+		<HighlightText inherits="GameFontHighlightSmall"/>
+		<NormalTexture inherits="UIPanelButtonUpTexture"/>
+		<PushedTexture inherits="UIPanelButtonDownTexture"/>
+		<DisabledTexture inherits="UIPanelButtonDisabledTexture"/>
+		<HighlightTexture inherits="UIPanelButtonHighlightTexture"/>
+	</Button>
+
+	<!-- Main frame -->
+	<Frame name="loothog_main" parent="UIParent" hidden="true" movable="true" enableMouse="True" frameStrata="HIGH">
+
+		<Size><AbsDimension x="1" y="160"/></Size>
+		<Anchors>
+			<Anchor point="TOPLEFT"/>
+				<Offset><AbsDimension x="200" y="200"/></Offset>
+		</Anchors>
+
+		<Backdrop name="$parentBackdrop" bgFile="Interface\TutorialFrame\TutorialFrameBackground"
+		edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>	
+
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="LOOTHOG_LABEL_ROLLS" justifyH="LEFT" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-10"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+
+				<FontString name="$parentText1" inherits="GameFontNormalSmall" text="" justifyH="LEFT" justifyV="TOP">
+					<Color r="0.7" g="0.7" b="0.7"/>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-90"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+
+				<FontString name="$parentText2" inherits="GameFontNormalSmall" text="" justifyH="RIGHT" justifyV="TOP">
+					<Color r="0.7" g="0.7" b="0.7"/>
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-90"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="10"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+
+				<FontString name="$parentStatusText" inherits="GameFontNormalSmall" text="LOOTHOG_LABEL_READY" justifyH="LEFT" justifyV="TOP">
+					<Color r="0.5" g="0.5" b="1.0"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="10" y="10"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="20"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+
+				<FontString name="$parentCountText" inherits="GameFontNormalSmall" text="" justifyH="LEFT" justifyV="TOP">
+					<Color r="1.0" g="1.0" b="0"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parentStatusText">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+
+		<Frames>
+			<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="loothog_main" relativePoint="TOPRIGHT"/>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						loothog_clearonclose()
+					</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentRulesAnnounceButton" inherits="UIPanelButtonTemplate" text="LOOTHOG_BUTTON_ANNOUNCERULES">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parentCloseButton">
+						<Offset>
+							<AbsDimension x="-6" y="6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="120" y="16"/></Size>
+				<Scripts>
+					<OnClick>
+						loothog_rules()
+					</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentModeButton" inherits="SmallTextButtonTemplate" text="LOOTHOG_BUTTON_MODE">
+				<Anchors>
+					<Anchor point="RIGHT" relativePoint="LEFT" relativeTo="$parentRulesAnnounceButton">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="58" y="16"/></Size>
+				<Scripts>
+					<OnClick>
+						loothog_togglemode()
+					</OnClick>
+				</Scripts>
+			</Button>
+
+
+
+			<Button name="$parentClearButton" inherits="UIPanelButtonTemplate" text="LOOTHOG_BUTTON_CLEAR">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="$parentRulesAnnounceButton">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="90" y="16"/></Size>
+				<Scripts>
+					<OnClick>
+						loothog_clear()
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<Button name="$parentAnnounceButton" inherits="SmallTextButtonTemplate" text="LOOTHOG_BUTTON_ANNOUNCE">
+				<Anchors>
+					<Anchor point="RIGHT" relativePoint="LEFT" relativeTo="$parentClearButton">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="90" y="16"/></Size>
+				<Scripts>
+					<OnClick>
+						loothog_announce_clicked()
+					</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentOptionButton" inherits="UIPanelButtonTemplate" text="LOOTHOG_BUTTON_OPTIONS">
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parentAnnounceButton">
+						<Offset>
+							<AbsDimension x="-14" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="59" y="16"/></Size>
+				<Scripts>
+					<OnClick>
+						loothog_toggle_options()
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<Button name="$parentHoldButton" inherits="UIPanelButtonTemplate" text="LOOTHOG_BUTTON_HOLD">
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentOptionButton">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="59" y="16"/></Size>
+				<Scripts>
+					<OnClick>
+						loothog_holdclicked()
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<Button name="$parentInfoButton" inherits="SmallTextButtonTemplate" text="LOOTHOG_BUTTON_INFO">
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentHoldButton">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="59" y="16"/></Size>
+				<Scripts>
+					<OnClick>
+						loothog_kickRoll()
+					</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentRollButton" inherits="UIPanelButtonTemplate" text="LOOTHOG_BUTTON_ROLL">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT" relativeTo="$parentCountText">
+						<Offset>
+							<AbsDimension x="-4" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="120" y="16"/></Size>
+				<Scripts>
+					<OnClick>
+						loothog_rollclicked()
+					</OnClick>
+				</Scripts>
+			</Button>
+
+
+			<Button name="$parentOffSpecButton" inherits="UIPanelButtonTemplate" text="LOOTHOG_BUTTON_OFFSPEC">
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentRollButton">
+						<Offset>
+							<AbsDimension x="-4" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="60" y="16"/></Size>
+				<Scripts>
+				   <OnClick>
+					  loothog_offrollclicked()
+				</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentPassButton" inherits="UIPanelButtonTemplate" text="LOOTHOG_BUTTON_PASS">
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentOffSpecButton">
+						<Offset>
+							<AbsDimension x="-5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="59" y="16"/></Size>
+				<Scripts>
+				   <OnClick>
+					  loothog_chat(LOOTHOG_PASS_PATTERN)
+				</OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentCountDownButton" inherits="SmallTextButtonTemplate" text="LOOTHOG_BUTTON_COUNTDOWN">
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parentOptionButton">
+						<Offset>
+							<AbsDimension x="14" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="90" y="16"/></Size>
+				<Scripts>
+				   <OnClick>
+					  loothog_countdown_clicked()
+				   </OnClick>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentAnnounceLootButton" inherits="SmallTextButtonTemplate" text="LOOTHOG_BUTTON_ANNOUNCELOOT">
+				<Anchors>
+					<Anchor point="TOP" relativePoint="BOTTOM" relativeTo="$parentCountDownButton">
+						<Offset>
+							<AbsDimension x="45" y="-40"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="150" y="16"/></Size>
+				<Scripts>
+				   <OnClick>
+					  loothog_announceloot()
+				   </OnClick>
+				</Scripts>
+			</Button>
+			
+			<Button name="$parentYetToRollButton" inherits="SmallTextButtonTemplate" text="LOOTHOG_BUTTON_YETTOROLL">
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentCountDownButton">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Size><AbsDimension x="90" y="16"/></Size>
+				<Scripts>
+				   <OnClick>
+					  loothog_AnnounceYetToRoll()
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+		 </Frames>
+
+
+		<Scripts>
+			<OnLoad>
+				this:RegisterForDrag("LeftButton");
+				this:Show();
+			</OnLoad>
+			<OnDragStart>
+				this:StartMoving();
+			</OnDragStart>
+			<OnDragStop>
+				this:StopMovingOrSizing();
+			</OnDragStop>
+			<OnUpdate>
+				loothog_onupdate()
+			</OnUpdate>
+		</Scripts>
+
+	</Frame>
+
+	<!-- Rules frame -->
+	<Frame name="loothog_rulessettings" parent="UIParent" hidden="true" movable="true" enableMouse="True" frameStrata="HIGH">
+
+		<Size><AbsDimension x="350" y="130"/></Size>
+		<Anchors>
+			<Anchor point="TOP" relativePoint="TOP" relativeTo = "$parent"/>
+			<Offset><AbsDimension x="0" y="200"/></Offset>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="LOOTHOG_TITLE" justifyH="CENTER" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-10"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="0" g="255" b= "0" a="1.0"/>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<CheckButton name="$parentIntroTxt" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="loothog_rulessettings">
+						<Offset>
+							<AbsDimension x="10" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_rulessettingsIntroTxtText:SetText(LOOTHOG_RULES_INTROLABEL)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("announce_rulesintro", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton> 
+
+			<EditBox name="$parentIntro" inherits="InputBoxTemplate" letters="200" autoFocus="false">
+				<Size>
+					<AbsDimension x="125" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentIntroTxtText" relativePoint="TopRight">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["Rules_Intro"] = this:GetText()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>  
+
+
+
+			<CheckButton name="$parentOneEpic" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentIntroTxt"  relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_rulessettingsOneEpicText:SetText(LOOTHOG_RULES_ONEEPIC)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("OneEpic", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentOneSet" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentOneEpic" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_rulessettingsOneSetText:SetText(LOOTHOG_RULES_ONESET)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("OneSet", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentResetLoot" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentOneSet" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_rulessettingsResetLootText:SetText(LOOTHOG_RULES_RESET)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("reset_eligible", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parentDisenchanterName" inherits="InputBoxTemplate" letters="200" autoFocus="false">
+				<Size>
+					<AbsDimension x="125" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentResetLootText" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-5"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentDisenchanter" inherits="GameFontNormalSmall" text="LOOTHOG_RULES_DISENCHANTER" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["disenchanter"] = this:GetText()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>  
+
+		</Frames>
+	</Frame>
+	
+
+  <Frame name="loothog_addonconf" parent="UIParent" hidden="true" movable="true" enableMouse="True" frameStrata="HIGH">
+    <Size><AbsDimension x="300" y="300"/></Size>
+		<Anchors>
+			<Anchor point="TOP" relativePoint="TOP" relativeTo = "$parent"/>
+			<Offset><AbsDimension x="0" y="-200"/></Offset>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="LOOTHOG_TITLE" justifyH="CENTER" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-10"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="0" g="255" b= "0" a="1.0"/>
+				</FontString>
+			</Layer>
+		</Layers>
+    <Frames>
+			<CheckButton name="$parentEnable" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="loothog_addonconf">
+						<Offset>
+							<AbsDimension x="10" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfEnableText:SetText(LOOTHOG_OPTION_ENABLE)
+					</OnLoad>
+					<OnClick>
+						loothog_toggleenabled()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentManual" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentEnableText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfManualText:SetText(LOOTHOG_OPTION_MANUAL)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("manual", this:GetChecked())
+						loothog_setquiet()
+						loothog_togglemodelabel()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentQuiet" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentEnable" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfQuietText:SetText(LOOTHOG_OPTION_QUIET)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("quiet", this:GetChecked())
+						loothog_setauto()
+						loothog_togglemodelabel()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentAutoShow" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parentQuiet" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfAutoShowText:SetText(LOOTHOG_OPTION_AUTOSHOW)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("auto_show", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentClear" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentAutoShow" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfClearText:SetText(LOOTHOG_OPTION_RESETONWATCH)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("triggered_clear", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+						
+			
+			<CheckButton name="$parentGroupOnly" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentClear"  relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfGroupOnlyText:SetText(LOOTHOG_OPTION_GROUPONLY)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("group_only", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentSuppress" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentGroupOnly" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfSuppressText:SetText(LOOTHOG_OPTION_PREVENT)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("suppress_chat", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentAckRolls" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentSuppress" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfAckRollsText:SetText(LOOTHOG_OPTION_ACK)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("ack_rolls", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentShowAllLootButton" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentAckRolls" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfShowAllLootButtonText:SetText(LOOTHOG_OPTION_SHOWALLLOOTBUTTON)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("showalllootbutton", this:GetChecked())
+						loothog_alllootbutton()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentMasterLooterOnly" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentShowAllLootButtonText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfMasterLooterOnlyText:SetText(LOOTHOG_OPTION_MASTERLOOTERONLY)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("masterlooteronly", this:GetChecked())
+						loothog_alllootbutton()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentOverRideRefresh" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonconfOverRideRefreshText:SetText(LOOTHOG_OPTION_OVERRIDEREFRESH)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("overriderefresh", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parentRefreshInterval" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="30" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentOverRideRefreshText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentRefreshInterval" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_FRAMES" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["custom_refresh_interval"] = this:GetNumber()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>
+    	</Frames>
+  </Frame>
+
+  <Frame name="loothog_addonactive" parent="UIParent" hidden="true" movable="true" enableMouse="True" frameStrata="HIGH">
+    <Size><AbsDimension x="300" y="300"/></Size>
+		<Anchors>
+			<Anchor point="TOP" relativePoint="TOP" relativeTo = "$parent"/>
+			<Offset><AbsDimension x="0" y="-200"/></Offset>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="LOOTHOG_TITLE" justifyH="CENTER" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-10"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="0" g="255" b= "0" a="1.0"/>
+				</FontString>
+			</Layer>
+		</Layers>
+    <Frames>
+			<CheckButton name="$parentRejectBound" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="loothog_addonactive">
+						<Offset>
+							<AbsDimension x="10" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveRejectBoundText:SetText(LOOTHOG_OPTION_REJECT)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("reject_bound", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<EditBox name="$parentLower" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentRejectBoundText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentLower" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_LOWER" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["LowerLimit"] = this:GetNumber()
+						loothog_dynamicoptions()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>
+
+			<EditBox name="$parentUpper" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="30" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentRejectBoundText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="45" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentUpper" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_UPPER" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["UpperLimit"] = this:GetNumber()
+						loothog_dynamicoptions()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>
+			
+			
+			
+			
+			
+
+			<CheckButton name="$parentAllowOffspec" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentRejectBound" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAllowOffspecText:SetText(LOOTHOG_OPTION_OFFSPEC)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("Allow_offspec", this:GetChecked())
+						loothog_toggleoffspec()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<EditBox name="$parentOffspecLower" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentAllowOffspecText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentOffspecLower" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_OFFSPEC_LOWER" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="0" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["OffspecLowerLimit"] = this:GetNumber()
+						loothog_dynamicoptions()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>			
+			
+			<EditBox name="$parentOffspecUpper" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+					<Size>
+						<AbsDimension x="30" y="20"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentAllowOffspecText" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="45" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<Layers>
+						<Layer level="ARTWORK">
+							<FontString name="$parentOffspecUpper" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_OFFSPEC_UPPER" justifyH="LEFT" justifyV="TOP">
+								<Anchors>
+									<Anchor point="LEFT" relativePoint="RIGHT">
+										<Offset>
+											<AbsDimension x="0" y="0"/>
+										</Offset>
+									</Anchor>
+								</Anchors>
+							</FontString>
+						</Layer>
+					</Layers>
+					<Scripts>
+						<OnTextChanged>
+							loothog_settings["OffspecUpperLimit"] = this:GetNumber()
+							loothog_dynamicoptions()
+						</OnTextChanged>
+					</Scripts>
+			</EditBox>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+
+			<CheckButton name="$parentRejectClass" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentAllowOffspec" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveRejectClassText:SetText(LOOTHOG_OPTION_REJECTCLASS)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("reject_class", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentRejectAnnounce" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentRejectClassText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveRejectAnnounceText:SetText(LOOTHOG_OPTION_ANNOUNCEREJECT)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("reject_announce", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentRejectNotifyMe" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentRejectClass" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveRejectNotifyMeText:SetText(LOOTHOG_OPTION_NOTIFYME)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("reject_notifyme", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+	       
+			<CheckButton name="$parentAnnounceNew" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentRejectNotifyMe" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAnnounceNewText:SetText(LOOTHOG_OPTION_ANNOUNCEONCLEAR)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("announce_new", this:GetChecked())
+						loothog_disableautooffspec()
+					</OnClick>
+				</Scripts>
+			</CheckButton> 
+			<EditBox name="$parentAnnouncement" inherits="InputBoxTemplate" letters="200" autoFocus="false">
+				<Size>
+					<AbsDimension x="200" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentAnnounceNewText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["new_roll_text"] = this:GetText()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>  
+			<CheckButton name="$parentAnnounceClass" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentAnnounceNew" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAnnounceClassText:SetText(LOOTHOG_OPTION_ANNOUNCECLASS)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("announce_class", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>			
+			<CheckButton name="$parentAnnounceClassTK" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentAnnounceClassText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAnnounceClassTKText:SetText(LOOTHOG_OPTION_ANNOUNCECLASSTK)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("announce_classTK", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentTimeoutEnabled" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentAnnounceClass" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="-40" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveTimeoutEnabledText:SetText(LOOTHOG_OPTION_TIMEOUT1)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("timeout_enabled", this:GetChecked())
+						loothog_disableautooffspec()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parentTimeout" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentTimeoutEnabledText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentSeconds" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_TIMEOUT2" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["timeout"] = this:GetNumber()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>
+
+			<CheckButton name="$parentAnnounceTimeout" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentTimeoutSeconds" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAnnounceTimeoutText:SetText(LOOTHOG_OPTION_ANNOUNCETIMEOUT)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("timeout_announce", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentAutoCountdown" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentTimeoutEnabled" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAutoCountdownText:SetText(LOOTHOG_OPTION_AUTOCOUNTDOWN)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("autocountdown", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parentAutoCountTime" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentAutoCountdownText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentSeconds" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_TIMEOUT2" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["autocounttime"] = this:GetNumber()
+						loothog_dynamicoptions()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>
+
+			<CheckButton name="$parentAutoExtend" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentAutoCountdown" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAutoExtendText:SetText(LOOTHOG_OPTION_AUTOEXTEND)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("autoextend", this:GetChecked())
+						loothog_dynamicoptions()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parentAutoResetTime" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentAutoExtendText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentSeconds" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_TIMEOUT3" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["autoresettime"] = this:GetNumber()
+						loothog_dynamicoptions()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>
+			<EditBox name="$parentExtendTime" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentAutoResetTimeSeconds" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentSeconds" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_TIMEOUT2" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["autoextendtime"] = this:GetNumber()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>
+
+			<CheckButton name="$parentAnnounceExtend" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentAutoExtend" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAnnounceExtendText:SetText(LOOTHOG_OPTION_ANNOUNCEEXTEND)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("announceextend", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentAutoOffspec" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentAnnounceExtend" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAutoOffspecText:SetText(LOOTHOG_OPTION_AUTOOFFSPEC)
+					</OnLoad>
+					<OnClick>
+						loothog_toggleautooffspec()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentAnnounceOffspec" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentAutoOffspec" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="20" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAnnounceOffspecText:SetText(LOOTHOG_OPTION_ANNOUNCEOFFSPEC)
+					</OnLoad>
+					<OnClick>
+						loothog_toggleautooffspec()
+					</OnClick>
+				</Scripts>
+			</CheckButton> 
+			<EditBox name="$parentAnnounceOffspecTxt" inherits="InputBoxTemplate" letters="200" autoFocus="false">
+				<Size>
+					<AbsDimension x="200" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentAnnounceOffspecText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["offspec_roll_text"] = this:GetText()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>
+
+			<CheckButton name="$parentOffspecTimeoutEnabled" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentAnnounceOffspec" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveOffspecTimeoutEnabledText:SetText(LOOTHOG_OPTION_OFFSPECTIMEOUT)
+					</OnLoad>
+					<OnClick>
+						loothog_toggleautooffspec()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parentOffspecTimeout" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentOffspecTimeoutEnabledText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentOffspecSeconds" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_TIMEOUT2" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["offspectimer"] = this:GetNumber()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>
+
+			<CheckButton name="$parentFinalize" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentOffspecTimeoutEnabled" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="-20" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveFinalizeText:SetText(LOOTHOG_OPTION_FINALIZE)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("finalize", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentAutoAssignLoot" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentFinalizeText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="5" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveAutoAssignLootText:SetText(LOOTHOG_OPTION_AUTOASSIGN)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("autoassign", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentFinalizeRolls" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentFinalize" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="-20" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveFinalizeRollsText:SetText(LOOTHOG_OPTION_FINALIZEROLLS)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("finalizerolls", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentListToChat" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentFinalizeRolls" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveListToChatText:SetText(LOOTHOG_OPTION_LISTTOCHAT)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("listtochat", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>		
+			<EditBox name="$parentListToChatNo" inherits="InputBoxTemplate" letters="3" numeric="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentListToChatText" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="10" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentSeconds" inherits="GameFontNormalSmall" text="LOOTHOG_OPTION_LISTTOCHAT2" justifyH="LEFT" justifyV="TOP">
+							<Anchors>
+								<Anchor point="LEFT" relativePoint="RIGHT">
+									<Offset>
+										<AbsDimension x="5" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnTextChanged>
+						loothog_settings["listtochatno"] = this:GetNumber()
+						loothog_dynamicoptions()
+					</OnTextChanged>
+				</Scripts>
+			</EditBox>	
+
+			<CheckButton name="$parentCloseOnAnnounce" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentListToChat" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveCloseOnAnnounceText:SetText(LOOTHOG_OPTION_CLOSEONANNOUNCE)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("close_on_announce", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentClearOnClose" inherits="UICheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parentCloseOnAnnounce" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						loothog_addonactiveClearOnCloseText:SetText(LOOTHOG_OPTION_CLEARONCLOSE)
+					</OnLoad>
+					<OnClick>
+						loothog_toggle("clear_on_close", this:GetChecked())
+					</OnClick>
+				</Scripts>
+			</CheckButton>			
+
+    	</Frames>
+  </Frame>
+
+  <Frame name="loothog_addonhelp" parent="UIParent" hidden="true" movable="true" enableMouse="True" frameStrata="HIGH">
+    <Size><AbsDimension x="300" y="300"/></Size>
+		<Anchors>
+			<Anchor point="TOP" relativePoint="TOP" relativeTo = "$parent"/>
+			<Offset><AbsDimension x="0" y="-200"/></Offset>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="LOOTHOG_TITLE" justifyH="CENTER" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-10"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="0" g="255" b= "0" a="1.0"/>
+				</FontString>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentSlashTitle" inherits="GameFontNormal" text="LOOTHOG_SLASH_TITLE" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashTitleUL" inherits="GameFontNormal" text="LOOTHOG_SLASH_TITLEUL" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashTitle" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="255" g="0" b= "0" a="1.0"/>
+				</FontString>
+				<FontString name="$parentSlashRoll" inherits="GameFontNormal" text="LOOTHOG_SLASH_ROLL" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashTitleUL" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashLink" inherits="GameFontNormal" text="LOOTHOG_SLASH_LINK" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashRoll" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashConfig" inherits="GameFontNormal" text="LOOTHOG_SLASH_CONFIG" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashLink" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashToggle" inherits="GameFontNormal" text="LOOTHOG_SLASH_TOGGLE" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashConfig" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashManual" inherits="GameFontNormal" text="LOOTHOG_SLASH_MANUAL" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashToggle" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashMode" inherits="GameFontNormal" text="LOOTHOG_SLASH_MODE" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashManual" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashCountdown" inherits="GameFontNormal" text="LOOTHOG_SLASH_COUNTDOWN" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashMode" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashHold" inherits="GameFontNormal" text="LOOTHOG_SLASH_HOLD" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashCountdown" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashHoldReset" inherits="GameFontNormal" text="LOOTHOG_SLASH_HOLDRESET" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashHold" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="26" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashKick" inherits="GameFontNormal" text="LOOTHOG_SLASH_KICK" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashHoldReset" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="-26" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashAnnounce" inherits="GameFontNormal" text="LOOTHOG_SLASH_ANNOUNCE" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashKick" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashAssign" inherits="GameFontNormal" text="LOOTHOG_SLASH_ASSIGN" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashAnnounce" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashClear" inherits="GameFontNormal" text="LOOTHOG_SLASH_CLEAR" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashAssign" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashNotRolled" inherits="GameFontNormal" text="LOOTHOG_SLASH_NOTROLLED" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashClear" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashList" inherits="GameFontNormal" text="LOOTHOG_SLASH_LIST" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashNotRolled" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashStart" inherits="GameFontNormal" text="LOOTHOG_SLASH_START" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashList" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashStart1" inherits="GameFontNormal" text="LOOTHOG_SLASH_START1" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashStart" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="26" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashOffSpec" inherits="GameFontNormal" text="LOOTHOG_SLASH_OFFSPEC" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashStart1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="-26" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashRules" inherits="GameFontNormal" text="LOOTHOG_SLASH_RULES" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashOffSpec" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashReset" inherits="GameFontNormal" text="LOOTHOG_SLASH_RESET" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashRules" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentSlashHelp" inherits="GameFontNormal" text="LOOTHOG_SLASH_HELP" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentSlashReset" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+  </Frame>
+  <Frame name="loothog_addonabout" parent="UIParent" hidden="true" movable="true" enableMouse="True" frameStrata="HIGH">
+    <Size><AbsDimension x="300" y="300"/></Size>
+		<Anchors>
+			<Anchor point="TOP" relativePoint="TOP" relativeTo = "$parent"/>
+			<Offset><AbsDimension x="0" y="-200"/></Offset>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentTitle" inherits="GameFontNormal" text="LOOTHOG_TITLE" justifyH="CENTER" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-10"/>
+							</Offset>
+						</Anchor>
+						<Anchor point="BOTTOMRIGHT" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="-30"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="0" g="255" b= "0" a="1.0"/>
+				</FontString>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentAuthor" inherits="GameFontNormal" text="LOOTHOG_ABOUT_AUTHOR" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="10" y="-60"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="255" g="0" b= "0" a="1.0"/>
+				</FontString>
+				<FontString name="$parentAuthorName" inherits="GameFontNormal" text="LOOTHOG_ABOUT_AUTHORNAME" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentAuthor" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="0" g="255" b= "255" a="1.0"/>
+				</FontString>
+				<FontString name="$parentThanksTitle" inherits="GameFontNormal" text="LOOTHOG_ABOUT_THANKS" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentAuthor" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-4"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="2" g="121" b= "2" a="1.0"/>
+				</FontString>
+				<FontString name="$parentThanks1" inherits="GameFontNormal" text="LOOTHOG_ABOUT_THANKS1" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentThanksTitle" relativePoint="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="2" g="121" b= "2" a="1.0"/>
+				</FontString>
+				<FontString name="$parentThanks2" inherits="GameFontNormal" text="LOOTHOG_ABOUT_THANKS2" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentThanks1" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="2" g="121" b= "2" a="1.0"/>
+				</FontString>
+				<FontString name="$parentThanks3" inherits="GameFontNormal" text="LOOTHOG_ABOUT_THANKS3" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentThanks2" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="2" g="121" b= "2" a="1.0"/>
+				</FontString>
+				<FontString name="$parentThanks4" inherits="GameFontNormal" text="LOOTHOG_ABOUT_THANKS4" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentThanks3" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="2" g="121" b= "2" a="1.0"/>
+				</FontString>
+				<FontString name="$parentThanks5" inherits="GameFontNormal" text="LOOTHOG_ABOUT_THANKS5" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentThanks4" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="2" g="121" b= "2" a="1.0"/>
+				</FontString>
+				<FontString name="$parentThanks6" inherits="GameFontNormal" text="LOOTHOG_ABOUT_THANKS6" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentThanks5" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="2" g="121" b= "2" a="1.0"/>
+				</FontString>
+				<FontString name="$parentThanks7" inherits="GameFontNormal" text="LOOTHOG_ABOUT_THANKS7" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentThanks6" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="2" g="121" b= "2" a="1.0"/>
+				</FontString>
+				<FontString name="$parentThanks8" inherits="GameFontNormal" text="LOOTHOG_ABOUT_THANKS8" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentThanks7" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="2" g="121" b= "2" a="1.0"/>
+				</FontString>
+				<FontString name="$parentThanks9" inherits="GameFontNormal" text="LOOTHOG_ABOUT_THANKS9" justifyV="TOP">
+					<Anchors>
+						<Anchor point="TOPLEFT"  relativeTo="$parentThanks8" relativePoint="BOTTOMLEFT">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				<Color r="2" g="121" b= "2" a="1.0"/>
+				</FontString>
+
+			</Layer>
+		</Layers>
+  </Frame>
+</Ui>

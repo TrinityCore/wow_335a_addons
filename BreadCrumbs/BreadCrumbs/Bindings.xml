@@ -1,0 +1,14 @@
+<Bindings>
+  <Binding name="BreadCrumbs_ToggleAddon" header="BREADCRUMBS">
+    BreadCrumbs:TogAddon();
+  </Binding>
+  <Binding name="BreadCrumbs_ToggleBreadDrop">
+    BreadCrumbs:TogBreadDrop();
+  </Binding>
+  <Binding name="BreadCrumbs_ToggleHideBread">
+    BreadCrumbs:TogHideBread();
+  </Binding>
+  <Binding name="BreadCrumbs_ToggleDropWhenDead">
+    BreadCrumbs:TogDropWhenDead();
+  </Binding>
+</Bindings>

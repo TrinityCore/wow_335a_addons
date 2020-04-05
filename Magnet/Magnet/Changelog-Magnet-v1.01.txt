@@ -1,0 +1,12 @@
+tag v1.01
+92b15f549bf4c5632bdc57633097546fff517b44
+eddie2 <erik@erik-desktop.(none)>
+2009-12-16 21:04:43 +0100
+
+Release v1.01
+
+
+--------------------
+
+eddie2:
+	- Added graphical lists for easy removal of attract and repel items

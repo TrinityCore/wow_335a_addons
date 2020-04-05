@@ -1,0 +1,26 @@
+------------------------------------------------------------------------
+r141 | kemayo | 2009-08-12 07:16:34 +0000 (Wed, 12 Aug 2009) | 1 line
+Changed paths:
+   A /tags/v14 (from /trunk:140)
+
+Tagging as v14
+------------------------------------------------------------------------
+r140 | kemayo | 2009-08-12 07:15:32 +0000 (Wed, 12 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/BankStack.toc
+
+Disable the AddonLoader stuff for release
+------------------------------------------------------------------------
+r139 | kemayo | 2009-08-12 06:37:44 +0000 (Wed, 12 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/BankStack.toc
+
+Bump TOC
+------------------------------------------------------------------------
+r138 | torhal | 2009-07-10 03:21:53 +0000 (Fri, 10 Jul 2009) | 2 lines
+Changed paths:
+   M /trunk/BankStack.toc
+
+Added event registration for BANKFRAME_OPENED and GUILDBANKFRAME_OPENED for AddonLoader, so using the /sort command for the first time at the bank will not error.
+
+------------------------------------------------------------------------

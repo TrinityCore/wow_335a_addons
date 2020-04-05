@@ -1,0 +1,134 @@
+------------------------------------------------------------------------
+r103 | myrroddin | 2010-03-11 10:48:34 +0000 (Thu, 11 Mar 2010) | 1 line
+Changed paths:
+   A /tags/Beta 1.05.1 (from /trunk:102)
+
+Tagging as Beta 1.05.1
+------------------------------------------------------------------------
+r102 | myrroddin | 2010-03-11 10:44:42 +0000 (Thu, 11 Mar 2010) | 2 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+re-arrange toc lib listings so AceGUI loads before AceConfig
+removed alpha tags for Curse users so new features show up in beta builds
+------------------------------------------------------------------------
+r100 | myrroddin | 2010-03-10 09:12:31 +0000 (Wed, 10 Mar 2010) | 2 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+IsCastableSpell() fix
+updated localizations
+------------------------------------------------------------------------
+r99 | myrroddin | 2010-03-07 06:51:19 +0000 (Sun, 07 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+had IsUsableSpell() returns backward
+------------------------------------------------------------------------
+r98 | myrroddin | 2010-03-07 01:49:17 +0000 (Sun, 07 Mar 2010) | 3 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+translations updated, lots of them
+borders on the bars now work
+hopefully removed the unnecessary and wrong chat notification
+------------------------------------------------------------------------
+r96 | myrroddin | 2010-03-04 12:11:30 +0000 (Thu, 04 Mar 2010) | 3 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+fix typo
+enable Alpha setting of res bars for Beta version of addon
+re-organize res bars options screen
+------------------------------------------------------------------------
+r95 | myrroddin | 2010-03-04 11:17:16 +0000 (Thu, 04 Mar 2010) | 2 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+update and added some localizations
+added some features (only in Alpha right now)
+------------------------------------------------------------------------
+r94 | shefki | 2010-03-04 02:03:46 +0000 (Thu, 04 Mar 2010) | 2 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+
+Fix a missing default that causes an error when not using a custom chat message.
+
+------------------------------------------------------------------------
+r92 | myrroddin | 2010-02-27 13:29:06 +0000 (Sat, 27 Feb 2010) | 3 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+fixed issue with texture setting not saved across logouts
+deDE update and ruRU updates
+added redundancy check for out of range to also check for  unit dead
+------------------------------------------------------------------------
+r90 | myrroddin | 2010-02-26 07:13:34 +0000 (Fri, 26 Feb 2010) | 4 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+Res Bars tab options makeover
+Annoying double chat message bug fixed
+zhCN locale updated (thanks, Annahaid)
+Miscellaneous other chat related bugs fixed
+------------------------------------------------------------------------
+r88 | myrroddin | 2010-02-25 07:58:16 +0000 (Thu, 25 Feb 2010) | 3 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+zhTW update
+A couple of minor code tweaks
+Test bars now show a good res, a collision, and a collision on someone already ressed but hadn't accepted. (Green, red, orange, for those of you at home)
+------------------------------------------------------------------------
+r87 | myrroddin | 2010-02-25 03:43:20 +0000 (Thu, 25 Feb 2010) | 3 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+waiting for accept collision colour picker
+alteration to test bars
+separate visible bars and collision chat setting code: you now can use one, the other, both, or neither
+------------------------------------------------------------------------
+r86 | myrroddin | 2010-02-22 14:14:30 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+optimizations, code updates, checking for released units fix.
+------------------------------------------------------------------------
+r84 | myrroddin | 2010-02-18 07:18:26 +0000 (Thu, 18 Feb 2010) | 3 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+Code optimizations for the bars (Torhal)
+Should fix random good resser bar going collision colour
+Bad resser duplicate chat spam code should work as intended
+------------------------------------------------------------------------
+r83 | myrroddin | 2010-02-16 10:41:54 +0000 (Tue, 16 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+Plug a potential memory hole
+------------------------------------------------------------------------
+r82 | myrroddin | 2010-02-15 22:37:54 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+Morgalm's fixes. Should skip last ressed unit when using auto res key, and move on to next dead player
+------------------------------------------------------------------------
+r81 | myrroddin | 2010-02-03 09:59:07 +0000 (Wed, 03 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/SmartRes2.lua
+   M /trunk/SmartRes2.toc
+
+forgot a local table
+more localization updates
+------------------------------------------------------------------------

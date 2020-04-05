@@ -1,0 +1,36 @@
+tag v1.82
+6e558494569da6944d4d2633ebfa966aaac817f2
+John Pasula <ackis@shaw.ca>
+2009-12-09 10:45:10 -0700
+
+Tagging as v1.82
+
+
+--------------------
+
+John Pasula:
+	- Readd LAP.
+	- Readd LAP.
+	- Readd LAP.
+	- Readd LAP.
+	- Readd LAP.
+	- Remove LAP from .pkgmeta so I can push these changes...
+	- Remove the scan components from the gui interface, I just want people to use the slash commands to interface with them.
+	- Make the .docmeta print the main page as creole.
+	- Update main page to describe all slash commands.
+	- Update toc.
+	- Convert main page to creole and update text on it.
+pompy:
+	- Removed some ids that don't cache.
+	- Added more leatherworking itemids.
+	- Added ids for the wotlk jewelcrafting epic gems and removed some ids that don't cache anymore.
+John Pasula:
+	- Fix copy/paste fail.
+	- Updates requested by POMPY.
+unknown:
+	- Add engineering per Pompy.  Pompy,  I typo your name Pimpy at times.  You da man!
+	- Add Tailoring, BS, LW and JC.  Need to refine list.
+	- Update some docs.
+	- Fix the resetitemlock and add a slash command for it (/iqr)
+	- Added cooking recipes
+	- Add a throttle for the safe query.  Will do 500 items and then pause a bit for the server to catch up.

@@ -1,0 +1,292 @@
+------------------------------------------------------------------------
+r1114 | gagorian | 2009-10-18 18:02:01 +0000 (Sun, 18 Oct 2009) | 1 line
+Changed paths:
+   A /tags/1.7.1_release (from /trunk:1113)
+
+Tagging as 1.7.1_release
+------------------------------------------------------------------------
+r1113 | gagorian | 2009-10-17 22:35:23 +0000 (Sat, 17 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Locales/deDE.lua
+   M /trunk/Locales/esES.lua
+   M /trunk/Locales/esMX.lua
+   M /trunk/Locales/frFR.lua
+   M /trunk/Locales/koKR.lua
+   M /trunk/Locales/ruRU.lua
+   M /trunk/Locales/zhCN.lua
+   M /trunk/Locales/zhTW.lua
+
+- Fixed foreign locale files
+------------------------------------------------------------------------
+r1112 | gagorian | 2009-10-16 15:57:20 +0000 (Fri, 16 Oct 2009) | 3 lines
+Changed paths:
+   M /trunk/Data/Paladin.lua
+
+- Divinity is now correctly multiplicative. Also double stacks divinity correctly when targeting self.
+- Reverted Flash of Light coefficient to previous value, ticket information was inaccurate
+- Altered Holy Shock coefficient to a slightly more accurate value
+------------------------------------------------------------------------
+r1111 | gagorian | 2009-10-16 10:02:52 +0000 (Fri, 16 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Data/Paladin.lua
+
+- Slightly altered Holy Light, Flash of Light and Holy Shock coefficients as per ticket 122
+------------------------------------------------------------------------
+r1109 | gagorian | 2009-10-15 08:02:46 +0000 (Thu, 15 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Data/DeathKnight.lua
+
+- Rune Strike is also now properly unavoidable
+------------------------------------------------------------------------
+r1108 | gagorian | 2009-10-15 07:55:41 +0000 (Thu, 15 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Data/Hunter.lua
+
+- Counterattack is now properly unavoidable
+------------------------------------------------------------------------
+r1107 | gagorian | 2009-10-14 12:42:55 +0000 (Wed, 14 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Data/Paladin.lua
+
+- Fixed error with Seal of Vengeance Holy Vengeance debuff effect calculation
+------------------------------------------------------------------------
+r1106 | gagorian | 2009-10-13 19:29:38 +0000 (Tue, 13 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Caster.lua
+   M /trunk/Data/Priest.lua
+
+- Merged Divine Aegis calculation to Power Word: Shield Glyph average heal effect calculation. (As PW: S Glyph proc crit heals triggers Divine Aegis)
+------------------------------------------------------------------------
+r1104 | gagorian | 2009-10-13 17:25:16 +0000 (Tue, 13 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/Caster.lua
+   M /trunk/Data/Hunter.lua
+   M /trunk/Melee.lua
+
+- Fixed Sniper Training, Glyph of Explosive Trap
+- Fixed hit calculation error with next melee type attacks while dual wielding
+------------------------------------------------------------------------
+r1102 | gagorian | 2009-10-11 16:09:05 +0000 (Sun, 11 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Caster.lua
+   M /trunk/Data/Paladin.lua
+
+- Improved global modification table for 3rd party plugin support
+------------------------------------------------------------------------
+r1101 | gagorian | 2009-10-11 02:05:32 +0000 (Sun, 11 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Caster.lua
+   M /trunk/Data/Druid.lua
+   M /trunk/Data/Mage.lua
+   M /trunk/Data/Paladin.lua
+   M /trunk/Data/Rogue.lua
+   M /trunk/Data/Shaman.lua
+   M /trunk/Data/Warlock.lua
+   M /trunk/Data/Warrior.lua
+   M /trunk/Melee.lua
+
+- *Rubs some magic lotion everywhere*
+------------------------------------------------------------------------
+r1100 | gagorian | 2009-10-10 13:52:37 +0000 (Sat, 10 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Caster.lua
+   M /trunk/DrDamage.lua
+
+- Updated support for a possible talent feeding plugin
+------------------------------------------------------------------------
+r1099 | gagorian | 2009-10-10 10:57:21 +0000 (Sat, 10 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Caster.lua
+   M /trunk/DrDamage.lua
+   M /trunk/DrDamage.toc
+
+- Removed a few old function calls from the caster module
+------------------------------------------------------------------------
+r1097 | gagorian | 2009-10-08 23:26:20 +0000 (Thu, 08 Oct 2009) | 3 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/DrDamage.lua
+   M /trunk/DrDamage.toc
+   D /trunk/embeds.xml
+   M /trunk/libs
+   A /trunk/libs/LibDataBroker-1.1.lua
+
+- Removed embeds.xml
+- Added /drd slash command
+- Added LDB icon to open config menu
+------------------------------------------------------------------------
+r1096 | gagorian | 2009-10-08 18:17:22 +0000 (Thu, 08 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Data/DeathKnight.lua
+
+- Now uses a spellID for desecration that works on 3.3 PTR as well (for some reason the old spellID DrDamage was using ended up being removed)
+------------------------------------------------------------------------
+r1095 | gagorian | 2009-10-08 18:09:53 +0000 (Thu, 08 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/Caster.lua
+   M /trunk/Data/Mage.lua
+
+- Fixed caster module dot resilience calculation (it was probably double stacking on a few abilities)
+- Added Summon Water Elemental
+------------------------------------------------------------------------
+r1093 | gagorian | 2009-10-08 16:56:43 +0000 (Thu, 08 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/DrDamage.toc
+
+- Removed Ace2 from addon's .toc name
+- Added AceGUI-3.0-SharedMediaWidgets as optdep
+------------------------------------------------------------------------
+r1092 | gagorian | 2009-10-08 16:45:09 +0000 (Thu, 08 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Caster.lua
+   M /trunk/DrDamage.lua
+   M /trunk/Melee.lua
+
+- First Ace3 beta release
+------------------------------------------------------------------------
+r1091 | gagorian | 2009-10-05 20:29:04 +0000 (Mon, 05 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/DrDamage.lua
+   M /trunk/DrDamage.toc
+   M /trunk/libs
+
+- Removed references to FlexBar2 and InfiniBar
+- Some minor cleanup
+------------------------------------------------------------------------
+r1090 | gagorian | 2009-10-05 19:53:59 +0000 (Mon, 05 Oct 2009) | 3 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/Caster.lua
+   M /trunk/Data/DeathKnight.lua
+   M /trunk/DrDamage.lua
+   M /trunk/embeds.xml
+   M /trunk/libs
+
+- Added some missing libs
+- Fixed Death Knight error on 3.3 PTR
+- A few other Ace3 conversion fixes
+------------------------------------------------------------------------
+r1089 | gagorian | 2009-10-05 18:16:02 +0000 (Mon, 05 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/DrDamage.lua
+   M /trunk/Melee.lua
+
+- Ace3 options table updates
+------------------------------------------------------------------------
+r1088 | gagorian | 2009-10-05 17:28:41 +0000 (Mon, 05 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Caster.lua
+   M /trunk/DrDamage.lua
+   M /trunk/Melee.lua
+
+- Ace3 conversion starting to work
+------------------------------------------------------------------------
+r1087 | gagorian | 2009-10-04 21:12:00 +0000 (Sun, 04 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Aura.lua
+   M /trunk/Caster.lua
+   M /trunk/DrDamage.lua
+   M /trunk/Melee.lua
+   M /trunk/embeds.xml
+
+- A few fixes to last commit. Still broken though.
+------------------------------------------------------------------------
+r1086 | gagorian | 2009-10-04 19:01:03 +0000 (Sun, 04 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/Caster.lua
+   M /trunk/DrDamage.lua
+   M /trunk/DrDamage.toc
+   M /trunk/Locales/deDE.lua
+   M /trunk/Locales/enUS.lua
+   M /trunk/Locales/esES.lua
+   M /trunk/Locales/esMX.lua
+   M /trunk/Locales/frFR.lua
+   M /trunk/Locales/koKR.lua
+   M /trunk/Locales/ruRU.lua
+   M /trunk/Locales/zhCN.lua
+   M /trunk/Locales/zhTW.lua
+   M /trunk/Melee.lua
+   M /trunk/embeds.xml
+   M /trunk/libs
+
+- First step in Ace3 conversion
+- Incomplete, non-functioning, untested, coded while tired, etc etc. so don't complain
+------------------------------------------------------------------------
+r1085 | gagorian | 2009-10-03 12:38:44 +0000 (Sat, 03 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Data/Warlock.lua
+
+- Fixed warlock 4p T9 set bonus
+------------------------------------------------------------------------
+r1083 | gagorian | 2009-10-02 17:01:24 +0000 (Fri, 02 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/Data/Rogue.lua
+
+- Manually enabled target deadly poison is now assumed to be 5 stacks instead of 1
+------------------------------------------------------------------------
+r1082 | karzon13 | 2009-09-28 17:43:56 +0000 (Mon, 28 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/Data/Druid.lua
+   M /trunk/Data/Paladin.lua
+   M /trunk/Data/Shaman.lua
+
+Relic Changes
+------------------------------------------------------------------------
+r1080 | gagorian | 2009-09-28 17:07:48 +0000 (Mon, 28 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/Data/Mage.lua
+
+- Added Combustion +50% increased crit bonus
+------------------------------------------------------------------------
+r1079 | gagorian | 2009-09-28 16:46:49 +0000 (Mon, 28 Sep 2009) | 3 lines
+Changed paths:
+   M /trunk/Data/Hunter.lua
+   M /trunk/Data/Rogue.lua
+   M /trunk/DrDamage.lua
+   M /trunk/Melee.lua
+
+- Added a delayed update trigger for weapon detection. This fixes an issue where calculations ignored your weapon after a game cache clear that causes weapon data to be unretrievable during DrDamage load. No weapon data was displayed until you re-equipped the weapon or relogged.
+- Added new Volley AP bonus
+- Changed Fan of Knives to 70%/105% weapon damage
+------------------------------------------------------------------------
+r1078 | karzon13 | 2009-09-24 23:40:24 +0000 (Thu, 24 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/Data/Shaman.lua
+
+Misread Shamanism changes - impacts CL as well as LB.
+------------------------------------------------------------------------
+r1077 | karzon13 | 2009-09-23 23:30:18 +0000 (Wed, 23 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/Data/DeathKnight.lua
+   M /trunk/Data/Druid.lua
+   M /trunk/Data/Mage.lua
+   M /trunk/Data/Rogue.lua
+   M /trunk/Data/Shaman.lua
+   M /trunk/Data/Warrior.lua
+
+First pass 3.2.2 changes.
+------------------------------------------------------------------------
+r1076 | gagorian | 2009-09-17 15:14:31 +0000 (Thu, 17 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/Data/Warlock.lua
+
+- And this time implemented the mana drain text properly
+------------------------------------------------------------------------
+r1075 | gagorian | 2009-09-17 15:09:07 +0000 (Thu, 17 Sep 2009) | 2 lines
+Changed paths:
+   M /trunk/Data/Druid.lua
+   M /trunk/Data/Warlock.lua
+
+- Added the maximum amount drained over 5 seconds for the Warlock spell Drain Mana as an actionbar text. The text will be displayed when targeting a hostile target with a non-empty mana bar. Since it's a fairly unique spell, the tooltip isn't displayed.
+- Fixed 2p T9 Moonkin using a requirement of 4p.
+------------------------------------------------------------------------
+r1074 | gagorian | 2009-09-12 13:31:01 +0000 (Sat, 12 Sep 2009) | 1 line
+Changed paths:
+   M /trunk/Caster.lua
+   M /trunk/Data/Priest.lua
+   M /trunk/DrDamage.lua
+
+- Glyph of Power Word: Shield now properly gets bonus from Focused Power, also crit is calculated into the average
+------------------------------------------------------------------------

@@ -1,0 +1,2210 @@
+------------------------------------------------------------------------
+r7428 | rabbit | 2010-03-04 13:14:01 +0000 (Thu, 04 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/BigWigs.toc
+
+Bump to 3.2
+------------------------------------------------------------------------
+r7427 | rabbit | 2010-03-04 13:13:27 +0000 (Thu, 04 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/Options/author-list.lua
+
+Update author list.
+------------------------------------------------------------------------
+r7426 | rabbit | 2010-03-04 13:02:40 +0000 (Thu, 04 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Proximity.lua
+
+Honor the 'Disabled' setting.
+------------------------------------------------------------------------
+r7425 | s8095324 | 2010-03-04 04:17:43 +0000 (Thu, 04 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7424 | 7destiny | 2010-03-03 10:25:49 +0000 (Wed, 03 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+
+Citadel/Putricide: Fix phase change timer(heroic).
+------------------------------------------------------------------------
+r7423 | ammo | 2010-03-03 09:10:39 +0000 (Wed, 03 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Festergut.lua
+
+remove spore icons. Big bobbing blob on your head should be enough warning.
+------------------------------------------------------------------------
+r7422 | mojosdojo | 2010-03-03 08:56:02 +0000 (Wed, 03 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------
+r7421 | funkydude | 2010-03-03 00:01:49 +0000 (Wed, 03 Mar 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/Festergut.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Festergut: re add iconing
+Other: various tweaks
+------------------------------------------------------------------------
+r7420 | pettigrow | 2010-03-02 21:19:07 +0000 (Tue, 02 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7419 | 7destiny | 2010-03-02 16:12:24 +0000 (Tue, 02 Mar 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+tweak timer
+------------------------------------------------------------------------
+r7418 | Maat | 2010-02-28 08:58:04 +0000 (Sun, 28 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+bugfix (difficulty)
+------------------------------------------------------------------------
+r7417 | 7destiny | 2010-02-28 07:34:45 +0000 (Sun, 28 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7416 | 7destiny | 2010-02-27 15:30:17 +0000 (Sat, 27 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+
+Fix goo ball timer
+------------------------------------------------------------------------
+r7415 | 7destiny | 2010-02-27 01:49:54 +0000 (Sat, 27 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+
+add missing spellID
+------------------------------------------------------------------------
+r7414 | funkydude | 2010-02-26 20:13:19 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: revert 10man normal timers back to old timers, are they heroic timers maybe 7destiny? because you completely broke it.
+------------------------------------------------------------------------
+r7413 | Maat | 2010-02-26 20:01:20 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+fix up harvest soul so normal and heroic warnings don't mix
+------------------------------------------------------------------------
+r7412 | Maat | 2010-02-26 16:45:18 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+add heroic harvest soul bar
+------------------------------------------------------------------------
+r7411 | 7destiny | 2010-02-26 12:08:03 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7410 | 7destiny | 2010-02-26 10:53:38 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Use a proper name for the Shadow Trap config option at Lich King.
+------------------------------------------------------------------------
+r7409 | rabbit | 2010-02-26 10:42:45 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Coliseum/Beasts.lua
+   M /trunk/Ulduar/IronCouncil.lua
+
+One repeating timer is enough.
+------------------------------------------------------------------------
+r7408 | rabbit | 2010-02-26 10:40:16 +0000 (Fri, 26 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Ulduar/IronCouncil.lua
+
+Throttle tendril scanning a bit at IronCouncil.
+------------------------------------------------------------------------
+r7407 | StingerSoft | 2010-02-25 08:26:44 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU update
+------------------------------------------------------------------------
+r7406 | mojosdojo | 2010-02-25 02:33:48 +0000 (Thu, 25 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/deDE.lua
+
+Citadel/LichKing: Fix a bit flag, deDE stuff.
+------------------------------------------------------------------------
+r7405 | Maat | 2010-02-24 21:09:20 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+add heroic phase timer, make enrage warning more hunter friendly
+------------------------------------------------------------------------
+r7404 | rabbit | 2010-02-24 20:43:03 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+
+Bugfix.
+------------------------------------------------------------------------
+r7403 | rabbit | 2010-02-24 18:52:10 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Valithria.lua
+
+Bugfix.
+------------------------------------------------------------------------
+r7402 | mojosdojo | 2010-02-24 17:43:14 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------
+r7401 | pettigrow | 2010-02-24 15:09:52 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7400 | rabbit | 2010-02-24 14:50:26 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Lanathel.lua
+   M /trunk/Coliseum/Anubarak.lua
+   M /trunk/Coliseum/Beasts.lua
+   M /trunk/Core/BossPrototype.lua
+   M /trunk/Naxxramas/Noth.lua
+   M /trunk/Naxxramas/Sapphiron.lua
+   M /trunk/Northrend/Archavon.lua
+   M /trunk/Northrend/Malygos.lua
+   M /trunk/Northrend/Sartharion.lua
+   M /trunk/Ulduar/Freya.lua
+   M /trunk/Ulduar/Leviathan.lua
+   M /trunk/Ulduar/Razorscale.lua
+   M /trunk/Ulduar/Vezax.lua
+   M /trunk/Ulduar/YoggSaron.lua
+
+Add a :Emote boss API. Same thing as :Yell for emotes.
+------------------------------------------------------------------------
+r7399 | rabbit | 2010-02-24 13:30:45 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Coliseum/Anubarak.lua
+   M /trunk/Coliseum/Beasts.lua
+   M /trunk/Coliseum/Champions.lua
+   M /trunk/Coliseum/Jaraxxus.lua
+   M /trunk/Coliseum/ValkyrTwins.lua
+   M /trunk/Core/BossPrototype.lua
+   M /trunk/Naxxramas/Kelthuzad.lua
+   M /trunk/Naxxramas/Sapphiron.lua
+   M /trunk/Northrend/Malygos.lua
+   M /trunk/Ulduar/Freya.lua
+   M /trunk/Ulduar/Hodir.lua
+   M /trunk/Ulduar/Ignis.lua
+   M /trunk/Ulduar/IronCouncil.lua
+   M /trunk/Ulduar/Leviathan.lua
+   M /trunk/Ulduar/Mimiron.lua
+   M /trunk/Ulduar/Razorscale.lua
+   M /trunk/Ulduar/Thorim.lua
+   M /trunk/Ulduar/Vezax.lua
+   M /trunk/Ulduar/XT-002.lua
+   M /trunk/Ulduar/YoggSaron.lua
+
+Use UnitIsUnit instead of upvaluing the player name all over the place.
+------------------------------------------------------------------------
+r7398 | rabbit | 2010-02-24 13:17:40 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Core/BossPrototype.lua
+
+Make the wrong-option-type message a debug print and don't reset the saved field to the default if we run as debug.
+------------------------------------------------------------------------
+r7397 | rabbit | 2010-02-24 13:09:30 +0000 (Wed, 24 Feb 2010) | 3 lines
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Putricide.lua
+   M /trunk/Core/BossPrototype.lua
+   M /trunk/Naxxramas/Sapphiron.lua
+   M /trunk/Ulduar/Kologarn.lua
+   M /trunk/Ulduar/Thorim.lua
+   M /trunk/Ulduar/Vezax.lua
+
+* Add a BossProto:Say method since so many bosses have started using this mechanic now.
+* Removed the custom marking code from BloodCouncil and use :PrimaryIcon instead.
+
+------------------------------------------------------------------------
+r7396 | pettigrow | 2010-02-24 12:45:04 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7395 | rabbit | 2010-02-24 11:52:24 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Festergut.lua
+
+Use a proper name for the Malleable Goo config option at Festergut.
+------------------------------------------------------------------------
+r7394 | ammo | 2010-02-24 09:45:28 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Sounds/1.mp3
+   M /trunk/Sounds/2.mp3
+   M /trunk/Sounds/3.mp3
+   M /trunk/Sounds/4.mp3
+   M /trunk/Sounds/5.mp3
+
+use increased volume mp3s for the countdown of emphasized bars
+------------------------------------------------------------------------
+r7393 | Maat | 2010-02-24 08:30:51 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+make the scans after defile and shadowtrap cast faster
+------------------------------------------------------------------------
+r7392 | 7destiny | 2010-02-24 06:10:45 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Fix error
+------------------------------------------------------------------------
+r7391 | 7destiny | 2010-02-24 02:54:05 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Festergut.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/Festergut: add goo ball :/ koKR Update
+------------------------------------------------------------------------
+r7390 | mojosdojo | 2010-02-24 01:08:49 +0000 (Wed, 24 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------
+r7389 | rabbit | 2010-02-24 00:13:34 +0000 (Wed, 24 Feb 2010) | 3 lines
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Festergut.lua
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Putricide.lua
+   M /trunk/Citadel/Valithria.lua
+
+Seriously?! Removed custom icon shit from the following bosses; Festergut, Valithria, Deathwhisper, Putricide and LK.
+Also cleaned up some code, but more work is needed here. Jeez, you look away for a few minutes and then BAM!
+
+------------------------------------------------------------------------
+r7388 | rabbit | 2010-02-23 23:38:44 +0000 (Tue, 23 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Remove the beacon marking code, there is already a BigWigs_SindragosaIcons for that. Don't add stuff like this to the core, please.
+------------------------------------------------------------------------
+r7387 | 7destiny | 2010-02-23 10:24:07 +0000 (Tue, 23 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: use berserk in normal.
+------------------------------------------------------------------------
+r7386 | funkydude | 2010-02-22 23:48:15 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: increase plague wait time
+------------------------------------------------------------------------
+r7385 | mojosdojo | 2010-02-22 18:34:51 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------
+r7384 | 7destiny | 2010-02-22 16:11:46 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Festergut.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/Festergut: Add spellID(heroic). Removed goo ball.
+------------------------------------------------------------------------
+r7383 | 7destiny | 2010-02-22 11:42:17 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7382 | 7destiny | 2010-02-22 11:28:47 +0000 (Mon, 22 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/LichKing: Add spellID(heroic). Fix shadow trap CD & icon(Square). 
+------------------------------------------------------------------------
+r7381 | funkydude | 2010-02-21 20:59:00 +0000 (Sun, 21 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+
+Citadel/BloodCouncil: tweak
+------------------------------------------------------------------------
+r7380 | 7destiny | 2010-02-21 17:06:58 +0000 (Sun, 21 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: Fix spawn timer for 10man. koKR Update
+------------------------------------------------------------------------
+r7379 | funkydude | 2010-02-21 13:45:43 +0000 (Sun, 21 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+
+Citadel/Putricide: minor fix
+------------------------------------------------------------------------
+r7378 | 7destiny | 2010-02-21 11:03:42 +0000 (Sun, 21 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+
+Citadel/Putricide: tweak some for heroic
+------------------------------------------------------------------------
+r7377 | 7destiny | 2010-02-20 13:29:18 +0000 (Sat, 20 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7376 | StingerSoft | 2010-02-20 08:34:32 +0000 (Sat, 20 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Plugins/Locales/ruRU.lua
+
+ruRU update
+------------------------------------------------------------------------
+r7375 | 7destiny | 2010-02-20 01:27:18 +0000 (Sat, 20 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Plugins/Locales/koKR.lua
+
+tweak some. koKR Update
+------------------------------------------------------------------------
+r7374 | pettigrow | 2010-02-19 19:59:40 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Plugins/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7373 | mojosdojo | 2010-02-19 16:59:50 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Sindragosa spell id args and deDE stuff.
+------------------------------------------------------------------------
+r7372 | ananhaid | 2010-02-19 16:28:34 +0000 (Fri, 19 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Locales/zhCN.lua
+   M /trunk/Locales/zhTW.lua
+
+BigWigs:
+- zhCN/zhTW update.
+------------------------------------------------------------------------
+r7371 | ananhaid | 2010-02-19 16:21:28 +0000 (Fri, 19 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+   M /trunk/Plugins/Locales/zhCN.lua
+   M /trunk/Plugins/Locales/zhTW.lua
+
+BigWigs:
+- zhCN/zhTW update.
+------------------------------------------------------------------------
+r7370 | rabbit | 2010-02-19 14:03:15 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Core/BossPrototype.lua
+   M /trunk/Options/Options.lua
+
+If we find a boolean flag in the boss settings we will simply reset it to the defaults now, but we still print the warning, because something is obviously wrong somewhere if this happens.
+------------------------------------------------------------------------
+r7369 | rabbit | 2010-02-19 12:50:53 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+
+Highlight the hovered bar if clickable bars is enabled.
+------------------------------------------------------------------------
+r7368 | Maat | 2010-02-19 11:39:16 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+add unchained bar, adjust grip timer
+------------------------------------------------------------------------
+r7367 | 7destiny | 2010-02-19 10:27:46 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7366 | mojosdojo | 2010-02-19 08:53:18 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Locales/deDE.lua
+
+deDE wording changes.
+------------------------------------------------------------------------
+r7365 | mojosdojo | 2010-02-19 04:34:37 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Plugins/Locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------
+r7364 | rabbit | 2010-02-19 04:02:41 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+
+Make report the default left action and emphasize the default right click action.
+------------------------------------------------------------------------
+r7363 | rabbit | 2010-02-19 04:01:49 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/Locales/enUS.lua
+
+Clarify the 'Disable' click action.
+------------------------------------------------------------------------
+r7362 | rabbit | 2010-02-19 04:00:58 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Options/author-list.lua
+   M /trunk/Options/scripts/authors.lua
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/Locales/enUS.lua
+
+Clarify the 'Remove' click action to be temporary.
+------------------------------------------------------------------------
+r7361 | funkydude | 2010-02-19 03:57:37 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+
+Citadel/Putricide: Prevent the "phase soon" message from appearing after the phase has changed.
+------------------------------------------------------------------------
+r7360 | funkydude | 2010-02-19 03:46:15 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Ulduar/IronCouncil.lua
+
+Ulduar/IronCouncil: Just because it's late doesn't mean you should skip reviewing those large commits, or it bites you in the ass.
+------------------------------------------------------------------------
+r7359 | funkydude | 2010-02-19 03:43:14 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Ulduar/Leviathan.lua
+
+Ulduar/Leviathan: bugfix
+------------------------------------------------------------------------
+r7358 | funkydude | 2010-02-19 03:39:47 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Ulduar/Freya.lua
+
+fix some whitespace
+------------------------------------------------------------------------
+r7357 | funkydude | 2010-02-19 03:37:20 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+   M /trunk/Naxxramas/Kelthuzad.lua
+   M /trunk/Naxxramas/Maexxna.lua
+   M /trunk/Northrend/Malygos.lua
+   M /trunk/Ulduar/Algalon.lua
+   M /trunk/Ulduar/Razorscale.lua
+   M /trunk/Ulduar/XT-002.lua
+
+Fix use of UnitHealth in old modules.
+------------------------------------------------------------------------
+r7356 | funkydude | 2010-02-19 03:32:25 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Coliseum/Anubarak.lua
+   M /trunk/Coliseum/Beasts.lua
+   M /trunk/Coliseum/Champions.lua
+   M /trunk/Coliseum/Jaraxxus.lua
+   M /trunk/Coliseum/ValkyrTwins.lua
+   M /trunk/Naxxramas/Anubrekhan.lua
+   M /trunk/Naxxramas/Gluth.lua
+   M /trunk/Naxxramas/Gothik.lua
+   M /trunk/Naxxramas/Grobbulus.lua
+   M /trunk/Naxxramas/Heigan.lua
+   M /trunk/Naxxramas/Horsemen.lua
+   M /trunk/Naxxramas/Kelthuzad.lua
+   M /trunk/Naxxramas/Loatheb.lua
+   M /trunk/Naxxramas/Maexxna.lua
+   M /trunk/Naxxramas/Noth.lua
+   M /trunk/Naxxramas/Patchwerk.lua
+   M /trunk/Naxxramas/Razuvious.lua
+   M /trunk/Naxxramas/Sapphiron.lua
+   M /trunk/Naxxramas/Thaddius.lua
+   M /trunk/Northrend/Archavon.lua
+   M /trunk/Northrend/Koralon.lua
+   M /trunk/Northrend/Malygos.lua
+   M /trunk/Northrend/Sartharion.lua
+   M /trunk/Northrend/Toravon.lua
+   M /trunk/Ulduar/Algalon.lua
+   M /trunk/Ulduar/Auriaya.lua
+   M /trunk/Ulduar/Freya.lua
+   M /trunk/Ulduar/Hodir.lua
+   M /trunk/Ulduar/Ignis.lua
+   M /trunk/Ulduar/IronCouncil.lua
+   M /trunk/Ulduar/Kologarn.lua
+   M /trunk/Ulduar/Leviathan.lua
+   M /trunk/Ulduar/Mimiron.lua
+   M /trunk/Ulduar/Razorscale.lua
+   M /trunk/Ulduar/Thorim.lua
+   M /trunk/Ulduar/Vezax.lua
+   M /trunk/Ulduar/XT-002.lua
+   M /trunk/Ulduar/YoggSaron.lua
+
+Cleanup old modules to properly use :Engage.
+------------------------------------------------------------------------
+r7355 | rabbit | 2010-02-19 00:48:40 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Core/Core.lua
+   M /trunk/Locales/deDE.lua
+   M /trunk/Locales/enUS.lua
+   M /trunk/Locales/esES.lua
+   M /trunk/Locales/frFR.lua
+   M /trunk/Locales/koKR.lua
+   M /trunk/Locales/ruRU.lua
+   M /trunk/Locales/zhCN.lua
+   M /trunk/Locales/zhTW.lua
+
+Remove an unused locale string.
+------------------------------------------------------------------------
+r7354 | rabbit | 2010-02-19 00:44:54 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Core/BossPrototype.lua
+   M /trunk/Core/Core.lua
+   M /trunk/Plugins/Bars.lua
+
+Fix some xxx comments.
+------------------------------------------------------------------------
+r7353 | rabbit | 2010-02-19 00:40:16 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/Locales/enUS.lua
+
+Remove the menu action and make strings localizable.
+------------------------------------------------------------------------
+r7352 | rabbit | 2010-02-19 00:28:46 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Core/BossPrototype.lua
+
+Reset the silenced option reset timer when necessary.
+------------------------------------------------------------------------
+r7351 | rabbit | 2010-02-19 00:27:28 +0000 (Fri, 19 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Core/BossPrototype.lua
+   M /trunk/Plugins/Bars.lua
+
+A real hack to silence options. Gotta love hacks.
+------------------------------------------------------------------------
+r7350 | funkydude | 2010-02-18 22:25:07 +0000 (Thu, 18 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Saurfang.lua
+
+Citadel/Saurfang: tweak id's
+------------------------------------------------------------------------
+r7349 | StingerSoft | 2010-02-18 21:58:55 +0000 (Thu, 18 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU update
+------------------------------------------------------------------------
+r7348 | funkydude | 2010-02-18 21:45:18 +0000 (Thu, 18 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Gunship.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+Citadel/Gunship: Revert back to using yell for disable.
+------------------------------------------------------------------------
+r7347 | funkydude | 2010-02-18 20:44:45 +0000 (Thu, 18 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: error bugfixes.
+------------------------------------------------------------------------
+r7346 | funkydude | 2010-02-18 19:21:37 +0000 (Thu, 18 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Core/BossPrototype.lua
+   M /trunk/Loader.lua
+   M /trunk/Locales/deDE.lua
+   M /trunk/Locales/enUS.lua
+   M /trunk/Locales/frFR.lua
+   M /trunk/Locales/koKR.lua
+   M /trunk/Locales/ruRU.lua
+   M /trunk/Locales/zhCN.lua
+   M /trunk/Locales/zhTW.lua
+
+Instead of telling the user to relog when their combat log breaks, automatically fix it for them, since we are that awesome.
+------------------------------------------------------------------------
+r7345 | rabbit | 2010-02-18 18:57:31 +0000 (Thu, 18 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+
+Fix the Disable click action.
+------------------------------------------------------------------------
+r7344 | rabbit | 2010-02-18 17:31:55 +0000 (Thu, 18 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+
+Clarify an xxx comment.
+------------------------------------------------------------------------
+r7343 | 7destiny | 2010-02-18 13:28:39 +0000 (Thu, 18 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/Marrowgar.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Marrowgar: Fix Bone Storm timer for heroic.
+Citadel/Sindragosa: Add missing spellID
+------------------------------------------------------------------------
+r7342 | mojosdojo | 2010-02-17 23:39:48 +0000 (Wed, 17 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: Change the way portals are announced. 46 sec CD/positioning + 14 sec until spawn.
+------------------------------------------------------------------------
+r7341 | onyxmaster | 2010-02-17 17:41:34 +0000 (Wed, 17 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+fixed ruRU LK Harvest Soul bar
+------------------------------------------------------------------------
+r7340 | Maat | 2010-02-16 23:50:58 +0000 (Tue, 16 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+add the right spellId for shadow trap
+------------------------------------------------------------------------
+r7339 | rabbit | 2010-02-16 23:15:55 +0000 (Tue, 16 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Don't stop scanning on the first plagued person.
+------------------------------------------------------------------------
+r7338 | rabbit | 2010-02-16 21:20:37 +0000 (Tue, 16 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Remove the proximity window and link the warmup bar to berserk instead of the add enrage.
+------------------------------------------------------------------------
+r7337 | s8095324 | 2010-02-16 06:44:02 +0000 (Tue, 16 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7336 | s8095324 | 2010-02-16 06:18:21 +0000 (Tue, 16 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7335 | pettigrow | 2010-02-15 23:30:04 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7334 | funkydude | 2010-02-15 22:12:36 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: bugfix
+------------------------------------------------------------------------
+r7333 | mojosdojo | 2010-02-15 21:12:56 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Putricide.lua
+
+Citadel/Putricide. Fix bit flag, deDE update.
+------------------------------------------------------------------------
+r7332 | 7destiny | 2010-02-15 13:10:28 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: tweak defile timer for transition. Add missing reaperCD.
+------------------------------------------------------------------------
+r7331 | 7destiny | 2010-02-15 13:07:05 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+
+Citadel/Putricide: summoned two slime at the same time in heroic(phase change), they need different icons.
+------------------------------------------------------------------------
+r7330 | funkydude | 2010-02-15 03:10:16 +0000 (Mon, 15 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: tweak dispel
+------------------------------------------------------------------------
+r7329 | funkydude | 2010-02-14 22:27:45 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: tweak timer.
+------------------------------------------------------------------------
+r7328 | funkydude | 2010-02-14 22:27:08 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: It's a debuff not a buff :)
+------------------------------------------------------------------------
+r7327 | funkydude | 2010-02-14 21:46:59 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: drycoded plague jump scanner
+------------------------------------------------------------------------
+r7326 | funkydude | 2010-02-14 21:07:41 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+
+Citadel/BloodCouncil: Bugfix shadow prison error
+------------------------------------------------------------------------
+r7325 | funkydude | 2010-02-14 21:04:28 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: change how blazing scanning is handled.
+------------------------------------------------------------------------
+r7324 | funkydude | 2010-02-14 17:23:30 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Putricide.lua
+
+Citadel: cleanup locale entries.
+------------------------------------------------------------------------
+r7323 | funkydude | 2010-02-14 17:14:42 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Rotface.lua
+
+Citadel/Rotface: Change vile gas marking to a cooldown bar, only show initial bar on heroic.
+------------------------------------------------------------------------
+r7322 | funkydude | 2010-02-14 17:02:00 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+
+Citadel/Putricide: Revert some crap added by 7destiny and fix his commit, again... How about you add useful things only, instead of adding _everything_
+------------------------------------------------------------------------
+r7321 | 7destiny | 2010-02-14 16:46:13 +0000 (Sun, 14 Feb 2010) | 3 lines
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Putricide.lua
+   M /trunk/Citadel/Rotface.lua
+
+Citadel/Rotface: Add Vile Gas CD.
+Citadel/Putricide: tweak puddle, gasbomb timer.
+Citadel/LichKing: Add Shadow Trap CD.
+------------------------------------------------------------------------
+r7320 | 7destiny | 2010-02-14 16:27:22 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: Add enable mob(first engage issue). Fix Icy Grip.
+------------------------------------------------------------------------
+r7319 | rabbit | 2010-02-14 14:36:14 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Remove the Warmup phase option header.
+------------------------------------------------------------------------
+r7318 | pettigrow | 2010-02-14 14:18:54 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7317 | rabbit | 2010-02-14 12:24:37 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Bugfix.
+------------------------------------------------------------------------
+r7316 | pettigrow | 2010-02-14 11:34:41 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Putricide.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7315 | 7destiny | 2010-02-14 11:17:59 +0000 (Sun, 14 Feb 2010) | 4 lines
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Putricide.lua
+
+Citadel/Putricide:
+- Add Slime Puddle.
+- Remove Gas & Ooze Variable.
+- Fix phase for heroic mode(Tear Gas is in normal, not heroic).
+------------------------------------------------------------------------
+r7314 | mojosdojo | 2010-02-14 10:01:06 +0000 (Sun, 14 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Saurfang.lua
+
+deDE update.
+
+------------------------------------------------------------------------
+r7313 | 7destiny | 2010-02-14 06:01:41 +0000 (Sun, 14 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel: Fix Mana Void. Add missing spellID
+
+------------------------------------------------------------------------
+r7312 | 7destiny | 2010-02-14 04:13:37 +0000 (Sun, 14 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Fix Options :)
+
+------------------------------------------------------------------------
+r7311 | funkydude | 2010-02-14 04:09:57 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Festergut.lua
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Putricide.lua
+   M /trunk/Citadel/Rotface.lua
+
+Citadel: It's heroic not hard...
+------------------------------------------------------------------------
+r7310 | 7destiny | 2010-02-14 04:02:10 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Fix optionHeaders :/
+------------------------------------------------------------------------
+r7309 | 7destiny | 2010-02-14 03:56:47 +0000 (Sun, 14 Feb 2010) | 4 lines
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/LichKing: 
+- Add first horror bar
+- Add 15min berserk for hard mode
+- Add Shadow Trap for hard mode
+------------------------------------------------------------------------
+r7308 | funkydude | 2010-02-14 02:35:50 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/modules.xml
+
+Re-enable disabled modules
+------------------------------------------------------------------------
+r7306 | funkydude | 2010-02-14 01:29:25 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Festergut.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Putricide.lua
+   M /trunk/Citadel/Rotface.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Remove some whitespace.
+------------------------------------------------------------------------
+r7305 | funkydude | 2010-02-14 01:20:09 +0000 (Sun, 14 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/BigWigs.toc
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/modules.xml
+
+Disable in-work modules, bump toc.
+------------------------------------------------------------------------
+r7304 | 7destiny | 2010-02-13 16:39:24 +0000 (Sat, 13 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/BloodCouncil: Add Shadow Prison for hard
+------------------------------------------------------------------------
+r7303 | 7destiny | 2010-02-13 15:58:02 +0000 (Sat, 13 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+
+Citadel/Deathwhisper: Fix Dominate Mind(use 10man hard)
+------------------------------------------------------------------------
+r7302 | 7destiny | 2010-02-13 14:58:27 +0000 (Sat, 13 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Putricide.lua
+
+Citadel/Putricide: Add Gas & Ooze Variable, Unbound Plague for hard. koKR Update
+------------------------------------------------------------------------
+r7301 | 7destiny | 2010-02-13 14:53:44 +0000 (Sat, 13 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Rotface.lua
+
+Citadel/Rotface: Add Vile Gas for hard.
+------------------------------------------------------------------------
+r7300 | 7destiny | 2010-02-13 14:50:50 +0000 (Sat, 13 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: tweak first airphase timer. add icy grip CD.
+------------------------------------------------------------------------
+r7299 | 7destiny | 2010-02-13 06:57:06 +0000 (Sat, 13 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Locales/koKR.lua
+   M /trunk/Plugins/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7298 | rabbit | 2010-02-13 03:08:14 +0000 (Sat, 13 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Soul Reaper is in p2, not p1.
+------------------------------------------------------------------------
+r7297 | s8095324 | 2010-02-13 02:23:57 +0000 (Sat, 13 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW/zhCN update
+------------------------------------------------------------------------
+r7296 | s8095324 | 2010-02-13 02:00:13 +0000 (Sat, 13 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7295 | pettigrow | 2010-02-12 18:53:41 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Festergut.lua
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7294 | rabbit | 2010-02-12 14:24:09 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/Messages.lua
+
+Add in some xxxs for unfinished stuff.
+------------------------------------------------------------------------
+r7293 | rabbit | 2010-02-12 14:18:44 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Core/Core.lua
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/Emphasize.lua
+   M /trunk/Plugins/Messages.lua
+
+Fix some drycode mistakes, still untested, but should work with the test bars now.
+------------------------------------------------------------------------
+r7292 | rabbit | 2010-02-12 13:55:27 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Emphasize.lua
+
+Hide this option until it's implemented.
+------------------------------------------------------------------------
+r7291 | rabbit | 2010-02-12 13:48:58 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/modules.xml
+
+Uncomment the emphasize plugin.
+------------------------------------------------------------------------
+r7290 | rabbit | 2010-02-12 13:46:37 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/Emphasize.lua
+   M /trunk/Plugins/Flash.lua
+   M /trunk/Plugins/Messages.lua
+
+Implement the 5-1 countdown in text form and 3-second flash at the end of emphasized timers. Drycoded.
+------------------------------------------------------------------------
+r7289 | rabbit | 2010-02-12 13:29:39 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/Emphasize.lua
+
+Implement the temporary emphasize, still need support for some of the SE options, like bar sizing.
+------------------------------------------------------------------------
+r7288 | rabbit | 2010-02-12 13:22:20 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Messages.lua
+
+Add an :EmphasizedPrint function to the messages module.
+------------------------------------------------------------------------
+r7287 | rabbit | 2010-02-12 12:48:08 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Remove the engage print on LK.
+------------------------------------------------------------------------
+r7286 | 7destiny | 2010-02-12 11:33:37 +0000 (Fri, 12 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Festergut.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Putricide.lua
+   M /trunk/Citadel/Rotface.lua
+   M /trunk/Citadel/Saurfang.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Festergut: Add goo ball for hard. Cleanup spellID
+
+------------------------------------------------------------------------
+r7285 | funkydude | 2010-02-12 06:07:15 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Gunship.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+Citadel/Gunship: Various tweaks, remove some locale.
+------------------------------------------------------------------------
+r7284 | funkydude | 2010-02-12 05:05:27 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Saurfang.lua
+
+Citadel/Saurfang: various tweaks
+------------------------------------------------------------------------
+r7283 | funkydude | 2010-02-12 04:19:20 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+
+Citadel/Deathwhisper: add some comments
+------------------------------------------------------------------------
+r7282 | funkydude | 2010-02-12 03:56:45 +0000 (Fri, 12 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Marrowgar.lua
+
+Citadel/Marrowgar: locale/code tweaks
+------------------------------------------------------------------------
+r7281 | pettigrow | 2010-02-11 21:04:51 +0000 (Thu, 11 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7280 | funkydude | 2010-02-11 18:02:22 +0000 (Thu, 11 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/Deathwhisper: Revert vampiric might addition, if you're going to add random crap come on IRC and tell us why.
+------------------------------------------------------------------------
+r7279 | 7destiny | 2010-02-11 17:53:43 +0000 (Thu, 11 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+
+Citadel/Deathwhisper: tweak spirit timer
+------------------------------------------------------------------------
+r7278 | 7destiny | 2010-02-11 17:39:01 +0000 (Thu, 11 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/Deathwhisper: Add Vampiric Might, first spirit bar.
+------------------------------------------------------------------------
+r7277 | funkydude | 2010-02-11 16:11:08 +0000 (Thu, 11 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/Deathwhisper: tweaks.
+------------------------------------------------------------------------
+r7276 | 7destiny | 2010-02-11 15:52:13 +0000 (Thu, 11 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/Deathwhisper: Rewrite Dominate Mind, add CD bar, icon. and Fix Summon Spirit, add CD bar.
+------------------------------------------------------------------------
+r7275 | yoshimo | 2010-02-11 15:38:25 +0000 (Thu, 11 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+
+deDE update: Lich King warmup trigger && Sindragosa P2 trigger
+------------------------------------------------------------------------
+r7274 | rabbit | 2010-02-11 14:32:41 +0000 (Thu, 11 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Core/BossPrototype.lua
+
+Simplify the difficulty hack.
+------------------------------------------------------------------------
+r7273 | funkydude | 2010-02-10 22:13:42 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Marrowgar.lua
+   M /trunk/Core/BossPrototype.lua
+
+difficulty fix
+------------------------------------------------------------------------
+r7272 | funkydude | 2010-02-10 21:43:10 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Rotface.lua
+
+Citadel/Rotface: fix initial spray bar
+------------------------------------------------------------------------
+r7271 | funkydude | 2010-02-10 21:11:57 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+Citadel/Deathwhisper: revert previous removal until I can make a better decision about it.
+------------------------------------------------------------------------
+r7270 | funkydude | 2010-02-10 20:31:43 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+
+Citadel/Deathwhisper: Remove summon spirit warning, I don't see how it's useful since they have a mind of their own. Add a bar for frostbolt.
+------------------------------------------------------------------------
+r7269 | mojosdojo | 2010-02-10 18:17:03 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+deDE update.
+------------------------------------------------------------------------
+r7268 | onyxmaster | 2010-02-10 17:18:06 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU LK locale catchup
+------------------------------------------------------------------------
+r7267 | funkydude | 2010-02-10 16:14:04 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: adjust a timer because of the previous commit.
+------------------------------------------------------------------------
+r7266 | funkydude | 2010-02-10 16:10:42 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: change to a warmup style bar.
+------------------------------------------------------------------------
+r7265 | funkydude | 2010-02-10 15:53:55 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+
+Citadel/Deathwhisper: Cleanup add timers more.
+------------------------------------------------------------------------
+r7264 | funkydude | 2010-02-10 15:27:16 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Gunship.lua
+   M /trunk/Citadel/Marrowgar.lua
+   M /trunk/Citadel/Saurfang.lua
+
+Citadel: Cleanups, Revert gunship timers change. Unless they were hotfixed changed, I don't know why they were changed here. If they are different on heroic, add heroic checks.
+------------------------------------------------------------------------
+r7263 | 7destiny | 2010-02-10 14:59:51 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/LichKing.lua
+
+Citadel: Fix some :/
+------------------------------------------------------------------------
+r7262 | pettigrow | 2010-02-10 14:04:08 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7261 | 7destiny | 2010-02-10 13:53:24 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: tweak timer, add missing spellID
+------------------------------------------------------------------------
+r7260 | 7destiny | 2010-02-10 13:09:40 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Fix valkyr, add horror stop bar.
+------------------------------------------------------------------------
+r7259 | pettigrow | 2010-02-10 12:26:52 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7258 | 7destiny | 2010-02-10 11:57:48 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Marrowgar.lua
+
+Citadel/Deathwhisper: Fix Bonestorm :/
+------------------------------------------------------------------------
+r7257 | 7destiny | 2010-02-10 10:39:01 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+
+Citadel/Deathwhisper: Add Frostbolt cast in hard mode.
+------------------------------------------------------------------------
+r7256 | 7destiny | 2010-02-10 09:46:43 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+
+Citadel/Deathwhisper: Fix optionHeaders
+------------------------------------------------------------------------
+r7255 | 7destiny | 2010-02-10 09:37:19 +0000 (Wed, 10 Feb 2010) | 3 lines
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Marrowgar.lua
+   M /trunk/Citadel/Saurfang.lua
+
+Citadel/Marrowgar: Add Bonestorm timer for hard mode
+Citadel/Deathwhisper: Add Adds timer for hard mode
+Citadel/Saurfang: Add Berserk for hard mode
+------------------------------------------------------------------------
+r7254 | 7destiny | 2010-02-10 08:14:20 +0000 (Wed, 10 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Gunship.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/Deathwhisper: Add Summon Spirit(25 hard)
+Citadel/Gunship: Fix timer
+------------------------------------------------------------------------
+r7253 | 7destiny | 2010-02-10 05:28:03 +0000 (Wed, 10 Feb 2010) | 3 lines
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Marrowgar.lua
+
+Citadel/LichKing: Add missing spellID
+Citadel/Marrowgar: Add missing spellID, and Bone storm warn(25man hard)
+
+------------------------------------------------------------------------
+r7252 | 7destiny | 2010-02-10 04:51:47 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: Set icons on bacon.
+------------------------------------------------------------------------
+r7251 | 7destiny | 2010-02-10 04:10:34 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/LichKing: stop bar for Transition. koKR Update
+------------------------------------------------------------------------
+r7250 | mojosdojo | 2010-02-10 03:38:44 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/deDE.lua
+
+Citadel/LichKing: Fix bit flags, cleanup events and options, remove unneeded locals.
+------------------------------------------------------------------------
+r7249 | ananhaid | 2010-02-10 03:09:41 +0000 (Wed, 10 Feb 2010) | 3 lines
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+   M /trunk/Citadel/Valithria.lua
+
+BigWigs:
+- zhTW update.
+- typo.
+------------------------------------------------------------------------
+r7248 | mojosdojo | 2010-02-10 03:03:05 +0000 (Wed, 10 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+   M /trunk/Citadel/Sindragosa.lua
+   M /trunk/Citadel/Valithria.lua
+   M /trunk/Plugins/Locales/deDE.lua
+
+* Citadel/Valithria: Add portal count.
+* Citadel/Sindragosa: optionHeaders.
+------------------------------------------------------------------------
+r7247 | 7destiny | 2010-02-10 02:48:31 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Fix spam Valkyr, phase count.
+------------------------------------------------------------------------
+r7246 | 7destiny | 2010-02-10 01:56:05 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7245 | funkydude | 2010-02-10 01:40:37 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: Add icon on skeleton, hopefully make mana void warning actually work.
+------------------------------------------------------------------------
+r7244 | 7destiny | 2010-02-10 01:16:17 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Set icon on Harvest Soul, add whisper, flash.
+------------------------------------------------------------------------
+r7243 | 7destiny | 2010-02-10 00:57:43 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Add first bar for Harvest Soul
+------------------------------------------------------------------------
+r7242 | 7destiny | 2010-02-10 00:41:11 +0000 (Wed, 10 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/LichKing: optionHeaders and koKR Update
+------------------------------------------------------------------------
+r7241 | pettigrow | 2010-02-09 23:47:20 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Plugins/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7240 | 7destiny | 2010-02-09 23:43:59 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7239 | 7destiny | 2010-02-09 23:35:05 +0000 (Tue, 09 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/LichKing: Add Shambling Horror, Fix Reaper CD
+
+------------------------------------------------------------------------
+r7238 | funkydude | 2010-02-09 23:07:44 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: Partially decrypt the blazing skeleton respawn timers /headache. WTB cookie.
+------------------------------------------------------------------------
+r7237 | 7destiny | 2010-02-09 12:46:33 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7236 | ananhaid | 2010-02-09 02:40:20 +0000 (Tue, 09 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+   M /trunk/Northrend/Locales/koKR.lua
+   M /trunk/Northrend/Locales/zhTW.lua
+   M /trunk/Plugins/Locales/zhCN.lua
+   M /trunk/Plugins/Locales/zhTW.lua
+
+BigWigs:
+- zhCN/zhTW update.
+------------------------------------------------------------------------
+r7235 | rabbit | 2010-02-09 01:28:05 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Locales/enUS.lua
+   M /trunk/Plugins/Tips.lua
+
+Last round of tip tweaks for the night, anyone promoted in the raid can now send tips.
+------------------------------------------------------------------------
+r7234 | rabbit | 2010-02-09 01:09:40 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+   M /trunk/Plugins/Tips.lua
+
+Don't use the same sound for two different abilities@Sindragosa.
+------------------------------------------------------------------------
+r7233 | rabbit | 2010-02-09 01:03:20 +0000 (Tue, 09 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Tips.lua
+
+Clean up tips.
+------------------------------------------------------------------------
+r7232 | rabbit | 2010-02-08 22:47:27 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Add back the unchained magic warning crap because our casters suck.
+------------------------------------------------------------------------
+r7231 | mojosdojo | 2010-02-08 13:09:23 +0000 (Mon, 08 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+* Citadel/Sindragosa: Delete a locale, we don't need it anymore.
+* Update deDE: Change wording for Putricide, add the Lich King.
+------------------------------------------------------------------------
+r7230 | 7destiny | 2010-02-08 12:21:33 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7229 | rabbit | 2010-02-08 11:57:18 +0000 (Mon, 08 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Warn every 2 stacks of buffet, in case people are doing the achievement
+.
+------------------------------------------------------------------------
+r7228 | s8095324 | 2010-02-08 10:25:36 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7227 | onyxmaster | 2010-02-08 09:56:20 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU LK engage trigger, last phase bar text
+------------------------------------------------------------------------
+r7226 | s8095324 | 2010-02-08 09:04:40 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW/zhCN update
+------------------------------------------------------------------------
+r7225 | s8095324 | 2010-02-08 08:53:24 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7224 | s8095324 | 2010-02-08 08:42:49 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7223 | pettigrow | 2010-02-08 00:52:40 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7222 | rabbit | 2010-02-08 00:52:36 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Remove the unchained warning, we already warn for instability stacks anyway.
+------------------------------------------------------------------------
+r7221 | rabbit | 2010-02-08 00:37:57 +0000 (Mon, 08 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Only warn for every 2 stacks of buffet so we don't spam so much.
+------------------------------------------------------------------------
+r7220 | maat | 2010-02-07 22:04:11 +0000 (Sun, 07 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+add last phase bar
+------------------------------------------------------------------------
+r7219 | funkydude | 2010-02-07 21:58:13 +0000 (Sun, 07 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+Citadel/LichKing: Fixup engage triggers.
+------------------------------------------------------------------------
+r7218 | 7destiny | 2010-02-07 17:43:58 +0000 (Sun, 07 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7217 | funkydude | 2010-02-07 16:44:56 +0000 (Sun, 07 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/modules.xml
+
+re-enable the under dev modules
+------------------------------------------------------------------------
+r7216 | 7destiny | 2010-02-07 16:25:29 +0000 (Sun, 07 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Fix bar icon, defile CD
+
+------------------------------------------------------------------------
+r7215 | 7destiny | 2010-02-07 12:22:10 +0000 (Sun, 07 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Fix CD for Reaper, Defile
+------------------------------------------------------------------------
+r7213 | funkydude | 2010-02-07 05:14:13 +0000 (Sun, 07 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/BigWigs.toc
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/modules.xml
+
+bump toc, disable under dev modules.
+------------------------------------------------------------------------
+r7212 | funkydude | 2010-02-06 23:26:48 +0000 (Sat, 06 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+
+Citadel: deDE update
+------------------------------------------------------------------------
+r7211 | onyxmaster | 2010-02-06 21:15:20 +0000 (Sat, 06 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU LK fixes
+------------------------------------------------------------------------
+r7210 | s8095324 | 2010-02-06 19:15:50 +0000 (Sat, 06 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7209 | s8095324 | 2010-02-06 19:06:12 +0000 (Sat, 06 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7208 | 7destiny | 2010-02-06 16:32:14 +0000 (Sat, 06 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7207 | 7destiny | 2010-02-06 16:31:48 +0000 (Sat, 06 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Add Enrage
+------------------------------------------------------------------------
+r7206 | mojosdojo | 2010-02-06 15:01:03 +0000 (Sat, 06 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------
+r7205 | maat | 2010-02-06 12:13:47 +0000 (Sat, 06 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+hopefully some timer fixes
+added Vile Spirits and Raging Spirits warnings
+------------------------------------------------------------------------
+r7204 | pettigrow | 2010-02-05 22:10:23 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7203 | onyxmaster | 2010-02-05 21:53:45 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU Lich King messages and triggers
+------------------------------------------------------------------------
+r7202 | funkydude | 2010-02-05 21:50:32 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: fix drycoded errors.
+------------------------------------------------------------------------
+r7201 | 7destiny | 2010-02-05 21:07:35 +0000 (Fri, 05 Feb 2010) | 5 lines
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/LichKing: 
+- Rewrite Necrotic Plague
+- Fix Defile.
+- Add Infest, Soul Reaper
+- koKR Update
+------------------------------------------------------------------------
+r7200 | 7destiny | 2010-02-05 17:19:40 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7199 | lcf_hell | 2010-02-05 16:50:46 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+Sindragosa: ruRU update
+------------------------------------------------------------------------
+r7198 | 7destiny | 2010-02-05 16:45:37 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Toravon.lua
+
+Toravon: Fix issue count :/
+------------------------------------------------------------------------
+r7197 | 7destiny | 2010-02-05 16:27:26 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: change Unchained -> Instability. add Unchained warning. koKR Update
+------------------------------------------------------------------------
+r7196 | s8095324 | 2010-02-05 16:23:36 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7195 | s8095324 | 2010-02-05 16:09:13 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7194 | s8095324 | 2010-02-05 15:47:01 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+   M /trunk/Northrend/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7193 | s8095324 | 2010-02-05 15:45:34 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7192 | 7destiny | 2010-02-05 13:17:14 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7191 | pettigrow | 2010-02-05 10:29:46 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7190 | mojosdojo | 2010-02-05 09:32:33 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: Remove a double entry. deDE update.
+------------------------------------------------------------------------
+r7189 | onyxmaster | 2010-02-05 09:25:46 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU Festergut Spore icons & Lady Deathwhisper Deformed Fanatic messages
+------------------------------------------------------------------------
+r7188 | funkydude | 2010-02-05 08:26:26 +0000 (Fri, 05 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Festergut.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+Citadel/BloodCouncil: tweak icon description
+Citadel/Festergut: Set icons on spores, viewable through the boss among other helpful things
+------------------------------------------------------------------------
+r7187 | funkydude | 2010-02-05 07:00:47 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+Citadel/Deathwhisper: Change deformed trigger
+------------------------------------------------------------------------
+r7186 | funkydude | 2010-02-05 06:45:29 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: Add 10min berserk
+------------------------------------------------------------------------
+r7185 | funkydude | 2010-02-05 04:38:16 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+Citadel/BloodCouncil: tweaks
+------------------------------------------------------------------------
+r7184 | funkydude | 2010-02-05 04:03:04 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/modules.xml
+
+Re-add modules that were unloaded/disabled for release.
+------------------------------------------------------------------------
+r7182 | rabbit | 2010-02-05 03:40:10 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Options/author-list.lua
+
+Author list update.
+------------------------------------------------------------------------
+r7181 | rabbit | 2010-02-05 03:26:45 +0000 (Fri, 05 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Lots of changes, too angry to list them.
+
+------------------------------------------------------------------------
+r7180 | funkydude | 2010-02-05 02:19:58 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/BigWigs.toc
+   M /trunk/Citadel/DeathboundWard.lua
+   M /trunk/Citadel/Saurfang.lua
+   M /trunk/Naxxramas/Noth.lua
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/modules.xml
+
+Bump toc, unload/disable some stuff
+------------------------------------------------------------------------
+r7179 | mojosdojo | 2010-02-05 02:02:41 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: Comment clean-up.
+------------------------------------------------------------------------
+r7178 | mojosdojo | 2010-02-05 01:26:51 +0000 (Fri, 05 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: Rewrite 'Chilled' function, add frost breath.
+------------------------------------------------------------------------
+r7177 | mojosdojo | 2010-02-04 23:08:42 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: Fix bit flag (again), add airphase bar text.
+------------------------------------------------------------------------
+r7176 | onyxmaster | 2010-02-04 23:02:35 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU Blood Council Inferno (Empowered Flames) trigger fix
+------------------------------------------------------------------------
+r7175 | pettigrow | 2010-02-04 22:49:46 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7174 | onyxmaster | 2010-02-04 22:04:54 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU Blood Council Inferno trigger
+------------------------------------------------------------------------
+r7173 | funkydude | 2010-02-04 22:03:50 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+
+Citadel/BloodCouncil: Fix Empowered Flames warning and fix rare error.
+------------------------------------------------------------------------
+r7172 | funkydude | 2010-02-04 20:59:29 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: minor tweak
+------------------------------------------------------------------------
+r7171 | 7destiny | 2010-02-04 17:48:28 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Citadel/LichKing: Add warmup timer. koKR Update
+------------------------------------------------------------------------
+r7170 | 7destiny | 2010-02-04 17:34:05 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Citadel/LichKing: Fix Death, Harvest Soul
+------------------------------------------------------------------------
+r7169 | onyxmaster | 2010-02-04 17:24:03 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU Sindragosa air phase trigger
+------------------------------------------------------------------------
+r7168 | onyxmaster | 2010-02-04 17:17:25 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU Valithria engage trigger
+------------------------------------------------------------------------
+r7167 | rabbit | 2010-02-04 16:50:49 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/LichKing.lua
+
+Add preliminary Lich King module from Calebv, timers are not verified and some are known to be wrong.
+------------------------------------------------------------------------
+r7166 | pettigrow | 2010-02-04 16:47:49 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Sindragosa.lua
+   M /trunk/Northrend/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7165 | mojosdojo | 2010-02-04 16:39:49 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Valithria.lua
+
+Actually, it's supresser, not suppressor. Oh please, Blizz!
+------------------------------------------------------------------------
+r7164 | funkydude | 2010-02-04 16:39:06 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Loader.lua
+
+tweak the log checker.
+------------------------------------------------------------------------
+r7163 | 7destiny | 2010-02-04 16:22:51 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: Add "Chilled to the Bone" stack warning.
+------------------------------------------------------------------------
+r7162 | s8095324 | 2010-02-04 16:20:11 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7161 | 7destiny | 2010-02-04 16:15:36 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: Fix typo, koKR Update
+------------------------------------------------------------------------
+r7160 | 7destiny | 2010-02-04 16:11:00 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7159 | 7destiny | 2010-02-04 16:08:06 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: Add Unchained magic warning.
+------------------------------------------------------------------------
+r7158 | mojosdojo | 2010-02-04 16:04:43 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/koKR.lua
+
+Forgot to update the locals.
+------------------------------------------------------------------------
+r7157 | 7destiny | 2010-02-04 15:56:35 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Sindragosa.lua
+
+Citadel/Sindragosa: add engage, phase2 trigger.
+------------------------------------------------------------------------
+r7156 | mojosdojo | 2010-02-04 15:55:47 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: Fix bit flags, remove the bar when add dies, deDE update.
+------------------------------------------------------------------------
+r7155 | s8095324 | 2010-02-04 14:10:45 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7154 | 7destiny | 2010-02-04 13:51:52 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: Fix LayWaste, Add next portal.
+------------------------------------------------------------------------
+r7153 | s8095324 | 2010-02-04 13:46:41 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Locales/zhTW.lua
+
+zhTW update
+------------------------------------------------------------------------
+r7152 | 7destiny | 2010-02-04 13:21:04 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Lanathel.lua
+
+Citadel/Lanathel: Fix Air phase timer(25man).
+------------------------------------------------------------------------
+r7151 | mojosdojo | 2010-02-04 12:14:09 +0000 (Thu, 04 Feb 2010) | 2 lines
+Changed paths:
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Valithria.lua
+
+deDE update.
+
+------------------------------------------------------------------------
+r7150 | ammo | 2010-02-04 10:55:55 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Loader.lua
+
+only complain about the combatlog not working if the core is actually enabled
+------------------------------------------------------------------------
+r7149 | funkydude | 2010-02-04 01:55:47 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+
+Citadel/Deathwhisper: Show the deformed fanatic warning.
+------------------------------------------------------------------------
+r7148 | funkydude | 2010-02-04 01:47:32 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Rotface.lua
+
+Citadel/Rotface: Add sound for slime spray.
+------------------------------------------------------------------------
+r7147 | pettigrow | 2010-02-04 00:03:08 +0000 (Thu, 04 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7146 | funkydude | 2010-02-03 23:07:01 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: add engage trigger, half working supresser timer.
+------------------------------------------------------------------------
+r7145 | pettigrow | 2010-02-03 23:06:27 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7144 | funkydude | 2010-02-03 21:22:04 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Valithria.lua
+
+Citadel/Valithria: bugfix
+------------------------------------------------------------------------
+r7143 | funkydude | 2010-02-03 20:11:13 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Deathwhisper.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+Citadel/Deathwhisper: Add half-done deformed fanatic warning.
+------------------------------------------------------------------------
+r7142 | funkydude | 2010-02-03 19:50:17 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Gunship.lua
+
+Citadel/Gunship: Fix mage warning
+------------------------------------------------------------------------
+r7141 | funkydude | 2010-02-03 15:39:44 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   A /trunk/Citadel/LichKing.lua
+   M /trunk/Citadel/modules.xml
+
+Citadel: Add unloaded LichKing module.
+------------------------------------------------------------------------
+r7140 | mojosdojo | 2010-02-03 14:55:05 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Locales/deDE.lua
+   M /trunk/Northrend/Toravon.lua
+
+Citadel/BloodCouncil: optionHeaders and deDE stuff.
+------------------------------------------------------------------------
+r7139 | 7destiny | 2010-02-03 10:27:47 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7138 | pettigrow | 2010-02-03 06:35:12 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Locales/frFR.lua
+   M /trunk/Northrend/Locales/frFR.lua
+   M /trunk/Northrend/Toravon.lua
+
+frFR Update
+------------------------------------------------------------------------
+r7137 | funkydude | 2010-02-03 01:42:04 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Loader.lua
+
+tweak timer
+------------------------------------------------------------------------
+r7136 | funkydude | 2010-02-03 01:36:53 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Locales/deDE.lua
+   M /trunk/Citadel/Locales/frFR.lua
+   M /trunk/Citadel/Locales/koKR.lua
+   M /trunk/Citadel/Locales/ruRU.lua
+   M /trunk/Citadel/Locales/zhCN.lua
+   M /trunk/Citadel/Locales/zhTW.lua
+
+Citadel/BloodCouncil: Tweak target swap text.
+------------------------------------------------------------------------
+r7135 | funkydude | 2010-02-03 01:18:11 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Loader.lua
+   M /trunk/Locales/deDE.lua
+   M /trunk/Locales/enUS.lua
+   M /trunk/Locales/frFR.lua
+   M /trunk/Locales/koKR.lua
+   M /trunk/Locales/ruRU.lua
+   M /trunk/Locales/zhCN.lua
+   M /trunk/Locales/zhTW.lua
+
+Warn the user if they are suffering from an out-of-sync combat log, which prevents all combat data being received by the client, breaking addons such as BigWigs.
+------------------------------------------------------------------------
+r7134 | rabbit | 2010-02-03 00:00:55 +0000 (Wed, 03 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Plugins/Bars.lua
+   M /trunk/Plugins/Emphasize.lua
+
+Add in some xxx release comments.
+------------------------------------------------------------------------
+r7133 | mojosdojo | 2010-02-02 10:08:26 +0000 (Tue, 02 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Toravon.lua
+
+Northrend/Toravon: Add another orb spell id.
+------------------------------------------------------------------------
+r7132 | mojosdojo | 2010-02-01 17:56:31 +0000 (Mon, 01 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Locales/deDE.lua
+   M /trunk/Northrend/Toravon.lua
+
+Northrend/Toravon: Fixing initial orb timer, deDE update.
+------------------------------------------------------------------------
+r7131 | 7destiny | 2010-02-01 16:52:25 +0000 (Mon, 01 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/koKR.lua
+
+koKR Update
+------------------------------------------------------------------------
+r7130 | 7destiny | 2010-02-01 16:01:51 +0000 (Mon, 01 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Northrend/Locales/koKR.lua
+   M /trunk/Northrend/Toravon.lua
+
+Northrend/Toravon: Add CD bar
+------------------------------------------------------------------------
+r7129 | mojosdojo | 2010-02-01 15:33:20 +0000 (Mon, 01 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Locales/deDE.lua
+   M /trunk/Plugins/Locales/deDE.lua
+
+deDE stuff. Mainly wording adjustments.
+------------------------------------------------------------------------
+r7128 | onyxmaster | 2010-02-01 12:52:37 +0000 (Mon, 01 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Locales/ruRU.lua
+
+ruRU Blood Queen engage trigger
+------------------------------------------------------------------------
+r7127 | funkydude | 2010-02-01 02:58:33 +0000 (Mon, 01 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+
+Citadel/BloodCouncil: cleanup shock warning
+------------------------------------------------------------------------
+r7126 | funkydude | 2010-02-01 01:14:32 +0000 (Mon, 01 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Lanathel.lua
+
+Citadel/Lanathel: tweaks
+------------------------------------------------------------------------
+r7125 | funkydude | 2010-02-01 01:02:28 +0000 (Mon, 01 Feb 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/Putricide.lua
+
+Citadel/Putricide: Possibly fix the phase change timer hitting p3 in p2.
+------------------------------------------------------------------------
+r7124 | mojosdojo | 2010-01-31 22:30:15 +0000 (Sun, 31 Jan 2010) | 1 line
+Changed paths:
+   M /trunk/Citadel/BloodCouncil.lua
+   M /trunk/Citadel/Locales/deDE.lua
+
+deDE update.
+------------------------------------------------------------------------

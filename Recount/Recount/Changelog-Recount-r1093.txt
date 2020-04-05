@@ -1,0 +1,29 @@
+------------------------------------------------------------------------
+r1093 | elsia | 2009-11-13 01:11:20 +0000 (Fri, 13 Nov 2009) | 2 lines
+Changed paths:
+   M /trunk/Tracker.lua
+
+- Fix for absorbs and blocks not showing in summary view if the absorb or block were complete.
+
+------------------------------------------------------------------------
+r1091 | elsia | 2009-10-14 00:24:57 +0000 (Wed, 14 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/GUI_Detail.lua
+
+- Fix weird copy/paste typo.
+------------------------------------------------------------------------
+r1088 | elsia | 2009-10-13 03:31:32 +0000 (Tue, 13 Oct 2009) | 1 line
+Changed paths:
+   M /trunk/GUI_Detail.lua
+   M /trunk/Tracker.lua
+
+- Added support for "Naturefire" spellschool combo. (dry-code warning, please test).
+------------------------------------------------------------------------
+r1087 | elsia | 2009-10-11 00:35:52 +0000 (Sun, 11 Oct 2009) | 2 lines
+Changed paths:
+   M /trunk/GUI_Detail.lua
+   M /trunk/Tracker.lua
+
+- Properly support Frostfire spellschool. Now shows as separate school in summary detail view.
+
+------------------------------------------------------------------------

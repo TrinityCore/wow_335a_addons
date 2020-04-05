@@ -1,0 +1,9 @@
+<!-- $Revision: 253 $ -->
+<Bindings>
+	<Binding name="TOGGLE_TRADESKILLINFO" header="TRADESKILLINFO">
+       	TradeskillInfo:UI_Toggle();
+	</Binding>
+	<Binding name="TOGGLE_TRADESKILLINFOCONFIG">
+       	TradeskillInfo:ConfigShow();
+	</Binding>
+</Bindings>

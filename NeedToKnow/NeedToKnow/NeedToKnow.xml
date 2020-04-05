@@ -1,0 +1,209 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+	<Script file="NeedToKnow_Localization.lua"/>
+    <Script file="NeedToKnow.lua"/>
+	<Script file="NeedToKnow_Options.lua"/>
+
+	<Frame name="NeedToKnow_DropDownTemplate" inherits="UIDropDownMenuTemplate" virtual="true">
+		<Anchors>
+			<Anchor point="TOP"/>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				UIDropDownMenu_Initialize(self, NeedToKnow.BarMenu_Initialize, "MENU");
+			</OnLoad>
+			<OnShow>
+				UIDropDownMenu_Initialize(self, NeedToKnow.BarMenu_Initialize, "MENU");
+			</OnShow>
+		</Scripts>
+	</Frame>
+
+	<Frame name="NeedToKnow_GroupTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="1" y="1"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture setAllPoints="true">
+					<Color r="0" g="0" b="0" a="0"/>
+				</Texture>		
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parentResizeButton" frameStrata="HIGH">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT"/>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentTexture" file="Interface\AddOns\NeedToKnow\Textures\Resize">
+							<Size>
+								<AbsDimension x="10" y="10"/>
+							</Size>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+                        getglobal(self:GetName().."Texture"):SetVertexColor(0.6, 0.6, 0.6);
+                    </OnLoad>
+					<OnMouseDown>
+						NeedToKnow.StartSizing(self, button);
+					</OnMouseDown>
+					<OnMouseUp>
+						NeedToKnow.StopSizing(self, button);
+					</OnMouseUp>
+					<OnEnter>
+						NeedToKnow.Resizebutton_OnEnter(self);
+						getglobal(self:GetName().."Texture"):SetVertexColor(1, 1, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+						getglobal(self:GetName().."Texture"):SetVertexColor(0.6, 0.6, 0.6);
+					</OnLeave>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+
+	<Frame name="NeedToKnow_BarTemplate" drawLayer="BORDER" toplevel="true" enableMouse="true" virtual="true">
+		<Size>
+			<AbsDimension x="271" y="18"/>
+		</Size>
+		<BarTexture file="Interface\PaperDollInfoFrame\UI-Character-Skills-Bar"/>
+		<BarColor r="1.0" g="0.7" b="0.0" a="1.0"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBackground" setAllPoints="true">
+					<Color r="1" g="1" b="1" a="1"/>
+					<Size>
+						<AbsDimension x="277" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset>
+								<AbsDimension x="0" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture name="$parentTexture">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+							<AbsDimension x="0" y="-0"/>
+						</Anchor>
+						<Anchor point="BOTTOM" relativeTo="$parent" relativePoint="BOTTOM">
+							<AbsDimension x="-0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="OVERLAY">
+				<FontString name="$parentText" inherits="GameFontHighlight" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="180" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="10" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentTime" inherits="GameFontHighlight" justifyH="RIGHT">
+					<Size>
+						<AbsDimension x="40" y="16"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT" relativeTo="$parent" relativePoint="RIGHT">
+							<Offset>
+								<AbsDimension x="-10" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<Texture name="$parentSpark" file="Interface\CastingBar\UI-CastingBar-Spark" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="32" y="60"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER" relativeTo="$parent" relativePoint="RIGHT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForDrag("LeftButton");
+			</OnLoad>
+			<OnEnter>
+				local tooltip = _G["GameTooltip"];
+				tooltip:SetOwner(self:GetParent(), "ANCHOR_TOPLEFT");
+				tooltip:AddLine(NEEDTOKNOW.BAR_TOOLTIP1, HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b, 1);
+			    tooltip:AddLine(NEEDTOKNOW.BAR_TOOLTIP2, NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b, 1);
+			    tooltip:Show();
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+ 			<OnMouseUp>
+				NeedToKnow.Bar_OnMouseUp(self, button);
+ 			</OnMouseUp>
+			<OnSizeChanged>
+				NeedToKnow.Bar_OnSizeChanged(self)
+			</OnSizeChanged>
+ 			<OnDragStart>
+				self:GetParent():StartMoving();
+ 			</OnDragStart>
+ 			<OnDragStop>
+				self:GetParent():StopMovingOrSizing();
+				NeedToKnow.SavePosition(self:GetParent(), self:GetParent():GetID());
+ 			</OnDragStop>
+		</Scripts>
+	</Frame>
+
+	<Frame name="NeedToKnow_Group1" inherits="NeedToKnow_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="1">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-200"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+	<Frame name="NeedToKnow_Group2" inherits="NeedToKnow_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="2">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-300"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+	<Frame name="NeedToKnow_Group3" inherits="NeedToKnow_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="3">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-400"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+	<Frame name="NeedToKnow_Group4" inherits="NeedToKnow_GroupTemplate" toplevel="true" movable="true" parent="UIParent" id="4">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="100" y="-500"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</Frame>
+    
+</Ui>

@@ -1,0 +1,41 @@
+## Interface: 30300
+## Title: Follow Felankor |c000000FF(v2.3.2) [30300]|r
+## Notes: Allows friends, guild members and party members to put you on auto follow. Plus more!
+## Author: Felankor
+## Version: 2.3.2 [30300]
+## X-Email: See READ ME for contact info
+## X-Website: See READ ME for websites
+## X-Category: MYADDONS_CATEGORY_OTHERS
+## X-OptionsFrame: FFOptions
+## X-Date: 06-08-2010
+## X-Help: FF_META_HELP_VARIABLE
+## SavedVariables: FF_Ban_List
+## SavedVariablesPerCharacter: FF_Options, FF_Options_Announcements, FF_Static_Ground_Mount, FF_Static_Flying_Mount, FF_Whisper_Log
+
+localization.en.lua
+FFTemplates.xml
+
+FFMenu.xml
+
+FFHelp.lua
+FFHelp.xml
+
+FFEvents.lua
+FollowFelankor.lua
+FollowFelankor.xml
+
+FFOptions.lua
+FFOptions.xml
+
+FFMount.lua
+
+FFBanList.lua
+FFBanList.xml
+
+FFMinimapButton.lua
+FFMinimapButton.xml
+
+PartyStatus.xml
+
+FFWhisperLog.lua
+FFWhisperLog.xml

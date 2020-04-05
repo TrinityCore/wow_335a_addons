@@ -1,0 +1,28 @@
+------------------------------------------------------------------------
+r61 | dridzt | 2009-12-18 18:33:35 +0000 (Fri, 18 Dec 2009) | 1 line
+Changed paths:
+   M /trunk/XLootGroup.lua
+   M /trunk/XLootGroup.toc
+
+- user submitted patch for supporting auto-roll addons.
+------------------------------------------------------------------------
+r60 | dridzt | 2009-11-23 14:09:44 +0000 (Mon, 23 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/XLootGroup.lua
+
+- fix disenchant button texture
+------------------------------------------------------------------------
+r59 | dridzt | 2009-11-23 03:17:25 +0000 (Mon, 23 Nov 2009) | 1 line
+Changed paths:
+   M /trunk/XLootGroup.lua
+   M /trunk/XLootGroup.toc
+   M /trunk/locales/deDE.lua
+   M /trunk/locales/enUS.lua
+   M /trunk/locales/esES.lua
+   M /trunk/locales/frFR.lua
+   M /trunk/locales/ruRU.lua
+   M /trunk/locales/zhCN.lua
+   M /trunk/locales/zhTW.lua
+
+- update for patch 3.3 and disenchant loot option.
+------------------------------------------------------------------------

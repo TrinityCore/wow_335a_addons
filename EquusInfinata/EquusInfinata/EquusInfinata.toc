@@ -1,0 +1,16 @@
+## Interface: 30300
+## Title: Equus Infinata
+## Notes: Filters mounts by species and speed. Use /equus or /ei for options
+## Author: LuckRunsOut
+## Version: v2.2.0
+## Dependencies: Blizzard_InspectUI
+## SavedVariablesPerCharacter: Equus_Vars
+
+ScrollFrameHack.xml
+ScrollFrameHack.lua
+EquusMountTable.lua
+EquusPetTable.lua
+EquusLocalization.lua
+EquusInspect.xml
+Equus.xml
+Equus.lua

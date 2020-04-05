@@ -1,0 +1,29 @@
+﻿## Interface: 30300
+## Title: XLoot |cFF77BBFFGroup|r
+## Notes: Minimalistic Group roll frames.
+## Notes-zhCN: 最小化队伍 Roll 窗体.
+## Notes-zhTW: 最小化隊伍 Roll 框架
+## Notes-esES: Ventana de tirada de dados de Grupo minimalista.
+## Notes-deDE: Minimalischtische verschiebbare Würfelfenster.
+## Version: 0.61
+## Author: Xuerian
+## X-Category: Interface Enhancements
+## X-eMail: sky.shell@gmail.com
+## X-Website: http://wowace.com/index.php/XLoot
+## Dependencies: XLoot
+## X-Curse-Packaged-Version: r61
+## X-Curse-Project-Name: XLootGroup
+## X-Curse-Project-ID: xloot-group
+## X-Curse-Repository-ID: wow/xloot-group/mainline
+
+## OptionalDeps: Ace2, DewdropLib, AnchorsAway
+
+XLootGroup.lua
+
+locales\enUS.lua
+locales\ruRU.lua
+locales\deDE.lua
+locales\frFR.lua
+locales\esES.lua
+locales\zhCN.lua
+locales\zhTW.lua
