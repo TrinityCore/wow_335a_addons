@@ -1,0 +1,117 @@
+Release History
+
+3.3.328
+
+- LibButtonFacade:
+  - Border color support is now available. Note that support is optional for authors.
+    - The Group:AddButton() method now how has a third parameter, "Type". This new string parameter will allow authors to specify the type of button that's being passed so that the borders may be colored correctly by LBF. These types and their default colors are:
+      - "None" (Unremovable Debuff)(Red)
+      - "Curse" (Purple)
+      - "Disease" (Brown)
+      - "Magic" (Light Blue)
+      - "Poison" (Light Green)
+      - "Action" (Green)
+      - "Enchant" (Purple)
+      - "Custom" (A special type that allows for custom coloring.)(Blue)
+    - When a button is assigned a type, LBF will then take control of the border coloring for that button. If an author wishes to retain control of the border colors, for example, in the event that they have their own GUI for it, they can simply not pass a "Type" and LBF coloring will be disabled for the border texture of that button. Authors will then have to manipulate the color manually via :SetVertexColor.
+    - Authors can customize the color of the "Custom" type via the LBF:SetBorderColor(Button,r,g,b,a) method. Note that if the button's type is not set to "Custom", this function will do nothing.
+    - An additional Group:SetButtonType(Button,Type,noReskin) method is available. This will allow authors to change the button's type on the fly. The Button parameter must be the button object. The "Type" is of the same mentioned above. If noReskin is set to true, LBF will not reskin the button. Additionally, passing an invalid value or nil will cause the button to no longer be assigned a type and internal coloring will be disabled.
+  - The Group:AddButton() method will now correctly return if attempting to add a button to a group that already has that button assigned to it.
+  - The Group:Skin() method now only supports a table of the layers and their respective colors. The single layer specification used by the ButtonFacade GUI has been removed.
+  - The Group:SetLayerColor() method used by the ButtonFacade GUI will now correctly update the skin with new color.
+  - A button's additional frame layers will now automatically update their levels when Button:SetFrameLevel() is called.
+  - Removed the redundant code for SetTextColor() and SetVertexColor() since they apparently work as they should.
+  - More code optimization. (Scope: It's not just for bad breath.)
+  - A new method, LBF:Debug() is available that will cause LBF to throw errors on certain issues (IE, bad skin parameters, etc). Note that this function acts as a toggle.
+- Skin API
+  - The "Border" layer no longer supports the "Color" attribute. Instead, a new attribute, "Colors", is available that allows the skin author to specify a border color for each type of button. (See the notes above on button types)
+- ButtonFacade GUI:
+  - The ButtonFacade GUI has been reworked a little and tool tips should now be slight more descriptive.
+  - Layers that are disabled in the skin definition will now show their respective options as disabled in the GUI.
+  - The new "Border Color" options will only be enabled for groups that have at least one button with its type set.
+- Miscellaneous:
+  - ButtonFacade will no longer be registered in the global namespace. Authors will have to use AceAddOn or IsAddOnLoaded() to check for it.
+  - Removed AceLocale.
+
+3.3.300
+
+- Update ToC to 3.3.
+- Switch to GetObjectType since GetFrameType was removed.
+- Copy esES to esMX localization to eliminate the hard-coded force use of esES for esMX.
+
+3.2.85
+
+- Fixed a library typo.
+- Adjusted the format and file name of the change log.
+- Localization update.
+
+3.2.275
+
+- Fixed an erroneous library reference.
+- Fixed a core entry.
+- Updated ToC for 3.2.
+- Localization update.
+
+3.1.270
+
+- Removed the "About" panel.
+- Added an "About" file.
+- Localization clean up and update.
+- Packager tweaks.
+
+3.1.260
+
+- Module support removed. If you run into issues with an add-on you're using, ask the author to fix their add-on.
+
+3.1.255
+
+ButtonFacade GUI:
+- ButtonFacade will now attempt to remember the global skin settings. To be clear, it will only remember the *global* setting. It is still up to add-on authors to save the skin settings for their own add-on's root group.
+- Due to the GUI saving the settings and additional modules, the profile selection panel has been enabled once again.
+- Tons of GUI tweaks and added some missing features (tool tips, etc), so the localizations will need to be updated.
+
+LibButtonFacade:
+- The "root" group is now called "ButtonFacade" instead of an empty string.
+- The separator for RegIDs is now an underscore instead of a "pipe". Additionally, all root addon groups will have a RegID matching the name that they're registered with. IE, instead of Bartender4 having a RegID of "|Bartender4", it will have a RegID of "Bartender4". All subgroups will have RegIDs that follow the "Addon_Group_Button" format.
+- The skin callback firing function will now return the addon's root group data if a group is not specified. This means that addon authors can call LBF:Group("Addon"):Skin(self.db.profile["Addon"].SkinID, ...) prior to calling it for their individual groups to ensure that ButtonFacade's GUI displays the current settings for the addon's root group correctly. Feel free to contact me if you're unsure how to implement this correctly or if it gives you problems/errors.
+- Any author attempting to write a LBF GUI will need to register their addon with LBF via the skin callback function. The addon *MUST* be registered as "ButtonFacade".
+
+Miscellaneous:
+- Added WoWI's minion tag.
+
+3.1.240
+
+- More tweaks to the "About" panel.
+- Fixed a type in the default skin. (Thanks, FlickerStreak)
+- Misc. clean up and tweaks.
+- Localization bump.
+
+3.1.335
+
+- Updated for 3.1.
+- Updated locales.
+- GUI Adjustments.
+
+3.1.225
+
+- Localization Updates
+- Updated to the WoWAce localization system.
+- Restructured the directories and files a bit.
+- New Icon.
+
+3.0.208
+
+- frFR update. (Pettigrow)
+
+3.0.205
+
+- Update zhTW/zhCN. (ananhaid/digmouse)
+- Fix for borderless skins (Dreamlayout, Blizzard, etc). (flickerstreak)
+
+3.0.200
+
+- Removed FuBar/Harbor support.
+- Rebuilt the options window.
+- The /bf and /buttonfacade chat commands open the Interface Options category for ButtonFacade.
+- Updated/Changed localization entries. Up to date (mostly) are: zhCN, zhTW and koKR. Need the rest translated or retranslated.
+- Tons of code clean up.

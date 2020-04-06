@@ -1,0 +1,32 @@
+
+function Skinner:AoTRDungeonQuester()
+
+	self:keepFontStrings(AoTR_DQFrame)
+	self:moveObject(AoTR_DQFrame_Header, nil, nil, "-", 10)
+	self:moveObject(AoTR_DQFrameButtonClose, "+", 15, "+", 15)
+	self:keepFontStrings(AoTR_DQFrame_RaceDropDown)
+	self:keepFontStrings(AoTR_DQFrame_RealmDropDown)
+	self:keepFontStrings(AoTR_DQFrame_InstanceDropDown)
+	self:keepFontStrings(AoTR_DQFrame_DungeonDropDown)
+	self:keepFontStrings(AoTR_DQFrame_QuestDropDown)
+	AoTR_DQFrame_QuestSeriesIcon1:SetAlpha(1)
+	AoTR_DQFrame_QuestSeriesIcon2:SetAlpha(1)
+	AoTR_DQFrame_QuestSeriesIcon3:SetAlpha(1)
+	AoTR_DQFrame_QuestSeriesIcon4:SetAlpha(1)
+	AoTR_DQFrame_QuestSeriesIcon5:SetAlpha(1)
+	AoTR_DQFrame_QuestSeriesIcon6:SetAlpha(1)
+	AoTR_DQFrame_QuestSeriesIcon7:SetAlpha(1)
+	AoTR_DQFrame_QuestRewardsIcon1:SetAlpha(1)
+	AoTR_DQFrame_QuestRewardsIcon2:SetAlpha(1)
+	AoTR_DQFrame_QuestRewardsIcon3:SetAlpha(1)
+	AoTR_DQFrame_QuestRewardsIcon4:SetAlpha(1)
+	AoTR_DQFrame_QuestRewardsIcon5:SetAlpha(1)
+	AoTR_DQFrame_QuestRewardsIcon6:SetAlpha(1)
+	AoTR_DQFrame_QuestRewardsIcon7:SetAlpha(1)
+	self:applySkin(AoTR_DQFrame)
+
+	self:SecureHook("AoTR_DQ_OnShow", function(this)
+		self:moveObject(AoTR_DQFrame_QuestTitleHeader, nil, nil, "+", 8)
+	end)
+
+end

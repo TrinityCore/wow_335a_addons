@@ -1,0 +1,1587 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Frame name="UIPanelMover1" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="384" y="512"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="0" y="-104"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				local updFunc = function()
+					MovAny:SetLeftFrameLocation()
+					MovAny:SetCenterFrameLocation()
+				end
+				self.OnMAOnAttach = updFunc
+				self.OnMAPosition = updFunc
+				self.OnMAAlpha = updFunc
+				self.OnMAScale = updFunc
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<Frame name="UIPanelMover2" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="384" y="512"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT">
+				<Offset>
+					<AbsDimension x="384" y="-104"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				local updFunc = function()
+					MovAny:SetLeftFrameLocation()
+					MovAny:SetCenterFrameLocation()
+				end
+				self.OnMAOnAttach = updFunc
+				self.OnMAPosition = updFunc
+				self.OnMAAlpha = updFunc
+				self.OnMAScale = updFunc
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<Frame name="TooltipMover" frameStrata="TOOLTIP"  parent="UIParent" hidden="false" enableMouse="false">
+		<Size>
+			<AbsDimension x="150" y="80"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOP"/>
+		</Anchors>
+		<Scripts>
+			<OnShow>
+				self:SetFrameLevel(GameTooltip:GetFrameLevel() + 1)
+			</OnShow>
+			<OnLoad>
+				self.OnMAPostHook = function(self)
+					MovAny:HookTooltip(self)
+				end
+				self.OnMAPosition = function(self)
+					MovAny:HookTooltip(self)
+				end
+				self.OnMAPreReset = function(self, opt)
+					local tooltip = GameTooltip
+					MovAny:UnlockPoint(tooltip)
+					MovAny:ResetScale(tooltip, opt, true)
+					MovAny:ResetAlpha(tooltip, opt, true)
+					MovAny:ResetHide(tooltip, opt, true)
+					self.attachedChildren = nil
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<Frame name="BagItemTooltipMover" frameStrata="TOOLTIP"  parent="UIParent" hidden="false" enableMouse="false">
+		<Size>
+			<AbsDimension x="150" y="80"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOP"/>
+		</Anchors>
+		<Scripts>
+			<OnShow>
+				self:SetFrameLevel(GameTooltip:GetFrameLevel() + 1)
+			</OnShow>
+		</Scripts>
+	</Frame>
+
+	<Frame name="BagButtonsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="196" y="44"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMRIGHT" relativeTo="MainMenuBarArtFrame">
+				<Offset>
+					<AbsDimension x="-6" y="-2"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				MainMenuBarBackpackButton.MAParent = self
+				
+				self.OnMAHook = function(self)
+					if MovAny:IsModified("BagButtonsVerticalMover") then
+						MovAny:ResetFrame("BagButtonsVerticalMover")
+					end
+					self.attachedChildren = {}
+					if not MovAny:IsModified("MainMenuBarBackpackButton") then
+						MainMenuBarBackpackButton:ClearAllPoints()
+						MainMenuBarBackpackButton:SetPoint("RIGHT", self, "RIGHT", 0, 0)
+						tinsert(self.attachedChildren, MainMenuBarBackpackButton)
+					end
+					if not MovAny:IsModified("CharacterBag0Slot") then
+						MovAny:UnlockPoint(CharacterBag0Slot)
+						CharacterBag0Slot:ClearAllPoints()
+						CharacterBag0Slot:SetPoint("RIGHT", "MainMenuBarBackpackButton", "LEFT", -4, 0)
+						tinsert(self.attachedChildren, CharacterBag0Slot)
+					end
+					if not MovAny:IsModified("CharacterBag1Slot") then
+						MovAny:UnlockPoint(CharacterBag1Slot)
+						CharacterBag1Slot:ClearAllPoints()
+						CharacterBag1Slot:SetPoint("RIGHT", "CharacterBag0Slot", "LEFT", -4, 0)
+						tinsert(self.attachedChildren, CharacterBag1Slot)
+					end
+					if not MovAny:IsModified("CharacterBag2Slot") then
+						MovAny:UnlockPoint(CharacterBag2Slot)
+						CharacterBag2Slot:ClearAllPoints()
+						CharacterBag2Slot:SetPoint("RIGHT", "CharacterBag1Slot", "LEFT", -4, 0)
+						tinsert(self.attachedChildren, CharacterBag2Slot)
+					end
+					if not MovAny:IsModified("CharacterBag3Slot") then
+						MovAny:UnlockPoint(CharacterBag3Slot)
+						CharacterBag3Slot:ClearAllPoints()
+						CharacterBag3Slot:SetPoint("RIGHT", "CharacterBag2Slot", "LEFT", -4, 0)
+						tinsert(self.attachedChildren, CharacterBag3Slot)
+					end
+					self:Show()
+				end
+				self.OnMAPosition = function(self)
+					local last = self
+					if not MovAny:IsModified("MainMenuBarBackpackButton") then
+						MainMenuBarBackpackButton:ClearAllPoints()
+						MainMenuBarBackpackButton:SetPoint("RIGHT", last, "RIGHT", 0, 0)
+						last = MainMenuBarBackpackButton
+					end
+					if not MovAny:IsModified("CharacterBag0Slot") then
+						CharacterBag0Slot:ClearAllPoints()
+						CharacterBag0Slot:SetPoint("RIGHT", last, "LEFT", -4, 0)
+						last = CharacterBag0Slot
+					end
+					if not MovAny:IsModified("CharacterBag1Slot") then
+						CharacterBag1Slot:ClearAllPoints()
+						CharacterBag1Slot:SetPoint("RIGHT", last, "LEFT", -4, 0)
+						last = CharacterBag1Slot
+					end
+					if not MovAny:IsModified("CharacterBag2Slot") then
+						CharacterBag2Slot:ClearAllPoints()
+						CharacterBag2Slot:SetPoint("RIGHT", last, "LEFT", -4, 0)
+						last = CharacterBag2Slot
+					end
+					if not MovAny:IsModified("CharacterBag3Slot") then
+						CharacterBag3Slot:ClearAllPoints()
+						CharacterBag3Slot:SetPoint("RIGHT", last, "LEFT", -4, 0)
+						last = CharacterBag3Slot
+					end
+				end
+				self.OnMAPostReset = function(self)
+					MainMenuBarBackpackButton:ClearAllPoints()
+					MainMenuBarBackpackButton:SetPoint("BOTTOMRIGHT", "MainMenuBarArtFrame", "BOTTOMRIGHT", -6, 2)
+					CharacterBag0Slot:ClearAllPoints()
+					CharacterBag0Slot:SetPoint("RIGHT", "MainMenuBarBackpackButton", "LEFT", -4, 0)
+					CharacterBag1Slot:ClearAllPoints()
+					CharacterBag1Slot:SetPoint("RIGHT", "CharacterBag0Slot", "LEFT", -4, 0)
+					CharacterBag2Slot:ClearAllPoints()
+					CharacterBag2Slot:SetPoint("RIGHT", "CharacterBag1Slot", "LEFT", -4, 0)
+					CharacterBag3Slot:ClearAllPoints()
+					CharacterBag3Slot:SetPoint("RIGHT", "CharacterBag2Slot", "LEFT", -4, 0)
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	<Frame name="BagButtonsVerticalMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="32" y="172"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMRIGHT" relativeTo="MainMenuBarArtFrame">
+				<Offset>
+					<AbsDimension x="-6" y="2"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.OnMAHook = function(self)
+					if MovAny:IsModified("BagButtonsMover") then
+						MovAny:ResetFrame("BagButtonsMover")
+					end
+					MainMenuBarBackpackButton:ClearAllPoints()
+					MainMenuBarBackpackButton:SetPoint("BOTTOM", self, "BOTTOM", 0, 0)
+					CharacterBag0Slot:ClearAllPoints()
+					CharacterBag0Slot:SetPoint("BOTTOM", "MainMenuBarBackpackButton", "TOP", 0, 3)
+					CharacterBag1Slot:ClearAllPoints()
+					CharacterBag1Slot:SetPoint("BOTTOM", "CharacterBag0Slot", "TOP", 0, 3)
+					CharacterBag2Slot:ClearAllPoints()
+					CharacterBag2Slot:SetPoint("BOTTOM", "CharacterBag1Slot", "TOP", 0, 3)
+					CharacterBag3Slot:ClearAllPoints()
+					CharacterBag3Slot:SetPoint("BOTTOM", "CharacterBag2Slot", "TOP", 0, 3)
+					MainMenuBarBackpackButton.MAParent = self
+					CharacterBag0Slot.MAParent = self
+					CharacterBag1Slot.MAParent = self
+					CharacterBag2Slot.MAParent = self
+					CharacterBag3Slot.MAParent = self
+					self.attachedChildren = {}
+					tinsert(self.attachedChildren, _G["MainMenuBarBackpackButton"])
+					for i = 0, 3, 1 do
+						tinsert(self.attachedChildren, _G[ "CharacterBag"..i.."Slot" ])
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					MainMenuBarBackpackButton:ClearAllPoints()
+					MainMenuBarBackpackButton:SetPoint("BOTTOMRIGHT", "MainMenuBarArtFrame", "BOTTOMRIGHT", -6, 0)
+					CharacterBag0Slot:ClearAllPoints()
+					CharacterBag0Slot:SetPoint("RIGHT", "MainMenuBarBackpackButton", "LEFT", -4, 0)
+					CharacterBag1Slot:ClearAllPoints()
+					CharacterBag1Slot:SetPoint("RIGHT", "CharacterBag0Slot", "LEFT", -4, 0)
+					CharacterBag2Slot:ClearAllPoints()
+					CharacterBag2Slot:SetPoint("RIGHT", "CharacterBag1Slot", "LEFT", -4, 0)
+					CharacterBag3Slot:ClearAllPoints()
+					CharacterBag3Slot:SetPoint("RIGHT", "CharacterBag2Slot", "LEFT", -4, 0)
+					MainMenuBarBackpackButton.MAParent = BagButtonsMover
+					CharacterBag0Slot.MAParent = BagButtonsMover
+					CharacterBag1Slot.MAParent = BagButtonsMover
+					CharacterBag2Slot.MAParent = BagButtonsMover
+					CharacterBag3Slot.MAParent = BagButtonsMover
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<Frame name="MovableBagFrame" virtual="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="1" y="1"/>
+		</Size>
+		<Scripts>
+			<OnLoad>
+				local x,y
+				x = -80
+				y = 45 + (self:GetID() * 45)
+				self:SetPoint("BOTTOMRIGHT", "UIParent", "BOTTOMRIGHT", x, y)
+				 
+				local CONTAINER_FRAME_TABLE = {
+					[0] = {"Interface\\ContainerFrame\\UI-BackpackBackground", 256, 256, 239},
+					[1] = {"Interface\\ContainerFrame\\UI-Bag-1x4", 256, 128, 96},
+					[2] = {"Interface\\ContainerFrame\\UI-Bag-1x4", 256, 128, 96},
+					[3] = {"Interface\\ContainerFrame\\UI-Bag-1x4", 256, 128, 96},
+					[4] = {"Interface\\ContainerFrame\\UI-Bag-1x4", 256, 128, 96},
+					[5] = {"Interface\\ContainerFrame\\UI-Bag-1x4+2", 256, 128, 116},
+					[6] = {"Interface\\ContainerFrame\\UI-Bag-1x4+2", 256, 128, 116},
+					[7] = {"Interface\\ContainerFrame\\UI-Bag-1x4+2", 256, 128, 116},
+					[8] = {"Interface\\ContainerFrame\\UI-Bag-2x4", 256, 256, 137},
+					[9] = {"Interface\\ContainerFrame\\UI-Bag-2x4+2", 256, 256, 157},
+					[10] = {"Interface\\ContainerFrame\\UI-Bag-2x4+2", 256, 256, 157},
+					[11] = {"Interface\\ContainerFrame\\UI-Bag-2x4+2", 256, 256, 157},
+					[12] = {"Interface\\ContainerFrame\\UI-Bag-3x4", 256, 256, 178},
+					[13] = {"Interface\\ContainerFrame\\UI-Bag-3x4+2", 256, 256, 198},
+					[14] = {"Interface\\ContainerFrame\\UI-Bag-3x4+2", 256, 256, 198},
+					[15] = {"Interface\\ContainerFrame\\UI-Bag-3x4+2", 256, 256, 198},
+					[16] = {"Interface\\ContainerFrame\\UI-Bag-4x4", 256, 256, 219},
+					[18] = {"Interface\\ContainerFrame\\UI-Bag-4x4+2", 256, 256, 239},
+					[20] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 259},
+					[22] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 279},
+					[24] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 299},
+					[26] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 319},
+					[28] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 339},
+					[30] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 359},
+					[32] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 379},
+					[34] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 399},
+					[36] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 419},
+					[38] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 439},
+					[40] = {"Interface\\ContainerFrame\\UI-Bag-5x4", 256, 256, 459},
+				}
+				self.realID = self:GetID()
+				if self:GetName() == "KeyRingFrame" then
+					self.realID = KEYRING_CONTAINER
+				end
+				MovAny:SetBag(self.realID, self)
+
+				self.OnMAHook = function(self)
+					if self.realID == KEYRING_CONTAINER then
+						self.size = GetKeyRingSize()
+					else
+						self.size = GetContainerNumSlots(self.realID)
+					end
+					local conSettings = self.realID == 0 and CONTAINER_FRAME_TABLE[0] or CONTAINER_FRAME_TABLE[self.size ~= 0 and self.size or 8]
+					self:SetWidth(CONTAINER_WIDTH)
+					self:SetHeight(conSettings[4])
+					local container = MovAny:GetContainerFrame(self.realID)
+					if container then
+						self:SetPoint("BOTTOMLEFT", "UIParent", "BOTTOMLEFT", container:GetLeft(), container:GetBottom())
+						MovAny:GrabContainerFrame(container, MovAny:GetBag(self.realID))
+					end
+				end
+				
+				local posFunc = function(self)
+					local container = MovAny:GetContainerFrame(self.realID)
+					if container then
+						MovAny:UnlockPoint(container)
+						container:ClearAllPoints()
+						container:SetPoint("CENTER", self, "CENTER", 0, 0)
+						MovAny:LockPoint(container)
+					end
+				end
+				self.OnMAPosition = posFunc
+				self.OnMAPreReset = posFunc
+
+				self.OnMAPostReset = function(self)
+					local container = MovAny:GetContainerFrame(self.realID)
+					if container then
+						MovAny:UnlockPoint(container)
+						MovAny:UnlockScale(container)
+						container:ClearAllPoints()
+					end
+					updateContainerFrameAnchors()
+				end
+
+				self.OnMAPostAttach = function(self)
+					posFunc(self)
+					updateContainerFrameAnchors()
+				end
+				
+				local alphaer = function(ref, alpha)
+					local con = MovAny:GetContainerFrame(ref.realID)
+					if con then
+						con:SetAlpha(alpha)
+					end
+				end
+				self.OnMAAlpha = alphaer
+				
+				local scaler = function(ref, scale)
+					local con = MovAny:GetContainerFrame(ref.realID)
+					if con and scale and scale >= 0 then
+						MovAny:UnlockScale(con)
+						con:SetScale(scale)
+						MovAny:LockScale(con)
+						posFunc(ref)
+					end
+				end
+				self.OnMAScale = scaler
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	<Frame name="BagFrame1" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="0"/>
+	<Frame name="BagFrame2" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="1"/>
+	<Frame name="BagFrame3" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="2"/>
+	<Frame name="BagFrame4" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="3"/>
+	<Frame name="BagFrame5" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="4"/>
+	<Frame name="BankBagFrame1" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="5"/>
+	<Frame name="BankBagFrame2" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="6"/>
+	<Frame name="BankBagFrame3" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="7"/>
+	<Frame name="BankBagFrame4" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="8"/>
+	<Frame name="BankBagFrame5" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="9"/>
+	<Frame name="BankBagFrame6" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="10"/>
+	<Frame name="BankBagFrame7" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="11"/>
+	<Frame name="KeyRingFrame" inherits="MovableBagFrame" parent="UIParent" hidden="false" id="-2"/>
+
+	<Frame name="MicroButtonsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="254" y="36"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="MainMenuBarArtFrame">
+				<Offset>
+					<AbsDimension x="549" y="2"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				local grab = { CharacterMicroButton, SpellbookMicroButton,
+							TalentMicroButton, AchievementMicroButton, QuestLogMicroButton,
+							SocialsMicroButton, PVPMicroButton, LFDMicroButton,
+							MainMenuMicroButton, HelpMicroButton }
+				for i, v in pairs(grab) do
+					v.MAParent = self
+				end
+				
+				self.OnMAHook = function(self)
+					if MovAny:IsModified("MicroButtonsVerticalMover") then
+						MovAny:ResetFrame("MicroButtonsVerticalMover")
+					end
+					self.attachedChildren = {}
+					for i in pairs(grab) do
+						local b = grab[i]
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("BOTTOMLEFT", self, "BOTTOMLEFT")
+						end
+						b.MAParent = self
+						MovAny:LockPoint(b)
+						tinsert(self.attachedChildren, b)
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					for i in pairs(grab) do
+						MovAny:UnlockPoint(grab[i])
+					end
+					CharacterMicroButton:ClearAllPoints()
+					CharacterMicroButton:SetPoint("BOTTOMLEFT", "MainMenuBarArtFrame", "BOTTOMLEFT", 548, 2)
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	<Frame name="MicroButtonsVerticalMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="28" y="340"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="MainMenuBarArtFrame">
+				<Offset>
+					<AbsDimension x="546" y="2"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				local grab = { CharacterMicroButton, SpellbookMicroButton,
+							TalentMicroButton, AchievementMicroButton, QuestLogMicroButton,
+							SocialsMicroButton, PVPMicroButton, LFDMicroButton,
+							MainMenuMicroButton, HelpMicroButton }
+
+				self.OnMAHook = function(self)
+					if MovAny:IsModified("MicroButtonsMover") then
+						MovAny:ResetFrame("MicroButtonsMover")
+					end
+					self.attachedChildren = {}
+
+					--MovAny:LockPoint(CharacterMicroButton)
+					
+					local b, pb
+					for i in pairs(grab) do
+						b = grab[i]
+
+						b:ClearAllPoints()
+						if i == 1 then
+							b:SetPoint("TOPLEFT", self, "TOPLEFT", 0, 24)
+						else
+							grab[i]:SetPoint("TOPLEFT", pb, "BOTTOMLEFT", 0, 24)
+						end
+						b.MAParent = self
+						MovAny:LockPoint(b)
+						tinsert(self.attachedChildren, b)
+						pb = b
+					end
+					self:Show()
+				end
+				self.OnMAPreReset = function (self)
+					local p = _G["MicroButtonsMover"]
+					if self.attachedChildren then
+						for i, b in pairs(self.attachedChildren) do
+							b.MAParent = p
+							MovAny:UnlockPoint(b)
+						end
+					end
+				end
+				self.OnMAPostReset = function(self)
+					CharacterMicroButton:ClearAllPoints()
+					CharacterMicroButton:SetPoint("BOTTOMLEFT", "MainMenuBarArtFrame", "BOTTOMLEFT", 546, 2)
+					
+					local b, pb
+					for i in pairs(grab) do
+						b = grab[i]
+						if i > 1 then
+							b:ClearAllPoints()
+							b:SetPoint("BOTTOMLEFT", pb, "BOTTOMRIGHT", -2, 0)
+						end
+						pb = b
+					end
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<Frame name="BasicActionButtonsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="498" y="38"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="MainMenuBarArtFrame">
+				<Offset>
+					<AbsDimension x="8" y="3"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				local i, b
+				for i = 1, 12 do
+					b = _G[ "ActionButton"..i ]
+					b.MAParent = self
+				end
+				self.MAProtected = true
+				self.OnMAHook = function(self)
+					local b, bab
+					if MovAny:IsModified("BasicActionButtonsVerticalMover") then
+						MovAny:ResetFrame("BasicActionButtonsVerticalMover")
+					end
+					ActionButton1:ClearAllPoints()
+					ActionButton1:SetPoint("LEFT", self, "LEFT")
+					ActionBarUpButton:ClearAllPoints()
+					ActionBarUpButton:SetPoint("TOPLEFT", "ActionButton12", "TOPRIGHT", 0, 7)
+					ActionBarDownButton:ClearAllPoints()
+					ActionBarDownButton:SetPoint("BOTTOMLEFT", "ActionButton12", "BOTTOMRIGHT", 0, -9)
+					self.attachedChildren = {}
+					for i = 1, 12, 1 do
+						b = _G["ActionButton"..i]
+						if i > 1 then
+							b:ClearAllPoints()
+							b:SetPoint("LEFT", "ActionButton"..(i-1), "RIGHT", 6, 0)
+						end
+						bab = _G[ "BonusActionButton"..i ]
+						bab:ClearAllPoints()
+						bab:SetPoint("CENTER", b, "CENTER")
+						bab.MAParent = self
+						tinsert(self.attachedChildren, _G["ActionButton"..i])
+						tinsert(self.attachedChildren, _G["BonusActionButton"..i])
+					end
+					tinsert(self.attachedChildren, ActionBarUpButton)
+					tinsert(self.attachedChildren, ActionBarDownButton)
+					
+					--MovAny:UnanchorRelatives(ActionButton1)
+					
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b
+					ActionButton1:ClearAllPoints()
+					ActionButton1:SetPoint("BOTTOMLEFT", "MainMenuBarArtFrame", "BOTTOMLEFT", 8, 4)
+					ActionBarUpButton:ClearAllPoints()
+					ActionBarUpButton:SetPoint("CENTER", "MainMenuBarArtFrame", "TOPLEFT", 522, -22)
+					ActionBarDownButton:ClearAllPoints()
+					ActionBarDownButton:SetPoint("CENTER", "MainMenuBarArtFrame", "TOPLEFT", 522, -42)
+					for i = 1, 12, 1 do
+						b = _G[ "ActionButton"..i ]
+						if i > 1 then
+							b:ClearAllPoints()
+							b:SetPoint("LEFT", "ActionButton"..(i-1), "RIGHT", 6, 0)
+						end
+						_G[ "BonusActionButton"..i ]:ClearAllPoints()
+						_G[ "BonusActionButton"..i ]:SetPoint("CENTER", b, "CENTER")
+					end
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	<Frame name="BasicActionButtonsVerticalMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="38" y="475"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="MainMenuBarArtFrame">
+				<Offset>
+					<AbsDimension x="8" y="4"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.MAProtected = true
+				self.OnMAHook = function(self)
+					local b, pb
+					if MovAny:IsModified("BasicActionButtonsMover") then
+						MovAny:ResetFrame("BasicActionButtonsMover")
+					end
+					ActionButton1:ClearAllPoints()
+					ActionButton1:SetPoint("TOP", self, "TOP", 0, 0)
+					self.attachedChildren = {}
+					for i = 1, 12, 1 do
+						b = _G[ "ActionButton"..i ]
+						tinsert(self.attachedChildren, _G[ "ActionButton"..i ])
+						tinsert(self.attachedChildren, _G[ "BonusActionButton"..i ])
+						if i > 1 then
+							pb = _G[ "ActionButton"..(i-1) ]
+							b:ClearAllPoints()
+							b:SetPoint("TOP", pb, "BOTTOM", 0, -2)
+						end
+						b.MAParent = self
+						_G[ "BonusActionButton"..i ]:ClearAllPoints()
+						_G[ "BonusActionButton"..i ]:SetPoint("CENTER", b, "CENTER")
+					end
+					tinsert(self.attachedChildren, ActionBarUpButton)
+					tinsert(self.attachedChildren, ActionBarDownButton)
+					ActionBarUpButton:ClearAllPoints()
+					ActionBarUpButton:SetPoint("TOPLEFT", "ActionButton12", "BOTTOMLEFT", -8, 4)
+					ActionBarDownButton:ClearAllPoints()
+					ActionBarDownButton:SetPoint("TOPRIGHT", "ActionButton12", "BOTTOMRIGHT", 8, 4)
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b, pb
+					ActionButton1:ClearAllPoints()
+					ActionButton1:SetPoint("BOTTOMLEFT", "MainMenuBarArtFrame", "BOTTOMLEFT", 8, 4)
+					ActionBarUpButton:ClearAllPoints()
+					ActionBarUpButton:SetPoint("CENTER", "MainMenuBarArtFrame", "TOPLEFT", 522, -22)
+					ActionBarDownButton:ClearAllPoints()
+					ActionBarDownButton:SetPoint("CENTER", "MainMenuBarArtFrame", "TOPLEFT", 522, -42)
+					for i = 1, 12, 1 do
+						b = _G[ "ActionButton"..i ]
+						b.MAParent = BasicActionButtonsMover
+						if i > 1 then
+							pb = _G[ "ActionButton"..(i-1) ]
+							b:ClearAllPoints()
+							b:SetPoint("LEFT", pb, "RIGHT", 6, 0)
+						end
+						_G[ "BonusActionButton"..i ]:ClearAllPoints()
+						_G[ "BonusActionButton"..i ]:SetPoint("CENTER", b, "CENTER")
+					end
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<Frame name="PetActionButtonsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="370" y="32"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="PetActionBarFrame">
+				<Offset>
+					<AbsDimension x="36" y="1"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.MAProtected = true
+				for i = 1, 10 do
+					_G["PetActionButton"..i].MAParent = self
+				end
+				self.OnMAHook = function(self)
+					if MovAny:IsModified("PetActionButtonsVerticalMover") then
+						MovAny:ResetFrame("PetActionButtonsVerticalMover")
+					end
+					PetActionButton1:ClearAllPoints()
+					PetActionButton1:SetPoint("LEFT", self, "LEFT", 0, 0)
+					self.attachedChildren = {}
+					for i = 1, 10, 1 do
+						tinsert(self.attachedChildren, _G[ "PetActionButton"..i ])
+						b = _G[ "PetActionButton"..i ]
+						if i > 1 then
+							pb = _G[ "PetActionButton"..(i-1) ]
+							b:ClearAllPoints()
+							b:SetPoint("LEFT", pb, "RIGHT", 4, 0)
+						end
+						b.MAParent = self
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					PetActionButton1:ClearAllPoints()
+					PetActionButton1:SetPoint("BOTTOMLEFT", "PetActionBarFrame", "BOTTOMLEFT", 36, 1)
+					for i = 2, 10, 1 do
+						b = _G[ "PetActionButton"..i ]
+						pb = _G[ "PetActionButton"..(i-1) ]
+						b:ClearAllPoints()
+						b:SetPoint("LEFT", pb, "RIGHT", 8, 0)
+					end
+					self.attachedChildren = nil
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	<Frame name="PetActionButtonsVerticalMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="32" y="370"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="PetActionBarFrame">
+				<Offset>
+					<AbsDimension x="36" y="1"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.MAProtected = true
+				self.OnMAHook = function(self)
+					if MovAny:IsModified("PetActionButtonsMover") then
+						MovAny:ResetFrame("PetActionButtonsMover")
+					end
+					local b, pb
+					PetActionButton1:ClearAllPoints()
+					PetActionButton1:SetPoint("TOP", self, "TOP", 0, 0)
+					--self:SetFrameLevel(PetActionButton1:GetFrameLevel() + 1)
+					self.attachedChildren = {}
+					for i = 1, 10, 1 do
+						b = _G[ "PetActionButton"..i ]
+						tinsert(self.attachedChildren, b)
+						if i > 1 then
+							pb = _G[ "PetActionButton"..(i-1) ]
+							b:ClearAllPoints()
+							b:SetPoint("TOP", pb, "BOTTOM", 0, -3)
+						end
+						b.MAParent = self
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b, pb
+					PetActionButton1:ClearAllPoints()
+					PetActionButton1:SetPoint("BOTTOMLEFT", "PetActionBarFrame", "BOTTOMLEFT", 36, 1)
+					for i = 2, 10, 1 do
+						b = _G[ "PetActionButton"..i ]
+						pb = _G[ "PetActionButton"..(i-1) ]
+						b:ClearAllPoints()
+						b:SetPoint("LEFT", pb, "RIGHT", 8, 0)
+						b.MAParent = PetActionButtonsMover
+					end
+					self.attachedChildren = nil
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+
+	<Frame name="ShapeshiftButtonsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="225" y="32"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="MainMenuBar" relativePoint="TOPLEFT">
+				<Offset>
+					<AbsDimension x="30" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.MAProtected = true
+				for i = 1, 10 do
+					_G["ShapeshiftButton"..i].MAParent = self
+				end
+				self.OnMAHook = function(self)
+					if MovAny:IsModified("ShapeshiftButtonsVerticalMover") then
+						MovAny:ResetFrame("ShapeshiftButtonsVerticalMover")
+					end
+					
+					ShapeshiftBarFrame.MAParent = self
+					for i = 1, 10 do
+						_G["ShapeshiftButton"..i].MAParent = self
+					end
+					ShapeshiftBarFrame:DisableDrawLayer("BACKGROUND")
+					ShapeshiftBarFrame:DisableDrawLayer("BORDER")
+					self.attachedChildren = {ShapeshiftBarFrame}
+					self:Show()
+				end
+				self.OnMAPosition = function(self)
+					MovAny:UnlockPoint(ShapeshiftBarFrame)
+					ShapeshiftBarFrame:ClearAllPoints()
+					ShapeshiftBarFrame:SetPoint("LEFT", self, "LEFT", 0, 0)
+					MovAny:LockPoint(ShapeshiftBarFrame)
+				end
+				self.OnMAOnAttach = function(self, mover)
+					MovAny:UnlockPoint(ShapeshiftBarFrame)
+					
+					--self:ClearAllPoints()
+					--self:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", ShapeshiftBarFrame:GetLeft(), ShapeshiftBarFrame:GetBottom())
+					
+					ShapeshiftBarFrame:ClearAllPoints()
+					ShapeshiftBarFrame:SetPoint("LEFT", self, "LEFT", 0, 0)
+					
+					MovAny:LockPoint(ShapeshiftBarFrame)
+				end
+				
+				self.OnMAOnDetach = function(self)
+				end
+				self.OnMAPreReset = function(self)
+					MovAny:UnlockPoint(ShapeshiftBarFrame)
+					--ShapeshiftBarFrame:ClearAllPoints()
+					--MovAny:ResetPosition(ShapeshiftBarFrame, MovAny:GetFrameOptions("ShapeshiftButtonsMover"), true)
+				end
+				self.OnMAPostReset = function(self)
+					self.attachedChildren = nil
+					self:Hide()
+					ShapeshiftBarFrame:EnableDrawLayer("BACKGROUND")
+					ShapeshiftBarFrame:EnableDrawLayer("BORDER")
+				end
+				self.OnMAHide = function(self, hidden)
+					if hidden then
+						MovAny:LockVisibility(ShapeshiftBarFrame)
+					else
+						MovAny:UnlockVisibility(ShapeshiftBarFrame)
+					end
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	<Frame name="ShapeshiftButtonsVerticalMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="32" y="225"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="ShapeshiftBarFrame">
+				<Offset>
+					<AbsDimension x="11" y="3"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.MAProtected = true
+				self.OnMAHook = function(self)
+					if MovAny:IsModified("ShapeshiftButtonsMover") then
+						MovAny:ResetFrame("ShapeshiftButtonsMover")
+					end
+					ShapeshiftBarFrame:DisableDrawLayer("BACKGROUND")
+					ShapeshiftBarFrame:DisableDrawLayer("BORDER")
+					ShapeshiftBarFrame.MAParent = self
+					local b, pb
+					ShapeshiftButton1:ClearAllPoints()
+					ShapeshiftButton1:SetPoint("TOP", self, "TOP", 0, -7)
+					self.attachedChildren = {}
+					for i = 1, 10, 1 do
+						b = _G[ "ShapeshiftButton"..i ]
+						b.MAParent = self
+						if i > 1 then
+							b.MAParent = self
+							pb = _G[ "ShapeshiftButton"..(i-1) ]
+							b:ClearAllPoints()
+							b:SetPoint("TOP", pb, "BOTTOM", 0, -7)
+						end
+						MovAny:LockPoint(b)
+						tinsert(self.attachedChildren, b)
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b, pb
+					ShapeshiftButton1:ClearAllPoints()
+					ShapeshiftButton1:SetPoint("BOTTOMLEFT", "ShapeshiftBarFrame", "BOTTOMLEFT", 11, 3)
+					for i = 2, 10, 1 do
+						b = _G[ "ShapeshiftButton"..i ]
+						pb = _G[ "ShapeshiftButton"..(i-1) ]
+						b:ClearAllPoints()
+						b:SetPoint("LEFT", pb, "RIGHT", 7, 0)
+						b.MAParent = _G[ "ShapeshiftButtonsMover" ]
+						MovAny:UnlockPoint(b)
+					end
+					self.attachedChildren = nil
+					self:Hide()
+					ShapeshiftBarFrame:EnableDrawLayer("BACKGROUND")
+					ShapeshiftBarFrame:EnableDrawLayer("BORDER")
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="MultiBarRightHorizontalMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="498" y="38"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOM" relativeTo="UIParent">
+				<Offset>
+					<AbsDimension x="0" y="250"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.MAProtected = true
+				self.OnMAHook = function(self)
+					if MovAny:IsModified("MultiBarRight") then
+						MovAny:ResetFrame("MultiBarRight")
+					end
+					local b, pb
+					self.attachedChildren = {}
+					for i = 1, 12, 1 do
+						b = _G[ "MultiBarRightButton"..i ]
+						tinsert(self.attachedChildren, b)
+						b:ClearAllPoints()
+						if i > 1 then
+							b:SetPoint("LEFT", pb, "RIGHT", 6, 0)
+						else
+							b:SetPoint("TOPLEFT", self)
+						end
+						pb = b
+						b.MAParent = self
+					end
+					self:Show()
+				end
+				self.OnMAPreReset = function (self)
+					if self.attachedChildren then
+						for i, v in pairs(self.attachedChildren) do
+							v.MAParent = nil
+						end
+					end
+				end
+				self.OnMAPostReset = function(self)
+					local b, pb
+					MultiBarRightButton1:ClearAllPoints()
+					MultiBarRightButton1:SetPoint("TOPRIGHT", "MultiBarRight")
+					for i = 2, 12, 1 do
+						b = _G[ "MultiBarRightButton"..i ]
+						pb = _G[ "MultiBarRightButton"..(i-1) ]
+						b:ClearAllPoints()
+						b:SetPoint("TOP", pb, "BOTTOM", 0, -6)
+					end
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="MultiBarLeftHorizontalMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="498" y="38"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOM" relativeTo="UIParent">
+				<Offset>
+					<AbsDimension x="0" y="285"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.MAProtected = true
+				self.OnMAHook = function(self)
+					if MovAny:IsModified("MultiBarLeft") then
+						MovAny:ResetFrame("MultiBarLeft")
+					end
+					local b, pb
+					self.attachedChildren = {}
+					for i = 1, 12, 1 do
+						b = _G[ "MultiBarLeftButton"..i ]
+						tinsert(self.attachedChildren, b)
+						b:ClearAllPoints()
+						if i > 1 then
+							b:SetPoint("LEFT", pb, "RIGHT", 6, 0)
+						else
+							b:SetPoint("TOPLEFT", self)
+						end
+						pb = b
+						b.MAParent = self
+					end
+					self:Show()
+				end
+				self.OnMAPreReset = function (self)
+					if self.attachedChildren then
+						for i, v in pairs(self.attachedChildren) do
+							v.MAParent = nil
+						end
+					end
+				end
+				self.OnMAPostReset = function(self)
+					local b, pb
+					MultiBarLeftButton1:ClearAllPoints()
+					MultiBarLeftButton1:SetPoint("TOPRIGHT", "MultiBarLeft")
+					pb = MultiBarLeftButton1
+					for i = 2, 12, 1 do
+						b = _G[ "MultiBarLeftButton"..i ]
+						b:ClearAllPoints()
+						b:SetPoint("TOP", pb, "BOTTOM", 0, -6)
+						pb = b
+					end
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="PartyMember1DebuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="66" y="15"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="PartyMemberFrame1">
+				<Offset>
+					<AbsDimension x="48" y="-32"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.id = 1
+				for i = 1, MAX_PARTY_DEBUFFS, 1 do
+					_G[ "PartyMemberFrame"..self.id.."Debuff"..i ].MAParent = self
+				end
+				self.OnMAHook = function(self)
+					self:SetScale(_G["PartyMember"..self.id]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					for i = 1, MAX_PARTY_DEBUFFS, 1 do
+						b = _G[ "PartyMemberFrame"..self.id.."Debuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = _G["PartyMemberFrame"..self.id.."Debuff1"]
+					MovAny:UnlockPoint(b)
+					b:ClearAllPoints()
+					b:SetPoint("TOPLEFT", "PartyMemberFrame"..self.id, 48, -32)
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="PartyMember2DebuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="66" y="15"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="PartyMemberFrame2">
+				<Offset>
+					<AbsDimension x="48" y="-32"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.id = 2
+				for i = 1, MAX_PARTY_DEBUFFS, 1 do
+					_G[ "PartyMemberFrame"..self.id.."Debuff"..i ].MAParent = self
+				end
+				self.OnMAHook = function(self)
+					self:SetScale(_G["PartyMember"..self.id]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					for i = 1, MAX_PARTY_DEBUFFS, 1 do
+						b = _G[ "PartyMemberFrame"..self.id.."Debuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = _G["PartyMemberFrame"..self.id.."Debuff1"]
+					MovAny:UnlockPoint(b)
+					b:ClearAllPoints()
+					b:SetPoint("TOPLEFT", "PartyMemberFrame"..self.id, 48, -32)
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="PartyMember3DebuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="66" y="15"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="PartyMemberFrame3">
+				<Offset>
+					<AbsDimension x="48" y="-32"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.id = 3
+				for i = 1, MAX_PARTY_DEBUFFS, 1 do
+					_G[ "PartyMemberFrame"..self.id.."Debuff"..i ].MAParent = self
+				end
+				self.OnMAHook = function(self)
+					self:SetScale(_G["PartyMember"..self.id]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					for i = 1, MAX_PARTY_DEBUFFS, 1 do
+						b = _G[ "PartyMemberFrame"..self.id.."Debuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = _G["PartyMemberFrame"..self.id.."Debuff1"]
+					MovAny:UnlockPoint(b)
+					b:ClearAllPoints()
+					b:SetPoint("TOPLEFT", "PartyMemberFrame"..self.id, 48, -32)
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="PartyMember4DebuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="66" y="17"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="PartyMemberFrame4">
+				<Offset>
+					<AbsDimension x="48" y="-32"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.id = 4
+				for i = 1, MAX_PARTY_DEBUFFS, 1 do
+					_G[ "PartyMemberFrame"..self.id.."Debuff"..i ].MAParent = self
+				end
+				self.OnMAHook = function(self)
+					self:SetScale(_G["PartyMember"..self.id]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					for i = 1, MAX_PARTY_DEBUFFS, 1 do
+						b = _G[ "PartyMemberFrame"..self.id.."Debuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self, "TOPLEFT", 1, -1)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = _G["PartyMemberFrame"..self.id.."Debuff1"]
+					MovAny:UnlockPoint(b)
+					b:ClearAllPoints()
+					b:SetPoint("TOPLEFT", "PartyMemberFrame"..self.id, 48, -32)
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="PetDebuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="66" y="17"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="PetFrame">
+				<Offset>
+					<AbsDimension x="48" y="-42"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				for i = 1, 4, 1 do
+					_G[ "PetFrameDebuff"..i ].MAParent = self
+				end
+				self.OnMAHook = function(self)
+					self:SetScale(_G["PetFrame"]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					for i = 1, 4, 1 do
+						b = _G[ "PetFrameDebuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self, "TOPLEFT", 1, -1)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = _G["PetFrameDebuff1"]
+					MovAny:UnlockPoint(b)
+					b:ClearAllPoints()
+					b:SetPoint("TOPLEFT", "PetFrame", 48, -42)
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="TargetBuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="122" y="17"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="TargetFrame" relativePoint="BOTTOMLEFT">
+				<Offset>
+					<AbsDimension x="5" y="32"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				TargetFrame_UpdateAuras(TargetFrame)
+				for i = 1, MAX_TARGET_BUFFS, 1 do
+					local b = _G[ "TargetFrameBuff"..i ]
+					if not b then
+						b = CreateFrame("Button", "TargetFrameBuff"..i, TargetFrame, "TargetBuffFrameTemplate")
+						b.unit = TargetFrame.unit
+					end
+					b.MAParent = self
+				end
+				self.OnMAHook = function(self)
+					self:SetScale(_G["TargetFrame"]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					TargetFrame_UpdateAuras(TargetFrame)
+					for i = 1, MAX_TARGET_BUFFS, 1 do
+						b = _G[ "TargetFrameBuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					MovAny:UnlockPoint(TargetFrameBuff1)
+					TargetFrameBuff1:ClearAllPoints()
+					TargetFrameBuff1:SetPoint("TOPLEFT", TargetFrame, "BOTTOMLEFT", 5, 32)
+					self:Hide()
+					TargetFrame_UpdateAuras(TargetFrame)
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="TargetDebuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="122" y="23"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="TargetFrame" relativePoint="BOTTOMLEFT">
+				<Offset>
+					<AbsDimension x="5" y="35"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				TargetFrame_UpdateAuras(TargetFrame)
+				for i = 1, MAX_TARGET_DEBUFFS, 1 do
+					local b = _G[ "TargetFrameDebuff"..i ]
+					if not b then
+						b = CreateFrame("Button", "TargetFrameDebuff"..i, TargetFrame, "TargetDebuffFrameTemplate")
+						b.unit = TargetFrame.unit
+					end
+					b.MAParent = self
+				end
+				self.OnMAHook = function(self)
+					self:SetScale(_G["TargetFrame"]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					TargetFrame_UpdateAuras(TargetFrame)
+					for i = 1, MAX_TARGET_DEBUFFS, 1 do
+						b = _G[ "TargetFrameDebuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self, "TOPLEFT", 1, -1)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = TargetFrameDebuff1
+					MovAny:UnlockPoint(b)
+					b:ClearAllPoints()
+					b:SetPoint("TOPLEFT", TargetFrame, "BOTTOMLEFT", 5, 35)
+					self:Hide()
+					TargetFrame_UpdateAuras(TargetFrame)
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="FocusBuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="124" y="23"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="FocusFrame" relativePoint="BOTTOMLEFT">
+				<Offset>
+					<AbsDimension x="4" y="33"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				TargetFrame_UpdateAuras(FocusFrame)
+				for i = 1, MAX_TARGET_BUFFS, 1 do
+					local b = _G[ "FocusFrameBuff"..i ]
+					if not b then
+						b = CreateFrame("Button", "FocusFrameBuff"..i, FocusFrame, "TargetBuffFrameTemplate")
+						b.unit = FocusFrame.unit
+					end
+					b.MAParent = self
+				end
+				self.OnMAHook = function(self)
+					self:SetScale(_G["FocusFrame"]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					TargetFrame_UpdateAuras(FocusFrame)
+					for i = 1, MAX_TARGET_DEBUFFS, 1 do
+						b = _G[ "FocusFrameBuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self, "TOPLEFT", 1, -1)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = FocusFrameBuff1
+					MovAny:UnlockPoint(b)
+					b:ClearAllPoints()
+					b:SetPoint("TOPLEFT", FocusFrame, "BOTTOMLEFT", 5, 35)
+					self:Hide()
+					TargetFrame_UpdateAuras(FocusFrame)
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="FocusDebuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="124" y="21"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="FocusFrame" relativePoint="BOTTOMLEFT">
+				<Offset>
+					<AbsDimension x="4" y="33"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				TargetFrame_UpdateAuras(FocusFrame)
+				for i = 1, MAX_TARGET_DEBUFFS, 1 do
+					local b = _G[ "FocusFrameDebuff"..i ]
+					if not b then
+						b = CreateFrame("Button", "FocusFrameDebuff"..i, FocusFrame, "TargetDebuffFrameTemplate")
+						b.unit = FocusFrame.unit
+					end
+					b.MAParent = self
+				end
+				self.OnMAHook = function(self)
+					self:SetScale(_G["FocusFrame"]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					TargetFrame_UpdateAuras(FocusFrame)
+					for i = 1, MAX_TARGET_DEBUFFS, 1 do
+						b = _G[ "FocusFrameDebuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self, "TOPLEFT", 1, -1)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = FocusFrameDebuff1
+					MovAny:UnlockPoint(b)
+					b:ClearAllPoints()
+					b:SetPoint("TOPLEFT", FocusFrame, "BOTTOMLEFT", 4, 33)
+					self:Hide()
+					TargetFrame_UpdateAuras(FocusFrame)
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="TargetFrameToTDebuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="57" y="14"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="TargetFrameToT" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="3" y="-9"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				for i = 1, 4, 1 do
+					local b = _G[ "TargetFrameToTDebuff"..i ]
+					b.MAParent = self
+				end
+				self.OnMAHook = function(self)
+					--self:SetPoint("TOPLEFT", TargetFrameToT, "TOPRIGHT", 4, -10)
+					self:SetScale(_G["TargetFrameToT"]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					for i = 1, 4, 1 do
+						b = _G[ "TargetFrameToTDebuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self, "TOPLEFT", 1, -1)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = _G["TargetFrameToTDebuff1"]
+					MovAny:UnlockPoint(b)
+					b:ClearAllPoints()
+					b:SetPoint("TOPLEFT", TargetFrameToT, "TOPRIGHT", 4, -10)
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="PlayerBuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="31" y="31"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativeTo="UIParent" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="-150" y="-10"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				self.OnMAHook = function(self)
+					self.attachedChildren = {}
+					local b = _G["BuffFrame"]
+					b:SetPoint("TOPRIGHT", self, "TOPRIGHT", 0, 0)
+					MovAny:LockPoint(b)
+					tinsert(self.attachedChildren, b)
+					b = _G["ConsolidatedBuffs"]
+					b:SetPoint("TOPRIGHT", self, "TOPRIGHT", 0, 0)
+					MovAny:LockPoint(b)
+					tinsert(self.attachedChildren, b)
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = _G["BuffFrame"]
+					MovAny:UnlockPoint(b)
+					b:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -205, -13)
+					b = _G["ConsolidatedBuffs"]
+					MovAny:UnlockPoint(b)
+					b:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -180, -13)
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<Frame name="PlayerDebuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="31" y="31"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOPRIGHT" relativeTo="ConsolidatedBuffs" relativePoint="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="0" y="-50"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				hooksecurefunc("BuffFrame_Update", function()
+					if MovAny:IsModified(self:GetName()) then
+						self.attachedChildren = {}
+						for i = 1, DEBUFF_MAX_DISPLAY, 1 do
+							local b = _G[ "DebuffButton"..i ]
+							if b then
+								b.MAParent = self
+								tinsert(self.attachedChildren, b)
+							end
+						end
+						MovAny:SyncFrame(self:GetName())
+					end
+				end)
+				self.OnMAHook = function(self)
+					self:SetScale(_G["BuffFrame"]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					for i = 1, DEBUFF_MAX_DISPLAY, 1 do
+						b = _G[ "DebuffButton"..i ]
+						if b then
+							tinsert(self.attachedChildren, b)
+							if i == 1 then
+								b:ClearAllPoints()
+								b:SetPoint("TOPRIGHT", self, "TOPRIGHT", -1, -1)
+								MovAny:LockPoint(b)
+							end
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = _G[ "DebuffButton1"]
+					self.attachedChildren = nil
+					if b then
+						MovAny:UnlockPoint(b)
+						b:ClearAllPoints()
+						b:SetPoint("TOPRIGHT", ConsolidatedBuffs, "BOTTOMRIGHT", 0, -TempEnchant1:GetHeight()*3)
+					end
+					self:Hide()
+					BuffFrame_Update()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	
+	<!-- commented out till 4.0.1 release
+	<Frame name="TargetOfFocusDebuffsMover" parent="UIParent" hidden="true" enableMouse="false">
+		<Size>
+			<AbsDimension x="66" y="15"/>
+		</Size>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="TargetOfFocusFrame">
+				<Offset>
+					<AbsDimension x="13" y="12"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Scripts>
+			<OnLoad>
+				for i = 1, 8, 1 do
+					_G[ "TargetOfFocusFrameDebuff"..i ].MAParent = self
+				end
+				self.OnMAHook = function(self)
+					self:SetScale(_G["TargetOfFocusFrame"]:GetEffectiveScale() / UIParent:GetScale())
+					local b
+					self.attachedChildren = {}
+					for i = 1, 8, 1 do
+						b = _G[ "TargetOfFocusFrameDebuff"..i ]
+						tinsert(self.attachedChildren, b)
+						if i == 1 then
+							b:ClearAllPoints()
+							b:SetPoint("TOPLEFT", self)
+							MovAny:LockPoint(b)
+						end
+					end
+					self:Show()
+				end
+				self.OnMAPostReset = function(self)
+					local b = _G["TargetOfFocusFrameDebuff1"]
+					MovAny:UnlockPoint(b)
+					b:ClearAllPoints()
+					b:SetPoint("BOTTOMLEFT", "FocusFrame", 13, 12)
+					self:Hide()
+				end
+			</OnLoad>
+		</Scripts>
+	</Frame>
+	-->
+</Ui>

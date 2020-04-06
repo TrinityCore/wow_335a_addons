@@ -1,0 +1,27 @@
+## Interface: 30300
+## Title: Diminishing Returns - configuration UI
+## Notes: Diminishing returns configuration interface.
+## Author: Adirelle
+## Version: v1.0-beta-12
+## X-Date: 2010-07-06T12:10:41Z
+## X-Curse-Packaged-Version: v1.0-beta-12
+## X-Curse-Project-Name: DiminishingReturns
+## X-Curse-Project-ID: diminishingreturns
+## X-Curse-Repository-ID: wow/diminishingreturns/mainline
+
+## RequiredDeps: DiminishingReturns
+## OptionalDeps: AceGUI-3.0-SharedMediaWidgets
+
+# Use awesome AddonLoader to make the configuration LoD
+## LoadManagers: AddonLoader
+## X-LoadOn-InterfaceOptions: Diminishing Returns
+## X-LoadOn-Slash: /dimret
+
+#@no-lib-strip@
+..\DiminishingReturns\libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+..\DiminishingReturns\libs\AceGUI-3.0\AceGUI-3.0.xml
+..\DiminishingReturns\libs\AceConfig-3.0\AceConfig-3.0.xml
+..\DiminishingReturns\libs\AceGUI-3.0-SharedMediaWidgets\widget.xml
+#@end-no-lib-strip@
+
+..\DiminishingReturns\Config.lua

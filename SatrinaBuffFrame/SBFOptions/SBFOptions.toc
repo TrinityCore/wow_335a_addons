@@ -1,0 +1,42 @@
+## Interface: 40000
+## Title: SBF Options
+## Author: Satrina@Stormrage
+## Version: 3.1
+## X-MinorVersion: 25
+## Dependencies: SatrinaBuffFrame
+## LoadOnDemand: 1
+## Notes: Configuration addon for Satrina Buff Frames
+## Notes-zhCN: Satrina Buff Frames的设置界面
+## Notes-zhTW: Satrina Buff Frames設置UI
+
+## X-Date $Date: 2009-09-12 20:30:18 -0400 (Sat, 12 Sep 2009) $  
+## X-Revision $Revision: 133 $
+
+Libs\LibColourFrame-1.0\LibColourFrame-1.0.lua
+Libs\LibScrollingDropDown-1.0\LibScrollingDropDown-1.0.lua
+
+RoundedDropDown.xml
+SatrinaBuffFrameOptions.lua
+GeneralTab.lua
+LayoutTab.lua
+IconTab.lua
+TimerTab.lua
+CountTab.lua
+ExpiryTab.lua
+FlowTab.lua
+FilterTab.lua
+GlobalTab.lua
+UnitsTab.lua
+BarTab.lua
+NameTab.lua
+SpellTab.lua
+ProfileTab.lua
+
+# Disabled until error causing things are fixed
+Locales\Localisation.ruRU.lua
+Locales\Localisation.zhCN.lua
+Locales\Localisation.zhTW.lua
+Locales\Localisation.koKR.lua
+Locales\Localisation.enUS.lua
+
+SatrinaBuffFrameOptions.xml

@@ -1,0 +1,12 @@
+tag 1.3.3
+8aecd44ce433862b3c5c83beba7440af4f5ca35d
+galedric <g@ledric.me>
+2015-08-13 01:09:29 +0200
+
+Tagging as 1.3.3
+
+
+--------------------
+
+galedric:
+	- Keep player name until ring is available again

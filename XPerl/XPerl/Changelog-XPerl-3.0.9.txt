@@ -1,0 +1,48 @@
+------------------------------------------------------------------------
+r370 | zeksie | 2010-07-13 12:23:42 +0000 (Tue, 13 Jul 2010) | 1 line
+Changed paths:
+   A /tags/3.0.9 (from /trunk:369)
+
+Tagging as 3.0.9
+------------------------------------------------------------------------
+r369 | Zeksie | 2010-07-13 12:21:47 +0000 (Tue, 13 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/XPerl.toc
+   M /trunk/changelog.txt
+   M /trunk/localization.lua
+
+Version bump to 3.0.9
+------------------------------------------------------------------------
+r368 | mysticalos | 2010-07-02 07:35:22 +0000 (Fri, 02 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/XPerl_CustomHighlight/XPerl_CustomHighlight.lua
+   M /trunk/localization.deDE.lua
+   M /trunk/localization.esES.lua
+   M /trunk/localization.frFR.lua
+   M /trunk/localization.koKR.lua
+   M /trunk/localization.lua
+   M /trunk/localization.ruRU.lua
+   M /trunk/localization.zhCN.lua
+   M /trunk/localization.zhTW.lua
+
+*Added missing zones to all locals, including Ruby Sanctum
+*Added Ruby sanctum custom highlights
+------------------------------------------------------------------------
+r367 | playerlin | 2010-07-01 09:15:25 +0000 (Thu, 01 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/XPerl_RaidAdmin/XPerl_Check.lua
+
+Ticket 658 fix : ChatFrameEditBox obsoleted fix on Parch 3.3.5, thanks titanrecount.
+------------------------------------------------------------------------
+r366 | playerlin | 2010-06-29 05:46:04 +0000 (Tue, 29 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/XPerl_PlayerBuffs/XPerl_PlayerBuffs.lua
+
+Ticket 649 fix: Shaman Weapon Enchants buffs will giving the right duration now. (Temporarily fix by only1yzerman, needed more work?)
+------------------------------------------------------------------------
+r365 | StingerSoft | 2010-05-15 09:00:42 +0000 (Sat, 15 May 2010) | 1 line
+Changed paths:
+   M /trunk/XPerl_Options/localization.ruRU.lua
+
+ruRU update
+------------------------------------------------------------------------

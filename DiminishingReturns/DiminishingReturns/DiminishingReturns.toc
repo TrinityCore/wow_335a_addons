@@ -1,0 +1,50 @@
+## Interface: 30300
+## X-Curse-Packaged-Version: v1.0-beta-12
+## X-Curse-Project-Name: DiminishingReturns
+## X-Curse-Project-ID: diminishingreturns
+## X-Curse-Repository-ID: wow/diminishingreturns/mainline
+
+## Title: Diminishing Returns
+## Notes: Attach diminishing return icons to unit frames.
+## Notes-zhCN: 在单位框体附着递减规则图标。
+## Notes-zhTW: 在單位框體附著遞減規則圖示。
+## Author: Adirelle
+## Version: v1.0-beta-12
+## X-Date: 2010-07-06T12:10:41Z
+
+## SavedVariables: DiminishingReturnsDB
+## OptionalDeps: LibStub, CallbackHandler-1.0, Ace3, LibAdiEvent-1.0, LibDualSpec-1.0, DRData-1.0, LibSharedMedia-3.0, LibNameplate-1.0, tekDebug
+
+## LoadManagers: AddonLoader
+## X-LoadOn-Always: delayed
+
+#@no-lib-strip@
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+libs\AceDB-3.0\AceDB-3.0.xml
+libs\DRData-1.0\DRData-1.0.lua
+libs\LibSharedMedia-3.0\lib.xml
+#@end-no-lib-strip@
+
+# Not installable by the CC
+libs\LibAdiEvent-1.0\LibAdiEvent-1.0.lua
+
+DiminishingReturns.lua
+Localization.lua
+Tracker.lua
+Display.lua
+FrameSetup.lua
+
+support\ag_UnitFrames.lua
+support\Blizzard.lua
+support\Blizzard_ArenaUI.lua
+support\Gladius.lua
+support\oUF.lua
+support\Nameplates.lua
+support\PitBull4.lua
+support\ShadowedUnitFrames.lua
+support\StellarUF.lua
+support\XPerl.lua
+
+# Always call last so anything is loaded
+support\Callback.lua

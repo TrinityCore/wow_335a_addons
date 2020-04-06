@@ -1,0 +1,10 @@
+
+function Skinner:NicheCombatConfig()
+
+	self:skinDropDown(NicheCombatConfig_FiltersConfigFrame_SettingsDD)
+	self:skinDropDown(NicheCombatConfig_FiltersConfigFrame_FilterDD)
+	self:skinDropDown(NicheCombatConfig_FiltersConfigFrame_EventsDD)
+	self:skinDropDown(NicheCombatConfig_FiltersConfigFrame_SourceDD)
+	self:skinDropDown(NicheCombatConfig_FiltersConfigFrame_DestinationDD)
+
+end

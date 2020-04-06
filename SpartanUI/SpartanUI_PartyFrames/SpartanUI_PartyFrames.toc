@@ -1,0 +1,14 @@
+## Interface: 30300
+## Title: SpartanUI: Party Frames
+## Notes: Party Frames designed to compliment SpartanUI
+## Version: 2.6.0.30300
+## Author: Atriace, Beladona
+## X-Category: User Interfaces
+## X-Email: code@spartanui.com
+## X-Website: http://www.spartanui.com
+## RequiredDeps: SpartanUI, oUF
+## OptionalDeps: SpartanUI_PlayerFrames
+
+global\Framework.xml
+global\PartyFrames.lua
+global\Commands.lua

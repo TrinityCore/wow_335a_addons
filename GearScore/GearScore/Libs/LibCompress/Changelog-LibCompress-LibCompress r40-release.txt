@@ -1,0 +1,13 @@
+------------------------------------------------------------------------
+r41 | galmok | 2009-08-05 20:02:23 +0000 (Wed, 05 Aug 2009) | 1 line
+Changed paths:
+   A /tags/LibCompress r40-release (from /trunk:40)
+
+Tagging as LibCompress r40-release
+------------------------------------------------------------------------
+r40 | galmok | 2009-08-05 16:51:21 +0000 (Wed, 05 Aug 2009) | 1 line
+Changed paths:
+   M /trunk/LibCompress.toc
+
+Upped toc to patch 3.2 (30200).
+------------------------------------------------------------------------

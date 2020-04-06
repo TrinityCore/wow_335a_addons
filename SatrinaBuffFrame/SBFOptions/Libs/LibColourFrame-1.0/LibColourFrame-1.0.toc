@@ -1,0 +1,10 @@
+﻿## Interface: 20300
+## Title: LibColourFrame-1.0
+## Notes: An addition to ColorPickerFrame to add copy/paste and RGB input fields
+## Author: Satrina
+## X-Email: satrina@evilempireguild.org
+## X-WoWIPortal: satrina
+## X-Category: Library
+
+LibStub\LibStub.lua
+LibColourFrame-1.0.lua

@@ -1,0 +1,838 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Script file="localization.lua"/>
+	<Script file="DebuffFilter_Options.lua"/>
+	<Button name="DebuffFilterOptions_ItemButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="188" y="16"/>
+		</Size>
+		<NormalFont style="GameFontNormalLeft" />
+		<HighlightFont style="GameFontHighlight" />
+		<HighlightTexture file="Interface\QuestFrame\UI-QuestTitleHighlight" alphaMode="ADD"/>
+		<Scripts>
+			<OnClick>
+				<!-- highlight clicked debuff/buff, and update fields associated with it -->
+				if (self:GetText() ~= nil) then
+					DebuffFilterOptions_Selection = self:GetText();
+					DebuffFilterOptions_ScrollFrame_Update();
+					DebuffFilterOptions_EditBox:SetText(DebuffFilterOptions_Selection);
+					DebuffFilterOptions_GetOptions(DebuffFilterOptions_Selection);
+				end
+			</OnClick>
+		</Scripts>
+	</Button>
+	<CheckButton name="DebuffFilterOptions_CheckButtonTemplate" inherits="OptionsCheckButtonTemplate" virtual="true">
+		<HitRectInsets>
+			<AbsInset left="0" right="0" top="0" bottom="0"/>
+		</HitRectInsets>
+	</CheckButton>
+	<Frame name="DebuffFilterOptionsFrame" toplevel="true" frameStrata="LOW" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="460" y="560"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11"/>
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>	
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="350" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="DebuffFilterOptions_Title" inherits="GameFontNormal" text="Debuff Filter">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentHeader">
+							<Offset>
+								<AbsDimension x="0" y="-14"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+		        <Button name="DebuffFilterOptions_CloseButton" inherits="UIPanelCloseButton">
+				<Size>
+					<AbsDimension x="32" y="32"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-24" y="-24"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+		        </Button>
+			<Frame name="DebuffFilterOptions_TargetDropDown" inherits="UIDropDownMenuTemplate">
+				<Size>
+					<AbsDimension x="70" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-65"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString inherits="GameFontNormal" text="DFILTER_OPTIONS_TARGET">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="18" y="4"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						DebuffFilterOptions_TargetDropDown_OnLoad(self);
+					</OnLoad>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+						GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Frame>
+			<!-- direction that debuffs/buffs are positioned -->
+			<Frame name="DebuffFilterOptions_GrowDropDown" inherits="UIDropDownMenuTemplate">
+				<Size>
+					<AbsDimension x="100" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="DebuffFilterOptions_TargetDropDown" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="-28" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString inherits="GameFontNormal" text="DFILTER_OPTIONS_GROW">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="18" y="4"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						DebuffFilterOptions_GrowDropDown_OnLoad(self);
+					</OnLoad>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+						GameTooltip:SetText(self.tooltipText, nil, nil, nil, nil, 1);
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide();
+					</OnLeave>
+				</Scripts>
+			</Frame>
+			<!-- number of debuffs/buffs per row -->
+			<Slider name="DebuffFilterOptions_RowSlider" inherits="OptionsSliderTemplate">
+				<Size>
+					<AbsDimension x="90" y="17"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="DebuffFilterOptions_TargetDropDown" relativePoint="BOTTOM">
+						<Offset>
+							<AbsDimension x="10" y="-25"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetMinMaxValues(1,8);
+						self:SetValueStep(1);
+						getglobal(self:GetName() .. "Low"):SetText(1);
+						getglobal(self:GetName() .. "High"):SetText(8);
+						self.tooltipText = DFILTER_OPTIONS_ROW_TOOLTIP;
+					</OnLoad>
+					<OnValueChanged>
+						DebuffFilterOptions_ModifyLayout("per_row", self:GetValue());
+						getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_ROW .. " (" .. self:GetValue() .. ")");
+					</OnValueChanged>
+				</Scripts>
+			</Slider>
+			<CheckButton name="DebuffFilterOptions_CheckButtonSelfApplied" inherits="DebuffFilterOptions_CheckButtonTemplate">
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="11" y="108"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_SELFAPPLIED);
+						self.tooltipText = DFILTER_OPTIONS_SELFAPPLIED_TOOLTIP;
+					</OnLoad>
+					<OnClick>
+						DebuffFilterOptions_ModifyList("selfapplied");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="DebuffFilterOptions_CheckButtonDontCombine" inherits="DebuffFilterOptions_CheckButtonTemplate">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButtonSelfApplied" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="7"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_DONTCOMBINE);
+						self.tooltipText = DFILTER_OPTIONS_DONTCOMBINE_TOOLTIP;
+					</OnLoad>
+					<OnClick>
+						DebuffFilterOptions_ModifyList("dontcombine");
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<!-- name of debuff/buff -->
+			<EditBox name="DebuffFilterOptions_EditBox" letters="50" autoFocus="false" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="150" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="20" y="36"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString inherits="GameFontNormal" text="DFILTER_OPTIONS_NAME">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="-4" y="4"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnEnterPressed>
+						DebuffFilterOptions_ModifyList("add");
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<!-- texture name to filter out the debuffs/buffs -->
+			<EditBox name="DebuffFilterOptions_EditBox2" letters="50" autoFocus="false" inherits="InputBoxTemplate">
+				<Size>
+					<AbsDimension x="150" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT">
+						<Offset>
+							<AbsDimension x="20" y="-6"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString inherits="GameFontNormalSmall" text="DFILTER_OPTIONS_TEXTURE">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="-4" y="4"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnEnterPressed>
+						DebuffFilterOptions_ModifyList("add");
+					</OnEnterPressed>
+				</Scripts>
+			</EditBox>
+			<Button name="DebuffFilterOptions_AddButton" inherits="OptionsButtontemplate" text="DFILTER_OPTIONS_ADD">
+				<Size>
+					<AbsDimension x="50" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="DebuffFilterOptions_EditBox" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						DebuffFilterOptions_ModifyList("add");
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="DebuffFilterOptions_DeleteButton" inherits="OptionsButtontemplate" text="DFILTER_OPTIONS_DEL">
+				<Size>
+					<AbsDimension x="50" y="22"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="DebuffFilterOptions_AddButton" relativePoint="BOTTOM">
+					<Offset>
+						<AbsDimension x="0" y="0"/>
+					</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						DebuffFilterOptions_ModifyList("delete");
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Frame name="DebuffFilterOptions_ListFrame" inherits="OptionsBoxTemplate">
+				<Size>
+					<AbsDimension x="215" y="237"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-10" y="-62"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+				<EdgeSize>
+					<AbsValue val="16"/>
+				</EdgeSize>
+				<TileSize>
+					<AbsValue val="16"/>
+				</TileSize>
+				<BackgroundInsets>
+					<AbsInset left="5" right="5" top="5" bottom="5"/>
+				</BackgroundInsets>
+				</Backdrop>
+				<Scripts>
+					<OnLoad>
+						self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+						self:SetBackdropColor(0.15, 0.15, 0.15);
+					</OnLoad>
+				</Scripts>
+				<Frames>
+					<Button name="DebuffFilterOptions_DebuffsTab" text="DFILTER_OPTIONS_DEBUFFS" inherits="TabButtonTemplate">
+						<Anchors>
+							<Anchor point="BOTTOM" relativePoint="TOP">
+								<Offset>
+									<AbsDimension x="-25" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								PanelTemplates_SelectTab(self);
+								PanelTemplates_TabResize(self, -17);
+								getglobal(self:GetName().."HighlightTexture"):SetWidth(self:GetTextWidth() + 16);
+							</OnLoad>
+							<OnClick>
+								PanelTemplates_SelectTab(self);
+								PanelTemplates_DeselectTab(DebuffFilterOptions_BuffsTab);
+
+								DebuffFilterOptions_Tab_OnClick("debuff");
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="DebuffFilterOptions_BuffsTab" text="DFILTER_OPTIONS_BUFFS" inherits="TabButtonTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="DebuffFilterOptions_DebuffsTab" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								PanelTemplates_DeselectTab(self);
+								PanelTemplates_TabResize(self, -17);
+								getglobal(self:GetName().."HighlightTexture"):SetWidth(self:GetTextWidth() + 16);
+							</OnLoad>
+							<OnClick>
+								PanelTemplates_SelectTab(self);
+								PanelTemplates_DeselectTab(DebuffFilterOptions_DebuffsTab);
+
+								DebuffFilterOptions_Tab_OnClick("buff");
+							</OnClick>
+						</Scripts>
+					</Button>
+					<ScrollFrame name="DebuffFilterOptions_ScrollFrame" inherits="FauxScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="182" y="227"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT"> 
+								<Offset>
+									<AbsDimension x="5" y="-6"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnVerticalScroll>
+								FauxScrollFrame_OnVerticalScroll(self, offset, 16, DebuffFilterOptions_ScrollFrame_Update);
+							</OnVerticalScroll>
+							<OnShow>
+								DebuffFilterOptions_ScrollFrame_Update();
+							</OnShow>
+						</Scripts>
+					</ScrollFrame>
+					<Button name="DebuffFilterOptions_Item1" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_ScrollFrame" relativePoint="TOPLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item2" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item1" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item3" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item2" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item4" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item3" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item5" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item4" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item6" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item5" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item7" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item6" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item8" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item7" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item9" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item8" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item10" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item9" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item11" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item10" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item12" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item11" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item13" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item12" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+					<Button name="DebuffFilterOptions_Item14" inherits="DebuffFilterOptions_ItemButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_Item13" relativePoint="BOTTOMLEFT"/>
+						</Anchors>
+					</Button>
+				</Frames>
+			</Frame>
+			<Frame name="DebuffFilterOptions_SettingsFrame">
+				<Size>
+					<AbsDimension x="440" y="245"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="10" y="10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString inherits="GameTooltipHeaderText" text="DFILTER_OPTIONS_SETTINGS">
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="0" y="-8"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+				<EdgeSize>
+					<AbsValue val="16"/>
+				</EdgeSize>
+				<TileSize>
+					<AbsValue val="16"/>
+				</TileSize>
+				<BackgroundInsets>
+					<AbsInset left="5" right="5" top="5" bottom="5"/>
+				</BackgroundInsets>
+				</Backdrop>
+				<Scripts>
+					<OnLoad>
+						self:SetBackdropBorderColor(0.4, 0.4, 0.4);
+						self:SetBackdropColor(0.15, 0.15, 0.15);
+					</OnLoad>
+				</Scripts>
+				<Frames>
+					<CheckButton name="DebuffFilterOptions_CheckButton1" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="-30"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_DEBUFF_FILTERING);
+								self.tooltipText = DFILTER_OPTIONS_DEBUFF_FILTERING_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].debuffs) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("debuffs");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton2" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButton1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_BUFF_FILTERING);
+								self.tooltipText = DFILTER_OPTIONS_BUFF_FILTERING_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].buffs) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("buffs");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton3" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButton2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_PDEBUFF_FILTERING);
+								self.tooltipText = DFILTER_OPTIONS_PDEBUFF_FILTERING_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].pdebuffs) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("pdebuffs");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton4" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButton3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_PBUFF_FILTERING);
+								self.tooltipText = DFILTER_OPTIONS_PBUFF_FILTERING_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].pbuffs) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("pbuffs");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton5" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButton4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_FDEBUFF_FILTERING);
+								self.tooltipText = DFILTER_OPTIONS_FDEBUFF_FILTERING_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].fdebuffs) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("fdebuffs");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton6" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButton5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_FBUFF_FILTERING);
+								self.tooltipText = DFILTER_OPTIONS_FBUFF_FILTERING_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].fbuffs) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("fbuffs");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton7" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="DebuffFilterOptions_CheckButton1" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="200" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_COUNT);
+								self.tooltipText = DFILTER_OPTIONS_COUNT_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].count) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("count");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton8" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButton7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_COOLDOWNCOUNT);
+								self.tooltipText = DFILTER_OPTIONS_COOLDOWNCOUNT_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].cooldowncount) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("cooldowncount");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton9" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButton8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_COMBAT);
+								self.tooltipText = DFILTER_OPTIONS_COMBAT_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].combat) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("combat");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton10" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButton9" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_TOOLTIPS);
+								self.tooltipText = DFILTER_OPTIONS_TOOLTIPS_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].tooltips) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("tooltips");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton11" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButton10" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_BACKDROP);
+								self.tooltipText = DFILTER_OPTIONS_BACKDROP_TOOLTIP;
+							</OnLoad>
+							<OnClick>
+								DebuffFilter_Options("backdrop");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<CheckButton name="DebuffFilterOptions_CheckButton12" inherits="DebuffFilterOptions_CheckButtonTemplate">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="DebuffFilterOptions_CheckButton11" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_LOCK);
+								self.tooltipText = DFILTER_OPTIONS_LOCK_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								if (DebuffFilter_Config[DebuffFilter_Player].lock) then
+									self:SetChecked(1);
+								end
+							</OnShow>
+							<OnClick>
+								DebuffFilter_Options("lock");
+							</OnClick>
+						</Scripts>
+					</CheckButton>
+					<Slider name="DebuffFilterOptions_Slider1" inherits="OptionsSliderTemplate">
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="-12" y="15"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnLoad>
+								self:SetMinMaxValues(0.5,3.0);
+								self:SetValueStep(0.05);
+								getglobal(self:GetName() .. "Low"):SetText(0.5);
+								getglobal(self:GetName() .. "High"):SetText(3);
+								self.tooltipText = DFILTER_OPTIONS_SCALE_TOOLTIP;
+							</OnLoad>
+							<OnShow>
+								self:SetValue(DebuffFilterFrame:GetScale());
+							</OnShow>
+							<OnValueChanged>
+								DebuffFilterOptions_SetScale(self:GetValue());
+								getglobal(self:GetName() .. "Text"):SetText(DFILTER_OPTIONS_SCALE .. " (" .. string.format("%.2f", self:GetValue()) .. ")");
+							</OnValueChanged>
+						</Scripts>
+					</Slider>
+				</Frames>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnShow>
+				DebuffFilterOptions_GetLayout();
+			</OnShow>
+			<OnMouseDown>
+				if (arg1 == "LeftButton") then
+					self:StartMoving();
+				end
+			</OnMouseDown>
+			<OnMouseUp>
+				self:StopMovingOrSizing();
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+</Ui>

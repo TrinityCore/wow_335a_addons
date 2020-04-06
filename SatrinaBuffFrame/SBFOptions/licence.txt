@@ -1,0 +1,56 @@
+"SBFOptions" is Copyright (c) 2004-2009 L. Tremblay.  
+
+1. Definitions
+"Licence" means the terms and conditions as set out in this Agreement.
+
+"Software" means this addon, entitled "SBFOptions", which is composed of Lua and/or XML files containing the addon source code, the TOC file, and may include other files including but not limited to image files and sound files.
+
+"Copyright Owner" means L. Tremblay, a.k.a Satrina, the author of the Software, and his designated assignees or heirs.
+
+"End User" means an individual or other entity that executes, compiles or uses the Software.
+
+"Distribute" means to transmit, host, distribute or otherwise provide the Software to an End User.
+
+"Distributor" means an individual or other entity that hosts or distributes the Software, but who is not an End User of the Software.
+
+"Interface Compilation Author" means an individual or other entity that creates aggregates of addons for the purpose of distributing a user interface to their own End Users.
+
+"Interface Compilation" means an aggregation of addons that is created by an Interface Compilation Author.
+
+"Modify" means to modify, change, adapt, or otherwise edit the Software.
+
+"Fork" means to create a copy of the Software that is Modified, independently developed and/or otherwise maintained by someone other than the Copyright Owner.
+
+"Branch" means Fork.
+
+2. Acceptance of Terms
+All rights are reserved by the Copyright Owner except as provided by this Licence.  Installation and use of the Software, inclusion of the Software within an Interface Compilation, or acceptance of the Software for hosting by a Distributor shall all constitute acceptance of the terms of this Licence.  
+
+3. Personal Use
+End Users are granted the non-exclusive right to use and execute the Software freely and without restriction, subject to acceptance of the terms of this Licence.
+
+4. Interface Compilations
+Interface Compilation Authors are granted the non-exclusive right to incorporate the Software within such Interface Compilations they may create, so long as the Software is Distributed as a verbatim copy, and subject to acceptance of the terms of this Licence.
+
+5. Distribution
+Except as expressly provided herein, the Software may only be Distributed with express written permission of the Copyright Owner.  The Copyright Owner, through the act of uploading the Software to a Distributor, grants the Distributor the non-exclusive, terminable right to Distribute the Software to End Users.
+
+Interface Compilations containing the Software may be Distributed via whichever Distributor the Interface Compilation Author so chooses, without express written permission of the Copyright Owner.
+
+6. Control of Source
+The Software is unobfuscated and freely viewable, but is copyrighted and is not open source, nor is it free software.  The Software may be Modified for personal use and purposes, but the Modified Software may not be Distributed in any way.  No Fork, Branch, derivative work or otherwise Modified version of the Software may be Distributed without the express written consent of the Copyright Owner.
+
+7. Merchantability
+The Software itself may not be sold or otherwise exchanged for value.  So long as the Software is guaranteed to be available to any End User at no cost through at least one source at the time of Distribution, Distributors may charge fees for Distributing the Software through alternative sources as they see fit.
+
+8. Disclaimer of Warranty and Liability
+The Software is provided "as is".  No warranty of any kind is given, implicit or express, and any warranty for fitness of purpose is disclaimed.  In no event shall the Copyright Owner be liable to any End User, Distributor, or Interface Compilation author for any claim, damages, or other liability arising from or in connection to the Software under any legal theory, whether in tort, contract, or otherwise.
+
+9. Other rights
+All rights that are not explicitly addressed in this Licence are reserved by the Copyright Owner.  In particular, the Copyright Owner reserves his moral rights to the Software, including the rights of attribution and integrity.
+
+10. Termination
+Any breach of this Licence automatically revokes all rights granted to you by this Licence without any cure period or rectification.
+
+11.  Law, Jurisdiction and Dispute Resolution
+This Licence shall be interpreted and enforced in accordance with the laws of Ontario and Canada, as the case may be. Any claim brought under this Licence or as a result of its breach shall first be attempted to be resolved informally or through alternative dispute resolution methods prior to the commencement of formal litigation. Any formal litigation shall only be brought in the Federal Court of Canada, Ottawa branch, or in the Superior Courts of Ontario located in Ottawa, as appropriate.

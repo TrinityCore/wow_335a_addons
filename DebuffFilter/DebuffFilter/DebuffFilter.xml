@@ -1,0 +1,291 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+C:\Projects\WoW\Bin\Interface\FrameXML\UI.xsd">
+	<Script file="DebuffFilter.lua"/>
+	<Button name="DebuffFilter_BuffButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="30" y="30"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentIcon"/>
+				<!-- current number of debuff/buff's stack -->
+				<FontString name="$parentCount" inherits="NumberFontNormalSmall">
+					<Anchors>
+						<Anchor point="BOTTOMRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<!-- number of same debuffs/buffs that are combined -->
+				<FontString name="$parentCount2" inherits="NumberFontNormalSmall">
+					<Color r="1.0" g="0.82" b="0"/>
+					<Anchors>
+						<Anchor point="TOPRIGHT">
+							<Offset>
+								<AbsDimension x="-1" y="-1"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentDuration" inherits="GameFontNormalSmall">
+					<Size>
+						<AbsDimension x="40" y="10"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP" relativePoint="BOTTOM">
+							<Offset>
+								<AbsDimension x="0" y="-2"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<!-- display time remaining for a debuff/buff as a cooldown on the debuff/buff 
+			itself similar to a clock -->
+			<Cooldown name="$parentCooldown" inherits="CooldownFrameTemplate" reverse="true" hidden="true">
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="0" y="-1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</Cooldown>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				DebuffFilter_Button_OnLoad(self);
+			</OnLoad>
+			<OnEnter>
+				if (DebuffFilter_Config[DebuffFilter_Player].tooltips) then
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+					GameTooltip:SetUnitBuff(self.target, self.index);
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnMouseDown>
+				DebuffFilter_OnMouseDown(self, button);
+			</OnMouseDown>
+			<OnMouseUp>
+				DebuffFilter_OnMouseUp(self, button);
+			</OnMouseUp>
+			<OnHide>
+				self:GetParent():StopMovingOrSizing();
+			</OnHide>
+		</Scripts>
+	</Button>
+	<Button name="DebuffFilter_DebuffButtonTemplate" inherits="DebuffFilter_BuffButtonTemplate" virtual="true">
+		<Layers>
+			<Layer level="OVERLAY">
+				<Texture name="$parentBorder" file="Interface\Buttons\UI-Debuff-Overlays">
+					<Size>
+						<AbsDimension x="33" y="32"/>
+					</Size>
+					<Anchors>
+						<Anchor point="CENTER"/>
+					</Anchors>
+					<TexCoords left="0.296875" right="0.5703125" top="0" bottom="0.515625"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnEnter>
+				if (DebuffFilter_Config[DebuffFilter_Player].tooltips) then
+					GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+					GameTooltip:SetUnitDebuff(self.target, self.index);
+				end
+			</OnEnter>
+		</Scripts>
+	</Button>
+	<Frame name="DebuffFilter_FrameTemplate" parent="DebuffFilterFrame" frameStrata="LOW" toplevel="false" movable="true" virtual="true">
+		<Size>
+			<AbsDimension x="30" y="30"/>
+		</Size>
+		<Layers>
+			<Layer level="OVERLAY">
+				<!-- display total number of debuffs/buffs raider has -->
+				<FontString name="$parentCount" inherits="GameFontNormal" hidden="true">
+					<Size>
+						<AbsDimension x="30" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT" relativePoint="LEFT"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+	<!-- backdrop placed over frame to aid in moving it and to allow frame to be moved
+		even if frames are locked -->
+	<Button name="DebuffFilter_BackdropTemplate" hidden="true" virtual="true">
+		<Size>
+			<AbsDimension x="40" y="40"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\TutorialFrame\TutorialFrameBackground" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="16"/>
+			</EdgeSize>
+			<BackgroundInsets>
+				<AbsInset left="5" right="5" top="5" bottom="5"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnEnter>
+				GameTooltip:SetOwner(self, "ANCHOR_RIGHT");
+				GameTooltip:SetText(DFILTER_BACKDROP_TOOLTIP);
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide();
+			</OnLeave>
+			<OnMouseDown>
+				DebuffFilter_OnMouseDown(self, button);
+			</OnMouseDown>
+			<OnMouseUp>
+				DebuffFilter_OnMouseUp(self, button);
+			</OnMouseUp>
+			<OnHide>
+				self:GetParent():StopMovingOrSizing();
+			</OnHide>
+		</Scripts>
+	</Button>
+	<!-- Title of frame shown when backdrops are displayed -->
+	<FontString name="DebuffFilter_NameTemplate" inherits="GameFontNormal" virtual="true">
+		<Size>
+			<AbsDimension x="100" y="12"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOP">
+				<Offset>
+					<AbsDimension x="0" y="15"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+	</FontString>
+	<Frame name="DebuffFilterFrame" parent="UIParent">
+		<Scripts>
+			<OnLoad>
+				DebuffFilter_OnLoad(self);
+			</OnLoad>
+			<OnEvent>
+				DebuffFilter_OnEvent(self, event, ...);
+			</OnEvent>
+		</Scripts>
+	</Frame>
+	<Frame name="DebuffFilter_DebuffFrame" inherits="DebuffFilter_FrameTemplate">
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="UIParent">
+				<Offset>
+					<AbsDimension x="-40" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="$parentBackdrop" inherits="DebuffFilter_BackdropTemplate">
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString text="Debuffs" inherits="DebuffFilter_NameTemplate"/>
+					</Layer>
+				</Layers>
+			</Button>
+		</Frames>
+	</Frame>
+	<Frame name="DebuffFilter_BuffFrame" inherits="DebuffFilter_FrameTemplate">
+		<Anchors>
+			<Anchor point="LEFT" relativeTo="DebuffFilter_DebuffFrame" relativePoint="RIGHT">
+				<Offset>
+					<AbsDimension x="70" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="$parentBackdrop" inherits="DebuffFilter_BackdropTemplate">
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString text="Buffs" inherits="DebuffFilter_NameTemplate"/>
+					</Layer>
+				</Layers>
+			</Button>
+		</Frames>
+	</Frame>
+	<Frame name="DebuffFilter_PDebuffFrame" inherits="DebuffFilter_FrameTemplate">
+		<Anchors>
+			<Anchor point="TOP" relativeTo="DebuffFilter_DebuffFrame" relativePoint="BOTTOM">
+				<Offset>
+					<AbsDimension x="0" y="-30"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="$parentBackdrop" inherits="DebuffFilter_BackdropTemplate">
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString text="Player Debuffs" inherits="DebuffFilter_NameTemplate"/>
+					</Layer>
+				</Layers>
+			</Button>
+		</Frames>
+	</Frame>
+	<Frame name="DebuffFilter_PBuffFrame" inherits="DebuffFilter_FrameTemplate">
+		<Anchors>
+			<Anchor point="LEFT" relativeTo="DebuffFilter_PDebuffFrame" relativePoint="RIGHT">
+				<Offset>
+					<AbsDimension x="70" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="$parentBackdrop" inherits="DebuffFilter_BackdropTemplate">
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString text="Player Buffs" inherits="DebuffFilter_NameTemplate"/>
+					</Layer>
+				</Layers>
+			</Button>
+		</Frames>
+	</Frame>
+	<Frame name="DebuffFilter_FDebuffFrame" inherits="DebuffFilter_FrameTemplate">
+		<Anchors>
+			<Anchor point="TOP" relativeTo="DebuffFilter_PDebuffFrame" relativePoint="BOTTOM">
+				<Offset>
+					<AbsDimension x="0" y="-30"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="$parentBackdrop" inherits="DebuffFilter_BackdropTemplate">
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString text="Focus Debuffs" inherits="DebuffFilter_NameTemplate"/>
+					</Layer>
+				</Layers>
+			</Button>
+		</Frames>
+	</Frame>
+	<Frame name="DebuffFilter_FBuffFrame" inherits="DebuffFilter_FrameTemplate">
+		<Anchors>
+			<Anchor point="LEFT" relativeTo="DebuffFilter_FDebuffFrame" relativePoint="RIGHT">
+				<Offset>
+					<AbsDimension x="70" y="0"/>
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Frames>
+			<Button name="$parentBackdrop" inherits="DebuffFilter_BackdropTemplate">
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString text="Focus Buffs" inherits="DebuffFilter_NameTemplate"/>
+					</Layer>
+				</Layers>
+			</Button>
+		</Frames>
+	</Frame>
+</Ui>

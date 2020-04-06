@@ -1,0 +1,12 @@
+## Interface: 30200
+
+## Title: Lib: AdiEvent-1.0
+## Notes: Adirelle's event handling library.
+## Author: Adirelle
+## Version: 1.0
+
+## OptionalDeps: LibStub.lua
+
+LibStub.lua
+LibAdiEvent-1.0.lua
+

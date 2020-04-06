@@ -1,0 +1,3178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML/UI.xsd">
+	
+	<Button name="SBFOTabButtonTemplate" virtual="true">
+		<Size x="85" y="16"/>
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize val="8"/>
+			<TileSize val="8"/>
+			<BackgroundInsets left="1" right="1" top="1" bottom="1"/>
+		</Backdrop>
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="CENTER">
+					<Size x="80" y="12"/>
+					<Anchors><Anchor point="CENTER"/></Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self.text = _G[self:GetName().."Text"]
+				self.text:SetTextColor(1,1,1)
+			</OnLoad>
+			<OnClick>
+				SBFOptions:SelectTab(self:GetID())
+			</OnClick>
+		</Scripts>
+		<HighlightTexture file="Interface\FriendsFrame\UI-FriendsFrame-HighlightBar" alphaMode="ADD">
+			<Size x="80" y="10"/>
+			<Anchors>
+				<Anchor point="CENTER"/>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+
+  <CheckButton name="SBFCheckButtonTemplate" inherits="OptionsCheckButtonTemplate" virtual="true">
+    <Scripts>
+      <OnLoad>
+        _G[self:GetName().."Text"]:SetFont(GameFontNormalSmall:GetFont(), 10)
+      </OnLoad>
+    </Scripts>
+  </CheckButton>
+
+  <CheckButton name="SBFSmallCheckButtonTemplate" inherits="OptionsCheckButtonTemplate" virtual="true">
+    <Size x="20" y="20"/>
+    <Scripts>
+      <OnLoad>
+        _G[self:GetName().."Text"]:SetFont(GameFontNormalSmall:GetFont(), 9)
+      </OnLoad>
+    </Scripts>
+  </CheckButton>
+
+	<Button name="SBFOFilterListButtonTemplate" virtual="true">
+		<Size x="150" y="14"/>
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" tile="true">
+			<EdgeSize val="8"/>
+			<TileSize val="8"/>
+			<BackgroundInsets left="0" right="0" top="0" bottom="0"/>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp")
+				self.label= _G[self:GetName().."Label"]
+				self:SetBackdropColor(0,0,0,1)
+			</OnLoad>
+			<OnMouseDown>
+				SBFOptions:SelectFilter(self.index)
+			</OnMouseDown>
+		</Scripts>
+		<HighlightTexture file="Interface\FriendsFrame\UI-FriendsFrame-HighlightBar" alphaMode="ADD">
+			<Size x="150" y="10"/>
+			<Anchors>
+				<Anchor point="TOP">
+					<Offset x="0" y="-2"/>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+ 
+	<Button name="SBFOColourButtonTemplate" virtual="true">
+		<Size x="22" y="22"/>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentHighlight">
+					<Size x="20" y="20"/>
+					<Anchors>
+						<Anchor point="CENTER">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+					<Color r="1.0" g="1.0" b="1.0"/>
+				</Texture>
+				<FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentHighlight" relativePoint="RIGHT">
+							<Offset x="3" y="0"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\ChatFrameColorSwatch"/>
+		<Scripts>
+			<OnLoad>
+				self.highlight = _G[self:GetName().."Highlight"]
+				self.texture = _G[self:GetName().."NormalTexture"]
+				self.label = _G[self:GetName().."Label"]
+			</OnLoad>
+			<OnEnter>
+				self.highlight:SetVertexColor(NORMAL_FONT_COLOR.r, NORMAL_FONT_COLOR.g, NORMAL_FONT_COLOR.b)
+			</OnEnter>
+			<OnLeave>
+				self.highlight:SetVertexColor(HIGHLIGHT_FONT_COLOR.r, HIGHLIGHT_FONT_COLOR.g, HIGHLIGHT_FONT_COLOR.b)
+			</OnLeave>
+		</Scripts>
+	</Button>
+
+  <Button name="SBFOSpellListButtonTemplate" inherits="SBFOFilterListButtonTemplate" virtual="true">
+		<Size x="200" y="14"/>
+		<Scripts>
+			<OnMouseDown>
+				SBFOptions:SelectSpell(self.index)
+			</OnMouseDown>
+		</Scripts>
+	</Button>
+
+	<Button name="SBFOUnitListButtonTemplate" virtual="true">
+		<Size x="75" y="14"/>
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" tile="true">
+			<EdgeSize val="8"/>
+			<TileSize val="8"/>
+			<BackgroundInsets left="0" right="0" top="0" bottom="0"/>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="LEFT">
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset x="0" y="0"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp")
+				self.label= _G[self:GetName().."Label"]
+				self:SetBackdropColor(0,0,0,1)
+			</OnLoad>
+			<OnMouseDown>
+				SBFOptions:SelectUnit(self.unit)
+			</OnMouseDown>
+		</Scripts>
+		<HighlightTexture file="Interface\FriendsFrame\UI-FriendsFrame-HighlightBar" alphaMode="ADD">
+			<Size x="75" y="10"/>
+			<Anchors>
+				<Anchor point="TOP">
+					<Offset x="0" y="-2"/>
+				</Anchor>
+			</Anchors>
+		</HighlightTexture>
+	</Button>
+
+  <Button name="SBFOFlowListButtonTemplate" inherits="SBFOUnitListButtonTemplate" virtual="true">
+		<Scripts>
+			<OnMouseDown>
+				SBFOptions:SelectFlowChild(self)
+			</OnMouseDown>
+		</Scripts>
+	</Button>
+
+	<Frame name="SatrinaBuffFrameOptions" frameStrata="MEDIUM" toplevel="true" movable="true" parent="UIParent" hidden="true">
+		<Size x="700" y="225"/>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets left="0" right="0" top="0" bottom="0"/>
+			<TileSize val="32"/>
+			<EdgeSize val="1"/>
+		</Backdrop>
+		<Anchors>
+			<Anchor point="CENTER">
+				<Offset x="0" y="0"/>
+			</Anchor>
+		</Anchors>
+		<Frames>
+      <!-- first row -->
+			<Button name="SBFOGeneralConfigButton" inherits="SBFOTabButtonTemplate" id="1">
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+						<Offset x="1" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="SBFOLayoutConfigButton" inherits="SBFOTabButtonTemplate" id="2">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="SBFOGeneralConfigButton" relativePoint="RIGHT">
+						<Offset x="0" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="SBFOIconsConfigButton" inherits="SBFOTabButtonTemplate" id="3">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="SBFOLayoutConfigButton" relativePoint="RIGHT">
+						<Offset x="0" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="SBFOTimersConfigButton" inherits="SBFOTabButtonTemplate" id="4">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="SBFOIconsConfigButton" relativePoint="RIGHT">
+						<Offset x="0" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="SBFOCountsConfigButton" inherits="SBFOTabButtonTemplate" id="5">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="SBFOTimersConfigButton" relativePoint="RIGHT">
+						<Offset x="0" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="SBFOBarsConfigButton" inherits="SBFOTabButtonTemplate" id="6">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="SBFOCountsConfigButton" relativePoint="RIGHT">
+						<Offset x="0" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="SBFONamesConfigButton" inherits="SBFOTabButtonTemplate" id="7">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="SBFOBarsConfigButton" relativePoint="RIGHT">
+						<Offset x="0" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+      <!-- second row -->
+			<Button name="SBFOExpiryConfigButton" inherits="SBFOTabButtonTemplate" id="8">
+				<Anchors>
+					<Anchor point="BOTTOM" relativeTo="SBFOGeneralConfigButton" relativePoint="TOP">
+						<Offset x="52" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="SBFOFilterConfigButton" inherits="SBFOTabButtonTemplate" id="9">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="SBFOExpiryConfigButton" relativePoint="RIGHT">
+						<Offset x="0" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+			<Button name="SBFOSpellsConfigButton" inherits="SBFOTabButtonTemplate" id="10">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="SBFOFilterConfigButton" relativePoint="RIGHT">
+						<Offset x="0" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+      
+      <!-- Under frame -->
+			<Button name="SBFOFlowConfigButton" inherits="SBFOTabButtonTemplate" id="11">
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+						<Offset x="1" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+      <Button name="SBFOGlobalConfigButton" inherits="SBFOTabButtonTemplate" id="12">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="SBFOFlowConfigButton" relativePoint="RIGHT">
+						<Offset x="1" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+      <Button name="SBFOProfileConfigButton" inherits="SBFOTabButtonTemplate" id="13">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="SBFOGlobalConfigButton" relativePoint="RIGHT">
+						<Offset x="1" y="0"/>
+					</Anchor>
+				</Anchors>
+			</Button>
+
+      <Frame name="SBFOFrameLevelWindow" frameStrata="HIGH">
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+          <EdgeSize val="16"/>
+          <TileSize val="16"/>
+          <BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+        </Backdrop>
+        <Size x="135" y="40"/>
+        <Anchors><Anchor point="BOTTOMRIGHT"><Offset x="-33" y="33"/></Anchor></Anchors>
+        <Frames>
+          <Slider name="$parentSlider" inherits="OptionsSliderTemplate">
+            <Size x="112" y="17"/>
+            <Anchors><Anchor point="BOTTOM"><Offset x="0" y="10"/></Anchor></Anchors>
+            <Scripts>
+              <OnValueChanged>
+                SBFOptions:FrameLevelSliderChanged(false)
+              </OnValueChanged>
+            </Scripts>
+          </Slider>
+        </Frames>
+      </Frame>
+      
+      <Frame name="SBFOPositionWindow" frameStrata="HIGH">
+        <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+          <EdgeSize val="16"/>
+          <TileSize val="16"/>
+          <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+        </Backdrop>
+        <Size x="135" y="115"/>
+        <Anchors><Anchor point="TOPRIGHT"><Offset x="-33" y="-37"/></Anchor></Anchors>
+        <Layers>
+          <Layer level="OVERLAY">
+            <FontString name="$parentTop" inherits="GameFontNormalSmall">
+              <Size x="125" y="12"/>
+              <Anchors>
+                <Anchor point="TOP"><Offset x="0" y="-5"/></Anchor>
+              </Anchors>
+            </FontString>
+            <FontString name="$parentBottom" inherits="GameFontNormalSmall">
+              <Size x="125" y="12"/>
+              <Anchors>
+                <Anchor point="BOTTOM"><Offset x="0" y="5"/></Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+        <Frames>
+          <Button name="$parentNudgeRight">
+            <Size><AbsDimension x="12" y="24"/></Size>
+            <Anchors><Anchor point="RIGHT"><Offset x="-20" y="0"/></Anchor></Anchors>
+            <Scripts>
+              <OnClick>
+                if IsAltKeyDown() then
+                  SBFOptions:Nudge("right", 10)
+                else
+                  SBFOptions:Nudge("right", 1)
+                end
+              </OnClick>
+            </Scripts>
+            <NormalTexture name="$parentNormalTexture" file="Interface\AddOns\SBFOptions\images\arrow">
+              <TexCoords left="0.50" right="1.00" top="0.00" bottom="1.00"/>
+            </NormalTexture>
+            <HighlightTexture name="$parentHighlightTexture" file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD"/>
+          </Button>
+          <Button name="$parentNudgeLeft">
+            <Size><AbsDimension x="12" y="24"/></Size>
+            <Anchors><Anchor point="LEFT"><Offset x="20" y="0"/></Anchor></Anchors>
+            <Scripts>
+              <OnClick>
+                if IsAltKeyDown() then
+                  SBFOptions:Nudge("left", 10)
+                else
+                  SBFOptions:Nudge("left", 1)
+                end
+              </OnClick>
+            </Scripts>
+            <NormalTexture name="$parentNormalTexture" file="Interface\AddOns\SBFOptions\images\arrow">
+              <TexCoords left="1.00" right="0.50" top="0.00" bottom="1.00"/>
+            </NormalTexture>
+            <HighlightTexture name="$parentHighlightTexture" file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD"/>
+          </Button>
+          <Button name="$parentNudgeUp">
+            <Size><AbsDimension x="24" y="12"/></Size>
+            <Anchors><Anchor point="TOP"><Offset x="0" y="-20"/></Anchor></Anchors>
+            <Scripts>
+              <OnClick>
+                if IsAltKeyDown() then
+                  SBFOptions:Nudge("up", 10)
+                else
+                  SBFOptions:Nudge("up", 1)
+                end
+              </OnClick>
+            </Scripts>
+            <NormalTexture name="$parentNormalTexture" file="Interface\AddOns\SBFOptions\images\arrow">
+              <TexCoords left="0.00" right="1.00" top="0.00" bottom="0.50"/>
+            </NormalTexture>
+            <HighlightTexture name="$parentHighlightTexture" file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD"/>
+          </Button>
+          <Button name="$parentNudgeDown">
+            <Size><AbsDimension x="24" y="12"/></Size>
+            <Anchors><Anchor point="BOTTOM"><Offset x="0" y="20"/></Anchor></Anchors>
+            <Scripts>
+              <OnClick>
+                if IsAltKeyDown() then
+                  SBFOptions:Nudge("down", 10)
+                else
+                  SBFOptions:Nudge("down", 1)
+                end
+              </OnClick>
+            </Scripts>
+            <NormalTexture name="$parentNormalTexture" file="Interface\AddOns\SBFOptions\images\arrow">
+              <TexCoords left="0.00" right="1.00" top="0.50" bottom="0.00"/>
+            </NormalTexture>
+            <HighlightTexture name="$parentHighlightTexture" file="Interface\Buttons\UI-Panel-MinimizeButton-Highlight" alphaMode="ADD"/>
+          </Button>
+          <Frame name="$parentXEdit">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+            </Backdrop>
+            <Size x="40" y="24"/>
+            <Anchors>
+              <Anchor point="CENTER">
+                <Offset x="3" y="12"/>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer level="OVERLAY">
+                <FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="RIGHT" text="X">
+                  <Size x="15" y="12"/>
+                  <Anchors>
+                    <Anchor point="CENTER"><Offset x="-30" y="0"/></Anchor>
+                  </Anchors>
+                </FontString>
+              </Layer>
+            </Layers>
+            <Frames>
+              <EditBox name="$parentEdit" letters="4" autoFocus="false">
+                <Size x="35" y="12"/>
+                <Anchors>
+                  <Anchor point="CENTER"/>
+                </Anchors>
+                <Scripts>
+                  <OnEscapePressed>
+                    self:ClearFocus()
+                  </OnEscapePressed>
+                  <OnTabPressed>
+                    self:ClearFocus()
+                  </OnTabPressed>
+                  <OnEnterPressed>
+                    SBFOptions:PositionEditEnterPressed(self)
+                    self:SetFocus()
+                  </OnEnterPressed>
+                  <OnLoad>
+                    self:SetTextColor(1,1,1)
+                  </OnLoad>
+                </Scripts>
+                <FontString inherits="GameFontNormal"/>
+              </EditBox>
+            </Frames>
+            <Scripts>
+              <OnLoad>
+                self:SetBackdropColor(0,0,0,1)
+                self.edit = _G[self:GetName().."Edit"]
+                self.label = _G[self:GetName().."Label"]
+              </OnLoad>
+            </Scripts>
+          </Frame>
+          <Frame name="$parentYEdit">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+            </Backdrop>
+            <Size x="40" y="24"/>
+            <Anchors>
+              <Anchor point="CENTER">
+                <Offset x="3" y="-12"/>
+              </Anchor>
+            </Anchors>
+            <Layers>
+              <Layer level="OVERLAY">
+                <FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="RIGHT" text="Y">
+                  <Size x="15" y="12"/>
+                  <Anchors>
+                    <Anchor point="CENTER"><Offset x="-30" y="0"/></Anchor>
+                  </Anchors>
+                </FontString>
+              </Layer>
+            </Layers>
+            <Frames>
+              <EditBox name="$parentEdit" letters="4" autoFocus="false">
+                <Size x="35" y="12"/>
+                <Anchors>
+                  <Anchor point="CENTER"/>
+                </Anchors>
+                <Scripts>
+                  <OnEscapePressed>
+                    self:ClearFocus()
+                  </OnEscapePressed>
+                  <OnTabPressed>
+                    self:ClearFocus()
+                  </OnTabPressed>
+                  <OnEnterPressed>
+                    SBFOptions:PositionEditEnterPressed(self)
+                    self:SetFocus()
+                  </OnEnterPressed>
+                  <OnLoad>
+                    self:SetTextColor(1,1,1)
+                  </OnLoad>
+                </Scripts>
+                <FontString inherits="GameFontNormal"/>
+              </EditBox>
+            </Frames>
+            <Scripts>
+              <OnLoad>
+                self:SetBackdropColor(0,0,0,1)
+                self.edit = _G[self:GetName().."Edit"]
+                self.label = _G[self:GetName().."Label"]
+              </OnLoad>
+            </Scripts>
+          </Frame>
+        </Frames>
+      </Frame>
+			
+			<Frame name="SBFOTabsFrame">
+				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize val="16"/>
+					<TileSize val="16"/>
+					<BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+				</Backdrop>
+				<Size x="677" y="202"/>
+				<Anchors>
+					<Anchor point="TOPLEFT"><Offset x="2" y="-2"/></Anchor>
+				</Anchors>
+				<Frames>
+        
+          <Frame name="SBFOBuffFrameDropDown" inherits="RoundedDropDownFrameTemplate">
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="110" y="-5"/></Anchor>
+            </Anchors>
+          </Frame>
+          
+          <Button name="SBFORemoveFrameButton" inherits="GameMenuButtonTemplate">
+            <Size x="110" y="20"/>
+            <Anchors>
+              <Anchor point="TOPRIGHT"><Offset x="-6" y="-9"/></Anchor>
+            </Anchors>
+            <Scripts>
+              <OnClick>
+                SBFOptions:RemoveFrame()
+              </OnClick>
+              <OnEnter>
+                GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                GameTooltip:AddLine(SBFOptions.strings.REMOVEFRAMETT)
+                GameTooltip:AddLine(string.format("(%s %d)", SBFOptions.strings.BUFFFRAME, SBFOptions.curFrame.id))
+                GameTooltip:Show()
+              </OnEnter>
+              <OnLeave>
+                GameTooltip:Hide()
+              </OnLeave>
+            </Scripts>
+          </Button>
+
+          <Frame name="SBFOGeneralTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <Frame name="SBFOFrameNameEdit">
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                  <EdgeSize val="16"/>
+                  <TileSize val="16"/>
+                  <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+                </Backdrop>
+                <Size x="125" y="25"/>
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="10" y="-20"/>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="$parentLabel" inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOM" relativeTo="$parent" relativePoint="TOP">
+                          <Offset x="0" y="2"/>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Frames>
+                  <EditBox name="$parentEdit" letters="100" autoFocus="false">
+                    <Size x="105" y="14"/>
+                    <Anchors>
+                      <Anchor point="CENTER"/>
+                    </Anchors>
+                    <Scripts>
+                      <OnEscapePressed>
+                        SBFOptions:FrameName(true)
+                        self:ClearFocus()
+                      </OnEscapePressed>
+                      <OnEnterPressed>
+                        SBFOptions:FrameName()
+                      </OnEnterPressed>
+                      <OnLoad>
+                        self:SetTextColor(1,1,1)
+                      </OnLoad>
+                    </Scripts>
+                    <FontString inherits="GameFontNormal"/>
+                  </EditBox>
+                </Frames>
+                <Scripts>
+                  <OnLoad>
+                    self:SetBackdropColor(0,0,0,1)
+                    self.edit = _G[self:GetName().."Edit"]
+                    self.label = _G[self:GetName().."Label"]
+                  </OnLoad>
+                </Scripts>
+              </Frame>
+              <Frame name="SBFOUnitDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOFrameNameEdit" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-15"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+
+              <CheckButton name="SBFOFrameBuffsCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOFrameNameEdit" relativePoint="RIGHT">
+                    <Offset x="15" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:FrameBuffs(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOFrameDebuffsCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOFrameBuffsCheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:FrameDebuffs(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOFrameWhitelistCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOFrameDebuffsCheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-10"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:Blacklist(false)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.WHITELISTTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOFrameBlacklistCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOFrameWhitelistCheckButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:Blacklist(true)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.BLACKLISTTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+
+              <CheckButton name="SBFOClickthroughCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOP"><Offset x="25" y="-20"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:Clickthrough(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.CLICKTHROUGHTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOFrameShowVehicleCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOClickthroughCheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-35"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ShowVehicle(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.SHOWVEHICLETT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              
+              <Frame name="SBFOCopyFromDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPRIGHT">
+                    <Offset x="-10" y="-15"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+            </Frames>
+            <Scripts>
+              <OnLoad>
+                self.tab = SBFOGeneralConfigButton
+              </OnLoad>
+              <OnShow>
+                SBFOGeneralConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOGeneralConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+          
+          <Frame name="SBFOLayoutTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <Frame name="SBFOFrameVisibilityDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="10" y="-15"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="SBFOBuffSortDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFrameVisibilityDropDown" relativePoint="BOTTOM">
+                    <Offset x="0" y="-10"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="SBFOBuffCountEdit">
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                  <EdgeSize val="16"/>
+                  <TileSize val="16"/>
+                  <BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+                </Backdrop>
+                <Size x="40" y="24"/>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOBuffSortDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-12"/>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="LEFT">
+                      <Size x="200" y="12"/>
+                      <Anchors><Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT"><Offset x="2" y="0"/></Anchor></Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Frames>
+                  <EditBox name="$parentEdit" letters="3" autoFocus="false" numeric="true">
+                    <Size x="35" y="12"/>
+                    <Anchors><Anchor point="CENTER"/></Anchors>
+                    <Scripts>
+                      <OnEscapePressed>
+                        self:ClearFocus()
+                      </OnEscapePressed>
+                      <OnTabPressed>
+                        self:ClearFocus()
+                      </OnTabPressed>
+                      <OnEnterPressed>
+                        SBFOptions:BuffCountEditEnterPressed(self)
+                        self:SetFocus()
+                      </OnEnterPressed>
+                      <OnLoad>
+                        self:SetTextColor(1,1,1)
+                      </OnLoad>
+                    </Scripts>
+                    <FontString inherits="GameFontNormal"/>
+                  </EditBox>
+                </Frames>
+                <Scripts>
+                  <OnLoad>
+                    self:SetBackdropColor(0,0,0,1)
+                    self.edit = _G[self:GetName().."Edit"]
+                    self.label = _G[self:GetName().."Label"]
+                  </OnLoad>
+                </Scripts>
+              </Frame>
+              <Button name="SBFOApplyBuffCountButton" inherits="GameMenuButtonTemplate" text="APPLY">
+                <Size x="75" y="20"/>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOBuffCountEdit" relativePoint="BOTTOMLEFT"><Offset x="0" y="-5"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:BuffCountEditEnterPressed(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+
+              <Slider name="SBFOOpacitySlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOFrameVisibilityDropDown" relativePoint="RIGHT"><Offset x="25" y="0"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:LayoutOpacitySliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+              
+              <Slider name="SBFORowCountSlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOOpacitySlider" relativePoint="RIGHT">
+                    <Offset x="20" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:LayoutCountSliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+              <Slider name="SBFOBuffGrowthSlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFORowCountSlider" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-15"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:GrowthSliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+              <Slider name="SBFOBuffAnchorSlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOBuffGrowthSlider" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-15"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:AnchorSliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+              
+              <CheckButton name="SBFORowsCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors><Anchor point="LEFT" relativeTo="SBFORowCountSlider" relativePoint="RIGHT"><Offset x="10" y="0"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:InRows(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+            </Frames>
+            <Scripts>
+              <OnLoad>
+                self.tab = SBFOLayoutConfigButton
+              </OnLoad>
+              <OnShow>
+                SBFOLayoutConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOLayoutConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+          
+          <Frame name="SBFOBarTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <CheckButton name="SBFOEnableBarsCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"><Offset x="10" y="-5"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:EnableBars(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              
+              
+              <Button name="SBFOBarBuffColour" inherits="SBFOColourButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"><Offset x="12" y="-32"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ColourPicker(self, SBFOptions.curFrame._var.bar.buffColour)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Button name="SBFOBarBackdropColour" inherits="SBFOColourButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOBarBuffColour" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ColourPicker(self, SBFOptions.curFrame._var.bar.bgColour)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Button name="SBFOBarDebuffColour" inherits="SBFOColourButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOBarBackdropColour" relativePoint="BOTTOMLEFT"><Offset x="0" y="-5"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ColourPicker(self, SBFOptions.curFrame._var.bar.debuffColour)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <CheckButton name="SBFODebuffBarColourCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOBarDebuffColour" relativePoint="BOTTOMLEFT"><Offset x="0" y="-2"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:DebuffBarColour(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.DEBUFFBARCOLOURTT1)
+                    GameTooltip:AddLine(SBFOptions.strings.DEBUFFBARCOLOURTT2)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+
+
+              <Frame name="SBFOBarTextureDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Size x="125" y="25"/>
+                <Anchors>
+                  <Anchor point="TOP">
+                    <Offset x="-85" y="-20"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="SBFOBarBGTextureDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Size x="125" y="25"/>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOBarTextureDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-12"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <CheckButton name="SBFOBarTooltipButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOBarBGTextureDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:BarTooltips(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.NOTOOLTIPSTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOBarRightClickButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPRIGHT" relativeTo="SBFOBarTooltipButton" relativePoint="BOTTOMRIGHT">
+                    <Offset x="0" y="6"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:BarRightClick(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.RIGHTCLICKTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOBarNoSparkButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPRIGHT" relativeTo="SBFOBarRightClickButton" relativePoint="BOTTOMRIGHT">
+                    <Offset x="0" y="6"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:BarNoSpark(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+
+              <Frame name="SBFOBarWidthEdit">
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                  <EdgeSize val="16"/>
+                  <TileSize val="16"/>
+                  <BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+                </Backdrop>
+                <Size x="40" y="24"/>
+                <Anchors>
+                  <Anchor point="TOP">
+                    <Offset x="65" y="-20"/>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="LEFT">
+                      <Size x="200" y="12"/>
+                      <Anchors><Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT"><Offset x="2" y="0"/></Anchor></Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Frames>
+                  <EditBox name="$parentEdit" letters="4" autoFocus="false" numeric="true">
+                    <Size x="35" y="12"/>
+                    <Anchors><Anchor point="CENTER"/></Anchors>
+                    <Scripts>
+                      <OnEscapePressed>
+                        self:ClearFocus()
+                      </OnEscapePressed>
+                      <OnTabPressed>
+                        self:ClearFocus()
+                      </OnTabPressed>
+                      <OnEnterPressed>
+                        SBFOptions:BarSizeEditEnterPressed(self)
+                        self:SetFocus()
+                      </OnEnterPressed>
+                      <OnLoad>
+                        self:SetTextColor(1,1,1)
+                      </OnLoad>
+                    </Scripts>
+                    <FontString inherits="GameFontNormal"/>
+                  </EditBox>
+                </Frames>
+                <Scripts>
+                  <OnLoad>
+                    self:SetBackdropColor(0,0,0,1)
+                    self.edit = _G[self:GetName().."Edit"]
+                    self.label = _G[self:GetName().."Label"]
+                  </OnLoad>
+                </Scripts>
+              </Frame>
+              <Frame name="SBFOBarHeightEdit">
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                  <EdgeSize val="16"/>
+                  <TileSize val="16"/>
+                  <BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+                </Backdrop>
+                <Size x="40" y="24"/>
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOBarWidthEdit" relativePoint="RIGHT">
+                    <Offset x="35" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="LEFT">
+                      <Size x="200" y="12"/>
+                      <Anchors><Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT"><Offset x="2" y="0"/></Anchor></Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Frames>
+                  <EditBox name="$parentEdit" letters="4" autoFocus="false" numeric="true">
+                    <Size x="35" y="12"/>
+                    <Anchors><Anchor point="CENTER"/></Anchors>
+                    <Scripts>
+                      <OnEscapePressed>
+                        self:ClearFocus()
+                      </OnEscapePressed>
+                      <OnTabPressed>
+                        self:ClearFocus()
+                      </OnTabPressed>
+                      <OnEnterPressed>
+                        SBFOptions:BarSizeEditEnterPressed(self)
+                        self:SetFocus()
+                      </OnEnterPressed>
+                      <OnLoad>
+                        self:SetTextColor(1,1,1)
+                      </OnLoad>
+                    </Scripts>
+                    <FontString inherits="GameFontNormal"/>
+                  </EditBox>
+                </Frames>
+                <Scripts>
+                  <OnLoad>
+                    self:SetBackdropColor(0,0,0,1)
+                    self.edit = _G[self:GetName().."Edit"]
+                    self.label = _G[self:GetName().."Label"]
+                  </OnLoad>
+                </Scripts>
+              </Frame>
+              <Button name="SBFOApplyBarSizeButton" inherits="GameMenuButtonTemplate" text="APPLY">
+                <Size x="75" y="20"/>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOBarWidthEdit" relativePoint="BOTTOMLEFT"><Offset x="20" y="-5"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:BarSizeEditEnterPressed(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Slider name="SBFOBarDirectionSlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOApplyBarSizeButton" relativePoint="BOTTOMLEFT"><Offset x="-30" y="-20"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:BarDirectionSliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+            </Frames>
+            <Scripts>
+              <OnShow>
+                SBFOBarsConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOBarsConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+
+          <Frame name="SBFOIconTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <CheckButton name="SBFOEnableIconsCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="10" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:EnableIcons(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <Frame name="SBFOIconSizeEdit">
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                  <EdgeSize val="16"/>
+                  <TileSize val="16"/>
+                  <BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+                </Backdrop>
+                <Size x="40" y="24"/>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOEnableIconsCheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-12"/>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="LEFT">
+                      <Size x="200" y="12"/>
+                      <Anchors><Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT"><Offset x="2" y="0"/></Anchor></Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Frames>
+                  <EditBox name="$parentEdit" letters="4" autoFocus="false" numeric="true">
+                    <Size x="35" y="12"/>
+                    <Anchors><Anchor point="CENTER"/></Anchors>
+                    <Scripts>
+                      <OnEscapePressed>
+                        self:ClearFocus()
+                      </OnEscapePressed>
+                      <OnTabPressed>
+                        self:ClearFocus()
+                      </OnTabPressed>
+                      <OnEnterPressed>
+                        SBFOptions:IconSizeEditEnterPressed(self)
+                        self:SetFocus()
+                      </OnEnterPressed>
+                      <OnLoad>
+                        self:SetTextColor(1,1,1)
+                      </OnLoad>
+                    </Scripts>
+                    <FontString inherits="GameFontNormal"/>
+                  </EditBox>
+                </Frames>
+                <Scripts>
+                  <OnLoad>
+                    self:SetBackdropColor(0,0,0,1)
+                    self.edit = _G[self:GetName().."Edit"]
+                    self.label = _G[self:GetName().."Label"]
+                  </OnLoad>
+                </Scripts>
+              </Frame>
+              <Button name="SBFOApplyIconSizeButton" inherits="GameMenuButtonTemplate" text="APPLY">
+                <Size x="75" y="20"/>
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOIconSizeEdit" relativePoint="BOTTOMLEFT"><Offset x="0" y="-5"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:IconSizeEditEnterPressed(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Slider name="SBFOIconOpacitySlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOApplyIconSizeButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-20"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:IconOpacitySliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+              
+              <CheckButton name="SBFOIconTooltipButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOP">
+                    <Offset x="-125" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:IconTooltips(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.NOTOOLTIPSTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOIconRightClickButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPRIGHT" relativeTo="SBFOIconTooltipButton" relativePoint="BOTTOMRIGHT">
+                    <Offset x="0" y="6"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:IconRightClick(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.RIGHTCLICKTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOIconCooldownButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPRIGHT" relativeTo="SBFOIconRightClickButton" relativePoint="BOTTOMRIGHT">
+                    <Offset x="0" y="6"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:IconCooldown(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOIconReverseCooldownButton" inherits="SBFSmallCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPRIGHT" relativeTo="SBFOIconCooldownButton" relativePoint="BOTTOMRIGHT">
+                    <Offset x="5" y="6"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ReverseCooldown(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOIconSuppressCooldownTimerButton" inherits="SBFSmallCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPRIGHT" relativeTo="SBFOIconReverseCooldownButton" relativePoint="BOTTOMRIGHT">
+                    <Offset x="0" y="6"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SuppressCooldownTimer(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFONoIconBorderButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPRIGHT" relativeTo="SBFOIconSuppressCooldownTimerButton" relativePoint="BOTTOMRIGHT">
+                    <Offset x="-5" y="4"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:NoIconBorder(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFONoIconBFBorderButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPRIGHT" relativeTo="SBFONoIconBorderButton" relativePoint="BOTTOMRIGHT">
+                    <Offset x="0" y="6"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:NoIconBFBorder(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+            </Frames>
+            <Scripts>
+              <OnShow>
+                SBFOIconsConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOIconsConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+
+          <Frame name="SBFOTimerTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <CheckButton name="SBFOEnableTimersCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="10" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:EnableTimers(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+
+              <Button name="SBFORegularTimerColour" inherits="SBFOColourButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="12" y="-32"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ColourPicker(self, SBFOptions.curFrame._var.timer.regularColour)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Button name="SBFOExpireTimerColour" inherits="SBFOColourButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFORegularTimerColour" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-6"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ColourPicker(self, SBFOptions.curFrame._var.timer.expiringColour)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <CheckButton name="SBFODebuffTimerCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOExpireTimerColour" relativePoint="BOTTOMLEFT">
+                    <Offset x="-2" y="-3"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:DebuffTimer(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.DEBUFFTIMERTT1)
+                    GameTooltip:AddLine(SBFOptions.strings.DEBUFFTIMERTT2)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+
+              <Slider name="SBFOTimerJustifySlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"><Offset x="166" y="-33"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:TimerJustifySliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+              <Slider name="SBFOTimerFontSizeSlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOTimerJustifySlider" relativePoint="BOTTOM">
+                    <Offset x="0" y="-18"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:TimerFontSizeSliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+
+              <Frame name="SBFOTimerFontDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Size x="125" y="25"/>
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="332" y="-25"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <CheckButton name="SBFOTimerOutlineCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOTimerFontDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:TimerOutline(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <Frame name="SBFOTimerFormatDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOTimerOutlineCheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-10"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <CheckButton name="SBFOTimerNACheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOTimerFormatDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:TimerNA(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOTimerMillisecondCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOTimerNACheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:TimerMilliseconds(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.TIMERMSTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+            </Frames>
+            <Scripts>
+              <OnShow>
+                SBFOTimersConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOTimersConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+
+          <Frame name="SBFONameTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <CheckButton name="SBFOEnableNamesCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="10" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:EnableNames(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              
+              <Button name="SBFONameBuffColour" inherits="SBFOColourButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="12" y="-32"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ColourPicker(self, SBFOptions.curFrame._var.name.buffColour)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Button name="SBFONameDebuffColour" inherits="SBFOColourButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFONameBuffColour" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-4"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ColourPicker(self, SBFOptions.curFrame._var.name.debuffColour)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <CheckButton name="SBFOColourNameAsDebuffCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFONameDebuffColour" relativePoint="BOTTOMLEFT"><Offset x="-2" y="-3"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ColourNameAsDebuff(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.DEBUFFNAMECOLOURTT1)
+                    GameTooltip:AddLine(SBFOptions.strings.DEBUFFNAMECOLOURTT2)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+
+              <Slider name="SBFONameJustifySlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"><Offset x="166" y="-33"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:NameJustifySliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+              <Slider name="SBFONameFontSizeSlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFONameJustifySlider" relativePoint="BOTTOM">
+                    <Offset x="0" y="-18"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:NameFontSizeSliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+
+              <Frame name="SBFONameFontDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Size x="125" y="25"/>
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="332" y="-32"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <CheckButton name="SBFONameOutlineCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFONameFontDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:NameOutline(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFONameActiveCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFONameOutlineCheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="2"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:NameActive(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.NAMEACTIVETT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+
+              <Frame name="SBFONameNameFormatEdit">
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                  <EdgeSize val="16"/>
+                  <TileSize val="16"/>
+                  <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+                </Backdrop>
+                <Size x="400" y="22"/>
+                <Anchors>
+                  <Anchor point="BOTTOMLEFT">
+                    <Offset x="10" y="6"/>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="$parentLabel" inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+                          <Offset x="1" y="2"/>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Frames>
+                  <EditBox name="$parentText" letters="100" autoFocus="false">
+                    <Size x="390" y="14"/>
+                    <Anchors>
+                      <Anchor point="LEFT"><Offset x="10" y="0"/></Anchor>
+                    </Anchors>
+                    <Scripts>
+                      <OnEscapePressed>
+                        self:ClearFocus()
+                      </OnEscapePressed>
+                      <OnTabPressed>
+                        self:ClearFocus()
+                      </OnTabPressed>
+                      <OnEnterPressed>
+                        SBFOptions:NameNameFormatChanged(self)
+                        self:SetFocus()
+                      </OnEnterPressed>
+                      <OnLoad>
+                        self:SetTextColor(1,1,1)
+                      </OnLoad>
+                    </Scripts>
+                    <FontString inherits="GameFontNormal"/>
+                  </EditBox>
+                </Frames>
+                <Scripts>
+                  <OnLoad>
+                    self:SetBackdropColor(0,0,0,1)
+                  </OnLoad>
+                </Scripts>
+              </Frame>
+              <Button name="SBFONameFormatButton" inherits="GameMenuButtonTemplate">
+                <Size x="80" y="20"/>
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFONameNameFormatEdit" relativePoint="RIGHT">
+                    <Offset x="3" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:NameNameFormatChanged(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Button name="SBFONameFormatHelpButton" inherits="GameMenuButtonTemplate">
+                <Size x="80" y="20"/>
+                <Anchors>
+                  <Anchor point="BOTTOM" relativeTo="SBFONameFormatButton" relativePoint="TOP">
+                    <Offset x="0" y="3"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ShowNameHelp(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+            </Frames>
+            <Scripts>
+              <OnShow>
+                SBFONamesConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFONamesConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+          
+          <Frame name="SBFOCountTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <CheckButton name="SBFOEnableCountsCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="10" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:EnableCounts(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              
+              <Button name="SBFOCountColour" inherits="SBFOColourButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="12" y="-32"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ColourPicker(self, SBFOptions.curFrame._var.count.colour)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              
+              
+              <Slider name="SBFOCountJustifySlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"><Offset x="166" y="-33"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:CountJustifySliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+              <Slider name="SBFOCountFontSizeSlider" inherits="OptionsSliderTemplate">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOCountJustifySlider" relativePoint="BOTTOM">
+                    <Offset x="0" y="-18"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnValueChanged>
+                    SBFOptions:CountFontSizeSliderChanged(self)
+                  </OnValueChanged>
+                </Scripts>
+              </Slider>
+              
+              <Frame name="SBFOCountFontDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Size x="125" y="25"/>
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="332" y="-32"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <CheckButton name="SBFOCountOutlineCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOCountFontDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:CountOutline(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              
+            </Frames>
+            <Scripts>
+              <OnShow>
+                SBFOCountsConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOCountsConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+
+          <Frame name="SBFOFlowTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <Frame name="SBFOFlowFrameParentDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="10" y="-15"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="SBFOFlowFrameChildDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOFlowFrameParentDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-10"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Button name="SBFOFlowList1" inherits="SBFOFlowListButtonTemplate" id="1">
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOFlowFrameParentDropDown" relativePoint="RIGHT">
+                    <Offset x="10" y="6"/>
+                  </Anchor>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFlowList2" inherits="SBFOFlowListButtonTemplate" id="2">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowList1" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFlowList3" inherits="SBFOFlowListButtonTemplate" id="3">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowList2" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFlowList4" inherits="SBFOFlowListButtonTemplate" id="4">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowList3" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFlowList5" inherits="SBFOFlowListButtonTemplate" id="5">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowList4" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFlowList6" inherits="SBFOFlowListButtonTemplate" id="6">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowList5" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFlowList7" inherits="SBFOFlowListButtonTemplate" id="7">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowList6" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFlowList8" inherits="SBFOFlowListButtonTemplate" id="8">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowList7" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFlowList9" inherits="SBFOFlowListButtonTemplate" id="9">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowList8" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFlowList10" inherits="SBFOFlowListButtonTemplate" id="10">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowList9" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFlowChildUpButton" inherits="GameMenuButtonTemplate">
+                <Size x="65" y="20"/>
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOFlowList1" relativePoint="RIGHT">
+                    <Offset x="10" y="-28"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:FlowChildUp(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Button name="SBFOFlowChildRemoveButton" inherits="GameMenuButtonTemplate">
+                <Size x="65" y="20"/>
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowChildUpButton" relativePoint="BOTTOM">
+                    <Offset x="0" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:RemoveFlowChild(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Button name="SBFOFlowChildDownButton" inherits="GameMenuButtonTemplate">
+                <Size x="65" y="20"/>
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFlowChildRemoveButton" relativePoint="BOTTOM">
+                    <Offset x="0" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:FlowChildDown(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <CheckButton name="SBFOFlowExpiryCheckButton" inherits="SBFCheckButtonTemplate" hidden="true">
+                <Anchors>
+                  <Anchor point="TOP"><Offset x="50" y="-15"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:FlowExpiry(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+            </Frames>
+            <Scripts>
+              <OnShow>
+                SBFOFlowConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOFlowConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+          
+          <Frame name="SBFOExpiryTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <Frame name="SBFOExpireTimeDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="10" y="-20"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="SBFOMinTimeDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOExpireTimeDropDown" relativePoint="RIGHT">
+                    <Offset x="82" y="0"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+              <CheckButton name="SBFOFlashBuffCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOMinTimeDropDown" relativePoint="RIGHT">
+                    <Offset x="66" y="1"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:FlashBuff(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              
+              <CheckButton name="SBFOTextWarningCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOExpireTimeDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:TextWarning(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.EXPIREWARNTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <Frame name="SBFOExpireFrameDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOTextWarningCheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-10"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+
+              <CheckButton name="SBFOSoundWarningCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOMinTimeDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SoundWarning(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <Frame name="SBFOSoundWarningDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOSoundWarningCheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-10"/>
+                  </Anchor>
+                </Anchors>
+              </Frame>
+        
+              <CheckButton name="SBFOSCTWarnCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOSoundWarningCheckButton" relativePoint="RIGHT">
+                    <Offset x="135" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SCTWarn(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOSCTCritCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOSCTWarnCheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="4"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SCTCrit(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    if SCT and (SCT:Get("SHOWFADE", SCT.FRAMES_TABLE) == SCT.MSG) then
+                      GameTooltip:AddLine(SBFOptions.strings.SCTCRITTTM1)
+                      GameTooltip:AddLine(SBFOptions.strings.SCTCRITTTM2)
+                    else
+                      GameTooltip:AddLine(SBFOptions.strings.SCTCRITTT)
+                    end
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <Button name="SBFOSCTColour" inherits="SBFOColourButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOSCTCritCheckButton" relativePoint="BOTTOMLEFT">
+                    <Offset x="4" y="0"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ColourPicker(self, SBFOptions.curFrame._var.expiry.sctColour)
+                  </OnClick>
+                </Scripts>
+              </Button>
+
+              <CheckButton name="SBFOFastBarCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOSCTWarnCheckButton" relativePoint="RIGHT">
+                    <Offset x="135" y="-20"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:FastBar(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+            </Frames>
+            <Scripts>
+              <OnShow>
+                SBFOExpiryConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOExpiryConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+
+          <Frame name="SBFOFilterTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <Button name="SBFOFilterList1" inherits="SBFOFilterListButtonTemplate" id="1">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+                    <Offset x="10" y="-10"/>
+                  </Anchor>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFilterList2" inherits="SBFOFilterListButtonTemplate" id="2">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFilterList1" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFilterList3" inherits="SBFOFilterListButtonTemplate" id="3">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFilterList2" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFilterList4" inherits="SBFOFilterListButtonTemplate" id="4">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFilterList3" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFilterList5" inherits="SBFOFilterListButtonTemplate" id="5">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFilterList4" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFilterList6" inherits="SBFOFilterListButtonTemplate" id="6">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFilterList5" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFilterList7" inherits="SBFOFilterListButtonTemplate" id="7">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFilterList6" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFilterList8" inherits="SBFOFilterListButtonTemplate" id="8">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFilterList7" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFilterList9" inherits="SBFOFilterListButtonTemplate" id="9">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFilterList8" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOFilterList10" inherits="SBFOFilterListButtonTemplate" id="10">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFilterList9" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <ScrollFrame name="SBFOFilterListScrollFrame" inherits="FauxScrollFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOFilterList1" relativePoint="TOPLEFT"/>
+                  <Anchor point="BOTTOMRIGHT" relativeTo="SBFOFilterList10" relativePoint="BOTTOMRIGHT"><Offset x="-6" y="0"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnVerticalScroll>
+                    FauxScrollFrame_OnVerticalScroll(self, offset, 14, SBFOptions.UpdateFilterList)
+                  </OnVerticalScroll>
+                  <OnShow>
+                    SBFOptions.UpdateFilterList(self)
+                  </OnShow>
+                </Scripts>
+              </ScrollFrame>
+
+              <Button name="SBFOFilterEditButton" inherits="GameMenuButtonTemplate">
+                <Size x="65" y="20"/>
+                <Anchors>
+                  <Anchor point="TOP">
+                    <Offset x="-115" y="-35"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:EditFilter(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Button name="SBFOFilterRemoveButton" inherits="GameMenuButtonTemplate">
+                <Size x="65" y="20"/>
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOFilterEditButton" relativePoint="BOTTOM">
+                    <Offset x="0" y="-5"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:RemoveFilter(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+
+              <Frame name="SBFOBuffFilterEdit">
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                  <EdgeSize val="16"/>
+                  <TileSize val="16"/>
+                  <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+                </Backdrop>
+                <Size x="150" y="25"/>
+                <Anchors>
+                  <Anchor point="TOP">
+                    <Offset x="0" y="-20"/>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="$parentLabel" inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOM" relativeTo="$parent" relativePoint="TOP">
+                          <Offset x="0" y="2"/>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Frames>
+                  <EditBox name="$parentEdit" letters="100" autoFocus="false">
+                    <Size x="130" y="14"/>
+                    <Anchors>
+                      <Anchor point="CENTER"/>
+                    </Anchors>
+                    <Scripts>
+                      <OnEscapePressed>
+                        self:SetText("")
+                        self:ClearFocus()
+                      </OnEscapePressed>
+                      <OnTabPressed>
+                        self:ClearFocus()
+                      </OnTabPressed>
+                      <OnEnterPressed>
+                        SBFOptions:AddFilter(self)
+                        self:SetFocus()
+                      </OnEnterPressed>
+                      <OnLoad>
+                        self:SetTextColor(1,1,1)
+                      </OnLoad>
+                    </Scripts>
+                    <FontString inherits="GameFontNormal"/>
+                  </EditBox>
+                </Frames>
+                <Scripts>
+                  <OnLoad>
+                    self:SetBackdropColor(0,0,0,1)
+                    self.edit = _G[self:GetName().."Edit"]
+                    self.label = _G[self:GetName().."Label"]
+                  </OnLoad>
+                </Scripts>
+              </Frame>
+              <Button name="SBFOAddFilterButton" inherits="GameMenuButtonTemplate">
+                <Size x="100" y="20"/>
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOBuffFilterEdit" relativePoint="BOTTOM">
+                    <Offset x="0" y="-3"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:AddFilter(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Button name="SBFOFilterHelpButton" inherits="GameMenuButtonTemplate">
+                <Size x="100" y="20"/>
+                <Anchors>
+                  <Anchor point="BOTTOMRIGHT">
+                    <Offset x="-10" y="10"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ShowFilterHelp()
+                  </OnClick>
+                </Scripts>
+              </Button>
+              <Frame name="SBFOCommonFiltersDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPRIGHT"><Offset x="-20" y="-20"/></Anchor>
+                </Anchors>
+              </Frame>
+              <Frame name="SBFOUsedFiltersDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOCommonFiltersDropDown" relativePoint="BOTTOM"><Offset x="0" y="-20"/></Anchor>
+                </Anchors>
+              </Frame>
+
+            </Frames>
+            <Layers>
+              <Layer level="OVERLAY">
+                <FontString name="SBFOFilterHintString" inherits="GameFontNormalSmall">
+                  <Anchors><Anchor point="BOTTOM"><Offset x="0" y="10"/></Anchor></Anchors>
+                </FontString>
+              </Layer>
+            </Layers>
+            <Scripts>
+              <OnShow>
+                SBFOptions.currentFilter = nil
+                SBFOptions.editFilter = nil
+                SBFOptions:UpdateFilterList(self)
+                SBFOFilterConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOFilterConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+          
+          <Frame name="SBFOSpellTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <Button name="SBFOSpellList1" inherits="SBFOSpellListButtonTemplate" id="1">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+                    <Offset x="10" y="-10"/>
+                  </Anchor>
+                </Anchors>
+              </Button>
+              <Button name="SBFOSpellList2" inherits="SBFOSpellListButtonTemplate" id="2">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOSpellList1" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOSpellList3" inherits="SBFOSpellListButtonTemplate" id="3">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOSpellList2" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOSpellList4" inherits="SBFOSpellListButtonTemplate" id="4">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOSpellList3" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOSpellList5" inherits="SBFOSpellListButtonTemplate" id="5">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOSpellList4" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOSpellList6" inherits="SBFOSpellListButtonTemplate" id="6">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOSpellList5" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOSpellList7" inherits="SBFOSpellListButtonTemplate" id="7">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOSpellList6" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOSpellList8" inherits="SBFOSpellListButtonTemplate" id="8">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOSpellList7" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOSpellList9" inherits="SBFOSpellListButtonTemplate" id="9">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOSpellList8" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <Button name="SBFOSpellList10" inherits="SBFOSpellListButtonTemplate" id="10">
+                <Anchors>
+                  <Anchor point="TOP" relativeTo="SBFOSpellList9" relativePoint="BOTTOM"/>
+                </Anchors>
+              </Button>
+              <ScrollFrame name="SBFOSpellListScrollFrame" inherits="FauxScrollFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOSpellList1" relativePoint="TOPLEFT"/>
+                  <Anchor point="BOTTOMRIGHT" relativeTo="SBFOSpellList10" relativePoint="BOTTOMRIGHT"><Offset x="-6" y="0"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnVerticalScroll>
+                    FauxScrollFrame_OnVerticalScroll(self, offset, 14, SBFOptions.UpdateSpellList)
+                  </OnVerticalScroll>
+                  <OnShow>
+                    SBFOptions.UpdateSpellList(self)
+                  </OnShow>
+                </Scripts>
+              </ScrollFrame>
+
+              <CheckButton name="SBFOSpellFilterNameCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOP"><Offset x="-75" y="-25"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SpellFilterName(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOSpellFilterIdCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOSpellFilterNameCheckButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SpellFilterId(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <!--
+              <CheckButton name="SBFOSpellCastableCheckButton" inherits="SBFCheckButtonTemplate" hidden="true">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOSpellFilterIdCheckButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SpellsCastable(false)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              -->
+              <CheckButton name="SBFOSpellMineCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOSpellFilterIdCheckButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SpellMine()
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOAlwaysWarnCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOSpellMineCheckButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:AlwaysWarn(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              
+              <Frame name="SBFOSpellFilterEdit">
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                  <EdgeSize val="16"/>
+                  <TileSize val="16"/>
+                  <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+                </Backdrop>
+                <Size x="150" y="25"/>
+                <Anchors>
+                  <Anchor point="TOPRIGHT">
+                    <Offset x="-10" y="-20"/>
+                  </Anchor>
+                </Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="$parentLabel" inherits="GameFontNormalSmall">
+                      <Anchors>
+                        <Anchor point="BOTTOM" relativeTo="$parent" relativePoint="TOP">
+                          <Offset x="0" y="2"/>
+                        </Anchor>
+                      </Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Frames>
+                  <EditBox name="$parentEdit" letters="100" autoFocus="false">
+                    <Size x="130" y="14"/>
+                    <Anchors>
+                      <Anchor point="CENTER"/>
+                    </Anchors>
+                    <Scripts>
+                      <OnEscapePressed>
+                        self:SetText("")
+                        self:ClearFocus()
+                        SBFOptions:FillSpellList(self)
+                      </OnEscapePressed>
+                      <OnTabPressed>
+                        self:ClearFocus()
+                      </OnTabPressed>
+                      <OnTextChanged>
+                        SBFOptions:FillSpellList(self)
+                      </OnTextChanged>
+                      <OnLoad>
+                        self:SetTextColor(1,1,1)
+                      </OnLoad>
+                    </Scripts>
+                    <FontString inherits="GameFontNormal"/>
+                  </EditBox>
+                </Frames>
+                <Scripts>
+                  <OnLoad>
+                    self:SetBackdropColor(0,0,0,1)
+                    self.edit = _G[self:GetName().."Edit"]
+                    self.label = _G[self:GetName().."Label"]
+                  </OnLoad>
+                </Scripts>
+              </Frame>
+              <CheckButton name="SBFOShowBuffsCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOSpellFilterEdit" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-10"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SetSpellList(true)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.LISTBUFFSTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOShowDebuffsCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOShowBuffsCheckButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SetSpellList(false)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.LISTDEBUFFSTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+
+              <Button name="SBFOClearSpellsButton" inherits="GameMenuButtonTemplate">
+                <Size x="125" y="20"/>
+                <Anchors>
+                  <Anchor point="BOTTOMRIGHT">
+                    <Offset x="-10" y="10"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ClearSpellCache()
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.CLEARSPELLSTT1)
+                    GameTooltip:AddLine(SBFOptions.strings.CLEARSPELLSTT2)
+                    GameTooltip:AddLine(SBFOptions.strings.CLEARSPELLSTT3)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </Button>
+              <Frame name="SBFOSpellTTLEdit">
+                <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                  <EdgeSize val="16"/>
+                  <TileSize val="16"/>
+                  <BackgroundInsets left="2" right="2" top="2" bottom="2"/>
+                </Backdrop>
+                <Size x="40" y="24"/>
+                <Anchors><Anchor point="BOTTOMRIGHT"><Offset x="-235" y="8"/></Anchor></Anchors>
+                <Layers>
+                  <Layer level="OVERLAY">
+                    <FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="LEFT">
+                      <Size x="200" y="12"/>
+                      <Anchors><Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT"><Offset x="2" y="0"/></Anchor></Anchors>
+                    </FontString>
+                  </Layer>
+                </Layers>
+                <Frames>
+                  <EditBox name="$parentEdit" letters="4" autoFocus="false" numeric="true">
+                    <Size x="35" y="12"/>
+                    <Anchors><Anchor point="CENTER"/></Anchors>
+                    <Scripts>
+                      <OnEscapePressed>
+                        self:ClearFocus()
+                      </OnEscapePressed>
+                      <OnTabPressed>
+                        self:ClearFocus()
+                      </OnTabPressed>
+                      <OnEnterPressed>
+                        SBFOptions:SpellTTLEditEnterPressed(self)
+                        self:SetFocus()
+                      </OnEnterPressed>
+                      <OnLoad>
+                        self:SetTextColor(1,1,1)
+                      </OnLoad>
+                    </Scripts>
+                    <FontString inherits="GameFontNormal"/>
+                  </EditBox>
+                </Frames>
+                <Scripts>
+                  <OnLoad>
+                    self:SetBackdropColor(0,0,0,1)
+                    self.edit = _G[self:GetName().."Edit"]
+                    self.label = _G[self:GetName().."Label"]
+                  </OnLoad>
+                </Scripts>
+              </Frame>
+              <Button name="SBFOSpellTTLHelpButton" inherits="UIPanelButtonTemplate" text="?">
+                <NormalText inherits="GameFontNormalSmall" />
+                <Size x="12" y="14"/>
+                <Anchors>
+                  <Anchor point="RIGHT" relativeTo="SBFOSpellTTLEdit" relativePoint="LEFT"><Offset x="-5" y="0"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    for k,v in pairs(SBFOptions.strings.SPELLTTLHELP) do
+                      GameTooltip:AddLine(v)
+                    end
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </Button>
+              <Button name="SBFOApplySpellTTLButton" inherits="GameMenuButtonTemplate" text="APPLY">
+                <Size x="75" y="20"/>
+                <Anchors>
+                  <Anchor point="LEFT" relativeTo="SBFOSpellTTLEdit" relativePoint="RIGHT"><Offset x="5" y="0"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:SpellTTLEditEnterPressed(self)
+                  </OnClick>
+                </Scripts>
+              </Button>
+              
+            </Frames>
+            <Layers>
+              <Layer level="OVERLAY">
+                <FontString name="SBFOSpellName" inherits="GameFontNormal" justifyH="LEFT">
+                  <Size x="350" y="12"/>
+                  <Anchors>
+                    <Anchor point="TOP"><Offset x="90" y="-10"/></Anchor>
+                  </Anchors>
+                </FontString>
+              </Layer>
+            </Layers>
+            <Scripts>
+              <OnShow>
+                SBFOSpellsConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOSpellsConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+          
+          <Frame name="SBFOGlobalTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <CheckButton name="SBFOAuraMaxTimeCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT"><Offset x="10" y="-10"/></Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:AuraMaxTime(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.AURAMAXTIMETT1)
+                    GameTooltip:AddLine(SBFOptions.strings.AURAMAXTIMETT2)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOEnchantsFirstCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOAuraMaxTimeCheckButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:EnchantsFirst(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOTrackingCheckButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOEnchantsFirstCheckButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:ShowTracking(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFODisableBFButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOTrackingCheckButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:DisableBF(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOHidePartyButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFODisableBFButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:HideParty(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.HIDEPARTYTT1)
+                    GameTooltip:AddLine(SBFOptions.strings.HIDEPARTYTT2)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFONoCasterNamesButton" inherits="SBFCheckButtonTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOHidePartyButton" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:CasterNames(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              
+              <CheckButton name="SBFODefaultBuffsButton" inherits="SBFCheckButtonTemplate">
+                <Anchors><Anchor point="TOP"><Offset x="-125" y="-10"/></Anchor></Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:DefaultBuffs(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.RELOADNEEDED)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFODefaultEnchantsButton" inherits="SBFCheckButtonTemplate">
+                <Anchors><Anchor point="TOPLEFT" relativeTo="SBFODefaultBuffsButton" relativePoint="BOTTOMLEFT"/></Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:DefaultEnchants(self:GetChecked() == 1)
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.RELOADNEEDED)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </CheckButton>
+
+              <CheckButton name="SBFOTotemTimersButton" inherits="SBFCheckButtonTemplate">
+                <Anchors><Anchor point="TOP"><Offset x="120" y="-75"/></Anchor></Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:TotemTimers(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOTotemNonBuffButton" inherits="SBFCheckButtonTemplate">
+                <Anchors><Anchor point="TOPLEFT" relativeTo="SBFOTotemTimersButton" relativePoint="BOTTOMLEFT"/></Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:TotemNonBuffs(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+              <CheckButton name="SBFOTotemOutOfRangeButton" inherits="SBFCheckButtonTemplate">
+                <Anchors><Anchor point="TOPLEFT" relativeTo="SBFOTotemNonBuffButton" relativePoint="BOTTOMLEFT"/></Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:TotemOutOfRange(self:GetChecked() == 1)
+                  </OnClick>
+                </Scripts>
+              </CheckButton>
+
+              <Button name="SBFOResetButton" inherits="GameMenuButtonTemplate">
+                <Size x="125" y="20"/>
+                <Anchors>
+                  <Anchor point="TOPRIGHT">
+                    <Offset x="-10" y="-10"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:Reset()
+                  </OnClick>
+                  <OnEnter>
+                    GameTooltip:SetOwner(self, "ANCHOR_TOP")
+                    GameTooltip:AddLine(SBFOptions.strings.RESETFRAMESTT)
+                    GameTooltip:Show()
+                  </OnEnter>
+                  <OnLeave>
+                    GameTooltip:Hide()
+                  </OnLeave>
+                </Scripts>
+              </Button>
+            </Frames>
+            <Layers>
+              <Layer level="OVERLAY">
+                <FontString name="SBFOCurrentProfileString" inherits="GameFontNormal" justifyH="RIGHT">
+                  <Size x="200" y="12"/>
+                  <Anchors>
+                    <Anchor point="TOPRIGHT">
+                      <Offset x="-10" y="-10"/>
+                    </Anchor>
+                  </Anchors>
+                </FontString>
+              </Layer>
+            </Layers>
+            <Scripts>
+              <OnShow>
+                SBFOGlobalConfigButton.text:SetTextColor(0,1,0)
+              </OnShow>
+              <OnHide>
+                SBFOGlobalConfigButton.text:SetTextColor(1,1,1)
+              </OnHide>
+            </Scripts>
+          </Frame>
+
+          <Frame name="SBFOProfileTab">
+            <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+              <EdgeSize val="16"/>
+              <TileSize val="16"/>
+              <BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+            </Backdrop>
+            <Size x="665" y="165"/>
+            <Anchors>
+              <Anchor point="TOPLEFT"><Offset x="5" y="-30"/></Anchor>
+            </Anchors>
+            <Frames>
+              <Frame name="SBFOUsingProfileDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT">
+                    <Offset x="23" y="-18"/>
+                  </Anchor> 
+                </Anchors>
+              </Frame>
+              <Frame name="SBFOCopyProfileDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOUsingProfileDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-10"/>
+                  </Anchor> 
+                </Anchors>
+              </Frame>
+              <Frame name="SBFODeleteProfileDropDown" inherits="RoundedDropDownFrameTemplate">
+                <Anchors>
+                  <Anchor point="TOPLEFT" relativeTo="SBFOCopyProfileDropDown" relativePoint="BOTTOMLEFT">
+                    <Offset x="0" y="-10"/>
+                  </Anchor> 
+                </Anchors>
+              </Frame>
+
+              <Button name="SBFONewProfileButton" inherits="GameMenuButtonTemplate">
+                <Size x="125" y="20"/>
+                <Anchors>
+                  <Anchor point="BOTTOMRIGHT">
+                    <Offset x="-10" y="10"/>
+                  </Anchor>
+                </Anchors>
+                <Scripts>
+                  <OnClick>
+                    SBFOptions:NewProfile()
+                  </OnClick>
+                </Scripts>
+              </Button>
+            </Frames>
+          </Frame>
+        </Frames>
+        <Layers>
+          <Layer level="OVERLAY">
+            <FontString name="SBFOHint" inherits="GameFontNormalSmall" justifyH="CENTER">
+              <Size x="400" y="12"/>
+              <Anchors><Anchor point="TOP"><Offset x="0" y="-5"/></Anchor></Anchors>
+            </FontString>
+            <FontString name="SBFOHint3" inherits="GameFontNormal" justifyH="CENTER">
+              <Size x="400" y="12"/>
+              <Anchors><Anchor point="TOP" relativeTo="SBFOHint" relativePoint="BOTTOM"><Offset x="0" y="-2"/></Anchor></Anchors>
+            </FontString>
+            <FontString name="SBFOCurrentFrameString" inherits="GameFontNormal" justifyH="RIGHT">
+              <Size x="100" y="12"/>
+              <Anchors>
+                <Anchor point="TOPLEFT">
+                  <Offset x="3" y="-11"/>
+                </Anchor>
+              </Anchors>
+            </FontString>
+          </Layer>
+        </Layers>
+      </Frame>
+
+      <Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+        <Anchors>
+          <Anchor point="TOPRIGHT"><Offset x="5" y="6"/></Anchor>
+        </Anchors>
+        <Scripts>
+          <OnLoad>
+            self:SetFrameLevel(self:GetParent():GetFrameLevel() + 1);
+          </OnLoad>
+          <OnClick>
+						HideUIPanel(SatrinaBuffFrameOptions)
+          </OnClick>
+        </Scripts>
+      </Button>
+
+      <Button name="SBFONewFrameButton" inherits="GameMenuButtonTemplate">
+				<Size x="110" y="20"/>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset x="-20" y="2"/>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						SBFOptions:NewFrame()
+					</OnClick>
+					<OnEnter>
+						GameTooltip:SetOwner(self, "ANCHOR_TOP")
+						GameTooltip:AddLine(SBFOptions.strings.NEWFRAMETT)
+						GameTooltip:Show()
+					</OnEnter>
+					<OnLeave>
+						GameTooltip:Hide()
+					</OnLeave>
+				</Scripts>
+			</Button>
+
+			<Frame name="SBFOHelpFrame" hidden="true">
+				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize val="16"/>
+					<TileSize val="16"/>
+					<BackgroundInsets left="5" right="5" top="5" bottom="5"/>
+				</Backdrop>
+				<Size x="440" y="520"/>
+				<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPRIGHT"/>
+				</Anchors>
+				<Layers>
+					<Layer level="OVERLAY">
+						<FontString name="$parentPage" inherits="GameFontNormal" justifyH="RIGHT">
+							<Size x="120" y="12"/>
+							<Anchors>
+								<Anchor point="BOTTOMRIGHT">
+									<Offset x="-52" y="10"/>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="$parentCloseButton" inherits="UIPanelCloseButton">
+						<Anchors>
+							<Anchor point="TOPRIGHT"/>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								self:GetParent():Hide()
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="$parentNextButton" inherits="GameMenuButtonTemplate" text="&gt;">
+						<Size x="20" y="20"/>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset x="-6" y="6"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								self.parent.page = self.parent.page + 1
+								self.parent.html:SetText(self.parent.pages[self.parent.page])
+								if self.parent.page == #self.parent.pages then
+									self:Disable()
+								end
+								self.parent.pageStr:SetText(self.parent.page.."/"..#self.parent.pages)
+								SBFOHelpFramePrevButton:Enable()
+							</OnClick>
+							<OnLoad>
+								self.parent = self:GetParent()
+							</OnLoad>
+						</Scripts>
+						<FontString inherits="ChatFontNormal"/>
+					</Button>
+					<Button name="$parentPrevButton" inherits="GameMenuButtonTemplate" text="&lt;">
+						<Size x="20" y="20"/>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="$parentNextButton" relativePoint="LEFT">
+								<Offset x="-2" y="0"/>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								self.parent.page = self.parent.page - 1
+								self.parent.html:SetText(self.parent.pages[self.parent.page])
+								if self.parent.page == 1 then
+									self:Disable()
+								end
+								self.parent.pageStr:SetText(self.parent.page.."/"..#self.parent.pages)
+								SBFOHelpFrameNextButton:Enable()
+							</OnClick>
+							<OnLoad>
+								self.parent = self:GetParent()
+								self:Disable()
+							</OnLoad>
+						</Scripts>
+						<FontString inherits="ChatFontNormal"/>
+					</Button>
+					<SimpleHTML name="$parentHTML">
+						<Size x="425" y="500"/>
+						<Anchors>
+							<Anchor point="TOP">
+								<Offset x="3" y="-8"/>
+							</Anchor>
+						</Anchors>
+						<FontString inherits="ChatFontNormal"/>
+					</SimpleHTML>
+				</Frames>
+				<Scripts>
+					<OnLoad>
+						self:SetBackdropColor(0,0,0,1)
+            self.html = _G[self:GetName().."HTML"]
+            self.pageStr = _G[self:GetName().."Page"]
+					</OnLoad>
+				</Scripts>
+			</Frame>
+		</Frames>
+
+		<Layers>
+			<Layer level="OVERLAY">
+				<FontString name="SBFOVersionString" inherits="GameFontNormal" justifyH="LEFT">
+					<Size x="200" y="12"/>
+					<Anchors>
+						<Anchor point="BOTTOMLEFT">
+							<Offset x="5" y="4"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="SBFOHint2" inherits="GameFontNormal" justifyH="CENTER">
+					<Size x="400" y="12"/>
+					<Anchors>
+						<Anchor point="BOTTOM">
+							<Offset x="0" y="4"/>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+      <OnHide>
+        SBFOptions:CloseOptions()
+      </OnHide>
+			<OnLoad>
+				tinsert(UISpecialFrames,"SBFO")
+			</OnLoad>
+			<OnMouseDown>
+				if (button == "LeftButton") and IsAltKeyDown() then
+					self.moving = 1
+					self:StartMoving()
+				end
+			</OnMouseDown>
+			<OnMouseUp>
+				if self.moving then
+					self:StopMovingOrSizing()
+					self.moving = nil
+				end
+			</OnMouseUp>
+		</Scripts>
+	</Frame>
+</Ui>

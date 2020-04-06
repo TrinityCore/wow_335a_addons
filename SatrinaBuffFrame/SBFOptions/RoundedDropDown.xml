@@ -1,0 +1,103 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/FrameXML/UI.xsd">
+  <Include file="RoundedDropDown.lua"/>
+  
+  <Frame name="RoundedDropDownFrameTemplate" virtual="true">
+    <Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+      <EdgeSize>
+        <AbsValue val="16"/>
+      </EdgeSize>
+      <TileSize>
+        <AbsValue val="16"/>
+      </TileSize>
+      <BackgroundInsets>
+        <AbsInset left="5" right="5" top="5" bottom="5"/>
+      </BackgroundInsets>
+    </Backdrop>
+    <Size><AbsDimension x="100" y="25"/></Size>
+    <Layers>
+      <Layer level="OVERLAY">
+        <FontString name="$parentLabel" inherits="GameFontNormalSmall" justifyH="LEFT">
+          <Anchors>
+            <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+              <Offset>
+                <AbsDimension x="5" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+        <FontString name="$parentText" inherits="GameFontNormalSmall" justifyH="LEFT">
+          <Anchors>
+            <Anchor point="LEFT">
+              <Offset>
+                <AbsDimension x="5" y="0"/>
+              </Offset>
+            </Anchor>
+          </Anchors>
+        </FontString>
+      </Layer>
+    </Layers>
+    <Frames>
+			<Button name="$parentButton">
+				<Size>
+					<AbsDimension x="24" y="24"/>
+				</Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="$parent" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						self:GetParent().callback(self)
+					</OnClick>
+				</Scripts>
+				<NormalTexture name="$parentNormalTexture" file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Up">
+					<Size>
+						<AbsDimension x="24" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT"/>
+					</Anchors>
+				</NormalTexture>
+				<PushedTexture name="$parentPushedTexture" file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Down">
+					<Size>
+						<AbsDimension x="24" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT"/>
+					</Anchors>
+				</PushedTexture>
+				<DisabledTexture name="$parentDisabledTexture" file="Interface\ChatFrame\UI-ChatIcon-ScrollDown-Disabled">
+					<Size>
+						<AbsDimension x="24" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT"/>
+					</Anchors>
+				</DisabledTexture>
+				<HighlightTexture name="$parentHighlightTexture" file="Interface\Buttons\UI-Common-MouseHilight" alphaMode="ADD">
+					<Size>
+						<AbsDimension x="24" y="24"/>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT"/>
+					</Anchors>
+				</HighlightTexture>
+			</Button>
+    </Frames>
+    <Scripts>
+      <OnLoad>
+        RoundedDropDownFrame:OnLoad(self)
+      </OnLoad>
+      <OnEnter>
+        RoundedDropDownFrame:OnEnter(self)
+      </OnEnter>
+      <OnLeave>
+        RoundedDropDownFrame:OnLeave(self)
+      </OnLeave>
+    </Scripts>
+  </Frame>
+</Ui>
+

@@ -1,0 +1,52 @@
+------------------------------------------------------------------------
+r178 | seerah | 2009-12-16 17:39:12 +0000 (Wed, 16 Dec 2009) | 4 lines
+Changed paths:
+   M /trunk/INSTRUCTIONS for MyMedia.txt
+   M /trunk/SharedMedia.lua
+   M /trunk/SharedMedia.toc
+   A /trunk/background/bricks.tga
+   A /trunk/background/brushedmetal.tga
+   A /trunk/background/copper.tga
+   A /trunk/background/smoke.tga
+   M /trunk/border
+   A /trunk/border/SeerahScalloped.blp
+   A /trunk/fonts/Adventure.ttf
+   A /trunk/fonts/Bazooka.ttf
+   A /trunk/fonts/BlackChancery.TTF
+   A /trunk/fonts/DORISPP.TTF
+   A /trunk/fonts/Enigma__2.TTF
+   A /trunk/fonts/Fitzgerald.ttf
+   A /trunk/fonts/Gentium.TTF
+   A /trunk/fonts/HookedUp.ttf
+   A /trunk/fonts/LiberationSans.ttf
+   A /trunk/fonts/SFAtarianSystem.ttf
+   A /trunk/fonts/SFCovington.ttf
+   A /trunk/fonts/SFMoviePoster-Bold.ttf
+   A /trunk/fonts/SFWonderComic.ttf
+   A /trunk/fonts/VeraSe.ttf
+   A /trunk/fonts/YELLOWJACKET.TTF
+   A /trunk/fonts/font info and licenses
+   A /trunk/fonts/font info and licenses/Adventure font by Pixel Sagas.URL
+   A /trunk/fonts/font info and licenses/Enigmatic - legal_en.txt
+   A /trunk/fonts/font info and licenses/Fitzgerald - legal_fz.txt
+   A /trunk/fonts/font info and licenses/Gentium - OFL.txt
+   A /trunk/fonts/font info and licenses/HookedUp - legal_ah.txt
+   A /trunk/fonts/font info and licenses/Liberation - COPYING.txt
+   A /trunk/fonts/font info and licenses/Liberation - License.txt
+   A /trunk/fonts/font info and licenses/ShyFoundry Freeware EULA (for SF... fonts).pdf
+   A /trunk/fonts/font info and licenses/Vera Serif - COPYRIGHT.TXT
+   A /trunk/fonts/font info and licenses/yellowjacket - readme.txt
+   A /trunk/fonts/swfit.ttf
+
+- readded some fonts.  All fonts included allow for redistribution.  Any licenses required to be included with their redistribution are found in the "fonts\font info and licenses" folder.
+- I created 4 backgrounds and 1 border for SharedMedia, and give permission for their redistribution with SharedMedia
+- updated INSTRUCTIONS for MyMedia.txt (fixed typos, clarified some things, added a short & sweet FAQ ) - be sure to read!
+- uppded TOC and version numbers for 3.3
+------------------------------------------------------------------------
+r177 | elkano | 2009-06-09 06:46:50 +0000 (Tue, 09 Jun 2009) | 1 line
+Changed paths:
+   M /trunk/.pkgmeta
+   M /trunk/SharedMedia.toc
+
+added CallbackHandler-1.0 external
+------------------------------------------------------------------------

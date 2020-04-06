@@ -1,0 +1,1007 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Button name="GameMenuButtonMoveAnything" parent="GameMenuFrame" inherits="GameMenuButtonTemplate" text="MoveAnything!">
+		<Scripts>
+			<OnLoad>
+				self:ClearAllPoints()
+				self:SetPoint("TOP", GameMenuButtonContinue, "BOTTOM", 0, -25)
+			</OnLoad>
+			<OnClick>
+				if IsShiftKeyDown() and IsControlKeyDown() and IsAltKeyDown() then
+					ReloadUI()
+				else
+					ShowUIPanel(MAOptions)
+					HideUIPanel(GameMenuFrame)
+				end
+			</OnClick>
+		</Scripts>
+	</Button>
+
+	<Button name="MAResizeButton" virtual="true">
+		<Size>
+			<AbsDimension x="8" y="8"/>
+		</Size>
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="4"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="8"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="2" right="2" top="2" bottom="2"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Scripts>
+			<OnLoad>
+				local anchorto, anchor = MovAny:SizingAnchor(self)
+				self:SetPoint(anchor, self:GetParent(), anchorto, 0, 0)
+			</OnLoad>
+			<OnShow>
+				self:SetFrameLevel(self:GetParent():GetFrameLevel()+2)
+			</OnShow>
+			<OnMouseDown>
+				local button = GetMouseButtonClicked()
+				if button == "RightButton" then
+					local t = _G[ self:GetParent():GetName().."Backdrop" ]
+					if IsShiftKeyDown() then
+						if t:IsVisible() then
+							t:Hide()
+						else
+							t:Show()
+						end
+					else
+						self:GetParent():StartMoving()
+					end
+				else
+					if MovAny:ErrorNotInCombat(self:GetParent().tagged, true) then
+						return
+					end
+					anchor = MovAny:SizingAnchor(self)
+					self:GetParent().MASizingAnchor = anchor
+					self:GetParent():StartSizing(anchor)
+				end
+			</OnMouseDown>
+			<OnMouseUp>
+				local button = GetMouseButtonClicked()
+				if MovAny:ErrorNotInCombat(self:GetParent().tagged, button == "RightButton") then
+					if button == "RightButton" then
+						self:GetParent():StopMovingOrSizing()
+					end
+					return
+				end
+				self:GetParent():StopMovingOrSizing()
+				self:GetParent().MASizingAnchor = nil
+				if button == "RightButton" and not IsShiftKeyDown() then
+					MovAny:StopMoving(self:GetParent().tagged:GetName())
+				end
+			</OnMouseUp>
+		</Scripts>
+	</Button>
+
+	<Frame name="MAMoverTemplate" frameStrata="TOOLTIP" enableMouse="true" hidden="true" parent="UIParent" movable="true" resizable="true" virtual="true">
+		<Size>
+			<AbsDimension x="100" y="100"/>
+		</Size>
+		<ResizeBounds>
+			<minResize>
+				<AbsDimension x="8" y="8"/>
+			</minResize>
+		</ResizeBounds>
+		<Anchors>
+			<Anchor point="BOTTOMLEFT"/>
+		</Anchors>
+		<Scripts>
+			<!-- uncomment this to enable tooltips on movers
+			<OnEnter>
+				if  (MADB.tooltips and not IsShiftKeyDown()) or (not MADB.tooltips and IsShiftKeyDown()) then
+					self.tooltipLines = MovAny:GetFrameTooltipLines(self.tagged:GetName())
+					MovAny:TooltipShowMultiline(self)
+					self.tooltipLines = nil
+				end
+			</OnEnter>
+			-->
+			<OnLoad>
+				_G[ self:GetName().."Backdrop" ]:SetBackdropColor(1,1,1,.25)
+				_G[ self:GetName().."Backdrop" ]:SetBackdropBorderColor(1,1,1,.15)
+			</OnLoad>
+			<OnUpdate>
+				if self.tagged and self.infoShown then
+					local f = self.tagged
+					local str = numfor(f:GetLeft()).." , "..numfor(f:GetBottom())
+					local label = _G[self:GetName().."BackdropInfoLabel"]
+					label:Show()
+					label:SetText(str)
+					
+					if self == MovAny.currentMover then
+						_G["MANudgerInfoLabel"]:Show()
+						_G["MANudgerInfoLabel"]:SetText(str)
+					end
+				end
+			</OnUpdate>
+			<OnMouseDown>
+				local button = GetMouseButtonClicked()
+				if self.tagged then
+					local f = self.tagged
+					if not MovAny:IsProtected(f) or not InCombatLockdown() then
+						MovAny:UnlockPoint(f)
+						f:ClearAllPoints()
+						f:SetPoint("BOTTOMLEFT", self, "BOTTOMLEFT", 0, 0)
+						MovAny:LockPoint(f)
+					end
+					if button == "LeftButton" and not MovAny.NoMove[ self.tagged:GetName() ] then
+						local str = numfor(f:GetLeft()).." , "..numfor(f:GetBottom())
+						_G[self:GetName().."BackdropInfoLabel"]:SetText(str)
+						if self == MovAny.currentMover then
+							_G["MANudgerInfoLabel"]:SetText(str)
+							_G["MANudgerInfoLabel"]:Show()
+						end
+						self.infoShown = true
+						if f.OnMAPosition then
+							f:OnMAPosition(f)
+						end
+						self:StartMoving()
+					end
+				end
+			</OnMouseDown>
+			<OnMouseUp>
+				local button = GetMouseButtonClicked()
+				if self.tagged and not MovAny.NoMove[ self.tagged:GetName() ] then
+					if button ~= "RightButton" then
+						MovAny:MoverUpdatePosition(self)
+					end
+					self:StopMovingOrSizing()
+				end
+				if button == "RightButton" and self.tagged and not MovAny:ErrorNotInCombat(self.tagged) then
+					if IsShiftKeyDown() then
+						local t = _G[self:GetName().."Backdrop"]
+						if t:IsVisible() then
+							t:Hide()
+						else
+							t:Show()
+						end
+					else
+						local name = self.tagged:GetName()
+						if IsControlKeyDown() then
+							MovAny:FrameEditor(name)
+						else
+							MovAny:StopMoving(name)
+						end
+					end
+				end
+				--MovAny:TooltipHide()
+			</OnMouseUp>
+			<OnMouseWheel function="MAMoverTemplate_OnMouseWheel"/>
+			<OnSizeChanged>
+				MovAny:MoverOnSizeChanged(self)
+			</OnSizeChanged>
+			<OnShow>
+				MovAny:MoverOnShow(self)
+			</OnShow>
+			<OnHide>
+				MovAny:MoverOnHide()
+				if self == MovAny.currentMover then
+					_G[ "MANudgerInfoLabel"]:Hide()
+				end
+			</OnHide>
+		</Scripts>
+		<Frames>
+			<Frame name="$parentBackdrop" setAllPoints="true" enableMouse="false">
+				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="8"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="16"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="3" right="3" top="3" bottom="3"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentMovingFrameName" inherits="GameFontNormal">
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset><AbsDimension x="0" y="23"/></Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentInfoLabel" inherits="GameFontHighlightSmall" text="">
+							<Anchors>
+								<Anchor point="CENTER" />
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+			</Frame>
+			<Button name="$parentResize_TOP" inherits="MAResizeButton"/>
+			<Button name="$parentResize_LEFT" inherits="MAResizeButton"/>
+			<Button name="$parentResize_BOTTOM" inherits="MAResizeButton"/>
+			<Button name="$parentResize_RIGHT" inherits="MAResizeButton"/>
+		</Frames>
+	</Frame>
+
+	<Button name="MAButtonTemplate" inherits="UIPanelButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="20" y="20"/>
+		</Size>
+		<NormalText inherits="GameFontHighlight"/>
+		<DisabledText inherits="GameFontDisable"/>
+		<HighlightText inherits="GameFontHighlight"/>
+		<Scripts>
+			<OnEnter function="MovAny_TooltipShow"/>
+			<OnLeave function="MovAny_TooltipHide"/>
+		</Scripts>
+	</Button>
+
+	<CheckButton name="MACheckButtonTemplate" inherits="UICheckButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="20" y="20"/>
+		</Size>
+		<NormalText inherits="GameFontHighlight"/>
+		<DisabledText inherits="GameFontDisable"/>
+		<HighlightText inherits="GameFontHighlight"/>
+		<Scripts>
+			<OnEnter function="MovAny_TooltipShow"/>
+			<OnLeave function="MovAny_TooltipHide"/>
+		</Scripts>
+	</CheckButton>
+
+	<CheckButton name="MAListCheckButtonTemplate" inherits="MACheckButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="30" y="30"/>
+		</Size>
+	</CheckButton>
+
+	<Frame name="MAListRowTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="309" y="24"/>
+		</Size>
+		<Frames>
+			<Frame name="$parentBackdrop">
+				<Size>
+					<AbsDimension x="329" y="24"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT"/>
+				</Anchors>
+				<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+					<EdgeSize>
+						<AbsValue val="12"/>
+					</EdgeSize>
+					<TileSize>
+						<AbsValue val="16"/>
+					</TileSize>
+					<BackgroundInsets>
+						<AbsInset left="2" right="2" top="2" bottom="2"/>
+					</BackgroundInsets>
+				</Backdrop>
+				<Scripts>
+					<OnLoad>
+						self:SetBackdropColor(.03, .03, .03)
+						self:SetBackdropBorderColor(.4, .4, .4)
+					</OnLoad>
+				</Scripts>
+			</Frame>
+			<Frame name="$parentFrameName">
+				<Size>
+					<AbsDimension x="327" y="24"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT"/>
+				</Anchors>
+				<Layers>
+					<Layer level="ARTWORK">
+						<FontString name="$parentText" inherits="GameFontHighlight" text="">
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="6" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+						<FontString name="$parentHighlight" inherits="GameFontNormal" text="">
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="6" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnMouseUp>
+						MovAny:RowTitleClicked(self)
+					</OnMouseUp>
+				</Scripts>
+			</Frame>
+			<CheckButton name="$parentMove" inherits="MAListCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentFrameName">
+						<Offset>
+							<AbsDimension x="4" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MovAny:OnMoveCheck(self)
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<CheckButton name="$parentHide" inherits="MAListCheckButtonTemplate">
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentMove">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MovAny:OnHideCheck(self)
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			<Button name="$parentReset" inherits="UIPanelButtonTemplate" text="Reset">
+				<Size>
+					<AbsDimension x="44" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentHide">
+						<Offset>
+							<AbsDimension x="3" y="1"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalText inherits="GameFontHighlight"/>
+				<Scripts>
+					<OnClick>
+						MovAny:OnResetCheck(self)
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+	</Frame>
+
+	<Frame name="MAOptions" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" hidden="true" parent="UIParent">
+		<TitleRegion setAllPoints="true"/>
+		<Size>
+			<AbsDimension x="497" y="513"/>
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER"/>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11"/>
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32"/>
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32"/>
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="$parentFrameHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="329" y="64"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="10" y="12"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</Texture>
+				<FontString name="$parentCaption" inherits="GameFontNormal" text="MoveAnything">
+					<Anchors>
+						<Anchor point="TOP" relativeTo="$parentFrameHeader">
+							<Offset>
+								<AbsDimension x="0" y="-14"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentFrameNameHeader" inherits="GameFontHighlightSmall">
+					<Anchors>
+						<Anchor point="TOPLEFT">
+							<Offset>
+								<AbsDimension x="24" y="-32"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentMoveHeader" inherits="GameFontHighlightSmall">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parentFrameNameHeader">
+							<Offset>
+								<AbsDimension x="316" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentHideHeader" inherits="GameFontHighlightSmallOutline">
+					<Anchors>
+						<Anchor point="LEFT" relativePoint="LEFT" relativeTo="$parentMoveHeader">
+							<Offset>
+								<AbsDimension x="44" y="0"/>
+							</Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parentClose" inherits="MAButtonTemplate" text="X">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-13" y="-11"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.tooltipText = "Closes this window. Ctrl-Shift-Alt click reloads the interface"
+					</OnLoad>
+					<OnClick>
+						if IsShiftKeyDown() and IsControlKeyDown() and IsAltKeyDown() then
+							ReloadUI()
+						else
+							MADB.autoShowNext = nil
+							MAOptions:Hide()
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<Button name="$parentOpenBlizzardOptions" inherits="MAButtonTemplate" text="O">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="TOPLEFT" relativeTo="MAOptionsClose">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.tooltipText = "Open options"
+					</OnLoad>
+					<OnClick>
+						InterfaceOptionsFrame_OpenToCategory("MoveAnything")
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<Button name="$parentSync" inherits="MAButtonTemplate" text="S">
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativePoint="TOPLEFT" relativeTo="MAOptionsOpenBlizzardOptions">
+						<Offset>
+							<AbsDimension x="0" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self.tooltipText = "Synchronize elements modified by MoveAnything."
+					</OnLoad>
+					<OnClick>
+						MovAny:SyncAllFrames()
+					</OnClick>
+				</Scripts>
+			</Button>
+			
+			<CheckButton name="$parentToggleFrameStack" inherits="MACheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="MAOptionsSync" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="-19" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						_G[self:GetName().."Text"]:SetText("FS")
+						self.tooltipText = "Toggle Blizzard's framestack tooltip.\n\n A very helpful tool for figuring out frame names for use with /move."
+					</OnLoad>
+					<OnClick>
+						UIParentLoadAddOn("Blizzard_DebugTools")
+						FrameStackTooltip_Toggle()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentToggleFrameEditors" inherits="MACheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="MAOptionsToggleFrameStack" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="-17" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						_G[self:GetName().."Text"]:SetText("FE")
+						self.tooltipText = "Toggle visibility on frame editors."
+					</OnLoad>
+					<OnClick>
+						MovAny:ToggleFrameEditors()
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentToggleModifiedFramesOnly" inherits="MACheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="12" y="-12"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						_G[self:GetName().."Text"]:SetText("MF")
+						self.tooltipText = "Show only modified frames"
+					</OnLoad>
+					<OnClick>
+						MovAny:OnCheckToggleModifiedFramesOnly(self)
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentToggleCategories" inherits="MACheckButtonTemplate">
+				<Size>
+					<AbsDimension x="20" y="20"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="MAOptionsToggleModifiedFramesOnly" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="25" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						_G[self:GetName().."Text"]:SetText("CE")
+						self.tooltipText = "Toggle all categories"
+					</OnLoad>
+					<OnClick>
+						MovAny:OnCheckToggleCategories(self)
+					</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<EditBox name="MA_Search" inherits="InputBoxTemplate" hidden="false" virtual="true" autoFocus="false">
+				<Size>
+					<AbsDimension x="464" y="18"/>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="MAOptions" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="19" y="14"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetText(MOVANY.SEARCH_TEXT)
+					</OnLoad>
+					<OnShow>
+					</OnShow>
+					<OnEditFocusGained>
+						self:HighlightText(0, 0)
+						if self:GetText() == MOVANY.SEARCH_TEXT then
+							self:SetText("")
+						end
+					</OnEditFocusGained>
+					<OnEditFocusLost>
+						self:HighlightText(0, 0)
+						if self:GetText() == "" or self:GetText() == nil then
+							self:SetText(MOVANY.SEARCH_TEXT)
+						end
+						MovAny:Search(self:GetText())
+					</OnEditFocusLost>
+					<OnTabPressed>
+						self:ClearFocus()
+					</OnTabPressed>
+					<OnEscapePressed>
+						MovAny:Search(self:GetText())
+						self:ClearFocus()
+					</OnEscapePressed>
+					<OnTextChanged>
+						if self:GetText() ~= MOVANY.SEARCH_TEXT then
+							MovAny:Search(self:GetText())
+						end
+					</OnTextChanged>
+					<OnEnterPressed>
+						if self:GetText() == "" or self:GetText() == nil then
+							self:SetText(MOVANY.SEARCH_TEXT)
+						elseif self:GetText() ~= MOVANY.SEARCH_TEXT then
+							MovAny:Search(self:GetText())
+						end
+						self:ClearFocus()
+					</OnEnterPressed>
+				</Scripts>
+			  </EditBox>
+			  
+			<ScrollFrame name="MAScrollFrame" inherits="FauxScrollFrameTemplate">
+				<Size>
+					<AbsDimension x="380" y="443"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-37" y="-34"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnVerticalScroll>
+						FauxScrollFrame_OnVerticalScroll(self, offset, MovAny.SCROLL_HEIGHT, MovAny.UpdateGUI)
+					</OnVerticalScroll>
+				</Scripts>
+				<Frames>
+					<Frame name="MAScrollBorder">
+						<Size>
+							<AbsDimension x="20" y="410"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="24" y = "-14"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+							<EdgeSize>
+								<AbsValue val="12"/>
+							</EdgeSize>
+							<TileSize>
+								<AbsValue val="16"/>
+							</TileSize>
+							<BackgroundInsets>
+								<AbsInset left="2" right="2" top="2" bottom="2"/>
+							</BackgroundInsets>
+						</Backdrop>
+						<Scripts>
+							<OnLoad>
+								self:SetBackdropColor(.1, .1, .1)
+								self:SetBackdropBorderColor(.4, .4, .4)
+							</OnLoad>
+						</Scripts>
+					</Frame>
+				</Frames>
+			</ScrollFrame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self:RegisterEvent("ADDON_LOADED")
+				self:RegisterEvent("PLAYER_LOGOUT")
+				self:RegisterEvent("PLAYER_ENTERING_WORLD")
+				self:RegisterEvent("PLAYER_REGEN_ENABLED")
+				self:RegisterEvent("RAID_ROSTER_UPDATE")
+				self:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
+				self:RegisterEvent("PLAYER_FOCUS_CHANGED")
+			</OnLoad>
+			<OnShow>
+				MovAny:OnShow()
+			</OnShow>
+			<OnHide>
+				MovAny:OnHide()
+			</OnHide>
+			<OnEvent function="MovAny_OnEvent"/>
+		</Scripts>
+	</Frame>
+	<Button name="MA_NudgeButton" inherits="UIPanelButtonTemplate" virtual="true" hidden="false">
+		<Size><AbsDimension x="24" y="24"/></Size>
+		<Scripts>
+			<OnClick function="MANudgeButton_OnClick"/>
+		</Scripts>
+	</Button>
+	<Button name="MA_MoverButton" inherits="UIPanelButtonTemplate" virtual="true" hidden="false">
+		<Size><AbsDimension x="15" y="15"/></Size>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp")
+			</OnLoad>
+		</Scripts>
+	</Button>
+	<Button name="MANudger" hidden="true" parent="UIParent" movable="true" toplevel="true" frameStrata="DIALOG">
+		<Size>
+			<AbsDimension x="200" y="175"/>
+		</Size>
+		<Anchors>
+			<Anchor point="TOP" relativeTo="MAOptions" relativePoint="BOTTOM">
+				<Offset><AbsDimension x="0" y="-20"/></Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+			<EdgeSize>
+				<AbsValue val="4"/>
+			</EdgeSize>
+			<TileSize>
+				<AbsValue val="8"/>
+			</TileSize>
+			<BackgroundInsets>
+				<AbsInset left="2" right="2" top="2" bottom="2"/>
+			</BackgroundInsets>
+		</Backdrop>
+		<Layers>
+			<Layer level="ARTWORK">
+				<FontString name="$parentTitle" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset><AbsDimension x="0" y="-6"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentInfoLabel" inherits="GameFontHighlightSmall">
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset><AbsDimension x="0" y="-36"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+				<FontString name="$parentMouseOver" inherits="GameFontNormal">
+					<Anchors>
+						<Anchor point="BOTTOM">
+							<Offset><AbsDimension x="0" y="6"/></Offset>
+						</Anchor>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parent_NudgeUp" inherits="MA_NudgeButton">
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset><AbsDimension x="0" y="24"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetText("^")
+						self.dir = 1
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp")
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Button name="$parent_CenterMe" inherits="UIPanelButtonTemplate" hidden="false">
+				<Size><AbsDimension x="24" y="24"/></Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_NudgeUp" relativePoint="BOTTOM">
+						<Offset><AbsDimension x="0" y="2"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetText("C")
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp")
+					</OnLoad>
+					<OnClick>
+						MovAny:Center(0)
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_NudgeDown" inherits="MA_NudgeButton">
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_CenterMe" relativePoint="BOTTOM">
+						<Offset><AbsDimension x="0" y="2"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetText("v")
+						self.dir = 2
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp")
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Button name="$parent_NudgeLeft" inherits="MA_NudgeButton">
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="$parent_CenterMe" relativePoint="LEFT">
+						<Offset><AbsDimension x="0" y="0"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetText("&lt;")
+						self.dir = 3
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp")
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Button name="$parent_NudgeRight" inherits="MA_NudgeButton">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent_CenterMe" relativePoint="RIGHT">
+						<Offset><AbsDimension x="0" y="0"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetText("&gt;")
+						self.dir = 4
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp")
+					</OnLoad>
+				</Scripts>
+			</Button>
+			<Button name="$parent_CenterH" inherits="UIPanelButtonTemplate" hidden="false">
+				<Size><AbsDimension x="32" y="24"/></Size>
+				<Anchors>
+					<Anchor point="RIGHT" relativeTo="$parent_NudgeLeft" relativePoint="LEFT">
+						<Offset><AbsDimension x="-14" y="12"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetText("C H")
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp")
+					</OnLoad>
+					<OnClick>
+						MovAny:Center(1)
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_CenterV" inherits="UIPanelButtonTemplate" hidden="false">
+				<Size><AbsDimension x="32" y="24"/></Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_CenterH" relativePoint="BOTTOM">
+						<Offset><AbsDimension x="0" y="-6"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetText("C V")
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp")
+					</OnLoad>
+					<OnClick>
+						MovAny:Center(2)
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Detach" inherits="UIPanelButtonTemplate" hidden="false">
+				<Size><AbsDimension x="32" y="24"/></Size>
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parent_NudgeRight" relativePoint="RIGHT">
+						<Offset><AbsDimension x="14" y="12"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetText("X")
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp")
+					</OnLoad>
+					<OnClick>
+						local m = MovAny.currentMover
+						if not m or not m.tagged or MovAny:ErrorNotInCombat(m.tagged) then
+							return
+						end
+						if IsShiftKeyDown() then
+							local t = _G[m:GetName().."Backdrop"]
+							if t:IsVisible() then
+								t:Hide()
+							else
+								t:Show()
+							end
+						else
+							MovAny:DetachMover(m)
+							MovAny:UpdateGUIIfShown(true)
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_Hide" inherits="UIPanelButtonTemplate" hidden="false">
+				<Size><AbsDimension x="32" y="24"/></Size>
+				<Anchors>
+					<Anchor point="TOP" relativeTo="$parent_Detach" relativePoint="BOTTOM">
+						<Offset><AbsDimension x="0" y="-6"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnLoad>
+						self:SetText("H")
+						self:RegisterForClicks("LeftButtonUp", "RightButtonUp", "MiddleButtonUp")
+					</OnLoad>
+					<OnClick>
+						if MovAny.currentMover.tagged then
+							MovAny:ToggleHide(MovAny.currentMover.tagged:GetName())
+						end
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_MoverPlus" inherits="MA_MoverButton" text="+">
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset><AbsDimension x="-7" y="-7"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MovAny:NudgerChangeMover(1)
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parent_MoverMinus" inherits="MA_MoverButton" text="-">
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset><AbsDimension x="7" y="-7"/></Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						MovAny:NudgerChangeMover(-1)
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				self:RegisterForDrag("LeftButton")
+				self:SetBackdropColor(0,0,0,.75)
+				self:SetBackdropBorderColor(0,0,0,.75)
+				_G[ self:GetName().."InfoLabel"]:SetAlpha(.8)
+			</OnLoad>
+			<OnDragStart>
+				self:StartMoving()
+			</OnDragStart>
+			<OnDragStop>
+				self:StopMovingOrSizing()
+			</OnDragStop>
+			<OnShow>
+				MovAny:NudgerOnShow()
+			</OnShow>
+			<OnHide>
+				self:StopMovingOrSizing()
+			</OnHide>
+			<OnMouseDown>
+				if IsControlKeyDown() then
+					if MovAny.FrameEditor and MovAny.currentMover and MovAny.currentMover.tagged then
+						MovAny:FrameEditor(MovAny.currentMover.tagged:GetName())
+					end
+				else
+					local button = GetMouseButtonClicked()
+					if button == "RightButton" then
+						self:Hide()
+					end
+				end
+			</OnMouseDown>
+			<OnMouseWheel function="MANudger_OnMouseWheel"/>
+			<OnEnter>
+				if MovAny.currentMover ~= nil and MovAny.currentMover.tagged then
+					if  (MADB.tooltips and not IsShiftKeyDown()) or (not MADB.tooltips and IsShiftKeyDown()) then
+						self.tooltipLines = MovAny:GetFrameTooltipLines(MovAny.currentMover.tagged:GetName())
+						MovAny:TooltipShowMultiline(self)
+					end
+				end
+			</OnEnter>
+			<OnLeave>
+				GameTooltip:Hide()
+			</OnLeave>
+			<OnUpdate>
+				MovAny:NudgerOnUpdate()
+			</OnUpdate>
+		</Scripts>
+	</Button>
+</Ui>

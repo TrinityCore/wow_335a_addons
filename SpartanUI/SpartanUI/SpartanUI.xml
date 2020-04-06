@@ -1,0 +1,245 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\..\FrameXML\UI.xsd">
+	<!-- frameStrata Parameters:  BACKGROUND, LOW, MEDIUM, HIGH, DIALOG, FULLSCREEN, FULLSCREEN_DIALOG, TOOLTIP  -->
+	<!-- Layer level Parameters:  BACKGROUND, BORDER, ARTWORK, OVERLAY, HIGHLIGHT -->
+	
+	<Script file="SpartanUI.lua" />
+	<Font name="SUI_FontOutline22"  font="Interface\AddOns\SpartanUI\media\Cognosis.ttf" outline="NORMAL" virtual="true">
+		<FontHeight><AbsValue val="22"/></FontHeight>
+	</Font>
+	<Font name="SUI_FontOutline18"  font="Interface\AddOns\SpartanUI\media\Cognosis.ttf" outline="NORMAL" virtual="true">
+		<FontHeight><AbsValue val="18"/></FontHeight>
+	</Font>
+	<Font name="SUI_FontOutline13" font="Interface\AddOns\SpartanUI\media\Cognosis.ttf" outline="NORMAL" virtual="true">
+		<FontHeight><AbsValue val="13"/></FontHeight>
+	</Font>
+	<Font name="SUI_FontOutline12" font="Interface\AddOns\SpartanUI\media\Cognosis.ttf" outline="NORMAL" virtual="true">
+		<FontHeight><AbsValue val="12"/></FontHeight>
+	</Font>
+	<Font name="SUI_FontOutline11"  font="Interface\AddOns\SpartanUI\media\Cognosis.ttf" outline="NORMAL" virtual="true">
+		<FontHeight><AbsValue val="11"/></FontHeight>
+	</Font>
+	<Font name="SUI_FontOutline10"  font="Interface\AddOns\SpartanUI\media\Cognosis.ttf" outline="NORMAL" virtual="true">
+		<FontHeight><AbsValue val="10"/></FontHeight>
+	</Font>
+	<Font name="SUI_FontOutline9"  font="Interface\AddOns\SpartanUI\media\Cognosis.ttf" outline="NORMAL" virtual="true">
+		<FontHeight><AbsValue val="9"/></FontHeight>
+	</Font>
+	<Font name="SUI_FontOutline8"  font="Interface\AddOns\SpartanUI\media\Cognosis.ttf" outline="NORMAL" virtual="true">
+		<FontHeight><AbsValue val="8"/></FontHeight>
+	</Font>
+	
+	<Frame name="SUI_AnchorFrame" frameStrata="BACKGROUND" parent="UIParent">
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT"><Offset><AbsDimension x="0" y="-1"/></Offset></Anchor>
+			<Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT"><Offset><AbsDimension x="0" y="-1"/></Offset></Anchor>
+		</Anchors>
+	</Frame>	
+	<Frame name="SpartanUI" frameStrata="BACKGROUND" parent="UIParent">
+		<Anchors>
+			<Anchor point="BOTTOMLEFT" relativeTo="SUI_AnchorFrame" relativePoint="TOPLEFT" />
+			<Anchor point="TOPRIGHT" relativeTo="SUI_AnchorFrame" relativePoint="TOPRIGHT">
+				<Offset><AbsDimension x="0" y="153"/></Offset>
+			</Anchor>
+		</Anchors>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parent_Base1" file="Interface\AddOns\SpartanUI\media\_base1">					
+					<Anchors><Anchor point="BOTTOM" relativePoint="BOTTOM"/></Anchors>
+				</Texture>
+				<Texture name="$parent_Base2" file="Interface\AddOns\SpartanUI\media\_base2">
+					<Anchors><Anchor point="RIGHT" relativeTo="$parent_Base1" relativePoint="LEFT"/></Anchors>
+				</Texture>
+				<Texture name="$parent_Base3" file="Interface\AddOns\SpartanUI\media\_base3">
+					<Anchors><Anchor point="RIGHT" relativeTo="$parent_Base2" relativePoint="LEFT"/></Anchors>
+				</Texture>
+				<Texture name="$parent_Base4" file="Interface\AddOns\SpartanUI\media\_base4">
+					<Anchors><Anchor point="LEFT" relativeTo="$parent_Base1" relativePoint="RIGHT"/></Anchors>
+				</Texture>
+				<Texture name="$parent_Base5" file="Interface\AddOns\SpartanUI\media\_base5">
+					<Anchors><Anchor point="LEFT" relativeTo="$parent_Base4" relativePoint="RIGHT"/></Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	
+	<Frame name="SUI_StatusBars_TooltipTemplate" frameStrata="TOOLTIP" virtual="true">
+		<Size><AbsDimension x="374" y="70"/></Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\AddOns\SpartanUI\media\status_tooltip">
+					<Anchors><Anchor point="CENTER"/></Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<FontString name="$parentHeader" inherits="SUI_FontOutline12">
+					<Size><AbsDimension x="390" y="16" /></Size>
+					<Anchors><Anchor point="TOP"/></Anchors>
+				</FontString>
+				<FontString name="$parentText" inherits="SUI_FontOutline10">
+					<Size><AbsDimension x="378" y="46" /></Size>
+					<Anchors><Anchor point="TOP" relativeTo="$parentHeader" relativePoint="BOTTOM">
+						<Offset><AbsDimension x="0" y="-2"/></Offset>
+					</Anchor></Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="SUI_StatusBars_XPTemplate" frameStrata="BACKGROUND" enableMouse="true" virtual="true">
+		<Size><AbsDimension x="450" y="32" /></Size>
+		<Layers>
+			<Layer level="OVERLAY">
+				<Texture name="$parentPlate" file="Interface\AddOns\SpartanUI\media\status_platexp">
+					<Size><AbsDimension x="512" y="32" /></Size>
+					<Anchors><Anchor point="RIGHT"/></Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture name="$parentFill" file="Interface\AddOns\SpartanUI\media\status_glow">
+					<Size><AbsDimension x="400" y="32" /></Size>
+					<Anchors><Anchor point="RIGHT"/></Anchors>
+				</Texture>
+				<Texture name="$parentLead" file="Interface\AddOns\SpartanUI\media\status_lead">
+					<Size><AbsDimension x="20" y="32" /></Size>
+					<Anchors><Anchor point="RIGHT" relativeTo="$parentFill" relativePoint="LEFT"/></Anchors>
+					<TexCoords left="1" right="0" top="0" bottom="1" />
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="$parentFillGlow" file="Interface\AddOns\SpartanUI\media\status_glow" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentFill" relativePoint="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentFill" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentLeadGlow" file="Interface\AddOns\SpartanUI\media\status_lead" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentLead" relativePoint="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentLead" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+					<TexCoords left="1" right="0" top="0" bottom="1" />
+				</Texture>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBase" setAllPoints="true">
+					<Color r="0" g="0" b="0" a="0.8"/>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="SUI_StatusBars_RepTemplate" frameStrata="BACKGROUND" enableMouse="true" virtual="true">
+		<Size><AbsDimension x="450" y="32" /></Size>
+		<Layers>
+			<Layer level="OVERLAY">
+				<Texture name="$parentPlate" file="Interface\AddOns\SpartanUI\media\status_platerep">
+					<Size><AbsDimension x="512" y="32" /></Size>
+					<Anchors><Anchor point="LEFT"/></Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BORDER">
+				<Texture name="$parentFill" file="Interface\AddOns\SpartanUI\media\status_glow">
+					<Size><AbsDimension x="400" y="32" /></Size>
+					<Anchors><Anchor point="LEFT"/></Anchors>
+				</Texture>
+				<Texture name="$parentLead" file="Interface\AddOns\SpartanUI\media\status_lead">
+					<Size><AbsDimension x="25" y="32" /></Size>
+					<Anchors><Anchor point="LEFT" relativeTo="$parentFill" relativePoint="RIGHT"/></Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="$parentFillGlow" file="Interface\AddOns\SpartanUI\media\status_glow" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentFill" relativePoint="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentFill" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+				</Texture>
+				<Texture name="$parentLeadGlow" file="Interface\AddOns\SpartanUI\media\status_lead" alphaMode="ADD">
+					<Anchors>
+						<Anchor point="TOPLEFT" relativeTo="$parentLead" relativePoint="TOPLEFT"/>
+						<Anchor point="BOTTOMRIGHT" relativeTo="$parentLead" relativePoint="BOTTOMRIGHT"/>
+					</Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBase" setAllPoints="true">
+					<Color r="0" g="0" b="0" a="0.8"/>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	
+	<Frame name="SUI_PopTemplate" frameStrata="BACKGROUND" virtual="true">
+		<Size><AbsDimension x="400" y="32" /></Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBG" file="Interface\AddOns\SpartanUI\media\bar_backdrop0">
+					<Size><AbsDimension x="512" y="64" /></Size>
+					<Anchors><Anchor point="BOTTOM" relativePoint="BOTTOM"/></Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>	
+	<Frame name="SUI_BarTemplate1" frameStrata="BACKGROUND" virtual="true">
+		<Size><AbsDimension x="400" y="32" /></Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBG" file="Interface\AddOns\SpartanUI\media\bar_backdrop1">
+					<Size><AbsDimension x="512" y="64" /></Size>
+					<Anchors><Anchor point="CENTER" relativePoint="CENTER"/></Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="SUI_BarTemplate3" frameStrata="BACKGROUND" virtual="true">
+		<Size><AbsDimension x="135" y="100" /></Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBG" file="Interface\AddOns\SpartanUI\media\bar_backdrop3">
+					<Size><AbsDimension x="256" y="128" /></Size>
+					<Anchors><Anchor point="CENTER" relativePoint="CENTER"/></Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="SUI_ActionBarsTemplate" parent="SpartanUI" frameStrata="BACKGROUND" virtual="true">
+		<Size><AbsDimension x="1002" y="139"/></Size>
+		<Frames>
+			<Frame name="SUI_Bar1" inherits="SUI_BarTemplate1"><Anchors><Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM"><Offset><AbsDimension x="-100" y="70" /></Offset></Anchor></Anchors></Frame>
+			<Frame name="SUI_Bar2" inherits="SUI_BarTemplate1"><Anchors><Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM"><Offset><AbsDimension x="-100" y="31" /></Offset></Anchor></Anchors></Frame>
+			<Frame name="SUI_Bar3" inherits="SUI_BarTemplate1"><Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOM"><Offset><AbsDimension x="100" y="70" /></Offset></Anchor></Anchors></Frame>
+			<Frame name="SUI_Bar4" inherits="SUI_BarTemplate1"><Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOM"><Offset><AbsDimension x="100" y="31" /></Offset></Anchor></Anchors></Frame>
+			<Frame name="SUI_Bar5" inherits="SUI_BarTemplate3"><Anchors><Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM"><Offset><AbsDimension x="-502" y="5" /></Offset></Anchor></Anchors></Frame>
+			<Frame name="SUI_Bar6" inherits="SUI_BarTemplate3"><Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOM"><Offset><AbsDimension x="502" y="5" /></Offset></Anchor></Anchors></Frame>			
+			<Frame name="SUI_Popup1" inherits="SUI_PopTemplate"><Anchors><Anchor point="BOTTOMRIGHT" relativePoint="BOTTOM"><Offset><AbsDimension x="-100" y="105" /></Offset></Anchor></Anchors></Frame>
+			<Frame name="SUI_Popup2" inherits="SUI_PopTemplate"><Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOM"><Offset><AbsDimension x="100" y="105" /></Offset></Anchor></Anchors></Frame>
+		</Frames>
+	</Frame>
+	<Frame name="SUI_Popup1MaskTemplate" parent="SpartanUI" frameStrata="MEDIUM" virtual="true">
+		<Size><AbsDimension x="400" y="34"/></Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBG" file="Interface\AddOns\SpartanUI\media\bar_popup1">
+					<Size><AbsDimension x="512" y="64" /></Size>
+					<Anchors><Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT"/></Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	<Frame name="SUI_Popup2MaskTemplate" parent="SpartanUI" frameStrata="MEDIUM" virtual="true">
+		<Size><AbsDimension x="400" y="34"/></Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentBG" file="Interface\AddOns\SpartanUI\media\bar_popup2">
+					<Size><AbsDimension x="512" y="64" /></Size>
+					<Anchors><Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT"/></Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+	</Frame>
+	
+	<Script file="global\BottomBar.lua" />
+	<Script file="global\ChatFrame.lua" />
+	<Script file="global\StatusBars.lua" />
+	<Script file="global\Minimap.lua" />
+	<Script file="global\ActionBars.lua" />
+</Ui>

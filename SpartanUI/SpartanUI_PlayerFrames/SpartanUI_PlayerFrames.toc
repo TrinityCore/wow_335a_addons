@@ -1,0 +1,18 @@
+## Interface: 30300
+## Title: SpartanUI: Player Frames
+## Notes: Player and Target Frames designed to compliment SpartanUI
+## Version: 2.6.0.30300
+## Author: Atriace, Beladona
+## X-Category: User Interfaces
+## X-Email: code@spartanui.com
+## X-Website: http://www.spartanui.com
+## RequiredDeps: SpartanUI, oUF
+
+global\Features.lua
+global\Framework.lua
+global\UnitFrame_Player.lua
+global\UnitFrame_PlayerPet.lua
+global\UnitFrame_Target.lua
+global\UnitFrame_TargetTarget.lua
+global\UnitFrame_Focus.lua
+global\Commands.lua

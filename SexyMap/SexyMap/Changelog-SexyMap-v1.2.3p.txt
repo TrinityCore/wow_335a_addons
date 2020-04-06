@@ -1,0 +1,12 @@
+tag v1.2.3p
+04dbf681870e8a734db6402764bf4f9114dccc5d
+Chris Heald <cheald@gmail.com>
+2010-04-01 00:52:07 -0700
+
+Tagging as HEAD premium
+
+
+--------------------
+
+Chris Heald:
+	- Added premium feature paywalls, enable remote upgrade checks

@@ -1,0 +1,14 @@
+## Interface: 30300
+## Title: MoveAnything
+## Notes: 11.b2 by Wagthaa
+## Version: 11.b2
+## Author: Classic: Skrag - Mod: Jason - TBC: Vincent - WotLK & Cataclysm: Wagthaa @ Earthen Ring EU wagthaa@gmail.com
+## SavedVariables: MoveAnything_CustomFrames, MoveAnything_CharacterSettings, MoveAnything_UseCharacterSettings, MADB
+
+localization.en.lua
+MoveAnything.lua
+MoveAnything.xml
+MoveAnythingBlizzardOptions.xml
+MoveAnythingFrameEditor.lua
+MoveAnythingVirtualMovers.xml
+UserMods.lua

@@ -1,0 +1,27 @@
+## Interface: 60200
+## Title: |cff64b4ffFrom Scratch|r Cooldowns
+## Notes: Raid cooldowns tracker
+## Author: Blash
+## SavedVariables: FSCooldownsSettings
+## OptionalDeps: LibStub, CallbackHandler-1.0, Ace3, LibGroupInSpecT-1.1, LibSharedMedia-3.0, AceGUI-3.0-SharedMediaWidgets, FS_Core
+## X-Curse-Packaged-Version: 1.3.3
+## X-Curse-Project-Name: FS Cooldowns
+## X-Curse-Project-ID: fscooldowns
+## X-Curse-Repository-ID: wow/fscooldowns/mainline
+
+#@no-lib-strip@
+LibStub\LibStub.lua
+CallbackHandler-1.0\CallbackHandler-1.0.lua
+Ace3\AceAddon-3.0\AceAddon-3.0.xml
+Ace3\AceGUI-3.0\AceGUI-3.0.xml
+Ace3\AceEvent-3.0\AceEvent-3.0.xml
+Ace3\AceConsole-3.0\AceConsole-3.0.xml
+Ace3\AceConfig-3.0\AceConfig-3.0.xml
+Ace3\AceDB-3.0\AceDB-3.0.xml
+Ace3\AceDBOptions-3.0\AceDBOptions-3.0.xml
+LibGroupInSpecT-1.1\LibGroupInSpecT-1.1.lua
+LibSharedMedia-3.0\lib.xml
+AceGUI-3.0-SharedMediaWidgets\widget.xml
+#@end-no-lib-strip@
+
+FS_Cooldowns.lua

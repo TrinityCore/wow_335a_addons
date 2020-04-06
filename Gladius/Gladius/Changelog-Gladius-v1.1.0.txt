@@ -1,0 +1,19 @@
+tag v1.1.0
+bfd2605c72daf6994b2c832bf92c2322f8e3c8fc
+root <root@cfrepos1.curseforge.net>
+2010-02-02 20:00:48 +0000
+
+Tagging as v1.1.0
+
+
+--------------------
+
+Proditor:
+	- Fixed so it doesn't bug if the Debuff Tracker is disabled and the debuffs are set.
+	- Debuff tracker now uses spell id for finding icons
+	- Debuff tracker now saves and uses spell name instead of id (optimization?)
+	- The debuff tracker now works with debuffs not in your spell book.
+	- Added a debuff tracker. It can track up to 4 debuffs of your choice.
+	- Added resurrection announcement.
+	- Removed isDead boolean from the button tables, using UnitIsDeadOrGhost() function to prevent faulty health/mana updating instead.
+	- Tried to fix the Lua error spam that occurs sometimes when the arena unit ID's mess up. Complete fix (workaround) on its way.

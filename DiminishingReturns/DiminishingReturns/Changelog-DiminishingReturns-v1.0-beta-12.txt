@@ -1,0 +1,21 @@
+tag v1.0-beta-12
+7c0c37215a6e6a894eef59cfd4124674055a9b88
+Adirelle <adirelle@tagada-team.net>
+2010-07-06 14:16:00 +0200
+
+Tagging as "v1.0-beta-12".
+
+
+--------------------
+
+Adirelle:
+	- Added a /drsupport chat command to check the status of supported addons.
+	- Minor fix in spell list initialization.
+	- Be more perserving when trying to detect supported addon and frames.
+	- Updated to my latest localization system.
+	- Avoid spawning extra icon frames for nameplates.
+	- Some more debug.
+	- Minor activation code change.
+	- Localization updated.
+	- .pkgmeta updated.
+	- README updated.

@@ -1,0 +1,42 @@
+﻿## Interface: 30300
+## Title: ButtonFacade
+## Version: 3.3.329
+## Notes: Allows the dynamic skinning of button-based addons.
+## Notes-esES: Permite el texturizado dinámico de los botones base de los addons.
+## Notes-esMX: Permite el texturizado dinámico de los botones base de los addons.
+## Notes-frFR: Permet de skinner dynamiquement les addons basés sur des boutons.
+## Notes-koKR: 버튼 기반의 애드온에 동적인 스킨을 적용하여 줍니다.
+## Notes-ruRU: Позволяет динамически менять оформление аддонов, использующих кнопки.
+## Notes-zhCN: 允许动态按钮皮肤插件。
+## Notes-zhTW: 允許動態按鈕皮膚插件。
+## Author: StormFX, JJ Sheets
+## X-eMail: stormfx@gmail.com
+## X-Website: http://www.wowace.com/projects/buttonfacade/
+## X-Category: Interface Enhancements
+## X-WoWI-ID: 12097
+## OptionalDeps: Ace3
+## SavedVariables: ButtonFacadeDB
+## X-Curse-Packaged-Version: r329
+## X-Curse-Project-Name: ButtonFacade
+## X-Curse-Project-ID: buttonfacade
+## X-Curse-Repository-ID: wow/buttonfacade/mainline
+
+# Embeds
+#@no-lib-strip@
+Libs\LibStub\Libstub.lua
+Libs\CallbackHandler-1.0\CallbackHandler-1.0.xml
+Libs\AceAddon-3.0\AceAddon-3.0.xml
+Libs\AceConsole-3.0\AceConsole-3.0.xml
+Libs\AceDB-3.0\AceDB-3.0.xml
+Libs\AceDBOptions-3.0\AceDBOptions-3.0.xml
+Libs\AceGUI-3.0\AceGUI-3.0.xml
+Libs\AceConfig-3.0\AceConfig-3.0.xml
+#@end-no-lib-strip@
+Libs\LibButtonFacade\LibButtonFacade.xml
+
+# Locales
+Locales.lua
+
+# Core
+Skins.lua
+Core.lua

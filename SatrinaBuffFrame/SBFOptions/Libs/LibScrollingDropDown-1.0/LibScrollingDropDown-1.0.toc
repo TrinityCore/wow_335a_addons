@@ -1,0 +1,10 @@
+﻿## Interface: 20300
+## Title: LibScrollingDropDown-1.0
+## Notes: A dropdown menu with 10 buttons and a scrollbar (no multiple level support)
+## Author: Satrina
+## X-Email: satrina@evilempireguild.org
+## X-WoWIPortal: satrina
+## X-Category: Library
+
+LibStub\LibStub.lua
+LibScrollingDropDown-1.0.lua

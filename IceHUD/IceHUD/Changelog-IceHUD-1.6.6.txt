@@ -1,0 +1,177 @@
+------------------------------------------------------------------------
+r544 | parnic | 2010-07-27 04:47:38 +0000 (Tue, 27 Jul 2010) | 1 line
+Changed paths:
+   A /tags/1.6.6 (from /trunk:543)
+
+Tagging as 1.6.6
+------------------------------------------------------------------------
+r543 | parnic | 2010-07-27 02:18:04 +0000 (Tue, 27 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PetHealth.lua
+
+- fixed potential taint issues on PetHealth bar by using (Un)RegisterUnitWatch instead of manually showing/hiding it
+------------------------------------------------------------------------
+r542 | parnic | 2010-07-27 01:29:23 +0000 (Tue, 27 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/IceCore.lua
+   M /trunk/modules/CustomBar.lua
+
+- added focustarget and pettarget as valid units to look for buffs/debuffs on with a custom bar
+- made custom bars able to track auras (buffs with no end time like paladin auras, righteous fury, stealth, etc.)
+------------------------------------------------------------------------
+r541 | parnic | 2010-07-27 00:30:55 +0000 (Tue, 27 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/modules/CustomHealth.lua
+   M /trunk/modules/TargetHealth.lua
+   M /trunk/modules/TargetOfTargetHealth.lua
+
+- fixed a few taint issues in the ToTHealth and CustomHealth modules
+- removed some duplicated code in CustomHealth for click-targeting
+------------------------------------------------------------------------
+r540 | parnic | 2010-07-26 23:50:46 +0000 (Mon, 26 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CustomCDBar.lua
+
+- fixed a few edge cases where custom cooldown bars would not display when the spell was ready and the bar was set to "when ready" mode. this could happen if the player ran out of mana then gained enough back to cast the spell or for ranged spells where the target moved in and out of range
+------------------------------------------------------------------------
+r539 | parnic | 2010-07-26 03:13:03 +0000 (Mon, 26 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/IceCore.lua
+   M /trunk/IceHUD.lua
+   M /trunk/IceHUD.toc
+   M /trunk/IceUnitBar.lua
+   A /trunk/modules/CustomHealth.lua
+   A /trunk/modules/CustomMana.lua
+   M /trunk/modules/TargetMana.lua
+
+- added generic custom health and mana bars so that users can monitor any unit they want complete with click-targeting/-casting
+------------------------------------------------------------------------
+r538 | parnic | 2010-07-25 23:42:13 +0000 (Sun, 25 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PetHealth.lua
+
+- added click-targeting to pet health module
+------------------------------------------------------------------------
+r537 | parnic | 2010-07-25 20:25:17 +0000 (Sun, 25 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/IceCastBar.lua
+   M /trunk/modules/CustomBar.lua
+   M /trunk/modules/CustomCDBar.lua
+
+- added optional scaling to spell icons on the cast bars, custom bars, and cooldown bars
+------------------------------------------------------------------------
+r536 | parnic | 2010-07-24 18:40:35 +0000 (Sat, 24 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/modules/CustomCDBar.lua
+
+- fixed bars disappearing when they were set to reverse and they filled up
+- also fixed an issue where deleting a custom cooldown bar while it was set to "always" display would cause it to get stuck on the screen until the next UI reload
+------------------------------------------------------------------------
+r535 | parnic | 2010-07-22 05:58:08 +0000 (Thu, 22 Jul 2010) | 3 lines
+Changed paths:
+   M /trunk/modules/PlayerInfo.lua
+
+- fixed an issue where right-clicking weapon buffs in the PlayerInfo module wasn't canceling weapon buffs
+- fixed an issue where weapon buff cooldowns would flicker every second in PlayerInfo
+- fixed an issue where canceling weapon buffs would sometimes cause a duplicate to stick around in PlayerInfo
+------------------------------------------------------------------------
+r533 | parnic | 2010-07-20 03:47:53 +0000 (Tue, 20 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CustomCDBar.lua
+
+- fixed a bug with custom cooldown bars that would cause the bar to flash if a maximum duration was specified higher than 1.5
+------------------------------------------------------------------------
+r532 | parnic | 2010-07-20 03:36:45 +0000 (Tue, 20 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/IceBarElement.lua
+
+- added better explanation of the difference between 'inverse' and 'reverse' in the settings screen
+- added fixup code to move a user's setting from 'reverse' to 'inverse' since the definition has changed
+------------------------------------------------------------------------
+r531 | parnic | 2010-07-20 03:17:49 +0000 (Tue, 20 Jul 2010) | 2 lines
+Changed paths:
+   M /trunk/IceHUD.lua
+   M /trunk/modules/CastBar.lua
+   M /trunk/modules/Threat.lua
+
+- moved the xor method out to IceHUD instead of being a CastBar local function
+- made second threat bar and aggro bar behave properly with new invert/reverse
+------------------------------------------------------------------------
+r530 | parnic | 2010-07-20 02:12:37 +0000 (Tue, 20 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CastBar.lua
+
+- forgot to fix channeling's lag bar to behave properly with all the new combinations of inverting/reversing
+------------------------------------------------------------------------
+r529 | parnic | 2010-07-20 01:54:21 +0000 (Tue, 20 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CastBar.lua
+
+- fixed the player cast bar's lag indicator for all combinations of inverse and reverse options
+------------------------------------------------------------------------
+r528 | parnic | 2010-07-20 01:34:21 +0000 (Tue, 20 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/IceBarElement.lua
+   M /trunk/IceCastBar.lua
+
+- user-submitted patch for an 'invert' option in addition to the 'reverse' option for all bars. now 'reverse' controls bar movement direction while 'invert' controls bar fill behavior http://www.wowace.com/addons/ice-hud/tickets/73-reversing-cast-bars-and-channels
+------------------------------------------------------------------------
+r527 | parnic | 2010-07-20 01:23:44 +0000 (Tue, 20 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/TargetOfTargetHealth.lua
+
+- fixed TargetTargetHealth module from not hiding when the player was the ToT and the self-display mode was set to "hide"
+------------------------------------------------------------------------
+r526 | parnic | 2010-07-19 19:30:43 +0000 (Mon, 19 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/TargetOfTargetCast.lua
+   M /trunk/modules/TargetOfTargetHealth.lua
+   M /trunk/modules/TargetOfTargetMana.lua
+
+- WIP version of optionally hiding TargetOfTarget modules if the player is the active target. everything seems to work except for TargetOfTargetHealth and I'm not quite sure why yet...need to check it out further
+------------------------------------------------------------------------
+r525 | parnic | 2010-07-19 19:29:42 +0000 (Mon, 19 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/TargetInfo.lua
+
+- added individual checkboxes to show buffs/debuffs in any info module that derives from (or is) TargetInfo (which should be all of them)
+------------------------------------------------------------------------
+r524 | parnic | 2010-07-19 05:14:57 +0000 (Mon, 19 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/PlayerHealth.lua
+
+- added user-submitted Role icon to the PlayerHealth bar for random dungeon groups (Thanks Grim Notepad!)
+------------------------------------------------------------------------
+r523 | parnic | 2010-07-14 13:21:26 +0000 (Wed, 14 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/CustomBar.lua
+
+- fixed an issue where a disabled custom bar was always showing its icon as the default IceHUD icon and was not being properly hidden
+------------------------------------------------------------------------
+r522 | parnic | 2010-07-13 04:57:17 +0000 (Tue, 13 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/Threat.lua
+
+- added a "second highest threat" overlay to the Threat module that shows where the next-closest person is on the threat bar (in terms of their raw threat value divided by yours) iff you're the current tank. this is untested in a raid environment, though it should work. also, the second bar doesn't animate. i don't really think it needs to, but it could be made to if desired
+------------------------------------------------------------------------
+r521 | parnic | 2010-07-13 02:51:26 +0000 (Tue, 13 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/modules/SliceAndDice.lua
+
+- if "always display at full alpha" is checked for slice and dice bar, then don't let it hide itself
+------------------------------------------------------------------------
+r520 | parnic | 2010-07-02 16:23:35 +0000 (Fri, 02 Jul 2010) | 1 line
+Changed paths:
+   M /trunk/IceUnitBar.lua
+   M /trunk/modules/PlayerMana.lua
+
+- switched UnitMana* calls to UnitPower* calls as that seems to be the replacement Blizzard is using in cataclysm
+------------------------------------------------------------------------
+r518 | parnic | 2010-06-25 18:03:32 +0000 (Fri, 25 Jun 2010) | 1 line
+Changed paths:
+   M /trunk/modules/SliceAndDice.lua
+
+- fixed the slice'n'dice duration bar from not showing up when one of its alpha values is set to 0
+------------------------------------------------------------------------

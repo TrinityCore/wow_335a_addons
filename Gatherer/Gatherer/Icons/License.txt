@@ -1,0 +1,12 @@
+The icons contained in this folder are NOT covered 
+by the terms of the GNU GPL. These icons were taken from 
+the World of Warcraft game created by Blizzard Entertainment,
+and as such they are copyrighted by them. Their license text follows.
+
+World of Warcraft® and Blizzard Entertainment® are 
+all trademarks or registered trademarks of Blizzard 
+Entertainment in the United States and/or other 
+countries. These terms and all related materials, 
+logos, and images are copyright © Blizzard 
+Entertainment. This addon is in no way associated with 
+or endorsed by Blizzard Entertainment®.
