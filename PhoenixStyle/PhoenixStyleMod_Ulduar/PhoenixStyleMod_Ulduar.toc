@@ -1,0 +1,28 @@
+﻿## Interface: 30300
+## Title: Phoenix|cff7fff7fStyle|r - Ulduar
+## Title-ruRU: Phoenix|cff7fff7fStyle|r - Ульдуар
+## Author: Shurshik
+## Notes: PhoenixStyle Ulduar Module
+## Notes-ruRU: Модуль PhoenixStyle - Ульдуар
+## Dependencies: PhoenixStyle
+## LoadOnDemand: 1
+## SavedVariablesPerCharacter: whererepbossulda, bosspartul, bosspartul2, wherereportlevichat1, wherereportlevichat2, wherereportyogg, yoggvar, yoggvar2, primyogg, yoggspisokp
+Localization\localization-enEN.lua
+Localization\localization-ruRU.lua
+Localization\localization-deDE.lua
+Localization\localization-frFR.lua
+Localization\localization-esES.lua
+Localization\localization-esMX.lua
+Localization\localization-koKR.lua
+Localization\localization-zhTW.lua
+PhoenixStyleUlduar.lua
+Algalon.lua
+Yogg-Saron.lua
+FlameLeviathan.lua
+Mimiron.lua
+Hodir.lua
+AssemblyOfIron.lua
+Vezax.lua
+Thorim.lua
+Yogg-fail.lua
+PhoenixStyleMod_Ulduar.xml

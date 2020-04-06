@@ -1,0 +1,8 @@
+2010-01-15  jokeyrhyme  <jokeyrhyme>
+
+[b0fba1b248dd] [v3.0.1]
+* SavedInstances.lua:
+
+- really fixed the bug with tracking randoms, really! forgot to convert hours to seconds, haha
+
+

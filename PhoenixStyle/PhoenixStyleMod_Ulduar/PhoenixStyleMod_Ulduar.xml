@@ -1,0 +1,223 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+<Frame name="PhoenixStyleMod_Ulduar">
+	<Scripts>
+	<OnLoad>psfUlduar()</OnLoad>
+	<OnEvent>if(thisaddonwork) then psfUlduaronevent() end</OnEvent>
+	</Scripts>
+	</Frame>
+
+
+<Frame name="PSFmain8" hidden="true" parent="PSFmain1">
+
+<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text2" inherits="GameFontNormal" text="psullevi1">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormalSmall" text="psullevibesure">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="300" y="-345"/></Anchor></Anchors><Color r="1" g="0" b="0" a="1"/>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+
+<Button name="$parent_Button441" inherits="UIPanelButtonTemplate" text="psullevibut1">
+	<Size x="190" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="13" y="-14"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_reloadraidlevi()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button442" inherits="UIPanelButtonTemplate" hidden="true" text="psullevibut2">
+	<Size x="190" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="200" y="-14"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonlevi1wisp()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button443" inherits="UIPanelButtonTemplate" hidden="true" text="pssend">
+	<Size x="80" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="220" y="-164"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonlevi1rep()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button445" inherits="UIPanelButtonTemplate" hidden="true" text="pssend">
+	<Size x="80" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="220" y="-294"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonlevi2rep()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button444" inherits="UIPanelButtonTemplate" hidden="true" text="psullevibut3">
+	<Size x="150" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="390" y="-14"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonleviautoboton()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button446" inherits="UIPanelButtonTemplate" hidden="true" text="psullevibut4">
+	<Size x="150" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="390" y="-14"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonleviautobotoff()</OnClick></Scripts>
+	</Button>
+</frames>
+	</Frame>
+
+<Frame name="PSFmain6" hidden="true" parent="PSFmain1">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psululda">
+		<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+</FontString>
+	</Layer>
+</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<CheckButton name="$parent_CheckButton211" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="250" y="-33"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFizmulda1(1)</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton213" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="250" y="-131"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFizmulda1(2)</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton215" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="250" y="-229"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFizmulda1(3)</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton216" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="250" y="-278"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFizmulda1(4)</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton217" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="250" y="-327"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFizmulda1(5)</OnClick></Scripts>
+	</CheckButton>
+
+<Button name="$parent_Button41" inherits="UIPanelButtonTemplate" text="psulleviafan">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-365"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonleviafan()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button42" inherits="UIPanelButtonTemplate" text="psulyoggsaron">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="150" y="-365"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonyogg()</OnClick></Scripts>
+	</Button>
+
+</frames>
+	</Frame>
+
+
+<Frame name="PSFmain11" hidden="true" parent="PSFmain1">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psulyogg">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psulgrport">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"><Offset x="18" y="-45"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psulyoggboss">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"><Offset x="137" y="-184"/></Anchor></Anchors><Color r="1" g="0" b="0" a="1"/>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psulyoggprim">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"><Offset x="17" y="-274"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psulyogginfo1">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="475" y="-20"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psulyogginfo2">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="475" y="-80"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psulyogginfo3">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="475" y="-225"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button1" inherits="UIPanelButtonTemplate" text="psulyoggload">
+	<Size x="150" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="13" y="-14"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_yogglastraid()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button2" hidden="true" inherits="UIPanelButtonTemplate" text="psulyoggresetall">
+	<Size x="150" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="165" y="-14"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_yoggrezet()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button3" hidden="true" inherits="UIPanelButtonTemplate" text="psulyoggsendnick">
+	<Size x="180" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="70" y="-290"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_yoggsendnick()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button4" hidden="true" inherits="UIPanelButtonTemplate" text="psulyoggimg1">
+	<Size x="150" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="400" y="-100"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_yoggkart1()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button5" hidden="true" inherits="UIPanelButtonTemplate" text="psulyoggimg2">
+	<Size x="150" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="400" y="-130"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_yoggkart2()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button6" hidden="true" inherits="UIPanelButtonTemplate" text="psulyoggimg3">
+	<Size x="150" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="400" y="-160"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_yoggkart3()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button7" hidden="true" inherits="UIPanelButtonTemplate" text="psulyoggimg4">
+	<Size x="150" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="400" y="-190"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_yoggkart4()</OnClick></Scripts>
+	</Button>
+<EditBox name="$parent_primyogg" hidden="true" inherits="InputBoxTemplate" letters="100" autoFocus="false">
+	<Size x="458" y="20"/><Anchors><Anchor point="TOPLEFT"><Offset x="63" y="-264"/></Anchor></Anchors>
+	</EditBox>
+<CheckButton name="$parent_CheckButton1" hidden="true" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="15" y="-55"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psulyoggparty1)</OnLoad><OnClick>PSF_yoggp1()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton2" hidden="true" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="85" y="-55"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psulyoggparty2)</OnLoad><OnClick>PSF_yoggp2()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton3" hidden="true" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="155" y="-55"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psulyoggparty3)</OnLoad><OnClick>PSF_yoggp3()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton4" hidden="true" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="225" y="-55"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psulyoggparty4)</OnLoad><OnClick>PSF_yoggp4()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton5" hidden="true" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="295" y="-55"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psulyoggparty5)</OnLoad><OnClick>PSF_yoggp5()</OnClick></Scripts>
+	</CheckButton>
+</frames>
+	</Frame>
+
+
+</Ui>

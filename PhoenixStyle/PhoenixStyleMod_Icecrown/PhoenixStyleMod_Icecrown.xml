@@ -1,0 +1,442 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+<Frame name="PhoenixStyleMod_Icecrown">
+	<Scripts>
+	<OnLoad>psficecrown()</OnLoad>
+	<OnEvent>if(thisaddonwork and (psicgalochki==nil or psicgalochki[1][1]==1)) then psficecrownonevent() end</OnEvent>
+	<OnUpdate>if(thisaddonwork and (psicgalochki==nil or psicgalochki[1][1]==1)) then pscicconupdate(GetTime()) end</OnUpdate>
+	</Scripts>
+</Frame>
+
+
+<Frame name="PSFmainic1" hidden="true" parent="PSFmain1">
+<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="fpsicinfom1" inherits="GameFontNormal" text="psicicecrownname">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psiccchat1">
+	<Anchors><Anchor point="RIGHT" relativePoint="TOPLEFT"><Offset x="444" y="-24"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psiccchat2">
+	<Anchors><Anchor point="RIGHT" relativePoint="TOPLEFT"><Offset x="444" y="-47"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text3" inherits="GameFontNormal" text="(1)">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"><Offset x="550" y="-24"/></Anchor></Anchors><Color r="0" g="1" b="0" a="1"/>
+	</FontString>
+<FontString name="$parent_Text4" inherits="GameFontNormal" text="(2)">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"><Offset x="550" y="-47"/></Anchor></Anchors><Color r="1" g="0" b="0" a="1"/>
+	</FontString>
+	</Layer>
+<Layer level="BACKGROUND">
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Buttonrez" inherits="UIPanelButtonTemplate" text="psbuttonreset">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="475" y="-155"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccallrezet()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Buttonsaurf" inherits="UIPanelButtonTemplate" text="psiccsaurfang">
+	<Size x="188" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="12" y="-330"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_iccsaurfang()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttonlana" inherits="UIPanelButtonTemplate" text="psiccbloodqueenlana">
+	<Size x="188" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="197" y="-330"/></Anchor></Anchors>
+	<Scripts><OnClick>psicclanamenu()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttonprof" inherits="UIPanelButtonTemplate" text="psiccpasivmod3">
+	<Size x="198" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="382" y="-330"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccprofmenu()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttondmginfo" inherits="UIPanelButtonTemplate" text="psiccbuttdamageinfo">
+	<Size x="188" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="12" y="-360"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccdamageinfoopen()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttoniinfo" inherits="UIPanelButtonTemplate" text="psiccbuttiinfosv">
+	<Size x="188" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="197" y="-360"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccaftcombop()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttontombhp" inherits="UIPanelButtonTemplate" text="psiccsindragosa">
+	<Size x="135" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="382" y="-360"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccsindraaddon()</OnClick></Scripts>
+	</Button>
+</frames>
+</Frame>
+
+
+
+<Frame name="PSFiccsaurf" hidden="true" parent="PSFmain1">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psiccsaurmarktitl">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Textmark22" hidden="true" inherits="GameFontNormal" text="psmoduletxton">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="360" y="-110"/></Anchor></Anchors><Color r="0" g="1" b="0" a="1"/>
+	</FontString>
+<FontString name="$parent_Textmark2" hidden="true" inherits="GameFontNormal" text="psmoduletxtoff">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="360" y="-110"/></Anchor></Anchors><Color r="1" g="0" b="0" a="1"/>
+	</FontString>
+<FontString name="$parent_Textmark11" hidden="true" inherits="GameFontNormal" text="psiccnochange">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="360" y="-95"/></Anchor></Anchors><Color r="1" g="0" b="0" a="1"/>
+	</FontString>
+	</Layer>
+	</Layers>
+
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button1" inherits="UIPanelButtonTemplate" text="pssend">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="115" y="-315"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_iccsaursend()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button2" inherits="UIPanelButtonTemplate" text="psbuttonon">
+	<Size x="125" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="300" y="-120"/></Anchor></Anchors>
+	<Scripts><OnClick>psficcsaurfon()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button22" inherits="UIPanelButtonTemplate" text="psbuttonoff">
+	<Size x="125" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="300" y="-120"/></Anchor></Anchors>
+	<Scripts><OnClick>psficcsaurfoff()</OnClick></Scripts>
+		</Button>
+</frames>
+
+</Frame>
+
+
+<Frame name="PSFicclana" hidden="true" parent="PSFmain1">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psicclanamarktitl">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button1" inherits="UIPanelButtonTemplate" text="pschataddbut">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="175" y="-217"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccignlistadd()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button2" inherits="UIPanelButtonTemplate" text="pschatrembut">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="262" y="-217"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccignlistrem()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button3" inherits="UIPanelButtonTemplate" text="psbuttonreset">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="349" y="-217"/></Anchor></Anchors>
+	<Scripts><OnClick>psicclanaignorlist={} psiccreflignorlist()</OnClick></Scripts>
+		</Button>
+<EditBox name="$parent_edbox1" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="30" y="-220"/></Anchor></Anchors>
+	</EditBox>
+<CheckButton name="$parent_CheckButton1" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-170"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psiccrandomas)</OnLoad><OnClick>psfgalchang()</OnClick></Scripts>
+	</CheckButton>
+<EditBox name="$parent_edbox2" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="30" y="-325"/></Anchor></Anchors>
+	</EditBox>
+<Button name="$parent_Button1" inherits="UIPanelButtonTemplate" text="pschataddbut">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="175" y="-322"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccignlistadd2()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button2" inherits="UIPanelButtonTemplate" text="pschatrembut">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="262" y="-322"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccignlistrem2()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button3" inherits="UIPanelButtonTemplate" text="psbuttonreset">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="349" y="-322"/></Anchor></Anchors>
+	<Scripts><OnClick>psicclanaignorlist2={} psiccreflignorlist()</OnClick></Scripts>
+		</Button>
+</frames>
+
+</Frame>
+
+
+<Frame name="PSFiccprofframe" hidden="true" parent="PSFmain1">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psiccpasmod3tit">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Textmarkon" hidden="true" inherits="GameFontNormal" text="psmoduletxton">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="300" y="-73"/></Anchor></Anchors><Color r="0" g="1" b="0" a="1"/>
+	</FontString>
+<FontString name="$parent_Textmarkoff" hidden="true" inherits="GameFontNormal" text="psmoduletxtoff">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="300" y="-73"/></Anchor></Anchors><Color r="1" g="0" b="0" a="1"/>
+	</FontString>
+	</Layer>
+	</Layers>
+
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button11" inherits="UIPanelButtonTemplate" text="pschataddbut">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="175" y="-282"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccignlistaddprof()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button22" inherits="UIPanelButtonTemplate" text="pschatrembut">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="262" y="-282"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccignlistremprof()</OnClick></Scripts>
+	</Button>
+<EditBox name="$parent_edbox1" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="30" y="-285"/></Anchor></Anchors>
+	</EditBox>
+<CheckButton name="$parent_CheckButtonorig" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-100"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psiccprofmodoptstand) PSFiccprofframe_CheckButtonorig:SetChecked()</OnLoad><OnClick>PSFiccprofframe_CheckButtonorig:SetChecked()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton1" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-120"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psiccprofmodopt1)</OnLoad><OnClick>psfprofgalchang(1)</OnClick></Scripts>
+	</CheckButton>
+
+<CheckButton name="$parent_CheckButton2" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="364" y="-269"/></Anchor></Anchors>
+	<Scripts><OnClick>psfprofgalchang(2)</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton22" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="364" y="-300"/></Anchor></Anchors>
+	<Scripts><OnClick>psfprofgalchang(22)</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton23" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="364" y="-331"/></Anchor></Anchors>
+	<Scripts><OnClick>psfprofgalchang(23)</OnClick></Scripts>
+	</CheckButton>
+
+<Button name="$parent_Buttonrezet" inherits="UIPanelButtonTemplate" text="psiccresetliststxt">
+	<Size x="120" y="26"/><Anchors><Anchor point="BOTTOMLEFT"><Offset x="10" y="10"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccprofignorlist2={} psiccprofignorlist1={} psiccreflignorlistprof()</OnClick></Scripts>
+	</Button>
+
+
+<CheckButton name="$parent_CheckButton3" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-240"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psiccprofmodopt3)</OnLoad><OnClick>psfprofgalchang(3)</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton5" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="367" y="-85"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psiccprofmodopt5)</OnLoad><OnClick>psfprofgalchang(5)</OnClick></Scripts>
+	</CheckButton>
+<EditBox name="$parent_edbox2" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="30" y="-165"/></Anchor></Anchors>
+	</EditBox>
+<Button name="$parent_Button1" inherits="UIPanelButtonTemplate" text="pschataddbut">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="175" y="-162"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccignlistaddprof2()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button2" inherits="UIPanelButtonTemplate" text="pschatrembut">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="262" y="-162"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccignlistremprof2()</OnClick></Scripts>
+	</Button>
+<Slider name="$parent_Timer" inherits="OptionsSliderTemplate">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="369" y="-362" /></Anchor></Anchors>
+	<Scripts><OnValueChanged>psiccslidertime()</OnValueChanged></Scripts>
+	</Slider>
+<Button name="$parent_Buttonon" inherits="UIPanelButtonTemplate" text="psbuttonon">
+	<Size x="125" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="240" y="-83"/></Anchor></Anchors>
+	<Scripts><OnClick>psficcprofmodon()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Buttonoff" inherits="UIPanelButtonTemplate" text="psbuttonoff">
+	<Size x="125" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="240" y="-83"/></Anchor></Anchors>
+	<Scripts><OnClick>psficcprofmodoff()</OnClick></Scripts>
+		</Button>
+</frames>
+
+</Frame>
+
+
+<Frame name="PSFiccaftercombinfoframe" hidden="true" parent="PSFmain1">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psiccbuttiinfotitle">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button1" inherits="UIPanelButtonTemplate" text="pssend">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="155" y="-291"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccsavedinforeport(1)</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button2" inherits="UIPanelButtonTemplate" text="pssend">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="155" y="-341"/></Anchor></Anchors>
+	<Scripts><OnClick>psiccsavedinforeport(2)</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button3" inherits="UIPanelButtonTemplate" text="psbuttonreset">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="450" y="-280"/></Anchor></Anchors>
+	<Scripts><OnClick>pssvinforezet()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Buttonall1" inherits="UIPanelButtonTemplate" text="psiccinfoallcomb1">
+	<Size x="145" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="270" y="-310"/></Anchor></Anchors>
+	<Scripts><OnClick>pssvinfoalltog()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Buttonall2" inherits="UIPanelButtonTemplate" text="psiccinfoallcomb2">
+	<Size x="145" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="270" y="-345"/></Anchor></Anchors>
+	<Scripts><OnClick>pssvinfoalltog(1)</OnClick></Scripts>
+		</Button>
+<EditBox name="$parent_edbox2" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="125" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="30" y="-344"/></Anchor></Anchors>
+	</EditBox>
+<Slider name="$parent_Combatsvd1" inherits="OptionsSliderTemplate">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="369" y="-27" /></Anchor></Anchors>
+	<Scripts><OnValueChanged>psicccombqcha()</OnValueChanged></Scripts>
+	</Slider>
+</frames>
+
+</Frame>
+
+
+
+<Frame name="PSFiccdamageinfo" hidden="true" parent="PSFmain1">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psiccdamageinfotitle">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Textmark22" inherits="GameFontNormal" text="psiccdamagei1">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="90" y="-30"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Textmark2" inherits="GameFontNormal" text="psiccdamagei2">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="300" y="-30"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Textmark11" inherits="GameFontNormal" text="psiccdamagei3">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="490" y="-30"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button1" inherits="UIPanelButtonTemplate" text="pssend">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="130" y="-231"/></Anchor></Anchors>
+	<Scripts><OnClick>psciccreportdmgshown(psicdopmodchat[2],psiccdmg1,psiccdmg2,psiccdmg3,true,2)</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button2" inherits="UIPanelButtonTemplate" text="psbuttonreset">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="450" y="-230"/></Anchor></Anchors>
+	<Scripts><OnClick>psdamginforezet()</OnClick></Scripts>
+		</Button>
+</frames>
+
+</Frame>
+
+
+<Frame name="PSFiccaddonno" hidden="true" parent="PSFmain1">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psuierror">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+</Frame>
+
+
+
+</Ui>

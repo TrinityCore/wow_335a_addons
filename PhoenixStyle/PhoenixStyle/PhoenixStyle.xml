@@ -1,0 +1,906 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+<Frame name="PhoenixStyleFailbot">
+
+	<Scripts>
+	<OnLoad>PhoenixStyle_OnLoad()</OnLoad>
+	<OnEvent>if(thisaddonwork or (thisaddonwork==false and event=="ADDON_LOADED")) then PhoenixStyle_OnEvent() end</OnEvent>
+	<OnUpdate>if(thisaddonwork) then PSF_OnUpdate() end</OnUpdate>
+	</Scripts>
+	</Frame>
+
+
+<Frame name="PScolishieldmini" hidden="true" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" parent="UIParent">
+
+<Size x="150" y="80"/>
+	<Anchors>
+	<Anchor point="CENTER"><Offset x="-100" y="-50"/></Anchor>
+	</Anchors>
+
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="12"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="12"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="1" right="2" top="2" bottom="1"/>
+	</BackgroundInsets>
+	</Backdrop>
+<Scripts>
+	<OnMouseDown>this:StartMoving()</OnMouseDown>
+	<OnMouseUp>this:StopMovingOrSizing()</OnMouseUp>
+	<OnDragStop>this:StopMovingOrSizing()</OnDragStop>
+	</Scripts>
+<frames>
+
+
+<Frame name="psvelcastbar" hidden="true" parent="PScolishieldmini">
+	<Size x="0.01" y="20"/>
+	<Anchors>
+	<Anchor point="TOPLEFT"><Offset x="4" y="-4"/></Anchor>
+	</Anchors>
+	<Layers>
+	<Layer level="BACKGROUND">
+	<Texture name="$parent_Background" setAllPoints="true">
+	<Color r="0" g="0" b="1" a="0.5"/>
+	</Texture>
+	</Layer>
+	</Layers>
+ </Frame>
+
+<Frame name="psvelshieldbar" hidden="true" parent="PScolishieldmini">
+	<Size x="1" y="26"/>
+	<Anchors>
+	<Anchor point="BOTTOMLEFT"><Offset x="4" y="29"/></Anchor>
+	</Anchors>
+
+ </Frame>
+
+
+
+</frames>
+
+	</Frame>
+
+
+
+
+
+<Frame name="PSFmain" hidden="true" toplevel="true" virtual="true" frameStrata="DIALOG" movable="true" enableMouse="true" parent="UIParent">
+	<Size x="750" y="400"/>
+	<Anchors>
+	<Anchor point="CENTER"/>
+	</Anchors>
+
+
+<Scripts>
+	<OnMouseDown>this:StartMoving()</OnMouseDown>
+	<OnMouseUp>this:StopMovingOrSizing()</OnMouseUp>
+	<OnDragStop>this:StopMovingOrSizing()</OnDragStop>
+	<OnShow>PSF_showoptions()</OnShow>
+	</Scripts>
+</Frame>
+
+
+
+<Frame name="PSFmain1" hidden="true" inherits="PSFmain">
+	<Size x="750" y="400"/>
+	<Anchors>
+	<Anchor point="LEFT"/>
+	</Anchors>
+<frames>
+
+
+
+
+<Frame name="PSFmain2" hidden="true">
+	<Size x="150" y="400"/>
+	<Anchors>
+	<Anchor point="LEFT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="   PhoenixStyle">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<Frames>
+<Button name="$parent_Button3" inherits="UIPanelButtonTemplate" text="psleftmenu1">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOP"><Offset x="0" y="-20"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonaddon()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button4" inherits="UIPanelButtonTemplate" text="psleftmenu2">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOP"><Offset x="0" y="-45"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonautomark()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button5" inherits="UIPanelButtonTemplate" text="psleftmenu3">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOP"><Offset x="0" y="-70"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttontimers()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button6" inherits="UIPanelButtonTemplate" text="psleftmenu5">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOP"><Offset x="0" y="-95"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonulda()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button7" inherits="UIPanelButtonTemplate" text="psleftmenu6">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOP"><Offset x="0" y="-120"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonkolizei()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button8" inherits="UIPanelButtonTemplate" text="psleftmenu7">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOP"><Offset x="0" y="-145"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonicecrown()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_ButtonRA1" inherits="UIPanelButtonTemplate" text="psfpotchecklocal">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOP"><Offset x="0" y="-220"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_potionscheck()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_ButtonRA2" inherits="UIPanelButtonTemplate" text="psfpotchecklocalt2">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOP"><Offset x="0" y="-245"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_rscopen(1)</OnClick></Scripts>
+	</Button>
+<Button name="$parent_ButtonRA3" inherits="UIPanelButtonTemplate" text="psfpotchecklocalt3">
+	<Size x="120" y="21"/><Anchors><Anchor point="TOP"><Offset x="0" y="-270"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_rscopen(2)</OnClick></Scripts>
+	</Button>
+<Button name="$parent_ButtonRA" inherits="UIPanelButtonTemplate" text="RaidAchievement">
+	<Size x="120" y="21"/><Anchors><Anchor point="BOTTOM"><Offset x="0" y="20"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_RAaddon()</OnClick></Scripts>
+	</Button>
+</Frames>
+	</Frame>
+
+
+<Frame name="PSFmain3" hidden="true">
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"></Anchor>
+	</Anchors>
+	<Layers>
+<Layer level="OVERLAY">
+	<Texture name="$parentTexture" file="Interface\AddOns\PhoenixStyle\phoenix_addon">
+	<Anchors>
+	<Anchor point="CENTER" relativePoint="CENTER"><Offset x="0" y="-40"/></Anchor>
+	</Anchors>
+	<TexCoords left="0" right="1" top="0" bottom="1"/>
+	</Texture>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pswebsite">
+	<Anchors><Anchor point="LEFT" relativePoint="BOTTOMLEFT"><Offset x="20" y="23"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psfserver">
+	<Anchors><Anchor point="RIGHT" relativePoint="TOPRIGHT"><Offset x="-18" y="-21"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Textver" inherits="GameFontNormal" text="psversion">
+	<Anchors><Anchor point="RIGHT" relativePoint="TOPRIGHT"><Offset x="-18" y="-50"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Textoldv" hidden="true" inherits="GameFontNormal" text="psoldvertxt">
+	<Anchors><Anchor point="RIGHT" relativePoint="TOPRIGHT"><Offset x="-18" y="-67"/></Anchor></Anchors><Color r="1" g="0" b="0" a="1"/>
+	</FontString>
+	</Layer>
+	</Layers>
+<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<CheckButton name="$parent_CheckButton2" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-15"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psaddonon)</OnLoad><OnClick>PSFvkladdon()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton1" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-35"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psaddonrepon)</OnLoad><OnClick>PSFifreporton()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton4" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-55"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psminibuttset)</OnLoad><OnClick>PSFminimaponoff()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton3" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-95"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psaddonrepnoprom)</OnLoad><OnClick>PSFrepnopromchange()</OnClick></Scripts>
+	</CheckButton>
+<Button name="$parent_Button1" inherits="UIPanelButtonTemplate" text="pschatchopt">
+	<Size x="170" y="24"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-118"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_chatedit()</OnClick></Scripts>
+	</Button>
+</frames>
+	</Frame>
+
+<Button name="$parent_Button2" inherits="UIPanelButtonTemplate" text="psaddonok">
+	<Size x="70" y="24"/><Anchors><Anchor point="BOTTOMRIGHT"><Offset x="-9" y="9"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonsaveexit()</OnClick></Scripts>
+	</Button>
+
+
+<Frame name="PSFmain4" hidden="true">
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+	<FontString name="$parent_Text" inherits="GameFontNormal" text="psmarks">
+		<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	<FontString name="$parent_Textin" inherits="GameFontNormal" text="psmarkinfo1">
+		<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"><Offset x="20" y="-58"/></Anchor></Anchors>
+	</FontString>
+	<FontString name="$parent_Text" inherits="GameFontNormal" text="psmarkinfo2">
+		<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"><Offset x="20" y="-115"/></Anchor></Anchors>
+	</FontString>
+	<FontString name="$parent_Textmark1" hidden="true" inherits="GameFontNormal" text="psmarkinfo3">
+		<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="125" y="-30"/></Anchor></Anchors><Color r="0" g="1" b="0" a="1"/>
+	</FontString>
+	<FontString name="$parent_Textmark2" hidden="true" inherits="GameFontNormal" text="psmarkinfo4">
+		<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="125" y="-30"/></Anchor></Anchors><Color r="1" g="0" b="0" a="1"/>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+		<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+		<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+		<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+
+<Slider name="$parent_Timerref" inherits="OptionsSliderTemplate">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="35" y="-75" /></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal("PSFmain4_TimerrefHigh"):SetText("30") getglobal("PSFmain4_TimerrefLow"):SetText("1") PSFmain4_Timerref:SetMinMaxValues(1, 30) PSFmain4_Timerref:SetValueStep(1) PSFmain4_Timerref:SetValue(secrefmark) psslidertimerefmark()</OnLoad><OnValueChanged>psslidertimerefmark()</OnValueChanged></Scripts>
+	</Slider>
+
+<Button name="$parent_Button20" hidden="true" inherits="UIPanelButtonTemplate" text="psbuttonon">
+	<Size x="105" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="25" y="-335"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonbeginmark()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button22" hidden="true" inherits="UIPanelButtonTemplate" text="psbuttonoff">
+	<Size x="105" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="25" y="-335"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonoffmark()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button21" inherits="UIPanelButtonTemplate" text="psbuttonreset">
+	<Size x="105" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="135" y="-335"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonresetmark()</OnClick></Scripts>
+	</Button>
+
+<Button name="$parent_Button21" inherits="UIPanelButtonTemplate" text="psmarkofftxt">
+	<Size x="200" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="275" y="-285"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_marksoffsetaut()</OnClick></Scripts>
+	</Button>
+
+</frames>
+	</Frame>
+
+
+<Frame name="PSFmain5" hidden="true">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstimers">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormalSmall" text="pstimersinfo1">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-15"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text2on" inherits="GameFontNormalSmall" text="bossmodtext1">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-30"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstimersinfo9">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-55"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstimersinfo10">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-75"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstimersinfo11">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-95"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstimersinfo12">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-125"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstimersinfo13">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-145"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstimersinfo14">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-175"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstimersinfo15">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-195"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstimersinfo16">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="269" y="-195"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+
+<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<EditBox name="$parent_timertopull1" inherits="InputBoxTemplate" numeric="true" letters="2" autoFocus="false">
+	<Size x="25" y="20"/><Anchors><Anchor point="TOPLEFT"><Offset x="302" y="-91"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_timerpereriv1" inherits="InputBoxTemplate" numeric="true" letters="3" autoFocus="false">
+	<Size x="30" y="20"/><Anchors><Anchor point="TOPLEFT"><Offset x="286" y="-140"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_timersvoi1" inherits="InputBoxTemplate" numeric="true" letters="3" autoFocus="false">
+	<Size x="30" y="20"/><Anchors><Anchor point="TOPLEFT"><Offset x="312" y="-191"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_timersvoi2" inherits="InputBoxTemplate" letters="30" autoFocus="false">
+	<Size x="140" y="20"/><Anchors><Anchor point="TOPLEFT"><Offset x="127" y="-191"/></Anchor></Anchors>
+	</EditBox>
+<Button name="$parent_Button51" inherits="UIPanelButtonTemplate" text="pstimerbutton1">
+	<Size x="180" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="326" y="-91"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFbeginpullmenu()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button52" inherits="UIPanelButtonTemplate" text="pstimerbutton2">
+	<Size x="180" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="370" y="-139"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFbeginpereriv()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button53" inherits="UIPanelButtonTemplate" text="pstimerbutton3">
+	<Size x="180" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="396" y="-190"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFbegiowntimer()</OnClick></Scripts>
+	</Button>
+<CheckButton name="$parent_RadioButton251" inherits="SendMailRadioButtonTemplate">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="315" y="-134"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(psminut) PSFmain5_RadioButton251:SetChecked(1)</OnLoad>
+	<OnClick>
+	PSFmain5_RadioButton252:SetChecked(nil)
+	PSFmain5_RadioButton251:SetChecked(1)
+	</OnClick>
+	</Scripts>
+	</CheckButton>
+<CheckButton name="$parent_RadioButton252" inherits="SendMailRadioButtonTemplate">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="315" y="-149"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(pssecund) PSFmain5_RadioButton252:SetChecked(nil)</OnLoad>
+	<OnClick>
+	PSFmain5_RadioButton251:SetChecked(nil)
+	PSFmain5_RadioButton252:SetChecked(1)
+	</OnClick>
+	</Scripts>
+	</CheckButton>
+<CheckButton name="$parent_RadioButton253" inherits="SendMailRadioButtonTemplate">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="341" y="-185"/></Anchor></Anchors>
+	<Scripts>
+	<OnLoad>
+	getglobal(this:GetName().."Text"):SetText(psminut)
+	PSFmain5_RadioButton253:SetChecked(1) 
+	</OnLoad>
+	<OnClick>
+	PSFmain5_RadioButton254:SetChecked(nil)
+	PSFmain5_RadioButton253:SetChecked(1) 
+	</OnClick>
+	</Scripts>
+	</CheckButton>
+<CheckButton name="$parent_RadioButton254" inherits="SendMailRadioButtonTemplate">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="341" y="-200"/></Anchor></Anchors>
+	<Scripts>
+	<OnLoad>
+	getglobal(this:GetName().."Text"):SetText(pssecund)
+	PSFmain5_RadioButton254:SetChecked(nil)
+	</OnLoad>
+	<OnClick>
+	PSFmain5_RadioButton253:SetChecked(nil)
+	PSFmain5_RadioButton254:SetChecked(1)
+	</OnClick>
+	</Scripts>
+	</CheckButton>
+</frames>
+
+	</Frame>
+
+<Frame name="PSFmain12" hidden="true">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psuinomodule1">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psuinomodule2">
+	<Anchors><Anchor point="CENTER" relativePoint="CENTER"><Offset x="0" y="90"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+</Frame>
+
+<Frame name="PSFmainchated" hidden="true">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pschatopttitl">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button10" inherits="UIPanelButtonTemplate" text="pschataddbut">
+	<Size x="100" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="140" y="-137"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_addchatrep()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button11" inherits="UIPanelButtonGrayTemplate" text="pschataddbut">
+	<Size x="100" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="140" y="-137"/></Anchor></Anchors>
+	<Scripts><OnClick>out("|cff99ffffPhoenixStyle|r - |cffff0000"..pserror.."|r "..pschataddfail)</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button20" inherits="UIPanelButtonTemplate" text="pschatrembut">
+	<Size x="100" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="140" y="-242"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_remchatrep()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button21" inherits="UIPanelButtonGrayTemplate" text="pschatrembut">
+	<Size x="100" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="140" y="-242"/></Anchor></Anchors>
+	<Scripts><OnClick>out("|cff99ffffPhoenixStyle|r - |cffff0000"..pserror.."|r "..pschatremfail)</OnClick></Scripts>
+	</Button>
+</frames>
+</Frame>
+
+
+<Frame name="PSFpotioncheckframe" hidden="true">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psfpotchecklocal2">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Text1" inherits="GameFontNormal" text="psfneedrscaddon">
+	<Anchors><Anchor point="CENTER" relativePoint="CENTER"><Offset x="0" y="90"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text2" inherits="GameFontNormal" text="psraaddonanet2">
+	<Anchors><Anchor point="CENTER" relativePoint="CENTER"><Offset x="0" y="70"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text3" inherits="GameFontNormal" text="psfneedrscaddon2">
+	<Anchors><Anchor point="CENTER" relativePoint="CENTER"><Offset x="0" y="30"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<CheckButton name="$parent_CheckButton1" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/>
+	<Anchors>
+	<Anchor point="TOPLEFT">
+	<Offset x="400" y="-150"/>
+	</Anchor>
+	</Anchors>
+	<Scripts>
+	<OnLoad>getglobal(this:GetName().."Text"):SetText(rsclocrlslak)</OnLoad>
+	<OnClick>rscchange()</OnClick>
+	</Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton2" inherits="OptionsCheckButtonTemplate">
+	<Size x="25" y="25"/>
+	<Anchors>
+	<Anchor point="TOPLEFT">
+	<Offset x="400" y="-100"/>
+	</Anchor>
+	</Anchors>
+	<Scripts>
+	<OnLoad>getglobal(this:GetName().."Text"):SetText(rscloccolor)</OnLoad>
+	<OnClick>rscchange2()</OnClick>
+	</Scripts>
+	</CheckButton>
+<Button name="$parent_Buttonrezet" hidden="true" inherits="UIPanelButtonTemplate" text="psbuttonreset">
+	<Size x="120" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="50" y="-15"/></Anchor></Anchors>
+	<Scripts><OnClick>rscrezetpot()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button10" inherits="UIPanelButtonTemplate" text="rsclocpot11">
+	<Size x="150" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="397" y="-220"/></Anchor></Anchors>
+	<Scripts><OnClick>rscrepnopot()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button20" inherits="UIPanelButtonTemplate" text="rsclocpot2">
+	<Size x="150" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="397" y="-260"/></Anchor></Anchors>
+	<Scripts><OnClick>rscrepnochossedpot()</OnClick></Scripts>
+	</Button>
+
+<Button name="$parent_Button11" inherits="UIPanelButtonTemplate" text="rsclocpot10">
+	<Size x="150" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="397" y="-260"/></Anchor></Anchors>
+	<Scripts><OnClick>rscrepnopot2()</OnClick></Scripts>
+	</Button>
+
+<Button name="$parent_Button30" inherits="UIPanelButtonTemplate" text="rsclocpot10">
+	<Size x="150" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="397" y="-255"/></Anchor></Anchors>
+	<Scripts><OnClick>rscrepnortafretcom1()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button40" inherits="UIPanelButtonTemplate" text="rsclocpot11">
+	<Size x="150" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="397" y="-295"/></Anchor></Anchors>
+	<Scripts><OnClick>rscrepnortafretcom2()</OnClick></Scripts>
+	</Button>
+
+<ScrollingMessageFrame name="psreportframe1" enableKeyboard="true" fade="false" maxLines="28">
+	<Size x="70" y="370"/>
+	<Anchors>
+	<Anchor point="TOPLEFT">
+	<Offset x="9" y="-10"/>
+	</Anchor>
+	</Anchors>
+	<FontString font="Fonts\FRIZQT__.TTF" justifyV="TOP" justifyH="LEFT">
+	<FontHeight>
+	<AbsValue val="12" />
+	</FontHeight>
+	<Color r="1" g="1" b="1" />
+	<Shadow>
+	<Color r="0" g="0" b="0" />
+	<Offset>
+	<AbsDimension x="1" y="-1" />
+	</Offset>
+	</Shadow>
+	</FontString>
+	<TextInsets>
+	<AbsInset left="7" right="0" top="0" bottom="0" />
+	</TextInsets>
+</ScrollingMessageFrame>
+
+<ScrollingMessageFrame name="psreportframe2" enableKeyboard="true" fade="false" maxLines="28">
+	<Size x="140" y="370"/>
+	<Anchors>
+	<Anchor point="TOPLEFT">
+	<Offset x="66" y="-10"/>
+	</Anchor>
+	</Anchors>
+	<Scripts>
+	<OnHyperlinkClick>SetItemRef(link,text,button);</OnHyperlinkClick>
+	</Scripts>
+	<FontString font="Fonts\FRIZQT__.TTF" justifyV="TOP" justifyH="LEFT">
+	<FontHeight>
+	<AbsValue val="12" />
+	</FontHeight>
+	<Color r="1" g="1" b="1" />
+	<Shadow>
+	<Color r="0" g="0" b="0" />
+	<Offset>
+	<AbsDimension x="1" y="-1" />
+	</Offset>
+	</Shadow>
+	</FontString>
+	<TextInsets>
+	<AbsInset left="7" right="0" top="0" bottom="0" />
+	</TextInsets>
+</ScrollingMessageFrame>
+
+<ScrollingMessageFrame name="psreportframe3" enableKeyboard="true" fade="false" maxLines="28">
+	<Size x="300" y="370"/>
+	<Anchors>
+	<Anchor point="TOPLEFT">
+	<Offset x="175" y="-10"/>
+	</Anchor>
+	</Anchors>
+	<Scripts>
+	<OnHyperlinkClick>SetItemRef(link,text,button);</OnHyperlinkClick>
+	</Scripts>
+	<FontString name="$parent_test" font="Fonts\FRIZQT__.TTF" justifyV="TOP" justifyH="LEFT">
+	<FontHeight>
+	<AbsValue val="12" />
+	</FontHeight>
+	<Color r="1" g="1" b="1" />
+	<Shadow>
+	<Color r="0" g="0" b="0" />
+	<Offset>
+	<AbsDimension x="1" y="-1" />
+	</Offset>
+	</Shadow>
+	</FontString>
+	<TextInsets>
+	<AbsInset left="7" right="0" top="0" bottom="0" />
+	</TextInsets>
+</ScrollingMessageFrame>
+</frames>
+</Frame>
+
+<Frame name="PSFmain10" hidden="true">
+
+<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psuierror">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psuierroraddonoff">
+	<Anchors><Anchor point="CENTER" relativePoint="CENTER"><Offset x="0" y="90"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+	</Frame>
+<Frame name="PSFmainrano" hidden="true">
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+	<FontString name="$parent_Text" inherits="GameFontNormal" text="psuierror">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	<FontString name="$parent_Text" inherits="GameFontNormal" text="psraaddonanet">
+	<Anchors><Anchor point="CENTER" relativePoint="CENTER"><Offset x="0" y="90"/></Anchor></Anchors>
+	</FontString>
+	<FontString name="$parent_Text" inherits="GameFontNormal" text="psraaddonanet2">
+	<Anchors><Anchor point="CENTER" relativePoint="CENTER"><Offset x="0" y="70"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+	</Frame>
+
+<Frame name="PSFerrorframeuniq" hidden="true">
+
+<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="psuierror">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+	</Frame>
+
+<Frame name="PSFrscflask" hidden="true">
+
+<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text=" ">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button1" inherits="UIPanelButtonTemplate" text="button1">
+	<Size x="150" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-20"/></Anchor></Anchors>
+	<Scripts><OnClick>rscupdateflask()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button2" inherits="UIPanelButtonTemplate" text="button2">
+	<Size x="150" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-50"/></Anchor></Anchors>
+	<Scripts><OnClick>rscsendflaskmanual()</OnClick></Scripts>
+	</Button>
+<Slider name="$parent_min" inherits="OptionsSliderTemplate">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-345" /></Anchor></Anchors>
+	<Scripts><OnValueChanged>rscsliderflaskchan()</OnValueChanged></Scripts>
+	</Slider>
+<Button name="$parent_Buttonz1" inherits="UIPanelButtonTemplate" text="rsc old">
+	<Size x="140" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="307" y="-134"/></Anchor></Anchors>
+	<Scripts><OnClick>rsczoneflaskch(1)</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttonz2" inherits="UIPanelButtonTemplate" text="rsc old">
+	<Size x="140" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="307" y="-160"/></Anchor></Anchors>
+	<Scripts><OnClick>rsczoneflaskch(2)</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttonz3" inherits="UIPanelButtonTemplate" text="rsc old">
+	<Size x="140" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="447" y="-134"/></Anchor></Anchors>
+	<Scripts><OnClick>rsczoneflaskch(3)</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttonz4" inherits="UIPanelButtonTemplate" text="rsc old">
+	<Size x="140" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="447" y="-160"/></Anchor></Anchors>
+	<Scripts><OnClick>rsczoneflaskch(4)</OnClick></Scripts>
+	</Button>
+</frames>
+	</Frame>
+
+<Frame name="PSFrscbuff" hidden="true">
+
+<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text=" ">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Slider name="$parent_Timer1" inherits="OptionsSliderTemplate">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="375" y="-90" /></Anchor></Anchors>
+	<Scripts><OnValueChanged>rscslider51()</OnValueChanged></Scripts>
+	</Slider>
+<Slider name="$parent_Timer2" inherits="OptionsSliderTemplate">
+	<Anchors><Anchor point="TOPLEFT"><Offset x="375" y="-130" /></Anchor></Anchors>
+	<Scripts><OnValueChanged>rscslider52()</OnValueChanged></Scripts>
+	</Slider>
+</frames>
+
+	</Frame>
+
+
+</frames>
+	</Frame>
+
+
+
+<Button name="PS_MinimapButton" parent="Minimap" enableMouse="true" frameStrata="MEDIUM" movable="true" hidden="true">
+	<Size x="33" y="33"/>
+	<Anchors>
+	<Anchor point="TOPLEFT"/>
+	</Anchors>
+<Layers>
+	<Layer level="OVERLAY">
+	<Texture file="Interface\Minimap\MiniMap-TrackingBorder">
+	<Size x="56" y="56"/>
+	<Anchors>
+	<Anchor point="TOPLEFT"/>
+	</Anchors>
+	</Texture>
+	</Layer>
+	</Layers>
+<Frames>
+	<Frame name="PS_MinimapButton_DraggingFrame" hidden="true" frameStrata="FULLSCREEN_DIALOG">
+	<Scripts>
+	<OnUpdate>
+	PS_MinimapButton_DraggingFrame_OnUpdate()
+	</OnUpdate>
+	</Scripts>
+	</Frame>
+</Frames>
+	<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+	<Scripts>
+	<OnLoad>
+	this:RegisterForClicks("LeftButtonUp","RightButtonUp")
+	this:RegisterForDrag("LeftButton","RightButton")
+	</OnLoad>
+	<OnEnter>
+	if (not self.dragging) then
+	PS_MinimapButton_OnEnter(self)
+	end
+	</OnEnter>
+	<OnLeave>
+	GameTooltip:Hide()
+	</OnLeave>
+	<OnDragStart>
+	self.dragging = true
+	GameTooltip:Hide()
+	this:LockHighlight()
+	PS_MinimapButton_DraggingFrame:Show()
+	</OnDragStart>
+	<OnDragStop>
+	self.dragging = false
+	this:UnlockHighlight()
+	PS_MinimapButton_DraggingFrame:Hide()
+	</OnDragStop>
+	<OnClick>
+	PS_MinimapButton_OnClick()
+	</OnClick>
+	</Scripts>
+</Button>
+
+
+
+
+</Ui>

@@ -1,0 +1,13 @@
+## Interface: 40000
+## Title: Raeli's Spell Announcer
+## Notes: Easy Spell Announcements! Amongst other things.
+## Author: Raeli
+## Version: v2.052
+## SavedVariables: RSADB
+## OptionalDeps: Ace3
+embeds.xml
+
+Locale-enUS.lua
+Core.lua
+
+

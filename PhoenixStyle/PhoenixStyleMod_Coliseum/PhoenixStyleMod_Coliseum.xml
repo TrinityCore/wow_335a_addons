@@ -1,0 +1,312 @@
+﻿<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.blizzard.com/wow/ui/">
+<Frame name="PhoenixStyleMod_Coliseum">
+	<Scripts>
+	<OnLoad>psfColiseum()</OnLoad>
+	<OnEvent>if(thisaddonwork) then psfColiseumonevent() end</OnEvent>
+	<OnUpdate>if(thisaddonwork) then PSFcoli_OnUpdate() end</OnUpdate>
+	</Scripts>
+</Frame>
+
+
+
+
+<Frame name="PSFmain7" hidden="true" parent="PSFmain1">
+
+<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+	<FontString name="$parent_Text" inherits="GameFontNormal" text="pscoliseum1">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+
+<CheckButton name="$parent_CheckButton201" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="45" y="-82"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFizmcoli1()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton202" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="45" y="-33"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFizmcoli2()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton203" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="45" y="-181"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFizmcoli3()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton212" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="250" y="-82"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFizmcoli12()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton2122" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="250" y="-107"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFifreportvalksheld()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton2123" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="250" y="-132"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFcheckportswitch()</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton213" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="250" y="-181"/></Anchor></Anchors>
+	<Scripts><OnClick>PSFizmcoli13()</OnClick></Scripts>
+	</CheckButton>
+<Button name="$parent_Button3" inherits="UIPanelButtonTemplate" text="pscolishildinfobut">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="13" y="-110"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_colshieldinfoopen()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button3" inherits="UIPanelButtonTemplate" text="pscolishildoptbut">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="13" y="-135"/></Anchor></Anchors>
+	<Scripts><OnClick>psfcolshopen12()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button3" inherits="UIPanelButtonTemplate" text="pscolishildoptbut">
+	<Size x="128" y="21"/><Anchors><Anchor point="TOPRIGHT"><Offset x="-10" y="-182"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_colshieldminiopen()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttonanub" inherits="UIPanelButtonTemplate" text="pscolanubbut">
+	<Size x="140" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-219"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_buttonanub()</OnClick></Scripts>
+	</Button>
+
+</frames>
+
+	</Frame>
+
+
+
+
+
+<Frame name="PSFmainshieldinfo" hidden="true" parent="PSFmain1">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pscolframevalinfo">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_text1" inherits="GameFontNormal" text="pscolfrmavalloc1">
+	<Anchors><Anchor point="CENTER" relativePoint="TOPLEFT"><Offset x="301" y="-74"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pscolfrmavelloc2">
+	<Anchors><Anchor point="LEFT" relativePoint="BOTTOMLEFT"><Offset x="319" y="25"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button3" inherits="UIPanelButtonTemplate" text="pscolishildoptbut">
+	<Size x="120" y="21"/><Anchors><Anchor point="BOTTOMLEFT"><Offset x="10" y="15"/></Anchor></Anchors>
+	<Scripts><OnClick>psfcolshopen12()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Buttonsend1" hidden="true" inherits="UIPanelButtonTemplate" text="pssend">
+	<Size x="100" y="18"/><Anchors><Anchor point="TOPLEFT"><Offset x="16" y="-14"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_colshieldinfsend(1)</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Buttonsend2" hidden="true" inherits="UIPanelButtonTemplate" text="pssend">
+	<Size x="100" y="18"/><Anchors><Anchor point="TOPLEFT"><Offset x="16" y="-102"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_colshieldinfsend(2)</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttonsend3" hidden="true" inherits="UIPanelButtonTemplate" text="pssend">
+	<Size x="100" y="18"/><Anchors><Anchor point="TOPLEFT"><Offset x="16" y="-190"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_colshieldinfsend(3)</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Buttonsend4" hidden="true" inherits="UIPanelButtonTemplate" text="pssend">
+	<Size x="100" y="18"/><Anchors><Anchor point="TOPLEFT"><Offset x="16" y="-278"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_colshieldinfsend(4)</OnClick></Scripts>
+	</Button>
+
+</frames>
+
+</Frame>
+
+
+<Frame name="PSFmainanub" hidden="true" parent="PSFmain1">
+
+	<Size x="600" y="400"/>
+	<Anchors>
+	<Anchor point="RIGHT"/>
+	</Anchors>
+	<Layers>
+	<Layer level="ARTWORK">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pscolanubtit">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Text2" inherits="GameFontNormal" text="psulchatch">
+	<Anchors><Anchor point="RIGHT" relativePoint="TOPLEFT"><Offset x="91" y="-363"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text2" inherits="GameFontNormal" text="psulchatch">
+	<Anchors><Anchor point="RIGHT" relativePoint="TOPLEFT"><Offset x="386" y="-234"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+
+	<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<frames>
+<Button name="$parent_Button1" inherits="UIPanelButtonTemplate" text="pssend">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="25" y="-315"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_colanubsend()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button11" inherits="UIPanelButtonTemplate" text="pssend">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="347" y="-255"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_colanubsend2()</OnClick></Scripts>
+		</Button>
+<Button name="$parent_Button2" inherits="UIPanelButtonTemplate" text="pscolanubmarkthem">
+	<Size x="85" y="26"/><Anchors><Anchor point="TOPLEFT"><Offset x="115" y="-315"/></Anchor></Anchors>
+	<Scripts><OnClick>PSF_colanubmark()</OnClick></Scripts>
+		</Button>
+<EditBox name="$parent_heal10" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="57" y="-100"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_heal20" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="57" y="-125"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_heal30" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="57" y="-150"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_heal40" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="57" y="-175"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_heal50" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="57" y="-200"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_heal60" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="57" y="-225"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_heal70" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="57" y="-250"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_heal80" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="140" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="57" y="-275"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_pala10" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="100" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="290" y="-150"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_pala20" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="100" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="410" y="-150"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_pala30" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="100" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="290" y="-180"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_pala40" inherits="InputBoxTemplate" numeric="false" letters="12" autoFocus="false">
+	<Size x="100" y="21"/><Anchors><Anchor point="TOPLEFT"><Offset x="410" y="-180"/></Anchor></Anchors>
+	</EditBox>
+</frames>
+
+</Frame>
+
+
+
+<Frame name="PSTwinValmenu" hidden="true" toplevel="true" frameStrata="DIALOG" movable="true" enableMouse="true" parent="UIParent">
+
+<Size x="200" y="240"/>
+	<Anchors>
+	<Anchor point="LEFT"></Anchor>
+	</Anchors>
+	<Layers>
+	<Layer level="OVERLAY">
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstwmenu">
+	<Anchors><Anchor point="LEFT" relativePoint="TOPLEFT"/></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstwchosew">
+	<Anchors><Anchor point="TOP" relativePoint="TOP"><Offset x="0" y="-82"/></Anchor></Anchors>
+	</FontString>
+<FontString name="$parent_Text" inherits="GameFontNormal" text="pstwchoseh">
+	<Anchors><Anchor point="TOP" relativePoint="TOP"><Offset x="0" y="-142"/></Anchor></Anchors>
+	</FontString>
+	</Layer>
+	</Layers>
+<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+	<TileSize>
+	<AbsValue val="32"/>
+	</TileSize>
+	<EdgeSize>
+	<AbsValue val="32"/>
+	</EdgeSize>
+	<BackgroundInsets>
+	<AbsInset left="11" right="12" top="12" bottom="11"/>
+	</BackgroundInsets>
+	</Backdrop>
+<Scripts>
+	<OnMouseDown>this:StartMoving()</OnMouseDown>
+	<OnMouseUp>this:StopMovingOrSizing()</OnMouseUp>
+	<OnDragStop>this:StopMovingOrSizing()</OnDragStop>
+	</Scripts>
+<frames>
+
+<CheckButton name="$parent_CheckButton1" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-15"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(pstwgalka1)</OnLoad>
+	<OnClick>PSTVgalka(1)</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton2" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-35"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(pstwgalka2)</OnLoad>
+	<OnClick>PSTVgalka(2)</OnClick></Scripts>
+	</CheckButton>
+<CheckButton name="$parent_CheckButton3" inherits="UICheckButtonTemplate">
+	<Size x="25" y="25"/><Anchors><Anchor point="TOPLEFT"><Offset x="20" y="-55"/></Anchor></Anchors>
+	<Scripts><OnLoad>getglobal(this:GetName().."Text"):SetText(pstwgalka3)</OnLoad>
+	<OnClick>PSTVgalka(3)</OnClick></Scripts>
+	</CheckButton>
+<Button name="$parent_Button1" inherits="UIPanelCloseButton">
+	<Anchors><Anchor point="TOPRIGHT"><Offset x="-2" y="-3"/></Anchor></Anchors>
+	<Scripts><OnClick>PSTwinValmenu:Hide() PScolishieldmini:Hide() psvelcastbar:Hide() psvelshieldbar:Hide()</OnClick>
+	</Scripts>
+	</Button>
+<Button name="$parent_Button2" inherits="UIPanelButtonTemplate" text="pstwapply">
+	<Size x="140" y="24"/><Anchors><Anchor point="TOP"><Offset x="0" y="-200"/></Anchor></Anchors>
+	<Scripts><OnClick>PSTwinValApply()</OnClick></Scripts>
+	</Button>
+<Button name="$parent_Button3" inherits="UIPanelButtonTemplate" text="pstwdefau">
+	<Size x="98" y="20"/><Anchors><Anchor point="TOPRIGHT"><Offset x="-4" y="-233"/></Anchor></Anchors>
+	<Scripts><OnClick>PSTWdefault()</OnClick></Scripts>
+	</Button>
+<EditBox name="$parent_width1" inherits="InputBoxTemplate" numeric="true" letters="3" autoFocus="false">
+	<Size x="28" y="20"/><Anchors><Anchor point="TOP"><Offset x="0" y="-113"/></Anchor></Anchors>
+	</EditBox>
+<EditBox name="$parent_heigh1" inherits="InputBoxTemplate" numeric="true" letters="3" autoFocus="false">
+	<Size x="28" y="20"/><Anchors><Anchor point="TOP"><Offset x="0" y="-173"/></Anchor></Anchors>
+	</EditBox>
+
+</frames>
+	</Frame>
+
+
+</Ui>

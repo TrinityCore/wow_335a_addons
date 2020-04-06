@@ -1,0 +1,33 @@
+﻿## Interface: 30300
+## Title: Phoenix|cff7fff7fStyle|r - Icecrown
+## Title-ruRU: Phoenix|cff7fff7fStyle|r - Цитадель
+## Author: Shurshik
+## Notes: PhoenixStyle Icecrown Module
+## Notes-ruRU: Модуль PhoenixStyle - Цитадель
+## Dependencies: PhoenixStyle
+## LoadOnDemand: 1
+## SavedVariablesPerCharacter: whererepiccchat,psicgalochki,psicchatchoose,psicdopmodchat,psicsaurfgalk,psiccsaurf,psicctekver, psicclanaignorlist,psicclanaignorlist2,psiccdmg3,psicclanaga,psiccprofgal1,psiccprofgal2,psiccprofgal3,psiccprofgal5,psiccprofignorlist1,psiccprofignorlist2,psiccprofchb,psiccproftimer,psiccsavedfails,psiccprofgal22,psiccprofgal23,psicccombatsvqu
+Localization\localization-enEN.lua
+Localization\localization-ruRU.lua
+Localization\localization-deDE.lua
+Localization\localization-frFR.lua
+Localization\localization-esES.lua
+Localization\localization-esMX.lua
+Localization\localization-koKR.lua
+Localization\localization-zhTW.lua
+PhoenixStyleIcecrown.lua
+PhoenixStyleMod_Icecrown.xml
+DeathbringerSaurfang.lua
+LadyDeathwhisper.lua
+LordMarrowgar.lua
+GunshipEvent.lua
+Festergut.lua
+Putricide.lua
+Rotface.lua
+Damagecount-icc.lua
+BloodCouncil.lua
+BQLana.lua
+Valithria.lua
+Sindragosa.lua
+TheLichKing.lua
+Infosavingframe.lua

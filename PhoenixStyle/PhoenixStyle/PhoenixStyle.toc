@@ -1,0 +1,23 @@
+﻿## Interface: 30300
+## Title: Phoenix|cff7fff7fStyle|r   Core
+## Title-ruRU: Phoenix|cff7fff7fStyle|r   Основной
+## Author: Shurshik
+## Version: 1.4961
+## Notes: /fen for more info
+## Notes-ruRU: /фен - для открытия настроек
+## URL: http://phoenix-wow.ru/
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariablesPerCharacter: thisaddononoff, thisaddonwork, secrefmark, pssetmarknew, psfnopromrep, PS_Settings, psminibutenabl, psfchatadd, psoldvern,psversionday
+Localization\localization-enEN.lua
+Localization\localization-ruRU.lua
+Localization\localization-deDE.lua
+Localization\localization-frFR.lua
+Localization\localization-esES.lua
+Localization\localization-esMX.lua
+Localization\localization-koKR.lua
+Localization\localization-zhTW.lua
+PhoenixStyle.lua
+PhoenixStyle.xml
+Modules\UI-framefunc.lua
+Modules\Timers.lua
