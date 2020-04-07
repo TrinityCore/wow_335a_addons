@@ -1,0 +1,797 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/">
+    <!-- {{{ ButtonTemplate -->
+    <Button name="HealOrganizerDialogButtonTemplate" parent="HealOrganizerDialogEinteilung" virtual="true" movable="true">
+        <Size>
+            <AbsDimension x="98" y="13" />
+        </Size>
+        <Anchors>
+            <Anchor point="TOP"/>
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture name="$parentColor">
+                    <Color r="0.7" g="0.6" b="0.5" a="0.7"/>
+                </Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+                <FontString name="$parentLabel" inherits="GameFontNormal" text="NAME XY">
+                    <Size>
+                        <AbsDimension x="96" y="12"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="CENTER"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad>
+                HealOrganizer:HealerOnLoad()
+            </OnLoad>
+            <OnClick>
+                HealOrganizer:HealerOnClick(arg1)
+            </OnClick>
+            <OnDragStart>
+                HealOrganizer:HealerOnDragStart()
+            </OnDragStart>
+            <OnDragStop>
+                HealOrganizer:HealerOnDragStop()
+            </OnDragStop>
+        </Scripts>
+    </Button>
+    <!-- }}} -->
+    <!-- {{{ SlotTemplate -->
+    <Frame name="HealOrganizerDialogSlotTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="98" y="13"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOP"/>
+        </Anchors>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture name="$parentColor">
+                    <Color r="0.1" g="0.1" b="0.1" />
+                </Texture>
+            </Layer>
+            <Layer level="ARTWORK">
+                <FontString name="$parentLabel" inherits="GameFontDarkGraySmall" text="EMPTY_LOCALE">
+                    <Size>
+                        <AbsDimension x="96" y="12"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="CENTER"/>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnMouseWheel>
+                HealOrganizer:OnMouseWheel(arg1)
+            </OnMouseWheel>
+        </Scripts>
+    </Frame>
+    <!-- }}} -->
+    <!-- {{{ Obertemplate fuer die Gruppen -->
+    <Frame name="HealOrganizerDialogGroupTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="100" y="100"/>
+        </Size>
+        <Layers>
+            <Layer level="BACKGROUND">
+                <Texture>
+                    <Color r="0.4" g="0.4" b="0.1" a="0.1"/>
+                </Texture>
+            </Layer>
+        </Layers>
+        <Frames>
+            <Button name="$parentLabel" text="GROUP_LOCALE">
+
+				<NormalFont style="GameFontNormal"/>
+				<HighlightFont style="GameFontHighlight"/>
+				<DisabledFont style="GameFontDisable"/>
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="15" />
+                        </Offset> 
+                    </Anchor>
+                </Anchors>
+                <Size>
+                    <AbsDimension x="98" y="15"/>
+                </Size>
+                <Scripts>
+                    <OnClick>
+                        HealOrganizer:EditGroupLabel(this:GetParent())
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Frame>
+    <!-- }}} -->
+    <!-- {{{ Template fuer pool, 20 slots  -->
+    <Frame name="HealOrganizerDialogHealerpoolTemplate" inherits="HealOrganizerDialogGroupTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="100" y="261"/>
+        </Size>
+        <Frames>
+            <!-- Slots {{{ -->
+            <Button name="$parentSlot1" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot2" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot1" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot3" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot2" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot4" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot3" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot5" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot4" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot6" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot5" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot7" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot6" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot8" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot7" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot9" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot8" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot10" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot9" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot11" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot10" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot12" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot11" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot13" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot12" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot14" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot13" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot15" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot14" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot16" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot15" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot17" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot16" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot18" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot17" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot19" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot18" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot20" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot19" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <!-- }}} -->
+        </Frames>
+    </Frame>
+    <!-- }}} -->
+    <!-- {{{ Template fuer die MT-gruppen, 4 slots, muss reichen...  -->
+    <Frame name="HealOrganizerDialogMainTargetTemplate" inherits="HealOrganizerDialogGroupTemplate" virtual="true">
+        <Size>
+            <AbsDimension x="100" y="53"/>
+        </Size>
+        <Frames>
+            <!-- {{{ Buttons -->
+            <Button name="$parentSlot1" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot2" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot1" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot3" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot2" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <Button name="$parentSlot4" inherits="HealOrganizerDialogSlotTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parentSlot3" relativePoint="BOTTOMLEFT" />
+                </Anchors>
+            </Button>
+            <!-- }}}-->
+        </Frames>
+    </Frame>
+    <!-- }}} -->
+    <!-- {{{ Maindialog -->
+    <Frame name="HealOrganizerDialog" 
+            hidden="true"
+            movable="true"
+            enableMouse="true"
+            frameStrata="DIALOG"
+            clampedToScreen="true"
+            parent="UIParent">
+        <Size>
+            <AbsDimension x="480" y="600" />
+        </Size>
+        <Anchors>
+            <Anchor point="CENTER" />
+        </Anchors>
+        <Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+                <TileSize>
+                        <AbsValue val="32"/>
+                </TileSize>
+                <EdgeSize>
+                        <AbsValue val="32"/>
+                </EdgeSize>
+                <BackgroundInsets>
+                        <AbsInset left="11" right="12" top="12" bottom="11"/>
+                </BackgroundInsets>
+        </Backdrop>
+        <Layers>
+            <Layer level="ARTWORK">
+                <Texture name="$parentHeaderTexture" file="Interface\DialogFrame\UI-DialogBox-Header">
+	            <Size>
+		        <AbsDimension x="256" y="64"/>
+		    </Size>
+		    <Anchors>
+		        <Anchor point="TOP">
+			    <Offset>
+			        <AbsDimension x="0" y="12"/>
+			    </Offset>
+			</Anchor>
+		    </Anchors>
+		</Texture>
+                <FontString name="$parentHeaderText"
+                        inherits="GameFontNormal"
+                        text="Heal Organizer">
+		    <Anchors>
+			<Anchor point="TOP" relativeTo="$parentHeaderTexture">
+		            <Offset>
+			        <AbsDimension x="0" y="-14"/>
+			    </Offset>
+			</Anchor>
+                    </Anchors>
+		</FontString>
+            </Layer>
+        </Layers>
+        <Scripts>
+            <OnLoad>
+                table.insert(UISpecialFrames,this:GetName());
+            </OnLoad>
+            <OnMouseDown>
+                this:StartMoving(); 
+            </OnMouseDown>
+            <OnMouseUp> 
+                this:StopMovingOrSizing();
+            </OnMouseUp>
+            <OnDragStop>
+                this:StopMovingOrSizing();
+            </OnDragStop>
+        </Scripts>
+        <Frames>
+            <Frame name="$parentEinteilung" inherits="OptionsBoxTemplate"> <!-- {{{ -->
+                <Size> 
+                    <AbsDimension x="460" y="450"/> 
+                </Size>
+                <Anchors> 
+                    <Anchor point="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="-30" />
+                        </Offset>
+                    </Anchor>
+                </Anchors> 
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString name="$parentRest" inherits="GameFontHighlightSmall" text="REST_LOCALE">
+                            <Anchors>
+                                <Anchor point="BOTTOMLEFT">
+                                    <Offset x="10" y="145"/>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+                <Frames>
+                    <!-- {{{ Groups -->
+                    <Frame name="$parentHealerpool" inherits="HealOrganizerDialogHealerpoolTemplate">
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="10" y="-22"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parentHealGroup1" inherits="HealOrganizerDialogMainTargetTemplate" id="1">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentHealerpool" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="10" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parentHealGroup2" inherits="HealOrganizerDialogMainTargetTemplate" id="2">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentHealGroup1" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="10" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parentHealGroup3" inherits="HealOrganizerDialogMainTargetTemplate" id="3">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentHealGroup2" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="10" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parentHealGroup4" inherits="HealOrganizerDialogMainTargetTemplate" id="4">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentHealGroup1" relativePoint="BOTTOMLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-16"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parentHealGroup5" inherits="HealOrganizerDialogMainTargetTemplate" id="5">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentHealGroup4" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="10" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parentHealGroup6" inherits="HealOrganizerDialogMainTargetTemplate" id="6">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentHealGroup5" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="10" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parentHealGroup7" inherits="HealOrganizerDialogMainTargetTemplate" id="7">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentHealGroup4" relativePoint="BOTTOMLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-16"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parentHealGroup8" inherits="HealOrganizerDialogMainTargetTemplate" id="8">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentHealGroup7" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="10" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <Frame name="$parentHealGroup9" inherits="HealOrganizerDialogMainTargetTemplate" id="9">
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentHealGroup8" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="10" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                    </Frame>
+                    <!-- }}} -->
+                    <Frame name="$parentOptionen" inherits="OptionsBoxTemplate"> <!-- {{{ -->
+                        <Size>
+                            <AbsDimension x="160" y="70" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentHealGroup7" relativePoint="BOTTOMLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-20"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Frames>
+                            <Button name="$parentAutofill" inherits="UIPanelButtonTemplate" text="AUTOFILL_LOCALE">
+                                <Size x="100" y="24"/>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT">
+                                        <Offset x="10" y="-10"/>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        HealOrganizer:AutoFill()
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                        </Frames>
+                    </Frame> <!-- }}} -->
+                    <Frame name="$parentStats" inherits="OptionsBoxTemplate"> <!-- {{{ -->
+                        <Size>
+                            <AbsDimension x="150" y="95" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentOptionen" relativePoint="TOPRIGHT">
+                                <Offset>
+                                    <AbsDimension x="10" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Layers>
+                            <Layer level="ARTWORK">
+                                <FontString name="$parentPriests" inherits="GameFontNormal" text="PRIESTS_LOCALE: 0">
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT">
+                                            <Offset>
+                                                <AbsDimension x="10" y="-10"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                </FontString>
+                                <FontString name="$parentDruids" inherits="GameFontNormal" text="DRUIDS_LOCALE: 0">
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="$parentPriests" relativePoint="BOTTOMLEFT">
+                                            <Offset>
+                                                <AbsDimension x="0" y="-8"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                </FontString>
+                                <FontString name="$parentPaladin" inherits="GameFontNormal" text="PALA_LOCALE: 0">
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="$parentDruids" relativePoint="BOTTOMLEFT">
+                                            <Offset>
+                                                <AbsDimension x="0" y="-8"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                </FontString>
+                                <FontString name="$parentShaman" inherits="GameFontNormal" text="SCHAMI_LOCALE: 0">
+                                    <Anchors>
+                                        <Anchor point="TOPLEFT" relativeTo="$parentPaladin" relativePoint="BOTTOMLEFT">
+                                            <Offset>
+                                                <AbsDimension x="0" y="-8"/>
+                                            </Offset>
+                                        </Anchor>
+                                    </Anchors>
+                                </FontString>
+                            </Layer>
+                        </Layers>
+                    </Frame> <!-- }}} -->
+                    <EditBox name="$parentRestAction" letters="35" autoFocus="false">
+                        <Size>
+                            <AbsDimension x="250" y="32"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentRest" relativePoint="BOTTOMLEFT">
+                                <Offset>
+                                    <AbsDimension x="10" y="-5"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                    <Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+                                            <Size>
+                                                    <AbsDimension x="155" y="32"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="LEFT">
+                                                    <Offset x="-5" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                    </Texture>
+                                    <Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+                                            <Size>
+                                                    <AbsDimension x="150" y="32"/>
+                                            </Size>
+                                            <Anchors>
+                                                    <Anchor point="RIGHT"/>
+                                            </Anchors>
+                                    </Texture>
+                            </Layer>
+                        </Layers>
+                        <FontString inherits="ChatFontNormal"/>
+                        <Scripts>
+                            <OnTextChanged>
+                            </OnTextChanged>
+                            <OnEscapePressed>
+                                HealOrganizer:Dialog()
+                            </OnEscapePressed>
+                        </Scripts>
+                    </EditBox>
+                    <Frame name="$parentSets" inherits="OptionsBoxTemplate"> <!-- {{{ -->
+                        <Anchors>
+                            <Anchor point="LEFT" relativeTo="$parent" relativePoint="LEFT">
+                                <Offset>
+                                    <AbsDimension x="10" y="0" />
+                                </Offset>
+                            </Anchor>
+                            <Anchor point="TOP" relativeTo="$parentStats" relativePoint="BOTTOM">
+                                <Offset>
+                                    <AbsDimension x="0" y="-25" />
+                                </Offset>
+                            </Anchor>
+                            <Anchor point="BOTTOMRIGHT" relativeTo="$parent" relativePoint="BOTTOMRIGHT">
+                                <Offset>
+                                    <AbsDimension x="-10" y="10" />
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Frames>
+                            <Frame name="$parentDropDown" inherits="UIDropDownMenuTemplate">
+                                <Anchors>
+                                    <Anchor point="BOTTOMLEFT" relativeTo="$parent" relativePoint="BOTTOMLEFT">
+                                        <Offset>
+                                            <AbsDimension x="0" y="10" />
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                            </Frame>
+                            <Button name="$parentSave" inherits="UIPanelButtonTemplate" text="SAVE_LOCALE">
+                                <Size>
+                                    <AbsDimension x="100" y="24"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+                                        <Offset>
+                                            <AbsDimension x="10" y="-10"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        HealOrganizer:SetSave()
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                            <Button name="$parentSaveAs" inherits="UIPanelButtonTemplate" text="SAVEAS_LOCALE">
+                                <Size>
+                                    <AbsDimension x="100" y="24"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeTo="$parentSave" relativePoint="TOPRIGHT">
+                                        <Offset>
+                                            <AbsDimension x="10" y="0"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        StaticPopup_Show("HEALORGANIZER_SETSAVEAS")
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                            <Button name="$parentDelete" inherits="UIPanelButtonTemplate" text="DELETE_LOCALE">
+                                <Size>
+                                    <AbsDimension x="100" y="24"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeTo="$parentSaveAs" relativePoint="TOPRIGHT">
+                                        <Offset>
+                                            <AbsDimension x="10" y="0"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Scripts>
+                                    <OnClick>
+                                        HealOrganizer:SetDelete()
+                                    </OnClick>
+                                </Scripts>
+                            </Button>
+                        </Frames>
+                    </Frame> <!-- }}} -->
+                    <!-- {{{ Buttons reservieren, 20, denn mehr passt in Rest nicht rein -->
+                    <Button name="HealOrganizerDialogButton1" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton2" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton3" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton4" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton5" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton6" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton7" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton8" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton9" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton10" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton11" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton12" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton13" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton14" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton15" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton16" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton17" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton18" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton19" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <Button name="HealOrganizerDialogButton20" inherits="HealOrganizerDialogButtonTemplate"/>
+                    <!-- }}} -->
+                </Frames>
+            </Frame> <!-- }}} -->
+            <Frame name="$parentBroadcast" inherits="OptionsBoxTemplate"> <!-- {{{ -->
+                <Size> 
+                    <AbsDimension x="460" y="75"/> 
+                </Size>
+                <Anchors> 
+                    <Anchor point="TOP" relativeTo="$parentEinteilung" relativePoint="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="-10"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Frames>
+                    <Button name="$parentChannel" inherits="UIPanelButtonTemplate" text="CHANNEL_LOCALE">
+                        <Size>
+                            <AbsDimension x="100" y="24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT">
+                                <Offset>
+                                    <AbsDimension x="10" y="-10"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>HealOrganizer:BroadcastChan()</OnClick>
+                        </Scripts>
+                    </Button>
+                    <EditBox name="$parentChannelEditbox" letters="20" autoFocus="false">
+                        <Size>
+                            <AbsDimension x="150" y="32"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT" relativeTo="$parentChannel" relativePoint="RIGHT">
+                                <Offset>
+                                    <AbsDimension x="10" y="0"/>
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Layers>
+                            <Layer level="BACKGROUND">
+                                    <Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+                                            <Size>
+                                                    <AbsDimension x="77" y="32"/>
+                                            </Size>
+                                            <Anchors>
+                                                <Anchor point="LEFT">
+                                                    <Offset x="-2" y="0"/>
+                                                </Anchor>
+                                            </Anchors>
+                                    </Texture>
+                                    <Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+                                            <Size>
+                                                    <AbsDimension x="75" y="32"/>
+                                            </Size>
+                                            <Anchors>
+                                                    <Anchor point="RIGHT"/>
+                                            </Anchors>
+                                    </Texture>
+                            </Layer>
+                        </Layers>
+                        <FontString inherits="ChatFontNormal"/>
+                        <Scripts>
+                            <OnTextChanged>
+                                HealOrganizer:Debug("OnTextChanged")
+                                HealOrganizer:ChangeChan()
+                            </OnTextChanged>
+                            <OnEscapePressed>
+                                HealOrganizer:Dialog()
+                            </OnEscapePressed>
+                        </Scripts>
+                    </EditBox>
+                    <Button name="$parentRaid" inherits="UIPanelButtonTemplate" text="RAID_LOCALE">
+                        <Size>
+                            <AbsDimension x="100" y="24"/>
+                        </Size>
+                        <Anchors>
+                            <Anchor point="TOPLEFT" relativeTo="$parentChannel" relativePoint="BOTTOMLEFT">
+                                <Offset>
+                                    <AbsDimension x="0" y="-4" />
+                                </Offset>
+                            </Anchor>
+                        </Anchors>
+                        <Scripts>
+                            <OnClick>HealOrganizer:BroadcastRaid()</OnClick>
+                        </Scripts>
+                    </Button>
+                    <CheckButton name="$parentWhisper" inherits="UICheckButtonTemplate" text="WHISPER_LOCALE">
+                        <Size>
+                            <AbsDimension x="30" y="30" />
+                        </Size>
+                        <Anchors>
+                            <Anchor point="LEFT" relativePoint="RIGHT" relativeTo="$parentRaid">
+                                <Offset x="10" y="0" />
+                            </Anchor>
+                        </Anchors>
+                    </CheckButton>
+                </Frames>
+            </Frame> <!-- }}} -->
+            <!-- {{{ Buttons -->
+            <Button name="$parentClose" inherits="UIPanelButtonTemplate" text="CLOSE_LOCALE">
+                <Size> 
+                    <AbsDimension x="100" y="24"/> 
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMRIGHT">
+                        <Offset>
+                            <AbsDimension x="-15" y="15"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>HealOrganizer:Dialog()</OnClick>
+                </Scripts>
+            </Button>
+            <Button name="$parentReset" inherits="UIPanelButtonTemplate" text="RESET_LOCALE">
+                <Size> 
+                    <AbsDimension x="100" y="24"/> 
+                </Size>
+                <Anchors>
+                    <Anchor point="RIGHT" relativeTo="$parentClose" relativePoint="LEFT">
+                        <Offset>
+                            <AbsDimension x="-10" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>HealOrganizer:ResetData()</OnClick>
+                </Scripts>
+            </Button>
+            <!-- }}} -->
+        </Frames>
+    </Frame>
+    <!-- }}} -->
+</Ui>

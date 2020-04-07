@@ -1,0 +1,27 @@
+## Interface: 30300
+## Title: Heal Organizer 2.3
+## Notes: Organize the healer in a raid
+## Notes-deDE: Verwaltet die Heilerzuteilung in einem Schlachtzug
+## Author: Progman, Ackis, Raegx
+## Version: 2.3
+## X-Category: Interface Enhancements
+## X-Feedback: http://wow.curse.com/downloads/wow-addons/details/heal-organizer.aspx
+## X-RelSite-Curse: 3930
+## X-RelSite-UI.WoW: 3222
+## X-AceForum: 2271
+## X-Curse-Packaged-Version: r68
+## X-Curse-Project-Name: Heal Organizer
+## X-Curse-Project-ID: heal-organizer
+## X-Curse-Repository-ID: wow/heal-organizer/mainline
+
+
+## SavedVariables: HealOrganizerDB
+
+embeds.xml
+
+HealOrganizer-enUS.lua
+HealOrganizer-deDE.lua
+HealOrganizer-frFR.lua
+HealOrganizer-zhTW.lua
+HealOrganizer.lua
+HealOrganizer.xml

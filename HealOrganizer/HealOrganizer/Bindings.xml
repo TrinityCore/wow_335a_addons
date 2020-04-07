@@ -1,0 +1,5 @@
+<Bindings>
+    <Binding name="SHOWHEALORGANIZER" header="HEALORGANIZER">
+        HealOrganizer:Dialog()
+    </Binding>
+</Bindings>

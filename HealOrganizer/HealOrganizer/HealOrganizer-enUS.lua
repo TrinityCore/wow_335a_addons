@@ -1,0 +1,51 @@
+﻿-- By Zisu (http://www.curse-gaming.com/en/profile-122056.html)
+local L = LibStub("AceLocale-3.0"):NewLocale("HealOrganizer", "enUS", true)
+
+if L then
+	L["CLOSE"] = "Close";
+	L["RESET"] = "Reset";
+	L["RAID"] = "Raid";
+	L["CHANNEL"] = "Channel";
+	L["DISPEL"] = "Dispel";
+	L["MT"] = "MT";
+	L["HEAL"] = "Heal";
+	L["DECURSE"] = "Decurse";
+	L["REMAINS"] = "Remaining";
+	L["ARRANGEMENT"] = "Arrangement";
+	L["BROADCAST"] = "Broadcast";
+	L["OPTIONS"] = "Options";
+	L["STATS"] = "Statistics";
+	L["PALADIN"] = "Paladin";
+	L["DRUID"] = "Druid";
+	L["PRIEST"] = "Priest";
+	L["SHAMAN"] = "Shaman";
+	L["PALADINS"] = "Paladins";
+	L["DRUIDS"] = "Druids";
+	L["PRIESTS"] = "Priests";
+	L["SHAMANS"] = "Shamans";
+	L["HEALARRANGEMENT"] = "Healing arrangement";
+	L["FFA"] = "ffa"; -- was der rest machen darf
+	L["NO_CHANNEL"] = "You must join channel %q before broadcasting the healing arrangement to it";
+	L["NOT_IN_RAID"] = "You are not in a raid";
+	L["FREE"] = "Empty";
+	L["EDIT_LABEL"] = "New label for group %u";
+	L["SHOW_DIALOG"] = "Show/Hide the dialog";
+	L["LABELS"] = "Labels";
+	L["SAVEAS"] = "Save as";
+	L["SET_SAVEAS"] = "Enter a name for the new set";
+	L["SET_DEFAULT"] = "Default";
+	L["SET_CANNOT_DELETE_DEFAULT"] = "You cannot delete the default set";
+	L["SET_CANNOT_SAVE_DEFAULT"] = "You cannot overwrite the default set";
+	L["SET_ALREADY_EXISTS"] = "The set %q already exists";
+	L["SET_TO_MANY_SETS"] = "You cannot have more than 32 sets";
+	L["AUTOSORT_DESC"] = "Autosort for groups";
+	L["REPLY_NO_ARRANGEMENT"] = "You weren't assigned.";
+	L["REPLY_ARRANGEMENT_FOR"] = "You are assigned to %s.";
+	L["AUTOFILL"] = "Autofill";
+	L["AUTOFILL_LOCALE"] = "Autofill";
+	L["MSG_HEAL_FOR_ARRANGEMENT"] = "Whisper 'heal' for your assignment.";
+	L["WHISPER"] = "Whisper healers their assignment.";
+	L["ARRANGEMENT_FOR"] = "Your arrangement: %s";
+	L["BROADCAST_RAID"] = "Broadcast assignments to the raid.";
+	L["BROADCAST_CHAN"] = "Broadcast assignments to the channel.";
+end

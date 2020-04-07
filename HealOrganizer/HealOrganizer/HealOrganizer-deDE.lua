@@ -1,0 +1,47 @@
+local L = LibStub("AceLocale-3.0"):NewLocale("HealOrganizer", "deDE", false)
+
+if L then
+	L["CLOSE"] = "Schlie\195\159en";
+	L["RESET"] = "Zur\195\188cksetzen";
+	L["RAID"] = "Schlachtzug";
+	L["CHANNEL"] = "Channel";
+	L["DISPEL"] = "Dispellen";
+	L["MT"] = "MT";
+	L["HEAL"] = "heilen";
+	L["DECURSE"] = "decursen";
+	L["REMAINS"] = "Rest";
+	L["ARRANGEMENT"] = "Einteilung";
+	L["BROADCAST"] = "Broadcast";
+	L["OPTIONS"] = "Optionen";
+	L["STATS"] = "Statistik";
+	L["PALADIN"] = "Paladin";
+	L["DRUID"] = "Druide";
+	L["PRIEST"] = "Priester";
+	L["SHAMAN"] = "Schamane";
+	L["PALADINS"] = "Paladine";
+	L["DRUIDS"] = "Druiden";
+	L["PRIESTS"] = "Priester";
+	L["SHAMANS"] = "Schamanen";
+	L["HEALARRANGEMENT"] = "Heilereinteilung";
+	L["FFA"] = "ffa"; -- was der rest machen darf
+	L["NO_CHANNEL"] = "Sie m\195\188ssen den Channel %q beitreten; bevor sie die Heilereinteilung bekannt geben k\195\182nnen";
+	L["NOT_IN_RAID"] = "Sie sind in keinem Schlachtzug";
+	L["FREE"] = "frei";
+	L["EDIT_LABEL"] = "Neue Bezeichnung f\195\188r die Gruppe %u";
+	L["SHOW_DIALOG"] = "Zeige/Schliesse das Dialog";
+	L["LABELS"] = "Beschriftungen";
+	L["SAVEAS"] = "Speichern als";
+	L["SET_SAVEAS"] = "Geben sie ein Namen f\195\188r den Set ein";
+	L["SET_DEFAULT"] = "Standard";
+	L["SET_CANNOT_DELETE_DEFAULT"] = "Sie k\195\182nnen den Standard-Set nicht l\195\182schen";
+	L["SET_CANNOT_SAVE_DEFAULT"] = "Sie k\195\182nnen den Standard-Set nicht \195\188berschreiben";
+	L["SET_ALREADY_EXISTS"] = "Der Set %q existiert bereits";
+	L["SET_TO_MANY_SETS"] = "Sie k\195\182nnen nicht mehr als 32 Sets haben";
+	L["AUTOSORT_DESC"] = "Automatische Sortierung f\195\188r die Gruppen";
+	L["REPLY_NO_ARRANGEMENT"] = "Du bist f\195\188r nichts eingeteilt worden";
+	L["REPLY_ARRANGEMENT_FOR"] = "Du bist f\195\188r %s eingeteilt";
+	L["AUTOFILL"] = "Autofill";
+	L["MSG_HEAL_FOR_ARRANGEMENT"] = "Fl\195\188ster 'heal' f\195\188r deine Heilereinteilung.";
+	L["WHISPER"] = "Einteilungen fl\195\188stern";
+	L["ARRANGEMENT_FOR"] = "Du bist f\195\188r folgendes eingeteilt: %s";
+end
