@@ -1,0 +1,16 @@
+﻿## Interface: 30300
+## Title: Tacticator
+## Author: Zaman
+## Version: 3.3.0.1
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: TacticatorSavings
+## OptionalDeps: Tactics (GD)
+## X-Curse-Packaged-Version: v3.3.0.1
+## X-Curse-Project-Name: Tacticator
+## X-Curse-Project-ID: tacticator
+## X-Curse-Repository-ID: wow/tacticator/mainline
+locale\localization.lua
+Tacticator.lua
+Tacticator.xml
+TacticDisplay.xml

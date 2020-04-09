@@ -1,0 +1,261 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<!--	<Script file="Tacticator.lua" />-->
+	<Frame name="TacticDisplay" frameStrata="MEDIUM" toplevel="true" enableMouse="true" movable="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="400" y="300" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="UIParent">
+				<Offset>
+					<AbsDimension x="0" y="0" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+			edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer>
+				<Texture name="$parentTitleBorder"
+					file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="160" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="5" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.2" right="0.8" top="0"
+						bottom="0.6" />
+				</Texture>
+				<FontString name="$parentTitleString"
+					font="Fonts\FRIZQT__.TTF" text="Tactics editor">
+					<Size>
+						<AbsDimension x="140" y="0" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-4" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<FontHeight>
+						<AbsValue val="12" />
+					</FontHeight>
+					<Color r="1" g="0.8196079" b="0" />
+					<Shadow>
+						<Color r="0" g="0" b="0" />
+						<Offset>
+							<AbsDimension x="1" y="-1" />
+						</Offset>
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+
+			<Button name="$parentDropDownReceived" inherits="UIDropDownMenuTemplate">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormalSmall" text="Received">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="21" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TacticDisplayDropDownReceived_OnShow()
+					</OnShow>
+				</Scripts>
+			</Button>
+
+			<Button name="$parentButtonCopy" text="Save" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="-10" y="-12" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>TacticDisplay_OnCopy()</OnClick>
+				</Scripts>
+			</Button>
+
+			<EditBox name="$parentName" letters="80">
+				<Size>
+					<AbsDimension x="100" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPRIGHT" relativeTo="$parentButtonCopy" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-10" y="-2"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size>
+								<AbsDimension x="75" y="32"></AbsDimension>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="-10" y="0"></AbsDimension>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.2" top="0" bottom="1.0"></TexCoords>
+						</Texture>
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size>
+								<AbsDimension x="75" y="32"></AbsDimension>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="10" y="0"></AbsDimension>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"></TexCoords>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:SetAutoFocus(false)
+					</OnLoad>
+				</Scripts>
+				<FontString inherits="ChatFontNormal"></FontString>
+			</EditBox>
+
+<!-- Scroll container -->			
+			<Frame name="$parentScrollContainer">
+				<Size>
+					<AbsDimension x="350" y="210"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" realativeTo="$parent">
+						<Offset>
+							<AbsDimension x="15" y="-60"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<BackgroundInsets>
+						<AbsInset left="11" right="12" top="12" bottom="11" />
+					</BackgroundInsets>
+					<TileSize>
+						<AbsValue val="32" />
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="32" />
+					</EdgeSize>
+				</Backdrop>
+				<Frames>
+					<ScrollFrame name="$parentScrollFrame" inherits="UIPanelScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="335" y="180"></AbsDimension>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" realativeTo="$parent">
+								<Offset>
+									<AbsDimension x="10" y="-15"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<ScrollChild>
+							<EditBox name="$parentEditBox" multiLine="true" enableMouse="true">
+								<Size>
+									<AbsDimension x="325" y="180"/>
+								</Size>
+								<Scripts>
+									<OnLoad>
+										self:SetAutoFocus(false)
+									</OnLoad>
+									<OnTextChanged>
+										local scrollBar = getglobal(self:GetParent():GetName().."ScrollBar")
+										self:GetParent():UpdateScrollChildRect()
+										local min,max = scrollBar:GetMinMaxValues()
+										if (max > 0 and (self.max ~= max)) then
+											self.max = max
+											scrollBar:SetValue(max)
+										end
+									</OnTextChanged>
+									<OnEscapePressed>
+										self:ClearFocus()
+									</OnEscapePressed>
+								</Scripts>
+								<FontString inherits="ChatFontNormal"></FontString>
+							</EditBox>
+						</ScrollChild>
+						<Scripts>
+							<OnMouseUp>
+								TacticDisplayScrollContainerScrollFrameEditBox:SetFocus()
+							</OnMouseUp>
+						</Scripts>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			
+<!-- Close button -->
+			<Button name="$parentButtonClose" text="Close" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="-10" y="10" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>TacticDisplay_OnClose()</OnClick>
+				</Scripts>
+			</Button>
+			
+		</Frames>
+		<Scripts>
+			<OnLoad>TacticDisplay_OnLoad(self)</OnLoad>
+			<OnMouseDown>self:StartMoving()</OnMouseDown>
+			<OnMouseUp>
+				self:StopMovingOrSizing()
+				TacticatorDisplay_SavePosition()
+			</OnMouseUp>
+			<OnEvent>TacticDisplay_OnEvent()</OnEvent>
+		</Scripts>
+	</Frame>
+</Ui>

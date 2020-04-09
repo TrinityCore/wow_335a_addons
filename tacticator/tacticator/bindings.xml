@@ -1,0 +1,8 @@
+﻿<Bindings>
+  <Binding name="TacticatorToggle" header="TACTICATOR">
+    Tacticator_toggle_visible();
+  </Binding>
+  <Binding name="TacticatorDisplay" header="TACTICATOR">
+    TacticDisplay_Toggle_Visible();
+  </Binding>
+</Bindings>

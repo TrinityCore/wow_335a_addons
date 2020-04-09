@@ -1,0 +1,136 @@
+﻿###############################################################################
+## Interface: 30300
+## Title: SpeakinSpell
+## Title-deDE: SpeakinSpell
+## Author: Stonarius of Antonidas
+## Version: 3.3.5.12
+## Notes: Says random things in chat when casting any spell or ability. Type "/ss help" for the user's manual.
+## Notes-deDE: Sendet zufällige oder selbstkreierte Sprüche in den Chat, wenn Zauber oder Fähigkeiten benutzt werden. Tippe "/SpeakinSpell hilfe" für mehr Informationen.
+## X-Credits: Created by Stonarius. German translation by Lexin. Korean by troth75. See in-game help for full credits.
+## X-Category: Chat
+## OptionalDeps: Ace3, LibDBIcon-1.0, LibBetterBlizzOptions-1.0
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: SpeakinSpellSavedDataForAll
+## SavedVariablesPerCharacter: SpeakinSpellSavedData
+###############################################################################
+## X-Curse-Packaged-Version: v3.3.5.12-release
+## X-Curse-Project-Name: SpeakinSpell
+## X-Curse-Project-ID: speakinspell
+## X-Curse-Repository-ID: wow/speakinspell/mainline
+
+
+###############################################################################
+## Libs
+###############################################################################
+
+#@no-lib-strip@
+embeds.xml
+#@end-no-lib-strip@
+Libs\LibSmartComm-1.0\LibSmartComm-1.0.lua
+
+
+###############################################################################
+## LOADER - declare constants, instantiate data structures
+###############################################################################
+## NOTE: developer.lua and user.lua are optional, and avg. end-users don't have them
+##		They allow overriding declarations from the loader, for developer mode
+##		see comments in developer.lua for details
+## Also, frames.xml contains XML declarations that are needed by the nolib version
+##		and thus can't be listed in embeds.xml or it will cause errors
+###############################################################################
+
+frames.xml
+loader.lua
+developer.lua
+user.lua
+debug.lua
+
+
+###############################################################################
+## BASIC LOCALES (can't use utils)
+###############################################################################
+
+Locales\BigRedButton-enUS.lua
+
+Locales\Locale-enUS.lua
+Locales\Locale-koKR.lua
+Locales\Locale-deDE.lua
+
+
+###############################################################################
+## UTILS
+###############################################################################
+
+utils.lua
+
+
+###############################################################################
+## ADVANCED LOCALES (can use utils)
+###############################################################################
+
+Locales\DefaultEventHooks-enUS.lua
+Locales\DefaultEventHooks-deDE.lua
+Locales\DefaultEventHooks-koKR.lua
+
+Locales\DefaultSpeeches-enUS.lua
+Locales\DefaultSpeeches-deDE.lua
+Locales\DefaultSpeeches-koKR.lua
+
+Locales\Help-enUS.lua
+Locales\Help-deDE.lua
+Locales\Help-koKR.lua
+
+Locales\grammar-enUS.lua
+
+
+###############################################################################
+## DATA STRUCTURES
+###############################################################################
+
+data.lua
+templates.lua
+
+
+###############################################################################
+## OPTIONS GUI
+## NOTE: the GUI now loads only as a separate modular addon, SpeakinSpell_GUI
+###############################################################################
+
+#gui\gui.lua
+#gui\generaloptions.lua
+#gui\currentmessages.lua
+#gui\createnew.lua
+#gui\randomsubs.lua
+#gui\help.lua
+#gui\trade.lua
+#gui\import.lua
+#gui\colors.lua
+#gui\networkgui.lua
+
+## this file exposes functions that will load the GUI module as needed
+lodwrapper_gui.lua
+
+
+###############################################################################
+## CORE MODULES
+###############################################################################
+
+minimapbutton.lua
+oldversions.lua
+wowevents.lua
+slashcommands.lua
+substitutions.lua
+parser.lua
+speech.lua
+ads.lua
+network.lua
+rez.lua
+clickhere.lua
+
+
+###############################################################################
+## MAIN - run init functions after everything is loaded
+###############################################################################
+
+SpeakinSpell.lua

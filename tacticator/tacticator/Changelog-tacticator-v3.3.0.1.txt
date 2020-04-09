@@ -1,0 +1,16 @@
+------------------------------------------------------------------------
+r32 | zaman | 2010-09-18 15:45:32 +0000 (Sat, 18 Sep 2010) | 1 line
+Changed paths:
+   A /tags/v3.3.0.1 (from /trunk:31)
+
+Tagging as v3.3.0.1
+------------------------------------------------------------------------
+r31 | zaman | 2010-09-18 15:43:13 +0000 (Sat, 18 Sep 2010) | 1 line
+Changed paths:
+   M /trunk/TacticDisplay.xml
+   M /trunk/Tacticator.lua
+   M /trunk/Tacticator.toc
+   M /trunk/Tacticator.xml
+
+Removed all "this" and "getglobal"
+------------------------------------------------------------------------

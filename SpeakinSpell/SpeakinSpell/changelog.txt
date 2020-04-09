@@ -1,0 +1,1557 @@
+---------
+3.3.5.12
+---------
+
+Fixed a Lua error in the nolib distribution: Couldn't find inherited node "SpeakinSpellEditBoxTemplate"
+
+
+---------
+3.3.5.11
+---------
+
+Repaired a packager error that was unexpectedly renaming the guiwrapper.lua file.
+
+
+---------
+3.3.5.10
+---------
+
+-- NEW FEATURES --
+
+Added new combat events: I gained aggro / I lost aggro
+- Applies only to your target and focus, and occurs redundantly with entering/exiting combat events.
+
+Added to the network data sharing GUI: show the list of players we have synced with during this session, and what version of SpeakinSpell they're running
+
+Added a new slash command "/speakinspell eraseall" to erase all speeches for all event triggers
+- WARNING: there is not yet a confirmation prompt to ask if you're sure.  Only do this if you're sure you want to erase everything you wrote!
+
+
+-- BUG FIXES --
+
+Fixed a bug that was using German default speeches in all versions of the game client (not just the German game client)
+
+Fixed a bug that was blocking some default content from loading with new installs, and during "/speakinspell reset"
+- This applies to battlecries, <randomfaction>, <randomtaunt>, summoning stones, hearthstone, mounts and pets, death cries, guild achievements, and some raid boss events
+
+Fixed a Blizzard bug: when /follow breaks, ignore redundant notifications from the API, to announce ending /follow exactly once per beginning /follow (down from 3 times)
+
+Fixed a bug with slash commands such as "/ss sync playername" or "/ss ad playername" which was including the separating space as part of the ' playername' which caused errors that there was no such player
+
+
+-- BEHIND THE SCENES --
+
+Divided the addon into multiple modules to help with performance
+- The GUI will not load until called for.
+
+Improved localization support using GlobalStrings
+
+
+-- CONTENT --
+
+Added new default speeches for all classes and races (except for Shamans, sorry)
+- adds most speeches from RPHelper2
+- repairs some spelling and grammar errors in various default speeches
+
+
+---------
+3.3.5.09
+---------
+
+Added support for announcing combat pets' independent actions
+
+
+---------
+3.3.5.08
+---------
+
+Fixed <targetclass> ... again
+
+
+---------
+3.3.5.07
+---------
+
+Data Sharing event: "Found a SpeakinSpell User" now works correctly
+
+
+---------
+3.3.5.06
+---------
+
+Added 34 default speeches for Summoning Stones
+- upgrading users may use "/ss import" to import the new macros
+
+Bug Fix: <targetrace>, <targetclass>, and gender forms now work better on targets who are not in your party or raid
+- This info only works on players in your party or raid, your selected target, focus, and mouseover.  Other targets' race, class, and gender information is unreliable
+
+Bug Fix: When using the setting to "Share Speeches for All Characters" and then logging in to a new character for the first time, your SpeakinSpell settings will no longer be reset to defaults.
+- applicable defaults for the new character's race and class will be imported automatically
+
+Bug Fix: Fixed the default event hook for "Resurrection: Start Casting (I'm the caster)" so that it works for new installs.
+- saved data will also be corrected by the upgrade if applicable
+
+The diagnostic function to "Show Why Event Triggers Do not Fire" now shows the % chance or cooldown setting that was in effect
+
+
+---------
+3.3.5.05
+---------
+
+Not a beta!
+
+LibBetterBlizzOptions is no longer embedded, since it is not technically required.
+- It is still highly recommended for use with SpeakinSpell as a separate install
+
+The packager will now ignore developer files (reduces download size slightly)
+- Interested programmers are still encouraged to use SVN to access the SDD.doc and other developer files that aren't needed to run the addon
+
+
+---------
+3.3.5.04 - beta
+---------
+
+Trying to make packager use head revisions of Ace
+
+
+---------
+3.3.5.03 - beta
+---------
+
+Added some links to the help file
+
+Fixed a typo in default speeches
+
+Fixed some potential nil value errors in the GUI
+
+Changed packaging to use .pkgmeta instead of hard-embedding libraries
+
+
+---------
+3.3.5.02 - beta
+---------
+
+Code Cleanup
+- No visible impact is intended in this area (yet), but the following elements have been cleaned up or refactored:
+- localization support overhauled for non-English game clients
+- cleaned up slash commands implementation and related usage of AceConsole-3.0
+
+Fixed Lua errors from using <targetclass> and <targetrace> without a target
+Fixed a bug with "/ss reset" leaving remnant deleted spells in the GUI
+
+Removed default speeches for Blessing of Protection
+
+
+---------
+3.3.5.01 - beta
+---------
+
+
+NEW FEATURES:
+
+Added a speech event hook: Data Sharing Events (Received): Found a SpeakinSpell User
+- This event is fired once per login session when the data sharing feature handshakes with another SpeakinSpell user for the first time. (unreliable at detecting versions older than 3.3.5.01)
+- Supports the following substitutions:
+- <caster> and <target> are both the player who was found
+- <version> is the version of SS they are running
+- and all other standard substitutions apply as usual
+
+
+BUG FIXES:
+- Skip unnecessary data patch functions that you already ran by logging into an alt.
+- "/ss import" will not suffer an error if you have multiple alternate characters with the same name on different realms
+- Non-English game clients will no longer use the English list of default known event hooks
+- Fixed WoW 3.3.5 vs. voice emotes (/cheer) and other slash commands in your SpeakinSpell macros
+
+
+Data Sharing Network Communications:
+- Removed the SilentSendAddonMessage module that silences "you are not in a raid" spam error messages.  This will be rereleased as a stand-alone addon because this functionality is out of scope for SpeakinSpell.
+- fixed the logic that SpeakinSpell uses for which addon communication channels are valid in different kinds of groups or scenarios.
+
+
+CONTENT UPDATE - NEW MACROS! (and some dumb ones deleted or reworded)
+- Use "/ss import" to browse and import the ones you like
+
+For Everyone:
+/ss macro pet
+/ss macro mount
+/ss macro attack or charge
+/ss macro battlecry
+Fish Feast
+Traveler's Tundra Mammoth
+Combat Event: I Died
+Misc. Event: Begin /follow
+Achievement earned by someone nearby
+Achievement earned by a guild member
+Dropped the Flag (i.e. in WSG)
+Malleable Goo (Putricide Boss Trick)
+Data Sharing Events (Received): Collected an Event Table (Speeches)
+Data Sharing Events (Received): Collected Random Substitutions
+TODO export: Data Sharing Events (Received): Found a SpeakinSpell User
+
+For all Healers: /ss macro rez
+
+For Paladins: Divine Plea
+
+For Mages: Ritual of Refreshment (Rank 2), Mirror Image, and all Alliance portals
+
+For Death Knights: Army of the Dead
+
+
+Added an Arena Content Pack
+- This is optional and will not be enabled by default
+- use "/ss import" to activate these announcements if you're an Arena player.
+
+
+UPDATES TO THE DEFAULT SETTINGS for new installs
+- Upgrading users' settings will not be changed by the update, but you may want to consider reviewing your choices for the following options.
+
+Under General Options (/ss options)...
+- The global cooldown is now 10 seconds by default (up from 0).
+Reason: catches the occasional glitch where events are triggered twice at a time (i.e. guild achievement spam, and the occasional Blizzard bugs)
+- The default setting is for "Share Speeches for All Characters" is now ON.
+Reason: I assume that most people want to use the same macros when playing every different toon they have.  Roleplayers who want to use different macros on different toons can still turn this off.
+
+Under Network Data Sharing (/ss network)...
+- Auto-Sync at Login is now OFF for new installs.
+Reason: There's not enough new content out there to retrieve every time you login.  I just type "/ss sync" or "/ss sync <target>" manually every once in a while if I notice another SS user to share with.
+
+
+---------
+3.3.3.09
+---------
+
+Fixed a bug for anyone who loaded the buggy 3.3.3.05 version, to remove repeating "macro macro" from converted macro events
+
+Updated default event hook list
+- Total known event hooks now: 5262
+- New spells, buffs, debuffs, and auras are still learned when SpeakinSpell sees them for the first time
+
+
+---------
+3.3.3.08
+---------
+
+Fixed a bug when using [Click Here] and similar links to edit speeches for an event trigger
+- It will no longer open to the wrong event if you had previously selected a different event category
+
+
+---------
+3.3.3.07
+---------
+
+Added a new diagnostic function to "Show Why Event Triggers Do Not Fire"
+- see new checkbox under general options (/ss options), under the diagnostics group, near the bottom
+
+Bug Fixes:
+- when a /ss macro event is used as a shared speech list, it will no longer be silenced by the global cooldown option
+- when you toggle SS on/off using the options GUI, the minimap icon is now updated to show the different icon for on/off status (the battleshout icon is ON, and the white mask is OFF)
+- also modified the label and tooltip on that option to clarify that manually typing an /ss macro or clicking a button for it is always enabled
+- Another embedded library error to eliminate reliance on other addons: now loading CallbackHandler-1.0 before other libs that depend on it
+
+
+---------
+3.3.3.06
+---------
+
+Fixed an intermittent bug in the data patch function from the previous version, which was blocking SS from loading for some people who used the deprecated white/yellow damage events
+
+
+---------
+3.3.3.05
+---------
+
+The white and yellow damage events have been removed
+- The excessive combinations of Crushing/Critical/Resisted/Blocked/Absorbed/Glancing/Killing Blow made these events practically unusable
+- If you used these event triggers, your speeches have been preserved by converting them to /ss macro events
+
+Added new event triggers for Combat Event: Critical Strike, and Combat Event: Killing Blow
+- These new events are more generalized compared to the deprecated white and yellow damage events
+- Note that both of these new events may be triggered simultaneously from the same attack, if you kill someone with a critical strike
+- related bug fix: These events now also properly detect ranged attack "white hits" such as from a wand or bow
+
+Fixed a bug with Combat Event: I Died
+- suppressed redundant announcements that you died after you're already dead (work-around for Blizzard's bug)
+
+Fixed integration with Titan Panel so that the "off" icon now displays when SS is off
+
+Fixed an error with embedded LDB libraries so that SS will run correctly without relying on other addons to load the LDB libraries
+
+A few performance enhancements
+- moved some static tables into global space to avoid recreating them frequently
+
+
+---------
+3.3.3.04
+---------
+
+Added an option to share speeches and event triggers across all your characters
+- see "/ss options" for the new checkbox for "Share Speeches for All Characters"
+
+Fixed bugs with the silencer for "you are not in a raid" (SilentSendAddonMessage)
+- This resolves a conflict with PallyPower, at the expense of getting more "you are not in a raid group" spam error messages from other addons' comms.
+
+Fixed a bug that could open the wrong event's settings when clicking [Edit Speeches] in chat links
+
+
+---------
+3.3.3.03
+---------
+
+Added a new Global Cooldown option to silence SpeakinSpell for 0 to 600 seconds between announcing any event.
+- The default is still 0 to preserve legacy behavior
+
+Added new option to "Expand /ss macros as lists-only"
+- The new checkbox is found under "/ss messages" just above the random speech list.
+- To preserve legacy behavior, this option has NOT been turned on by default
+- If you use the built-in default mount announcements, you may want to edit your settings to enable this new option to even out the random selection from the nested speech lists.
+
+Added "/ss ad /g" for advertising SpeakinSpell in the guild channel (or explaining your spam)
+
+Updated some outdated info in the help (/ss help)
+
+Fixed a bug with missing embedded libraries which could have caused loading errors and/or the minimap button to fail
+
+
+---------
+3.3.3.02
+---------
+
+Fixed bugs with minimap icon
+- now loads the OFF icon correctly at load time when applicable
+- now correctly saves the position of the icon if you change it
+
+Fixed a bug in the patch function for saved data older than 3.3.3.01
+- was causing load errors for some people who skipped from a version of SS older than 3.2.2.22 straight to 3.3.3.01 without installing/running any version in between
+
+At login, now uses ADDON_LOADED instead of VARIABLES_LOADED to check when saved variables are loaded
+- this may fix a rare problem of user data becoming erased while logging in (could have occurred randomly during any login attempt)
+
+Updated all 3rd party libraries to the latest versions
+- This may fix errors I never saw or knew about, compatibility issues, and so on
+
+
+---------
+3.3.3.01
+---------
+
+Fixed issues with custom-made random word lists
+- Applies to "/ss random" for the "New Word List" feature ...
+- This will now correct for any errors in the way you type the name of your new word list
+- (must be lowercase, and do not include the <brackets> or special characters like | or *)
+- Your saved data will also be repaired automatically if you had a custom random word list that was not working
+
+
+---------
+3.3.2.01
+---------
+
+Added new event "Combat Event: I Died" for announcing when you die
+
+The feature to "Show Setup Guides" is now OFF by default for new installs
+- fine-tuned this feature to show [/ss guides] as a clickable link in every guide message
+
+Cleaned up /ss ad macros
+
+
+---------
+3.3.0.07
+---------
+
+Added [Click Here] links to the chat, for easier access to SpeakinSpell settings and commands
+
+The option to "Report Detected Speech Events" is now called "Show Setup Guides" 
+- This option has been enabled for all players updating to this version
+- Setup guides allow you to [Click Here] to edit speeches or setup a new event
+- you can [Click Here] to disable these guides from a welcome message in the chat frame
+- A new slash command "/ss guides" will toggle the setup guides on/off
+
+"/ss recent" is a new slash command to show setup guides for the last 5 events detected, and last 5 speeches announced
+
+"/ss macro something" events are now immune to disabling SpeakinSpell speech announcements
+- Manually triggering "/ss macro something" will still announce speeches
+- For example, when I turn off SpeakinSpell to stop automatically detecting entering combat events (and everything else), I can still click my battlecry button to spam macros manually via "/ss macro battlecry"
+
+Fixed event "Achievement earned by someone near me" will no longer occur for your own achievements
+
+Fixed operation of <SpellLink> for "/ss macro events" to stop adding incorrect brackets to the display of "/ss [macro events]"
+
+Fixed "ding" so it only works on a whole word match
+
+
+---------
+3.3.0.06
+---------
+
+Fixed a LUA error in the search function of the GUI
+
+
+---------
+3.3.0.05
+---------
+
+Added a hard cap of 200 search results to prevent stack overflows
+
+
+---------
+3.3.0.04
+---------
+
+Fixed potential LUA errors in saved data patch functions (for upgrading from very old versions)
+
+
+---------
+3.3.0.03
+---------
+
+Fixed LUA error in Korean koKR help file
+
+
+---------
+3.3.0.02
+---------
+
+Removed the Raid Warning channel option from 5-man scenarios
+Blizzard disabled Raid Warnings in 5-mans in 3.3.0
+Your SpeakinSpell data will be updated to use Party chat instead, if applicable
+
+Added a safety check for a nil value (LastPageViewed)
+
+Added a patch function to fix duplicate Enter/Exit combat events
+
+
+---------
+3.3.0.01
+---------
+
+Not a beta! (I hope...)
+TOC update for WoW patch 3.3.0
+Now comes with 4387 known event hooks out of the box (and still discoverable)
+The network system no longer sends built-in data from the event hook list
+Fixed bugs
+
+
+---------
+3.2.2.27 (beta)
+---------
+
+Added time and date substitutions
+<mdyhms> - 12/31/09 24:00:00
+<mdy> - 12/31/09
+<hms> - 24:00:00
+<md> - 12/31
+<hm> - 24:00
+
+Added [Reset Event List] button to the Create New GUI to delete all collected event hooks
+- Now knows 2230 (randomly) pre-recorded event hooks "out of the box", without having to record them first
+- These will be merged into your existing list automatically - you shouldn't have to reset
+
+Refined the addon API to allow addon-created event categories
+	SpeakinSpell:RegisterAddonEventType( "MYADDON", "My Addon Events", "My Addon Event: " )
+
+Fixed various LUA errors
+
+
+---------
+3.2.2.26 (beta)
+---------
+
+- split off LibSmartComm sub-component library to encapsulate the network engine core
+- Added compression to the data sharing system
+- The new compressed data sharing protocol will not talk to older clients (not even for new version alerts, sorry)
+- Added a function to repair invalid data left behind by the previous few betas
+- Added a list of known event hooks for "/ss create", used on fresh installs or will be added to your existing saved data
+
+
+---------
+3.2.2.25 (beta)
+---------
+
+- Cleaned up the new Resurrection events
+- Cleaned up the Data Sharing GUI
+- Fixed minor bugs
+- Updated the Help file
+
+
+---------
+3.2.2.24 (beta) HOT FIX
+---------
+
+Hot Fix for LUA error in oldversions.lua
+
+Added LibResComm-1.0
+- UNTESTED EXPERIMENTAL WORK IN PROGRESS
+- This library provides smarter notifications for resurrection spells
+- See the new category of "Resurrection Events"
+
+
+---------
+3.2.2.23 (beta) HOT FIX
+---------
+
+OOPS! accidentally left automated debugging functions enabled in the last release
+
+
+---------
+3.2.2.22 (beta)
+---------
+
+ADDED: GUI controls to create and delete <randomword> word lists
+
+ADDED: <randomword> word lists can now be shared through the comm system
+
+ADDED: a search filter under "/ss create" to hide the event hooks that you already use
+
+BUG FIX: Interrupted data transfers will no longer cause error message spam in the chat
+i.e. "no such player as 'player' is online" and "you are not in a guild"
+
+
+---------
+3.2.2.21 (beta)
+---------
+
+COMMUNICATIONS SYSTEM
+- should be more intuitive
+- sync system protocol and UI redesigned to match intended usage model
+- packet format changed.  Older clients will throw LUA errors when they hear from newer clients.  Sorry.
+- better versioning system for network communications to prevent that in the future
+- Comm Traffic diagnostic messages split into separate channels (with separate colors) for Rx/Tx
+- Data Sharing Events changed - event hooks created from 3.2.2.20 might not be signalled
+
+
+IMPORT NEW DATA GUI
+- Enhanced to make it more obvious that this works for alts and content collected from other players
+
+
+SLASH COMMANDS
+- cleanup of slash commands processing
+- all slash commands now support <substitutions>
+- "/ss ad <target>" simplified to remove the "/w"
+- "/ss sync" and "/ss sync <target>" are the only remaining variations of /ss sync (others removed)
+
+
+---------
+3.2.2.20 (beta)
+---------
+
+
+SUMMONING TARGET ANNOUNCEMENTS
+
+Repaired <target> info used for spell channeling events
+- this info is missing from the API, and will now use the value of <selected> instead of <lasttarget>
+
+Added <lasttarget> substitution to replace the lost automatic function of <target> for channeling events
+- This is the target of the last UNIT_SPELLCAST_SENT event
+- usually this is the target of a spell-related event such as channeling start, but not always up to date
+- <selected> is often more accurate than <lasttarget> unless you are doing something unusual with the way you're targetting your abilities
+
+
+COMMUNICATIONS SYSTEM
+
+Added option to Show Comm Traffic under network settings
+- this is also a new Comm Traffic channel option with a configurable color
+
+Added event hooks that signal comm traffic events (for your own customized notifications)
+- Data Sharing Event: Send Data
+- Data Sharing Event: Receive Data
+- Data Sharing Event: Auto-Sync With Player
+- Data Sharing Event: General Auto-Sync
+- Data Sharing Event: No New Events to Send to <target>
+- Data Sharing Event: Ignored New Events List data from a newer version
+- Data Sharing Event: Ignored Speech List data from a newer version
+- Data Sharing Event: Collected Event Table (Speeches)
+- Data Sharing Event: My Event Table was Requested
+- Data Sharing Event: Each Packet Sent
+- Data Sharing Event: Transfer Complete
+
+Fixed various minor bugs
+
+Known issues:
+- comm traffic error spam saying: no player named 'player' is online
+
+
+---------
+3.2.2.19 (beta)
+---------
+
+Fixed LUA error from automatic version checks
+
+
+---------
+3.2.2.18 (beta)
+---------
+
+Fixed LUA error from automatic version checks
+
+Added "/ss sync <target>" to perform a complete data sync with a specific target name
+
+
+---------
+3.2.2.17 (beta)
+---------
+
+It's the SpeakinSpell 1-year Anniversary Edition!
+
+Added a framework for network communication and data sharing through invisible chat channels
+- "/ss network" opens a new GUI with related options
+- "/ss sync" will cause an auto-sync between available SS users, also occurs automatically at login, and will become more automated in the future
+- "/ss import" allows you to import shared speeches from other players
+- Checks for newer versions of SpeakinSpell
+- Synchronizes the list of new events detected for the "/ss create" GUI
+
+The "/ss import" GUI can now be used to import speeches from your alternate characters on the same account
+
+The list of new events detected (/ss create) is now shared account-wide instead of in separate per-character data
+- Be warned this means you can now configure your warrior to announce when he casts your mage spells, even though that would be pointless
+
+Random <substitutions> are now shared account-wide
+
+
+---------
+3.2.2.16
+---------
+
+Pronoun forms now support embedded substitutions marked with underscores, as in the following syntax:
+<target*_randomboy_*_randomgirl_|_playerfulltiitle_>
+
+Updated the in-game help with some features that had previously gone undocumented.
+(features added in the previous release, and some <substitution> keys that snuck in over the past few months)
+
+
+---------
+3.2.2.15
+---------
+
+Renamed the white and yellow damage events to:
+Combat Event: I caused White Damage (<damagetype>)
+Combat Event: I caused Yellow Damage (<damagetype>)
+
+Added new events:
+Combat Event: I received PvP White Damage (<damagetype>)
+Combat Event: I received PvP Yellow Damage (<damagetype>)
+
+fixed bug: when creating a new event trigger (/ss create), the new event is now properly added to the event selection list under the message settings (/ss messages)
+
+
+---------
+3.2.2.14
+---------
+
+Dramatically increases the number of events that SpeakinSpell can announce!
+
+(NOTE: the changes in this release are so extensive, I was unable to test some of them as much as I would have liked.  I'm pretty sure it's all working, but if you find any problems, PLEASE report them)
+
+Adds 20 new hooks to announce more events, in 4 new categories:
+- Interactions with NPCs
+- Combat Events
+- Chat Events
+- Achievements
+
+The "System Event" category has been removed/renamed
+- Enter/Exit combat events are now "Combat Events" instead of "System Events"
+- "Whispered while in-combat" is now a "Chat Event" instead of a "System Event"
+- All other "System Events" are now called "Misc. Events"
+
+The following new speech events have also been added.
+
+Please note that you must experience each event at least once in-game to populate the "/ss create" GUI to use these new events.
+
+Please consult the in-game help (/ss help) chapter 11 for a complete list of all of these "other events" including these new ones and all the older ones in a comprehensive list, with info about additional options and features related to each of these events.
+
+
+Misc. Event: Begin /follow
+Misc. Event: End /follow
+Misc. Event: Level Up
+Misc. Event: a player sent me a rez
+Misc. Event: Open Trade Window
+
+Achievement earned by me
+Achievement earned by Someone Nearby
+Achievement earned by a guild member
+
+NPC: Open Gossip Window
+NPC: Talk to Vendor
+NPC: Talk to Trainer
+NPC: Talk to Flight Master
+NPC: Quest Greeting
+NPC: Open Mailbox
+NPC: Enter Barber Chair
+NPC: Exit Barber Chair
+
+Chat Event: a guild member said "ding"
+Chat Event: a party member said "ding"
+
+Combat Event: Yellow Damage (<damagetype>)
+Combat Event: White Damage (<damagetype>)
+- These are both large groups of events
+- <damagetype> is a string composed of all of the following that apply (in this order): 
+- Crushing, Critical, Resisted, Blocked, Absorbed, Glancing, Killing Blow
+- If none of those apply, then it will be a simple "Hit"
+- example event name: "Combat Event: Yellow Damage (Critical, Killing Blow)" but many other permutations are also possible
+
+
+---------
+3.2.2.13
+---------
+
+Adds options to change some of the colors used by SS
+"/ss colors" will open this new options GUI screen
+
+Adds the ability to announce a new "System Event: Whispered While In-Combat"
+- This event will NOT be announced when you send a whisper to yourself
+- allows you to auto-reply with a randomized comment, for example "/r sorry can't talk right now, busy fighting with <selected>"
+- <target> is the target of the event, meaning you, the player, who was the target of the whisper
+- <caster> is the author of the message whispered to you
+- <text> is a special substitution supported for this event only, and is the content of the whispered message.
+- This can be used to relay the whisper into party chat, for example "/p <caster> whispered me to say: <text>"
+
+
+---------
+3.2.2.12
+---------
+
+Fixed LUA error
+
+
+---------
+3.2.2.11
+---------
+
+The channel drop-down lists in the GUI now correctly show the player's customized chat channel colors
+(even the default colors look more accurate)
+
+
+---------
+3.2.2.10
+---------
+
+Removed the Multi-RNG fix from the previous version
+- A different solution will be added to address that issue in a future version
+
+Added some buttons for managing /ss macro calls.
+- see new buttons under "/ss messages" attached to speeches which call out a single "/ss macro thing"
+
+Fixed interaction of the "Whisper <target>" option with the "Emote (/e)" channel option
+- it now whispers an emote-formatted message, for example
+Stonarius whispers: * Stonarius takes an action *
+(instead of Stonaris whispers: takes an action)
+
+
+---------
+3.2.2.09
+---------
+
+Added speeches and additional support for Mounts and Pets
+
+Added option to show single-line text edit boxes
+
+Multi-RNG Fix: Now expanding macro contents to process recursive calls to "/ss macro subcategory" with a single RNG
+- This creates a balanced distribution of random selections when you call out more than one /ss macro subcategory as separate speech lists for a single event
+
+
+---------
+3.2.2.08
+---------
+
+Added "Import New Data" GUI
+- Allows you to search the content that comes with SpeakinSpell for any new speeches or <randomsubs> that you aren't using
+- VERY flexible about letting you select what new content you want to use, if any
+- "/ss import" now opens this window
+
+Added some new content packs from Dire Lemming (Thanks!!)
+- hit "/ss import" to see if any of these new speeches work for you (for your race/class and style)
+
+Added new substitutions:
+<playerrace> - your race
+<playerclass> - your class
+<race> - your race
+<class> - your class
+
+
+---------
+3.2.2.07
+---------
+
+added tostring() conversions in all string concatenation statements with the ".." operator, as a safety measure against potential LUA errors
+
+
+---------
+3.2.2.06
+---------
+
+Added Racial/Roleplay language options
+
+
+---------
+3.2.2.05
+---------
+
+Messages GUI enhancements
+- added option to show/hide groups of options
+- added option to set read-only flags on each speech
+- added delete and delete-all buttons
+
+Fixed LUA errors
+
+
+---------
+3.2.2.04
+---------
+
+GUI Touch-ups
+
+Embedded LibBetterBlizzOptions for a better overall experience with the blizzard options frame
+
+Enhanced data structures to support upcoming features
+(replaces DEFAULT_SPEECHES tables with Templates system)
+
+Fixed LUA errors
+
+
+---------
+3.2.2.03
+---------
+
+More GUI touchups
+
+Fixed: Will now ignore blank lines in speeches
+
+Added a patch function to auto-upgrade <newline> to actual line breaks for use in the new multi-line edit boxes
+(<newline> may still be used as a substitution)
+
+
+---------
+3.2.2.02
+---------
+
+GUI Overhaul: Better organization, labeling, and overall appearance
+
+Added channel option: Self-Only Raid Warning
+
+Fixed: Rebuffs now count as buff events and will be announced if applicable
+
+Added "/ss toggle"
+Changed "/ss" and "/ss toggle" now work the same way as right-clicking the minimap button
+
+Various bug fixes - Removed "beta" designation
+
+
+---------
+3.2.2.01 (beta)
+---------
+
+Fixed LUA error with spell links
+Fixed LUA error with events that do not have any speeches
+
+Enhanced <spelllink> to work on most spells now
+(adds spell id cache)
+
+Added "/ss memory" and memory display on the General Settings
+
+
+---------
+3.2.0.08 (beta)
+---------
+
+Added support for Gender substitutions
+- The simple form is: <target*male*female>
+- More advanced forms like <mouseover's*his*her> target is <mouseovertarget*a boy*a girl|me>
+- See the in-game help chapter 8. Gender for details
+
+Improved Search GUI
+- If search options are too limited, will now display "No Matching Search Results Found"
+- normally limited to 100 results to get rid of the lag
+- Fixed bugs with some of the search results
+
+Added substitutions:
+<scenario> - "The Arena", "A Battleground", "Wintergrasp", "A Raid", etc
+<eventtype> - "Spells, Abilities, and Items (Start Casting)", etc
+<eventtypeprefix> - "When I Start Casting: " etc.
+
+Overhauled the substitution engine
+- Possessive forms now work on all subtitutions
+- Third Person |me parsing now works on all subtitutions, and when combined with possessive forms, as in <target's|my>
+- Substitution data is now only generated if it is used (performance boost)
+- Gender substitutions are now supported
+
+Added a minimap button for easier access to settings
+
+
+---------
+3.2.0.07 (beta)
+---------
+
+Fixed LUA error with new <playerfulltitle> feature for people who do not have a title.
+This error was crashing the addon for all people without a title, even if you didn't try to use the new <playerfulltitle> substitution
+
+
+---------
+3.2.0.06 (beta)
+---------
+
+Added a search box to the options GUI
+- search settings are now shared between Message Settings and Create New
+- includes a search option to show/hide all ranks
+
+Added support for new event types:
+- (UNIT_SPELLCAST_CHANNEL_START) When I start channeling: ___
+- (UNIT_SPELLCAST_CHANNEL_STOP) When I stop channeling: ___
+- (UNIT_SPELLCAST_FAILED)		When I fail to cast: ___
+- (UNIT_SPELLCAST_INTERRUPTED)	When I am interrupted when casting: ___
+- (UNIT_SPELLCAST_STOP)			When I stop casting: ___
+- (UNIT_SPELLCAST_SUCCEEDED)	When I succeed at casting: ___
+
+Added new substitutions:
+<guild> - the name of your guild
+<home> - the name of your home inn (hearthstone location)
+<selected> - will show your selected target only
+<mouseover> - will show the name of the target under your mouse
+<arenaN> - Opposing arena member with index N (1,2,3,4,5). 
+<partyN> - The Nth party member excluding the player (1,2,3 or 4). 
+<partypetN> - The pet of the Nth party member (N is 1,2,3, or 4) (Added in 1.5.0). 
+<raidN> - The raid member with raidIndex N (1,2,3,...,40). 
+<raidpetN> - The pet of the raid member with raidIndex N (1,2,3,...,40) (Added in 1.5.0) 
+<vehicle> - The current player's vehicle. 
+<playerfulltitle> - your name with your title included
+
+Also added support for all other UnitId values which may be used with the UnitName() API, including targets of targets:
+You can append the suffix target to any UnitId to get a UnitId which refers to that unit's target (e.g. "partypet2target"). This appending can be repeated indefinitely (e.g. "playertargettarget"), though you will observe an attendant performance hit if you overdo it, as the game engine has to jump from target to target.
+
+Random Substutition lists may now be edited (type "/ss random" to access the interface)
+<randomtaunt> - a random mean name to call someone
+<randomfaction> - a random faction's name
+<randomboy> - a random boy's name (new)
+<randomgirl> - a random girl's name (new)
+<randomsilly> - a random silly word (new)
+
+Added possessive substitutions which use the proper apostrophe for Stonarius' or Meneldill's, including:
+<player's>
+<focus'>
+<pet's>
+<selected's>
+<mouseover's>
+<realm's>
+<zone's>
+<subzone's>
+<randomfaction's>
+<randomtaunt's>
+<randomboy's>
+<randomgirl's>
+<randomsilly's>
+...and most others
+
+Added options for 3 new scenarios: Party Leader, Raid Leader, Raid Officer
+
+Enhanced: <target> may now use the target under your mouse (UnitName("mouseover")) if the target is unknown, and <selected> and <focus> also fail
+- this may help with the dead player who released
+
+Enhanced:
+The <target|me> feature now works with ANY substitution, not just <target> and <caster>.
+for example <pet|Junior> will say "Junior" if your pet has the same name as you.
+
+Fixed:
+If you cast a spell which triggers "/ss macro something", all substitutions like <spellname> and <target> are now passed down from the original spell
+
+
+Code quality cleanup behind the scenes
+
+
+---------
+3.2.0.05
+---------
+
+Updated Korean translation (thanks troth75!)
+
+Added "@$&*%!" as a <randomtaunt>
+
+Enhanced instructions in the in-game user's manual for chapter 8 "Custom Macros"
+
+Code quality cleanup behind the scenes
+
+
+---------
+3.2.0.04
+---------
+
+Adds guild and self-chat as selectable channels
+
+Adds Wintergrasp Battles as a separate scenario from Raids or BGs
+(it was using the raid scenario before)
+
+<randomfaction> now has a chance to show the player's guild or arena team names.
+
+New substitution variables...<realm>, <zone>, <subzone>, <playertitle>
+
+New events for changing zones and sub-zones as you travel
+
+New options to limit chat spam to once per combat and/or once per <target> name.
+
+A couple minor bug fixes
+
+
+---------
+3.2.0.03
+---------
+
+Fixed the <newline> function
+
+Added "Leroy" as a <randomtaunt>
+
+
+---------
+3.2.0.02
+---------
+
+Added 3 new substitution variables:
+
+<randomfaction>
+- will become the name of a random faction such as Horde, Alliance, Sindorei, Light, and over 80 more
+- "For the glory of the <randomfaction>!" can become "For the glory of the Zandalar Tribe!" or many other random factions
+
+<randomtaunt>
+- will become a random insulting name, such as Meanie, Coward, Punk, N00b, and over 20 more
+- "Die <randomtaunt>!" can become "Die Nub!" or "Die Son of a Hamster!" or many more
+
+<newline>
+- This will split a speech into more than one line of text, so you can say two speeches at the same time
+- "For the Horde!<newline>/cheer" will say "For the Horde!" in your selected channel, and then make you do "/cheer" at the same time.
+- (OOPS: this is not working yet in 3.2.0.02 - will be fixed in 3.2.0.03!)
+
+
+Added several new default sample speeches for all classes
+- includes a new default event for "/ss macro battlecry" with very many battlecries, inspired by the addon, Ultimate Warcraft Battlecry Generator, by NytewolfAU2k7
+- includes a new system of race-specific and universal default speeches
+- includes some nice suggested speeches by Folji
+
+
+Adds Feature: [Import New Default Sample Speeches]
+- look for the button under General Settings (/ss options)
+- Merges your current settings with the default sample settings that come with SpeakinSpell.
+- Your saved settings will be preserved, but new speeches will be added.
+
+
+Updated backend WowAce libraries
+- this might fix subtle bugs or things I thought were "not my bug" /shrug.
+
+
+---------
+3.2.0.01
+---------
+
+Fixed compatibility with WoW game client v3.2.0
+- just a TOC update
+
+
+---------
+3.1.3.08
+---------
+
+Updated German translation and default speeches
+
+
+---------
+3.1.3.07
+---------
+
+Updated Korean Translation and default speeches
+
+
+---------
+3.1.3.06
+---------
+
+Added a feature to support any slash command in any message that you write for any event
+This includes built-in emotes like /cheer, chat channel overrides like /s /y /2 /g etc
+and any other non-protected command.  /cast and other secure commands are not allowed.
+
+Minor corrections to GUI option labels and tooltips
+- expanding on the transition from "spells" to more generally speaking of "events"
+
+
+---------
+3.1.3.05
+---------
+
+It is now possible to announce 2 new events:
+System Event: Entering Combat
+System Event: Exiting Combat
+
+
+---------
+3.1.3.04
+---------
+
+updates to the Korean translation
+
+when creating message settings for a new event, that event will no longer be removed from the Create New interface.
+
+fixed a bug with "/ss ad /w" when applied to selected target
+
+reorganized source code into separate files for growing room
+
+
+---------
+3.1.3.03
+---------
+
+Added event type filters to the options interface to make it easier to find what you're looking for.
+
+Fixed a bug with missing information in the saved data needed to support the new event type filters.
+
+
+---------
+3.1.3.02 (unreleased)
+---------
+
+The list of new events under Create New is now remembered between sessions if you relog or reloadui
+
+
+---------
+3.1.3.01
+---------
+
+Added support for Korean WoW game clients
+
+
+---------
+3.1.2.14
+---------
+
+Fixed a LUA error with the Whisper Target feature
+
+
+---------
+3.1.2.13
+---------
+
+
+Adds substitution variable <focus>
+(I can't think of a good way to use it since <target> is pretty smart, but it might as well be supported)
+
+
+---------
+3.1.2.12 (stable again?)
+---------
+
+
+Fixed ranked vs. rankless spell event detection
+- the Create New interface will now allow creating ranked events even if "any rank" events already exist for that spell
+- "any rank" events now announce correctly (unless an event with a specific rank takes precedent)
+
+
+<caster|I> now works
+"<caster|I> cast <spelllink> on <target|myself>" works nicely
+
+
+---------
+3.1.2.11 (beta)
+---------
+
+Fixed errors when upgrading from 3.1.2.03 to 3.1.2.05 data format.
+- the EventTable is now created properly
+- "_ event: login" is now updated correctly
+
+This should do it for the major bugs in the recent beta versions.
+
+
+---------
+3.1.2.10 (beta)
+---------
+
+Fixed non-deterministic order of applying patches to old saved data when upgdading to a new version
+This should fix the main error encountered by many people when updating from pre 3.1.2.07 versions
+
+
+---------
+3.1.2.09 (beta)
+---------
+
+Simplifies the data update code for updating to 3.1.2.07.  Should be more reliable now.
+
+
+---------
+3.1.2.08 (beta)
+---------
+
+Attempting to fix reported LUA error on line 1799.
+This was related to the saved data format updating to the 3.1.2.07 format.
+Should work now or at least not throw a LUA error
+
+
+---------
+3.1.2.07 (beta)
+---------
+
+
+Lots of code restructuring behind the scenes to make room for expansion
+
+Saved data format has been upgraded
+
+Due to the nature of the upgrade and the limitations of the old data
+some saved spell events may be duplicated as two types during the upgrade
+both as the "Spell Cast Start" type and the "Received Buff" type
+
+
+Enhanced in-game help TOC with a button for each chapter
+
+
+Adds new substitution variable <spelllink> and related functionality
+
+
+Now detects additional spell events
+- buffs cast on you by others (and totems)
+- debuffs you receive from yourself or others
+
+
+More enhancements to the options GUI to support the growing features
+
+
+fixed bugs with "<caster>"
+
+
+---------
+3.1.2.04 - 3.1.2.06 (unreleased)
+---------
+
+
+These unreleased versions changed the saved data format several times
+3.1.2.05 - changed from SpellTable to EventTable, added TableEntry.DetectedEvent object, table keys were de.name..de.rank..de.type
+3.1.2.06 - changed table keys to put DetectedEvent.type first for sort order purposes.  table keys now de.type..de.name..re.rank
+3.1.2.07 - changed table keys to UPPERCASE to fix case sensitivity issues - see 3.1.2.07 for the rest of the feature list
+
+
+---------
+3.1.2.03 (beta)
+---------
+
+Reorganized and updated all documentation, in game and out
+Improved in-game Help
+
+New substitution variable <caster>
+
+No longer using <no target> <no target race> <no target class> and <no pet>
+If your target or pet information is unknown, those variables will go unsubstituted
+and appear as simply <target> or <pet>
+
+/ss macro newmacro
+will now automatically open the Create New... interface to "_ macro newmacro"
+
+
+---------
+3.1.2.02 (beta)
+---------
+
+Added Help to the interface options, containing the complete user's manual for maximum detail on using all of the features SpeakinSpell has to offer
+
+"/ss" now opens the interface options
+"/ss help" now opens the interface options to the Help page
+"/ss options" still works as before
+"/ss create" opens the Create New... interface
+
+Added support for CUSTOM MACROS!
+Type "/ss macro something" to create any named event you want to define yourself.
+For example, "/ss macro battlecry"
+Go to the interface options under Create New... (/ss create)
+Look for "/ss macro battlecry" in the list of detected events.
+Click on Create
+In the future, any time you type "/ss macro battlecry", SpeakinSpell will announce the event as if you just cast a spell called "/ss macro battlecry".  This "spell" event has no rank.  The target is your selected target.
+
+Added a feature to disable individual spells and events with a checkbox in each spell's options.  This way you can silence a given spell without deleting all your settings and speeches.
+
+Added "_ Event: Login" as a detected event.  You can select this in the Create New...(/ss create) interface and set up automatic login speeches
+
+Updated the readme.txt to match the updated in-game help
+
+
+---------
+3.1.2.01 (beta)
+---------
+
+Dramatically redesigned the options interface into several different pages, with preparations to add many more features.
+
+
+---------
+3.1.1.03
+---------
+
+TOC update
+
+NOTE: This is the last "simple" version which used manual text input for spell names
+		So if the more advanced features stop working in a future version of the WoW game client
+		Come back to this version and it might still work
+		
+
+---------
+3.1.1.02
+---------
+
+Added new general option to enable/disable all SpeakinSpell speeches
+
+
+---------
+3.1.1.01
+---------
+
+Added new substitution variable <spellrank>
+
+Updated the default demonstration speech when adding a new spell to demonstrate every possible variable
+"<player> is casting <spellname> (<spellrank>) on the <targetrace> <targetclass> <target|me>, and I have my pet, <pet>, by my side."
+
+Added feature to show verbose debugging messages
+
+
+---------
+3.0.3.25
+---------
+
+Added many new default resurrection speeches for all applicable classes, taken from LunarSphere
+
+
+---------
+3.0.3.24
+---------
+
+Fixed a bug with <targetrace> and <targetclass> which were causing it to use your current target's race and class instead of your spell's target's race and class
+
+Added Ritual of Refreshment (Rank 2) messages that are Manastrudeltastic!(TM) (updated to level 80 strudel)
+
+Renamed "/ss advertise" to "/ss ad" for faster typing, and enhanced this feature with randomized funny ads, to be true to the style of SpeakinSpell
+
+
+---------
+3.0.3.23
+---------
+
+Translated the new feature in Arena into German
+
+
+---------
+3.0.3.22
+---------
+
+Adds new channel selection options for Arena
+
+Adds new substitution variable feature <target|me>
+- This works like <target> unless the target is you, in which case SpeakinSpell will say "me" instead of your name
+- You can use any text you want following the | character, for example:
+- "Casting bubble on <target|myself>"
+- "Bubbled: No more hitting on <target|me>!"
+- "<target|I> am now protected by a bubble!"
+
+
+---------
+3.0.3.21
+---------
+
+The final German translation
+
+
+---------
+3.0.3.20
+---------
+
+Ongoing struggle towards perfection of the German translation and default German speeches courtesy of leXin
+
+
+---------
+3.0.3.19
+---------
+
+Fixed the bug with Ritual of Summoning always saying <no target> even though you have a target
+- This is actually a HACK to work around an apparent Blizzard bug.
+- Your current target's name will now be used in all cases if your spell's target is unknown.  In most cases this is the same thing, unless you are focus casting, or casting a spell that doesn't actually use a target.
+
+
+---------
+3.0.3.18
+---------
+
+Improvements to the German translation - countless small corrections and more random speeches
+
+
+---------
+3.0.3.17
+---------
+
+Small changes to the /ss commands
+
+Enhanced /ss advertise to support the following variations
+/ss advertise - uses a default channel as in previous versions
+/ss advertise /s - sends the advertisement to /say
+/ss advertise /p - sends the advertisement to /party chat
+/ss advertise /ra - sends the advertisement to /raid chat
+/ss advertise /w Stonarius - whispers the ad to Stonarius
+
+Extensive clarifications to tooltips and options GUI labels
+
+Added default shield wall emotes for warriors
+
+
+---------
+3.0.3.16
+---------
+
+Removed a debug message that I accidentally left in place when releasing .15
+
+Removed <target> from the default speech of a death knight's Raise Dead because it does not work on dead targets
+
+
+---------
+3.0.3.15
+---------
+
+Added new substitution variable <pet> to show the name of your combat pet
+- The name of your combat pet (not for use with vanity pets)
+- Due to a limitation of the WoW LUA API, this substitution does not work when summoning your pet. It only works after your pet has already been summoned.
+
+Added default speeches for Hunter: Bestial Wrath using the new <pet> variable
+
+
+---------
+3.0.3.14
+---------
+
+Now supports German
+
+Adds a new feature to set a cooldown on spell announcements on a per-spell basis
+
+Fixed a subtle bug related to configuring SpeakinSpell with different options for different ranks of the same spell.  In this case, the feature to avoid repeating the same message twice in a row for the same spell will now treat different ranks of the spell as different spells, if the different ranks of the spell have separate SpeakinSpell options configured.  This logic also applies to the new message cooldown feature and possibly anything else added in the future.
+
+Default data for mages will no longer include portal spells for the opposing faction (Horde vs. Alliance)
+
+Added more default messages for priests and mages
+
+Documentation updates and tooltip clarifications
+
+
+---------
+3.0.3.13
+---------
+
+Fixed bug with new frequency setting that was causing random messages to only speak 1% of the time (less if frequency was set below 100%)
+
+
+---------
+3.0.3.12
+---------
+
+Fixed bug from last release: you can't speak in raid warning when solo, so this option should not be allowed in the interface options GUI
+
+
+---------
+3.0.3.11
+---------
+
+Added a feature to adjust the frequency of announcing spells.  The default is still 100% but may now be adjusted down to as low as 1%
+
+Color-coded the chat channel selection drop-down lists in the options GUI to match the default colors of those channels in the game
+
+
+---------
+3.0.3.10
+---------
+
+Fixed LUA errors which would occur when attempting to add a new spell
+
+Verified that the new <targetrace> and <targetclass> features are working
+
+
+---------
+3.0.3.09
+---------
+
+Fixed the localized text for <targetrace> and <targetclass> (in english) but these new features are still untested
+
+
+---------
+3.0.3.08
+---------
+
+Added support for localization, in case anyone wants to volunteer to translate SpeakinSpell into another language
+
+Added support for "<C>" in random speeches, to generate the Copyright (C) symbol
+
+Added support for "<targetclass>" in random speeches
+- Your target's class, as in "Casting DI on the <targetclass>" becomes "Casting DI on the Priest"
+- If you do not have a target, this will say "<no target class>"
+
+Added support for "<targetrace>" in random speeches
+- Your target's race, as in "Casting DI on the <targetrace>" becomes "Casting DI on the Dwarf"
+- If you do not have a target, this will say "<no target race>"
+
+Added /ss url
+- shows you the official SpeakinSpell project website URL using an addon message that is visible only to you
+
+Added /ss advertise
+- advertises SpeakinSpell into SAY, PARTY, or RAID chat, including the project website URL
+
+Added default random messages for mage spells: Hot Streak and Mirror Image
+
+Default chat channels for mage portals are now set to Silent in battlegrounds where portals may not be cast
+
+Added support for Yell (/y) and Raid Warning (/rw) channels, but please try not to be too annoying about using these channels too much
+
+Fixed a LUA error which would occur when entering a new spell name using Capitalized Letters
+
+
+---------
+3.0.3.07
+---------
+
+Fixed the name of the "spell" that is cast by using a [Demonic Soulstone] = "Soulstone Resurrection" (not the name of the item)
+
+
+---------
+3.0.3.06
+---------
+
+Added missing Ace3 dependancy Libraries so that SpeakinSpell now works correctly as a stand-alone addon if it is the only one installed.
+
+Added a few more default messages for paladin spells and a new rez spell message for all applicable classes
+
+
+---------
+3.0.3.05
+---------
+
+Default messages for Portal: Dalaran no longer say Shattrath
+
+
+---------
+3.0.3.04
+---------
+
+Fixed bug with target names in messages.  The target name is now inserted as intended, instead of <no target>.
+
+
+---------
+3.0.3.03
+---------
+
+Added many more default speeches for more spells for all classes
+
+Added defaults messages for horde portals
+
+Added a feature to "[X] Report detected spell events"
+
+Added support for detecting procced aura effects such as Hot Streak
+
+
+---------
+3.0.3.02
+---------
+
+Added feature to whisper messages to friendly targets (in addition to other chat channels)
+
+Fixed bug that the selected channel for raids was incorrectly overriding the selected channel for party and solo when not in a raid
+
+Updated readme.txt with more thorough instructions
+
+added changelog.txt
+
+
+---------
+3.0.3.01
+---------
+
+First version

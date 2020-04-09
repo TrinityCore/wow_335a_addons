@@ -1,0 +1,35 @@
+﻿###############################################################################
+## Interface: 30300
+## Title: SpeakinSpell_GUI
+## Title-deDE: SpeakinSpell_GUI
+## Author: Stonarius of Antonidas
+## Version: 3.3.5.10
+## Notes: GUI module for SpeakinSpell, loads on demand
+## X-Credits: Created by Stonarius and Duerma
+## X-Category: Chat
+## Dependencies: SpeakinSpell
+## OptionalDeps: Ace3, LibDBIcon-1.0, LibBetterBlizzOptions-1.0
+## DefaultState: Enabled
+## LoadOnDemand: 1
+###############################################################################
+## X-Curse-Packaged-Version: v3.3.5.12-release
+## X-Curse-Project-Name: SpeakinSpell
+## X-Curse-Project-ID: speakinspell
+## X-Curse-Repository-ID: wow/speakinspell/mainline
+
+
+###############################################################################
+## OPTIONS GUI
+###############################################################################
+
+gui.lua
+generaloptions.lua
+currentmessages.lua
+createnew.lua
+randomsubs.lua
+help.lua
+trade.lua
+import.lua
+colors.lua
+networkgui.lua
+

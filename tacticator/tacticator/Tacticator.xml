@@ -1,0 +1,2234 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<Script file="Tacticator.lua" />
+
+	<EditBox name="TacticatorRoleEditBox" letters="80" virtual="true">
+		<Size>
+			<AbsDimension x="100" y="32"></AbsDimension>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+					<Size>
+						<AbsDimension x="75" y="32"></AbsDimension>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT">
+							<Offset>
+								<AbsDimension x="-10" y="0"></AbsDimension>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0" right="0.2" top="0" bottom="1.0"></TexCoords>
+				</Texture>
+				<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+					<Size>
+						<AbsDimension x="75" y="32"></AbsDimension>
+					</Size>
+					<Anchors>
+						<Anchor point="RIGHT">
+							<Offset>
+								<AbsDimension x="10" y="0"></AbsDimension>
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"></TexCoords>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				self:SetAutoFocus(false)
+			</OnLoad>
+			<OnEscapePressed>
+				self:ClearFocus()
+			</OnEscapePressed>
+		</Scripts>
+		<FontString inherits="ChatFontNormal"></FontString>
+	</EditBox>
+	
+	<Frame name="Tacticator" frameStrata="MEDIUM" toplevel="true" enableMouse="true" movable="true" parent="UIParent">
+		<Size>
+			<AbsDimension x="400" y="470" />
+		</Size>
+		<Anchors>
+			<Anchor point="CENTER" relativeTo="UIParent">
+				<Offset>
+					<AbsDimension x="0" y="0" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+			edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Layers>
+			<Layer>
+				<Texture name="$parentTitleBorder"
+					file="Interface\DialogFrame\UI-DialogBox-Header">
+					<Size>
+						<AbsDimension x="160" y="32" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="5" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<TexCoords left="0.2" right="0.8" top="0"
+						bottom="0.6" />
+				</Texture>
+				<FontString name="$parentTitleString"
+					font="Fonts\FRIZQT__.TTF" text="Tactics editor">
+					<Size>
+						<AbsDimension x="140" y="0" />
+					</Size>
+					<Anchors>
+						<Anchor point="TOP">
+							<Offset>
+								<AbsDimension x="0" y="-4" />
+							</Offset>
+						</Anchor>
+					</Anchors>
+					<FontHeight>
+						<AbsValue val="12" />
+					</FontHeight>
+					<Color r="1" g="0.8196079" b="0" />
+					<Shadow>
+						<Color r="0" g="0" b="0" />
+						<Offset>
+							<AbsDimension x="1" y="-1" />
+						</Offset>
+					</Shadow>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Button name="$parentDropDownInstance" inherits="UIDropDownMenuTemplate">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormalSmall" text="Tactic:">
+							<Anchors>
+								<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="21" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-30"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnShow>
+						TacticatorDropDownInstance_OnShow()
+					</OnShow>
+				</Scripts>
+			</Button>
+			<EditBox name="$parentInstance" letters="80">
+				<Size>
+					<AbsDimension x="100" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="TacticatorDropDownInstance" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="10" y="-1"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size>
+								<AbsDimension x="75" y="32"></AbsDimension>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="-10" y="0"></AbsDimension>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.2" top="0" bottom="1.0"></TexCoords>
+						</Texture>
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size>
+								<AbsDimension x="75" y="32"></AbsDimension>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="10" y="0"></AbsDimension>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"></TexCoords>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:SetAutoFocus(false)
+					</OnLoad>
+					<OnEscapePressed>
+						self:ClearFocus()
+					</OnEscapePressed>
+				</Scripts>
+				<FontString inherits="ChatFontNormal"></FontString>
+			</EditBox>
+
+<!-- Scroll container -->			
+			<Frame name="$parentScrollContainer">
+				<Size>
+					<AbsDimension x="350" y="190"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" realativeTo="$parent">
+						<Offset>
+							<AbsDimension x="15" y="-90"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background" edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+					<BackgroundInsets>
+						<AbsInset left="11" right="12" top="12" bottom="11" />
+					</BackgroundInsets>
+					<TileSize>
+						<AbsValue val="32" />
+					</TileSize>
+					<EdgeSize>
+						<AbsValue val="32" />
+					</EdgeSize>
+				</Backdrop>
+				<Frames>
+					<ScrollFrame name="$parentScrollFrame" inherits="UIPanelScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="335" y="160"></AbsDimension>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" realativeTo="$parent">
+								<Offset>
+									<AbsDimension x="10" y="-15"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<ScrollChild>
+							<EditBox name="$parentEditBox" multiLine="true" enableMouse="true">
+								<Size>
+									<AbsDimension x="325" y="180"/>
+								</Size>
+								<Scripts>
+									<OnLoad>
+										self:SetAutoFocus(false)
+									</OnLoad>
+									<OnTextChanged>
+										local scrollBar = getglobal(self:GetParent():GetName().."ScrollBar")
+										self:GetParent():UpdateScrollChildRect()
+										local min,max = scrollBar:GetMinMaxValues()
+										if (max > 0 and (self.max ~= max)) then
+											self.max = max
+											scrollBar:SetValue(max)
+										end
+									</OnTextChanged>
+									<OnEscapePressed>
+										self:ClearFocus()
+									</OnEscapePressed>
+								</Scripts>
+								<FontString inherits="ChatFontNormal"></FontString>
+							</EditBox>
+						</ScrollChild>
+						<Scripts>
+							<OnMouseUp>
+								TacticatorScrollContainerScrollFrameEditBox:SetFocus()
+							</OnMouseUp>
+						</Scripts>
+					</ScrollFrame>
+				</Frames>
+			</Frame>
+			
+<!-- Raid target icons -->
+			<Button name="$parentStar" inherits="OptionsButtonTemplate">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Text">
+							<Anchors>
+								<Anchor point="TOPRIGHT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="-2" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentScrollContainerScrollFrame" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="80" y="-12"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_1">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_RaidTarget("{star}")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTargetStar" inherits="OptionsButtonTemplate">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Mark">
+							<Anchors>
+								<Anchor point="TOPRIGHT" relativePoint="TOPLEFT">
+									<Offset>
+										<AbsDimension x="-2" y="-2"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentStar" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-2"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_1">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_TargetRaidTarget("1")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentCircle" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentStar" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_2">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_RaidTarget("{circle}")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTargetCircle" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentTargetStar" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_2">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_TargetRaidTarget("2")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentDiamond" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentCircle" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_3">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_RaidTarget("{diamond}")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTargetDiamond" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentTargetCircle" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_3">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_TargetRaidTarget("3")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTriangle" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentDiamond" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_4">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_RaidTarget("{triangle}")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTargetTriangle" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentTargetDiamond" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_4">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_TargetRaidTarget("4")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentMoon" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentTriangle" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_5">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_RaidTarget("{moon}")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTargetMoon" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentTargetTriangle" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_5">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_TargetRaidTarget(5)</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentSquare" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentMoon" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_6">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_RaidTarget("{square}")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTargetSquare" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentTargetMoon" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_6">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_TargetRaidTarget(6)</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentCross" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentSquare" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_7">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_RaidTarget("{cross}")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTargetCross" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentTargetSquare" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_7">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_TargetRaidTarget(7)</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentSkull" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentCross" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_8">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_RaidTarget("{skull}")</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTargetSkull" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="16" y="16"/>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentTargetCross" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="3" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<NormalTexture file="Interface\TargetingFrame\UI-RaidTargetingIcon_8">
+					<TexCoords left="0" right="1" top="0" bottom="1" />
+				</NormalTexture>
+				<Scripts>
+					<OnClick>Tacticator_TargetRaidTarget(8)</OnClick>
+				</Scripts>
+			</Button>
+
+<!-- Option checkboxes for channels -->			
+			<CheckButton name="$parentCheckSay" inherits="OptionsCheckButtonTemplate" checked="false">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Say">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="TacticatorScrollContainer" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-32"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnSayClick()</OnClick>
+				</Scripts>
+			</CheckButton>
+			
+			<CheckButton name="$parentCheckParty" inherits="OptionsCheckButtonTemplate" checked="false">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Party">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="TacticatorCheckSay" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-13"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnPartyClick()</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentCheckRaid" inherits="OptionsCheckButtonTemplate" checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Raid">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="TacticatorCheckParty" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-15"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnRaidClick()</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentCheckRaidWarning" inherits="OptionsCheckButtonTemplate" checked="false">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Raidwarning">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="TacticatorCheckRaid" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="100" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnRaidWarningClick()</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentCheckBattleground" inherits="OptionsCheckButtonTemplate" checked="false">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Battleground">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="TacticatorCheckParty" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="100" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnBattlegroundClick()</OnClick>
+				</Scripts>
+			</CheckButton>
+
+			<CheckButton name="$parentCheckChannelNo" inherits="OptionsCheckButtonTemplate" checked="false">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Channel">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="TacticatorCheckSay" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="100" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnChannelNoClick()</OnClick>
+				</Scripts>
+			</CheckButton>
+			<EditBox name="$parentChannelNo" letters="80">
+				<Size>
+					<AbsDimension x="100" y="32"></AbsDimension>
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="TacticatorCheckChannelNo" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="100" y="0"></AbsDimension>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Left">
+							<Size>
+								<AbsDimension x="75" y="32"></AbsDimension>
+							</Size>
+							<Anchors>
+								<Anchor point="LEFT">
+									<Offset>
+										<AbsDimension x="-10" y="0"></AbsDimension>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0" right="0.2" top="0" bottom="1.0"></TexCoords>
+						</Texture>
+						<Texture file="Interface\ChatFrame\UI-ChatInputBorder-Right">
+							<Size>
+								<AbsDimension x="75" y="32"></AbsDimension>
+							</Size>
+							<Anchors>
+								<Anchor point="RIGHT">
+									<Offset>
+										<AbsDimension x="10" y="0"></AbsDimension>
+									</Offset>
+								</Anchor>
+							</Anchors>
+							<TexCoords left="0.7" right="1.0" top="0" bottom="1.0"></TexCoords>
+						</Texture>
+					</Layer>
+				</Layers>
+				<Scripts>
+					<OnLoad>
+						self:SetAutoFocus(false)
+					</OnLoad>
+					<OnEscapePressed>
+						self:ClearFocus()
+					</OnEscapePressed>
+				</Scripts>
+				<FontString inherits="ChatFontNormal"></FontString>
+			</EditBox>
+<!-- Import from Tactic GD -->
+			<Button name="$parentTacticGD" text="GD Import" inherits="OptionsButtonTemplate" enable="false">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentCheckBattleground" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="100" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_ImportGD()</OnClick>
+				</Scripts>
+			</Button>
+<!-- Open actors window -->
+			<Button name="$parentOpenActors" text="Actors" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentCheckRaidWarning" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="100" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OpenActors()</OnClick>
+				</Scripts>
+			</Button>
+			
+<!-- Close button -->
+			<Button name="$parentButtonClose" text="Close" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="262" y="-426" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnClose()</OnClick>
+				</Scripts>
+			</Button>
+			
+<!-- Save button -->
+			<Button name="$parentButtonSave" text="Save" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="15" y="-426" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnSave()</OnClick>
+				</Scripts>
+			</Button>
+			
+<!-- Add button -->
+			<Button name="$parentButtonAdd" text="Add" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="TacticatorInstance" relativePoint="TOPRIGHT">
+						<Offset>
+							<AbsDimension x="10" y="-2" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnAdd()</OnClick>
+				</Scripts>
+			</Button>
+
+<!-- Rename button -->
+			<Button name="$parentButtonRename" text="Rename" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="TacticatorButtonAdd" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-9" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnRename()</OnClick>
+				</Scripts>
+			</Button>
+
+<!-- Delete button -->
+			<Button name="$parentButtonDelete" text="Delete" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="TacticatorScrollContainer" relativePoint="TOPLEFT">
+						<Offset>
+							<AbsDimension x="0" y="5" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnDelete()</OnClick>
+				</Scripts>
+			</Button>
+
+<!--- Send button -->
+			<Button name="$parentButtonSend" text="Send" inherits="OptionsButtonTemplate">
+				<Size>
+					<AbsDimension x="100" y="22" />
+				</Size>
+				<Anchors>
+					<Anchor point="BOTTOMLEFT" relativeTo="TacticatorButtonSave" relativePoint="BOTTOMRIGHT">
+						<Offset>
+							<AbsDimension x="20" y="0" />
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>Tacticator_OnSend()</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+		<Scripts>
+			<OnLoad>Tacticator_OnLoad(self)</OnLoad>
+			<OnMouseDown>self:StartMoving()</OnMouseDown>
+			<OnMouseUp>
+				self:StopMovingOrSizing()
+				Tacticator_SavePosition(self)
+			</OnMouseUp>
+			<OnEvent>Tacticator_OnEvent()</OnEvent>
+		</Scripts>
+	</Frame>
+
+<!-- Configuration frame, used in the options pane -->
+	<Frame name="TacticatorConfigFrame">
+		<Frames>
+			<CheckButton name="$parentRaid" inherits="OptionsCheckButtonTemplate" checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Raid">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+			</Layers	>
+				<Anchors>
+					<Anchor point="TOPLEFT">
+						<Offset>
+							<AbsDimension x="10" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+			</CheckButton>
+			<CheckButton name="$parentParty" inherits="OptionsCheckButtonTemplate" checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Party">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentRaid" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+        	</CheckButton>
+			<CheckButton name="$parentBG" inherits="OptionsCheckButtonTemplate" checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Battleground">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentParty" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+        	</CheckButton>
+			<CheckButton name="$parentPopup" inherits="OptionsCheckButtonTemplate" checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Pop up history on incoming message">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentBG" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+        	</CheckButton>
+			<CheckButton name="$parentPopupOwn" inherits="OptionsCheckButtonTemplate" checked="true">
+				<Layers>
+					<Layer level="BACKGROUND">
+						<FontString name="$parentLabel" inherits="GameFontNormal" text="Pop up history on own message">
+							<Anchors>
+								<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+									<Offset>
+										<AbsDimension x="5" y="-5"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Anchors>
+					<Anchor point="TOPLEFT" relativeTo="$parentPopup" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="0" y="-10"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+        	</CheckButton>
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                TacticatorConfigFrame_OnLoad(self)
+            </OnLoad>
+        </Scripts>
+    </Frame>
+    
+    <Frame name="TacticatorActors" frameStrata="MEDIUM" toplevel="true" enableMouse="true" movable="false" parent="UIParent" hidden="true">
+		<Anchors>
+			<Anchor point="TOPLEFT" relativeTo="Tacticator" relativePoint="TOPRIGHT">
+				<Offset>
+					<AbsDimension x="5" y="0" />
+				</Offset>
+			</Anchor>
+			<Anchor point="BOTTOMRIGHT" relativeTo="Tacticator" relativePoint="BOTTOMRIGHT">
+				<Offset>
+					<AbsDimension x="205" y="0" />
+				</Offset>
+			</Anchor>
+		</Anchors>
+		<Backdrop bgFile="Interface\DialogFrame\UI-DialogBox-Background"
+			edgeFile="Interface\DialogFrame\UI-DialogBox-Border" tile="true">
+			<BackgroundInsets>
+				<AbsInset left="11" right="12" top="12" bottom="11" />
+			</BackgroundInsets>
+			<TileSize>
+				<AbsValue val="32" />
+			</TileSize>
+			<EdgeSize>
+				<AbsValue val="32" />
+			</EdgeSize>
+		</Backdrop>
+		<Frames>
+			<Frame name="$parentTankTab" hidden="false">
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+					<Anchor point="BOTTOMRIGHT"/>
+				</Anchors>
+				<Frames>
+					<Button name="$parentButtonInsertT1" text="T1" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="-13" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("T1")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentT1" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="35" y="-10"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyT1" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="140" y="-13" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("TankTabT1")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertT2" text="T2" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertT1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("T2")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentT2" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentT1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyT2" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyT1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("TankTabT2")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertT3" text="T3" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertT2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("T3")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentT3" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentT2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyT3" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyT2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("TankTabT3")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertT4" text="T4" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertT3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("T4")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentT4" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentT3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyT4" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyT3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("TankTabT4")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertT5" text="T5" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertT4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("T5")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentT5" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentT4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyT5" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyT4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("TankTabT5")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertT6" text="T6" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertT5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("T6")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentT6" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentT5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyT6" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyT5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("TankTabT6")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertT7" text="T7" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertT6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("T7")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentT7" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentT6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyT7" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyT6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("TankTabT7")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertT8" text="T8" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertT7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("T8")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentT8" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentT7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyT8" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyT7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("TankTabT8")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertT9" text="T9" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertT8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("T9")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentT9" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentT8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyT9" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyT8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("TankTabT9")</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+
+			<Frame name="$parentHealerTab" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+					<Anchor point="BOTTOMRIGHT"/>
+				</Anchors>
+				<Frames>
+					<Button name="$parentButtonInsertH1" text="H1" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="-13" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("H1")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentH1" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="35" y="-10"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyH1" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="140" y="-13" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("HealerTabH1")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertH2" text="H2" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertH1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("H2")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentH2" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentH1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyH2" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyH1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("HealerTabH2")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertH3" text="H3" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertH2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("H3")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentH3" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentH2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyH3" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyH2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("HealerTabH3")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertH4" text="H4" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertH3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("H4")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentH4" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentH3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyH4" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyH3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("HealerTabH4")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertH5" text="H5" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertH4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("H5")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentH5" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentH4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyH5" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyH4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("HealerTabH5")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertH6" text="H6" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertH5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("H6")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentH6" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentH5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyH6" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyH5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("HealerTabH6")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertH7" text="H7" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertH6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("H7")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentH7" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentH6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyH7" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyH6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("HealerTabH7")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertH8" text="H8" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertH7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("H8")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentH8" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentH7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyH8" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyH7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("HealerTabH8")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertH9" text="H9" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertH8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("H9")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentH9" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentH8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyH9" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyH8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("HealerTabH9")</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+
+			<Frame name="$parentDPSTab" hidden="true">
+				<Anchors>
+					<Anchor point="TOPLEFT"/>
+					<Anchor point="BOTTOMRIGHT"/>
+				</Anchors>
+				<Frames>
+					<Button name="$parentButtonInsertD1" text="D1" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="10" y="-13" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("D1")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentD1" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="35" y="-10"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyD1" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parent" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="140" y="-13" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("DPSTabD1")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertD2" text="D2" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertD1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("D2")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentD2" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentD1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyD2" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyD1" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("DPSTabD2")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertD3" text="D3" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertD2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("D3")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentD3" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentD2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyD3" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyD2" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("DPSTabD3")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertD4" text="D4" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertD3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("D4")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentD4" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentD3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyD4" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyD3" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("DPSTabD4")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertD5" text="D5" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertD4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("D5")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentD5" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentD4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyD5" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyD4" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("DPSTabD5")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertD6" text="D6" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertD5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("D6")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentD6" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentD5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyD6" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyD5" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("DPSTabD6")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertD7" text="D7" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertD6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("D7")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentD7" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentD6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyD7" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyD6" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("DPSTabD7")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertD8" text="D8" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertD7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("D8")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentD8" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentD7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyD8" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyD7" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("DPSTabD8")</OnClick>
+						</Scripts>
+					</Button>
+					
+					<Button name="$parentButtonInsertD9" text="D9" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="20" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonInsertD8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorInsert("D9")</OnClick>
+						</Scripts>
+					</Button>
+					<EditBox name="$parentD9" inherits="TacticatorRoleEditBox">
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentD8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-5"></AbsDimension>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</EditBox>
+					<Button name="$parentButtonCopyD9" text="Copy" inherits="OptionsButtonTemplate">
+						<Size>
+							<AbsDimension x="50" y="20" />
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT" relativeTo="$parentButtonCopyD8" relativePoint="BOTTOMLEFT">
+								<Offset>
+									<AbsDimension x="0" y="-17" />
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>Tacticator_ActorCopy("DPSTabD9")</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+
+			<Button name="$parentTabTank" inherits="CharacterFrameTabButtonTemplate" id="1" text="Tanks">
+				<Anchors>
+					<Anchor point="CENTER" relativePoint="BOTTOMLEFT">
+						<Offset>
+							<AbsDimension x="40" y="-8"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						TacticatorActorsTankTab:Show()
+						TacticatorActorsHealerTab:Hide()
+						TacticatorActorsDPSTab:Hide()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTabHealer" inherits="CharacterFrameTabButtonTemplate" id="2" text="Healers">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentTabTank" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="-16" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						TacticatorActorsTankTab:Hide()
+						TacticatorActorsHealerTab:Show()
+						TacticatorActorsDPSTab:Hide()
+					</OnClick>
+				</Scripts>
+			</Button>
+			<Button name="$parentTabDPS" inherits="CharacterFrameTabButtonTemplate" id="3" text="DPSers">
+				<Anchors>
+					<Anchor point="LEFT" relativeTo="$parentTabHealer" relativePoint="RIGHT">
+						<Offset>
+							<AbsDimension x="-16" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<Scripts>
+					<OnClick>
+						TacticatorActorsTankTab:Hide()
+						TacticatorActorsHealerTab:Hide()
+						TacticatorActorsDPSTab:Show()
+					</OnClick>
+				</Scripts>
+			</Button>
+		</Frames>
+    </Frame>
+</Ui>
