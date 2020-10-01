@@ -1,0 +1,5 @@
+## Interface: 30300
+## Title: idTip
+## Notes: Adds SpellIDs, ItemIDs and NPC IDs to the various tooltips ingame.
+## Author: Silverwind (Edited by Natnat).
+core.lua
