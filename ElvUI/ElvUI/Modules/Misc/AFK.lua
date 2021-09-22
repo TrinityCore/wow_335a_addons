@@ -1,5 +1,5 @@
 local E, L, V, P, G = unpack(select(2, ...)) --Import: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
-local AFK = E:GetModule("AFK")
+local mod = E:GetModule("AFK")
 local CH = E:GetModule("Chat")
 
 --Lua functions
@@ -29,9 +29,8 @@ local SetCVar = SetCVar
 local UnitCastingInfo = UnitCastingInfo
 local UnitIsAFK = UnitIsAFK
 
-local AFKstr = _G.AFK
+local AFK, DND = AFK, DND
 local CHAT_BN_CONVERSATION_GET_LINK = CHAT_BN_CONVERSATION_GET_LINK
-local DND = DND
 local MAX_WOW_CHAT_CHANNELS = MAX_WOW_CHAT_CHANNELS
 local RAID_CLASS_COLORS = RAID_CLASS_COLORS
 
@@ -50,7 +49,7 @@ if E.isMacClient then
 	printKeys[_G["KEY_PRINTSCREEN_MAC"]] = true
 end
 
-function AFK:UpdateTimer()
+function mod:UpdateTimer()
 	local time = GetTime() - self.startTime
 	self.AFKMode.bottom.time:SetFormattedText("%02d:%02d", floor(time / 60), time % 60)
 end
@@ -76,7 +75,7 @@ local function OnAnimFinished(self)
 	end
 end
 
-function AFK:SetAFK(status)
+function mod:SetAFK(status)
 	if status and not self.isAFK then
 		if InspectFrame then
 			InspectFrame:Hide()
@@ -134,7 +133,7 @@ function AFK:SetAFK(status)
 	end
 end
 
-function AFK:OnEvent(event, ...)
+function mod:OnEvent(event, ...)
 	if event == "PLAYER_REGEN_DISABLED" or event == "LFG_PROPOSAL_SHOW" or event == "UPDATE_BATTLEFIELD_STATUS" then
 		if event == "UPDATE_BATTLEFIELD_STATUS" then
 			local status = GetBattlefieldStatus(...)
@@ -168,7 +167,7 @@ function AFK:OnEvent(event, ...)
 	self:SetAFK(UnitIsAFK("player"))
 end
 
-function AFK:Toggle()
+function mod:Toggle()
 	if E.db.general.afk then
 		self:RegisterEvent("PLAYER_FLAGS_CHANGED", "OnEvent")
 		self:RegisterEvent("PLAYER_REGEN_DISABLED", "OnEvent")
@@ -192,8 +191,8 @@ local function OnKeyDown(_, key)
 	if printKeys[key] then
 		Screenshot()
 	else
-		AFK:SetAFK(false)
-		AFK:ScheduleTimer("OnEvent", 60)
+		mod:SetAFK(false)
+		mod:ScheduleTimer("OnEvent", 60)
 	end
 end
 
@@ -244,18 +243,30 @@ local function Chat_OnEvent(self, event, arg1, arg2, arg3, arg4, arg5, arg6, arg
 	local accessID = ChatHistory_GetAccessID(chatGroup, chatTarget)
 	local typeID = ChatHistory_GetAccessID(chatType, chatTarget)
 
-	if CH.db.shortChannels then
+	if E.db.chat.shortChannels then
 		body = gsub(body, "|Hchannel:(.-)|h%[(.-)%]|h", CH.ShortChannel)
 		body = gsub(body, "^(.-|h) "..L["whispers"], "%1")
-		body = gsub(body, "<"..AFKstr..">", "[|cffFF0000"..L["AFK"].."|r] ")
-		body = gsub(body, "<"..DND..">", "[|cffE7E716"..L["DND"].."|r] ")
+		body = gsub(body, "<"..AFK..">", "[|cffFF0000"..AFK.."|r] ")
+		body = gsub(body, "<"..DND..">", "[|cffE7E716"..DND.."|r] ")
 		body = gsub(body, "%[BN_CONVERSATION:", "%[".."")
+	end
+
+	if CH.db.timeStampFormat ~= "NONE" then
+		local timeStamp = BetterDate(CH.db.timeStampFormat, time())
+
+		if CH.db.useCustomTimeColor then
+			local color = CH.db.customTimeColor
+			local hexColor = E:RGBToHex(color.r, color.g, color.b)
+			body = format("%s[%s]|r %s", hexColor, timeStamp, body)
+		else
+			body = format("[%s] %s", timeStamp, body)
+		end
 	end
 
 	self:AddMessage(body, info.r, info.g, info.b, info.id, false, accessID, typeID)
 end
 
-function AFK:Initialize()
+function mod:Initialize()
 	self.AFKMode = CreateFrame("Frame", "ElvUIAFKFrame")
 	self.AFKMode:SetFrameLevel(1)
 	self.AFKMode:SetScale(UIParent:GetScale())
@@ -266,7 +277,7 @@ function AFK:Initialize()
 
 	self.AFKMode.chat = CreateFrame("ScrollingMessageFrame", "AFKChat", self.AFKMode)
 	self.AFKMode.chat:Size(500, 200)
-	self.AFKMode.chat:Point("TOPLEFT", self.AFKMode, "TOPLEFT", 4, -3)
+	self.AFKMode.chat:Point("TOPLEFT", 4, -3)
 	self.AFKMode.chat:FontTemplate()
 	self.AFKMode.chat:SetJustifyH("LEFT")
 	self.AFKMode.chat:SetMaxLines(500)
@@ -285,7 +296,7 @@ function AFK:Initialize()
 	self.AFKMode.bottom = CreateFrame("Frame", nil, self.AFKMode)
 	self.AFKMode.bottom:SetFrameLevel(0)
 	self.AFKMode.bottom:SetTemplate("Transparent")
-	self.AFKMode.bottom:Point("BOTTOM", self.AFKMode, "BOTTOM", 0, -E.Border)
+	self.AFKMode.bottom:Point("BOTTOM", 0, -E.Border)
 	self.AFKMode.bottom:Width(GetScreenWidth() + (E.Border*2))
 	self.AFKMode.bottom:Height(GetScreenHeight() * 0.1)
 
@@ -295,7 +306,7 @@ function AFK:Initialize()
 	self.AFKMode.bottom.logo:SetTexture(E.Media.Textures.Logo)
 
 	self.AFKMode.bottom.faction = self.AFKMode.bottom:CreateTexture(nil, "OVERLAY")
-	self.AFKMode.bottom.faction:Point("BOTTOMLEFT", self.AFKMode.bottom, "BOTTOMLEFT", -20, -16)
+	self.AFKMode.bottom.faction:Point("BOTTOMLEFT", -20, -16)
 	self.AFKMode.bottom.faction:SetTexture("Interface\\AddOns\\ElvUI\\media\\textures\\"..E.myfaction.."-Logo")
 	self.AFKMode.bottom.faction:Size(140)
 
@@ -319,7 +330,7 @@ function AFK:Initialize()
 	self.AFKMode.bottom.time:SetTextColor(0.7, 0.7, 0.7)
 
 	self.AFKMode.bottom.model = CreateFrame("PlayerModel", "ElvUIAFKPlayerModel", self.AFKMode.bottom)
-	self.AFKMode.bottom.model:Point("BOTTOMRIGHT", self.AFKMode.bottom, "BOTTOMRIGHT", 120, -100)
+	self.AFKMode.bottom.model:Point("BOTTOMRIGHT", 120, -100)
 	self.AFKMode.bottom.model:Size(800)
 	self.AFKMode.bottom.model:SetFacing(6)
 	self.AFKMode.bottom.model:SetUnit("player")
@@ -332,7 +343,7 @@ function AFK:Initialize()
 end
 
 local function InitializeCallback()
-	AFK:Initialize()
+	mod:Initialize()
 end
 
-E:RegisterModule(AFK:GetName(), InitializeCallback)
+E:RegisterModule(mod:GetName(), InitializeCallback)

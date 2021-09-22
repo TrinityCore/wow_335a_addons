@@ -7,7 +7,7 @@ local B = E:GetModule("Blizzard")
 local S = E:GetModule("Skins")
 
 --Lua functions
-local format, strlen, strjoin, gsub = format, strlen, strjoin, gsub
+local strlen, strjoin, gsub = strlen, strjoin, gsub
 local tonumber, floor, strsub, wipe = tonumber, floor, strsub, wipe
 --WoW API / Variables
 local CreateFrame = CreateFrame

@@ -5,11 +5,13 @@ local LSM = E.Libs.LSM
 --Lua functions
 local ipairs, next, pairs, rawget, rawset, select, setmetatable, tonumber, type, unpack, tostring = ipairs, next, pairs, rawget, rawset, select, setmetatable, tonumber, type, unpack, tostring
 local tinsert, sort, twipe = table.insert, table.sort, table.wipe
+local match = string.match
 --WoW API / Variables
 local GetInstanceInfo = GetInstanceInfo
 local GetSpellCooldown = GetSpellCooldown
 local GetSpellInfo = GetSpellInfo
 local GetTime = GetTime
+local IsResting = IsResting
 local UnitAffectingCombat = UnitAffectingCombat
 local UnitHealth = UnitHealth
 local UnitHealthMax = UnitHealthMax
@@ -17,6 +19,16 @@ local UnitPower = UnitPower
 local UnitPowerMax = UnitPowerMax
 
 mod.TriggerConditions = {
+	raidTargets = {
+		STAR = "star",
+		CIRCLE = "circle",
+		DIAMOND = "diamond",
+		TRIANGLE = "triangle",
+		MOON = "moon",
+		SQUARE = "square",
+		CROSS = "cross",
+		SKULL = "skull",
+	},
 	frameTypes = {
 		["FRIENDLY_PLAYER"] = "friendlyPlayer",
 		["FRIENDLY_NPC"] = "friendlyNPC",
@@ -35,8 +47,180 @@ mod.TriggerConditions = {
 		-- raids
 		[14] = "normal",
 		[15] = "heroic",
+	},
+	totems = {},
+	uniqueUnits = {}
+}
+
+local totemTypes = {
+	air = { -- Air Totems
+		[8177] = "a1",	-- Grounding Totem
+		[10595] = "a2",	-- Nature Resistance Totem I
+		[10600] = "a2",	-- Nature Resistance Totem II
+		[10601] = "a2",	-- Nature Resistance Totem III
+		[25574] = "a2",	-- Nature Resistance Totem IV
+		[58746] = "a2",	-- Nature Resistance Totem V
+		[58749] = "a2",	-- Nature Resistance Totem VI
+		[6495] = "a3",	-- Sentry Totem
+		[8512] = "a4",	-- Windfury Totem
+		[3738] = "a5",	-- Wrath of Air Totem
+	},
+	earth = { -- Earth Totems
+		[2062] = "e1",	-- Earth Elemental Totem
+		[2484] = "e2",	-- Earthbind Totem
+		[5730] = "e3",	-- Stoneclaw Totem I
+		[6390] = "e3",	-- Stoneclaw Totem II
+		[6391] = "e3",	-- Stoneclaw Totem III
+		[6392] = "e3",	-- Stoneclaw Totem IV
+		[10427] = "e3",	-- Stoneclaw Totem V
+		[10428] = "e3",	-- Stoneclaw Totem VI
+		[25525] = "e3",	-- Stoneclaw Totem VII
+		[58580] = "e3",	-- Stoneclaw Totem VIII
+		[58581] = "e3",	-- Stoneclaw Totem IX
+		[58582] = "e3",	-- Stoneclaw Totem X
+		[8071] = "e4",	-- Stoneskin Totem I -- Faction Champs
+		[8154] = "e4",	-- Stoneskin Totem II
+		[8155] = "e4",	-- Stoneskin Totem III
+		[10406] = "e4",	-- Stoneskin Totem IV
+		[10407] = "e4",	-- Stoneskin Totem V
+		[10408] = "e4",	-- Stoneskin Totem VI
+		[25508] = "e4",	-- Stoneskin Totem VII
+		[25509] = "e4",	-- Stoneskin Totem VIII
+		[58751] = "e4",	-- Stoneskin Totem IX
+		[58753] = "e4",	-- Stoneskin Totem X
+		[8075] = "e5",	-- Strength of Earth Totem I -- Faction Champs
+		[8160] = "e5",	-- Strength of Earth Totem II
+		[8161] = "e5",	-- Strength of Earth Totem III
+		[10442] = "e5",	-- Strength of Earth Totem IV
+		[25361] = "e5",	-- Strength of Earth Totem V
+		[25528] = "e5",	-- Strength of Earth Totem VI
+		[57622] = "e5",	-- Strength of Earth Totem VII
+		[58643] = "e5",	-- Strength of Earth Totem VIII
+		[8143] = "e6",	-- Tremor Totem
+	},
+	fire = { -- Fire Totems
+		[2894] = "f1",	-- Fire Elemental Totem
+		[8227] = "f2",	-- Flametongue Totem I -- Faction Champs
+		[8249] = "f2",	-- Flametongue Totem II
+		[10526] = "f2",	-- Flametongue Totem III
+		[16387] = "f2",	-- Flametongue Totem IV
+		[25557] = "f2",	-- Flametongue Totem V
+		[58649] = "f2",	-- Flametongue Totem VI
+		[58652] = "f2",	-- Flametongue Totem VII
+		[58656] = "f2",	-- Flametongue Totem VIII
+		[8181] = "f3",	-- Frost Resistance Totem I
+		[10478] = "f3",	-- Frost Resistance Totem II
+		[10479] = "f3",	-- Frost Resistance Totem III
+		[25560] = "f3",	-- Frost Resistance Totem IV
+		[58741] = "f3",	-- Frost Resistance Totem V
+		[58745] = "f3",	-- Frost Resistance Totem VI
+		[8190] = "f4",	-- Magma Totem I
+		[10585] = "f4",	-- Magma Totem II
+		[10586] = "f4",	-- Magma Totem III
+		[10587] = "f4",	-- Magma Totem IV
+		[25552] = "f4",	-- Magma Totem V
+		[58731] = "f4",	-- Magma Totem VI
+		[58734] = "f4",	-- Magma Totem VII
+		[3599] = "f5",	-- Searing Totem I -- Faction Champs
+		[6363] = "f5",	-- Searing Totem II
+		[6364] = "f5",	-- Searing Totem III
+		[6365] = "f5",	-- Searing Totem IV
+		[10437] = "f5",	-- Searing Totem V
+		[10438] = "f5",	-- Searing Totem VI
+		[25533] = "f5",	-- Searing Totem VII
+		[58699] = "f5",	-- Searing Totem VIII
+		[58703] = "f5",	-- Searing Totem IX
+		[58704] = "f5",	-- Searing Totem X
+		[30706] = "f6",	-- Totem of Wrath I
+		[57720] = "f6",	-- Totem of Wrath II
+		[57721] = "f6",	-- Totem of Wrath III
+		[57722] = "f6",	-- Totem of Wrath IV
+	},
+	water = { -- Water Totems
+		[8170] = "w1",	-- Cleansing Totem
+		[8184] = "w2",	-- Fire Resistance Totem I
+		[10537] = "w2",	-- Fire Resistance Totem II
+		[10538] = "w2",	-- Fire Resistance Totem III
+		[25563] = "w2",	-- Fire Resistance Totem IV
+		[58737] = "w2",	-- Fire Resistance Totem V
+		[58739] = "w2",	-- Fire Resistance Totem VI
+		[5394] = "w3",	-- Healing Stream Totem I -- Faction Champs
+		[6375] = "w3",	-- Healing Stream Totem II
+		[6377] = "w3",	-- Healing Stream Totem III
+		[10462] = "w3",	-- Healing Stream Totem IV
+		[10463] = "w3",	-- Healing Stream Totem V
+		[25567] = "w3",	-- Healing Stream Totem VI
+		[58755] = "w3",	-- Healing Stream Totem VII
+		[58756] = "w3",	-- Healing Stream Totem VIII
+		[58757] = "w3",	-- Healing Stream Totem IX
+		[5675] = "w4",	-- Mana Spring Totem I
+		[10495] = "w4",	-- Mana Spring Totem II
+		[10496] = "w4",	-- Mana Spring Totem III
+		[10497] = "w4",	-- Mana Spring Totem IV
+		[25570] = "w4",	-- Mana Spring Totem V
+		[58771] = "w4",	-- Mana Spring Totem VI
+		[58773] = "w4",	-- Mana Spring Totem VII
+		[58774] = "w4",	-- Mana Spring Totem VIII
+		[16190] = "w5"	-- Mana Tide Totem
+	},
+	other = {
+		[724] = "o1"	-- Lightwell
 	}
 }
+
+local totemRanks = {
+	"",
+	" II",
+	" III",
+	" IV",
+	" V",
+	" VI",
+	" VII",
+	" VIII",
+	" IX",
+	" X"
+}
+
+local uniqueUnitTypes = {
+	pvp = {
+		[34433] = "u1", -- Shadow Fiend
+	},
+	pve = {
+		[72052] = "u2", -- Kinetic Bomb
+	}
+}
+
+G.nameplates.uniqueUnitTypes = uniqueUnitTypes
+
+for unitType, units in pairs(uniqueUnitTypes) do
+	for spellID, unit in pairs(units) do
+		local name, _, texture = GetSpellInfo(spellID)
+		mod.TriggerConditions.uniqueUnits[unit] = {name, unitType, texture}
+		mod.UniqueUnits[name] = unit
+	end
+end
+
+for totemSchool, totems in pairs(totemTypes) do
+	for spellID, totemID in pairs(totems) do
+		local totemName, rank, texture = GetSpellInfo(spellID)
+
+		if not mod.TriggerConditions.totems[totemID] then
+			mod.TriggerConditions.totems[totemID] = {totemName, totemSchool, texture}
+		end
+
+		rank = totemRanks[tonumber(match(rank, ("%d+")))]
+
+		if rank then
+			totemName = totemName..rank
+		else
+			totemName = totemName
+		end
+
+		mod.Totems[totemName] = totemID
+	end
+end
+
+G.nameplates.totemTypes = totemTypes
 
 function mod:StyleFilterAuraCheck(names, icons, mustHaveAll, missing, minTimeLeft, maxTimeLeft)
 	local total, count = 0, 0
@@ -86,7 +270,7 @@ function mod:StyleFilterCooldownCheck(names, mustHaveAll)
 	end
 end
 
-function mod:StyleFilterSetChanges(frame, actions, HealthColorChanged, BorderChanged, FlashingHealth, TextureChanged, ScaleChanged, FrameLevelChanged, AlphaChanged, NameColorChanged, NameOnlyChanged, VisibilityChanged)
+function mod:StyleFilterSetChanges(frame, actions, HealthColorChanged, BorderChanged, FlashingHealth, TextureChanged, ScaleChanged, FrameLevelChanged, AlphaChanged, NameColorChanged, NameOnlyChanged, VisibilityChanged, IconChanged, IconOnlyChanged)
 	if VisibilityChanged then
 		frame.StyleChanged = true
 		frame.VisibilityChanged = true
@@ -100,16 +284,16 @@ function mod:StyleFilterSetChanges(frame, actions, HealthColorChanged, BorderCha
 	if HealthColorChanged then
 		frame.StyleChanged = true
 		frame.HealthColorChanged = true
-		frame.HealthBar:SetStatusBarColor(actions.color.healthColor.r, actions.color.healthColor.g, actions.color.healthColor.b, actions.color.healthColor.a)
+		frame.Health:SetStatusBarColor(actions.color.healthColor.r, actions.color.healthColor.g, actions.color.healthColor.b, actions.color.healthColor.a)
 		frame.CutawayHealth:SetStatusBarColor(actions.color.healthColor.r * 1.5, actions.color.healthColor.g * 1.5, actions.color.healthColor.b * 1.5, actions.color.healthColor.a)
 	end
 	if BorderChanged then --Lets lock this to the values we want (needed for when the media border color changes)
 		frame.StyleChanged = true
 		frame.BorderChanged = true
-		frame.HealthBar.bordertop:SetTexture(actions.color.borderColor.r, actions.color.borderColor.g, actions.color.borderColor.b, actions.color.borderColor.a)
-		frame.HealthBar.borderbottom:SetTexture(actions.color.borderColor.r, actions.color.borderColor.g, actions.color.borderColor.b, actions.color.borderColor.a)
-		frame.HealthBar.borderleft:SetTexture(actions.color.borderColor.r, actions.color.borderColor.g, actions.color.borderColor.b, actions.color.borderColor.a)
-		frame.HealthBar.borderright:SetTexture(actions.color.borderColor.r, actions.color.borderColor.g, actions.color.borderColor.b, actions.color.borderColor.a)
+		frame.Health.bordertop:SetTexture(actions.color.borderColor.r, actions.color.borderColor.g, actions.color.borderColor.b, actions.color.borderColor.a)
+		frame.Health.borderbottom:SetTexture(actions.color.borderColor.r, actions.color.borderColor.g, actions.color.borderColor.b, actions.color.borderColor.a)
+		frame.Health.borderleft:SetTexture(actions.color.borderColor.r, actions.color.borderColor.g, actions.color.borderColor.b, actions.color.borderColor.a)
+		frame.Health.borderright:SetTexture(actions.color.borderColor.r, actions.color.borderColor.g, actions.color.borderColor.b, actions.color.borderColor.a)
 	end
 	if FlashingHealth then
 		frame.StyleChanged = true
@@ -126,8 +310,8 @@ function mod:StyleFilterSetChanges(frame, actions, HealthColorChanged, BorderCha
 		frame.StyleChanged = true
 		frame.TextureChanged = true
 		local tex = LSM:Fetch("statusbar", actions.texture.texture)
-		frame.Highlight.texture:SetTexture(tex)
-		frame.HealthBar:SetStatusBarTexture(tex)
+		frame.Health.Highlight:SetTexture(tex)
+		frame.Health:SetStatusBarTexture(tex)
 		if FlashingHealth then
 			frame.FlashTexture:SetTexture(tex)
 		end
@@ -145,7 +329,7 @@ function mod:StyleFilterSetChanges(frame, actions, HealthColorChanged, BorderCha
 	if AlphaChanged then
 		frame.StyleChanged = true
 		frame.AlphaChanged = true
-		frame:SetAlpha(actions.alpha / 100)
+		mod:PlateFade(frame, mod.db.fadeIn and 1 or 0, frame:GetAlpha(), actions.alpha / 100)
 	end
 	if NameColorChanged then
 		frame.StyleChanged = true
@@ -163,26 +347,53 @@ function mod:StyleFilterSetChanges(frame, actions, HealthColorChanged, BorderCha
 		frame.NameOnlyChanged = true
 		--hide the bars
 		if frame.CastBar:IsShown() then frame.CastBar:Hide() end
-		if frame.HealthBar:IsShown() then frame.HealthBar:Hide() end
+		if frame.Health:IsShown() then frame.Health:Hide() end
 		--hide the target indicator
-		mod:UpdateElement_Glow(frame)
+		mod:Configure_Glow(frame)
+		mod:Update_Glow(frame)
 		--position the name and update its color
 		frame.Name:ClearAllPoints()
 		frame.Name:SetJustifyH("CENTER")
-		frame.Name:SetPoint("TOP", frame, "CENTER")
-		frame.Level:ClearAllPoints()
-		frame.Level:SetPoint("LEFT", frame.Name, "RIGHT")
-		frame.Level:SetJustifyH("LEFT")
-		if not NameColorChanged then
-			mod:UpdateElement_Name(frame, true)
+		frame.Name:SetPoint("TOP", frame)
+		frame.Name:SetParent(frame)
+		if mod.db.units[frame.UnitType].level.enable then
+			frame.Level:ClearAllPoints()
+			frame.Level:SetPoint("LEFT", frame.Name, "RIGHT")
+			frame.Level:SetJustifyH("LEFT")
+			frame.Level:SetParent(frame)
+			frame.Level:SetFormattedText(" [%s]", mod:UnitLevel(frame))
 		end
+		if not NameColorChanged or not IconOnlyChanged then
+			mod:Update_Name(frame, true)
+		end
+	end
+	if IconChanged and (mod.Totems[frame.UnitName] or mod.UniqueUnits[frame.UnitName]) then
+		frame.StyleChanged = true
+		frame.IconChanged = true
+		mod:Configure_IconFrame(frame)
+		mod:Update_IconFrame(frame)
+	end
+	if IconOnlyChanged and (mod.Totems[frame.UnitName] or mod.UniqueUnits[frame.UnitName]) then
+		frame.StyleChanged = true
+		frame.IconOnlyChanged = true
+		mod:Configure_IconFrame(frame, true)
+		mod:Update_IconFrame(frame)
+		if frame.CastBar:IsShown() then frame.CastBar:Hide() end
+		if frame.Health:IsShown() then frame.Health:Hide() end
+		frame.Level:SetText()
+		frame.Name:SetText()
+		mod:Configure_Glow(frame)
+		mod:Update_Glow(frame)
+		mod:Update_RaidIcon(frame)
+		mod:Configure_NameOnlyGlow(frame)
 	end
 end
 
-function mod:StyleFilterClearChanges(frame, HealthColorChanged, BorderChanged, FlashingHealth, TextureChanged, ScaleChanged, FrameLevelChanged, AlphaChanged, NameColorChanged, NameOnlyChanged, VisibilityChanged)
+function mod:StyleFilterClearChanges(frame, HealthColorChanged, BorderChanged, FlashingHealth, TextureChanged, ScaleChanged, FrameLevelChanged, AlphaChanged, NameColorChanged, NameOnlyChanged, VisibilityChanged, IconChanged, IconOnlyChanged)
 	frame.StyleChanged = nil
 	if VisibilityChanged then
 		frame.VisibilityChanged = nil
+		mod:PlateFade(frame, mod.db.fadeIn and 1 or 0, 0, 1) -- fade those back in so it looks clean
 		frame:Show()
 	end
 	if FrameLevelChanged then
@@ -190,16 +401,16 @@ function mod:StyleFilterClearChanges(frame, HealthColorChanged, BorderChanged, F
 	end
 	if HealthColorChanged then
 		frame.HealthColorChanged = nil
-		frame.HealthBar:SetStatusBarColor(frame.HealthBar.r, frame.HealthBar.g, frame.HealthBar.b)
-		frame.CutawayHealth:SetStatusBarColor(frame.HealthBar.r * 1.5, frame.HealthBar.g * 1.5, frame.HealthBar.b * 1.5, 1)
+		frame.Health:SetStatusBarColor(frame.Health.r, frame.Health.g, frame.Health.b)
+		frame.CutawayHealth:SetStatusBarColor(frame.Health.r * 1.5, frame.Health.g * 1.5, frame.Health.b * 1.5, 1)
 	end
 	if BorderChanged then
 		frame.BorderChanged = nil
 		local r, g, b = unpack(E.media.bordercolor)
-		frame.HealthBar.bordertop:SetTexture(r, g, b)
-		frame.HealthBar.borderbottom:SetTexture(r, g, b)
-		frame.HealthBar.borderleft:SetTexture(r, g, b)
-		frame.HealthBar.borderright:SetTexture(r, g, b)
+		frame.Health.bordertop:SetTexture(r, g, b)
+		frame.Health.borderbottom:SetTexture(r, g, b)
+		frame.Health.borderleft:SetTexture(r, g, b)
+		frame.Health.borderright:SetTexture(r, g, b)
 	end
 	if FlashingHealth then
 		frame.FlashingHealth = nil
@@ -209,8 +420,8 @@ function mod:StyleFilterClearChanges(frame, HealthColorChanged, BorderChanged, F
 	if TextureChanged then
 		frame.TextureChanged = nil
 		local tex = LSM:Fetch("statusbar", mod.db.statusbar)
-		frame.Highlight.texture:SetTexture(tex)
-		frame.HealthBar:SetStatusBarTexture(tex)
+		frame.Health.Highlight:SetTexture(tex)
+		frame.Health:SetStatusBarTexture(tex)
 	end
 	if ScaleChanged then
 		frame.ScaleChanged = nil
@@ -223,11 +434,7 @@ function mod:StyleFilterClearChanges(frame, HealthColorChanged, BorderChanged, F
 	end
 	if AlphaChanged then
 		frame.AlphaChanged = nil
-		if frame.isTarget then
-			frame:SetAlpha(1)
-		else
-			frame:SetAlpha(1 - mod.db.nonTargetTransparency)
-		end
+		mod:PlateFade(frame, mod.db.fadeIn and 1 or 0, (frame.FadeObject and frame.FadeObject.endAlpha) or 0.5, 1)
 	end
 	if NameColorChanged then
 		frame.NameColorChanged = nil
@@ -236,17 +443,51 @@ function mod:StyleFilterClearChanges(frame, HealthColorChanged, BorderChanged, F
 	if NameOnlyChanged then
 		frame.NameOnlyChanged = nil
 		frame.TopLevelFrame = nil --We can safely clear this here because it is set upon `UpdateElement_Auras` if needed
-		if mod.db.units[frame.UnitType].healthbar.enable or (frame.isTarget and mod.db.alwaysShowTargetHealth) then
-			frame.HealthBar:Show()
-			mod:UpdateElement_Glow(frame)
+		if mod.db.units[frame.UnitType].health.enable or (frame.isTarget and mod.db.alwaysShowTargetHealth) then
+			frame.Health:Show()
+			mod:Configure_Glow(frame)
+			mod:Update_Glow(frame)
 		end
-		if mod.db.units[frame.UnitType].showName then
-			mod:ConfigureElement_Level(frame)
-			mod:ConfigureElement_Name(frame)
-			mod:UpdateElement_Name(frame)
+		frame.Name:ClearAllPoints()
+		frame.Level:ClearAllPoints()
+		if mod.db.units[frame.UnitType].name.enable then
+			mod:Update_Name(frame)
+			frame.Name:SetTextColor(frame.Name.r, frame.Name.g, frame.Name.b)
 		else
 			frame.Name:SetText()
 		end
+		if mod.db.units[frame.UnitType].level.enable then
+			mod:Update_Level(frame)
+		end
+	end
+	if IconChanged then
+		frame.IconChanged = nil
+		frame.IconFrame:Hide()
+	end
+	if IconOnlyChanged then
+		frame.IconOnlyChanged = nil
+		mod:Update_IconFrame(frame)
+		if mod.db.units[frame.UnitType].iconFrame and mod.db.units[frame.UnitType].iconFrame.enable then
+			mod:Configure_IconFrame(frame)
+		end
+		if mod.db.units[frame.UnitType].health.enable or (frame.isTarget and mod.db.alwaysShowTargetHealth) then
+			frame.Health:Show()
+			mod:Configure_Glow(frame)
+			mod:Update_Glow(frame)
+		end
+		frame.Name:ClearAllPoints()
+		frame.Level:ClearAllPoints()
+		if mod.db.units[frame.UnitType].name.enable then
+			mod:Update_Name(frame)
+			frame.Name:SetTextColor(frame.Name.r, frame.Name.g, frame.Name.b)
+		else
+			frame.Name:SetText()
+		end
+		if mod.db.units[frame.UnitType].level.enable then
+			mod:Update_Level(frame)
+		end
+		mod:Update_RaidIcon(frame)
+		mod:Configure_NameOnlyGlow(frame)
 	end
 end
 
@@ -283,10 +524,15 @@ function mod:StyleFilterConditionCheck(frame, filter, trigger)
 		if underPowerThreshold or overPowerThreshold then passed = true else return end
 	end
 
-	-- Unit Combat
-	if trigger.inCombatUnit or trigger.outOfCombatUnit then
+	-- Require Target
+	if trigger.requireTarget then
+		if UnitExists("target") then passed = true else return end
+	end
+
+	-- Player Combat
+	if trigger.inCombat or trigger.outOfCombat then
 		local inCombat = UnitAffectingCombat("player")
-		if (trigger.inCombatUnit and inCombat) or (trigger.outOfCombatUnit and not inCombat) then passed = true else return end
+		if (trigger.inCombat and inCombat) or (trigger.outOfCombat and not inCombat) then passed = true else return end
 	end
 
 	-- Player Target
@@ -313,6 +559,8 @@ function mod:StyleFilterConditionCheck(frame, filter, trigger)
 				end
 			end
 		else return end
+	elseif trigger.instanceType.sanctuary then
+		if UnitIsPVPSanctuary("player") then passed = true else return end
 	end
 
 	-- Level
@@ -327,6 +575,11 @@ function mod:StyleFilterConditionCheck(frame, filter, trigger)
 		if curLevel or minLevel or maxLevel or matchMyLevel then passed = true else return end
 	end
 
+	-- Resting
+	if trigger.isResting then
+		if IsResting() then passed = true else return end
+	end
+
 	-- Unit Type
 	if trigger.nameplateType and trigger.nameplateType.enable then
 		if trigger.nameplateType[mod.TriggerConditions.frameTypes[frame.UnitType]] then passed = true else return end
@@ -336,6 +589,11 @@ function mod:StyleFilterConditionCheck(frame, filter, trigger)
 	if trigger.reactionType and trigger.reactionType.enable then
 		local reaction = frame.UnitReaction
 		if ((reaction == 1 or reaction == 2 or reaction == 3) and trigger.reactionType.hostile) or (reaction == 4 and trigger.reactionType.neutral) or (reaction == 5 and trigger.reactionType.friendly) then passed = true else return end
+	end
+
+	-- Raid Target
+	if trigger.raidTarget.star or trigger.raidTarget.circle or trigger.raidTarget.diamond or trigger.raidTarget.triangle or trigger.raidTarget.moon or trigger.raidTarget.square or trigger.raidTarget.cross or trigger.raidTarget.skull then
+		if trigger.raidTarget[mod.TriggerConditions.raidTargets[frame.RaidIconType]] then passed = true else return end
 	end
 
 	-- Casting
@@ -393,6 +651,18 @@ function mod:StyleFilterConditionCheck(frame, filter, trigger)
 		end
 	end
 
+	-- Totems
+	if frame.UnitName and trigger.totems.enable then
+		local totem = mod.Totems[frame.UnitName]
+		if totem then if trigger.totems[totem] then passed = true else return end end
+	end
+
+	-- Unique Units
+	if frame.UnitName and trigger.uniqueUnits.enable then
+		local unit = mod.UniqueUnits[frame.UnitName]
+		if unit then if trigger.uniqueUnits[unit] then passed = true else return end end
+	end
+
 	-- Plugin Callback
 	if mod.StyleFilterCustomChecks then
 		for _, customCheck in pairs(mod.StyleFilterCustomChecks) do
@@ -410,12 +680,12 @@ function mod:StyleFilterConditionCheck(frame, filter, trigger)
 end
 
 function mod:StyleFilterPass(frame, actions)
-	local healthBarEnabled = (frame.UnitType and mod.db.units[frame.UnitType].healthbar.enable) or (frame.isTarget and mod.db.alwaysShowTargetHealth)
-	local healthBarShown = healthBarEnabled and frame.HealthBar:IsShown()
+	local healthBarEnabled = (frame.UnitType and mod.db.units[frame.UnitType].health.enable) or (frame.isTarget and mod.db.alwaysShowTargetHealth)
+	local healthBarShown = healthBarEnabled and frame.Health:IsShown()
 
 	mod:StyleFilterSetChanges(frame, actions,
 		(healthBarShown and actions.color and actions.color.health), --HealthColorChanged
-		(healthBarShown and actions.color and actions.color.border and frame.HealthBar.backdrop), --BorderChanged
+		(healthBarShown and actions.color and actions.color.border and frame.Health.backdrop), --BorderChanged
 		(healthBarShown and actions.flash and actions.flash.enable and frame.FlashTexture), --FlashingHealth
 		(healthBarShown and actions.texture and actions.texture.enable), --TextureChanged
 		(healthBarShown and actions.scale and actions.scale ~= 1), --ScaleChanged
@@ -423,13 +693,15 @@ function mod:StyleFilterPass(frame, actions)
 		(actions.alpha and actions.alpha ~= -1), --AlphaChanged
 		(actions.color and actions.color.name), --NameColorChanged
 		(actions.nameOnly), --NameOnlyChanged
-		(actions.hide) --VisibilityChanged
+		(actions.hide), --VisibilityChanged
+		(actions.icon), --IconChanged
+		(actions.iconOnly) --IconOnlyChanged
 	)
 end
 
 function mod:StyleFilterClear(frame)
 	if frame and frame.StyleChanged then
-		mod:StyleFilterClearChanges(frame, frame.HealthColorChanged, frame.BorderChanged, frame.FlashingHealth, frame.TextureChanged, frame.ScaleChanged, frame.FrameLevelChanged, frame.AlphaChanged, frame.NameColorChanged, frame.NameOnlyChanged, frame.VisibilityChanged)
+		mod:StyleFilterClearChanges(frame, frame.HealthColorChanged, frame.BorderChanged, frame.FlashingHealth, frame.TextureChanged, frame.ScaleChanged, frame.FrameLevelChanged, frame.AlphaChanged, frame.NameColorChanged, frame.NameOnlyChanged, frame.VisibilityChanged, frame.IconChanged, frame.IconOnlyChanged)
 	end
 end
 
@@ -473,8 +745,12 @@ function mod:StyleFilterConfigure()
 					end
 				end
 
+				if t.raidTarget and (t.raidTarget.star or t.raidTarget.circle or t.raidTarget.diamond or t.raidTarget.triangle or t.raidTarget.moon or t.raidTarget.square or t.raidTarget.cross or t.raidTarget.skull) then
+					mod.StyleFilterTriggerEvents.RAID_TARGET_UPDATE = 1
+				end
+
 				-- real events
-				mod.StyleFilterTriggerEvents.PLAYER_TARGET_CHANGED = 1
+				mod.StyleFilterTriggerEvents.PLAYER_TARGET_CHANGED = true
 
 				if t.healthThreshold then
 					mod.StyleFilterTriggerEvents.UNIT_HEALTH = 1
@@ -497,9 +773,13 @@ function mod:StyleFilterConfigure()
 							break
 				end end end
 
-				if t.inCombat or t.outOfCombat or t.inCombatUnit or t.outOfCombatUnit then
+				if t.inCombat or t.outOfCombat then
 					mod.StyleFilterTriggerEvents.PLAYER_REGEN_DISABLED = true
 					mod.StyleFilterTriggerEvents.PLAYER_REGEN_ENABLED = true
+				end
+
+				if t.isResting then
+					mod.StyleFilterTriggerEvents.PLAYER_UPDATE_RESTING = 1
 				end
 
 				if t.cooldowns and t.cooldowns.names and next(t.cooldowns.names) then
@@ -533,18 +813,19 @@ function mod:StyleFilterConfigure()
 	end
 end
 
-function mod:UpdateElement_Filters(frame, event)
-	if not mod.StyleFilterTriggerEvents[event] then return end
-
-	--[[if mod.StyleFilterTriggerEvents[event] == true then
+function mod:StyleFilterUpdate(frame, event)
+	local hasEvent = mod.StyleFilterTriggerEvents[event]
+	if not hasEvent then
+		return
+	elseif hasEvent == true then -- skip on 1 or 0
 		if not frame.StyleFilterWaitTime then
 			frame.StyleFilterWaitTime = GetTime()
 		elseif GetTime() > (frame.StyleFilterWaitTime + 0.1) then
 			frame.StyleFilterWaitTime = nil
 		else
-			return --block calls faster than 0.1 second
+			return -- block calls faster than 0.1 second
 		end
-	end]]
+	end
 
 	mod:StyleFilterClear(frame)
 

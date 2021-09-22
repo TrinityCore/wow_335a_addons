@@ -6,45 +6,56 @@ local _G = _G
 local select = select
 --WoW API / Variables
 
-local function LoadSkin()
+S:AddCallback("Skin_ArenaRegistrar", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.arenaregistrar then return end
 
-	ArenaRegistrarFrame:CreateBackdrop("Transparent")
-	ArenaRegistrarFrame.backdrop:Point("TOPLEFT", 14, -18)
-	ArenaRegistrarFrame.backdrop:Point("BOTTOMRIGHT", -30, 67)
-
 	ArenaRegistrarFrame:StripTextures(true)
+	ArenaRegistrarFrame:CreateBackdrop("Transparent")
+	ArenaRegistrarFrame.backdrop:Point("TOPLEFT", 11, -12)
+	ArenaRegistrarFrame.backdrop:Point("BOTTOMRIGHT", -32, 76)
 
-	S:HandleCloseButton(ArenaRegistrarFrameCloseButton)
+	S:SetUIPanelWindowInfo(ArenaRegistrarFrame, "width")
+	S:SetBackdropHitRect(ArenaRegistrarFrame)
+
+	S:HandleCloseButton(ArenaRegistrarFrameCloseButton, ArenaRegistrarFrame.backdrop)
 
 	ArenaRegistrarGreetingFrame:StripTextures()
+	ArenaRegistrarGreetingFrame:GetRegions():SetTextColor(1, 1, 1)
 
-	select(1, ArenaRegistrarGreetingFrame:GetRegions()):SetTextColor(1, 1, 1)
 	RegistrationText:SetTextColor(1, 1, 1)
-
-	S:HandleButton(ArenaRegistrarFrameGoodbyeButton)
-
-	local registrarButton
-	for i = 1, MAX_TEAM_BORDERS do
-		registrarButton = select(3, _G["ArenaRegistrarButton"..i]:GetRegions())
-		registrarButton:SetTextColor(1, 1, 1)
-	end
-
 	ArenaRegistrarPurchaseText:SetTextColor(1, 1, 1)
 
+	for i = 1, 6 do
+		local button = _G["ArenaRegistrarButton"..i]
+		S:HandleButtonHighlight(button)
+		select(3, button:GetRegions()):SetTextColor(1, 1, 1)
+	end
+
+	S:HandleButton(ArenaRegistrarFrameGoodbyeButton)
 	S:HandleButton(ArenaRegistrarFrameCancelButton)
 	S:HandleButton(ArenaRegistrarFramePurchaseButton)
 
 	select(6, ArenaRegistrarFrameEditBox:GetRegions()):Kill()
 	select(7, ArenaRegistrarFrameEditBox:GetRegions()):Kill()
 	S:HandleEditBox(ArenaRegistrarFrameEditBox)
+
 	ArenaRegistrarFrameEditBox:Height(18)
 
-	PVPBannerFrame:CreateBackdrop("Transparent")
-	PVPBannerFrame.backdrop:Point("TOPLEFT", 10, -12)
-	PVPBannerFrame.backdrop:Point("BOTTOMRIGHT", -33, 73)
+	ArenaRegistrarFrameGoodbyeButton:Width(80)
+	ArenaRegistrarFrameGoodbyeButton:Point("BOTTOMRIGHT", -40, 84)
+	ArenaRegistrarFrameCancelButton:Point("BOTTOMRIGHT", -40, 84)
+	ArenaRegistrarFramePurchaseButton:Point("BOTTOMLEFT", 19, 84)
 
+	-- PVP Banner
 	PVPBannerFrame:StripTextures()
+	PVPBannerFrame:CreateBackdrop("Transparent")
+	PVPBannerFrame.backdrop:Point("TOPLEFT", 11, -12)
+	PVPBannerFrame.backdrop:Point("BOTTOMRIGHT", -32, 76)
+
+	S:SetUIPanelWindowInfo(PVPBannerFrame, "width")
+	S:SetBackdropHitRect(PVPBannerFrame)
+
+	S:HandleCloseButton(PVPBannerFrameCloseButton, PVPBannerFrame.backdrop)
 
 	PVPBannerFramePortrait:Kill()
 
@@ -56,21 +67,21 @@ local function LoadSkin()
 		S:HandleNextPrevButton(_G["PVPBannerFrameCustomization"..i.."RightButton"])
 	end
 
-	local pickerButton
-	for i = 1, 3 do
-		pickerButton = _G["PVPColorPickerButton"..i]
-		S:HandleButton(pickerButton)
-		if i == 2 then
-			pickerButton:Point("TOP", PVPBannerFrameCustomization2, "BOTTOM", 0, -33)
-		elseif i == 3 then
-			pickerButton:Point("TOP", PVPBannerFrameCustomization2, "BOTTOM", 0, -59)
-		end
-	end
+	S:HandleButton(PVPColorPickerButton1)
+	S:HandleButton(PVPColorPickerButton2)
+	S:HandleButton(PVPColorPickerButton3)
 
 	S:HandleButton(PVPBannerFrameAcceptButton)
 	S:HandleButton(PVPBannerFrameCancelButton)
+	local PVPBannerFrameCancelButton2 = select(4, PVPBannerFrame:GetChildren())
+	S:HandleButton(PVPBannerFrameCancelButton2)
 
-	S:HandleCloseButton(PVPBannerFrameCloseButton)
-end
+	PVPBannerFrameCustomization1:Point("TOPLEFT", PVPBannerFrameCustomizationBorder, "TOPLEFT", 48, -50)
 
-S:AddCallback("Skin_ArenaRegistrar", LoadSkin)
+	PVPColorPickerButton1:Point("TOP", PVPBannerFrameCustomization2, "BOTTOM", 1, -7)
+	PVPColorPickerButton2:Point("TOP", PVPBannerFrameCustomization2, "BOTTOM", 1, -33)
+	PVPColorPickerButton3:Point("TOP", PVPBannerFrameCustomization2, "BOTTOM", 1, -59)
+
+	PVPBannerFrameCancelButton2:Point("CENTER", PVPBannerFrame, "TOPLEFT", 304, -417)
+	PVPBannerFrameAcceptButton:Point("CENTER", PVPBannerFrame, "TOPLEFT", 221, -417)
+end)

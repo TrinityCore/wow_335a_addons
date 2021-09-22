@@ -52,6 +52,7 @@ V.skins = {
 		enable = true
 	},
 	checkBoxSkin = true,
+	dropdownCheckBoxSkin = false,
 	parchmentRemover = {
 		enable = false,
 	},
@@ -107,7 +108,8 @@ V.skins = {
 		tutorial = true,
 		watchframe = true,
 		worldmap = true,
-		mirrorTimers = true
+		mirrorTimers = true,
+		WorldStateFrame = true
 	}
 }
 

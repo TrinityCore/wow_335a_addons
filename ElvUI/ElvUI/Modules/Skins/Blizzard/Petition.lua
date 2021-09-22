@@ -4,19 +4,22 @@ local S = E:GetModule("Skins")
 --Lua functions
 --WoW API / Variables
 
-local function LoadSkin()
+S:AddCallback("Skin_Petition", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.petition then return end
 
 	PetitionFrame:StripTextures(true)
 	PetitionFrame:CreateBackdrop("Transparent")
-	PetitionFrame.backdrop:Point("TOPLEFT", 12, -17)
-	PetitionFrame.backdrop:Point("BOTTOMRIGHT", -28, 65)
+	PetitionFrame.backdrop:Point("TOPLEFT", 11, -12)
+	PetitionFrame.backdrop:Point("BOTTOMRIGHT", -32, 76)
+
+	S:SetUIPanelWindowInfo(PetitionFrame, "width")
+	S:SetBackdropHitRect(PetitionFrame)
 
 	S:HandleButton(PetitionFrameSignButton)
 	S:HandleButton(PetitionFrameRequestButton)
 	S:HandleButton(PetitionFrameRenameButton)
 	S:HandleButton(PetitionFrameCancelButton)
-	S:HandleCloseButton(PetitionFrameCloseButton)
+	S:HandleCloseButton(PetitionFrameCloseButton, PetitionFrame.backdrop)
 
 	PetitionFrameCharterTitle:SetTextColor(1, 1, 0)
 	PetitionFrameCharterName:SetTextColor(1, 1, 1)
@@ -30,8 +33,8 @@ local function LoadSkin()
 
 	PetitionFrameInstructions:SetTextColor(1, 1, 1)
 
+	PetitionFrameRequestButton:Point("BOTTOMLEFT", 19, 84)
+	PetitionFrameCancelButton:Point("BOTTOMRIGHT", -40, 84)
 	PetitionFrameRenameButton:Point("LEFT", PetitionFrameRequestButton, "RIGHT", 3, 0)
 	PetitionFrameRenameButton:Point("RIGHT", PetitionFrameCancelButton, "LEFT", -3, 0)
-end
-
-S:AddCallback("Skin_Petition", LoadSkin)
+end)

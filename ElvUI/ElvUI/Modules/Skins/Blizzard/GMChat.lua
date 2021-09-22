@@ -5,13 +5,14 @@ local S = E:GetModule("Skins")
 --WoW API / Variables
 local IsShiftKeyDown = IsShiftKeyDown
 
-local function LoadChatSkin()
+S:AddCallbackForAddon("Blizzard_GMChatUI", "Skin_Blizzard_GMChatUI", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.gmchat then return end
 
 	GMChatFrame:StripTextures()
 	GMChatFrame:CreateBackdrop("Transparent")
-	GMChatFrame.backdrop:Point("TOPLEFT", -2, 6)
+	GMChatFrame.backdrop:Point("TOPLEFT", -2, 7)
 	GMChatFrame.backdrop:Point("BOTTOMRIGHT", 2, -6)
+
 	GMChatFrame:SetClampRectInsets(-6, 6, 33, -10)
 	GMChatFrame:Size(LeftChatPanel:GetWidth() - 4, 120)
 	GMChatFrame:Point("BOTTOMLEFT", LeftChatPanel, "TOPLEFT", 2, 5)
@@ -20,15 +21,15 @@ local function LoadChatSkin()
 	GMChatTab:StripTextures()
 	GMChatTab:CreateBackdrop("Default")
 	GMChatTab.backdrop:Point("TOPLEFT", -2, 0)
-	GMChatTab.backdrop:Point("BOTTOMRIGHT", 2, 2)
+	GMChatTab.backdrop:Point("BOTTOMRIGHT", 2, 3)
 
 	GMChatTabText:Point("LEFT", GMChatTab, 17, 2)
 	GMChatTabText:FontTemplate(E.LSM:Fetch("font", E.db.chat.tabFont), E.db.chat.tabFontSize, E.db.chat.tabFontOutline)
 
 	GMChatTabText:SetTextColor(unpack(E.media.rgbvaluecolor))
 
-	GMChatFrameCloseButton:Point("TOPRIGHT", GMChatTab, 6, 4)
 	S:HandleCloseButton(GMChatFrameCloseButton)
+	GMChatFrameCloseButton:Point("RIGHT", GMChatTab, 6, 2)
 
 	GMChatFrameButtonFrame:Kill()
 
@@ -57,7 +58,7 @@ local function LoadChatSkin()
 	statusFrame:StripTextures()
 	statusFrame:CreateBackdrop("Transparent")
 	statusFrame.backdrop:Point("TOPLEFT", 0, 1)
-	statusFrame.backdrop:Point("BOTTOMRIGHT", 0, 0)
+	statusFrame.backdrop:SetPoint("BOTTOMRIGHT", 0, 0)
 
 	GMChatStatusFramePulse:SetTexture("Interface\\GMChatFrame\\UI-GMStatusFrame-Pulse")
 	GMChatStatusFramePulse:Point("TOPLEFT", -25, 21)
@@ -77,15 +78,18 @@ local function LoadChatSkin()
 	TicketStatusFrame:HookScript("OnHide", function(self)
 		GMChatStatusFrame:SetAllPoints(self)
 	end)
-end
+end)
 
-local function LoadSurveySkin()
+S:AddCallbackForAddon("Blizzard_GMSurveyUI", "Skin_Blizzard_GMSurveyUI", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.gmchat then return end
 
 	GMSurveyFrame:StripTextures()
 	GMSurveyFrame:CreateBackdrop("Transparent")
-	GMSurveyFrame.backdrop:Point("TOPLEFT", 4, 4)
-	GMSurveyFrame.backdrop:Point("BOTTOMRIGHT", -44, 10)
+	GMSurveyFrame.backdrop:Point("TOPLEFT", 11, 4)
+	GMSurveyFrame.backdrop:Point("BOTTOMRIGHT", -49, 10)
+
+	GMSurveyFrame:EnableMouse(true)
+	S:SetBackdropHitRect(GMSurveyFrame)
 
 	GMSurveyHeader:StripTextures()
 	S:HandleCloseButton(GMSurveyCloseButton, GMSurveyFrame.backdrop)
@@ -93,10 +97,7 @@ local function LoadSurveySkin()
 	GMSurveyScrollFrame:StripTextures()
 	S:HandleScrollBar(GMSurveyScrollFrameScrollBar)
 
-	GMSurveyCancelButton:Point("BOTTOMLEFT", 19, 18)
 	S:HandleButton(GMSurveyCancelButton)
-
-	GMSurveySubmitButton:Point("BOTTOMRIGHT", -57, 18)
 	S:HandleButton(GMSurveySubmitButton)
 
 	for i = 1, 7 do
@@ -107,7 +108,11 @@ local function LoadSurveySkin()
 
 	GMSurveyCommentFrame:StripTextures()
 	GMSurveyCommentFrame:SetTemplate("Transparent")
-end
 
-S:AddCallbackForAddon("Blizzard_GMChatUI", "Skin_Blizzard_GMChatUI", LoadChatSkin)
-S:AddCallbackForAddon("Blizzard_GMSurveyUI", "Skin_Blizzard_GMSurveyUI", LoadSurveySkin)
+	GMSurveyScrollFrameScrollBar:Point("TOPLEFT", GMSurveyScrollFrame, "TOPRIGHT", 5, -19)
+	GMSurveyScrollFrameScrollBar:Point("BOTTOMLEFT", GMSurveyScrollFrame, "BOTTOMRIGHT", 5, 18)
+
+	GMSurveySubmitButton:Height(22)
+	GMSurveySubmitButton:Point("BOTTOMRIGHT", -57, 18)
+	GMSurveyCancelButton:Point("BOTTOMLEFT", 19, 18)
+end)

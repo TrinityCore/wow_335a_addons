@@ -38,11 +38,11 @@ local twipe, tinsert, tremove, next = table.wipe, tinsert, tremove, next
 local format, find, match, strrep, strlen, sub, gsub, strjoin = string.format, string.find, string.match, strrep, strlen, string.sub, string.gsub, strjoin
 --WoW API / Variables
 local CreateFrame = CreateFrame
+local GetAddOnInfo = GetAddOnInfo
 local GetCVar = GetCVar
 local GetNumPartyMembers = GetNumPartyMembers
 local GetNumRaidMembers = GetNumRaidMembers
 local InCombatLockdown = InCombatLockdown
-local IsAddOnLoaded = IsAddOnLoaded
 local IsInGuild = IsInGuild
 local IsInInstance = IsInInstance
 local SendAddonMessage = SendAddonMessage
@@ -55,7 +55,7 @@ E.noop = function() end
 E.title = format("|cff1784d1E|r|cffe5e3e3lvUI|r")
 E.myfaction, E.myLocalizedFaction = UnitFactionGroup("player")
 E.mylevel = UnitLevel("player")
-E.myLocalizedClass, E.myclass, E.myClassID = UnitClass("player")
+E.myLocalizedClass, E.myclass = UnitClass("player")
 E.myLocalizedRace, E.myrace = UnitRace("player")
 E.myname = UnitName("player")
 E.myrealm = GetRealmName()
@@ -65,6 +65,8 @@ E.wowbuild = tonumber(E.wowbuild)
 E.resolution = GetCVar("gxResolution")
 E.screenwidth, E.screenheight = tonumber(match(E.resolution, "(%d+)x+%d")), tonumber(match(E.resolution, "%d+x(%d+)"))
 E.isMacClient = IsMacClient()
+E.NewSign = "|TInterface\\OptionsFrame\\UI-OptionsFrame-NewFeatureIcon:14:14|t"
+E.InfoColor = "|cfffe7b2c"
 
 --Tables
 E.media = {}
@@ -103,6 +105,7 @@ E.HealingClasses = {
 
 E.ClassRole = {
 	PALADIN = {
+		[0] = "Melee",
 		[1] = "Caster",
 		[2] = "Tank",
 		[3] = "Melee"
@@ -110,12 +113,14 @@ E.ClassRole = {
 	PRIEST = "Caster",
 	WARLOCK = "Caster",
 	WARRIOR = {
+		[0] = "Melee",
 		[1] = "Melee",
 		[2] = "Melee",
 		[3] = "Tank"
 	},
 	HUNTER = "Melee",
 	SHAMAN = {
+		[0] = "Caster",
 		[1] = "Caster",
 		[2] = "Melee",
 		[3] = "Caster"
@@ -123,11 +128,13 @@ E.ClassRole = {
 	ROGUE = "Melee",
 	MAGE = "Caster",
 	DEATHKNIGHT = {
+		[0] = "Melee",
 		[1] = "Tank",
 		[2] = "Melee",
 		[3] = "Melee"
 	},
 	DRUID = {
+		[0] = "Caster",
 		[1] = "Caster",
 		[2] = "Melee",
 		[3] = "Caster"
@@ -181,7 +188,7 @@ do -- used in optionsUI
 end
 
 function E:Print(...)
-	(_G[self.db.general.messageRedirect] or DEFAULT_CHAT_FRAME):AddMessage(strjoin("", self:ColorizedName("ElvUI", true), ...)) -- I put DEFAULT_CHAT_FRAME as a fail safe.
+	(_G[self.db.general.messageRedirect] or DEFAULT_CHAT_FRAME):AddMessage(strjoin(" ", self:ColorizedName("ElvUI", true), ...)) -- I put DEFAULT_CHAT_FRAME as a fail safe.
 end
 
 local delayedTimer
@@ -475,15 +482,41 @@ function E:IncompatibleAddOn(addon, module)
 	E:StaticPopup_Show("INCOMPATIBLE_ADDON", addon, module)
 end
 
+function E:IsAddOnEnabled(addon)
+	local _, _, _, enabled, _, reason = GetAddOnInfo(addon)
+	if reason ~= "MISSING" and enabled then
+		return true
+	end
+end
+
 function E:CheckIncompatible()
 	if E.global.ignoreIncompatible then return end
 
-	if IsAddOnLoaded("Prat-3.0") and E.private.chat.enable then E:IncompatibleAddOn("Prat-3.0", "Chat") end
-	if IsAddOnLoaded("Chatter") and E.private.chat.enable then E:IncompatibleAddOn("Chatter", "Chat") end
-	if IsAddOnLoaded("TidyPlates") and E.private.nameplates.enable then E:IncompatibleAddOn("TidyPlates", "NamePlates") end
-	if IsAddOnLoaded("Aloft") and E.private.nameplates.enable then E:IncompatibleAddOn("Aloft", "NamePlates") end
-	if IsAddOnLoaded("Healers-Have-To-Die") and E.private.nameplates.enable then E:IncompatibleAddOn("Healers-Have-To-Die", "NamePlates") end
-	if IsAddOnLoaded("Mapster") and E.private.worldmap.enable then E:IncompatibleAddOn("Mapster", "WorldMap") end
+	if E.private.chat.enable then
+		if self:IsAddOnEnabled("Prat-3.0") then
+			self:IncompatibleAddOn("Prat-3.0", "Chat")
+		elseif self:IsAddOnEnabled("Chatter") then
+			self:IncompatibleAddOn("Chatter", "Chat")
+		end
+	end
+
+	if E.private.nameplates.enable then
+		if self:IsAddOnEnabled("Aloft") then
+			self:IncompatibleAddOn("Aloft", "NamePlates")
+		elseif self:IsAddOnEnabled("Healers-Have-To-Die") then
+			self:IncompatibleAddOn("Healers-Have-To-Die", "NamePlates")
+		elseif self:IsAddOnEnabled("TidyPlates") then
+			self:IncompatibleAddOn("TidyPlates", "NamePlates")
+		end
+	end
+
+	if E.private.tooltip.enable and self:IsAddOnEnabled("TipTac") then
+		self:IncompatibleAddOn("TipTac", "Tooltip")
+	end
+
+	if E.private.worldmap.enable and self:IsAddOnEnabled("Mapster") then
+		self:IncompatibleAddOn("Mapster", "WorldMap")
+	end
 end
 
 function E:CopyTable(currentTable, defaultTable)
@@ -864,14 +897,15 @@ function E:UpdateAll(ignoreInstall)
 		Chat:UpdateAnchors()
 	end
 
-	DataBars:EnableDisable_ExperienceBar()
-	DataBars:EnableDisable_ReputationBar()
+	DataBars:ExperienceBar_Toggle()
+	DataBars:ReputationBar_Toggle()
 	DataBars:UpdateDataBarDimensions()
 
 	DataTexts:LoadDataTexts()
 
 	if E.private.general.minimap.enable then
 		Minimap:UpdateSettings()
+		ReminderBuffs:UpdateSettings()
 	end
 
 	if E.private.nameplates.enable then
@@ -886,8 +920,6 @@ function E:UpdateAll(ignoreInstall)
 		Totems:ToggleEnable()
 		Totems:PositionAndSize()
 	end
-
-	ReminderBuffs:UpdateSettings()
 
 	if E.private.unitframe.enable then
 		UnitFrames:Update_AllFrames()
@@ -905,7 +937,7 @@ function E:UpdateAll(ignoreInstall)
 		E:RefreshGUI()
 	end
 
-	if (ignoreInstall ~= true) and (E.private.install_complete == nil or (E.private.install_complete and type(E.private.install_complete) == "boolean") or (E.private.install_complete and type(tonumber(E.private.install_complete)) == "number" and tonumber(E.private.install_complete) <= 3.83)) then
+	if not ignoreInstall and not E.private.install_complete then
 		E:Install()
 	end
 
@@ -1077,119 +1109,141 @@ end
 
 --DATABASE CONVERSIONS
 function E:DBConversions()
-	--Fix issue where UIScale was incorrectly stored as string
-	E.global.general.UIScale = tonumber(E.global.general.UIScale)
+	do -- <= 6.07
+		--Fix issue where UIScale was incorrectly stored as string
+		E.global.general.UIScale = tonumber(E.global.general.UIScale)
 
-	--Not sure how this one happens, but prevent it in any case
-	if E.global.general.UIScale <= 0 then
-		E.global.general.UIScale = G.general.UIScale
-	end
-
-	if gameLocale and E.global.general.locale == "auto" then
-		E.global.general.locale = gameLocale
-	end
-
-	--Combat & Resting Icon options update
-	if E.db.unitframe.units.player.combatIcon ~= nil then
-		E.db.unitframe.units.player.CombatIcon.enable = E.db.unitframe.units.player.combatIcon
-		E.db.unitframe.units.player.combatIcon = nil
-	end
-	if E.db.unitframe.units.player.restIcon ~= nil then
-		E.db.unitframe.units.player.RestIcon.enable = E.db.unitframe.units.player.restIcon
-		E.db.unitframe.units.player.restIcon = nil
-	end
-
-	-- [Fader] Combat Fade options for Player
-	if E.db.unitframe.units.player.combatfade ~= nil then
-		local enabled = E.db.unitframe.units.player.combatfade
-		E.db.unitframe.units.player.fader.enable = enabled
-
-		if enabled then -- use the old min alpha too
-			E.db.unitframe.units.player.fader.minAlpha = 0
+		--Not sure how this one happens, but prevent it in any case
+		if E.global.general.UIScale <= 0 then
+			E.global.general.UIScale = G.general.UIScale
 		end
 
-		E.db.unitframe.units.player.combatfade = nil
-	end
-
-	-- [Fader] Range check options for Units
-	do
-		local outsideAlpha
-		if E.db.unitframe.OORAlpha ~= nil then
-			outsideAlpha = E.db.unitframe.OORAlpha
-			E.db.unitframe.OORAlpha = nil
+		if gameLocale and E.global.general.locale == "auto" then
+			E.global.general.locale = gameLocale
 		end
 
-		local rangeCheckUnits = {"target", "targettarget", "targettargettarget", "focus", "focustarget", "pet", "pettarget", "boss", "arena", "party", "raid", "raid40", "raidpet", "tank", "assist"}
-		for _, unit in pairs(rangeCheckUnits) do
-			if E.db.unitframe.units[unit].rangeCheck ~= nil then
-				local enabled = E.db.unitframe.units[unit].rangeCheck
-				E.db.unitframe.units[unit].fader.enable = enabled
-				E.db.unitframe.units[unit].fader.range = enabled
+		--Combat & Resting Icon options update
+		if E.db.unitframe.units.player.combatIcon ~= nil then
+			E.db.unitframe.units.player.CombatIcon.enable = E.db.unitframe.units.player.combatIcon
+			E.db.unitframe.units.player.combatIcon = nil
+		end
+		if E.db.unitframe.units.player.restIcon ~= nil then
+			E.db.unitframe.units.player.RestIcon.enable = E.db.unitframe.units.player.restIcon
+			E.db.unitframe.units.player.restIcon = nil
+		end
 
-				if outsideAlpha then
-					E.db.unitframe.units[unit].fader.minAlpha = outsideAlpha
+		-- [Fader] Combat Fade options for Player
+		if E.db.unitframe.units.player.combatfade ~= nil then
+			local enabled = E.db.unitframe.units.player.combatfade
+			E.db.unitframe.units.player.fader.enable = enabled
+
+			if enabled then -- use the old min alpha too
+				E.db.unitframe.units.player.fader.minAlpha = 0
+			end
+
+			E.db.unitframe.units.player.combatfade = nil
+		end
+
+		-- [Fader] Range check options for Units
+		do
+			local outsideAlpha
+			if E.db.unitframe.OORAlpha ~= nil then
+				outsideAlpha = E.db.unitframe.OORAlpha
+				E.db.unitframe.OORAlpha = nil
+			end
+
+			local rangeCheckUnits = {"target", "targettarget", "targettargettarget", "focus", "focustarget", "pet", "pettarget", "boss", "arena", "party", "raid", "raid40", "raidpet", "tank", "assist"}
+			for _, unit in pairs(rangeCheckUnits) do
+				if E.db.unitframe.units[unit].rangeCheck ~= nil then
+					local enabled = E.db.unitframe.units[unit].rangeCheck
+					E.db.unitframe.units[unit].fader.enable = enabled
+					E.db.unitframe.units[unit].fader.range = enabled
+
+					if outsideAlpha then
+						E.db.unitframe.units[unit].fader.minAlpha = outsideAlpha
+					end
+
+					E.db.unitframe.units[unit].rangeCheck = nil
 				end
-
-				E.db.unitframe.units[unit].rangeCheck = nil
 			end
 		end
-	end
 
-	--Convert old "Buffs and Debuffs" font size option to individual options
-	if E.db.auras.fontSize then
-		local fontSize = E.db.auras.fontSize
-		E.db.auras.buffs.countFontSize = fontSize
-		E.db.auras.buffs.durationFontSize = fontSize
-		E.db.auras.debuffs.countFontSize = fontSize
-		E.db.auras.debuffs.durationFontSize = fontSize
-		E.db.auras.fontSize = nil
-	end
+		--Convert old "Buffs and Debuffs" font size option to individual options
+		if E.db.auras.fontSize then
+			local fontSize = E.db.auras.fontSize
+			E.db.auras.buffs.countFontSize = fontSize
+			E.db.auras.buffs.durationFontSize = fontSize
+			E.db.auras.debuffs.countFontSize = fontSize
+			E.db.auras.debuffs.durationFontSize = fontSize
+			E.db.auras.fontSize = nil
+		end
 
-	--Convert old private cooldown setting to profile setting
-	if E.private.cooldown and (E.private.cooldown.enable ~= nil) then
-		E.db.cooldown.enable = E.private.cooldown.enable
-		E.private.cooldown.enable = nil
-		E.private.cooldown = nil
-	end
+		--Convert old private cooldown setting to profile setting
+		if E.private.cooldown and (E.private.cooldown.enable ~= nil) then
+			E.db.cooldown.enable = E.private.cooldown.enable
+			E.private.cooldown.enable = nil
+			E.private.cooldown = nil
+		end
 
-	if not E.db.chat.panelColorConverted then
-		local color = E.db.general.backdropfadecolor
-		E.db.chat.panelColor = {r = color.r, g = color.g, b = color.b, a = color.a}
-		E.db.chat.panelColorConverted = true
-	end
+		if not E.db.chat.panelColorConverted then
+			local color = E.db.general.backdropfadecolor
+			E.db.chat.panelColor = {r = color.r, g = color.g, b = color.b, a = color.a}
+			E.db.chat.panelColorConverted = true
+		end
 
-	--Convert cropIcon to tristate
-	local cropIcon = E.db.general.cropIcon
-	if type(cropIcon) == "boolean" then
-		E.db.general.cropIcon = (cropIcon and 2) or 0
-	end
+		--Convert cropIcon to tristate
+		local cropIcon = E.db.general.cropIcon
+		if type(cropIcon) == "boolean" then
+			E.db.general.cropIcon = (cropIcon and 2) or 0
+		end
 
-	--Vendor Greys option is now in bags table
-	if E.db.general.vendorGrays then
-		E.db.bags.vendorGrays.enable = E.db.general.vendorGrays
-		E.db.general.vendorGrays = nil
-		E.db.general.vendorGraysDetails = nil
-	end
+		--Vendor Greys option is now in bags table
+		if E.db.general.vendorGrays then
+			E.db.bags.vendorGrays.enable = E.db.general.vendorGrays
+			E.db.general.vendorGrays = nil
+			E.db.general.vendorGraysDetails = nil
+		end
 
-	--Heal Prediction is now a table instead of a bool
-	local healPredictionUnits = {"player", "target", "focus", "pet", "arena", "party", "raid", "raid40", "raidpet"}
-	for _, unit in pairs(healPredictionUnits) do
-		if type(E.db.unitframe.units[unit].healPrediction) ~= "table" then
-			local enabled = E.db.unitframe.units[unit].healPrediction
-			E.db.unitframe.units[unit].healPrediction = {}
-			E.db.unitframe.units[unit].healPrediction.enable = enabled
+		--Heal Prediction is now a table instead of a bool
+		local healPredictionUnits = {"player", "target", "focus", "pet", "arena", "party", "raid", "raid40", "raidpet"}
+		for _, unit in pairs(healPredictionUnits) do
+			if type(E.db.unitframe.units[unit].healPrediction) ~= "table" then
+				local enabled = E.db.unitframe.units[unit].healPrediction
+				E.db.unitframe.units[unit].healPrediction = {}
+				E.db.unitframe.units[unit].healPrediction.enable = enabled
+			end
+		end
+
+		--Health Backdrop Multiplier
+		if E.db.unitframe.colors.healthmultiplier ~= nil then
+			if E.db.unitframe.colors.healthmultiplier > 0.75 then
+				E.db.unitframe.colors.healthMultiplier = 0.75
+			else
+				E.db.unitframe.colors.healthMultiplier = E.db.unitframe.colors.healthmultiplier
+			end
+
+			E.db.unitframe.colors.healthmultiplier = nil
+		end
+
+		if sub(E.db.chat.timeStampFormat, -1) == " " then
+			E.db.chat.timeStampFormat = sub(E.db.chat.timeStampFormat, 1, -2)
+		end
+
+		if E.private.skins.blizzard.greeting ~= nil then
+			E.private.skins.blizzard.greeting = nil
 		end
 	end
 
-	--Health Backdrop Multiplier
-	if E.db.unitframe.colors.healthmultiplier ~= nil then
-		if E.db.unitframe.colors.healthmultiplier > 0.75 then
-			E.db.unitframe.colors.healthMultiplier = 0.75
-		else
-			E.db.unitframe.colors.healthMultiplier = E.db.unitframe.colors.healthmultiplier
+	do -- <= 6.08
+		--Rename GameTooltip Mover
+		if E.db.movers and E.db.movers.TooltipMover then
+			E.db.movers.ElvTooltipMover = E.db.movers.TooltipMover
+			E.db.movers.TooltipMover = nil
 		end
 
-		E.db.unitframe.colors.healthmultiplier = nil
+		if E.db.databars.experience.questXP and E.db.databars.experience.questXP.showBubbles then
+			E.db.databars.experience.showBubbles = true
+		end
 	end
 end
 
@@ -1237,7 +1291,7 @@ function E:Initialize()
 		E:SetSmoothingAmount(E.db.general.smoothingAmount)
 	end
 
-	if self.private.install_complete == nil then
+	if not self.private.install_complete then
 		self:Install()
 	end
 
@@ -1254,5 +1308,9 @@ function E:Initialize()
 		local msg = format(L["LOGIN_MSG"], self.media.hexvaluecolor, self.media.hexvaluecolor, self.version)
 		if Chat.Initialized then msg = select(2, Chat:FindURL("CHAT_MSG_DUMMY", msg)) end
 		print(msg)
+	end
+
+	if not GetCVar("scriptProfile") == "1" then
+		collectgarbage("collect")
 	end
 end

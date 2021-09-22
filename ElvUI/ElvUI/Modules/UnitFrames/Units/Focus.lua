@@ -80,8 +80,10 @@ function UF:Update_FocusFrame(frame, db)
 	frame:Size(frame.UNIT_WIDTH, frame.UNIT_HEIGHT)
 	_G[frame:GetName().."Mover"]:Size(frame:GetSize())
 
-	frame:SetAttribute("type3", "macro")
-	frame:SetAttribute("macrotext", "/clearfocus")
+	if not IsAddOnLoaded("Clique") then
+		frame:SetAttribute("type3", "macro")
+		frame:SetAttribute("macrotext", "/clearfocus")
+	end
 
 	UF:Configure_InfoPanel(frame)
 	--Health
@@ -131,7 +133,7 @@ function UF:Update_FocusFrame(frame, db)
 	--Debuff Highlight
 	UF:Configure_DebuffHighlight(frame)
 
-	frame:UpdateAllElements("ElvUI_UpdateAllElements")
+	frame:UpdateAllElements("ForceUpdate")
 end
 
 tinsert(UF.unitstoload, "focus")

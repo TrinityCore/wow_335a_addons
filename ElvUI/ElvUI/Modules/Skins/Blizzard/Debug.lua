@@ -5,18 +5,27 @@ local S = E:GetModule("Skins")
 local unpack = unpack
 --WoW API / Variables
 
-local function LoadSkin()
+S:AddCallbackForAddon("Blizzard_DebugTools", "Skin_Blizzard_DebugTools", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.debug then return end
 
 	ScriptErrorsFrame:SetParent(E.UIParent)
 	ScriptErrorsFrame:StripTextures()
 	ScriptErrorsFrame:SetTemplate("Transparent")
+
 	S:HandleScrollBar(ScriptErrorsFrameScrollFrameScrollBar)
-	S:HandleCloseButton(ScriptErrorsFrameClose)
+	S:HandleCloseButton(ScriptErrorsFrameClose, ScriptErrorsFrame)
+
 	ScriptErrorsFrameScrollFrameText:FontTemplate(nil, 13)
+	ScriptErrorsFrameScrollFrameText:Width(461)
+
 	ScriptErrorsFrameScrollFrame:CreateBackdrop("Default")
-	ScriptErrorsFrameScrollFrame.backdrop:Point("BOTTOMRIGHT", 0, -3)
+	ScriptErrorsFrameScrollFrame.backdrop:Point("BOTTOMRIGHT", 1, -2)
 	ScriptErrorsFrameScrollFrame:SetFrameLevel(ScriptErrorsFrameScrollFrame:GetFrameLevel() + 2)
+	ScriptErrorsFrameScrollFrame:Width(461)
+	ScriptErrorsFrameScrollFrame:Point("TOPLEFT", 9, -30)
+
+	ScriptErrorsFrameScrollFrameScrollBar:Point("TOPLEFT", ScriptErrorsFrameScrollFrame, "TOPRIGHT", 4, -18)
+	ScriptErrorsFrameScrollFrameScrollBar:Point("BOTTOMLEFT", ScriptErrorsFrameScrollFrame, "BOTTOMRIGHT", 4, 17)
 
 	EventTraceFrame:StripTextures()
 	EventTraceFrame:SetTemplate("Transparent")
@@ -47,7 +56,5 @@ local function LoadSkin()
 		self:SetTemplate("Transparent")
 	end)
 
-	S:HandleCloseButton(EventTraceFrameCloseButton)
-end
-
-S:AddCallbackForAddon("Blizzard_DebugTools", "Skin_Blizzard_DebugTools", LoadSkin)
+	S:HandleCloseButton(EventTraceFrameCloseButton, EventTraceFrame)
+end)

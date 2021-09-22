@@ -5,36 +5,37 @@ local LSM = E.Libs.LSM
 --Lua functions
 --WoW API / Variables
 
-function NP:UpdateElement_Level(frame)
-	if not self.db.units[frame.UnitType].showLevel then return end
+function NP:Update_Level(frame)
+	if not self.db.units[frame.UnitType].level.enable then return end
 
-	local level, r, g, b = self:UnitLevel(frame)
+	local levelText, r, g, b = self:UnitLevel(frame)
 
-	if self.db.units[frame.UnitType].healthbar.enable or frame.isTarget then
-		frame.Level:SetText(level)
-	else
-		frame.Level:SetFormattedText(" [%s]", level)
-	end
-	frame.Level:SetTextColor(r, g, b)
-end
-
-function NP:ConfigureElement_Level(frame)
 	local level = frame.Level
-
 	level:ClearAllPoints()
 
-	if self.db.units[frame.UnitType].healthbar.enable or (self.db.alwaysShowTargetHealth and frame.isTarget) then
+	if frame.Health:IsShown() then
 		level:SetJustifyH("RIGHT")
-		level:SetPoint("BOTTOMRIGHT", frame.HealthBar, "TOPRIGHT", 0, E.Border*2)
+		level:SetPoint(E.InversePoints[self.db.units[frame.UnitType].level.position], self.db.units[frame.UnitType].level.parent == "Nameplate" and frame or frame[self.db.units[frame.UnitType].level.parent], self.db.units[frame.UnitType].level.position, self.db.units[frame.UnitType].level.xOffset, self.db.units[frame.UnitType].level.yOffset)
+		level:SetParent(frame.Health)
+		level:SetText(levelText)
 	else
-		level:SetPoint("LEFT", frame.Name, "RIGHT")
+		if self.db.units[frame.UnitType].name.enable then
+			level:SetPoint("LEFT", frame.Name, "RIGHT")
+		else
+			level:SetPoint("TOPLEFT", frame, "TOPRIGHT", -38, 0)
+		end
+		level:SetParent(frame)
 		level:SetJustifyH("LEFT")
+		level:SetFormattedText(" [%s]", levelText)
 	end
-	level:SetFont(LSM:Fetch("font", self.db.font), self.db.fontSize, self.db.fontOutline)
+	level:SetTextColor(r, g, b)
 end
 
-function NP:ConstructElement_Level(frame)
-	local level = frame:CreateFontString(nil, "OVERLAY")
-	level:SetFont(LSM:Fetch("font", self.db.font), self.db.fontSize, self.db.fontOutline)
-	return level
+function NP:Configure_Level(frame)
+	local db = self.db.units[frame.UnitType].level
+	frame.Level:FontTemplate(LSM:Fetch("font", db.font), db.fontSize, db.fontOutline)
+end
+
+function NP:Construct_Level(frame)
+	return frame:CreateFontString(nil, "OVERLAY")
 end

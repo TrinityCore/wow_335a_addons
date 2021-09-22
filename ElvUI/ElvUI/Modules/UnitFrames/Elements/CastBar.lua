@@ -38,6 +38,7 @@ function UF:Construct_Castbar(frame, moverName)
 	castbar.PostCastStart = self.PostCastStart
 	castbar.PostCastStop = self.PostCastStop
 	castbar.PostCastInterruptible = self.PostCastInterruptible
+	castbar.PostCastFail = UF.PostCastFail
 	castbar:SetClampedToScreen(true)
 	castbar:CreateBackdrop(nil, nil, nil, self.thinBorders, true)
 
@@ -162,7 +163,7 @@ function UF:Configure_Castbar(frame)
 
 		if db.castbar.spark then
 			castbar.Spark = castbar.Spark_
-			castbar.Spark:Point("CENTER", castbar:GetStatusBarTexture(), "RIGHT", 0, 0)
+			castbar.Spark:SetPoint("CENTER", castbar:GetStatusBarTexture(), "RIGHT", 0, 0)
 			castbar.Spark:Height(db.castbar.height * 2)
 		elseif castbar.Spark then
 			castbar.Spark:Hide()
@@ -263,23 +264,23 @@ function UF:CustomCastDelayText(duration)
 
 	if self.channeling then
 		if db == "CURRENT" then
-			self.Time:SetFormattedText("%.1f |cffaf5050%.1f|r", abs(duration - self.max), self.delay)
+			self.Time:SetFormattedText("%.1f |cffaf5050%.2f|r", abs(duration - self.max), self.delay)
 		elseif db == "CURRENTMAX" then
-			self.Time:SetFormattedText("%.1f / %.1f |cffaf5050%.1f|r", duration, self.max, self.delay)
+			self.Time:SetFormattedText("%.1f / %.2f |cffaf5050%.2f|r", abs(duration - self.max), self.max, self.delay)
 		elseif db == "REMAINING" then
-			self.Time:SetFormattedText("%.1f |cffaf5050%.1f|r", duration, self.delay)
+			self.Time:SetFormattedText("%.1f |cffaf5050%.2f|r", duration, self.delay)
 		elseif db == "REMAININGMAX" then
-			self.Time:SetFormattedText("%.1f / %.1f |cffaf5050%.1f|r", abs(duration - self.max), self.max, self.delay)
+			self.Time:SetFormattedText("%.1f / %.2f |cffaf5050%.2f|r", duration, self.max, self.delay)
 		end
 	else
 		if db == "CURRENT" then
-			self.Time:SetFormattedText("%.1f |cffaf5050%s %.1f|r", duration, "+", self.delay)
+			self.Time:SetFormattedText("%.1f |cffaf5050%s %.2f|r", duration, "+", self.delay)
 		elseif db == "CURRENTMAX" then
-			self.Time:SetFormattedText("%.1f / %.1f |cffaf5050%s %.1f|r", duration, self.max, "+", self.delay)
+			self.Time:SetFormattedText("%.1f / %.2f |cffaf5050%s %.2f|r", duration, self.max, "+", self.delay)
 		elseif db == "REMAINING" then
-			self.Time:SetFormattedText("%.1f |cffaf5050%s %.1f|r", abs(duration - self.max), "+", self.delay)
+			self.Time:SetFormattedText("%.1f |cffaf5050%s %.2f|r", abs(duration - self.max), "+", self.delay)
 		elseif db == "REMAININGMAX" then
-			self.Time:SetFormattedText("%.1f / %.1f |cffaf5050%s %.1f|r", abs(duration - self.max), self.max, "+", self.delay)
+			self.Time:SetFormattedText("%.1f / %.2f |cffaf5050%s %.2f|r", abs(duration - self.max), self.max, "+", self.delay)
 		end
 	end
 end
@@ -293,21 +294,21 @@ function UF:CustomTimeText(duration)
 		if db == "CURRENT" then
 			self.Time:SetFormattedText("%.1f", abs(duration - self.max))
 		elseif db == "CURRENTMAX" then
-			self.Time:SetFormattedText("%.1f / %.1f", abs(duration - self.max), self.max)
+			self.Time:SetFormattedText("%.1f / %.2f", abs(duration - self.max), self.max)
 		elseif db == "REMAINING" then
 			self.Time:SetFormattedText("%.1f", duration)
 		elseif db == "REMAININGMAX" then
-			self.Time:SetFormattedText("%.1f / %.1f", duration, self.max)
+			self.Time:SetFormattedText("%.1f / %.2f", duration, self.max)
 		end
 	else
 		if db == "CURRENT" then
 			self.Time:SetFormattedText("%.1f", duration)
 		elseif db == "CURRENTMAX" then
-			self.Time:SetFormattedText("%.1f / %.1f", duration, self.max)
+			self.Time:SetFormattedText("%.1f / %.2f", duration, self.max)
 		elseif db == "REMAINING" then
 			self.Time:SetFormattedText("%.1f", abs(duration - self.max))
 		elseif db == "REMAININGMAX" then
-			self.Time:SetFormattedText("%.1f / %.1f", abs(duration - self.max), self.max)
+			self.Time:SetFormattedText("%.1f / %.2f", abs(duration - self.max), self.max)
 		end
 	end
 end
@@ -394,6 +395,10 @@ function UF:PostCastStart(unit)
 		if t then r, g, b = t[1], t[2], t[3] end
 	end
 
+	if self.SafeZone then
+		self.SafeZone:Show()
+	end
+
 	self:SetStatusBarColor(r, g, b)
 end
 
@@ -401,6 +406,17 @@ function UF:PostCastStop(unit)
 	if self.hadTicks and unit == "player" then
 		UF:HideTicks()
 		self.hadTicks = false
+	end
+end
+
+function UF:PostCastFail()
+	local db = self:GetParent().db
+	local customColor = db and db.castbar and db.castbar.customColor
+	local color = (customColor and customColor.enable and customColor.colorInterrupted) or UF.db.colors.castInterruptedColor
+	self:SetStatusBarColor(color.r, color.g, color.b)
+
+	if self.SafeZone then
+		self.SafeZone:Hide()
 	end
 end
 

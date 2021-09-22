@@ -1,15 +1,19 @@
-local E, L, V, P, G = unpack(select(2, ...))
+local E, L, V, P, G = unpack(select(2, ...)); --Import: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 local NP = E:GetModule("NamePlates")
 
 --Lua functions
 --WoW API / Variables
 
-function NP:UpdateElement_RaidIcon(frame)
+function NP:Update_RaidIcon(frame)
+	local db = self.db.units[frame.UnitType].raidTargetIndicator
 	local icon = frame.RaidIcon
+
+	icon:SetSize(db.size, db.size)
+
 	icon:ClearAllPoints()
-	if frame.HealthBar:IsShown() then
-		icon:SetPoint("RIGHT", frame.HealthBar, "LEFT", -6, 0)
+	if frame.Health:IsShown() then
+		icon:SetPoint(E.InversePoints[db.position], frame.Health, db.position, db.xOffset, db.yOffset)
 	else
-		icon:SetPoint("BOTTOM", frame.Name, "TOP", 0, 3)
+		icon:SetPoint("BOTTOM", frame, "TOP", 0, 15)
 	end
 end

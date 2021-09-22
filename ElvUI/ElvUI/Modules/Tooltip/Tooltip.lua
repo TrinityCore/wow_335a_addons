@@ -145,9 +145,9 @@ function TT:GameTooltip_SetDefaultAnchor(tt, parent)
 
 	local _, anchor = tt:GetPoint()
 
-	if anchor == nil or (ElvUI_ContainerFrame and anchor == ElvUI_ContainerFrame) or anchor == RightChatPanel or anchor == TooltipMover or anchor == _G.UIParent or anchor == E.UIParent then
+	if anchor == nil or (ElvUI_ContainerFrame and anchor == ElvUI_ContainerFrame) or anchor == RightChatPanel or anchor == ElvTooltipMover or anchor == _G.UIParent or anchor == E.UIParent then
 		tt:ClearAllPoints()
-		if not E:HasMoverBeenMoved("TooltipMover") then
+		if not E:HasMoverBeenMoved("ElvTooltipMover") then
 			if ElvUI_ContainerFrame and ElvUI_ContainerFrame:IsShown() then
 				tt:Point("BOTTOMRIGHT", ElvUI_ContainerFrame, "TOPRIGHT", 0, 18)
 			elseif RightChatPanel:GetAlpha() == 1 and RightChatPanel:IsShown() then
@@ -156,15 +156,15 @@ function TT:GameTooltip_SetDefaultAnchor(tt, parent)
 				tt:Point("BOTTOMRIGHT", RightChatPanel, "BOTTOMRIGHT", 0, 18)
 			end
 		else
-			local point = E:GetScreenQuadrant(TooltipMover)
+			local point = E:GetScreenQuadrant(ElvTooltipMover)
 			if point == "TOPLEFT" then
-				tt:Point("TOPLEFT", TooltipMover, "BOTTOMLEFT")
+				tt:Point("TOPLEFT", ElvTooltipMover, "BOTTOMLEFT")
 			elseif point == "TOPRIGHT" then
-				tt:Point("TOPRIGHT", TooltipMover, "BOTTOMRIGHT")
+				tt:Point("TOPRIGHT", ElvTooltipMover, "BOTTOMRIGHT")
 			elseif point == "BOTTOMLEFT" or point == "LEFT" then
-				tt:Point("BOTTOMLEFT", TooltipMover, "TOPLEFT")
+				tt:Point("BOTTOMLEFT", ElvTooltipMover, "TOPLEFT")
 			else
-				tt:Point("BOTTOMRIGHT", TooltipMover, "TOPRIGHT")
+				tt:Point("BOTTOMRIGHT", ElvTooltipMover, "TOPRIGHT")
 			end
 		end
 	end
@@ -198,7 +198,7 @@ function TT:RemoveTrashLines(tt)
 
 		if linetext == PVP or linetext == FACTION_ALLIANCE or linetext == FACTION_HORDE then
 			tiptext:SetText(nil)
-			tiptext:Hide()
+--			tiptext:Hide()
 		end
 	end
 end
@@ -388,15 +388,19 @@ function TT:GameTooltip_OnTooltipSetUnit(tt)
 
 	self:RemoveTrashLines(tt)
 
-	if not isShiftKeyDown and not isControlKeyDown then
+	if not isShiftKeyDown and not isControlKeyDown and self.db.targetInfo then
 		local unitTarget = unit.."target"
-		if self.db.targetInfo and unit ~= "player" and UnitExists(unitTarget) then
+		if unit ~= "player" and UnitExists(unitTarget) then
 			local targetColor
 			if UnitIsPlayer(unitTarget) and not UnitHasVehicleUI(unitTarget) then
 				local _, class = UnitClass(unitTarget)
 				targetColor = CUSTOM_CLASS_COLORS and CUSTOM_CLASS_COLORS[class] or RAID_CLASS_COLORS[class]
 			else
 				targetColor = E.db.tooltip.useCustomFactionColors and E.db.tooltip.factionColors[UnitReaction(unitTarget, "player")] or FACTION_BAR_COLORS[UnitReaction(unitTarget, "player")]
+			end
+
+			if not targetColor then
+				targetColor = RAID_CLASS_COLORS.PRIEST
 			end
 
 			tt:AddDoubleLine(format("%s:", TARGET), format("|cff%02x%02x%02x%s|r", targetColor.r * 255, targetColor.g * 255, targetColor.b * 255, UnitName(unitTarget)))
@@ -406,7 +410,7 @@ function TT:GameTooltip_OnTooltipSetUnit(tt)
 		local numRaid = GetNumRaidMembers()
 		local inRaid = numRaid > 0
 
-		if self.db.targetInfo and (inRaid or numParty > 0) then
+		if inRaid or numParty > 0 then
 			for i = 1, (inRaid and numRaid or numParty) do
 				local groupUnit = (inRaid and "raid"..i or "party"..i)
 
@@ -544,22 +548,20 @@ function TT:GameTooltip_ShowStatusBar(tt)
 end
 
 function TT:CheckBackdropColor(tt)
-	if not tt:IsShown() then return end
-
-	local r, g, b = tt:GetBackdropColor()
-	if r and g and b then
-		r, g, b = E:Round(r, 1), E:Round(g, 1), E:Round(b, 1)
-
-		local red, green, blue = unpack(E.media.backdropfadecolor)
-		if r ~= red or g ~= green or b ~= blue then
-			tt:SetBackdropColor(red, green, blue, self.db.colorAlpha)
-		end
+	if tt:GetAnchorType() == "ANCHOR_CURSOR" then
+		local r, g, b = unpack(E.media.backdropfadecolor, 1, 3)
+		tt:SetBackdropColor(r, g, b, self.db.colorAlpha)
 	end
 end
 
 function TT:SetStyle(tt)
-	tt:SetTemplate("Transparent", nil, true) --ignore updates
-	local r, g, b = tt:GetBackdropColor()
+	if not tt.template then
+		tt:SetTemplate("Transparent")
+	else
+		tt:SetBackdropBorderColor(unpack(E.media.bordercolor, 1, 3))
+	end
+
+	local r, g, b = unpack(E.media.backdropfadecolor, 1, 3)
 	tt:SetBackdropColor(r, g, b, self.db.colorAlpha)
 end
 
@@ -606,10 +608,10 @@ function TT:GameTooltip_OnTooltipSetSpell(tt)
 	tt:Show()
 end
 
-function TT:SetItemRef(link)
+function TT:SetHyperlink(refTooltip, link)
 	if self.db.spellID and (find(link, "^spell:") or find(link, "^item:")) then
-		ItemRefTooltip:AddLine(format("|cFFCA3C3C%s|r %d", ID, tonumber(match(link, "(%d+)"))))
-		ItemRefTooltip:Show()
+		refTooltip:AddLine(format("|cFFCA3C3C%s|r %d", ID, tonumber(match(link, "(%d+)"))))
+		refTooltip:Show()
 	end
 end
 
@@ -689,7 +691,7 @@ function TT:Initialize()
 	GameTooltip.StatusBar:Height(self.db.healthBar.height)
 	GameTooltip.StatusBar:SetScript("OnValueChanged", nil)
 	GameTooltip.StatusBar.text = GameTooltip.StatusBar:CreateFontString(nil, "OVERLAY")
-	GameTooltip.StatusBar.text:Point("CENTER", GameTooltip.StatusBar, 0, 0)
+	GameTooltip.StatusBar.text:SetPoint("CENTER")
 	GameTooltip.StatusBar.text:FontTemplate(E.Libs.LSM:Fetch("font", self.db.healthBar.font), self.db.healthBar.fontSize, self.db.healthBar.fontOutline)
 
 	--Tooltip Fonts
@@ -705,9 +707,9 @@ function TT:Initialize()
 	GameTooltipAnchor:Point("BOTTOMRIGHT", RightChatToggleButton, "BOTTOMRIGHT")
 	GameTooltipAnchor:Size(130, 20)
 	GameTooltipAnchor:SetFrameLevel(GameTooltipAnchor:GetFrameLevel() + 400)
-	E:CreateMover(GameTooltipAnchor, "TooltipMover", L["Tooltip"], nil, nil, nil, nil, nil, "tooltip,general")
+	E:CreateMover(GameTooltipAnchor, "ElvTooltipMover", L["Tooltip"], nil, nil, nil, nil, nil, "tooltip,general")
 
-	self:SecureHook("SetItemRef")
+	self:SecureHook(ItemRefTooltip, "SetHyperlink")
 	self:SecureHook("GameTooltip_SetDefaultAnchor")
 	self:SecureHook(GameTooltip, "SetUnitAura")
 	self:SecureHook(GameTooltip, "SetUnitBuff", "SetUnitAura")

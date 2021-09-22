@@ -607,7 +607,11 @@ function UF.groupPrototype:Configure_Groups(frame)
 			if not group.isForced then
 				group:SetAttribute("maxColumns", db.raidWideSorting and numGroups or 1)
 				group:SetAttribute("unitsPerColumn", db.raidWideSorting and (db.groupsPerRowCol * 5) or 5)
-				UF.headerGroupBy[db.groupBy](group)
+				if UF.headerGroupBy[db.groupBy] then
+					UF.headerGroupBy[db.groupBy](group)
+				else
+					UF.headerGroupBy["GROUP"](group)
+				end
 				group:SetAttribute("sortDir", db.sortDir)
 				group:SetAttribute("showPlayer", db.showPlayer)
 			end
@@ -709,7 +713,7 @@ function UF.groupPrototype:AdjustVisibility(frame)
 					UF:UnshowChildUnits(group, group:GetChildren())
 					group:SetAttribute("startingIndex", 1)
 				else
-					group:Reset()
+					group:Reset(frame.groupName)
 				end
 			end
 		end
@@ -747,14 +751,14 @@ function UF.headerPrototype:Update()
 	end
 end
 
-function UF.headerPrototype:Reset()
+function UF.headerPrototype:Reset(group)
 	self:Hide()
 
 	self:SetAttribute("showPlayer", true)
 
 	self:SetAttribute("showSolo", true)
 	self:SetAttribute("showParty", true)
-	self:SetAttribute("showRaid", true)
+	self:SetAttribute("showRaid", group ~= "party" and true or false)
 
 	self:SetAttribute("columnSpacing", nil)
 	self:SetAttribute("columnAnchorPoint", nil)
@@ -779,7 +783,7 @@ function UF:CreateHeader(parent, groupFilter, overrideName, template, groupName,
 	local header = ElvUF:SpawnHeader(overrideName, headerTemplate, nil,
 			"groupFilter", groupFilter,
 			"showParty", true,
-			"showRaid", group == "party" and false or true,
+			"showRaid", group ~= "party" and true or false,
 			"showSolo", true,
 			template and "template", template)
 

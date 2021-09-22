@@ -33,6 +33,14 @@ E.Options.args.skins = {
 			set = function(info, value) E.private.skins.checkBoxSkin = value E:StaticPopup_Show("PRIVATE_RL") end,
 			disabled = function() return not E.private.skins.ace3.enable and not E.private.skins.blizzard.enable end
 		},
+		dropdownCheckBoxSkin = {
+			order = 5,
+			type = "toggle",
+			name = L["Dropdown CheckBox Skin"],
+			get = function(info) return E.private.skins.dropdownCheckBoxSkin end,
+			set = function(info, value) E.private.skins.dropdownCheckBoxSkin = value E:StaticPopup_Show("PRIVATE_RL") end,
+			disabled = function() return not E.private.skins.ace3.enable and not E.private.skins.blizzard.enable end
+		},
 		blizzard = {
 			order = 100,
 			type = "group",
@@ -136,11 +144,6 @@ E.Options.args.skins = {
 				gmchat = {
 					type = "toggle",
 					name = L["GM Chat"],
-					desc = L["TOGGLESKIN_DESC"]
-				},
-				greeting = {
-					type = "toggle",
-					name = L["Greeting Frame"],
 					desc = L["TOGGLESKIN_DESC"]
 				},
 				guildregistrar = {
@@ -293,6 +296,11 @@ E.Options.args.skins = {
 				worldmap = {
 					type = "toggle",
 					name = L["WORLD_MAP"],
+					desc = L["TOGGLESKIN_DESC"]
+				},
+				WorldStateFrame = {
+					type = "toggle",
+					name = L["World State Frame"],
 					desc = L["TOGGLESKIN_DESC"]
 				}
 			}

@@ -10,13 +10,16 @@ local GetItemQualityColor = GetItemQualityColor
 local GetTradePlayerItemLink = GetTradePlayerItemLink
 local GetTradeTargetItemLink = GetTradeTargetItemLink
 
-local function LoadSkin()
+S:AddCallback("Skin_Trade", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.trade then return end
 
 	TradeFrame:StripTextures(true)
 	TradeFrame:CreateBackdrop("Transparent")
-	TradeFrame.backdrop:Point("TOPLEFT", 14, -4)
-	TradeFrame.backdrop:Point("BOTTOMRIGHT", -20, 48)
+	TradeFrame.backdrop:Point("TOPLEFT", 11, -12)
+	TradeFrame.backdrop:Point("BOTTOMRIGHT", -21, 49)
+
+	S:SetUIPanelWindowInfo(TradeFrame, "width")
+	S:SetBackdropHitRect(TradeFrame)
 
 	S:HandleCloseButton(TradeFrameCloseButton, TradeFrame.backdrop)
 
@@ -81,9 +84,6 @@ local function LoadSkin()
 	TradeHighlightRecipientEnchantBottom:SetTexture(0, 1, 0, 0.2)
 	TradeHighlightRecipientEnchantMiddle:SetTexture(0, 1, 0, 0.2)
 
-	TradeHighlightPlayer:Point("TOPLEFT", 23, -100)
-	TradeHighlightRecipient:Point("TOPLEFT", 192, -100)
-
 	TradeHighlightPlayer:SetFrameStrata("HIGH")
 	TradeHighlightRecipient:SetFrameStrata("HIGH")
 	TradeHighlightPlayerEnchant:SetFrameStrata("HIGH")
@@ -128,6 +128,19 @@ local function LoadSkin()
 			tradeItemButton:SetBackdropBorderColor(unpack(E.media.bordercolor))
 		end
 	end)
-end
 
-S:AddCallback("Skin_Trade", LoadSkin)
+	TradePlayerInputMoneyFrame:Point("TOPLEFT", 26, -53)
+	TradeRecipientMoneyFrame:Point("TOPRIGHT", -40, -58)
+
+	TradePlayerItem1:Point("TOPLEFT", 23, -94)
+	TradeRecipientItem1:Point("TOPLEFT", 196, -94)
+
+	TradeHighlightPlayer:Height(263)
+	TradeHighlightRecipient:Height(263)
+	TradeHighlightPlayer:Point("TOPLEFT", 20, -91)
+	TradeHighlightRecipient:Point("TOPLEFT", 193, -91)
+
+	TradeFramePlayerEnchantText:Point("TOPLEFT", 26, -364)
+
+	TradeFrameTradeButton:Point("BOTTOMRIGHT", -113, 61)
+end)

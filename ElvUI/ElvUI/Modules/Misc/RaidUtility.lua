@@ -1,9 +1,8 @@
 local E, L = unpack(select(2, ...)); --Import: Engine, Locales
 local RU = E:GetModule("RaidUtility")
+local S = E:GetModule("Skins")
 
 --Lua functions
-local _G = _G
-local unpack, pairs = unpack, pairs
 local find = string.find
 --WoW API / Variables
 local CreateFrame = CreateFrame
@@ -28,38 +27,26 @@ local function CheckRaidStatus()
 	end
 end
 
---Change border when mouse is inside the button
-local function ButtonEnter(self)
-	self:SetBackdropBorderColor(unpack(E.media.rgbvaluecolor))
-end
-
---Change border back to normal when mouse leaves button
-local function ButtonLeave(self)
-	self:SetBackdropBorderColor(unpack(E.media.bordercolor))
-end
-
 -- Function to create buttons in this module
 function RU:CreateUtilButton(name, parent, template, width, height, point, relativeto, point2, xOfs, yOfs, text, texture)
-	local b = CreateFrame("Button", name, parent, template)
-	b:Width(width)
-	b:Height(height)
-	b:Point(point, relativeto, point2, xOfs, yOfs)
-	b:HookScript("OnEnter", ButtonEnter)
-	b:HookScript("OnLeave", ButtonLeave)
-	b:SetTemplate("Transparent")
+	local button = CreateFrame("Button", name, parent, template)
+	button:Width(width)
+	button:Height(height)
+	button:Point(point, relativeto, point2, xOfs, yOfs)
+	S:HandleButton(button)
 
 	if text then
-		local t = b:CreateFontString(nil, "OVERLAY", b)
-		t:FontTemplate()
-		t:Point("CENTER", b, "CENTER", 0, -1)
-		t:SetJustifyH("CENTER")
-		t:SetText(text)
-		b:SetFontString(t)
+		button.text = button:CreateFontString(nil, "OVERLAY", button)
+		button.text:FontTemplate()
+		button.text:Point("CENTER", button, "CENTER", 0, -1)
+		button.text:SetJustifyH("CENTER")
+		button.text:SetText(text)
+		button:SetFontString(button.text)
 	elseif texture then
-		local t = b:CreateTexture(nil, "OVERLAY", nil)
-		t:SetTexture(texture)
-		t:Point("TOPLEFT", b, "TOPLEFT", E.mult, -E.mult)
-		t:Point("BOTTOMRIGHT", b, "BOTTOMRIGHT", -E.mult, E.mult)
+		button.texture = button:CreateTexture(nil, "OVERLAY", nil)
+		button.texture:SetTexture(texture)
+		button.texture:Point("TOPLEFT", button, "TOPLEFT", E.mult, -E.mult)
+		button.texture:Point("BOTTOMRIGHT", button, "BOTTOMRIGHT", -E.mult, E.mult)
 	end
 end
 
@@ -186,31 +173,44 @@ function RU:Initialize()
 			DoReadyCheck()
 		end
 	end)
+	ReadyCheckButton:SetScript("OnEvent", function(btn)
+		if not (IsRaidLeader("player") or IsRaidOfficer("player")) then
+			btn:Disable()
+		else
+			btn:Enable()
+		end
+	end)
+	ReadyCheckButton:RegisterEvent("RAID_ROSTER_UPDATE")
+	ReadyCheckButton:RegisterEvent("PARTY_MEMBERS_CHANGED")
+	ReadyCheckButton:RegisterEvent("PLAYER_ENTERING_WORLD")
 
-	self:CreateUtilButton("RaidControlButton", RaidUtilityPanel, nil, DisbandRaidButton:GetWidth(), 18, "TOPLEFT", ReadyCheckButton, "BOTTOMLEFT", 0, -5, L["Raid Menu"], nil)
+	self:CreateUtilButton("RaidControlButton", RaidUtilityPanel, nil, MainTankButton:GetWidth(), 18, "TOPLEFT", ReadyCheckButton, "BOTTOMLEFT", 0, -5, L["Raid Menu"], nil)
 	RaidControlButton:SetScript("OnMouseUp", function()
 		if InCombatLockdown() then E:Print(ERR_NOT_IN_COMBAT) return end
 		ToggleFriendsFrame(5)
 	end)
 
-	do
-		local buttons = {
-			"DisbandRaidButton",
-			"MainTankButton",
-			"MainAssistButton",
-			"ReadyCheckButton",
-			"RaidControlButton",
-			"RaidUtility_ShowButton",
-			"RaidUtility_CloseButton"
-		}
-
-		for _, button in pairs(buttons) do
-			local f = _G[button]
-			f:HookScript("OnEnter", ButtonEnter)
-			f:HookScript("OnLeave", ButtonLeave)
-			f:SetTemplate("Default", true)
+	self:CreateUtilButton("ConvertRaidButton", RaidUtilityPanel, nil, MainAssistButton:GetWidth(), 18, "TOPRIGHT", ReadyCheckButton, "BOTTOMRIGHT", 0, -5, CONVERT_TO_RAID, nil)
+	ConvertRaidButton:SetScript("OnMouseUp", function()
+		if CheckRaidStatus() then
+			ConvertToRaid()
+			SetLootMethod("master", "player")
 		end
-	end
+	end)
+	ConvertRaidButton:SetScript("OnEvent", function(btn)
+		if GetNumRaidMembers() == 0 and GetNumPartyMembers() > 0 and IsPartyLeader() then
+			if not btn:IsShown() then
+				RaidControlButton:Width(MainAssistButton:GetWidth())
+				btn:Show()
+			end
+		elseif btn:IsShown() then
+			RaidControlButton:Width(DisbandRaidButton:GetWidth())
+			btn:Hide()
+		end
+	end)
+	ConvertRaidButton:RegisterEvent("RAID_ROSTER_UPDATE")
+	ConvertRaidButton:RegisterEvent("PARTY_MEMBERS_CHANGED")
+	ConvertRaidButton:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 	--Automatically show/hide the frame if we have RaidLeader or RaidOfficer
 	self:RegisterEvent("RAID_ROSTER_UPDATE", "ToggleRaidUtil")

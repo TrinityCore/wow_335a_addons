@@ -39,6 +39,10 @@ function B:Initialize()
 	self:RegisterEvent("ADDON_LOADED")
 	self:RegisterEvent("ZONE_CHANGED_NEW_AREA", SetMapToCurrentZone)
 
+	KBArticle_BeginLoading = E.noop
+	KBSetup_BeginLoading = E.noop
+	KnowledgeBaseFrame_OnEvent(nil, "KNOWLEDGE_BASE_SETUP_LOAD_FAILURE")
+
 	if GetLocale() == "deDE" then
 		DAY_ONELETTER_ABBR = "%d d"
 		MINUTE_ONELETTER_ABBR = "%d m"
@@ -75,8 +79,27 @@ function B:Initialize()
 		end
 	end)
 
-	WORLDMAP_POI_FRAMELEVEL = 300
-	WorldMapFrame:SetToplevel(true)
+--	WORLDMAP_POI_FRAMELEVEL = 300
+--	WorldMapFrame:SetToplevel(true)
+
+	do
+		local originalFunc = LFDQueueFrameRandomCooldownFrame_OnEvent
+		local originalScript = LFDQueueFrameCooldownFrame:GetScript("OnEvent")
+
+		LFDQueueFrameRandomCooldownFrame_OnEvent = function(self, event, unit, ...)
+			if event == "UNIT_AURA" and not unit then return end
+			originalFunc(self, event, unit, ...)
+		end
+
+		if originalFunc == originalScript then
+			LFDQueueFrameCooldownFrame:SetScript("OnEvent", LFDQueueFrameRandomCooldownFrame_OnEvent)
+		else
+			LFDQueueFrameCooldownFrame:SetScript("OnEvent", function(self, event, unit, ...)
+				if event == "UNIT_AURA" and not unit then return end
+				originalScript(self, event, unit, ...)
+			end)
+		end
+	end
 end
 
 local function InitializeCallback()

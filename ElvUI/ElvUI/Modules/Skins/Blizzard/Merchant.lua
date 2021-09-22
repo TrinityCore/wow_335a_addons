@@ -4,20 +4,24 @@ local S = E:GetModule("Skins")
 --Lua functions
 local _G = _G
 local unpack = unpack
+local floor = math.floor
 --WoW API / Variables
 local GetBuybackItemInfo = GetBuybackItemInfo
 local GetItemInfo = GetItemInfo
 local GetItemQualityColor = GetItemQualityColor
 local GetMerchantNumItems = GetMerchantNumItems
 
-local function LoadSkin()
+S:AddCallback("Skin_Merchant", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.merchant then return end
 
 	local MerchantFrame = _G.MerchantFrame
 	MerchantFrame:StripTextures(true)
 	MerchantFrame:CreateBackdrop("Transparent")
-	MerchantFrame.backdrop:Point("TOPLEFT", 10, -11)
-	MerchantFrame.backdrop:Point("BOTTOMRIGHT", -28, 60)
+	MerchantFrame.backdrop:Point("TOPLEFT", 11, -12)
+	MerchantFrame.backdrop:Point("BOTTOMRIGHT", -32, 76)
+
+	S:SetUIPanelWindowInfo(MerchantFrame, "width")
+	S:SetBackdropHitRect(MerchantFrame)
 
 	MerchantFrame:EnableMouseWheel(true)
 	MerchantFrame:SetScript("OnMouseWheel", function(_, value)
@@ -34,83 +38,120 @@ local function LoadSkin()
 
 	S:HandleCloseButton(MerchantFrameCloseButton, MerchantFrame.backdrop)
 
-	for i = 1, 12 do
-		local item = _G["MerchantItem"..i]
-		local button = _G["MerchantItem"..i.."ItemButton"]
-		local icon = _G["MerchantItem"..i.."ItemButtonIconTexture"]
-		local money = _G["MerchantItem"..i.."MoneyFrame"]
-		local nameFrame = _G["MerchantItem"..i.."NameFrame"]
-		local name = _G["MerchantItem"..i.."Name"]
-		local slot = _G["MerchantItem"..i.."SlotTexture"]
+	local function skinMerchantButton(buttonName, buyback)
+		local button = _G[buttonName]
+		local itemButton = _G[buttonName.."ItemButton"]
+		local icon = _G[buttonName.."ItemButtonIconTexture"]
+		local name = _G[buttonName.."Name"]
+		local nameFrame = _G[buttonName.."NameFrame"]
+		local money = _G[buttonName.."MoneyFrame"]
+		local slot = _G[buttonName.."SlotTexture"]
 
-		item:StripTextures(true)
-		item:CreateBackdrop("Default")
-		item.backdrop:Point("BOTTOMRIGHT", 0, -4)
+		button:StripTextures(true)
+		button:CreateBackdrop("Default")
+		button.backdrop:Point("TOPLEFT", -2, 2)
 
-		button:StripTextures()
-		button:StyleButton()
-		button:SetTemplate("Default", true)
-		button:Size(40)
-		button:Point("TOPLEFT", item, "TOPLEFT", 4, -4)
+		if buyback then
+			button.backdrop:Point("BOTTOMRIGHT", 4, -13)
+		else
+			button.backdrop:Point("BOTTOMRIGHT", 4, -6)
+		end
+
+		itemButton:StripTextures()
+		itemButton:StyleButton()
+		itemButton:SetTemplate("Default", true)
+		itemButton:Size(40)
+		itemButton:Point("TOPLEFT", 4, -4)
 
 		icon:SetTexCoord(unpack(E.TexCoords))
 		icon:SetInside()
 
+		name:Point("LEFT", slot, "RIGHT", -4, 5)
 		nameFrame:Point("LEFT", slot, "RIGHT", -6, -17)
 
-		name:Point("LEFT", slot, "RIGHT", -4, 5)
-
 		money:ClearAllPoints()
-		money:Point("BOTTOMLEFT", button, "BOTTOMRIGHT", 3, 0)
+		money:Point("BOTTOMLEFT", itemButton, "BOTTOMRIGHT", 3, 0)
 
-		for j = 1, 2 do
-			local currencyItem = _G["MerchantItem"..i.."AltCurrencyFrameItem"..j]
-			local currencyIcon = _G["MerchantItem"..i.."AltCurrencyFrameItem"..j.."Texture"]
+		if not buyback then
+			for j = 1, 2 do
+				local currencyItem = _G[buttonName.."AltCurrencyFrameItem"..j]
+				local currencyIcon = _G[buttonName.."AltCurrencyFrameItem"..j.."Texture"]
 
-			currencyIcon.backdrop = CreateFrame("Frame", nil, currencyItem)
-			currencyIcon.backdrop:SetTemplate("Default")
-			currencyIcon.backdrop:SetFrameLevel(currencyItem:GetFrameLevel())
-			currencyIcon.backdrop:SetOutside(currencyIcon)
+				currencyIcon.backdrop = CreateFrame("Frame", nil, currencyItem)
+				currencyIcon.backdrop:SetTemplate("Default")
+				currencyIcon.backdrop:SetFrameLevel(currencyItem:GetFrameLevel())
+				currencyIcon.backdrop:SetOutside(currencyIcon)
 
-			currencyIcon:SetTexCoord(unpack(E.TexCoords))
-			currencyIcon:SetParent(currencyIcon.backdrop)
+				currencyIcon:SetTexCoord(unpack(E.TexCoords))
+				currencyIcon:SetParent(currencyIcon.backdrop)
+			end
 		end
 	end
+
+	for i = 1, 12 do
+		skinMerchantButton("MerchantItem"..i)
+
+		if i % 2 == 0 then
+			_G["MerchantItem"..i]:Point("TOPLEFT", _G["MerchantItem"..i-1], "TOPRIGHT", 13, 0)
+		end
+	end
+
+	skinMerchantButton("MerchantBuyBackItem", true)
 
 	S:HandleNextPrevButton(MerchantNextPageButton, nil, nil, true)
 	S:HandleNextPrevButton(MerchantPrevPageButton, nil, nil, true)
 
 	S:HandleButton(MerchantRepairItemButton)
 	MerchantRepairItemButton:StyleButton(false)
-	MerchantRepairItemButton:GetRegions():SetTexCoord(0.04, 0.24, 0.07, 0.5)
+	-- texWidth, texHeight, cropWidth, cropHeight, offsetX, offsetY = 128, 64, 26, 26, 5, 6
+	MerchantRepairItemButton:GetRegions():SetTexCoord(0.0390625, 0.2421875, 0.09375, 0.5)
 	MerchantRepairItemButton:GetRegions():SetInside()
-
-	S:HandleButton(MerchantGuildBankRepairButton)
-	MerchantGuildBankRepairButton:StyleButton()
-	MerchantGuildBankRepairButtonIcon:SetTexCoord(0.61, 0.82, 0.1, 0.52)
-	MerchantGuildBankRepairButtonIcon:SetInside()
 
 	S:HandleButton(MerchantRepairAllButton)
 	MerchantRepairAllIcon:StyleButton(false)
-	MerchantRepairAllIcon:SetTexCoord(0.34, 0.1, 0.34, 0.535, 0.535, 0.1, 0.535, 0.535)
+	-- texWidth, texHeight, cropWidth, cropHeight, offsetX, offsetY = 128, 64, 26, 26, 41, 6
+	MerchantRepairAllIcon:SetTexCoord(0.3203125, 0.5234375, 0.09375, 0.5)
 	MerchantRepairAllIcon:SetInside()
 
-	MerchantBuyBackItem:StripTextures(true)
-	MerchantBuyBackItem:CreateBackdrop("Transparent")
-	MerchantBuyBackItem.backdrop:Point("TOPLEFT", -6, 6)
-	MerchantBuyBackItem.backdrop:Point("BOTTOMRIGHT", 6, -6)
-	MerchantBuyBackItem:Point("TOPLEFT", MerchantItem10, "BOTTOMLEFT", 0, -48)
+	S:HandleButton(MerchantGuildBankRepairButton)
+	MerchantGuildBankRepairButton:StyleButton()
+	-- texWidth, texHeight, cropWidth, cropHeight, offsetX, offsetY = 128, 64, 26, 26, 77, 6
+	MerchantGuildBankRepairButtonIcon:SetTexCoord(0.6015625, 0.8046875, 0.09375, 0.5)
+	MerchantGuildBankRepairButtonIcon:SetInside()
 
-	MerchantBuyBackItemItemButton:StripTextures()
-	MerchantBuyBackItemItemButton:SetTemplate("Default", true)
-	MerchantBuyBackItemItemButton:StyleButton()
+	S:HandleTab(MerchantFrameTab1)
+	S:HandleTab(MerchantFrameTab2)
 
-	MerchantBuyBackItemItemButtonIconTexture:SetTexCoord(unpack(E.TexCoords))
-	MerchantBuyBackItemItemButtonIconTexture:SetInside()
+	MerchantNameText:Point("TOP", -6, -22)
 
-	for i = 1, 2 do
-		S:HandleTab(_G["MerchantFrameTab"..i])
-	end
+	MerchantItem1:SetPoint("TOPLEFT", 21, -54)
+
+	MerchantPrevPageButton:Point("CENTER", MerchantFrame, "BOTTOMLEFT", 37, 172)
+	MerchantNextPageButton:Point("CENTER", MerchantFrame, "BOTTOMLEFT", 324, 172)
+
+	MerchantPageText:Point("BOTTOM", -14, 166)
+
+	MerchantBuyBackItem:Point("TOPLEFT", MerchantItem10, "BOTTOMLEFT", 0, -39)
+
+	MerchantGuildBankRepairButton:Point("LEFT", MerchantRepairAllButton, "RIGHT", 5, 0)
+	MerchantRepairItemButton:Point("RIGHT", MerchantRepairAllButton, "LEFT", -5, 0)
+	MerchantRepairItemButton.SetPoint = E.noop
+
+	MerchantMoneyFrame:Point("BOTTOMRIGHT", -30, 86)
+
+	MerchantFrameTab1:Point("CENTER", MerchantFrame, "BOTTOMLEFT", 54, 62)
+	MerchantFrameTab2:Point("LEFT", MerchantFrameTab1, "RIGHT", -15, 0)
+
+	hooksecurefunc(MerchantRepairAllButton, "Show", function(self)
+		-- CanMerchantRepair && CanGuildBankRepair
+		if floor(self:GetWidth() + 0.5) == 32 then
+			MerchantRepairText:SetPoint("CENTER", MerchantFrame, "BOTTOMLEFT", 94, 151)
+			MerchantRepairAllButton:Point("BOTTOMRIGHT", MerchantFrame, "BOTTOMLEFT", 111, 105)
+		else
+			MerchantRepairText:SetPoint("BOTTOMLEFT", MerchantFrame, "BOTTOMLEFT", 26, 125)
+			MerchantRepairAllButton:Point("BOTTOMRIGHT", MerchantFrame, "BOTTOMLEFT", 172, 113)
+		end
+	end)
 
 	hooksecurefunc("MerchantFrame_UpdateMerchantInfo", function()
 		local numMerchantItems = GetMerchantNumItems()
@@ -157,6 +198,11 @@ local function LoadSkin()
 				MerchantBuyBackItemItemButton:SetBackdropBorderColor(unpack(E.media.bordercolor))
 			end
 		end
+
+		MerchantItem3:SetPoint("TOPLEFT", "MerchantItem1", "BOTTOMLEFT", 0, -11)
+		MerchantItem5:SetPoint("TOPLEFT", "MerchantItem3", "BOTTOMLEFT", 0, -11)
+		MerchantItem7:SetPoint("TOPLEFT", "MerchantItem5", "BOTTOMLEFT", 0, -11)
+		MerchantItem9:SetPoint("TOPLEFT", "MerchantItem7", "BOTTOMLEFT", 0, -11)
 	end)
 
 	hooksecurefunc("MerchantFrame_UpdateBuybackInfo", function()
@@ -183,7 +229,10 @@ local function LoadSkin()
 				end
 			end
 		end
-	end)
-end
 
-S:AddCallback("Skin_Merchant", LoadSkin)
+		MerchantItem3:SetPoint("TOPLEFT", "MerchantItem1", "BOTTOMLEFT", 0, -15)
+		MerchantItem5:SetPoint("TOPLEFT", "MerchantItem3", "BOTTOMLEFT", 0, -15)
+		MerchantItem7:SetPoint("TOPLEFT", "MerchantItem5", "BOTTOMLEFT", 0, -15)
+		MerchantItem9:SetPoint("TOPLEFT", "MerchantItem7", "BOTTOMLEFT", 0, -15)
+	end)
+end)

@@ -17,7 +17,7 @@ local GetInventoryItemID = GetInventoryItemID
 
 local BANK_CONTAINER = BANK_CONTAINER
 
-local function LoadSkin()
+S:AddCallback("Skin_Bags", function()
 	if E.private.bags.enable then return end
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.bags then return end
 
@@ -47,9 +47,14 @@ local function LoadSkin()
 		frame:StripTextures(true)
 		frame:CreateBackdrop("Transparent")
 		frame.backdrop:Point("TOPLEFT", 9, -4)
-		frame.backdrop:Point("BOTTOMRIGHT", -4, 2)
+		frame.backdrop:Point("BOTTOMRIGHT", -4, 1)
 
-		S:HandleCloseButton(closeButton)
+		S:HookScript(frame, "OnShow", function(self)
+			S:SetBackdropHitRect(self)
+			S:Unhook(self, "OnShow")
+		end)
+
+		S:HandleCloseButton(closeButton, frame.backdrop)
 
 		for j = 1, MAX_CONTAINER_ITEMS do
 			local item = _G["ContainerFrame"..i.."Item"..j]
@@ -170,10 +175,18 @@ local function LoadSkin()
 	-- BankFrame
 	BankFrame:StripTextures(true)
 	BankFrame:CreateBackdrop("Transparent")
-	BankFrame.backdrop:Point("TOPLEFT", 10, -11)
-	BankFrame.backdrop:Point("BOTTOMRIGHT", -26, 93)
+	BankFrame.backdrop:Point("TOPLEFT", 11, -12)
+	BankFrame.backdrop:Point("BOTTOMRIGHT", -26, 76)
 
-	S:HandleCloseButton(BankCloseButton)
+	S:HookScript(BankFrame, "OnShow", function(self)
+		S:SetUIPanelWindowInfo(self, "width")
+		S:SetBackdropHitRect(self)
+		S:Unhook(self, "OnShow")
+	end)
+
+	S:HandleCloseButton(BankCloseButton, BankFrame.backdrop)
+
+	BankFrameItem1:Point("TOPLEFT", 39, -73)
 
 	for i = 1, NUM_BANKGENERIC_SLOTS do
 		local button = _G["BankFrameItem"..i]
@@ -224,6 +237,7 @@ local function LoadSkin()
 	BankFrame.bagBackdrop:SetFrameLevel(BankFrame:GetFrameLevel())
 
 	S:HandleButton(BankFramePurchaseButton)
+	BankFramePurchaseButton:Point("RIGHT", -4, -10)
 
 	hooksecurefunc("BankFrameItemButton_Update", function(button)
 		local id = button:GetID()
@@ -283,6 +297,4 @@ local function LoadSkin()
 			end
 		end
 	end)
-end
-
-S:AddCallback("Skin_Bags", LoadSkin)
+end)

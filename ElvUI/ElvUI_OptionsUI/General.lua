@@ -595,22 +595,32 @@ E.Options.args.general = {
 					type = "toggle",
 					name = L["LOOT"],
 					desc = L["Enable/Disable the loot frame."],
-					get = function(info) return E.private.general.loot end,
-					set = function(info, value) E.private.general.loot = value E:StaticPopup_Show("PRIVATE_RL") end
+					get = function(info) return E.private.general[info[#info]] end,
+					set = function(info, value)
+						E.private.general[info[#info]] = value
+						E:StaticPopup_Show("PRIVATE_RL")
+					end
 				},
 				lootRoll = {
 					order = 3,
 					type = "toggle",
 					name = L["Loot Roll"],
 					desc = L["Enable/Disable the loot roll frame."],
-					get = function(info) return E.private.general.lootRoll end,
-					set = function(info, value) E.private.general.lootRoll = value E:StaticPopup_Show("PRIVATE_RL") end
+					get = function(info) return E.private.general[info[#info]] end,
+					set = function(info, value)
+						E.private.general[info[#info]] = value
+						E:StaticPopup_Show("PRIVATE_RL")
+					end
 				},
 				hideErrorFrame = {
 					order = 4,
 					type = "toggle",
 					name = L["Hide Error Text"],
-					desc = L["Hides the red error text at the top of the screen while in combat."]
+					desc = L["Hides the red error text at the top of the screen while in combat."],
+					set = function(info, value)
+						E.db.general[info[#info]] = value
+						Misc:ToggleErrorHandling()
+					end
 				},
 				enhancedPvpMessages = {
 					order = 5,
@@ -623,16 +633,21 @@ E.Options.args.general = {
 					type = "toggle",
 					name = L["RAID_CONTROL"],
 					desc = L["Enables the ElvUI Raid Control panel."],
-					get = function(info) return E.private.general.raidUtility end,
-					set = function(info, value) E.private.general.raidUtility = value E:StaticPopup_Show("PRIVATE_RL") end
+					get = function(info) return E.private.general[info[#info]] end,
+					set = function(info, value)
+						E.private.general[info[#info]] = value
+						E:StaticPopup_Show("PRIVATE_RL")
+					end
 				},
 				vehicleSeatIndicatorSize = {
 					order = 8,
 					type = "range",
 					name = L["Vehicle Seat Indicator Size"],
 					min = 64, max = 128, step = 4,
-					get = function(info) return E.db.general.vehicleSeatIndicatorSize end,
-					set = function(info, value) E.db.general.vehicleSeatIndicatorSize = value Blizzard:UpdateVehicleFrame() end
+					set = function(info, value)
+						E.db.general[info[#info]] = value
+						Blizzard:UpdateVehicleFrame()
+					end
 				}
 			}
 		},
@@ -659,15 +674,11 @@ E.Options.args.general = {
 						["PARTY"] = L["Party Only"],
 						["RAID"] = L["Party / Raid"],
 						["RAID_ONLY"] = L["Raid Only"],
-						["EMOTE"] = L["CHAT_MSG_EMOTE"]
+						["EMOTE"] = L["EMOTE"]
 					},
 					set = function(info, value)
 						E.db.general[info[#info]] = value
-						if value == "NONE" then
-							Misc:UnregisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
-						else
-							Misc:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
-						end
+						Misc:ToggleInterruptAnnounce()
 					end
 				},
 				autoRepair = {

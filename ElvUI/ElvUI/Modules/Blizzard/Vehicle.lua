@@ -4,47 +4,47 @@ local B = E:GetModule("Blizzard")
 --Lua functions
 local _G = _G
 --WoW API / Variables
-local hooksecurefunc = hooksecurefunc
 local GetVehicleUIIndicator = GetVehicleUIIndicator
 local GetVehicleUIIndicatorSeat = GetVehicleUIIndicatorSeat
-local VehicleSeatIndicator_SetUpVehicle = VehicleSeatIndicator_SetUpVehicle
 
-local function VehicleSeatIndicator_SetPosition(_, _, parent)
-	if (parent == "MinimapCluster") or (parent == MinimapCluster) then
-		VehicleSeatIndicator:ClearAllPoints()
-		VehicleSeatIndicator:Point("TOPLEFT", VehicleSeatMover, "TOPLEFT", 0, 0)
+local function VehicleSeatIndicator_SetPosition(self, _, point)
+	if point ~= VehicleSeatMover then
+		self:ClearAllPoints()
+		self:SetPoint("TOPLEFT", VehicleSeatMover, "TOPLEFT", 0, 0)
 	end
 end
 
 local function VehicleSetUp(vehicleID)
-	VehicleSeatIndicator:Size(E.db.general.vehicleSeatIndicatorSize, E.db.general.vehicleSeatIndicatorSize)
+	if vehicleID == 0 or vehicleID == VehicleSeatIndicator.currSkin then return end
+
 	local _, numSeatIndicators = GetVehicleUIIndicator(vehicleID)
-	if numSeatIndicators then
-		for i = 1, numSeatIndicators do
-			local button = _G["VehicleSeatIndicatorButton"..i]
-			button:Size(E.db.general.vehicleSeatIndicatorSize / 4, E.db.general.vehicleSeatIndicatorSize / 4)
-			local _, xOffset, yOffset = GetVehicleUIIndicatorSeat(vehicleID, i)
-			button:ClearAllPoints()
-			button:Point("CENTER", button:GetParent(), "TOPLEFT", xOffset * E.db.general.vehicleSeatIndicatorSize, -yOffset * E.db.general.vehicleSeatIndicatorSize)
-		end
+	local size = E.db.general.vehicleSeatIndicatorSize
+
+	VehicleSeatIndicator:Size(size)
+
+	for i = 1, numSeatIndicators do
+		local _, xOffset, yOffset = GetVehicleUIIndicatorSeat(vehicleID, i)
+		local button = _G["VehicleSeatIndicatorButton"..i]
+		button:Size(size / 4)
+		button:Point("CENTER", button:GetParent(), "TOPLEFT", xOffset * size, -yOffset * size)
 	end
 end
 
 function B:UpdateVehicleFrame()
-	VehicleSeatIndicator_SetUpVehicle(VehicleSeatIndicator.currSkin)
-end
-
-function B:PositionVehicleFrame()
-	if not VehicleSeatIndicator.PositionVehicleFrameHooked then
-		hooksecurefunc(VehicleSeatIndicator, "SetPoint", VehicleSeatIndicator_SetPosition)
-		hooksecurefunc("VehicleSeatIndicator_SetUpVehicle", VehicleSetUp)
-		E:CreateMover(VehicleSeatIndicator, "VehicleSeatMover", L["Vehicle Seat Frame"], nil, nil, nil, nil, nil, "general,general")
-		VehicleSeatIndicator.PositionVehicleFrameHooked = true
-	end
-
-	VehicleSeatIndicator:Size(E.db.general.vehicleSeatIndicatorSize, E.db.general.vehicleSeatIndicatorSize)
-
 	if VehicleSeatIndicator.currSkin then
 		VehicleSetUp(VehicleSeatIndicator.currSkin)
 	end
+end
+
+function B:PositionVehicleFrame()
+	if not self.vehicleFrameHooked then
+		hooksecurefunc(VehicleSeatIndicator, "SetPoint", VehicleSeatIndicator_SetPosition)
+		hooksecurefunc("VehicleSeatIndicator_SetUpVehicle", VehicleSetUp)
+		E:CreateMover(VehicleSeatIndicator, "VehicleSeatMover", L["Vehicle Seat Frame"], nil, nil, nil, nil, nil, "general,blizzUIImprovements")
+		self.vehicleFrameHooked = true
+	end
+
+	VehicleSeatIndicator:Size(E.db.general.vehicleSeatIndicatorSize)
+
+	self:UpdateVehicleFrame()
 end

@@ -6,37 +6,57 @@ local _G = _G
 local unpack = unpack
 --WoW API / Variables
 
-local function LoadSkin()
+S:AddCallbackForAddon("Blizzard_TalentUI", "Skin_Blizzard_TalentUI", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.talent then return end
 
 	PlayerTalentFrame:StripTextures(true)
 	PlayerTalentFrame:CreateBackdrop("Transparent")
-	PlayerTalentFrame.backdrop:Point("TOPLEFT", 13, -12)
-	PlayerTalentFrame.backdrop:Point("BOTTOMRIGHT", -31, 76)
+	PlayerTalentFrame.backdrop:Point("TOPLEFT", 11, -12)
+	PlayerTalentFrame.backdrop:Point("BOTTOMRIGHT", -32, 76)
 
-	S:HandleCloseButton(PlayerTalentFrameCloseButton)
+	S:SetBackdropHitRect(PlayerTalentFrame)
+
+	do
+		local offset
+
+		local talentGroups = GetNumTalentGroups(false, false)
+		local petTalentGroups = GetNumTalentGroups(false, true)
+
+		if talentGroups + petTalentGroups > 1 then
+			S:SetUIPanelWindowInfo(PlayerTalentFrame, "width", nil, 31)
+			offset = true
+		else
+			S:SetUIPanelWindowInfo(PlayerTalentFrame, "width")
+		end
+
+		hooksecurefunc("PlayerTalentFrame_UpdateSpecs", function(_, numTalentGroups, _, numPetTalentGroups)
+			if offset and numTalentGroups + numPetTalentGroups <= 1 then
+				S:SetUIPanelWindowInfo(PlayerTalentFrame, "width")
+				offset = nil
+			elseif not offset and numTalentGroups + numPetTalentGroups > 1 then
+				S:SetUIPanelWindowInfo(PlayerTalentFrame, "width", nil, 31)
+				offset = true
+			end
+		end)
+	end
+
+	S:HandleCloseButton(PlayerTalentFrameCloseButton, PlayerTalentFrame.backdrop)
+
+	local function glyphFrameOnShow(self)
+		if GlyphFrame and GlyphFrame:IsShown() then
+			self:Hide()
+		end
+	end
+
+	PlayerTalentFrameStatusFrame:HookScript("OnShow", glyphFrameOnShow)
+	PlayerTalentFrameActivateButton:HookScript("OnShow", glyphFrameOnShow)
 
 	PlayerTalentFrameStatusFrame:StripTextures()
-	PlayerTalentFrameStatusFrame:Point("TOPLEFT", PlayerTalentFrame, "TOPLEFT", 57, -40)
-	PlayerTalentFrameStatusFrame:HookScript("OnShow", function(self)
-		if GlyphFrame and GlyphFrame:IsShown() then
-			self:Hide()
-		end
-	end)
-
-	S:HandleButton(PlayerTalentFrameActivateButton, true)
-	PlayerTalentFrameActivateButton:Point("TOP", PlayerTalentFrame, "TOP", 0, -40)
-	PlayerTalentFrameActivateButton:HookScript("OnShow", function(self)
-		if GlyphFrame and GlyphFrame:IsShown() then
-			self:Hide()
-		end
-	end)
-
 	PlayerTalentFramePointsBar:StripTextures()
 	PlayerTalentFramePreviewBar:StripTextures()
 
+	S:HandleButton(PlayerTalentFrameActivateButton)
 	S:HandleButton(PlayerTalentFrameResetButton)
-	PlayerTalentFrameLearnButton:Point("RIGHT", PlayerTalentFrameResetButton, "LEFT", -1, 0)
 	S:HandleButton(PlayerTalentFrameLearnButton)
 
 	PlayerTalentFramePreviewBarFiller:StripTextures()
@@ -77,6 +97,23 @@ local function LoadSkin()
 		tab:GetNormalTexture():SetInside()
 		tab:GetNormalTexture():SetTexCoord(unpack(E.TexCoords))
 	end
-end
 
-S:AddCallbackForAddon("Blizzard_TalentUI", "Skin_Blizzard_TalentUI", LoadSkin)
+	PlayerTalentFrameStatusFrame:Point("TOPLEFT", 57, -40)
+	PlayerTalentFrameActivateButton:Point("TOP", 0, -40)
+
+	PlayerTalentFrameScrollFrame:Width(302)
+	PlayerTalentFrameScrollFrame:Point("TOPRIGHT", PlayerTalentFrame, "TOPRIGHT", -62, -77)
+	PlayerTalentFrameScrollFrame:SetPoint("BOTTOM", PlayerTalentFramePointsBar, "TOP", 0, 0)
+
+	PlayerTalentFrameScrollFrameScrollBar:Point("TOPLEFT", PlayerTalentFrameScrollFrame, "TOPRIGHT", 4, -18)
+	PlayerTalentFrameScrollFrameScrollBar:Point("BOTTOMLEFT", PlayerTalentFrameScrollFrame, "BOTTOMRIGHT", 4, 18)
+
+	PlayerTalentFrameResetButton:Point("RIGHT", -4, 1)
+	PlayerTalentFrameLearnButton:Point("RIGHT", PlayerTalentFrameResetButton, "LEFT", -3, 0)
+
+	PlayerSpecTab1:Point("TOPLEFT", PlayerTalentFrame, "TOPRIGHT", -33, -65)
+	PlayerSpecTab1.ClearAllPoints = E.noop
+	PlayerSpecTab1.SetPoint = E.noop
+
+	PlayerTalentFrameTab1:Point("BOTTOMLEFT", 11, 46)
+end)

@@ -36,8 +36,8 @@ local afkStatusString = format("<%s>", AFK)
 local dndStatusString = format("<%s>", DND)
 
 local inGroupStamp = "|cffaaaaaa*|r"
-local friendOnlineString = select(2, string.split(" ", ERR_FRIEND_ONLINE_SS, 2))
-local friendOfflineString = select(2, string.split(" ", ERR_FRIEND_OFFLINE_S, 2))
+local friendOnlineString = string.gsub(ERR_FRIEND_ONLINE_SS, ".+|h", "")
+local friendOfflineString = string.gsub(ERR_FRIEND_OFFLINE_S, "%%s", "")
 
 local onlineStatusString = "|cffFFFFFF[|r|cff%s%s|r|cffFFFFFF]|r"
 local onlineStatus = {
@@ -265,8 +265,8 @@ local function OnEvent(self, event, message)
 	lastPanel = self
 
 	-- special handler to detect friend coming online or going offline
-	if event == "CHAT_MSG_SYSTEM" then
-		if not (find(message, friendOnlineString) or find(message, friendOfflineString)) then return end
+	if event == "CHAT_MSG_SYSTEM" and not (find(message, friendOnlineString) or find(message, friendOfflineString)) then
+		return
 	end
 
 	local _, onlineFriends = GetNumFriends()

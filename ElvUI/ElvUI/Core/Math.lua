@@ -1,11 +1,14 @@
 local E, L, V, P, G = unpack(select(2, ...)); --Import: Engine, Locales, PrivateDB, ProfileDB, GlobalDB
 
 --Lua functions
-local tinsert, tremove, next, wipe, ipairs = tinsert, tremove, next, wipe, ipairs
-local select, tonumber, type, unpack = select, tonumber, type, unpack
-local modf, ceil, floor, abs, mod = math.modf, math.ceil, math.floor, math.abs, mod
-local byte, format, strsub, strupper, gsub, gmatch, utf8sub = string.byte, format, strsub, strupper, gsub, gmatch, string.utf8sub
-local tostring, pairs = tostring, pairs
+local pairs, ipairs = pairs, ipairs
+local next, select, type, unpack = next, select, type, unpack
+local tonumber, tostring = tonumber, tostring
+local abs, ceil, floor, fmod, modf = math.abs, math.ceil, math.floor, math.fmod, math.modf
+local byte, format, gmatch, gsub, strupper, strsub = string.byte, string.format, string.gmatch, string.gsub, strupper, strsub
+local utf8sub = string.utf8sub
+local tinsert, tremove, wipe = table.insert, table.remove, table.wipe
+
 --WoW API / Variables
 local CreateFrame = CreateFrame
 local GetScreenWidth, GetScreenHeight = GetScreenWidth, GetScreenHeight
@@ -19,7 +22,7 @@ E.ShortPrefixStyles = {
 	["METRIC"] = {{1e12, "T"}, {1e9, "G"}, {1e6, "M"}, {1e3, "k"}}
 }
 
-local gftStyles = {
+E.GetFormattedTextStyles = {
 	["CURRENT"] = "%s",
 	["CURRENT_MAX"] = "%s - %s",
 	["CURRENT_PERCENT"] = "%s - %.1f%%",
@@ -39,8 +42,8 @@ function E:BuildPrefixValues()
 	end
 
 	local gftDec = tostring(E.db.general.decimalLength or 1)
-	for style, str in pairs(gftStyles) do
-		gftStyles[style] = gsub(str, "%d", gftDec)
+	for style, str in pairs(E.GetFormattedTextStyles) do
+		E.GetFormattedTextStyles[style] = gsub(str, "%d", gftDec)
 	end
 end
 
@@ -176,23 +179,32 @@ function E:GetXYOffset(position, override)
 	end
 end
 
-function E:GetFormattedText(style, min, max)
+function E:GetFormattedText(style, min, max, dec)
 	if max == 0 then max = 1 end
 
-	local gftUseStyle = gftStyles[style]
-	if style == "DEFICIT" then
-		local gftDeficit = max - min
-		return ((gftDeficit > 0) and format(gftUseStyle, E:ShortValue(gftDeficit))) or ""
-	elseif style == "PERCENT" then
-		return format(gftUseStyle, min / max * 100)
-	elseif style == "CURRENT" or ((style == "CURRENT_MAX" or style == "CURRENT_MAX_PERCENT" or style == "CURRENT_PERCENT") and min == max) then
-		return format(gftStyles.CURRENT, E:ShortValue(min))
-	elseif style == "CURRENT_MAX" then
-		return format(gftUseStyle, E:ShortValue(min), E:ShortValue(max))
-	elseif style == "CURRENT_PERCENT" then
-		return format(gftUseStyle, E:ShortValue(min), min / max * 100)
-	elseif style == "CURRENT_MAX_PERCENT" then
-		return format(gftUseStyle, E:ShortValue(min), E:ShortValue(max), min / max * 100)
+	if style == "CURRENT" or ((style == "CURRENT_MAX" or style == "CURRENT_MAX_PERCENT" or style == "CURRENT_PERCENT") and min == max) then
+		return format(E.GetFormattedTextStyles.CURRENT, E:ShortValue(min, dec))
+	else
+		local useStyle = E.GetFormattedTextStyles[style]
+		if not useStyle then return end
+
+		if style == "DEFICIT" then
+			local deficit = max - min
+			return (deficit > 0 and format(useStyle, E:ShortValue(deficit, dec))) or ""
+		elseif style == "CURRENT_MAX" then
+			return format(useStyle, E:ShortValue(min, dec), E:ShortValue(max, dec))
+		elseif style == "PERCENT" or style == "CURRENT_PERCENT" or style == "CURRENT_MAX_PERCENT" then
+			if dec then useStyle = gsub(useStyle, "%d", tonumber(dec) or 0) end
+			local perc = min / max * 100
+
+			if style == "PERCENT" then
+				return format(useStyle, perc)
+			elseif style == "CURRENT_PERCENT" then
+				return format(useStyle, E:ShortValue(min, dec), perc)
+			elseif style == "CURRENT_MAX_PERCENT" then
+				return format(useStyle, E:ShortValue(min, dec), E:ShortValue(max, dec), perc)
+			end
+		end
 	end
 end
 
@@ -238,61 +250,103 @@ function E:AbbreviateString(str, allUpper)
 	return newString
 end
 
-function E:WaitFunc(elapse)
+function E:WaitFunc(elapsed)
+	local total = #E.WaitTable
 	local i = 1
-	while i <= #E.WaitTable do
+
+	while i <= total do
 		local data = E.WaitTable[i]
-		if data[1] > elapse then
-			data[1], i = data[1] - elapse, i + 1
+
+		if data[1] > elapsed then
+			data[1] = data[1] - elapsed
+			i = i + 1
 		else
 			tremove(E.WaitTable, i)
-			data[2](unpack(data[3]))
 
-			if #E.WaitTable == 0 then
-				E.WaitFrame:Hide()
+			if data[3] then
+				if data[3] > 1 then
+					data[2](unpack(data[4], 1, data[3]))
+				else
+					data[2](data[4])
+				end
+			else
+				data[2]()
 			end
+
+			total = total - 1
 		end
+	end
+
+	if #E.WaitTable == 0 then
+		self:Hide()
 	end
 end
 
 E.WaitTable = {}
-E.WaitFrame = CreateFrame("Frame", "ElvUI_WaitFrame", _G.UIParent)
+E.WaitFrame = CreateFrame("Frame", "ElvUI_WaitFrame", UIParent)
 E.WaitFrame:SetScript("OnUpdate", E.WaitFunc)
 
 --Add time before calling a function
 function E:Delay(delay, func, ...)
-	if type(delay) ~= "number" or type(func) ~= "function" then
-		return false
+	if type(delay) ~= "number" then
+		error(format("Bad argument #1 to 'Delay' (number expected, got %s)", delay ~= nil and type(delay) or "no value"), 2)
+	elseif type(func) ~= "function" then
+		error(format("Bad argument #2 to 'Delay' (function expected, got %s)", func ~= nil and type(func) or "no value"), 2)
 	end
 
-	tinsert(E.WaitTable,{delay,func,{...}})
+	local argCount = select("#", ...)
+
+	tinsert(E.WaitTable, {
+		delay,
+		func,
+		argCount > 0 and argCount,
+		argCount == 1 and (...) or argCount > 1 and {...}
+	})
+
 	E.WaitFrame:Show()
 
 	return true
 end
 
 function E:StringTitle(str)
-	return gsub(str, "(.)", strupper, 1)
+	return gsub(str, "^%l", strupper, 1)
 end
 
 E.TimeThreshold = 3
-E.TimeColors = { -- aura time colors for days, hours, minutes, seconds, fadetimer
-	[0] = "|cffeeeeee",
-	[1] = "|cffeeeeee",
-	[2] = "|cffeeeeee",
-	[3] = "|cffeeeeee",
-	[4] = "|cfffe0000",
+
+E.TimeColors = { --aura time colors
+	[0] = "|cffeeeeee", --days
+	[1] = "|cffeeeeee", --hours
+	[2] = "|cffeeeeee", --minutes
+	[3] = "|cffeeeeee", --seconds
+	[4] = "|cfffe0000", --expire (fade timer)
 	[5] = "|cff909090", --mmss
 	[6] = "|cff707070", --hhmm
 }
-E.TimeFormats = { -- short and long aura time formats
-	[0] = {"%dd", "%dd"},
-	[1] = {"%dh", "%dh"},
-	[2] = {"%dm", "%dm"},
-	[3] = {"%ds", "%d"},
-	[4] = {"%.1fs", "%.1f"},
-	[5] = {"%d:%02d", "%d:%02d"}, --mmss
-	[6] = {"%d:%02d", "%d:%02d"}, --hhmm
+
+E.TimeFormats = { -- short / indicator color
+	[0] = {"%dd", "%d%sd|r"},
+	[1] = {"%dh", "%d%sh|r"},
+	[2] = {"%dm", "%d%sm|r"},
+	[3] = {"%ds", "%d%ss|r"},
+	[4] = {"%.1fs", "%.1f%ss|r"},
+	[5] = {"%d:%02d", "%d%s:|r%02d"}, --mmss
+	[6] = {"%d:%02d", "%d%s:|r%02d"}, --hhmm
+}
+
+for _, x in pairs(E.TimeFormats) do
+	x[3] = gsub(x[1], "s$", "") -- 1 without seconds
+	x[4] = gsub(x[2], "%%ss", "%%s") -- 2 without seconds
+end
+
+E.TimeIndicatorColors = {
+	[0] = "|cff00b3ff",
+	[1] = "|cff00b3ff",
+	[2] = "|cff00b3ff",
+	[3] = "|cff00b3ff",
+	[4] = "|cff00b3ff",
+	[5] = "|cff00b3ff",
+	[6] = "|cff00b3ff",
 }
 
 local DAY, HOUR, MINUTE = 86400, 3600, 60 --used for calculating aura time text
@@ -348,8 +402,8 @@ function E:FormatMoney(amount, style, textonly)
 
 	local value = abs(amount)
 	local gold = floor(value / 10000)
-	local silver = floor(mod(value / 100, 100))
-	local copper = floor(mod(value, 100))
+	local silver = floor(fmod(value / 100, 100))
+	local copper = floor(fmod(value, 100))
 
 	if not style or style == "SMART" then
 		local str = ""

@@ -4,13 +4,13 @@ local S = E:GetModule("Skins")
 --Lua functions
 --WoW API / Variables
 
-local function LoadSkin()
+S:AddCallback("Skin_MirrorTimers", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.mirrorTimers then return end
 
 	local function MirrorTimer_OnUpdate(frame, elapsed)
 		if frame.paused then return end
 
-		if frame.timeSinceUpdate >= 0.3 then
+		if frame.timeSinceUpdate <= 0 then
 			local text = frame.label:GetText()
 
 			if frame.value > 0 then
@@ -19,9 +19,9 @@ local function LoadSkin()
 				frame.TimerText:SetFormattedText("%s (0:00)", text)
 			end
 
-			frame.timeSinceUpdate = 0
+			frame.timeSinceUpdate = 0.033
 		else
-			frame.timeSinceUpdate = frame.timeSinceUpdate + elapsed
+			frame.timeSinceUpdate = frame.timeSinceUpdate - elapsed
 		end
 	end
 
@@ -33,22 +33,22 @@ local function LoadSkin()
 		mirrorTimer:StripTextures()
 		mirrorTimer:Size(222, 18)
 		mirrorTimer.label = text
-		statusBar:SetStatusBarTexture(E.media.normTex)
-		E:RegisterStatusBar(statusBar)
+
 		statusBar:CreateBackdrop()
 		statusBar:Size(222, 18)
+		statusBar:SetStatusBarTexture(E.media.normTex)
+		E:RegisterStatusBar(statusBar)
+
 		text:Hide()
 
 		local timerText = mirrorTimer:CreateFontString(nil, "OVERLAY")
 		timerText:FontTemplate()
-		timerText:Point("CENTER", statusBar, "CENTER", 0, 0)
+		timerText:SetPoint("CENTER", statusBar)
 		mirrorTimer.TimerText = timerText
 
-		mirrorTimer.timeSinceUpdate = 0.3
+		mirrorTimer.timeSinceUpdate = 0
 		mirrorTimer:HookScript("OnUpdate", MirrorTimer_OnUpdate)
 
 		E:CreateMover(mirrorTimer, "MirrorTimer"..i.."Mover", L["MirrorTimer"]..i, nil, nil, nil, "ALL,SOLO")
 	end
-end
-
-S:AddCallback("Skin_MirrorTimers", LoadSkin)
+end)

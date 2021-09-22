@@ -80,17 +80,16 @@ function S:Ace3_RegisterAsWidget(widget)
 	local TYPE = widget.type
 	if TYPE == "MultiLineEditBox" then
 		local frame = widget.frame
-		local scrollBG = widget.scrollBG or select(2, frame:GetChildren())
+		local scrollBG = widget.scrollBG or select(2, frame:GetChildren()) or frame:GetChildren()
+		local scrollBar = widget.scrollBar or _G[widget.scrollframe:GetName().."ScrollBar"]
 
 		if not scrollBG.template then
 			scrollBG:SetTemplate()
 		end
 
 		S:HandleButton(widget.button)
-		S:HandleScrollBar(widget.scrollBar)
-		widget.scrollBar:Point("RIGHT", frame, "RIGHT", 0 -4)
-		scrollBG:Point("TOPRIGHT", widget.scrollBar, "TOPLEFT", -2, 19)
-		scrollBG:Point("BOTTOMLEFT", widget.button, "TOPLEFT")
+		S:HandleScrollBar(scrollBar)
+		scrollBG:Point("TOPRIGHT", scrollBar, "TOPLEFT", -3, 19)
 		widget.scrollFrame:Point("BOTTOMRIGHT", scrollBG, "BOTTOMRIGHT", -4, 8)
 	elseif TYPE == "CheckBox" then
 		local check = widget.check
@@ -171,7 +170,6 @@ function S:Ace3_RegisterAsWidget(widget)
 	elseif TYPE == "Dropdown" then
 		local frame = widget.dropdown
 		local button = widget.button
-		local button_cover = widget.button_cover
 		local text = widget.text
 		frame:StripTextures()
 
@@ -197,11 +195,6 @@ function S:Ace3_RegisterAsWidget(widget)
 		text:Point("RIGHT", button, "LEFT", -3, 0)
 		text:Point("LEFT", frame.backdrop, "LEFT", 2, 0)
 		text:SetParent(frame.backdrop)
-
-		button:HookScript("OnClick", S.Ace3_SkinDropdownPullout)
-		if button_cover then
-			button_cover:HookScript("OnClick", S.Ace3_SkinDropdownPullout)
-		end
 	elseif TYPE == "LSM30_Font" or TYPE == "LSM30_Sound" or TYPE == "LSM30_Border" or TYPE == "LSM30_Background" or TYPE == "LSM30_Statusbar" then
 		local frame = widget.frame
 		local button = frame.dropButton
@@ -343,6 +336,19 @@ function S:Ace3_RegisterAsWidget(widget)
 		end
 	elseif TYPE == "Icon" then
 		widget.frame:StripTextures()
+	elseif TYPE == "Dropdown-Pullout" then
+		local pullout = widget
+		if pullout.frame then
+			pullout.frame:SetTemplate(nil, true)
+		else
+			pullout:SetTemplate(nil, true)
+		end
+
+		if pullout.slider then
+			pullout.slider:SetTemplate()
+			pullout.slider:SetThumbTexture(E.Media.Textures.White8x8)
+			pullout.slider:GetThumbTexture():SetVertexColor(1, .82, 0, 0.8)
+		end
 	end
 
 	return oldRegisterAsWidget(self, widget)
@@ -355,6 +361,8 @@ function S:Ace3_RegisterAsContainer(widget)
 	local TYPE = widget.type
 	if TYPE == "ScrollFrame" then
 		S:HandleScrollBar(widget.scrollbar)
+		widget.scrollbar:Point("TOPLEFT", widget.scrollframe, "TOPRIGHT", 8, -16)
+		widget.scrollbar:Point("BOTTOMLEFT", widget.scrollframe, "BOTTOMRIGHT", 8, 16)
 	elseif TYPE == "InlineGroup" or TYPE == "TreeGroup" or TYPE == "TabGroup" or TYPE == "Frame" or TYPE == "DropdownGroup" or TYPE == "Window" then
 		local frame = widget.content:GetParent()
 		if TYPE == "Frame" then
@@ -399,7 +407,7 @@ function S:Ace3_RegisterAsContainer(widget)
 					if button then
 						button.highlight:SetTexture(E.Media.Textures.Highlight)
 						button.highlight:SetVertexColor(1, 0.82, 0, 0.35)
-						button.highlight:Point("TOPLEFT", 0, 0)
+						button.highlight:SetPoint("TOPLEFT", 0, 0)
 						button.highlight:Point("BOTTOMRIGHT", 0, 1)
 
 						button.toggle:SetHighlightTexture("")
@@ -425,11 +433,7 @@ function S:Ace3_RegisterAsContainer(widget)
 				tab.backdrop:Point("TOPLEFT", 10, -3)
 				tab.backdrop:Point("BOTTOMRIGHT", -10, 0)
 
-				hooksecurefunc(tab, "SetPoint", function(fr, a, b, c, d, e, f)
-					if f ~= "ignore" and a == "TOPLEFT" then
-						fr:SetPoint(a, b, c, d, e + 2, "ignore")
-					end
-				end)
+				tab:SetHitRectInsets(10, 10, 3, 0)
 
 				return tab
 			end
@@ -437,6 +441,8 @@ function S:Ace3_RegisterAsContainer(widget)
 
 		if widget.scrollbar then
 			S:HandleScrollBar(widget.scrollbar)
+			widget.scrollbar:Point("TOPRIGHT", -4, -23)
+			widget.scrollbar:Point("BOTTOMRIGHT", -4, 23)
 		end
 	elseif TYPE == "SimpleGroup" then
 		local frame = widget.content:GetParent()

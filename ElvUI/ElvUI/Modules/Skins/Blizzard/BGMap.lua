@@ -4,20 +4,21 @@ local S = E:GetModule("Skins")
 --Lua functions
 --WoW API / Variables
 
-local function LoadSkin()
+S:AddCallbackForAddon("Blizzard_BattlefieldMinimap", "Skin_Blizzard_BattlefieldMinimap", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.bgmap then return end
 
-	BattlefieldMinimap:SetClampedToScreen(true)
 	BattlefieldMinimapCorner:Kill()
 	BattlefieldMinimapBackground:Kill()
 	BattlefieldMinimapTab:Kill()
 
-	BattlefieldMinimap:CreateBackdrop("Default")
-	BattlefieldMinimap.backdrop:SetPoint("BOTTOMRIGHT", E.Border - E:Scale(6), -(E.Border - E:Scale(4)))
+	BattlefieldMinimap:SetClampedToScreen(true)
 	BattlefieldMinimap:SetFrameStrata("LOW")
-	BattlefieldMinimapCloseButton:ClearAllPoints()
-	BattlefieldMinimapCloseButton:Point("TOPRIGHT", -6, 0)
-	S:HandleCloseButton(BattlefieldMinimapCloseButton)
+	BattlefieldMinimap:CreateBackdrop("Default")
+	BattlefieldMinimap.backdrop:Point("BOTTOMRIGHT", E.Border - E:Scale(6), -(E.Border - E:Scale(4)))
+
+	S:SetBackdropHitRect(BattlefieldMinimap, nil, true)
+
+	S:HandleCloseButton(BattlefieldMinimapCloseButton, BattlefieldMinimap.backdrop)
 	BattlefieldMinimapCloseButton:SetFrameLevel(BattlefieldMinimap:GetFrameLevel() + 5)
 
 	BattlefieldMinimap:EnableMouse(true)
@@ -44,8 +45,7 @@ local function LoadSkin()
 	end)
 
 	hooksecurefunc("BattlefieldMinimap_UpdateOpacity", function()
-		local alpha = 1.0 - BattlefieldMinimapOptions.opacity or 0
-		BattlefieldMinimap.backdrop:SetAlpha(alpha)
+		BattlefieldMinimap.backdrop:SetAlpha(1.0 - BattlefieldMinimapOptions.opacity)
 	end)
 
 	local oldAlpha
@@ -72,6 +72,4 @@ local function LoadSkin()
 			oldAlpha = nil
 		end
 	end)
-end
-
-S:AddCallbackForAddon("Blizzard_BattlefieldMinimap", "Skin_Blizzard_BattlefieldMinimap", LoadSkin)
+end)

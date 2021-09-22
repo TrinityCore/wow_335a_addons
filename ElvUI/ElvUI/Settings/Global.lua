@@ -3,12 +3,13 @@ local E, L, V, P, G = unpack(select(2, ...)); --Import: Engine, Locales, Private
 --Global Settings
 G.general = {
 	UIScale = 0.7111111111111111,
-	version = 6.04,
+	version = 6.08,
 	versionCheck = true,
 	locale = "auto",
 	eyefinity = false,
 	ignoreScalePopup = false,
 	smallerWorldMap = true,
+	fadeMapWhenMoving = true,
 	mapAlphaWhenMoving = 0.35,
 	AceGUI = {
 		width = 1000,

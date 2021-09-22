@@ -52,10 +52,9 @@ function UF:Construct_Raid40Frames()
 
 	UF:Update_StatusBars()
 	UF:Update_FontStrings()
-	UF:Update_Raid40Frames(self, E.db.unitframe.units.raid40)
 
-	self:SetAttribute("initial-width", self.UNIT_WIDTH)
-	self:SetAttribute("initial-height", self.UNIT_HEIGHT)
+	self.db = UF.db.units.raid40
+	self.PostCreate = UF.Update_Raid40Frames
 
 	return self
 end
@@ -129,7 +128,11 @@ function UF:Update_Raid40Header(header, db)
 end
 
 function UF:Update_Raid40Frames(frame, db)
-	frame.db = db
+	if not db then
+		db = frame.db
+	else
+		frame.db = db
+	end
 
 	frame.Portrait = frame.Portrait or (db.portrait.style == "2D" and frame.Portrait2D or frame.Portrait3D)
 	frame.colors = ElvUF.colors
@@ -176,7 +179,11 @@ function UF:Update_Raid40Frames(frame, db)
 
 	if not InCombatLockdown() then
 		frame:Size(frame.UNIT_WIDTH, frame.UNIT_HEIGHT)
+	else
+		frame:SetAttribute("initial-width", frame.UNIT_WIDTH)
+		frame:SetAttribute("initial-height", frame.UNIT_HEIGHT)
 	end
+
 	UF:Configure_InfoPanel(frame)
 	--Health
 	UF:Configure_HealthBar(frame)
@@ -234,7 +241,7 @@ function UF:Update_Raid40Frames(frame, db)
 	--CustomTexts
 	UF:Configure_CustomTexts(frame)
 
-	frame:UpdateAllElements("ElvUI_UpdateAllElements")
+	frame:UpdateAllElements("ForceUpdate")
 end
 
 UF.headerstoload.raid40 = true

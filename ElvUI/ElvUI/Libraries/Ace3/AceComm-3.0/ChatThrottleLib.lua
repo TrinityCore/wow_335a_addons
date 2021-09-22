@@ -75,7 +75,7 @@ local next = next
 local strlen = string.len
 local GetFramerate = GetFramerate
 local strlower = string.lower
-local unpack,type,pairs,wipe = unpack,type,pairs,wipe
+local unpack,type,pairs,wipe = unpack,type,pairs,table.wipe
 local UnitInRaid,GetNumPartyMembers = UnitInRaid,GetNumPartyMembers
 
 
@@ -126,12 +126,6 @@ ChatThrottleLib.PipeBin = nil -- pre-v19, drastically different
 local PipeBin = setmetatable({}, {__mode="k"})
 
 local function DelPipe(pipe)
-	for i = #pipe, 1, -1 do
-		pipe[i] = nil
-	end
-	pipe.prev = nil
-	pipe.next = nil
-
 	PipeBin[pipe] = true
 end
 

@@ -12,7 +12,7 @@ local GetQuestIndexForWatch = GetQuestIndexForWatch
 local GetQuestLogTitle = GetQuestLogTitle
 local hooksecurefunc = hooksecurefunc
 
-local function LoadSkin()
+S:AddCallback("Skin_WatchFrame", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.watchframe then return end
 
 	-- WatchFrame Expand/Collapse Button
@@ -23,17 +23,15 @@ local function LoadSkin()
 	WatchFrameCollapseExpandButton.tex:SetInside()
 	WatchFrameCollapseExpandButton:SetHighlightTexture("Interface\\Buttons\\UI-PlusButton-Hilight", "ADD")
 	WatchFrameCollapseExpandButton:SetFrameStrata("MEDIUM")
-	WatchFrameCollapseExpandButton:Point("TOPRIGHT", -20, -2)
+	WatchFrameCollapseExpandButton:Point("TOPRIGHT", 0, -2)
 
 	hooksecurefunc("WatchFrame_Expand", function()
 		WatchFrameCollapseExpandButton.tex:SetTexture(E.Media.Textures.MinusButton)
-
 		WatchFrame:Width(WATCHFRAME_EXPANDEDWIDTH)
 	end)
 
 	hooksecurefunc("WatchFrame_Collapse", function()
 		WatchFrameCollapseExpandButton.tex:SetTexture(E.Media.Textures.PlusButton)
-
 		WatchFrame:Width(WATCHFRAME_EXPANDEDWIDTH)
 	end)
 
@@ -110,6 +108,14 @@ local function LoadSkin()
 	end)
 
 	-- WatchFrame POI Buttons
+	local function poi_OnEnter(self)
+		self.bg:SetBackdropBorderColor(unpack(E.media.rgbvaluecolor))
+	end
+
+	local function poi_OnLeave(self)
+		self.bg:SetBackdropBorderColor(unpack(E.media.bordercolor))
+	end
+
 	hooksecurefunc("QuestPOI_DisplayButton", function(parentName, buttonType, buttonIndex)
 		local poiButton = _G[format("poi%s%s_%d", parentName, buttonType, buttonIndex)]
 
@@ -129,12 +135,8 @@ local function LoadSkin()
 				poiButton.bg:Point("BOTTOMRIGHT", -6, 6)
 				poiButton.bg:SetFrameLevel(poiButton.bg:GetFrameLevel() - 1)
 
-				poiButton:HookScript("OnEnter", function(self)
-					self.bg:SetBackdropBorderColor(unpack(E.media.rgbvaluecolor))
-				end)
-				poiButton:HookScript("OnLeave", function(self)
-					self.bg:SetBackdropBorderColor(unpack(E.media.bordercolor))
-				end)
+				poiButton:HookScript("OnEnter", poi_OnEnter)
+				poiButton:HookScript("OnLeave", poi_OnLeave)
 
 				poiButton.isSkinned = true
 			end
@@ -152,6 +154,4 @@ local function LoadSkin()
 			poiButton.bg:SetBackdropColor(unpack(E.media.backdropcolor))
 		end
 	end)
-end
-
-S:AddCallback("Skin_WatchFrame", LoadSkin)
+end)

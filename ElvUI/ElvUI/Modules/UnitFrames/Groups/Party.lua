@@ -6,6 +6,7 @@ assert(ElvUF, "ElvUI was unable to locate oUF.")
 
 --Lua functions
 local _G = _G
+local format = string.format
 --WoW API / Variables
 local CreateFrame = CreateFrame
 local GetInstanceInfo = GetInstanceInfo
@@ -76,10 +77,8 @@ function UF:Construct_PartyFrames()
 	UF:Update_StatusBars()
 	UF:Update_FontStrings()
 
-	UF:Update_PartyFrames(self, UF.db.units.party)
-
-	self:SetAttribute("initial-width", self.UNIT_WIDTH)
-	self:SetAttribute("initial-height", self.UNIT_HEIGHT)
+	self.db = UF.db.units.party
+	self.PostCreate = UF.Update_PartyFrames
 
 	return self
 end
@@ -131,7 +130,11 @@ function UF:PartySmartVisibility(event)
 end
 
 function UF:Update_PartyFrames(frame, db)
-	frame.db = db
+	if not db then
+		db = frame.db
+	else
+		frame.db = db
+	end
 
 	frame.Portrait = frame.Portrait or (db.portrait.style == "2D" and frame.Portrait2D or frame.Portrait3D)
 	frame.colors = ElvUF.colors
@@ -212,6 +215,12 @@ function UF:Update_PartyFrames(frame, db)
 				UnregisterUnitWatch(frame)
 				frame:SetParent(E.HiddenFrame)
 			end
+		else
+			if childDB.enable then
+				frame:SetAttribute("initial-anchor", format("%s,%s,%d,%d", E.InversePoints[childDB.anchorPoint], childDB.anchorPoint, childDB.xOffset, childDB.yOffset))
+				frame:SetAttribute("initial-width", frame.UNIT_WIDTH)
+				frame:SetAttribute("initial-height", frame.UNIT_HEIGHT)
+			end
 		end
 
 		--Health
@@ -224,6 +233,9 @@ function UF:Update_PartyFrames(frame, db)
 	else
 		if not InCombatLockdown() then
 			frame:Size(frame.UNIT_WIDTH, frame.UNIT_HEIGHT)
+		else
+			frame:SetAttribute("initial-width", frame.UNIT_WIDTH)
+			frame:SetAttribute("initial-height", frame.UNIT_HEIGHT)
 		end
 
 		UF:Configure_InfoPanel(frame)
@@ -272,7 +284,7 @@ function UF:Update_PartyFrames(frame, db)
 	--Cutaway
 	UF:Configure_Cutaway(frame)
 
-	frame:UpdateAllElements("ElvUI_UpdateAllElements")
+	frame:UpdateAllElements("ForceUpdate")
 end
 
 UF.headerstoload.party = {nil, "ELVUI_UNITPET, ELVUI_UNITTARGET"}

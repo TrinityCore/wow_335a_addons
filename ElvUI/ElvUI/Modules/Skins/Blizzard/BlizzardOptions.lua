@@ -4,12 +4,11 @@ local S = E:GetModule("Skins")
 --Lua functions
 local _G = _G
 local ipairs = ipairs
-local find = string.find
 --WoW API / Variables
 local InCombatLockdown = InCombatLockdown
 local hooksecurefunc = hooksecurefunc
 
-local function LoadSkin()
+S:AddCallback("Skin_BlizzardOptions", function()
 	if not E.private.skins.blizzard.enable or not E.private.skins.blizzard.BlizzardOptions then return end
 
 	-- Game Menu Interface/Tabs
@@ -23,33 +22,16 @@ local function LoadSkin()
 		tab.backdrop:Point("TOPLEFT", 10, E.PixelMode and -4 or -6)
 		tab.backdrop:Point("BOTTOMRIGHT", -10, 1)
 
+		S:SetBackdropHitRect(tab)
+
 		if i == 1 then
-			tab:ClearAllPoints()
-			tab:SetPoint("BOTTOMLEFT", InterfaceOptionsFrameCategories, "TOPLEFT", -11, -2)
+			tab:Point("BOTTOMLEFT", InterfaceOptionsFrameCategories, "TOPLEFT", -11, -2)
 		end
 	end
 
 	-- Game Menu Plus / Minus Buttons
 	for _, button in ipairs(InterfaceOptionsFrameAddOns.buttons) do
-		button.toggle:SetNormalTexture("")
-		button.toggle.SetNormalTexture = E.noop
-		button.toggle:SetPushedTexture("")
-		button.toggle.SetPushedTexture = E.noop
-		button.toggle:SetHighlightTexture(nil)
-
-		local text = button.toggle:CreateFontString(nil, "OVERLAY")
-		text:FontTemplate(nil, 22)
-		text:Point("CENTER")
-		text:SetText("+")
-		button.toggle.text = text
-
-		hooksecurefunc(button.toggle, "SetNormalTexture", function(self, texture)
-			if find(texture, "MinusButton") then
-				self.text:SetText("-")
-			else
-				self.text:SetText("+")
-			end
-		end)
+		S:HandleCollapseExpandButton(button.toggle, "+", nil, 0)
 	end
 
 	-- Interface Options Frame
@@ -74,21 +56,14 @@ local function LoadSkin()
 		end)
 	end
 
-	S:HandleScrollBar(InterfaceOptionsFrameCategoriesListScrollBar)
-	S:HandleScrollBar(InterfaceOptionsFrameAddOnsListScrollBar)
-
 	local optionHeaders = {
-		"InterfaceOptionsFrameHeader",
-		"AudioOptionsFrameHeader",
-		"VideoOptionsFrameHeader",
+		InterfaceOptionsFrameHeader,
+		AudioOptionsFrameHeader,
+		VideoOptionsFrameHeader,
 	}
 	for _, header in ipairs(optionHeaders) do
-		header = _G[header]
-		if header then
-			header:SetTexture("")
-			header:ClearAllPoints()
-			header:SetPoint("TOP", header:GetParent(), 0, 0)
-		end
+		header:SetTexture("")
+		header:SetPoint("TOP", 0, 0)
 	end
 
 	local optionFrames = {
@@ -99,8 +74,8 @@ local function LoadSkin()
 		"AudioOptionsFrameCategoryFrame",
 		"AudioOptionsFramePanelContainer",
 		"AudioOptionsSoundPanelPlayback",
-		"AudioOptionsSoundPanelVolume",
 		"AudioOptionsSoundPanelHardware",
+		"AudioOptionsSoundPanelVolume",
 
 		"VideoOptionsFrameCategoryFrame",
 		"VideoOptionsFramePanelContainer",
@@ -114,12 +89,12 @@ local function LoadSkin()
 			frame:StripTextures()
 			frame:CreateBackdrop("Transparent")
 
-			if frame ~= VideoOptionsFramePanelContainer and frame ~= InterfaceOptionsFramePanelContainer then
-				frame.backdrop:Point("TOPLEFT", -1 ,0)
-				frame.backdrop:Point("BOTTOMRIGHT", 0, 1)
+			if frame == VideoOptionsFramePanelContainer or frame == InterfaceOptionsFramePanelContainer then
+				frame.backdrop:SetPoint("TOPLEFT", 0, 0)
+				frame.backdrop:SetPoint("BOTTOMRIGHT", 0, 0)
 			else
-				frame.backdrop:Point("TOPLEFT", 0, 0)
-				frame.backdrop:Point("BOTTOMRIGHT", 0, 0)
+				frame.backdrop:Point("TOPLEFT", -1, 0)
+				frame.backdrop:Point("BOTTOMRIGHT", 0, 1)
 			end
 		end
 	end
@@ -334,7 +309,7 @@ local function LoadSkin()
 		S:HandleButton(_G[button])
 	end
 
-	local dropdowns ={
+	local dropdowns = {
 		"InterfaceOptionsControlsPanelAutoLootKeyDropDown",
 		"InterfaceOptionsCombatPanelTOTDropDown",
 		"InterfaceOptionsCombatPanelFocusCastKeyDropDown",
@@ -360,41 +335,45 @@ local function LoadSkin()
 		end
 	end
 
-	S:HandleDropDownBox(VideoOptionsResolutionPanelMultiSampleDropDown, 195)
-
-	VideoOptionsFrameDefaults:ClearAllPoints()
-	VideoOptionsFrameDefaults:SetPoint("TOPLEFT", VideoOptionsFrameCategoryFrame, "BOTTOMLEFT", -1, -5)
-
-	InterfaceOptionsFrameDefaults:ClearAllPoints()
-	InterfaceOptionsFrameDefaults:SetPoint("TOPLEFT", InterfaceOptionsFrameCategories, "BOTTOMLEFT", -1, -5)
-
-	InterfaceOptionsFrameCancel:ClearAllPoints()
-	InterfaceOptionsFrameCancel:SetPoint("TOPRIGHT", InterfaceOptionsFramePanelContainer, "BOTTOMRIGHT", 0, -6)
-
-	VideoOptionsFrameCancel:ClearAllPoints()
-	VideoOptionsFrameCancel:SetPoint("RIGHT", VideoOptionsFrameApply, "LEFT", -4, 0)
-
-	VideoOptionsFrameOkay:ClearAllPoints()
-	VideoOptionsFrameOkay:SetPoint("RIGHT", VideoOptionsFrameCancel, "LEFT", -4, 0)
-
-	AudioOptionsFrameOkay:ClearAllPoints()
-	AudioOptionsFrameOkay:SetPoint("RIGHT", AudioOptionsFrameCancel, "LEFT", -4, 0)
-
-	InterfaceOptionsFrameOkay:ClearAllPoints()
-	InterfaceOptionsFrameOkay:SetPoint("RIGHT",InterfaceOptionsFrameCancel, "LEFT", -4, 0)
-
 	InterfaceOptionsFrameCategoriesList:StripTextures()
 	InterfaceOptionsFrameAddOnsList:StripTextures()
 
-	-- Mac Menu
+	S:HandleScrollBar(InterfaceOptionsFrameCategoriesListScrollBar)
+	S:HandleScrollBar(InterfaceOptionsFrameAddOnsListScrollBar)
+
+	InterfaceOptionsFrameCategoriesListScrollBar:Point("TOPRIGHT", 0, -20)
+	InterfaceOptionsFrameCategoriesListScrollBar:Point("BOTTOMLEFT", 6, 19)
+
+	InterfaceOptionsFrameAddOnsListScrollBar:Point("TOPRIGHT", 1, -18)
+	InterfaceOptionsFrameAddOnsListScrollBar:Point("BOTTOMLEFT", 7, 19)
+
+	S:HandleDropDownBox(VideoOptionsResolutionPanelMultiSampleDropDown, 195)
+
+	VideoOptionsFrameDefaults:Point("BOTTOMLEFT", 21, 16)
+	VideoOptionsFrameApply:Point("BOTTOMRIGHT", -22, 16)
+	VideoOptionsFrameCancel:Point("BOTTOMRIGHT", VideoOptionsFrameApply, "BOTTOMLEFT", -3, 0)
+	VideoOptionsFrameOkay:Point("BOTTOMRIGHT", VideoOptionsFrameCancel, "BOTTOMLEFT", -3, 0)
+
+	AudioOptionsFrameDefaults:Point("BOTTOMLEFT", 21, 16)
+	AudioOptionsFrameCancel:Point("BOTTOMRIGHT", -22, 16)
+	AudioOptionsFrameOkay:Point("BOTTOMRIGHT", AudioOptionsFrameCancel, "BOTTOMLEFT", -3, 0)
+
+	InterfaceOptionsFrameDefaults:Point("BOTTOMLEFT", 21, 16)
+	InterfaceOptionsFrameCancel:Point("BOTTOMRIGHT", -22, 16)
+	InterfaceOptionsFrameOkay:Point("BOTTOMRIGHT", InterfaceOptionsFrameCancel, "BOTTOMLEFT", -3, 0)
+
+	VideoOptionsResolutionPanelBrightnessGrayScale:SetTexture("Interface\\OptionsFrame\\21stepgrayscale")
+
+	-- Mac Options
 	if IsMacClient() then
 		S:HandleButton(GameMenuButtonMacOptions)
 
-		-- Skin main frame and reposition the header
-		MacOptionsFrame:SetTemplate("Default", true)
+		MacOptionsFrame:SetTemplate("Transparent")
 		MacOptionsFrameHeader:SetTexture("")
-		MacOptionsFrameHeader:ClearAllPoints()
-		MacOptionsFrameHeader:SetPoint("TOP", MacOptionsFrame, 0, 0)
+		MacOptionsFrameHeader:SetPoint("TOP", 0, 0)
+
+		MacOptionsFrameMovieRecording:SetTemplate("Transparent")
+		MacOptionsITunesRemote:SetTemplate("Transparent")
 
 		S:HandleDropDownBox(MacOptionsFrameResolutionDropDown)
 		S:HandleDropDownBox(MacOptionsFrameFramerateDropDown)
@@ -406,60 +385,61 @@ local function LoadSkin()
 			S:HandleCheckBox(_G["MacOptionsFrameCheckButton"..i])
 		end
 
-		--Skin internal frames
-		MacOptionsFrameMovieRecording:SetTemplate("Default", true)
-		MacOptionsITunesRemote:SetTemplate("Default", true)
-
-		--Skin buttons
-		S:HandleButton(MacOptionsFrameCancel)
-		S:HandleButton(MacOptionsFrameOkay)
-		S:HandleButton(MacOptionsButtonKeybindings)
-		S:HandleButton(MacOptionsFrameDefaults)
 		S:HandleButton(MacOptionsButtonCompress)
+		S:HandleButton(MacOptionsFrameDefaults)
+		S:HandleButton(MacOptionsButtonKeybindings)
+		S:HandleButton(MacOptionsFrameOkay)
+		S:HandleButton(MacOptionsFrameCancel)
 
-		--Reposition and resize buttons
-		local tPoint, tRTo, tRP, _, tY = MacOptionsButtonCompress:GetPoint()
-		MacOptionsButtonCompress:SetWidth(136)
-		MacOptionsButtonCompress:ClearAllPoints()
-		MacOptionsButtonCompress:Point(tPoint, tRTo, tRP, 4, tY)
+		MacOptionsFrameMovieRecording:Point("TOPLEFT", 8, -43)
+		MacOptionsFrameMovieRecording:Width(410)
+		MacOptionsITunesRemote:Width(410)
 
-		MacOptionsFrameCancel:SetWidth(96)
-		MacOptionsFrameCancel:SetHeight(22)
-		tPoint, tRTo, tRP, _, tY = MacOptionsFrameCancel:GetPoint()
-		MacOptionsFrameCancel:ClearAllPoints()
-		MacOptionsFrameCancel:Point(tPoint, tRTo, tRP, -14, tY)
+		MacOptionsFrameCheckButton1:Point("TOPLEFT", MacOptionsFrameResolutionDropDown, "TOPRIGHT", 11, 0)
 
-		MacOptionsFrameOkay:ClearAllPoints()
-		MacOptionsFrameOkay:SetWidth(96)
-		MacOptionsFrameOkay:SetHeight(22)
-		MacOptionsFrameOkay:Point("LEFT",MacOptionsFrameCancel, -99, 0)
+		MacOptionsButtonCompress:Height(22)
 
-		MacOptionsButtonKeybindings:ClearAllPoints()
-		MacOptionsButtonKeybindings:SetWidth(96)
-		MacOptionsButtonKeybindings:SetHeight(22)
-		MacOptionsButtonKeybindings:Point("LEFT",MacOptionsFrameOkay, -99, 0)
+		MacOptionsFrameDefaults:Height(22)
+		MacOptionsButtonKeybindings:Size(101, 22)
+		MacOptionsFrameOkay:Height(22)
+		MacOptionsFrameCancel:Height(22)
 
-		MacOptionsFrameDefaults:SetWidth(96)
-		MacOptionsFrameDefaults:SetHeight(22)
+		MacOptionsFrameDefaults:Point("BOTTOMLEFT", 8, 9)
+		MacOptionsButtonKeybindings:Point("TOPLEFT", MacOptionsFrameDefaults, "TOPRIGHT", 3, 0)
+		MacOptionsFrameOkay:Point("RIGHT", MacOptionsFrameCancel, "LEFT", -3, 0)
+		MacOptionsFrameCancel:Point("BOTTOMRIGHT", -8, 9)
 
-		MacOptionsCompressFrame:SetTemplate("Default", true)
+		-- CompressFrame
+		MacOptionsCompressFrame:SetTemplate("Transparent")
 
 		MacOptionsCompressFrameHeader:SetTexture("")
-		MacOptionsCompressFrameHeader:ClearAllPoints()
-		MacOptionsCompressFrameHeader:SetPoint("TOP", MacOptionsCompressFrame, 0, 0)
+		MacOptionsCompressFrameHeader:SetPoint("TOP", 0, 0)
 
 		S:HandleButton(MacOptionsCompressFrameDelete)
 		S:HandleButton(MacOptionsCompressFrameSkip)
 		S:HandleButton(MacOptionsCompressFrameCompress)
 
-		MacOptionsCancelFrame:SetTemplate("Default", true)
+		-- CancelFrame
+		MacOptionsCancelFrame:SetTemplate("Transparent")
 
 		MacOptionsCancelFrameHeader:SetTexture("")
-		MacOptionsCancelFrameHeader:ClearAllPoints()
-		MacOptionsCancelFrameHeader:SetPoint("TOP", MacOptionsCancelFrame, 0, 0)
+		MacOptionsCancelFrameHeader:SetPoint("TOP", 0, 0)
 
-		S:HandleButton(MacOptionsCancelFrameNo)
 		S:HandleButton(MacOptionsCancelFrameYes)
+		S:HandleButton(MacOptionsCancelFrameNo)
+
+		-- ProgressFrame
+		MovieProgressBar:GetChildren():SetBackdrop(nil)
+		S:HandleStatusBar(MovieProgressBar)
+
+		S:HandleCloseButton(MovieRecordingCancelButton)
+		MovieRecordingCancelButton:SetTemplate("Transparent")
+		MovieRecordingCancelButton:Size(22)
+		MovieRecordingCancelButton:Point("RIGHT", 2, 0)
+		MovieRecordingCancelButton:SetHitRectInsets(0, 0, 0, 0)
+
+		MovieRecordingCancelButton:HookScript("OnEnter", S.SetModifiedBackdrop)
+		MovieRecordingCancelButton:HookScript("OnLeave", S.SetOriginalBackdrop)
 	end
 
 	-- Chat Config
@@ -552,10 +532,10 @@ local function LoadSkin()
 	S:HandleButton(ChatConfigFrameCancelButton)
 	S:HandleButton(ChatConfigFrameOkayButton)
 
-	ChatConfigFrameDefaultButton:Point("BOTTOMLEFT", 12, 8)
 	ChatConfigFrameDefaultButton:Width(125)
+	ChatConfigFrameDefaultButton:Point("BOTTOMLEFT", 12, 8)
 
-	ChatConfigFrameCancelButton:Point("BOTTOMRIGHT", -11, 8)
+	ChatConfigFrameCancelButton:Point("BOTTOMRIGHT", -1, 8)
 
 	S:HandleColorSwatch(CombatConfigColorsColorizeSpellNamesColorSwatch)
 	S:HandleColorSwatch(CombatConfigColorsColorizeDamageNumberColorSwatch)
@@ -635,6 +615,4 @@ local function LoadSkin()
 			end
 		end
 	end)
-end
-
-S:AddCallback("Skin_BlizzardOptions", LoadSkin)
+end)

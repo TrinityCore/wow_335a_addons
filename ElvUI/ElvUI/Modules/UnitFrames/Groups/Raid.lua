@@ -40,6 +40,7 @@ function UF:Construct_RaidFrames()
 	self.TargetGlow = UF:Construct_TargetGlow(self)
 
 	self.ThreatIndicator = UF:Construct_Threat(self)
+	self.GroupRoleIndicator = UF:Construct_RoleIcon(self)
 	self.RaidTargetIndicator = UF:Construct_RaidIcon(self)
 	self.ReadyCheckIndicator = UF:Construct_ReadyCheckIcon(self)
 	self.HealCommBar = UF:Construct_HealComm(self)
@@ -54,10 +55,8 @@ function UF:Construct_RaidFrames()
 	UF:Update_StatusBars()
 	UF:Update_FontStrings()
 
-	UF:Update_RaidFrames(self, UF.db.units.raid)
-
-	self:SetAttribute("initial-width", self.UNIT_WIDTH)
-	self:SetAttribute("initial-height", self.UNIT_HEIGHT)
+	self.db = UF.db.units.raid
+	self.PostCreate = UF.Update_RaidFrames
 
 	return self
 end
@@ -127,7 +126,11 @@ function UF:Update_RaidHeader(header, db)
 end
 
 function UF:Update_RaidFrames(frame, db)
-	frame.db = db
+	if not db then
+		db = frame.db
+	else
+		frame.db = db
+	end
 
 	frame.Portrait = frame.Portrait or (db.portrait.style == "2D" and frame.Portrait2D or frame.Portrait3D)
 	frame.colors = ElvUF.colors
@@ -173,6 +176,9 @@ function UF:Update_RaidFrames(frame, db)
 
 	if not InCombatLockdown() then
 		frame:Size(frame.UNIT_WIDTH, frame.UNIT_HEIGHT)
+	else
+		frame:SetAttribute("initial-width", frame.UNIT_WIDTH)
+		frame:SetAttribute("initial-height", frame.UNIT_HEIGHT)
 	end
 
 	UF:Configure_InfoPanel(frame)
@@ -214,6 +220,9 @@ function UF:Update_RaidFrames(frame, db)
 	--GPS Arrow
 	UF:Configure_GPS(frame)
 
+	--Role
+	UF:Configure_RoleIcon(frame)
+
 	--Raid Roles
 	UF:Configure_RaidRoleIcons(frame)
 
@@ -232,7 +241,7 @@ function UF:Update_RaidFrames(frame, db)
 	--CustomTexts
 	UF:Configure_CustomTexts(frame)
 
-	frame:UpdateAllElements("ElvUI_UpdateAllElements")
+	frame:UpdateAllElements("ForceUpdate")
 end
 
 UF.headerstoload.raid = true
