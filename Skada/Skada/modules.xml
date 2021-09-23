@@ -1,21 +1,40 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
 ..\FrameXML\UI.xsd">
-<!--@debug@
-<Script file="modules\SkadaThreat\Threat.lua"/>
-<Script file="modules\SkadaDamage\Damage.lua"/>
-<Script file="modules\SkadaHealing\Healing.lua"/>
-<Script file="modules\SkadaHealing\Overhealing.lua"/>
-<Script file="modules\SkadaHealing\TotalHealing.lua"/>
-<Script file="modules\SkadaDamageTaken\DamageTaken.lua"/>
-<Script file="modules\SkadaDeaths\Deaths.lua"/>
-<Script file="modules\SkadaFailbot\LibFail-1.0\LibFail-1.0.lua"/>
-<Script file="modules\SkadaFailbot\Failbot.lua"/>
-<Script file="modules\SkadaDebuffs\Debuffs.lua"/>
-<Script file="modules\SkadaDispels\Dispels.lua"/>
-<Script file="modules\SkadaDispels\Interrupts.lua"/>
-<Script file="modules\SkadaEnemies\Enemies.lua"/>
-<Script file="modules\SkadaPower\Power.lua"/>
-<Script file="modules\SkadaAbsorbs\Absorbs.lua"/>
-<Script file="modules\SkadaCC\CC.lua"/>
-@end-debug@--> 
+
+<!-- Tweaks must be loaded first -->
+<Script file="Modules\Tweaks.lua" />
+
+<!-- Damage category -->
+<Script file="Modules\Damage.lua" />
+<Script file="Modules\DamageTaken.lua" />
+<Script file="Modules\FriendlyFire.lua" />
+<Script file="Modules\Enemies.lua" />
+
+<!-- Absorb and healing category -->
+<Script file="Modules\Healing.lua" />
+<Script file="Modules\Absorbs.lua" />
+
+<!-- CC Tracker and Power gained categories -->
+<Script file="Modules\Power.lua" />
+<Script file="Modules\CCTracker.lua" />
+
+<!-- Buffs and Debuffs category -->
+<Script file="Modules\Auras.lua" />
+<Script file="Modules\SunderCounter.lua" />
+
+<!-- Other category -->
+<Script file="Modules\Activity.lua" />
+<Script file="Modules\Deaths.lua" />
+<Script file="Modules\Dispels.lua" />
+<Script file="Modules\Failbot.lua" />
+<Script file="Modules\Interrupts.lua" />
+<Script file="Modules\Parry.lua" />
+<Script file="Modules\Potions.lua" />
+<Script file="Modules\Resurrects.lua" />
+<Script file="Modules\Threat.lua" />
+
+<!-- Modules without modes -->
+<Script file="Modules\Nickname.lua" />
+<Script file="Modules\Scroll.lua" />
+<Script file="Modules\Themes.lua" />
 </Ui>

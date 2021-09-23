@@ -1,20 +1,30 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\FrameXML\UI.xsd">
-        <Script file="lib\LibStub\LibStub.lua"/>
-        <Include file="lib\CallbackHandler-1.0\CallbackHandler-1.0.xml" />
-        <Include file="lib\AceAddon-3.0\AceAddon-3.0.xml"/>
-        <Include file="lib\AceDB-3.0\AceDB-3.0.xml"/>
-        <Include file="lib\AceDBOptions-3.0\AceDBOptions-3.0.xml"/>
-        <Include file="lib\AceLocale-3.0\AceLocale-3.0.xml"/>	
-        <Include file="lib\AceConsole-3.0\AceConsole-3.0.xml"/>
-        <Include file="lib\AceTimer-3.0\AceTimer-3.0.xml"/>
-        <Include file="lib\AceEvent-3.0\AceEvent-3.0.xml"/>
-		<Include file="lib\AceGUI-3.0\AceGUI-3.0.xml"/>
-		<Include file="lib\AceConfig-3.0\AceConfig-3.0.xml"/>
-		<Include file="lib\LibSharedMedia-3.0\lib.xml"/>
-		<Script file="lib\LibDataBroker-1.1\LibDataBroker-1.1.lua"/>
-		<Script file="lib\LibDBIcon-1.0\LibDBIcon-1.0.lua"/>
-		<Script file="lib\LibWindow-1.1\LibWindow-1.1.lua"/>
-		<Include file="lib\AceGUI-3.0-SharedMediaWidgets\widget.xml"/>
-		<Include file="lib\LibBossIDs-1.0\lib.xml"/>
-		<Include file="lib\LibFail-1.0\lib.xml"/>
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+<Script file="Libs\LibStub\LibStub.lua"/>
+<Script file="Libs\CallbackHandler-1.0\CallbackHandler-1.0.lua"/>
+<Script file="Libs\AceAddon-3.0\AceAddon-3.0.lua"/>
+<Script file="Libs\AceEvent-3.0\AceEvent-3.0.lua"/>
+<Script file="Libs\AceHook-3.0\AceHook-3.0.lua"/>
+<Script file="Libs\AceDB-3.0\AceDB-3.0.lua"/>
+<Script file="Libs\AceDBOptions-3.0\AceDBOptions-3.0.lua"/>
+<Script file="Libs\AceLocale-3.0\AceLocale-3.0.lua"/>
+<Include file="Libs\AceGUI-3.0\AceGUI-3.0.xml"/>
+<Include file="Libs\AceConfig-3.0\AceConfig-3.0.xml"/>
+<Include file="Libs\AceComm-3.0\AceComm-3.0.xml"/>
+<Script file="Libs\AceSerializer-3.0\AceSerializer-3.0.lua"/>
+<Script file="Libs\LibCompress\LibCompress.lua"/>
+<Script file="Libs\LibSharedMedia-3.0\LibSharedMedia-3.0.lua"/>
+<Include file="Libs\AceGUI-3.0-SharedMediaWidgets\widget.xml"/>
+<Script file="Libs\LibWindow-1.1\LibWindow-1.1.lua"/>
+<Script file="Libs\LibDataBroker-1.1\LibDataBroker-1.1.lua"/>
+<Script file="Libs\LibDBIcon-1.0\LibDBIcon-1.0.lua"/>
+<Script file="Libs\SpecializedLibBars-1.0\SpecializedLibBars-1.0.lua"/>
+<Script file="Libs\LibTranslit-1.0\LibTranslit-1.0.lua"/>
+<Include file="Libs\LibBabble-Boss-3.0\lib.xml"/>
+<Script file="Libs\LibBossIDs-1.0\LibBossIDs-1.0.lua"/>
+<Script file="Libs\LibFail-1.0\LibFail-1.0.lua"/>
+<Script file="Libs\LibFlyPaper-1.1\LibFlyPaper-1.1.lua"/>
+<Include file="Libs\LibUIDropDownMenu\LibUIDropDownMenu.xml"/>
+<Script file="Libs\LibSink-2.0\LibSink-2.0.lua"/>
+<Include file="Libs\LibCompat-1.0\lib.xml"/>
 </Ui>
