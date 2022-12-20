@@ -1,14 +1,12 @@
 ![GitHub Logo](/Textures/logo.png)
 
-TrinityAdmin v2.5 is a general interface add-on which will help staff member ingame for trinity core.
+TrinityAdmin v3.3.5 is a general interface add-on which will help admins and GMs in-game for trinity core.
 
 ## INSTRUCTIONS
 
 #### This new version of TrinityAdmin contains many changes over previous versions.
-- TrinityAdmin v 2.5 supports client versions 3.x and 4.x only.
-    - Master supports 4.3.4
-    - 3.3.5 suports 3.3.5
-    - It does not officially support 1.x or 2.x installs.
+- TrinityAdmin v3.3.5 supports client versions 3.3.5 only.
+    - It does not officially support 1.x, 2.x or 4.x installs.
 - TrinityAdmin supports TrinityCore servers ONLY.
     - It will not work with MaNGOS, Arc, Ascent, Hearthstone, or any other emu.
 - As such, the proper installation of TrinityAdmin is no longer as simple as it once was.
@@ -42,6 +40,8 @@ NOTE: These steps are required for locales to properly create the new local tabl
 - [x] LOG
 - [x] WHO
 
-## SCREENSHOT:
-![image](/Textures/TriniyAdminScreenshot.fw.png)
-![image](/Textures/TriniyAdminScreenshot1.fw.png)
+## SCREENSHOTS:
+![image](/Textures/TASS_Char.jpg)
+![image](/Textures/TASS_GM.jpg)
+![image](/Textures/TASS_Server.jpg)
+![image](/Textures/TASS_Tele.jpg)

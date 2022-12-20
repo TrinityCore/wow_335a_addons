@@ -1,9 +1,9 @@
 ﻿-------------------------------------------------------------------------------------------------------------
 --
--- TrinityAdmin Version 4.x
+-- TrinityAdmin Version 3.x
 -- TrinityAdmin is a derivative of MangAdmin.
 --
--- Copyright (C) 2020 Free Software Foundation, Inc.
+-- Copyright (C) 2018 Free Software Foundation, Inc.
 -- License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 -- This is free software: you are free to change and redistribute it.
 -- There is NO WARRANTY, to the extent permitted by law.
@@ -33,8 +33,8 @@ fID = 0
 gettingGOBinfo=0
 gettingGOBinfoinfo=0
 
-MAJOR_VERSION = "TrinityAdmin-4.3.4"
-MINOR_VERSION = "$Revision: 054 $"
+MAJOR_VERSION = "TrinityAdmin-3.3.5"
+MINOR_VERSION = "$Revision: 058 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -279,7 +279,7 @@ function MangAdmin:OnEnable()
   self:RegisterEvent("PLAYER_DEAD")
   self:RegisterEvent("PLAYER_ALIVE")
   self:PLAYER_TARGET_CHANGED() --init
-   --ma_mm_revivebutton:Show()
+  --ma_mm_revivebutton:Show()
 end
 
 --events
@@ -590,7 +590,7 @@ end
     local deltatime = time()
     while deltatime < stime do
       deltatime = time()
-   end
+  end
 end
 
 function MangAdmin:TicketHackTimer()
@@ -867,18 +867,12 @@ function MangAdmin:AddMessage(frame, text, r, g, b, id)
         end
       end
     end
---  for diff in string.gmatch(text, Strings["ma_GmatchUpdateDiff"]) do
---      ma_difftext:SetText(diff)
---      catchedSth = true
--- --     output = MangAdmin.db.account.style.showchat
---      output = MangAdmin.db.account.style.showchat
---  end
-    for diff in string.gmatch(text, Strings[ma_GmatchUpdateDiffTime]) do --Only want the Diff time value
-      ma_difftext:SetText(diff)
-      catchedSth = true
-      output = MangAdmin.db.account.style.showchat
-    end
-    -- hook all new tickets
+     for diff in string.gmatch(text, Strings["ma_GmatchUpdateDiff"]) do
+        ma_difftext:SetText(diff)
+         catchedSth = true
+ --        output = MangAdmin.db.account.style.showchat
+         output = MangAdmin.db.account.style.showchat
+     end
     for name in string.gmatch(text, Strings["ma_GmatchNewTicket"]) do
       self:SetIcon(ROOT_PATH.."Textures\\icon2.tga")
       PlaySoundFile(ROOT_PATH.."Sound\\mail.wav")
@@ -907,7 +901,7 @@ function MangAdmin:AddMessage(frame, text, r, g, b, id)
         self.db.char.requests.tpinfo = false
       end
     end
-    --check for info command to update informations in right bottom
+    --checking for .server info command to pull information for bottom right frame
     for revision in string.gmatch(text, Strings["ma_GmatchRevision"]) do
       ma_inforevisiontext:SetText(Locale["info_revision"]..revision)
       --ma_infoplatformtext:SetText(Locale["info_platform"]..platform)
@@ -1066,7 +1060,7 @@ function MangAdmin:AddMessage(frame, text, r, g, b, id)
     end
   else
     -- message is not from server
-    --Linkifier should be used on non server messages as well to catch links suc as items in chat
+    --Linkifier should be used on non server messages as well to catch links such as items in chat
     text = MangLinkifier_Decompose(text)
     -- Returns the message to the client, or else the chat frame never shows it
     self.hooks[frame].AddMessage(frame, text, r, g, b, id)
@@ -1420,7 +1414,6 @@ function MangAdmin:NPC_GUID_Get_org()
     local str2 = ID_Setting_Read(1)
     ma_NPC_idbutton:SetText(str2)
     self:LogAction("NPC_EntryID_Get for val "..str2..".")
-
 end
 
 function MangAdmin:CreateGuild(leader, name)
@@ -1428,7 +1421,7 @@ function MangAdmin:CreateGuild(leader, name)
   self:LogAction("Created guild '"..name.."' with leader "..leader..".")
 end
 
-function MangAdmin:SendMail(recipient, subject, body)
+function MangAdmin:SendMail(recipient, subject, body)  --[TODO]:Mail Update this to allow sending of imtems with items(mail) command
   recipient = string.gsub(recipient, " ", "")
   subject = string.gsub(subject, " ", "")
   body = string.gsub(body, "\n", " ")
@@ -1684,7 +1677,7 @@ function MangAdmin:InitButtons()
   self:PrepareScript(ma_tabbutton_misc       , Locale["tt_MiscButton"]         , function() MangAdmin:InstantGroupToggle("misc") end)
   self:PrepareScript(ma_tabbutton_server     , Locale["tt_ServerButton"]       , function() MangAdmin:InstantGroupToggle("server") end)
   self:PrepareScript(ma_tabbutton_log        , Locale["tt_LogButton"]          , function() MangAdmin:InstantGroupToggle("log") end)
-  self:PrepareScript(ma_tabbutton_who        , nil                             , function() MangAdmin:InstantGroupToggle("who") end)
+  self:PrepareScript(ma_tabbutton_who        , Locale["tt_whotabmenubutton"]   , function() MangAdmin:InstantGroupToggle("who") end)
   --end tab buttons
   -- start mini buttons
   self:PrepareScript(ma_mm_logoframe         , nil                             , function() MangAdmin:OnClick() end)
@@ -1697,7 +1690,7 @@ function MangAdmin:InitButtons()
   self:PrepareScript(ma_mm_miscbutton        , Locale["tt_MiscButton"]         , function() MangAdmin:InstantGroupToggle("misc") end)
   self:PrepareScript(ma_mm_serverbutton      , Locale["tt_ServerButton"]       , function() MangAdmin:InstantGroupToggle("server") end)
   self:PrepareScript(ma_mm_logbutton         , Locale["tt_LogButton"]          , function() MangAdmin:InstantGroupToggle("log") end)
-  self:PrepareScript(ma_mm_whobutton        , nil                              , function() MangAdmin:InstantGroupToggle("who") end)
+  self:PrepareScript(ma_mm_whobutton         , Locale["tt_whotabmenubutton"]   , function() MangAdmin:InstantGroupToggle("who") end)
   --end mini buttons
   self:PrepareScript(ma_languagebutton       , Locale["tt_LanguageButton"]     , function() MangAdmin:ChangeLanguage(UIDropDownMenu_GetSelectedValue(ma_languagedropdown)) end)
   self:PrepareScript(ma_itembutton           , Locale["tt_ItemButton"]         , function() MangAdmin:TogglePopup("search", {type = "item"}) end)
@@ -1717,8 +1710,8 @@ function MangAdmin:InitButtons()
   self:PrepareScript(ma_searchbutton         , nil                             , function() MangAdmin:SearchStart("item", ma_searcheditbox:GetText()) end)
   self:PrepareScript(ma_resetsearchbutton    , nil                             , function() MangAdmin:SearchReset() end)
   self:PrepareScript(ma_closebutton          , nil                             , function() MangAdmin:CloseButton("bg") end)
-  self:PrepareScript(ma_popupclosebutton     , nil                             , function() MangAdmin:CloseButton("popup") end)
-  self:PrepareScript(ma_popup2closebutton    , nil                             , function() MangAdmin:CloseButton("popup2") end)
+  self:PrepareScript(ma_popupclosebutton     , Locale["tt_CloseWindow"]        , function() MangAdmin:CloseButton("popup") end)
+  self:PrepareScript(ma_popup2closebutton    , Locale["tt_CloseWindow"]        , function() MangAdmin:CloseButton("popup2") end)
   self:PrepareScript(ma_inforefreshbutton    , nil                             , function() MangAdmin:ChatMsg(".server info") end)
   self:PrepareScript(ma_frmtrslider          , Locale["tt_FrmTrSlider"]        , {{"OnMouseUp", function() MangAdmin:ChangeTransparency("frames") end},{"OnValueChanged", function() ma_frmtrsliderText:SetText(string.format("%.2f", ma_frmtrslider:GetValue())) end}})
   self:PrepareScript(ma_btntrslider          , Locale["tt_BtnTrSlider"]        , {{"OnMouseUp", function() MangAdmin:ChangeTransparency("buttons") end},{"OnValueChanged", function() ma_btntrsliderText:SetText(string.format("%.2f", ma_btntrslider:GetValue())) end}})

@@ -1,9 +1,9 @@
 ﻿-------------------------------------------------------------------------------------------------------------
 --
--- TrinityAdmin Version 4.x
+-- TrinityAdmin Version 3.x
 -- TrinityAdmin is a derivative of MangAdmin.
 --
--- Copyright (C) 2020 Free Software Foundation, Inc.
+-- Copyright (C) 2018 Free Software Foundation, Inc.
 -- License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 -- This is free software: you are free to change and redistribute it.
 -- There is NO WARRANTY, to the extent permitted by law.
@@ -308,8 +308,9 @@ function MangAdmin:CreateNpcSection()
     inherits = "UIDropDownMenuTemplate"
   })
 
+  --[[First Dropdown Menu Button]]
   FrameLib:BuildButton({
-    name = "ma_npcemotebutton_a",
+    name = "ma_npcemotebutton", --Button
     group = "npc",
     parent = ma_midframe,
     texture = {
@@ -345,8 +346,9 @@ function MangAdmin:CreateNpcSection()
     inherits = "UIDropDownMenuTemplate"
   })
 
+  --[[Second Dropdown Menu Button]]
   FrameLib:BuildButton({
-    name = "ma_npcemotebutton",
+    name = "ma_npcemotebutton_a", -- Button
     group = "npc",
     parent = ma_midframe,
     texture = {

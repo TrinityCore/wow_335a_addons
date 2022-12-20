@@ -1,9 +1,9 @@
 ﻿-------------------------------------------------------------------------------------------------------------
 --
--- TrinityAdmin Version 4.x
+-- TrinityAdmin Version 3.x
 -- TrinityAdmin is a derivative of MangAdmin.
 --
--- Copyright (C) 2020 Free Software Foundation, Inc.
+-- Copyright (C) 2018 Free Software Foundation, Inc.
 -- License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 -- This is free software: you are free to change and redistribute it.
 -- There is NO WARRANTY, to the extent permitted by law.
@@ -281,8 +281,8 @@ function MangAdmin:CreateServerSection()
     }
   })
 
-  RealGraph = Graph:CreateGraphRealtime("ma_netgraph_diff",ma_netgraphframe2,"CENTER","CENTER",0,0,150,150)
-  local z = RealGraph
+  RealGraph=Graph:CreateGraphRealtime("ma_netgraph_diff",ma_netgraphframe2,"CENTER","CENTER",0,0,150,150)
+  local z=RealGraph
   z:SetAutoScale(false)
   z:SetGridSpacing(1.0,10.0)
   z:SetYMax(300)
@@ -299,22 +299,18 @@ function MangAdmin:CreateServerSection()
           MangAdmin:ChatMsg(".server info")
           q = 0
           local s = tonumber(ma_difftext:GetText())
-            MangAdmin:ChatMsg("Diff="..s)  --Debugging output
           local r = 100 --Trinity says anything over 150 is bad
           if s > r then
-
               z:SetBarColors({1.0,0.0,0.0,1.0},{1.0,0.0,0.0,1.0}) -->150, turn red
           else
-              z:SetBarColors({0.0,1.0,0.0,1.0},{0.0,1.0,0.0,1.0}) -- otherwise green
+              z:SetBarColors({0.0,1.0,0.0,1.0},{0.0,1.0,0.0,1.0}) --otherwise green
           end
           z:AddBar(s)
-          s = "0"
+          s = 0
       end
       if x.NextUpdate>GetTime() then
         return
       end
---      local down, up, lag = GetNetStats();
---      ma_difftext:SetText(""..lag.." ms")
       x.NextUpdate=x.NextUpdate + 1
     end)
   x:Show()

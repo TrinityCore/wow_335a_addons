@@ -1,4 +1,22 @@
 # TrinityAdmin Changelog
+### -=[ Revision 58 - 10/20/2019]=-
+- FIX: Typo in GM on/off command
+
+### -=[ Revision 57 - 10/18/2019]=-
+- FIX Diff graph LUA error (Not actually updating)
+
+### -=[ Revision 56 - 8/23/2019]=-
+- Added Tool Tip to WHO tap
+- FIXED server information tab now showing TrinityCore rev.
+- Removed Locale section from CHANGELOG
+- Converted CHANGELOG 4>2 spaces
+
+### -=[ Revision 55 - 8/21/2019]=-
+- Changed version specific build to 3.3.5
+- Updated TOC for version 3.3.5
+- updated README to reflect 3.3.5
+- Corrected flip flopped Emote buttons on the NPC Tab
+- Fixed a few spelling errors
 
 ### -=[ Revision 54 - 11/13/2018]=-
 - Fixed Tele Tab function with previous commit
@@ -8,66 +26,66 @@
 
 ### -=[ Revision 53 - 10/19/2018]=-
 - NPC Corrections/Adjustments:
-    - Changed button layout/corrected alignment
+  - Changed button layout/corrected alignment
 
 ### -=[ Revision 52 - 10/18/2018]=-
 - TAB Corrections/Adjustments:
-    - Merged CHAR2 tab into CHAR
-    - Removed NPC2 Tab
+  - Merged CHAR2 tab into CHAR
+  - Removed NPC2 Tab
 
 ### -=[ Revision 51 - 10/14/2018]=-
 - TAB Corrections/Adjustments:
-    - Removed PvP Tab
-    - Removed EVENT Tab
-    - Removed RPG Tab
-    - Removed VENDOR Tab
-    - Removed AhBOT Tab
+  - Removed PvP Tab
+  - Removed EVENT Tab
+  - Removed RPG Tab
+  - Removed VENDOR Tab
+  - Removed AhBOT Tab
 
 ### -=[ Revision 50 - 10/10/2018]=-
 - Char Corrections/Adjustments:
-    - Merged CHAR2 tab into CHAR
-    - Removed CHAR2 Tab
+  - Merged CHAR2 tab into CHAR
+  - Removed CHAR2 Tab
 
 ### -=[ Revision 49 - 10/06/2018]=-
 - Char Corrections/Adjustments:
-    - Changed button layout/Corrected alignment
-    - Changed scale of 3D model view
-    - Changed 3D model view control buttons
+  - Changed button layout/Corrected alignment
+  - Changed scale of 3D model view
+  - Changed 3D model view control buttons
 - NPC Corrections/Adjustments:
-    - Changed button layout/Corrected alignment
-    - Changed scale of 3D model view
-    - Changed 3D model view control buttons
+  - Changed button layout/Corrected alignment
+  - Changed scale of 3D model view
+  - Changed 3D model view control buttons
 
 ### -=[ Revision 48 - 10/03/2018]=-
 - Nomalized TABS to use all UPPERCASE names
 - GM Corrections/Adjustments:
-    - Changed button layout/Corrected alignment
+  - Changed button layout/Corrected alignment
 - Who Corrections/Adjustments:
-    - Changed button layout/Corrected alignment
+  - Changed button layout/Corrected alignment
 - Char Corrections/Adjustments:
-    - Swap modify_textbox with level_up dropdown
-    - Centered Rotate and Zoom buttons over 3D view
+  - Swap modify_textbox with level_up dropdown
+  - Centered Rotate and Zoom buttons over 3D view
 - Char2 Corrections/Adjustments:
-    - Moved Parameter input & text
+  - Moved Parameter input & text
 - LookUpButtons Frame:
-    - Changed button layout/Corrected alignment
+  - Changed button layout/Corrected alignment
 - NPC2 Corrections/Adjustments:
-    - FIX TYPO: Removed [] from WayAdd & WayShow buttons
-    - FIX TYPO: Corrected enUS locals WayAdd/WayShow
-    - FIX Textbox width to match button width
-    - ADD 'Distance' discription text
+  - FIX TYPO: Removed [] from WayAdd & WayShow buttons
+  - FIX TYPO: Corrected enUS locals WayAdd/WayShow
+  - FIX Textbox width to match button width
+  - ADD 'Distance' discription text
 
 ### -=[ Revision 47 - 9/24/2018]=-
 - Corrected layout alignment in the Server Tab:
-    - FIXED Reload Scripts -> changed to .reload smart_scripts
+  - FIXED Reload Scripts -> changed to .reload smart_scripts
 
 ### -=[ Revision 46 - 9/23/2018]=-
 - MOD Main Window layout:
-    - Moved Language dropdown closer to the change button
-    - Realigned lower window frames
-    - Changed lower right frame text alignment
+  - Moved Language dropdown closer to the change button
+  - Realigned lower window frames
+  - Changed lower right frame text alignment
 - Corrected layout alignmnet the Misc Tab:
-    - ADD Move checkbox to Misc Tab
+  - ADD Move checkbox to Misc Tab
 
 ### -=[ Revision 45 - 1/18/2012]=-
 - Added "Reload" Linkifier button to the output of ".npc info" to reload the creature_template
@@ -126,7 +144,7 @@ I cannot prevent this. Click the Obj Target button to reset the info boxes.
 - ADD .gob activate, add temp, info, phase to GOB tab
 - updated enUS locale for above adds
 - ADD/MOD added missing tables to Reload. Removed individual tables that are reloaded with an all_xxxx command...
-	so now the list fits the screen, but you may have to choose an all_xxxx command to reload the table you want.
+  so now the list fits the screen, but you may have to choose an all_xxxx command to reload the table you want.
 
 ### -=[ Revision 37 - 1/4/2011]=-
 - Wiki changes
@@ -236,26 +254,5 @@ so that I could make Tickets work again. Thank you, my friend!
 - Logo updated (Thanks Lyrr123!!!)
 
 ## Locale Team:
-### Supported Locales & Translator:
+### Supported Locales:
 - [x] enUS: iotech
-- [x] frFR: Namida
-- [x] svSV: Lyrr123
-- [x] ptPT: Morpheux
-- [x] ptBR: Morpheux
-
-### Locales in-progress:
-- [ ] csCZ: Ravenheart
-- [ ] huHU: Gimp
-- [ ] itIT: dracula70
-- [ ] ruRU: mrlakec
-- [ ] deDE: Amok
-- [ ] roRO: borgotech
-- [ ] esES: Georgios
-
-### Unsupported Locales:
-- [ ] bgBG: 
-- [ ] fiFI: 
-- [ ] liLI: 
-- [ ] zhCN: 
-- [ ] nlNL: 
-- [ ] plPL: 

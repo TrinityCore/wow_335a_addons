@@ -1,9 +1,9 @@
 ﻿-------------------------------------------------------------------------------------------------------------
 --
--- TrinityAdmin Version 4.x
+-- TrinityAdmin Version 3.x
 -- TrinityAdmin is a derivative of MangAdmin.
 --
--- Copyright (C) 2020 Free Software Foundation, Inc.
+-- Copyright (C) 2018 Free Software Foundation, Inc.
 -- License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 -- This is free software: you are free to change and redistribute it.
 -- There is NO WARRANTY, to the extent permitted by law.
@@ -309,7 +309,7 @@ function MangAdmin:CreateMiniMenu()
     text = "Wh"
   })
 
-  FrameLib:BuildButton({ --This button shops up in the center of the screen when you die!
+  FrameLib:BuildButton({ --This button shows up in the center of the screen when you die!
     name = "ma_mm_revivebutton",
     group = "noneyet",
     parent = UIParent,
