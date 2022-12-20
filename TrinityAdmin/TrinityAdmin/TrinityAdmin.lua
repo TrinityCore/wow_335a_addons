@@ -34,7 +34,7 @@ gettingGOBinfo=0
 gettingGOBinfoinfo=0
 
 MAJOR_VERSION = "TrinityAdmin-3.3.5"
-MINOR_VERSION = "$Revision: 058 $"
+MINOR_VERSION = "$Revision: 059 $"
 ROOT_PATH     = "Interface\\AddOns\\TrinityAdmin\\"
 local cont = ""
 if not AceLibrary then error(MAJOR_VERSION .. " requires AceLibrary") end
@@ -120,9 +120,9 @@ MangAdmin:RegisterDefaults("account",
       color = {
         buffer = {},
         buttons = {
-          r = 33,
-          g = 164,
-          b = 210
+          r = 0,
+          g = 0,
+          b = 0
         },
         frames = {
           r = 102,

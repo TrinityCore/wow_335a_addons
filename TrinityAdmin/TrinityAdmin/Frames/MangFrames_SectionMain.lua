@@ -475,46 +475,6 @@ function MangAdmin:CreateMainSection()
   })
 
   FrameLib:BuildButton({
-    name = "ma_setjail_a_button",
-    group = "main",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_setjail_a_button_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 80,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 660,
-      offY = -75
-    },
-    text = Locale["ma_SetJail_A_Button"]
-  })
-
-  FrameLib:BuildButton({
-    name = "ma_setjail_h_button",
-    group = "main",
-    parent = ma_midframe,
-    texture = {
-      name = "ma_setjail_h_button_texture",
-      color = {color.btn.r, color.btn.g, color.btn.b, transparency.btn}
-    },
-    size = {
-      width = 80,
-      height = 20
-    },
-    setpoint = {
-      pos = "TOPLEFT",
-      offX = 660,
-      offY = -97
-    },
-    text = Locale["ma_SetJail_H_Button"]
-  })
-
-  FrameLib:BuildButton({
     type = "CheckButton",
     name = "ma_instantkillbutton",
     group = "main",
@@ -522,7 +482,7 @@ function MangAdmin:CreateMainSection()
     setpoint = {
       pos = "TOPLEFT",
       offX = 180,
-      offY = -10
+      offY = -200
     },
     text = Locale["ma_instakill"],
     inherits = "OptionsCheckButtonTemplate"
@@ -728,12 +688,12 @@ function MangAdmin:CreateMainSection()
     group = "main",
     parent = ma_midframe,
     size = {
-      width = 260,
+      width = 240,
       height = 20
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 400,
+      offX = 420,
       offY = -163
     },
     inherits = "InputBoxTemplate"

@@ -1,4 +1,14 @@
 # TrinityAdmin Changelog
+### -=[ Revision 59 - 12/20/2022]=-
+- Improved tab layouts, spacing for readability
+- Fixed explore cheat command syntax
+- Misc spacing tweaks for some UI elements
+- Revamped jail commands
+  - Drop SetJail functions in place of built-in Horde and Alliance jail locations (Stockade for alliance, Crypt for 
+  Horde)
+  - Hardcoded xyz coords since these locations don't appear to have named teleports
+  - Freezes player so they can't escape via hearth or portal
+  - Prevents player from jailing themselves or NPCs
 ### -=[ Revision 58 - 10/20/2019]=-
 - FIX: Typo in GM on/off command
 
