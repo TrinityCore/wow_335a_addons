@@ -1440,7 +1440,7 @@ function MangAdmin:CreateCharSection()
     },
     setpoint = {
       pos = "BOTTOMLEFT",
-      offX = 292,
+      offX = 305,
       offY = 4
     },
     inherits = "InputBoxTemplate"

@@ -76,14 +76,14 @@ function MangAdmin:CreateTabs()
       }
     },
     size = {
-      width = 30,
+      width = 45,
       height = 20
     },
     setpoint = {
       pos = "TOPLEFT",
       relTo = "ma_tabbutton_main",
       relPos = "TOPRIGHT",
-      offX = 2
+      offX = 7
     },
     text = Locale["tabmenu_Char"]
   })
@@ -102,14 +102,14 @@ function MangAdmin:CreateTabs()
       }
     },
     size = {
-      width = 30,
+      width = 35,
       height = 20
     },
     setpoint = {
       pos = "TOPLEFT",
       relTo = "ma_tabbutton_char",
       relPos = "TOPRIGHT",
-      offX = 2
+      offX = 7
     },
     text = Locale["tabmenu_NPC"]
   })
@@ -128,14 +128,14 @@ function MangAdmin:CreateTabs()
       }
     },
     size = {
-      width = 30,
+      width = 35,
       height = 20
     },
     setpoint = {
       pos = "TOPLEFT",
       relTo = "ma_tabbutton_npc",
       relPos = "TOPRIGHT",
-      offX = 2
+      offX = 7
     },
     text = Locale["tabmenu_GO"]
   })
@@ -162,7 +162,7 @@ function MangAdmin:CreateTabs()
       pos = "TOPLEFT",
       relTo = "ma_tabbutton_go",
       relPos = "TOPRIGHT",
-      offX = 2
+      offX = 7
     },
     text = Locale["tabmenu_Tele"]
   })
@@ -181,14 +181,14 @@ function MangAdmin:CreateTabs()
       }
     },
     size = {
-      width = 40,
+      width = 60,
       height = 20
     },
     setpoint = {
       pos = "TOPLEFT",
       relTo = "ma_tabbutton_tele",
       relPos = "TOPRIGHT",
-      offX = 2
+      offX = 7
     },
     text = Locale["tabmenu_ticket"]
   })
@@ -207,14 +207,14 @@ function MangAdmin:CreateTabs()
       }
     },
     size = {
-      width = 30,
+      width = 40,
       height = 20
     },
     setpoint = {
       pos = "TOPLEFT",
       relTo = "ma_tabbutton_ticket",
       relPos = "TOPRIGHT",
-      offX = 2
+      offX = 7
     },
     text = Locale["tabmenu_Misc"]
   })
@@ -234,14 +234,14 @@ function MangAdmin:CreateTabs()
       }
     },
     size = {
-      width = 40,
+      width = 50,
       height = 20
     },
     setpoint = {
       pos = "TOPLEFT",
       relTo = "ma_tabbutton_misc",
       relPos = "TOPRIGHT",
-      offX = 2
+      offX = 7
     },
     text = Locale["tabmenu_server"]
   })
@@ -260,14 +260,14 @@ function MangAdmin:CreateTabs()
       }
     },
     size = {
-      width = 30,
+      width = 40,
       height = 20
     },
     setpoint = {
       pos = "TOPLEFT",
       relTo = "ma_tabbutton_server",
       relPos = "TOPRIGHT",
-      offX = 2
+      offX = 7
     },
     text = Locale["tabmenu_log"]
   })
@@ -286,14 +286,14 @@ function MangAdmin:CreateTabs()
       }
     },
     size = {
-      width = 35,
+      width = 40,
       height = 20
     },
     setpoint = {
       pos = "TOPLEFT",
       relTo = "ma_tabbutton_log",
       relPos = "TOPRIGHT",
-      offX = 2
+      offX = 7
     },
     text = Locale["tabmenu_who"]
   })
@@ -319,7 +319,7 @@ function MangAdmin:CreateTabs()
 --      pos = "TOPLEFT",
 --      relTo = "ma_tabbutton_who",
 --      relPos = "TOPRIGHT",
---      offX = 2
+--      offX = 7
 --    },
 --    text = Locale["tabmenu_changelog"]
 --  })

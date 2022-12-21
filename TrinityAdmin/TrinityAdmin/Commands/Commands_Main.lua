@@ -78,7 +78,7 @@ function ToggleTaxicheat(value)
 end
 
 function ToggleMaps(value)
-  MangAdmin:ChatMsg(".explorecheat "..value)
+  MangAdmin:ChatMsg(".cheat explore "..value)
   if value == 1 then
     MangAdmin:LogAction("Revealed all maps for selected player.")
   else
@@ -141,28 +141,6 @@ function DismountPlayer()
   else
     MangAdmin:Print(Locale["selectionerror1"])
   end
-end
-
-function SetJail_A()
-    MangAdmin:ChatMsg(".tele del ma_AllianceJail")
-    local i = 1
-    while i<100 do
-        i=i+1
-        MangAdmin:ChatMsg(".")
-    end
-    MangAdmin:ChatMsg(".tele add ma_AllianceJail")
-    MangAdmin:LogAction("Set location of Alliance Jail")
-end
-
-function SetJail_H()
-    MangAdmin:ChatMsg(".tele del ma_HordeJail")
-    local i = 1
-    while i<100 do
-        i=i+1
-        MangAdmin:ChatMsg(".")
-    end
-    MangAdmin:ChatMsg(".tele add ma_HordeJail")
-    MangAdmin:LogAction("Set location of Horde Jail")
 end
 
 function GridNavigate(x, y)

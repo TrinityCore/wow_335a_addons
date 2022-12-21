@@ -542,11 +542,11 @@ function MangAdmin:CreateNpcSection()
     name = "ma_npcparameterboxtext",
     group = "npc",
     parent = ma_midframe,
-    text = Locale["ma_ParameterBox"],
+    text = Locale["ma_ParameterBoxText"],
     setpoint = {
       pos = "TOPLEFT",
-      offX = 140, --charColOne
-      offY = -231
+      offX = 141, --charColOne
+      offY = -232
     }
   })
 
@@ -562,8 +562,8 @@ function MangAdmin:CreateNpcSection()
     },
     setpoint = {
       pos = "TOPLEFT",
-      offX = 180,
-      offY = -225 --charRowTen
+      offX = 195,
+      offY = -228 --charRowTen
     },
     inherits = "InputBoxTemplate"
   })
