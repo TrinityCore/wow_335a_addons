@@ -3,12 +3,12 @@
 ## Author: TrinityAdmin Dev team + Manground Dev Team
 ## Version: 3.3.5
 ## Notes: This addon works with TrinityCore 3.3.5
-## URL: http://code.google.com/p/trinityadmin/
+## URL: https://github.com/flashadvocate/TrinityAdmin
 ## Name: TrinityAdmin
 ## License: GPLv3
-## X-Date: 10 August 2010
+## X-Date: 21 Dec 2022
 ## X-eMail:
-## X-Website: http://code.google.com/p/trinityadmin/
+## X-Website: https://github.com/flashadvocate/TrinityAdmin
 ## OptionalDeps: AceLibrary,AceEvent-2.0,AceHook-2.1,AceDebug-2.0,AceLocale-2.2,AceConsole-2.0,AceAddon-2.0
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
