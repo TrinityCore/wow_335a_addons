@@ -113,21 +113,21 @@ MangAdmin:RegisterDefaults("account",
       showchat = false,
       showminimenu = true,
       transparency = {
-        buttons = 1.0,
-        frames = 0.7,
-        backgrounds = 0.5
+        buttons = 1,
+        frames = 1,
+        backgrounds = 1
       },
       color = {
         buffer = {},
         buttons = {
-          r = 0,
-          g = 0,
-          b = 0
+          r = 0.1764705882352941,
+          g = 0.1764705882352941,
+          b = 0.1764705882352941
         },
         frames = {
-          r = 102,
-          g = 102,
-          b = 102
+          r = 0.1156862745098039,
+          g = 0.1156862745098039,
+          b = 0.1156862745098039
         },
         backgrounds = {
           r = 0,
@@ -1268,7 +1268,7 @@ end
 function MangAdmin:AddItemSet(value)
   if self:Selection("player") or self:Selection("self") or self:Selection("none") then
     local player = UnitName("target") or UnitName("player")
-    self:ChatMsg(".additemset "..value)
+    self:ChatMsg(".additem set "..value)
     self:LogAction("Added itemset with id "..value.." to "..player..".")
   else
     self:Print(Locale["selectionerror1"])
@@ -1428,7 +1428,7 @@ function MangAdmin:SendMail(recipient, subject, body)  --[TODO]:Mail Update this
   subject = '"'..subject..'"'
   body = '"'..body..'"'
   self:ChatMsg(".send mail "..recipient.." "..subject.." "..body)
-  self:LogAction("Sent a mail to "..recipient..". Subject was: "..subject)
+  self:LogAction("Sent mail to "..recipient..". Subject was: "..subject)
 end
 
 function MangAdmin:UpdateMailBytesLeft()
@@ -1582,7 +1582,7 @@ function MangAdmin:SearchStart(var, value)
   elseif var == "itemset" then
     self.db.char.requests.itemset = true
     self.db.account.buffer.itemsets = {}
-    self:ChatMsg(".lookup itemset "..value)
+    self:ChatMsg(".lookup item set "..value)
   elseif var == "spell" then
     self.db.char.requests.spell = true
     self.db.account.buffer.spells = {}

@@ -673,7 +673,7 @@ function Return_enUS()
     ["ma_Mail"]                       = "Send Mail",
     ["ma_Send"]                       = "Send",
     ["ma_MailSubject"]                = "Subject",
-    ["ma_MailYourMsg"]                = "Here your message!",
+    ["ma_MailYourMsg"]                = "Message...\r\n\r\n\r\n",
     ["ma_SearchButton"]               = "Search...",
     ["ma_ResetButton"]                = "Reset",
     ["ma_FavAdd"]                     = "Add selected",
