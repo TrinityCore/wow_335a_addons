@@ -1,0 +1,215 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+ http://wowprogramming.com/FrameXML/UI.xsd">
+
+    <Frame name="GMGenie_Macros_Tele_OptionsWindow" hidden="true" parent="UIParent"
+           inherits="GMGenie_OptionsWindowTemplate">
+        <Frames>
+            <Button name="$parent_Dropdown" inherits="GMGenie_Dropdown" text="Macros">
+                <Size>
+                    <AbsDimension x="145" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_SubText" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        ToggleDropDownMenu(1, nil, GMGenie_Macros_Tele_OptionsWindow_Dropdownbuttons,
+                        GMGenie_Macros_Tele_OptionsWindow_Dropdown, 0, 0);
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50"/>
+            <Button name="$parent_New" inherits="GMGenie_Button" text="New">
+                <Size>
+                    <AbsDimension x="50" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parent_Dropdown" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="5" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GMGenie.Macros.Tele.cleanForm();
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+            <Frame name="$parent_NameText">
+                <Size>
+                    <AbsDimension x="45" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_Text" inherits="GenieFontNormalSmall" text="Name:" justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="2"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <EditBox name="$parent_Name" enableMouse="true" inherits="GMGenie_Input_Text">
+                <Size>
+                    <AbsDimension x="150" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="50" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnTabPressed>
+                        GMGenie_Macros_Tele_OptionsWindow_Location:SetFocus();
+                    </OnTabPressed>
+                </Scripts>
+            </EditBox>
+
+            <Frame name="$parent_LocationText">
+                <Size>
+                    <AbsDimension x="45" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="225" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer>
+                        <FontString name="$parent_Text" inherits="GenieFontNormalSmall" text="Location:"
+                                    justifyH="LEFT">
+                            <Anchors>
+                                <Anchor point="LEFT">
+                                    <Offset>
+                                        <AbsDimension x="0" y="2"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+            <EditBox name="$parent_Location" enableMouse="true" inherits="GMGenie_Input_Text">
+                <Size>
+                    <AbsDimension x="150" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="275" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnTabPressed>
+                        GMGenie_Macros_Tele_OptionsWindow_Name:SetFocus();
+                    </OnTabPressed>
+                </Scripts>
+            </EditBox>
+
+            <Button name="$parent_Delete" inherits="GMGenie_Button" text="Delete">
+                <Size>
+                    <AbsDimension x="135" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_NameText" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GMGenie.Macros.Tele.delete();
+                    </OnClick>
+                    <OnLoad>
+                        self:Disable();
+                    </OnLoad>
+                </Scripts>
+            </Button>
+            <Button name="$parent_Test" inherits="GMGenie_Button" text="Save and Test">
+                <Size>
+                    <AbsDimension x="135" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parent_Delete" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="10" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GMGenie.Macros.Tele.save();
+                        GMGenie.Macros.Tele.test();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button name="$parent_Save" inherits="GMGenie_Button" text="Add">
+                <Size>
+                    <AbsDimension x="135" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parent_Test" relativePoint="RIGHT">
+                        <Offset>
+                            <AbsDimension x="10" y="0"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GMGenie.Macros.Tele.save();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Frame name="$parent_Info">
+                <Size>
+                    <AbsDimension y="86" x="425"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_Delete" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="-10"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString name="$parent_Text" text="" inherits="GenieFontNormalSmall" nonspacewrap="true"
+                                    maxLines="7" justifyH="LEFT" justifyV="TOP">
+                            <Size>
+                                <AbsDimension y="86" x="425"/>
+                            </Size>
+                            <Anchors>
+                                <Anchor point="CENTER"/>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </Frame>
+        </Frames>
+    </Frame>
+</Ui>

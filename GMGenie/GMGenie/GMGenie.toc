@@ -1,0 +1,47 @@
+# This file is part of Game Master Genie.
+# Copyright 2011-2014 Chocochaos
+#
+# Game Master Genie is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.
+# Game Master Genie is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License along with Game Master Genie. If not, see <http://www.gnu.org/licenses/>.
+
+## Interface: 40300
+## Title: GM Genie
+## Note: Game Master Genie v0.7.3 by Chocochaos
+## Author: Chocochaos
+## Version: 0.7.3
+## DefaultState: Enabled
+## SavedVariables: GMGenie_SavedVars
+GMGenie.xml
+Chronos\Chronos.xml
+GMGenie.lua
+Savedvariables.lua
+Chatreader.lua
+Hud.lua
+Hud.xml
+Macros.lua
+Macros.Discipline.lua
+Macros.Mail.lua
+Macros.Tele.lua
+Macros.Whispers.lua
+Macros.Whispers.xml
+Tickets.lua
+Tickets.xml
+Spawns.lua
+Spawns.xml
+Spy.lua
+Spy.xml
+Options\GMGenie.lua
+Options\GMGenie.xml
+Options\Tickets.lua
+Options\Tickets.xml
+Options\Macros.Discipline.lua
+Options\Macros.Discipline.xml
+Options\Macros.Mail.lua
+Options\Macros.Mail.xml
+Options\Macros.Tele.lua
+Options\Macros.Tele.xml
+Options\Macros.Whispers.lua
+Options\Macros.Whispers.xml
+Options\Spawns.lua
+Options\Spawns.xml

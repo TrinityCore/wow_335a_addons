@@ -1,0 +1,24 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+http://wowprogramming.com/FrameXML/UI.xsd">
+
+    <!-- $Id: Chronos.xml 4670 2007-02-02 22:41:28Z Gryphon $ -->
+
+    <!-- Required Embeddable Libs -->
+    <!-- None -->
+
+    <!-- Default Localization -->
+    <Script file="localization.en.lua"/>
+
+    <!-- Secondary Localizations -->
+    <Script file="localization.cn.lua"/>
+    <Script file="localization.de.lua"/>
+    <Script file="localization.fr.lua"/>
+    <Script file="localization.kr.lua"/>
+    <Script file="localization.ru.lua"/>
+    <Script file="localization.es.lua"/>
+    <Script file="localization.tw.lua"/>
+
+    <!-- This loads the execution file -->
+    <Script file="Chronos.lua"/>
+
+</Ui>

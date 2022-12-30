@@ -1,0 +1,7 @@
+## Interface: 20400
+## Title: Chronos
+## Notes: Embeddable Time Keeping and Scheduling System
+## Notes-deDE: Sammlung nützlicher Funktionen zum Zeitmanagement, welche von einigen anderen AddOns verwendet werden.
+## Author: Alexander Brazie, Thott, AnduinLothar
+## X-Website: http://www.wowinterface.com/downloads/info4328-Chronos.html
+Chronos.xml
