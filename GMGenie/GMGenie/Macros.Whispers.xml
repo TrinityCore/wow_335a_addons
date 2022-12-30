@@ -1,0 +1,53 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+ http://wowprogramming.com/FrameXML/UI.xsd">
+    <Button name="GMGenie_Macros_Whispers_SubjectPopup" inherits="GMGenie_Window">
+        <Size>
+            <AbsDimension x="230" y="42"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOP" relativeTo="GMGenie_Spy_InfoWindow" relativePoint="BOTTOM"/>
+        </Anchors>
+        <Scripts>
+            <OnLoad>
+                GMGenie.loadWindow(self, 'Whisper Subject', false, nil);
+                self:ClearAllPoints();
+                self:SetPoint("TOP", GMGenie_Spy_InfoWindow, "BOTTOM");
+            </OnLoad>
+            <OnDoubleClick>
+                self:ClearAllPoints();
+                self:SetPoint("TOP", GMGenie_Spy_InfoWindow, "BOTTOM");
+            </OnDoubleClick>
+        </Scripts>
+        <Frames>
+            <EditBox name="$parent_Subject" enableMouse="true" inherits="GMGenie_Input_Text">
+                <Size>
+                    <AbsDimension x="165" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="5" y="-19"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        GMGenie.Macros.Whispers.sendWithSubject();
+                    </OnEnterPressed>
+                </Scripts>
+            </EditBox>
+            <Button name="$parent_Send" inherits="GMGenie_Button" text="Send">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="$parent_Subject" relativePoint="RIGHT"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GMGenie.Macros.Whispers.sendWithSubject();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Button>
+</Ui>

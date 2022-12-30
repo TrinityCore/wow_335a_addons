@@ -1,0 +1,973 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+ http://wowprogramming.com/FrameXML/UI.xsd">
+    <Frame name="GMGenie_Macros_Discipline_OptionsFrame" hidden="true" parent="UIParent">
+        <Frames>
+            <ScrollFrame name="$parent_ScrollFrame" inherits="UIPanelScrollFrameTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="$parent" x="0" y="-5"/>
+                    <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="$parent" x="0" y="5"/>
+                    <Anchor point="RIGHT" relativePoint="RIGHT" relativeTo="$parent" x="-28"/>
+                </Anchors>
+                <ScrollChild>
+                    <Frame name="GMGenie_Macros_Discipline_OptionsWindow" inherits="GMGenie_OptionsWindowTemplate">
+                        <Size x="350" y="480"/>
+                        <Frames>
+                            <Frame name="$parent_Mute">
+                                <Size>
+                                    <AbsDimension x="350" y="120"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOPLEFT" relativeTo="$parent_SubText" relativePoint="BOTTOMLEFT">
+                                        <Offset>
+                                            <AbsDimension x="0" y="-5"/>
+                                        </Offset>
+                                    </Anchor>
+                                </Anchors>
+                                <Frames>
+                                    <Button name="$parent_Dropdown" inherits="GMGenie_Dropdown" text="Mutes">
+                                        <Size>
+                                            <AbsDimension x="145" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                ToggleDropDownMenu(1, nil,
+                                                GMGenie_Macros_Discipline_OptionsWindow_Mute_Dropdownbuttons,
+                                                GMGenie_Macros_Discipline_OptionsWindow_Mute_Dropdown, 0, 0);
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                    <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50"/>
+                                    <Button name="$parent_New" inherits="GMGenie_Button" text="New">
+                                        <Size>
+                                            <AbsDimension x="50" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeTo="$parent_Dropdown" relativePoint="RIGHT">
+                                                <Offset>
+                                                    <AbsDimension x="5" y="0"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.Mute.cleanForm();
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                    <CheckButton name="$parent_AnnounceToServer" inherits="GMGenie_CheckButton">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="210" y="0"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                getglobal(self:GetName().."Text"):SetText("Announce to server");
+                                            </OnLoad>
+                                        </Scripts>
+                                    </CheckButton>
+
+                                    <Frame name="$parent_NameText">
+                                        <Size>
+                                            <AbsDimension x="35" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Name:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Name" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="150" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="50" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_Mute_Duration:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Frame name="$parent_DurationText">
+                                        <Size>
+                                            <AbsDimension x="50" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="210" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Duration:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Duration" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="90" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="260" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_Mute_Reason:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Frame name="$parent_ReasonText">
+                                        <Size>
+                                            <AbsDimension x="45" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_NameText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Reason:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Reason" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="300" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_NameText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="50" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_Mute_Name:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Button name="$parent_Delete" inherits="GMGenie_Button" text="Delete">
+                                        <Size>
+                                            <AbsDimension x="135" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_ReasonText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.Mute.delete();
+                                            </OnClick>
+                                            <OnLoad>
+                                                self:Disable();
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Button>
+                                    <Button name="$parent_Save" inherits="GMGenie_Button" text="Add">
+                                        <Size>
+                                            <AbsDimension x="135" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPRIGHT" relativeTo="$parent_Reason"
+                                                    relativePoint="BOTTOMRIGHT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.Mute.save();
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+
+                            <Frame name="$parent_CharBan">
+                                <Size>
+                                    <AbsDimension x="350" y="120"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOP" relativeTo="$parent_Mute" relativePoint="BOTTOM"/>
+                                </Anchors>
+                                <Frames>
+                                    <Button name="$parent_Dropdown" inherits="GMGenie_Dropdown" text="Character Bans">
+                                        <Size>
+                                            <AbsDimension x="145" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                ToggleDropDownMenu(1, nil,
+                                                GMGenie_Macros_Discipline_OptionsWindow_CharBan_Dropdownbuttons,
+                                                GMGenie_Macros_Discipline_OptionsWindow_CharBan_Dropdown, 0, 0);
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                    <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50"/>
+                                    <Button name="$parent_New" inherits="GMGenie_Button" text="New">
+                                        <Size>
+                                            <AbsDimension x="50" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeTo="$parent_Dropdown" relativePoint="RIGHT">
+                                                <Offset>
+                                                    <AbsDimension x="5" y="0"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.CharBan.cleanForm();
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                    <CheckButton name="$parent_AnnounceToServer" inherits="GMGenie_CheckButton">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="210" y="0"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                getglobal(self:GetName().."Text"):SetText("Announce to server");
+                                            </OnLoad>
+                                        </Scripts>
+                                    </CheckButton>
+
+                                    <Frame name="$parent_NameText">
+                                        <Size>
+                                            <AbsDimension x="35" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Name:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Name" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="150" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="50" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_CharBan_Duration:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Frame name="$parent_DurationText">
+                                        <Size>
+                                            <AbsDimension x="50" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="210" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Duration:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Duration" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="90" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="260" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_CharBan_Reason:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Frame name="$parent_ReasonText">
+                                        <Size>
+                                            <AbsDimension x="45" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_NameText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Reason:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Reason" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="300" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_NameText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="50" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_CharBan_Name:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Button name="$parent_Delete" inherits="GMGenie_Button" text="Delete">
+                                        <Size>
+                                            <AbsDimension x="135" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_ReasonText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.CharBan.delete();
+                                            </OnClick>
+                                            <OnLoad>
+                                                self:Disable();
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Button>
+                                    <Button name="$parent_Save" inherits="GMGenie_Button" text="Add">
+                                        <Size>
+                                            <AbsDimension x="135" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPRIGHT" relativeTo="$parent_Reason"
+                                                    relativePoint="BOTTOMRIGHT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.CharBan.save();
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+
+                            <Frame name="$parent_AccBan">
+                                <Size>
+                                    <AbsDimension x="350" y="120"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOP" relativeTo="$parent_CharBan" relativePoint="BOTTOM"/>
+                                </Anchors>
+                                <Frames>
+                                    <Button name="$parent_Dropdown" inherits="GMGenie_Dropdown" text="Account Bans">
+                                        <Size>
+                                            <AbsDimension x="145" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                ToggleDropDownMenu(1, nil,
+                                                GMGenie_Macros_Discipline_OptionsWindow_AccBan_Dropdownbuttons,
+                                                GMGenie_Macros_Discipline_OptionsWindow_AccBan_Dropdown, 0, 0);
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                    <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50"/>
+                                    <Button name="$parent_New" inherits="GMGenie_Button" text="New">
+                                        <Size>
+                                            <AbsDimension x="50" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeTo="$parent_Dropdown" relativePoint="RIGHT">
+                                                <Offset>
+                                                    <AbsDimension x="5" y="0"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.AccBan.cleanForm();
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                    <CheckButton name="$parent_AnnounceToServer" inherits="GMGenie_CheckButton">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="210" y="0"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                getglobal(self:GetName().."Text"):SetText("Announce to server");
+                                            </OnLoad>
+                                        </Scripts>
+                                    </CheckButton>
+
+                                    <Frame name="$parent_NameText">
+                                        <Size>
+                                            <AbsDimension x="35" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Name:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Name" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="150" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="50" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_AccBan_Duration:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Frame name="$parent_DurationText">
+                                        <Size>
+                                            <AbsDimension x="50" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="210" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Duration:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Duration" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="90" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="260" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_AccBan_Reason:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Frame name="$parent_ReasonText">
+                                        <Size>
+                                            <AbsDimension x="45" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_NameText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Reason:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Reason" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="300" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_NameText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="50" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_AccBan_Name:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Button name="$parent_Delete" inherits="GMGenie_Button" text="Delete">
+                                        <Size>
+                                            <AbsDimension x="135" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_ReasonText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.AccBan.delete();
+                                            </OnClick>
+                                            <OnLoad>
+                                                self:Disable();
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Button>
+                                    <Button name="$parent_Save" inherits="GMGenie_Button" text="Add">
+                                        <Size>
+                                            <AbsDimension x="135" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPRIGHT" relativeTo="$parent_Reason"
+                                                    relativePoint="BOTTOMRIGHT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.AccBan.save();
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+
+
+                            <Frame name="$parent_IpBan">
+                                <Size>
+                                    <AbsDimension x="350" y="120"/>
+                                </Size>
+                                <Anchors>
+                                    <Anchor point="TOP" relativeTo="$parent_AccBan" relativePoint="BOTTOM"/>
+                                </Anchors>
+                                <Frames>
+                                    <Button name="$parent_Dropdown" inherits="GMGenie_Dropdown" text="Ip Bans">
+                                        <Size>
+                                            <AbsDimension x="145" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT"/>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                ToggleDropDownMenu(1, nil,
+                                                GMGenie_Macros_Discipline_OptionsWindow_IpBan_Dropdownbuttons,
+                                                GMGenie_Macros_Discipline_OptionsWindow_IpBan_Dropdown, 0, 0);
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                    <Frame name="$parent_Dropdownbuttons" inherits="UIDropDownMenuTemplate" id="50"/>
+                                    <Button name="$parent_New" inherits="GMGenie_Button" text="New">
+                                        <Size>
+                                            <AbsDimension x="50" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="LEFT" relativeTo="$parent_Dropdown" relativePoint="RIGHT">
+                                                <Offset>
+                                                    <AbsDimension x="5" y="0"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.IpBan.cleanForm();
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                    <CheckButton name="$parent_AnnounceToServer" inherits="GMGenie_CheckButton">
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="210" y="0"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnLoad>
+                                                getglobal(self:GetName().."Text"):SetText("Announce to server");
+                                            </OnLoad>
+                                        </Scripts>
+                                    </CheckButton>
+
+                                    <Frame name="$parent_NameText">
+                                        <Size>
+                                            <AbsDimension x="35" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Name:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Name" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="150" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="50" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_IpBan_Duration:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Frame name="$parent_DurationText">
+                                        <Size>
+                                            <AbsDimension x="50" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="210" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Duration:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Duration" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="90" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_Dropdown"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="260" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_IpBan_Reason:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Frame name="$parent_ReasonText">
+                                        <Size>
+                                            <AbsDimension x="45" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_NameText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Layers>
+                                            <Layer>
+                                                <FontString name="$parent_Text" inherits="GenieFontNormalSmall"
+                                                            text="Reason:" justifyH="LEFT">
+                                                    <Anchors>
+                                                        <Anchor point="LEFT">
+                                                            <Offset>
+                                                                <AbsDimension x="0" y="2"/>
+                                                            </Offset>
+                                                        </Anchor>
+                                                    </Anchors>
+                                                </FontString>
+                                            </Layer>
+                                        </Layers>
+                                    </Frame>
+                                    <EditBox name="$parent_Reason" enableMouse="true" inherits="GMGenie_Input_Text">
+                                        <Size>
+                                            <AbsDimension x="300" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_NameText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="50" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnTabPressed>
+                                                GMGenie_Macros_Discipline_OptionsWindow_IpBan_Name:SetFocus();
+                                            </OnTabPressed>
+                                        </Scripts>
+                                    </EditBox>
+
+                                    <Button name="$parent_Delete" inherits="GMGenie_Button" text="Delete">
+                                        <Size>
+                                            <AbsDimension x="135" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPLEFT" relativeTo="$parent_ReasonText"
+                                                    relativePoint="BOTTOMLEFT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.IpBan.delete();
+                                            </OnClick>
+                                            <OnLoad>
+                                                self:Disable();
+                                            </OnLoad>
+                                        </Scripts>
+                                    </Button>
+                                    <Button name="$parent_Save" inherits="GMGenie_Button" text="Add">
+                                        <Size>
+                                            <AbsDimension x="135" y="18"/>
+                                        </Size>
+                                        <Anchors>
+                                            <Anchor point="TOPRIGHT" relativeTo="$parent_Reason"
+                                                    relativePoint="BOTTOMRIGHT">
+                                                <Offset>
+                                                    <AbsDimension x="0" y="-5"/>
+                                                </Offset>
+                                            </Anchor>
+                                        </Anchors>
+                                        <Scripts>
+                                            <OnClick>
+                                                GMGenie.Macros.Discipline.IpBan.save();
+                                            </OnClick>
+                                        </Scripts>
+                                    </Button>
+                                </Frames>
+                            </Frame>
+                        </Frames>
+                    </Frame>
+                </ScrollChild>
+            </ScrollFrame>
+        </Frames>
+    </Frame>
+</Ui>

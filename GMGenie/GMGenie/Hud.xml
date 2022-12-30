@@ -1,0 +1,131 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+ http://wowprogramming.com/FrameXML/UI.xsd">
+    <Button name="GMGenie_Hud_Statusbutton" inherits="SecureActionButtonTemplate" virtual="true" frameStrata="DIALOG"
+            frameLevel="2">
+        <Size>
+            <AbsDimension x="90" y="15"/>
+        </Size>
+        <Attributes>
+            <Attribute name="type" type="string" value="macro"/>
+            <Attribute name="macrotext1" type="string" value=""/>
+        </Attributes>
+        <ButtonText name="$parentText">
+            <Anchors>
+                <Anchor point="LEFT">
+                    <Offset>
+                        <AbsDimension x="0" y="1"/>
+                    </Offset>
+                </Anchor>
+            </Anchors>
+        </ButtonText>
+        <NormalFont style="GenieFontNormalSmall"/>
+        <HighlightFont style="GenieFontHighlightSmall"/>
+        <DisabledFont style="GenieFontDisableSmall"/>
+    </Button>
+
+    <Button name="GMGenie_Hud" inherits="GMGenie_Window" hidden="false">
+        <Size>
+            <AbsDimension x="100" y="158"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOPRIGHT" relativeTo="MinimapCluster" relativePoint="BOTTOMRIGHT"/>
+        </Anchors>
+        <Scripts>
+            <OnLoad>
+                GMGenie.loadWindow(self, 'GM Genie', true, function() GMGenie.Hud.checkStatus(); end);
+            </OnLoad>
+            <OnDoubleClick>
+                self:ClearAllPoints();
+                self:SetPoint("TOPRIGHT", MinimapCluster, "BOTTOMRIGHT");
+            </OnDoubleClick>
+        </Scripts>
+        <Frames>
+            <Button name="$parent_GM" inherits="GMGenie_Hud_Statusbutton" text="">
+                <Anchors>
+                    <Anchor point="TOP">
+                        <Offset>
+                            <AbsDimension x="0" y="-19"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            </Button>
+            <Button name="$parent_Chat" inherits="GMGenie_Hud_Statusbutton" text="">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="GMGenie_Hud_GM" relativePoint="BOTTOM"/>
+                </Anchors>
+            </Button>
+            <Button name="$parent_Visibility" inherits="GMGenie_Hud_Statusbutton" text="">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="GMGenie_Hud_Chat" relativePoint="BOTTOM"/>
+                </Anchors>
+            </Button>
+            <Button name="$parent_Whisper" inherits="GMGenie_Hud_Statusbutton" text="">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="GMGenie_Hud_Visibility" relativePoint="BOTTOM"/>
+                </Anchors>
+            </Button>
+            <Button name="$parent_Fly" inherits="GMGenie_Hud_Statusbutton" text="">
+                <Anchors>
+                    <Anchor point="TOP" relativeTo="GMGenie_Hud_Whisper" relativePoint="BOTTOM"/>
+                </Anchors>
+            </Button>
+            <EditBox name="$parent_Speed" inherits="GMGenie_Input_Text">
+                <Size>
+                    <AbsDimension x="35" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="GMGenie_Hud_Fly" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        GMGenie.Hud.setSpeed();
+                    </OnEnterPressed>
+                </Scripts>
+            </EditBox>
+            <Button name="$parent_SetSpeed" inherits="GMGenie_Button" text="Speed">
+                <Anchors>
+                    <Anchor point="LEFT" relativeTo="GMGenie_Hud_Speed" relativePoint="RIGHT"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GMGenie.Hud.setSpeed();
+                    </OnClick>
+                </Scripts>
+            </Button>
+
+
+            <Button name="$parent_Tickets" inherits="GMGenie_Button" text="Tickets">
+                <Size>
+                    <AbsDimension x="90" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="GMGenie_Hud_Speed" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="-5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GMGenie.Tickets.toggle();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            <Button name="$parent_Builder" inherits="GMGenie_Button" text="Builder">
+                <Size>
+                    <AbsDimension x="90" y="18"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="GMGenie_Hud_Tickets" relativePoint="BOTTOMLEFT"/>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        GMGenie.Spawns.toggle();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        </Frames>
+    </Button>
+</Ui>

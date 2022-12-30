@@ -1,0 +1,86 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+ http://wowprogramming.com/FrameXML/UI.xsd">
+    <Frame name="GMGenie_OptionsWindowTemplate" virtual="true" frameStrata="HIGH" parent="UIParent">
+        <Size>
+            <AbsDimension x="350" y="450"/>
+        </Size>
+        <Layers>
+            <Layer level="ARTWORK">
+                <FontString name="$parent_Title" text="" inherits="GameFontNormalLarge" justifyH="LEFT" justifyV="TOP">
+                    <Anchors>
+                        <Anchor point="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="16" y="-16"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+                <FontString name="$parent_SubText" text="" inherits="GenieFontNormalSmall" nonspacewrap="true"
+                            maxLines="3" justifyH="LEFT" justifyV="TOP">
+                    <Size>
+                        <AbsDimension y="32" x="0"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="$parent_Title" relativePoint="BOTTOMLEFT">
+                            <Offset>
+                                <AbsDimension x="0" y="-8"/>
+                            </Offset>
+                        </Anchor>
+                        <Anchor point="RIGHT">
+                            <Offset>
+                                <AbsDimension x="-32" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+    </Frame>
+
+    <Frame name="GMGenie_OptionsWindow" hidden="true" parent="UIParent" inherits="GMGenie_OptionsWindowTemplate">
+        <Frames>
+            <CheckButton name="$parent_EnableWIMIntergration" inherits="InterfaceOptionsCheckButtonTemplate">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_SubText" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="-2" y="-8"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        getglobal(self:GetName().."Text"):SetText("Enable WIM Integration");
+                    </OnLoad>
+                </Scripts>
+            </CheckButton>
+            <EditBox name="$parent_GMSyncChannel" inherits="InputBoxTemplate" enableMouse="true">
+                <Size>
+                    <AbsDimension x="200" y="22"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_EnableWIMIntergration" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="10" y="-25"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Layers>
+                    <Layer level="ARTWORK">
+                        <FontString name="$parentText" inherits="GameFontHighlight"
+                                    text="Synchronisation channel (usually gm_sync_channel)">
+                            <Anchors>
+                                <Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+                                    <Offset>
+                                        <AbsDimension x="-5" y="5"/>
+                                    </Offset>
+                                </Anchor>
+                            </Anchors>
+                        </FontString>
+                    </Layer>
+                </Layers>
+            </EditBox>
+        </Frames>
+    </Frame>
+</Ui>

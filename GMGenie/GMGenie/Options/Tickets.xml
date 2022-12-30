@@ -1,0 +1,55 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+ http://wowprogramming.com/FrameXML/UI.xsd">
+    <Frame name="GMGenie_Tickets_OptionsWindow" hidden="true" parent="UIParent"
+           inherits="GMGenie_OptionsWindowTemplate">
+        <Frames>
+            <CheckButton name="$parent_showOffline" inherits="GMGenie_CheckButton">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_SubText" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="-2" y="-8"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        getglobal(self:GetName().."Text"):SetText("Show offline tickets");
+                    </OnLoad>
+                    <OnClick>
+                        GMGenie.Tickets.toggleOfflineTickets();
+                    </OnClick>
+                </Scripts>
+            </CheckButton>
+            <CheckButton name="$parent_swapWindows" inherits="GMGenie_CheckButton">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_showOffline" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="-8"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        getglobal(self:GetName().."Text"):SetText("Close ticket list when reading a ticket.");
+                    </OnLoad>
+                </Scripts>
+            </CheckButton>
+            <CheckButton name="$parent_useSpy" inherits="GMGenie_CheckButton">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="$parent_swapWindows" relativePoint="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="0" y="-8"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnLoad>
+                        getglobal(self:GetName().."Text"):SetText("Open playerinfo window when reading a ticket.");
+                    </OnLoad>
+                </Scripts>
+            </CheckButton>
+        </Frames>
+    </Frame>
+</Ui>
