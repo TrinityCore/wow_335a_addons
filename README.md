@@ -9,3 +9,8 @@ IE:
 
 Damage addon directory -> all directories of the addon inside.  
 Deadly boss mod directory -> all directories of the addon inside.
+
+more wow 3.3.5a addons:
+
+https://github.com/NoM0Re/WoW-3.3.5a-Addons
+https://github.com/jwverzijden/wowaddons
